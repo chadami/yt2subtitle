@@ -14,19 +14,27 @@ function ensureOverlay() {
   overlay.style.cssText = [
     "position:fixed",
     "left:50%",
-    "bottom:12%",
+    "bottom:21%",
     "transform:translateX(-50%)",
     "z-index:2147483647",
-    "max-width:72vw",
-    "padding:6px 12px",
-    "border-radius:6px",
-    "background:rgba(0,0,0,.72)",
-    "color:white",
-    "font-size:22px",
-    "line-height:1.35",
+    "max-width:min(78vw,980px)",
+    "padding:8px 16px 9px",
+    "border-radius:8px",
+    "background:rgba(18,28,25,.82)",
+    "border:1px solid rgba(211,232,222,.32)",
+    "box-shadow:0 12px 34px rgba(0,0,0,.34)",
+    "color:#f6fff9",
+    "font-family:Arial,'Microsoft YaHei',sans-serif",
+    "font-size:clamp(18px,2.25vw,28px)",
+    "font-weight:650",
+    "line-height:1.42",
+    "letter-spacing:0",
     "text-align:center",
+    "text-shadow:0 2px 8px rgba(0,0,0,.5)",
     "pointer-events:none",
-    "display:none"
+    "display:none",
+    "backdrop-filter:blur(6px)",
+    "-webkit-backdrop-filter:blur(6px)"
   ].join(";");
   document.body.appendChild(overlay);
   return overlay;
