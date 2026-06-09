@@ -24,6 +24,7 @@ Email login is configured for Resend:
 - `EMAIL_PROVIDER=resend`
 - `EMAIL_FROM=noreply@yt.invisiblewind.cn`
 - `RESEND_API_KEY` must be set as a Render secret environment variable
+- API custom domain: `subtitle.invisiblewind.cn`
 
 For local development, you can temporarily switch to:
 
