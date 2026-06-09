@@ -6,6 +6,8 @@ const generate = document.getElementById("generate");
 const status = document.getElementById("status");
 const fontSize = document.getElementById("fontSize");
 const fontSizeValue = document.getElementById("fontSizeValue");
+const positionPercent = document.getElementById("positionPercent");
+const positionValue = document.getElementById("positionValue");
 const backgroundOpacity = document.getElementById("backgroundOpacity");
 const backgroundOpacityValue = document.getElementById("backgroundOpacityValue");
 const weightNormal = document.getElementById("weightNormal");
@@ -15,7 +17,8 @@ let activeTabId = null;
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
   backgroundOpacity: 82,
-  fontWeight: "bold"
+  fontWeight: "bold",
+  positionPercent: 21
 };
 
 chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
@@ -45,7 +48,7 @@ generate.addEventListener("click", async () => {
   }
 });
 
-for (const control of [fontSize, backgroundOpacity, weightNormal, weightBold]) {
+for (const control of [fontSize, positionPercent, backgroundOpacity, weightNormal, weightBold]) {
   control.addEventListener("input", saveAndApplySubtitleStyle);
   control.addEventListener("change", saveAndApplySubtitleStyle);
 }
@@ -57,6 +60,7 @@ async function loadSubtitleStyle() {
     ...(settings.subtitleStyle || {})
   };
   fontSize.value = style.fontSize;
+  positionPercent.value = style.positionPercent;
   backgroundOpacity.value = style.backgroundOpacity;
   weightNormal.checked = style.fontWeight === "normal";
   weightBold.checked = style.fontWeight !== "normal";
@@ -82,6 +86,7 @@ async function saveAndApplySubtitleStyle() {
 function getSubtitleStyleFromControls() {
   return {
     fontSize: Number(fontSize.value),
+    positionPercent: Number(positionPercent.value),
     backgroundOpacity: Number(backgroundOpacity.value),
     fontWeight: weightNormal.checked ? "normal" : "bold"
   };
@@ -89,5 +94,6 @@ function getSubtitleStyleFromControls() {
 
 function syncStyleLabels(style) {
   fontSizeValue.textContent = `${style.fontSize}px`;
+  positionValue.textContent = `${style.positionPercent}%`;
   backgroundOpacityValue.textContent = `${style.backgroundOpacity}%`;
 }

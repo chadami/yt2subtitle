@@ -150,7 +150,7 @@ document.getElementById("logout").addEventListener("click", async () => {
 });
 
 document.getElementById("clearCache").addEventListener("click", async () => {
-  await chrome.storage.local.remove(["pendingJobs"]);
+  await chrome.storage.local.remove(["pendingJobs", "subtitleCache"]);
   nodes.message.textContent = "Local cache cleared.";
 });
 

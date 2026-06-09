@@ -1,4 +1,5 @@
 const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
+const SUBTITLE_CACHE_LIMIT = 8;
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name !== "check-subtitle-jobs") return;
@@ -69,10 +70,18 @@ async function createSubtitleJob(payload) {
 async function getSubtitleByVideo(message) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
+  const cacheKey = subtitleCacheKey(message.videoId, message.sourceLang || "en", message.targetLang || "zh-Hans");
+  const cached = await getCachedSubtitle(cacheKey);
+  if (cached) return cached;
+
   const url = `${apiBase}/api/subtitles/by-video/${message.videoId}?sourceLang=${encodeURIComponent(message.sourceLang || "en")}&targetLang=${encodeURIComponent(message.targetLang || "zh-Hans")}`;
   const response = await safeFetch(url);
   if (!response.ok) return { status: "missing" };
-  return response.json();
+  const data = await response.json();
+  if (data.status === "completed" && Array.isArray(data.cues)) {
+    setCachedSubtitle(cacheKey, data).catch(() => {});
+  }
+  return data;
 }
 
 async function checkSubtitleJobs() {
@@ -125,4 +134,30 @@ function ensureJobAlarm() {
 
 function normalizeApiBase(value) {
   return (value || DEFAULT_API_BASE).replace(/\/$/, "");
+}
+
+function subtitleCacheKey(videoId, sourceLang, targetLang) {
+  return `${videoId}:${sourceLang}:${targetLang}`;
+}
+
+async function getCachedSubtitle(cacheKey) {
+  const { subtitleCache = {} } = await chrome.storage.local.get(["subtitleCache"]);
+  const cached = subtitleCache[cacheKey];
+  if (!cached?.data) return null;
+  return cached.data;
+}
+
+async function setCachedSubtitle(cacheKey, data) {
+  const { subtitleCache = {} } = await chrome.storage.local.get(["subtitleCache"]);
+  const nextCache = {
+    ...subtitleCache,
+    [cacheKey]: {
+      savedAt: Date.now(),
+      data
+    }
+  };
+  const entries = Object.entries(nextCache)
+    .sort(([, left], [, right]) => (right.savedAt || 0) - (left.savedAt || 0))
+    .slice(0, SUBTITLE_CACHE_LIMIT);
+  await chrome.storage.local.set({ subtitleCache: Object.fromEntries(entries) });
 }

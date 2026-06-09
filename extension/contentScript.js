@@ -3,7 +3,8 @@ const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
   backgroundOpacity: 82,
-  fontWeight: "bold"
+  fontWeight: "bold",
+  positionPercent: 21
 };
 let renderGeneration = 0;
 
@@ -22,7 +23,7 @@ function ensureOverlay() {
     "bottom:21%",
     "transform:translateX(-50%)",
     "z-index:2147483647",
-    "max-width:min(78vw,980px)",
+    "max-width:min(96vw,1960px)",
     "padding:8px 16px 9px",
     "border-radius:8px",
     "background:rgba(18,28,25,.82)",
@@ -58,9 +59,11 @@ function applySubtitleStyle(style = {}) {
   };
   const fontSize = clampNumber(Number(nextStyle.fontSize), 16, 36);
   const opacity = clampNumber(Number(nextStyle.backgroundOpacity), 35, 95) / 100;
+  const position = clampNumber(Number(nextStyle.positionPercent), 8, 42);
   overlay.style.fontSize = `${fontSize}px`;
   overlay.style.fontWeight = nextStyle.fontWeight === "normal" ? "500" : "750";
   overlay.style.background = `rgba(18,28,25,${opacity})`;
+  overlay.style.bottom = `${position}%`;
 }
 
 function clampNumber(value, min, max) {
@@ -322,6 +325,6 @@ setInterval(() => {
     lastUrl = location.href;
     tryLoadSubtitle();
   }
-}, 1000);
+}, 250);
 
 tryLoadSubtitle();
