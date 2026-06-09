@@ -2,6 +2,6 @@
   "name": "@youtube-ai-subtitle/extension",
   "private": true,
   "scripts": {
-    "build": "mkdir -p dist && cp manifest.json background.js contentScript.js popup.html popup.js options.html options.js icon.svg dist/"
+    "build": "mkdir -p dist && cp manifest.json background.js contentScript.js popup.html popup.js options.html options.js icon.svg dist/ && cp -R icons dist/"
   }
 }
