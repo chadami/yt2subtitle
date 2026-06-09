@@ -4,13 +4,74 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
 });
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-  if (message?.type !== "CHECK_SUBTITLE_JOBS") return;
-  checkSubtitleJobs().then(
-    () => sendResponse({ ok: true }),
-    (error) => sendResponse({ ok: false, error: error.message || String(error) })
-  );
-  return true;
+  if (message?.type === "CHECK_SUBTITLE_JOBS") {
+    checkSubtitleJobs().then(
+      () => sendResponse({ ok: true }),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
+  if (message?.type === "CREATE_SUBTITLE_JOB") {
+    createSubtitleJob(message.payload).then(
+      (result) => sendResponse(result),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
+  if (message?.type === "GET_SUBTITLE_BY_VIDEO") {
+    getSubtitleByVideo(message).then(
+      (result) => sendResponse(result),
+      () => sendResponse({ status: "missing" })
+    );
+    return true;
+  }
+  return false;
 });
+
+async function createSubtitleJob(payload) {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  if (!settings.apiBase) throw new Error("Backend API URL is not configured.");
+  const response = await safeFetch(`${settings.apiBase}/api/jobs`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(payload.sessionToken ? { Authorization: `Bearer ${payload.sessionToken}` } : {})
+    },
+    body: JSON.stringify({
+      clientId: payload.clientId,
+      video: payload.video,
+      sourceLang: payload.sourceLang,
+      targetLang: payload.targetLang,
+      captionType: payload.captionType,
+      rawCues: payload.rawCues
+    })
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || `Job request failed: ${response.status}`);
+
+  const nextPendingJobs = [
+    ...(payload.pendingJobs || []).filter((job) => job.jobId !== data.jobId),
+    {
+      jobId: data.jobId,
+      videoId: payload.videoId,
+      title: payload.video.title,
+      url: payload.video.url,
+      createdAt: Date.now()
+    }
+  ];
+  await chrome.storage.local.set({ pendingJobs: nextPendingJobs });
+  await checkSubtitleJobs();
+  return { ok: true, ...data };
+}
+
+async function getSubtitleByVideo(message) {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  if (!settings.apiBase) return { status: "missing" };
+  const url = `${settings.apiBase}/api/subtitles/by-video/${message.videoId}?sourceLang=${encodeURIComponent(message.sourceLang || "en")}&targetLang=${encodeURIComponent(message.targetLang || "zh-Hans")}`;
+  const response = await safeFetch(url);
+  if (!response.ok) return { status: "missing" };
+  return response.json();
+}
 
 async function checkSubtitleJobs() {
   const { pendingJobs = [], settings = {} } = await chrome.storage.local.get(["pendingJobs", "settings"]);
@@ -19,7 +80,7 @@ async function checkSubtitleJobs() {
   const stillPending = [];
   for (const job of pendingJobs) {
     try {
-      const response = await fetch(`${settings.apiBase}/api/jobs/${job.jobId}`);
+      const response = await safeFetch(`${settings.apiBase}/api/jobs/${job.jobId}`);
       const status = await response.json();
       if (status.status === "completed") {
         chrome.notifications.create(`subtitle-${job.jobId}`, {
@@ -36,6 +97,14 @@ async function checkSubtitleJobs() {
     }
   }
   await chrome.storage.local.set({ pendingJobs: stillPending });
+}
+
+async function safeFetch(url, options) {
+  try {
+    return await fetch(url, options);
+  } catch (error) {
+    throw new Error(`Cannot reach backend API. Check Backend API URL, extension host permissions, and Render service status. URL: ${url}`);
+  }
 }
 
 chrome.runtime.onInstalled.addListener(async () => {

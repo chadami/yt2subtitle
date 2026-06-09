@@ -51,9 +51,12 @@ async function tryLoadSubtitle() {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   if (!settings.apiBase || settings.autoLoad === false) return;
   const targetLang = settings.targetLang || "zh-Hans";
-  const response = await fetch(`${settings.apiBase}/api/subtitles/by-video/${videoId}?sourceLang=en&targetLang=${targetLang}`);
-  if (!response.ok) return;
-  const data = await response.json();
+  const data = await chrome.runtime.sendMessage({
+    type: "GET_SUBTITLE_BY_VIDEO",
+    videoId,
+    sourceLang: "en",
+    targetLang
+  });
   if (data.status === "completed" && Array.isArray(data.cues)) {
     renderSubtitles(data.cues);
   }
@@ -85,36 +88,21 @@ async function generateAiSubtitles() {
   const rawCues = await fetchCaptionCues(track);
   if (!rawCues.length) throw new Error("Caption track exists, but no usable cues were downloaded.");
 
-  const response = await fetch(`${settings.apiBase}/api/jobs`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...(sessionToken ? { Authorization: `Bearer ${sessionToken}` } : {})
-    },
-    body: JSON.stringify({
+  const data = await chrome.runtime.sendMessage({
+    type: "CREATE_SUBTITLE_JOB",
+    payload: {
       clientId,
+      sessionToken,
+      pendingJobs,
+      videoId,
       video: video.video,
       sourceLang: track.languageCode || settings.sourceLang || "en",
       targetLang: settings.targetLang || "zh-Hans",
       captionType: track.isAuto ? "auto" : "manual",
       rawCues
-    })
-  });
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.error || `Job request failed: ${response.status}`);
-
-  const nextPendingJobs = [
-    ...pendingJobs.filter((job) => job.jobId !== data.jobId),
-    {
-      jobId: data.jobId,
-      videoId,
-      title: video.video.title,
-      url: video.video.url,
-      createdAt: Date.now()
     }
-  ];
-  await chrome.storage.local.set({ pendingJobs: nextPendingJobs });
-  chrome.runtime.sendMessage({ type: "CHECK_SUBTITLE_JOBS" });
+  });
+  if (!data?.ok) throw new Error(data?.error || "Failed to create subtitle job.");
   return {
     ok: true,
     jobId: data.jobId,
