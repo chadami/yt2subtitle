@@ -74,18 +74,24 @@ async function getSubtitleByVideo(message) {
 }
 
 async function checkSubtitleJobs() {
-  const { pendingJobs = [], settings = {} } = await chrome.storage.local.get(["pendingJobs", "settings"]);
+  const { pendingJobs = [], settings = {}, notificationTargets = {} } = await chrome.storage.local.get([
+    "pendingJobs",
+    "settings",
+    "notificationTargets"
+  ]);
   if (!settings.apiBase || !pendingJobs.length) return;
 
   const stillPending = [];
+  const nextNotificationTargets = { ...notificationTargets };
   for (const job of pendingJobs) {
     try {
       const response = await safeFetch(`${settings.apiBase}/api/jobs/${job.jobId}`);
       const status = await response.json();
       if (status.status === "completed") {
-        chrome.notifications.create(`subtitle-${job.jobId}`, {
+        nextNotificationTargets[job.jobId] = job.url;
+        await chrome.notifications.create(`subtitle-${job.jobId}`, {
           type: "basic",
-          iconUrl: "icon.png",
+          iconUrl: chrome.runtime.getURL("icon.svg"),
           title: "AI subtitles ready",
           message: job.title || "Open the video to load subtitles."
         });
@@ -96,7 +102,8 @@ async function checkSubtitleJobs() {
       stillPending.push(job);
     }
   }
-  await chrome.storage.local.set({ pendingJobs: stillPending });
+  await chrome.storage.local.set({ pendingJobs: stillPending, notificationTargets: nextNotificationTargets });
+  if (stillPending.length) ensureJobAlarm();
 }
 
 async function safeFetch(url, options) {
@@ -112,5 +119,24 @@ chrome.runtime.onInstalled.addListener(async () => {
   if (!clientId) {
     await chrome.storage.local.set({ clientId: crypto.randomUUID() });
   }
-  chrome.alarms.create("check-subtitle-jobs", { periodInMinutes: 3 });
+  ensureJobAlarm();
 });
+
+chrome.runtime.onStartup.addListener(() => {
+  ensureJobAlarm();
+});
+
+chrome.notifications.onClicked.addListener(async (notificationId) => {
+  if (!notificationId.startsWith("subtitle-")) return;
+  const { notificationTargets = {} } = await chrome.storage.local.get(["notificationTargets"]);
+  const jobId = notificationId.replace("subtitle-", "");
+  const url = notificationTargets[jobId];
+  if (url) {
+    await chrome.tabs.create({ url });
+  }
+  chrome.notifications.clear(notificationId);
+});
+
+function ensureJobAlarm() {
+  chrome.alarms.create("check-subtitle-jobs", { periodInMinutes: 1 });
+}

@@ -1,4 +1,5 @@
 const OVERLAY_ID = "yt-ai-subtitle-overlay";
+let renderGeneration = 0;
 
 function getVideoId() {
   return new URL(location.href).searchParams.get("v");
@@ -30,12 +31,23 @@ function ensureOverlay() {
   return overlay;
 }
 
-function renderSubtitles(cues) {
+function clearOverlay() {
+  renderGeneration += 1;
+  const overlay = document.getElementById(OVERLAY_ID);
+  if (overlay) {
+    overlay.textContent = "";
+    overlay.style.display = "none";
+  }
+}
+
+function renderSubtitles(cues, videoId) {
   const video = document.querySelector("video");
   const overlay = ensureOverlay();
   if (!video) return;
+  const generation = ++renderGeneration;
 
   function tick() {
+    if (generation !== renderGeneration || getVideoId() !== videoId) return;
     const current = video.currentTime;
     const cue = cues.find((item) => current >= item.start && current <= item.end);
     overlay.textContent = cue?.text || "";
@@ -47,9 +59,15 @@ function renderSubtitles(cues) {
 
 async function tryLoadSubtitle() {
   const videoId = getVideoId();
-  if (!videoId) return;
+  if (!videoId) {
+    clearOverlay();
+    return;
+  }
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
-  if (!settings.apiBase || settings.autoLoad === false) return;
+  if (!settings.apiBase || settings.autoLoad === false) {
+    clearOverlay();
+    return;
+  }
   const targetLang = settings.targetLang || "zh-Hans";
   const data = await chrome.runtime.sendMessage({
     type: "GET_SUBTITLE_BY_VIDEO",
@@ -58,7 +76,9 @@ async function tryLoadSubtitle() {
     targetLang
   });
   if (data.status === "completed" && Array.isArray(data.cues)) {
-    renderSubtitles(data.cues);
+    renderSubtitles(data.cues, videoId);
+  } else {
+    clearOverlay();
   }
 }
 
@@ -74,6 +94,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 async function generateAiSubtitles() {
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
+  clearOverlay();
 
   const { settings = {}, clientId, sessionToken, pendingJobs = [] } = await chrome.storage.local.get([
     "settings",
