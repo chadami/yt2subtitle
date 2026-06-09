@@ -103,7 +103,7 @@ async function tryLoadSubtitle() {
     clearOverlay();
     return;
   }
-  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
   if (settings.autoLoad === false) {
     clearOverlay();
     return;
@@ -113,7 +113,9 @@ async function tryLoadSubtitle() {
     type: "GET_SUBTITLE_BY_VIDEO",
     videoId,
     sourceLang: "en",
-    targetLang
+    targetLang,
+    translationMode: settings.translationMode || "user",
+    sessionToken
   });
   if (data.status === "completed" && Array.isArray(data.cues)) {
     renderSubtitles(data.cues, videoId);
@@ -171,6 +173,7 @@ async function generateAiSubtitles() {
       video: video.video,
       sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
       targetLang: effectiveSettings.targetLang || "zh-Hans",
+      translationMode: effectiveSettings.translationMode || "user",
       captionType: track.isAuto ? "auto" : "manual",
       rawCues
     }

@@ -45,6 +45,7 @@ async function createSubtitleJob(payload) {
       video: payload.video,
       sourceLang: payload.sourceLang,
       targetLang: payload.targetLang,
+      translationMode: payload.translationMode || "user",
       captionType: payload.captionType,
       rawCues: payload.rawCues
     })
@@ -70,12 +71,22 @@ async function createSubtitleJob(payload) {
 async function getSubtitleByVideo(message) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
-  const cacheKey = subtitleCacheKey(message.videoId, message.sourceLang || "en", message.targetLang || "zh-Hans");
+  const translationMode = message.translationMode || settings.translationMode || "user";
+  const cacheKey = subtitleCacheKey(
+    message.videoId,
+    message.sourceLang || "en",
+    message.targetLang || "zh-Hans",
+    translationMode
+  );
   const cached = await getCachedSubtitle(cacheKey);
   if (cached) return cached;
 
-  const url = `${apiBase}/api/subtitles/by-video/${message.videoId}?sourceLang=${encodeURIComponent(message.sourceLang || "en")}&targetLang=${encodeURIComponent(message.targetLang || "zh-Hans")}`;
-  const response = await safeFetch(url);
+  const url = `${apiBase}/api/subtitles/by-video/${message.videoId}?sourceLang=${encodeURIComponent(message.sourceLang || "en")}&targetLang=${encodeURIComponent(message.targetLang || "zh-Hans")}&translationMode=${encodeURIComponent(translationMode)}`;
+  const response = await safeFetch(url, {
+    headers: translationMode === "user" && message.sessionToken
+      ? { Authorization: `Bearer ${message.sessionToken}` }
+      : {}
+  });
   if (!response.ok) return { status: "missing" };
   const data = await response.json();
   if (data.status === "completed" && Array.isArray(data.cues)) {
@@ -136,8 +147,8 @@ function normalizeApiBase(value) {
   return (value || DEFAULT_API_BASE).replace(/\/$/, "");
 }
 
-function subtitleCacheKey(videoId, sourceLang, targetLang) {
-  return `${videoId}:${sourceLang}:${targetLang}`;
+function subtitleCacheKey(videoId, sourceLang, targetLang, translationMode) {
+  return `${videoId}:${sourceLang}:${targetLang}:${translationMode}`;
 }
 
 async function getCachedSubtitle(cacheKey) {

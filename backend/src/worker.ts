@@ -1,8 +1,9 @@
 import { Worker } from "bullmq";
-import { translateChunk, compressSubtitle } from "./ai.js";
+import { translateChunk, compressSubtitle, systemAiConfig, type ProviderMode, type AiProvider } from "./ai.js";
 import { query } from "./db.js";
 import { sendSubtitleReadyEmail } from "./email.js";
 import { redisConnection } from "./queue.js";
+import { loadUserAiConfig } from "./routes/ai.js";
 import { chunkCues, resolveOverlaps, sanitizeTiming, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
 
 function maxCharsForDuration(duration: number) {
@@ -29,8 +30,13 @@ async function processSubtitleJob(jobId: string) {
     description: string;
     url: string;
     caption_source_id: string;
+    user_id: string;
+    provider_mode: ProviderMode;
+    ai_provider: AiProvider | null;
+    ai_model: string | null;
   }>(
-    `select j.video_id, j.source_lang, j.target_lang, j.caption_source_id,
+    `select j.video_id, j.source_lang, j.target_lang, j.caption_source_id, j.user_id,
+     j.provider_mode, j.ai_provider, j.ai_model,
      c.raw_cues_json, v.title, v.channel, v.description, v.url
      from translation_jobs j
      join caption_sources c on c.id = j.caption_source_id
@@ -40,6 +46,9 @@ async function processSubtitleJob(jobId: string) {
   );
   const record = found.rows[0];
   if (!record) throw new Error("Job not found");
+  const aiConfig = record.provider_mode === "user"
+    ? await loadUserAiConfig(record.user_id)
+    : systemAiConfig();
 
   const cleanCues = resolveOverlaps(record.raw_cues_json);
   await query(
@@ -55,6 +64,7 @@ async function processSubtitleJob(jobId: string) {
     const previousContext = index > 0 ? chunks[index - 1].slice(-8) : [];
     const nextContext = index < chunks.length - 1 ? chunks[index + 1].slice(0, 8) : [];
     translated.push(...await translateChunk({
+      aiConfig,
       videoContext: {
         title: record.title,
         channel: record.channel,
@@ -79,7 +89,7 @@ async function processSubtitleJob(jobId: string) {
     if (visibleLength(cue.text) > maxChars) {
       compressed.push({
         ...cue,
-        text: await compressSubtitle(cue.text, cue.end - cue.start, maxChars, record.target_lang)
+        text: await compressSubtitle(aiConfig, cue.text, cue.end - cue.start, maxChars, record.target_lang)
       });
     } else {
       compressed.push(cue);
@@ -90,9 +100,22 @@ async function processSubtitleJob(jobId: string) {
   const finalCues = sanitizeTiming(compressed);
   const vtt = toVtt(finalCues);
   await query(
-    `insert into translated_subtitles (video_id, source_lang, target_lang, provider, model, cues_json, vtt_text)
-     values ($1, $2, $3, 'deepseek', 'deepseek-v4-pro', $4, $5)`,
-    [record.video_id, record.source_lang, record.target_lang, JSON.stringify(finalCues), vtt]
+    `insert into translated_subtitles (
+       video_id, source_lang, target_lang, provider_mode, provider, model,
+       created_by_user_id, cues_json, vtt_text
+     )
+     values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    [
+      record.video_id,
+      record.source_lang,
+      record.target_lang,
+      aiConfig.providerMode,
+      aiConfig.provider,
+      aiConfig.model,
+      record.user_id,
+      JSON.stringify(finalCues),
+      vtt
+    ]
   );
   await query("update translation_jobs set status = 'completed', progress = 100, completed_at = now(), updated_at = now() where id = $1", [jobId]);
   await notifyJobOwner(jobId, record.title, record.url);

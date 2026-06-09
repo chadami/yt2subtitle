@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import { env } from "./env.js";
 import { initDatabase } from "./migrate.js";
+import { aiRouter } from "./routes/ai.js";
 import { authRouter } from "./routes/auth.js";
 import { jobsRouter } from "./routes/jobs.js";
 import { subtitlesRouter } from "./routes/subtitles.js";
@@ -21,6 +22,7 @@ app.get("/health", (_req, res) => {
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/ai", aiRouter);
 app.use("/api/jobs", jobsRouter);
 app.use("/api/subtitles", subtitlesRouter);
 

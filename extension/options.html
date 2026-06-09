@@ -158,6 +158,18 @@
         gap: 10px;
       }
 
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .hint {
+        margin: -4px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
       button {
         border: 1px solid transparent;
         border-radius: 7px;
@@ -249,6 +261,10 @@
         .email-display {
           display: grid;
         }
+
+        .split {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -317,11 +333,49 @@
             <p class="section-copy">Subtitle behavior</p>
           </div>
           <div class="fields">
+            <label>Default translation source
+              <select id="translationMode">
+                <option value="user">My API Key</option>
+                <option value="system">System DeepSeek</option>
+              </select>
+            </label>
             <label>Target language
               <input id="targetLang" value="zh-Hans" />
             </label>
             <div class="inline">
               <label><input id="autoLoad" type="checkbox" /> Auto-load completed AI subtitles</label>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div>
+            <h2>My AI API</h2>
+            <p class="section-copy">Per email account</p>
+          </div>
+          <div class="fields">
+            <div class="split">
+              <label>AI brand
+                <select id="aiProvider">
+                  <option value="gemini">Gemini</option>
+                  <option value="deepseek">DeepSeek</option>
+                  <option value="openai">OpenAI</option>
+                  <option value="claude">Claude</option>
+                  <option value="qwen">Qwen</option>
+                  <option value="mimo">Xiaomi MiMo</option>
+                </select>
+              </label>
+              <label>Model
+                <select id="aiModel"></select>
+              </label>
+            </div>
+            <label>API Key
+              <input id="aiApiKey" type="password" placeholder="Saved on backend for this email only" autocomplete="off" />
+            </label>
+            <p id="aiStatus" class="hint">Log in, enter an API Key, then fetch models.</p>
+            <div class="actions">
+              <button id="fetchModels" class="secondary">Fetch models</button>
+              <button id="saveAiSettings" class="secondary">Save my API</button>
             </div>
           </div>
         </section>

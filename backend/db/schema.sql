@@ -35,6 +35,16 @@ create table if not exists login_codes (
   created_at timestamptz not null default now()
 );
 
+create table if not exists user_ai_settings (
+  user_id uuid primary key references users(id) on delete cascade,
+  provider text not null check (provider in ('gemini', 'deepseek', 'openai', 'claude', 'qwen', 'mimo')),
+  api_key_ciphertext text not null,
+  model text not null default '',
+  available_models_json jsonb not null default '[]'::jsonb,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
 create table if not exists videos (
   video_id text primary key,
   url text not null,
@@ -63,6 +73,9 @@ create table if not exists translation_jobs (
   source_lang text not null,
   target_lang text not null,
   caption_source_id uuid not null references caption_sources(id) on delete cascade,
+  provider_mode text not null default 'system' check (provider_mode in ('system', 'user')),
+  ai_provider text,
+  ai_model text,
   status text not null,
   progress integer not null default 0,
   error text,
@@ -76,6 +89,7 @@ create table if not exists translated_subtitles (
   video_id text not null references videos(video_id) on delete cascade,
   source_lang text not null,
   target_lang text not null,
+  provider_mode text not null default 'system' check (provider_mode in ('system', 'user')),
   provider text not null,
   model text not null,
   created_by_user_id uuid references users(id) on delete set null,
@@ -87,3 +101,8 @@ create table if not exists translated_subtitles (
 
 create index if not exists translation_jobs_video_lang_idx on translation_jobs(video_id, source_lang, target_lang, status);
 create index if not exists translated_subtitles_video_lang_idx on translated_subtitles(video_id, source_lang, target_lang);
+
+alter table translation_jobs add column if not exists provider_mode text not null default 'system';
+alter table translation_jobs add column if not exists ai_provider text;
+alter table translation_jobs add column if not exists ai_model text;
+alter table translated_subtitles add column if not exists provider_mode text not null default 'system';
