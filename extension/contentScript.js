@@ -1,5 +1,10 @@
 const OVERLAY_ID = "yt-ai-subtitle-overlay";
 const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
+const DEFAULT_SUBTITLE_STYLE = {
+  fontSize: 24,
+  backgroundOpacity: 82,
+  fontWeight: "bold"
+};
 let renderGeneration = 0;
 
 function getVideoId() {
@@ -25,8 +30,6 @@ function ensureOverlay() {
     "box-shadow:0 12px 34px rgba(0,0,0,.34)",
     "color:#f6fff9",
     "font-family:Arial,'Microsoft YaHei',sans-serif",
-    "font-size:clamp(18px,2.25vw,28px)",
-    "font-weight:650",
     "line-height:1.42",
     "letter-spacing:0",
     "text-align:center",
@@ -37,7 +40,32 @@ function ensureOverlay() {
     "-webkit-backdrop-filter:blur(6px)"
   ].join(";");
   document.body.appendChild(overlay);
+  applySubtitleStyle(DEFAULT_SUBTITLE_STYLE);
+  applyStoredSubtitleStyle();
   return overlay;
+}
+
+async function applyStoredSubtitleStyle() {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  applySubtitleStyle(settings.subtitleStyle);
+}
+
+function applySubtitleStyle(style = {}) {
+  const overlay = ensureOverlay();
+  const nextStyle = {
+    ...DEFAULT_SUBTITLE_STYLE,
+    ...style
+  };
+  const fontSize = clampNumber(Number(nextStyle.fontSize), 16, 36);
+  const opacity = clampNumber(Number(nextStyle.backgroundOpacity), 35, 95) / 100;
+  overlay.style.fontSize = `${fontSize}px`;
+  overlay.style.fontWeight = nextStyle.fontWeight === "normal" ? "500" : "750";
+  overlay.style.background = `rgba(18,28,25,${opacity})`;
+}
+
+function clampNumber(value, min, max) {
+  if (!Number.isFinite(value)) return min;
+  return Math.min(max, Math.max(min, value));
 }
 
 function clearOverlay() {
@@ -92,12 +120,21 @@ async function tryLoadSubtitle() {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-  if (message?.type !== "GENERATE_AI_SUBTITLES") return;
-  generateAiSubtitles().then(
-    (result) => sendResponse(result),
-    (error) => sendResponse({ ok: false, error: error.message || String(error) })
-  );
-  return true;
+  if (message?.type === "GENERATE_AI_SUBTITLES") {
+    generateAiSubtitles().then(
+      (result) => sendResponse(result),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
+
+  if (message?.type === "APPLY_SUBTITLE_STYLE") {
+    applySubtitleStyle(message.style);
+    sendResponse({ ok: true });
+    return true;
+  }
+
+  return false;
 });
 
 async function generateAiSubtitles() {

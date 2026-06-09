@@ -4,9 +4,22 @@ document.getElementById("openOptions").addEventListener("click", () => {
 
 const generate = document.getElementById("generate");
 const status = document.getElementById("status");
+const fontSize = document.getElementById("fontSize");
+const fontSizeValue = document.getElementById("fontSizeValue");
+const backgroundOpacity = document.getElementById("backgroundOpacity");
+const backgroundOpacityValue = document.getElementById("backgroundOpacityValue");
+const weightNormal = document.getElementById("weightNormal");
+const weightBold = document.getElementById("weightBold");
 let activeTabId = null;
 
-chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
+const DEFAULT_SUBTITLE_STYLE = {
+  fontSize: 24,
+  backgroundOpacity: 82,
+  fontWeight: "bold"
+};
+
+chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
+  await loadSubtitleStyle();
   if (!tab?.url?.includes("youtube.com/watch")) {
     status.textContent = "Open a YouTube video page to generate AI subtitles.";
     return;
@@ -31,3 +44,50 @@ generate.addEventListener("click", async () => {
     generate.disabled = false;
   }
 });
+
+for (const control of [fontSize, backgroundOpacity, weightNormal, weightBold]) {
+  control.addEventListener("input", saveAndApplySubtitleStyle);
+  control.addEventListener("change", saveAndApplySubtitleStyle);
+}
+
+async function loadSubtitleStyle() {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const style = {
+    ...DEFAULT_SUBTITLE_STYLE,
+    ...(settings.subtitleStyle || {})
+  };
+  fontSize.value = style.fontSize;
+  backgroundOpacity.value = style.backgroundOpacity;
+  weightNormal.checked = style.fontWeight === "normal";
+  weightBold.checked = style.fontWeight !== "normal";
+  syncStyleLabels(style);
+}
+
+async function saveAndApplySubtitleStyle() {
+  const style = getSubtitleStyleFromControls();
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  await chrome.storage.local.set({
+    settings: {
+      ...settings,
+      subtitleStyle: style
+    }
+  });
+  syncStyleLabels(style);
+
+  if (activeTabId) {
+    chrome.tabs.sendMessage(activeTabId, { type: "APPLY_SUBTITLE_STYLE", style }).catch(() => {});
+  }
+}
+
+function getSubtitleStyleFromControls() {
+  return {
+    fontSize: Number(fontSize.value),
+    backgroundOpacity: Number(backgroundOpacity.value),
+    fontWeight: weightNormal.checked ? "normal" : "bold"
+  };
+}
+
+function syncStyleLabels(style) {
+  fontSizeValue.textContent = `${style.fontSize}px`;
+  backgroundOpacityValue.textContent = `${style.backgroundOpacity}%`;
+}

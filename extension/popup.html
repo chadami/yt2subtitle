@@ -77,6 +77,70 @@
         margin-top: 12px;
       }
 
+      .controls {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 12px;
+      }
+
+      .control {
+        display: grid;
+        gap: 7px;
+      }
+
+      .control-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .value {
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--accent);
+      }
+
+      .segments {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+
+      .segments input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .segments label {
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        cursor: pointer;
+        padding: 8px 10px;
+        text-align: center;
+        font-weight: 750;
+      }
+
+      .segments input:checked + span {
+        color: #fff;
+      }
+
+      .segments label:has(input:checked) {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
       button {
         width: 100%;
         min-height: 40px;
@@ -125,6 +189,40 @@
       </header>
 
       <div id="status" class="status">Checking current video...</div>
+
+      <div class="controls">
+        <div class="control">
+          <div class="control-head">
+            <span>Font size</span>
+            <span id="fontSizeValue" class="value">24px</span>
+          </div>
+          <input id="fontSize" type="range" min="16" max="36" step="1" />
+        </div>
+
+        <div class="control">
+          <div class="control-head">
+            <span>Background opacity</span>
+            <span id="backgroundOpacityValue" class="value">82%</span>
+          </div>
+          <input id="backgroundOpacity" type="range" min="35" max="95" step="1" />
+        </div>
+
+        <div class="control">
+          <div class="control-head">
+            <span>Font weight</span>
+          </div>
+          <div class="segments">
+            <label>
+              <input id="weightNormal" name="fontWeight" type="radio" value="normal" />
+              <span>Normal</span>
+            </label>
+            <label>
+              <input id="weightBold" name="fontWeight" type="radio" value="bold" />
+              <span>Bold</span>
+            </label>
+          </div>
+        </div>
+      </div>
 
       <div class="actions">
         <button id="generate" class="primary" disabled>Generate AI subtitles</button>
