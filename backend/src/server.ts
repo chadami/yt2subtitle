@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { env } from "./env.js";
+import { initDatabase } from "./migrate.js";
 import { authRouter } from "./routes/auth.js";
 import { jobsRouter } from "./routes/jobs.js";
 import { subtitlesRouter } from "./routes/subtitles.js";
@@ -27,6 +28,8 @@ app.use((error: unknown, _req: express.Request, res: express.Response, _next: ex
   console.error(error);
   res.status(500).json({ error: error instanceof Error ? error.message : "Internal server error" });
 });
+
+await initDatabase();
 
 app.listen(env.PORT, () => {
   console.log(`API listening on :${env.PORT}`);

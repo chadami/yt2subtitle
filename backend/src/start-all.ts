@@ -1,2 +1,2 @@
-import "./worker.js";
-import "./server.js";
+await import("./server.js");
+await import("./worker.js");
