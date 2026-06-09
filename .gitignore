@@ -1,0 +1,17 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+coverage/
+*.log
+*.vtt
+*.srt
+raw-captions.json
+clean-captions.json
+output*.zh.vtt
+*.zh.vtt

@@ -1,0 +1,13 @@
+{
+  "name": "youtube-ai-subtitle",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "extension"
+  ],
+  "scripts": {
+    "dev:api": "npm --workspace backend run dev:api",
+    "dev:worker": "npm --workspace backend run dev:worker",
+    "build": "npm --workspaces run build"
+  }
+}

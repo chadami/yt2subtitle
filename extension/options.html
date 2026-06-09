@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>YouTube AI Subtitle Settings</title>
+    <style>
+      body { max-width: 760px; margin: 32px auto; font-family: system-ui, sans-serif; }
+      label { display: block; margin: 16px 0; }
+      input, select { width: 100%; padding: 8px; box-sizing: border-box; }
+      button { padding: 8px 12px; }
+      section { border-top: 1px solid #ddd; padding-top: 16px; margin-top: 24px; }
+      .row { display: flex; gap: 12px; align-items: center; }
+      .row input { width: auto; }
+      .muted { color: #666; }
+    </style>
+  </head>
+  <body>
+    <h1>Settings</h1>
+
+    <section>
+      <h2>Account</h2>
+      <p id="accountStatus" class="muted">Anonymous user</p>
+      <label>Email login <input id="email" type="email" placeholder="you@example.com" /></label>
+      <button id="sendMagicLink">Send login link</button>
+    </section>
+
+    <section>
+      <h2>Service</h2>
+      <label>Backend API URL <input id="apiBase" placeholder="https://api.example.com" /></label>
+      <button id="testConnection">Test connection</button>
+    </section>
+
+    <section>
+      <h2>Translation</h2>
+      <label>Target language <input id="targetLang" value="zh-Hans" /></label>
+      <label class="row"><input id="autoLoad" type="checkbox" /> Auto-load completed AI subtitles</label>
+    </section>
+
+    <section>
+      <h2>Notifications</h2>
+      <label class="row"><input id="notifications" type="checkbox" /> Notify when subtitles are ready</label>
+    </section>
+
+    <section>
+      <h2>Cache</h2>
+      <button id="clearCache">Clear local cache</button>
+    </section>
+
+    <p id="message" class="muted"></p>
+    <button id="save">Save</button>
+    <script src="options.js"></script>
+  </body>
+</html>
