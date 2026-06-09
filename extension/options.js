@@ -1,82 +1,157 @@
+const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
+
 const fields = {
   apiBase: document.getElementById("apiBase"),
   targetLang: document.getElementById("targetLang"),
-  autoLoad: document.getElementById("autoLoad"),
-  notifications: document.getElementById("notifications")
+  autoLoad: document.getElementById("autoLoad")
 };
-const message = document.getElementById("message");
+
+const nodes = {
+  accountStatus: document.getElementById("accountStatus"),
+  accountLoggedIn: document.getElementById("accountLoggedIn"),
+  accountLoggedOut: document.getElementById("accountLoggedOut"),
+  accountEmail: document.getElementById("accountEmail"),
+  email: document.getElementById("email"),
+  loginCode: document.getElementById("loginCode"),
+  message: document.getElementById("message")
+};
+
+function normalizeApiBase(value) {
+  return (value || DEFAULT_API_BASE).replace(/\/$/, "");
+}
+
+async function getApiBase() {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  return normalizeApiBase(fields.apiBase.value || settings.apiBase);
+}
 
 async function load() {
   const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
-  fields.apiBase.value = settings.apiBase || "";
+  fields.apiBase.value = normalizeApiBase(settings.apiBase);
   fields.targetLang.value = settings.targetLang || "zh-Hans";
   fields.autoLoad.checked = settings.autoLoad !== false;
-  fields.notifications.checked = settings.notifications !== false;
-  document.getElementById("accountStatus").textContent = sessionToken ? "Logged in" : "Anonymous user";
 
-  const token = location.hash.match(/token=([^&]+)/)?.[1];
-  if (token) {
-    await chrome.storage.local.set({ sessionToken: decodeURIComponent(token) });
-    history.replaceState(null, "", location.pathname);
-    document.getElementById("accountStatus").textContent = "Logged in";
+  await chrome.storage.local.set({
+    settings: {
+      ...settings,
+      apiBase: fields.apiBase.value
+    }
+  });
+
+  await refreshAccount(sessionToken);
+}
+
+async function refreshAccount(sessionToken) {
+  if (!sessionToken) {
+    setLoggedOut();
+    return;
   }
+
+  try {
+    const apiBase = await getApiBase();
+    const response = await fetch(`${apiBase}/api/auth/me`, {
+      headers: { Authorization: `Bearer ${sessionToken}` }
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      await chrome.storage.local.remove(["sessionToken"]);
+      setLoggedOut();
+      nodes.message.textContent = data.error || "Session expired. Please log in again.";
+      return;
+    }
+    setLoggedIn(data.email || "Email verified");
+  } catch (error) {
+    setLoggedOut();
+    nodes.message.textContent = `Cannot verify account: ${error.message}`;
+  }
+}
+
+function setLoggedIn(email) {
+  nodes.accountStatus.textContent = "Logged in";
+  nodes.accountEmail.textContent = email;
+  nodes.accountLoggedIn.classList.remove("hidden");
+  nodes.accountLoggedOut.classList.add("hidden");
+}
+
+function setLoggedOut() {
+  nodes.accountStatus.textContent = "Not logged in";
+  nodes.accountEmail.textContent = "";
+  nodes.accountLoggedIn.classList.add("hidden");
+  nodes.accountLoggedOut.classList.remove("hidden");
 }
 
 document.getElementById("save").addEventListener("click", async () => {
   await chrome.storage.local.set({
     settings: {
-      apiBase: fields.apiBase.value.replace(/\/$/, ""),
+      apiBase: normalizeApiBase(fields.apiBase.value),
       targetLang: fields.targetLang.value || "zh-Hans",
-      autoLoad: fields.autoLoad.checked,
-      notifications: fields.notifications.checked
+      autoLoad: fields.autoLoad.checked
     }
   });
-  message.textContent = "Saved.";
+  fields.apiBase.value = normalizeApiBase(fields.apiBase.value);
+  nodes.message.textContent = "Settings saved.";
 });
 
 document.getElementById("testConnection").addEventListener("click", async () => {
   try {
-    const response = await fetch(`${fields.apiBase.value.replace(/\/$/, "")}/health`);
-    message.textContent = response.ok ? "Connection OK." : `Connection failed: ${response.status}`;
+    const response = await fetch(`${normalizeApiBase(fields.apiBase.value)}/health`);
+    nodes.message.textContent = response.ok ? "Connection OK." : `Connection failed: ${response.status}`;
   } catch (error) {
-    message.textContent = `Connection failed: ${error.message}`;
+    nodes.message.textContent = `Connection failed: ${error.message}`;
   }
 });
 
 document.getElementById("sendMagicLink").addEventListener("click", async () => {
   const { clientId, settings = {} } = await chrome.storage.local.get(["clientId", "settings"]);
-  const email = document.getElementById("email").value;
-  const apiBase = fields.apiBase.value || settings.apiBase;
-  await fetch(`${apiBase.replace(/\/$/, "")}/api/auth/magic-link`, {
+  const email = nodes.email.value.trim();
+  if (!email) {
+    nodes.message.textContent = "Enter your email first.";
+    return;
+  }
+
+  const apiBase = normalizeApiBase(fields.apiBase.value || settings.apiBase);
+  const response = await fetch(`${apiBase}/api/auth/magic-link`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, clientId })
   });
-  message.textContent = "Login link sent. Check your email.";
+  const data = await response.json().catch(() => ({}));
+  nodes.message.textContent = response.ok ? "Login link sent. Check your email." : data.error || "Login link failed.";
 });
 
 document.getElementById("exchangeLoginCode").addEventListener("click", async () => {
-  const { settings = {} } = await chrome.storage.local.get(["settings"]);
-  const apiBase = (fields.apiBase.value || settings.apiBase || "").replace(/\/$/, "");
-  const code = document.getElementById("loginCode").value.trim().toUpperCase();
+  const apiBase = await getApiBase();
+  const code = nodes.loginCode.value.trim().toUpperCase();
+  if (!code) {
+    nodes.message.textContent = "Enter the login code first.";
+    return;
+  }
+
   const response = await fetch(`${apiBase}/api/auth/exchange-code`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ code })
   });
-  const data = await response.json();
+  const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    message.textContent = data.error || "Login failed.";
+    nodes.message.textContent = data.error || "Login failed.";
     return;
   }
   await chrome.storage.local.set({ sessionToken: data.sessionToken });
-  document.getElementById("accountStatus").textContent = "Logged in";
-  message.textContent = "Logged in.";
+  await refreshAccount(data.sessionToken);
+  nodes.loginCode.value = "";
+  nodes.message.textContent = "Logged in.";
+});
+
+document.getElementById("logout").addEventListener("click", async () => {
+  await chrome.storage.local.remove(["sessionToken"]);
+  setLoggedOut();
+  nodes.message.textContent = "Logged out.";
 });
 
 document.getElementById("clearCache").addEventListener("click", async () => {
   await chrome.storage.local.remove(["pendingJobs"]);
-  message.textContent = "Local cache cleared.";
+  nodes.message.textContent = "Local cache cleared.";
 });
 
 load();

@@ -1,6 +1,7 @@
 import { Worker } from "bullmq";
 import { translateChunk, compressSubtitle } from "./ai.js";
 import { query } from "./db.js";
+import { sendSubtitleReadyEmail } from "./email.js";
 import { redisConnection } from "./queue.js";
 import { chunkCues, resolveOverlaps, sanitizeTiming, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
 
@@ -26,10 +27,11 @@ async function processSubtitleJob(jobId: string) {
     title: string;
     channel: string;
     description: string;
+    url: string;
     caption_source_id: string;
   }>(
     `select j.video_id, j.source_lang, j.target_lang, j.caption_source_id,
-     c.raw_cues_json, v.title, v.channel, v.description
+     c.raw_cues_json, v.title, v.channel, v.description, v.url
      from translation_jobs j
      join caption_sources c on c.id = j.caption_source_id
      join videos v on v.video_id = j.video_id
@@ -93,6 +95,27 @@ async function processSubtitleJob(jobId: string) {
     [record.video_id, record.source_lang, record.target_lang, JSON.stringify(finalCues), vtt]
   );
   await query("update translation_jobs set status = 'completed', progress = 100, completed_at = now(), updated_at = now() where id = $1", [jobId]);
+  await notifyJobOwner(jobId, record.title, record.url);
+}
+
+async function notifyJobOwner(jobId: string, title: string, url: string) {
+  const found = await query<{ email: string }>(
+    `select i.identifier as email
+     from translation_jobs j
+     join identities i on i.user_id = j.user_id and i.type = 'email'
+     where j.id = $1
+     order by i.verified_at desc nulls last
+     limit 1`,
+    [jobId]
+  );
+  const email = found.rows[0]?.email;
+  if (!email) return;
+
+  try {
+    await sendSubtitleReadyEmail(email, { title, url });
+  } catch (error) {
+    console.error("Failed to send subtitle ready email", error);
+  }
 }
 
 new Worker("subtitle-jobs", async (job) => {

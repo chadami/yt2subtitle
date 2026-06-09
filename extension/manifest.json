@@ -3,7 +3,7 @@
   "name": "YouTube AI Subtitle",
   "version": "0.1.0",
   "description": "Generate and load AI-translated subtitles for YouTube videos.",
-  "permissions": ["storage", "alarms", "notifications"],
+  "permissions": ["storage", "alarms"],
   "host_permissions": ["https://www.youtube.com/*", "https://*.onrender.com/*", "https://subtitle.invisiblewind.cn/*"],
   "background": {
     "service_worker": "background.js",

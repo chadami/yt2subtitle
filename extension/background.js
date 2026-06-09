@@ -1,3 +1,5 @@
+const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
+
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name !== "check-subtitle-jobs") return;
   await checkSubtitleJobs();
@@ -30,8 +32,8 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 
 async function createSubtitleJob(payload) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
-  if (!settings.apiBase) throw new Error("Backend API URL is not configured.");
-  const response = await safeFetch(`${settings.apiBase}/api/jobs`, {
+  const apiBase = normalizeApiBase(settings.apiBase);
+  const response = await safeFetch(`${apiBase}/api/jobs`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -66,43 +68,34 @@ async function createSubtitleJob(payload) {
 
 async function getSubtitleByVideo(message) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
-  if (!settings.apiBase) return { status: "missing" };
-  const url = `${settings.apiBase}/api/subtitles/by-video/${message.videoId}?sourceLang=${encodeURIComponent(message.sourceLang || "en")}&targetLang=${encodeURIComponent(message.targetLang || "zh-Hans")}`;
+  const apiBase = normalizeApiBase(settings.apiBase);
+  const url = `${apiBase}/api/subtitles/by-video/${message.videoId}?sourceLang=${encodeURIComponent(message.sourceLang || "en")}&targetLang=${encodeURIComponent(message.targetLang || "zh-Hans")}`;
   const response = await safeFetch(url);
   if (!response.ok) return { status: "missing" };
   return response.json();
 }
 
 async function checkSubtitleJobs() {
-  const { pendingJobs = [], settings = {}, notificationTargets = {} } = await chrome.storage.local.get([
+  const { pendingJobs = [], settings = {} } = await chrome.storage.local.get([
     "pendingJobs",
-    "settings",
-    "notificationTargets"
+    "settings"
   ]);
-  if (!settings.apiBase || !pendingJobs.length) return;
+  if (!pendingJobs.length) return;
+  const apiBase = normalizeApiBase(settings.apiBase);
 
   const stillPending = [];
-  const nextNotificationTargets = { ...notificationTargets };
   for (const job of pendingJobs) {
     try {
-      const response = await safeFetch(`${settings.apiBase}/api/jobs/${job.jobId}`);
+      const response = await safeFetch(`${apiBase}/api/jobs/${job.jobId}`);
       const status = await response.json();
-      if (status.status === "completed") {
-        nextNotificationTargets[job.jobId] = job.url;
-        await chrome.notifications.create(`subtitle-${job.jobId}`, {
-          type: "basic",
-          iconUrl: chrome.runtime.getURL("icon.svg"),
-          title: "AI subtitles ready",
-          message: job.title || "Open the video to load subtitles."
-        });
-      } else if (status.status !== "failed" && status.status !== "cancelled") {
+      if (status.status !== "completed" && status.status !== "failed" && status.status !== "cancelled") {
         stillPending.push(job);
       }
     } catch {
       stillPending.push(job);
     }
   }
-  await chrome.storage.local.set({ pendingJobs: stillPending, notificationTargets: nextNotificationTargets });
+  await chrome.storage.local.set({ pendingJobs: stillPending });
   if (stillPending.length) ensureJobAlarm();
 }
 
@@ -126,17 +119,10 @@ chrome.runtime.onStartup.addListener(() => {
   ensureJobAlarm();
 });
 
-chrome.notifications.onClicked.addListener(async (notificationId) => {
-  if (!notificationId.startsWith("subtitle-")) return;
-  const { notificationTargets = {} } = await chrome.storage.local.get(["notificationTargets"]);
-  const jobId = notificationId.replace("subtitle-", "");
-  const url = notificationTargets[jobId];
-  if (url) {
-    await chrome.tabs.create({ url });
-  }
-  chrome.notifications.clear(notificationId);
-});
-
 function ensureJobAlarm() {
   chrome.alarms.create("check-subtitle-jobs", { periodInMinutes: 1 });
+}
+
+function normalizeApiBase(value) {
+  return (value || DEFAULT_API_BASE).replace(/\/$/, "");
 }

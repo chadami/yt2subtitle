@@ -1,4 +1,5 @@
 const OVERLAY_ID = "yt-ai-subtitle-overlay";
+const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
 let renderGeneration = 0;
 
 function getVideoId() {
@@ -64,7 +65,7 @@ async function tryLoadSubtitle() {
     return;
   }
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
-  if (!settings.apiBase || settings.autoLoad === false) {
+  if (settings.autoLoad === false) {
     clearOverlay();
     return;
   }
@@ -102,10 +103,13 @@ async function generateAiSubtitles() {
     "sessionToken",
     "pendingJobs"
   ]);
-  if (!settings.apiBase) throw new Error("Backend API URL is not configured.");
+  const effectiveSettings = {
+    ...settings,
+    apiBase: (settings.apiBase || DEFAULT_API_BASE).replace(/\/$/, "")
+  };
 
   const video = await collectVideoPayload(videoId);
-  const track = selectCaptionTrack(video.captionTracks, settings.sourceLang || "en");
+  const track = selectCaptionTrack(video.captionTracks, effectiveSettings.sourceLang || "en");
   const rawCues = await fetchCaptionCues(track);
   if (!rawCues.length) throw new Error("Caption track exists, but no usable cues were downloaded.");
 
@@ -117,8 +121,8 @@ async function generateAiSubtitles() {
       pendingJobs,
       videoId,
       video: video.video,
-      sourceLang: track.languageCode || settings.sourceLang || "en",
-      targetLang: settings.targetLang || "zh-Hans",
+      sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
+      targetLang: effectiveSettings.targetLang || "zh-Hans",
       captionType: track.isAuto ? "auto" : "manual",
       rawCues
     }

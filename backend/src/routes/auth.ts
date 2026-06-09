@@ -87,6 +87,23 @@ authRouter.post("/exchange-code", async (req, res, next) => {
   }
 });
 
+authRouter.get("/me", async (req, res, next) => {
+  try {
+    const userId = await requireUserId(req.headers.authorization);
+    const found = await query<{ email: string }>(
+      `select identifier as email
+       from identities
+       where user_id = $1 and type = 'email'
+       order by verified_at desc nulls last
+       limit 1`,
+      [userId]
+    );
+    res.json({ userId, email: found.rows[0]?.email ?? null });
+  } catch (error) {
+    next(error);
+  }
+});
+
 function createLoginCode() {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let code = "";
