@@ -44,6 +44,26 @@ In local mode, magic links are printed in logs instead of being sent.
 6. Open `/health` on the API domain.
 7. Put the API domain in the extension options page.
 
+## Free Render Setup
+
+The current `render.yaml` is configured for a free MVP deployment:
+
+- Free Web Service
+- Free Postgres
+- Free Key Value
+- Worker runs inside the Web Service process
+
+This avoids the separate paid Background Worker during early testing.
+
+Limitations:
+
+- Free Web Services can spin down when idle.
+- Background processing can pause if the Web Service sleeps.
+- Free Postgres has Render free-tier limits.
+- This is suitable for validation, not production.
+
+When moving to production, split the worker back into a dedicated Render Background Worker and upgrade Postgres/Key Value plans.
+
 ## Important
 
 Do not commit real API keys.
