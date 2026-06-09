@@ -1,5 +1,18 @@
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name !== "check-subtitle-jobs") return;
+  await checkSubtitleJobs();
+});
+
+chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type !== "CHECK_SUBTITLE_JOBS") return;
+  checkSubtitleJobs().then(
+    () => sendResponse({ ok: true }),
+    (error) => sendResponse({ ok: false, error: error.message || String(error) })
+  );
+  return true;
+});
+
+async function checkSubtitleJobs() {
   const { pendingJobs = [], settings = {} } = await chrome.storage.local.get(["pendingJobs", "settings"]);
   if (!settings.apiBase || !pendingJobs.length) return;
 
@@ -23,7 +36,7 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
     }
   }
   await chrome.storage.local.set({ pendingJobs: stillPending });
-});
+}
 
 chrome.runtime.onInstalled.addListener(async () => {
   const { clientId } = await chrome.storage.local.get(["clientId"]);

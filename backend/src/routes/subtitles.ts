@@ -16,7 +16,12 @@ subtitlesRouter.get("/by-video/:videoId", async (req, res, next) => {
       [req.params.videoId, sourceLang, targetLang]
     );
     if (!result.rows[0]) return res.status(404).json({ status: "missing" });
-    res.json({ status: "completed", ...result.rows[0] });
+    const row = result.rows[0] as { cues?: unknown };
+    res.json({
+      status: "completed",
+      ...result.rows[0],
+      cues: typeof row.cues === "string" ? JSON.parse(row.cues) : row.cues
+    });
   } catch (error) {
     next(error);
   }
