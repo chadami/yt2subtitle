@@ -55,6 +55,25 @@ document.getElementById("sendMagicLink").addEventListener("click", async () => {
   message.textContent = "Login link sent. Check your email.";
 });
 
+document.getElementById("exchangeLoginCode").addEventListener("click", async () => {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const apiBase = (fields.apiBase.value || settings.apiBase || "").replace(/\/$/, "");
+  const code = document.getElementById("loginCode").value.trim().toUpperCase();
+  const response = await fetch(`${apiBase}/api/auth/exchange-code`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code })
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    message.textContent = data.error || "Login failed.";
+    return;
+  }
+  await chrome.storage.local.set({ sessionToken: data.sessionToken });
+  document.getElementById("accountStatus").textContent = "Logged in";
+  message.textContent = "Logged in.";
+});
+
 document.getElementById("clearCache").addEventListener("click", async () => {
   await chrome.storage.local.remove(["pendingJobs"]);
   message.textContent = "Local cache cleared.";

@@ -32,6 +32,21 @@ For local development, you can temporarily switch to:
 
 In local mode, magic links are printed in logs instead of being sent.
 
+## Email Login Flow
+
+Chrome blocks normal web pages from redirecting directly into `chrome-extension://...` pages.
+
+For that reason, magic link verification shows a one-time login code instead of redirecting to the extension.
+
+Flow:
+
+1. User enters email in the extension options page.
+2. Backend sends a magic link.
+3. User opens the magic link.
+4. Backend verifies the link and displays an 8-character login code.
+5. User pastes the code into the extension options page.
+6. Extension exchanges the code for a session token.
+
 ## Render Setup Order
 
 1. Push this project to GitHub.
