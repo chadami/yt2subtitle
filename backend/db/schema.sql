@@ -29,11 +29,14 @@ create table if not exists magic_links (
 create table if not exists login_codes (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references users(id) on delete cascade,
+  email text,
   code_hash text not null unique,
   expires_at timestamptz not null,
   used_at timestamptz,
   created_at timestamptz not null default now()
 );
+
+alter table login_codes add column if not exists email text;
 
 create table if not exists user_ai_settings (
   user_id uuid primary key references users(id) on delete cascade,

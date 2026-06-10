@@ -2,7 +2,7 @@ import { Router } from "express";
 import { z } from "zod";
 import { createRandomToken, hashToken, requireUserId, signSession } from "../auth.js";
 import { query } from "../db.js";
-import { sendMagicLink } from "../email.js";
+import { sendLoginCode } from "../email.js";
 import { env } from "../env.js";
 
 export const authRouter = Router();
@@ -14,20 +14,17 @@ authRouter.post("/magic-link", async (req, res, next) => {
       clientId: z.string().min(8).optional()
     }).parse(req.body);
 
-    const token = createRandomToken();
-    const tokenHash = hashToken(token);
-    const expiresAt = new Date(Date.now() + env.MAGIC_LINK_TTL_MINUTES * 60_000);
     const userId = input.clientId
       ? await requireUserId(undefined, input.clientId)
       : (await query<{ id: string }>("insert into users default values returning id")).rows[0].id;
+    const code = createLoginCode();
 
     await query(
-      "insert into magic_links (user_id, email, token_hash, expires_at) values ($1, $2, $3, $4)",
-      [userId, input.email.toLowerCase(), tokenHash, expiresAt]
+      "insert into login_codes (user_id, email, code_hash, expires_at) values ($1, $2, $3, $4)",
+      [userId, input.email.toLowerCase(), hashToken(code), new Date(Date.now() + 10 * 60_000)]
     );
 
-    const link = `${env.PUBLIC_APP_URL}/api/auth/verify?token=${encodeURIComponent(token)}`;
-    await sendMagicLink(input.email, link);
+    await sendLoginCode(input.email, code);
     res.json({ ok: true });
   } catch (error) {
     next(error);
@@ -54,8 +51,8 @@ authRouter.get("/verify", async (req, res, next) => {
     );
     const code = createLoginCode();
     await query(
-      "insert into login_codes (user_id, code_hash, expires_at) values ($1, $2, $3)",
-      [link.user_id, hashToken(code), new Date(Date.now() + 10 * 60_000)]
+      "insert into login_codes (user_id, email, code_hash, expires_at) values ($1, $2, $3, $4)",
+      [link.user_id, link.email, hashToken(code), new Date(Date.now() + 10 * 60_000)]
     );
     res.send(`
       <h1>Login verified</h1>
@@ -73,14 +70,22 @@ authRouter.post("/exchange-code", async (req, res, next) => {
       code: z.string().min(6)
     }).parse(req.body);
     const codeHash = hashToken(input.code.trim().toUpperCase());
-    const found = await query<{ id: string; user_id: string }>(
-      "select id, user_id from login_codes where code_hash = $1 and used_at is null and expires_at > now()",
+    const found = await query<{ id: string; user_id: string; email: string | null }>(
+      "select id, user_id, email from login_codes where code_hash = $1 and used_at is null and expires_at > now()",
       [codeHash]
     );
     const code = found.rows[0];
     if (!code) return res.status(400).json({ error: "Invalid or expired login code" });
 
     await query("update login_codes set used_at = now() where id = $1", [code.id]);
+    if (code.email) {
+      await query(
+        `insert into identities (user_id, type, identifier, verified_at)
+         values ($1, 'email', $2, now())
+         on conflict (type, identifier) do update set verified_at = now()`,
+        [code.user_id, code.email]
+      );
+    }
     res.json({ sessionToken: signSession(code.user_id) });
   } catch (error) {
     next(error);

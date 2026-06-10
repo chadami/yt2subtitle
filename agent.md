@@ -106,7 +106,7 @@ Recommended hosting for MVP:
 ## Important Product Defaults
 
 - Start with anonymous users using a generated `clientId`.
-- Add email magic link / Google login later.
+- Add email sign-in code / Google login later.
 - Use browser extension notifications before email notifications.
 - Cache completed subtitles server-side and locally.
 - Make subtitle generation explicit: user clicks to generate.

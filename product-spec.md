@@ -185,7 +185,7 @@ Use anonymous identity.
 
 ### Future Upgrade
 
-Support email magic link and Google login.
+Support email sign-in code and Google login.
 
 - Anonymous user can upgrade to a registered user.
 - Existing jobs and subtitles remain linked to the same `userId`.

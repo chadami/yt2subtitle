@@ -620,7 +620,7 @@ clientId -> identities(type=anonymous) -> userId
 Future email registration:
 
 ```text
-email magic link verified
+email sign-in code verified
 -> add identities(type=email, identifier=email) to existing userId
 ```
 

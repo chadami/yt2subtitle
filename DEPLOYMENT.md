@@ -4,7 +4,7 @@
 
 First production MVP:
 
-- Email magic link login
+- Email sign-in code login
 - No paid feature yet
 - DeepSeek API key stored on the server
 - Render API service + Render background worker
@@ -30,22 +30,20 @@ For local development, you can temporarily switch to:
 
 - `EMAIL_PROVIDER=local`
 
-In local mode, magic links are printed in logs instead of being sent.
+In local mode, sign-in codes are printed in logs instead of being sent.
 
 ## Email Login Flow
 
 Chrome blocks normal web pages from redirecting directly into `chrome-extension://...` pages.
 
-For that reason, magic link verification shows a one-time login code instead of redirecting to the extension.
+For that reason, email login uses a one-time code that the user copies into the extension settings page.
 
 Flow:
 
 1. User enters email in the extension options page.
-2. Backend sends a magic link.
-3. User opens the magic link.
-4. Backend verifies the link and displays an 8-character login code.
-5. User pastes the code into the extension options page.
-6. Extension exchanges the code for a session token.
+2. Backend sends an 8-character login code by email.
+3. User pastes the code into the extension options page.
+4. Extension exchanges the code for a session token.
 
 ## Render Setup Order
 
