@@ -126,8 +126,16 @@ async function tryLoadSubtitle() {
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "GENERATE_AI_SUBTITLES") {
-    generateAiSubtitles().then(
+    generateAiSubtitles(message.forceRegenerate === true).then(
       (result) => sendResponse(result),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
+
+  if (message?.type === "LOAD_AI_SUBTITLES") {
+    tryLoadSubtitle().then(
+      () => sendResponse({ ok: true }),
       (error) => sendResponse({ ok: false, error: error.message || String(error) })
     );
     return true;
@@ -142,7 +150,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   return false;
 });
 
-async function generateAiSubtitles() {
+async function generateAiSubtitles(forceRegenerate = false) {
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
   clearOverlay();
@@ -174,6 +182,7 @@ async function generateAiSubtitles() {
       sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
       targetLang: effectiveSettings.targetLang || "zh-Hans",
       translationMode: effectiveSettings.translationMode || "user",
+      forceRegenerate,
       captionType: track.isAuto ? "auto" : "manual",
       rawCues
     }

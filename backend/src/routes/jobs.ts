@@ -28,6 +28,7 @@ jobsRouter.post("/", async (req, res, next) => {
       sourceLang: z.string().default("en"),
       targetLang: z.string().default("zh-Hans"),
       translationMode: z.enum(["system", "user"]).default("system"),
+      forceRegenerate: z.boolean().default(false),
       captionType: z.enum(["manual", "auto"]).default("manual"),
       rawCues: z.array(cueSchema).min(1)
     }).parse(req.body);
@@ -39,17 +40,19 @@ jobsRouter.post("/", async (req, res, next) => {
     const aiConfig = input.translationMode === "user"
       ? await loadUserAiConfig(userId)
       : systemAiConfig();
-    const existing = await query<{ id: string; status: string }>(
-      `select id, status from translation_jobs
-       where video_id = $1 and source_lang = $2 and target_lang = $3
-       and provider_mode = $4
-       and ($4 = 'system' or user_id = $5)
-       and status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
-       order by created_at desc limit 1`,
-      [input.video.videoId, input.sourceLang, input.targetLang, input.translationMode, userId]
-    );
-    if (existing.rows[0]) {
-      return res.json({ jobId: existing.rows[0].id, status: existing.rows[0].status });
+    if (!input.forceRegenerate) {
+      const existing = await query<{ id: string; status: string }>(
+        `select id, status from translation_jobs
+         where video_id = $1 and source_lang = $2 and target_lang = $3
+         and provider_mode = $4
+         and ($4 = 'system' or user_id = $5)
+         and status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
+         order by created_at desc limit 1`,
+        [input.video.videoId, input.sourceLang, input.targetLang, input.translationMode, userId]
+      );
+      if (existing.rows[0]) {
+        return res.json({ jobId: existing.rows[0].id, status: existing.rows[0].status });
+      }
     }
 
     await query(

@@ -28,12 +28,20 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     );
     return true;
   }
+  if (message?.type === "GET_JOB_STATUS") {
+    getJobStatus(message.jobId).then(
+      (result) => sendResponse(result),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
   return false;
 });
 
 async function createSubtitleJob(payload) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
+  const translationMode = payload.translationMode || "user";
   const response = await safeFetch(`${apiBase}/api/jobs`, {
     method: "POST",
     headers: {
@@ -45,13 +53,22 @@ async function createSubtitleJob(payload) {
       video: payload.video,
       sourceLang: payload.sourceLang,
       targetLang: payload.targetLang,
-      translationMode: payload.translationMode || "user",
+      translationMode,
+      forceRegenerate: payload.forceRegenerate === true,
       captionType: payload.captionType,
       rawCues: payload.rawCues
     })
   });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || `Job request failed: ${response.status}`);
+  if (payload.forceRegenerate === true) {
+    await removeCachedSubtitle(subtitleCacheKey(
+      payload.videoId,
+      payload.sourceLang || "en",
+      payload.targetLang || "zh-Hans",
+      translationMode
+    ));
+  }
 
   const nextPendingJobs = [
     ...(payload.pendingJobs || []).filter((job) => job.jobId !== data.jobId),
@@ -93,6 +110,15 @@ async function getSubtitleByVideo(message) {
     setCachedSubtitle(cacheKey, data).catch(() => {});
   }
   return data;
+}
+
+async function getJobStatus(jobId) {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const apiBase = normalizeApiBase(settings.apiBase);
+  const response = await safeFetch(`${apiBase}/api/jobs/${encodeURIComponent(jobId)}`);
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || `Job status failed: ${response.status}`);
+  return { ok: true, job: data };
 }
 
 async function checkSubtitleJobs() {
@@ -171,4 +197,12 @@ async function setCachedSubtitle(cacheKey, data) {
     .sort(([, left], [, right]) => (right.savedAt || 0) - (left.savedAt || 0))
     .slice(0, SUBTITLE_CACHE_LIMIT);
   await chrome.storage.local.set({ subtitleCache: Object.fromEntries(entries) });
+}
+
+async function removeCachedSubtitle(cacheKey) {
+  const { subtitleCache = {} } = await chrome.storage.local.get(["subtitleCache"]);
+  if (!subtitleCache[cacheKey]) return;
+  const nextCache = { ...subtitleCache };
+  delete nextCache[cacheKey];
+  await chrome.storage.local.set({ subtitleCache: nextCache });
 }
