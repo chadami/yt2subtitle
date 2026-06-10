@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { z } from "zod";
-import { createRandomToken, hashToken, requireUserId, signSession } from "../auth.js";
+import { createRandomToken, hashToken, requireUserId, resolveAnonymousUser, signSession } from "../auth.js";
 import { query } from "../db.js";
 import { sendLoginCode } from "../email.js";
 import { env } from "../env.js";
@@ -14,14 +14,13 @@ authRouter.post("/magic-link", async (req, res, next) => {
       clientId: z.string().min(8).optional()
     }).parse(req.body);
 
-    const userId = input.clientId
-      ? await requireUserId(undefined, input.clientId)
-      : (await query<{ id: string }>("insert into users default values returning id")).rows[0].id;
+    const email = input.email.toLowerCase();
+    const userId = await resolveEmailLoginUser(email, input.clientId);
     const code = createLoginCode();
 
     await query(
       "insert into login_codes (user_id, email, code_hash, expires_at) values ($1, $2, $3, $4)",
-      [userId, input.email.toLowerCase(), hashToken(code), new Date(Date.now() + 10 * 60_000)]
+      [userId, email, hashToken(code), new Date(Date.now() + 10 * 60_000)]
     );
 
     await sendLoginCode(input.email, code);
@@ -78,15 +77,18 @@ authRouter.post("/exchange-code", async (req, res, next) => {
     if (!code) return res.status(400).json({ error: "Invalid or expired login code" });
 
     await query("update login_codes set used_at = now() where id = $1", [code.id]);
+    let sessionUserId = code.user_id;
     if (code.email) {
-      await query(
+      const identity = await query<{ user_id: string }>(
         `insert into identities (user_id, type, identifier, verified_at)
          values ($1, 'email', $2, now())
-         on conflict (type, identifier) do update set verified_at = now()`,
+         on conflict (type, identifier) do update set verified_at = now()
+         returning user_id`,
         [code.user_id, code.email]
       );
+      sessionUserId = identity.rows[0]?.user_id ?? code.user_id;
     }
-    res.json({ sessionToken: signSession(code.user_id) });
+    res.json({ sessionToken: signSession(sessionUserId) });
   } catch (error) {
     next(error);
   }
@@ -116,4 +118,24 @@ function createLoginCode() {
     code += alphabet[Math.floor(Math.random() * alphabet.length)];
   }
   return code;
+}
+
+async function resolveEmailLoginUser(email: string, clientId?: string) {
+  const existingEmail = await query<{ user_id: string }>(
+    "select user_id from identities where type = 'email' and identifier = $1",
+    [email]
+  );
+  if (existingEmail.rows[0]) return existingEmail.rows[0].user_id;
+
+  if (clientId) {
+    const anonymousUserId = await resolveAnonymousUser(clientId);
+    const currentEmail = await query<{ identifier: string }>(
+      "select identifier from identities where user_id = $1 and type = 'email' limit 1",
+      [anonymousUserId]
+    );
+    if (!currentEmail.rows[0]) return anonymousUserId;
+  }
+
+  const created = await query<{ id: string }>("insert into users default values returning id");
+  return created.rows[0].id;
 }

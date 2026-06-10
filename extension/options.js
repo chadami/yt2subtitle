@@ -82,7 +82,14 @@ async function refreshAccount(sessionToken) {
       nodes.message.textContent = data.error || "Session expired. Please sign in again.";
       return;
     }
-    setLoggedIn(data.email || "Email verified");
+    if (!data.email) {
+      await chrome.storage.local.remove(["sessionToken"]);
+      await clearPersonalAiLocalSettings();
+      setLoggedOut();
+      nodes.message.textContent = "Account email is missing. Please sign in again.";
+      return;
+    }
+    setLoggedIn(data.email);
     await loadAiSettings(sessionToken);
   } catch (error) {
     setLoggedOut();
