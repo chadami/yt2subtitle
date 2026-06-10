@@ -7,16 +7,19 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #f6f7f4;
+        --bg: #ffffff;
+        --surface: #f7f7f5;
+        --surface-hover: #efefed;
         --panel: #ffffff;
-        --ink: #1c211f;
-        --muted: #66706b;
-        --line: #dfe5df;
-        --accent: #286f5a;
-        --accent-strong: #154f42;
-        --accent-soft: #e3f2ec;
-        --danger: #9f2f30;
-        --shadow: 0 18px 50px rgba(35, 52, 44, 0.08);
+        --ink: #2f2f2f;
+        --muted: #787774;
+        --line: #e6e4e1;
+        --line-strong: #d8d6d2;
+        --accent: #2f2f2f;
+        --accent-strong: #1f1f1f;
+        --accent-soft: #f1f1ef;
+        --danger: #a13d35;
+        --shadow: none;
       }
 
       * {
@@ -28,12 +31,12 @@
         min-height: 100vh;
         background: var(--bg);
         color: var(--ink);
-        font: 14px/1.5 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       }
 
       .shell {
-        width: min(920px, calc(100vw - 32px));
-        margin: 28px auto 48px;
+        width: min(1120px, calc(100vw - 40px));
+        margin: 32px auto 56px;
       }
 
       header {
@@ -41,7 +44,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        margin-bottom: 18px;
+        margin-bottom: 28px;
       }
 
       h1,
@@ -51,48 +54,52 @@
       }
 
       h1 {
-        font-size: 24px;
+        font-size: 30px;
         line-height: 1.15;
+        font-weight: 700;
       }
 
       h2 {
-        font-size: 15px;
+        font-size: 16px;
+        font-weight: 650;
       }
 
       .subtitle {
-        margin: 6px 0 0;
+        margin: 7px 0 0;
         color: var(--muted);
       }
 
       .status-pill {
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: var(--panel);
+        border: 0;
+        border-radius: 6px;
+        background: var(--surface);
         color: var(--muted);
-        padding: 6px 12px;
+        padding: 5px 10px;
         white-space: nowrap;
       }
 
       .panel {
         background: var(--panel);
         border: 1px solid var(--line);
-        border-radius: 8px;
+        border-radius: 3px;
         box-shadow: var(--shadow);
         overflow: hidden;
       }
 
       .settings-layout {
         display: grid;
-        grid-template-columns: 176px minmax(0, 1fr);
-        gap: 16px;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 28px;
         align-items: start;
       }
 
       .side-nav {
         display: grid;
-        gap: 8px;
+        gap: 2px;
         position: sticky;
         top: 20px;
+        border-right: 1px solid var(--line);
+        padding-right: 14px;
       }
 
       .nav-button {
@@ -101,13 +108,17 @@
         border-color: transparent;
         color: var(--muted);
         text-align: left;
+        border-radius: 4px;
+        font-weight: 500;
+        min-height: 32px;
+        padding: 6px 8px;
       }
 
       .nav-button:hover,
       .nav-button.active {
-        background: var(--accent-soft);
-        border-color: #c8ddd2;
-        color: var(--accent-strong);
+        background: var(--surface-hover);
+        border-color: transparent;
+        color: var(--ink);
       }
 
       .view {
@@ -116,9 +127,9 @@
 
       section {
         display: grid;
-        grid-template-columns: 210px 1fr;
-        gap: 24px;
-        padding: 24px;
+        grid-template-columns: 200px 1fr;
+        gap: 28px;
+        padding: 24px 26px;
         border-top: 1px solid var(--line);
       }
 
@@ -129,6 +140,7 @@
       .section-copy {
         color: var(--muted);
         margin: 6px 0 0;
+        font-size: 13px;
       }
 
       .fields {
@@ -138,27 +150,29 @@
 
       label {
         display: grid;
-        gap: 7px;
+        gap: 6px;
         color: var(--muted);
-        font-weight: 600;
+        font-size: 13px;
+        font-weight: 500;
       }
 
       input,
       select {
         width: 100%;
         border: 1px solid var(--line);
-        border-radius: 7px;
-        background: #fbfcfb;
+        border-radius: 4px;
+        background: #ffffff;
         color: var(--ink);
         font: inherit;
-        padding: 10px 11px;
+        min-height: 36px;
+        padding: 7px 9px;
         outline: none;
       }
 
       input:focus,
       select:focus {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(40, 111, 90, 0.14);
+        border-color: #b8b6b2;
+        box-shadow: 0 0 0 2px rgba(15, 15, 15, 0.08);
       }
 
       .inline {
@@ -167,8 +181,9 @@
         justify-content: space-between;
         gap: 16px;
         border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 12px 14px;
+        border-radius: 4px;
+        background: #ffffff;
+        padding: 10px 12px;
       }
 
       .inline label {
@@ -176,7 +191,8 @@
         align-items: center;
         gap: 10px;
         color: var(--ink);
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 500;
       }
 
       .inline input {
@@ -185,38 +201,38 @@
       }
 
       .radio-group {
-        display: grid;
-        gap: 10px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
       }
 
       .radio-option {
         display: flex;
         align-items: center;
-        gap: 10px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fbfcfb;
+        gap: 8px;
         color: var(--ink);
         cursor: pointer;
-        font-weight: 650;
-        padding: 12px 14px;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 2px 0;
       }
 
       .radio-option input {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
+        accent-color: var(--accent);
       }
 
       .radio-option:has(input:checked) {
-        border-color: var(--accent);
-        background: var(--accent-soft);
+        color: var(--accent-strong);
       }
 
       .actions {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
       }
 
       .email-action-row {
@@ -260,7 +276,7 @@
       .split {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        gap: 10px;
       }
 
       .hint {
@@ -270,19 +286,20 @@
       }
 
       button {
-        border: 1px solid transparent;
-        border-radius: 7px;
-        background: var(--accent);
-        color: #fff;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--surface);
+        color: var(--ink);
         cursor: pointer;
         font: inherit;
-        font-weight: 700;
-        min-height: 38px;
-        padding: 8px 14px;
+        font-weight: 500;
+        min-height: 34px;
+        padding: 6px 12px;
       }
 
       button:hover {
-        background: var(--accent-strong);
+        background: var(--surface-hover);
+        border-color: var(--line-strong);
       }
 
       button.secondary {
@@ -292,13 +309,13 @@
       }
 
       button.secondary:hover {
-        border-color: #bdcbc2;
-        background: #f7faf8;
+        border-color: var(--line-strong);
+        background: var(--surface);
       }
 
       button.danger {
         background: #fff;
-        border-color: #efcfce;
+        border-color: #ead6d3;
         color: var(--danger);
       }
 
@@ -308,8 +325,9 @@
 
       .account-card {
         border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 14px;
+        border-radius: 4px;
+        background: #ffffff;
+        padding: 12px;
       }
 
       .email-display {
@@ -321,8 +339,8 @@
 
       .email-value {
         min-width: 0;
-        font-size: 16px;
-        font-weight: 750;
+        font-size: 15px;
+        font-weight: 600;
         overflow-wrap: anywhere;
       }
 
@@ -337,7 +355,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        padding: 18px 20px;
+        padding: 18px 22px;
         border-bottom: 1px solid var(--line);
       }
 
@@ -354,7 +372,7 @@
       th,
       td {
         border-bottom: 1px solid var(--line);
-        padding: 12px 14px;
+        padding: 11px 14px;
         text-align: left;
         vertical-align: top;
       }
@@ -362,12 +380,12 @@
       th {
         color: var(--muted);
         font-size: 12px;
-        font-weight: 750;
+        font-weight: 600;
         text-transform: uppercase;
       }
 
       td a {
-        color: var(--accent-strong);
+        color: var(--ink);
         text-decoration: none;
       }
 
@@ -376,7 +394,7 @@
       }
 
       .status-text {
-        font-weight: 750;
+        font-weight: 600;
       }
 
       .hidden {
@@ -388,7 +406,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        margin-top: 16px;
+        margin-top: 14px;
       }
 
       @media (max-width: 720px) {
@@ -439,7 +457,7 @@
 
       <div class="settings-layout">
         <nav class="side-nav" aria-label="Settings navigation">
-          <button id="basicNav" class="nav-button active" type="button">Basic settings</button>
+          <button id="basicNav" class="nav-button active" type="button">Settings</button>
           <button id="historyNav" class="nav-button" type="button">History</button>
         </nav>
 
@@ -448,13 +466,13 @@
             <section>
           <div>
             <h2>Account</h2>
-            <p class="section-copy">Email login</p>
+            <p class="section-copy">Sign in to sync your API and history</p>
           </div>
           <div class="fields">
             <div id="accountLoggedIn" class="account-card hidden">
               <div class="email-display">
                 <div>
-                  <div class="section-copy">Signed in as</div>
+                  <div class="section-copy">Current account</div>
                   <div id="accountEmail" class="email-value"></div>
                 </div>
                 <button id="logout" class="danger">Log out</button>
@@ -466,19 +484,19 @@
                 <label>Email
                   <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
                 </label>
-                <button id="sendMagicLink"><span class="spinner"></span><span id="sendMagicLinkText">Send login code</span></button>
+                <button id="sendMagicLink"><span class="spinner"></span><span id="sendMagicLinkText">Send sign-in code</span></button>
               </div>
-              <label>Login code
+              <label>Sign-in code
                 <input id="loginCode" placeholder="Code from email page" autocomplete="one-time-code" />
               </label>
               <div class="actions">
-                <button id="exchangeLoginCode" class="secondary">Log in with code</button>
+                <button id="exchangeLoginCode" class="secondary"><span class="spinner"></span><span id="exchangeLoginCodeText">Sign in</span></button>
               </div>
             </div>
           </div>
             </section>
 
-            <section>
+            <section class="hidden">
           <div>
             <h2>Service</h2>
             <p class="section-copy">Backend connection</p>
@@ -495,23 +513,23 @@
 
             <section>
           <div>
-            <h2>API</h2>
-            <p class="section-copy">Translation provider</p>
+            <h2>Translation API</h2>
+            <p class="section-copy">Choose which provider handles translation</p>
           </div>
           <div class="fields">
             <div class="radio-group" aria-label="Default translation source">
               <label class="radio-option">
                 <input type="radio" name="translationMode" value="user" />
-                My API Key
+                Personal API key
               </label>
               <label class="radio-option">
                 <input type="radio" name="translationMode" value="system" />
-                System DeepSeek
+                System API
               </label>
             </div>
             <div id="personalAiSection" class="fields">
               <div class="split">
-                <label>AI brand
+                <label>AI provider
                   <select id="aiProvider">
                     <option value="gemini">Gemini</option>
                     <option value="deepseek">DeepSeek</option>
@@ -525,13 +543,13 @@
                   <select id="aiModel"></select>
                 </label>
               </div>
-              <label>API Key
-                <input id="aiApiKey" type="password" placeholder="Saved on backend for this email only" autocomplete="off" />
+              <label>API key
+                <input id="aiApiKey" type="password" placeholder="Stored for this account only" autocomplete="off" />
               </label>
-              <p id="aiStatus" class="hint">Log in, enter an API Key, then fetch models.</p>
+              <p id="aiStatus" class="hint">Sign in, enter an API key, then fetch models.</p>
               <div class="actions">
                 <button id="fetchModels" class="secondary">Fetch models</button>
-                <button id="saveAiSettings" class="secondary">Save my API</button>
+                <button id="saveAiSettings" class="secondary">Save API settings</button>
               </div>
             </div>
           </div>
@@ -539,15 +557,32 @@
 
             <section>
           <div>
-            <h2>Translation</h2>
-            <p class="section-copy">Subtitle behavior</p>
+            <h2>Subtitle Output</h2>
+            <p class="section-copy">Language and display behavior</p>
           </div>
           <div class="fields">
-            <label>Target language
-              <input id="targetLang" value="zh-Hans" />
+            <label>Translation language
+              <select id="targetLang">
+                <option value="zh-Hans">中文（简体）</option>
+                <option value="zh-Hant">中文（繁體）</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="it">Italiano</option>
+                <option value="pt">Português</option>
+                <option value="ru">Русский</option>
+                <option value="ar">العربية</option>
+                <option value="hi">हिन्दी</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="vi">Tiếng Việt</option>
+                <option value="th">ไทย</option>
+              </select>
             </label>
             <div class="inline">
-              <label><input id="autoLoad" type="checkbox" /> Auto-load completed AI subtitles</label>
+              <label><input id="autoLoad" type="checkbox" /> Auto-load completed subtitles</label>
             </div>
           </div>
             </section>
@@ -555,7 +590,7 @@
             <section>
           <div>
             <h2>Cache</h2>
-            <p class="section-copy">Local task state</p>
+            <p class="section-copy">Local subtitle task state</p>
           </div>
           <div class="actions">
             <button id="clearCache" class="secondary">Clear local cache</button>
@@ -574,7 +609,7 @@
             <div class="history-toolbar">
               <div>
                 <h2>History</h2>
-                <p class="section-copy">Current account subtitle jobs</p>
+                <p class="section-copy">Subtitle jobs for this account</p>
               </div>
               <button id="refreshHistory" class="secondary" type="button">Refresh</button>
             </div>
@@ -590,7 +625,7 @@
                 </thead>
                 <tbody id="historyRows">
                   <tr>
-                    <td colspan="4">Log in to view history.</td>
+                    <td colspan="4">Sign in to view history.</td>
                   </tr>
                 </tbody>
               </table>

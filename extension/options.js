@@ -20,6 +20,8 @@ const nodes = {
   loginCode: document.getElementById("loginCode"),
   sendMagicLink: document.getElementById("sendMagicLink"),
   sendMagicLinkText: document.getElementById("sendMagicLinkText"),
+  exchangeLoginCode: document.getElementById("exchangeLoginCode"),
+  exchangeLoginCodeText: document.getElementById("exchangeLoginCodeText"),
   personalAiSection: document.getElementById("personalAiSection"),
   basicNav: document.getElementById("basicNav"),
   historyNav: document.getElementById("historyNav"),
@@ -77,7 +79,7 @@ async function refreshAccount(sessionToken) {
       await chrome.storage.local.remove(["sessionToken"]);
       await clearPersonalAiLocalSettings();
       setLoggedOut();
-      nodes.message.textContent = data.error || "Session expired. Please log in again.";
+      nodes.message.textContent = data.error || "Session expired. Please sign in again.";
       return;
     }
     setLoggedIn(data.email || "Email verified");
@@ -97,13 +99,13 @@ async function loadAiSettings(sessionToken) {
     const data = await response.json().catch(() => ({}));
     if (!response.ok || !data.configured) {
       await clearPersonalAiLocalSettings();
-      nodes.aiStatus.textContent = "No personal API saved yet.";
+      nodes.aiStatus.textContent = "No personal API key saved yet.";
       return;
     }
     fields.aiProvider.value = data.provider || fields.aiProvider.value;
     setModelOptions(Array.isArray(data.models) ? data.models : [], data.model || "");
-    fields.aiApiKey.value = "";
-    nodes.aiStatus.textContent = `Personal API saved. Current model: ${data.model || "not selected"}.`;
+    fields.aiApiKey.value = data.hasApiKey ? API_KEY_MASK : "";
+    nodes.aiStatus.textContent = `Personal API key saved. Current model: ${data.model || "not selected"}.`;
   } catch (error) {
     nodes.aiStatus.textContent = `Cannot load AI settings: ${error.message}`;
   }
@@ -151,7 +153,7 @@ function clearPersonalAiFields() {
   fields.aiProvider.value = "gemini";
   setModelOptions([], "");
   fields.aiApiKey.value = "";
-  nodes.aiStatus.textContent = "Log in, enter an API Key, then fetch models.";
+  nodes.aiStatus.textContent = "Sign in, enter an API key, then fetch models.";
 }
 
 async function clearPersonalAiLocalSettings() {
@@ -172,7 +174,7 @@ function hasMaskedApiKey() {
 
 function setLoggedIn(email) {
   hasVerifiedSession = true;
-  nodes.accountStatus.textContent = "Logged in";
+  nodes.accountStatus.textContent = "Signed in";
   nodes.accountEmail.textContent = email;
   nodes.accountLoggedIn.classList.remove("hidden");
   nodes.accountLoggedOut.classList.add("hidden");
@@ -181,7 +183,7 @@ function setLoggedIn(email) {
 
 function setLoggedOut() {
   hasVerifiedSession = false;
-  nodes.accountStatus.textContent = "Not logged in";
+  nodes.accountStatus.textContent = "Signed out";
   nodes.accountEmail.textContent = "";
   nodes.accountLoggedIn.classList.add("hidden");
   nodes.accountLoggedOut.classList.remove("hidden");
@@ -220,14 +222,14 @@ document.getElementById("save").addEventListener("click", async () => {
 document.getElementById("fetchModels").addEventListener("click", async () => {
   const { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
   if (!sessionToken) {
-    nodes.aiStatus.textContent = "Log in with email before fetching models.";
+    nodes.aiStatus.textContent = "Sign in before fetching models.";
     return;
   }
   const apiKey = getEnteredApiKey();
   if (!apiKey) {
     nodes.aiStatus.textContent = hasMaskedApiKey()
-      ? "Enter the API Key again to fetch models."
-      : "Enter an API Key first.";
+      ? "Enter the API key again to fetch models."
+      : "Enter an API key first.";
     return;
   }
   nodes.aiStatus.textContent = "Fetching models...";
@@ -259,17 +261,17 @@ document.getElementById("fetchModels").addEventListener("click", async () => {
 document.getElementById("saveAiSettings").addEventListener("click", async () => {
   const { sessionToken, settings = {} } = await chrome.storage.local.get(["sessionToken", "settings"]);
   if (!sessionToken) {
-    nodes.aiStatus.textContent = "Log in with email before saving your API.";
+    nodes.aiStatus.textContent = "Sign in before saving your API settings.";
     return;
   }
   const apiKey = getEnteredApiKey();
   const model = fields.aiModel.value.trim();
   if (!model) {
-    nodes.aiStatus.textContent = "Fetch/select a model first.";
+    nodes.aiStatus.textContent = "Fetch and select a model first.";
     return;
   }
   if (!apiKey && !hasMaskedApiKey()) {
-    nodes.aiStatus.textContent = "Enter an API Key first.";
+    nodes.aiStatus.textContent = "Enter an API key first.";
     return;
   }
   try {
@@ -304,7 +306,7 @@ document.getElementById("saveAiSettings").addEventListener("click", async () => 
         aiModels: models
       }
     });
-    nodes.aiStatus.textContent = "Personal API saved for this email.";
+    nodes.aiStatus.textContent = "Personal API settings saved for this account.";
   } catch (error) {
     nodes.aiStatus.textContent = `Save failed: ${error.message}`;
   }
@@ -313,7 +315,7 @@ document.getElementById("saveAiSettings").addEventListener("click", async () => 
 fields.aiProvider.addEventListener("change", () => {
   setModelOptions([], "");
   fields.aiApiKey.value = "";
-  nodes.aiStatus.textContent = "Enter an API Key, then fetch models for this brand.";
+  nodes.aiStatus.textContent = "Enter an API key, then fetch models for this provider.";
 });
 
 for (const input of fields.translationMode) {
@@ -350,7 +352,7 @@ async function loadHistory() {
 
 function renderHistoryRows(rows) {
   if (!hasVerifiedSession) {
-    nodes.historyRows.innerHTML = `<tr><td colspan="4">Log in to view history.</td></tr>`;
+    nodes.historyRows.innerHTML = `<tr><td colspan="4">Sign in to view history.</td></tr>`;
     return;
   }
   if (!rows.length) {
@@ -419,9 +421,9 @@ document.getElementById("sendMagicLink").addEventListener("click", async () => {
       body: JSON.stringify({ email, clientId })
     });
     const data = await response.json().catch(() => ({}));
-    nodes.message.textContent = response.ok ? "Login link sent. Check your email." : data.error || "Login link failed.";
+    nodes.message.textContent = response.ok ? "Sign-in code sent. Check your email." : data.error || "Could not send sign-in code.";
   } catch (error) {
-    nodes.message.textContent = `Login link failed: ${error.message}`;
+    nodes.message.textContent = `Could not send sign-in code: ${error.message}`;
   } finally {
     nodes.sendMagicLink.classList.remove("loading");
     nodes.sendMagicLinkText.textContent = "Code sent";
@@ -438,31 +440,44 @@ document.getElementById("exchangeLoginCode").addEventListener("click", async () 
   const apiBase = await getApiBase();
   const code = nodes.loginCode.value.trim().toUpperCase();
   if (!code) {
-    nodes.message.textContent = "Enter the login code first.";
+    nodes.message.textContent = "Enter the sign-in code first.";
     return;
   }
 
-  const response = await fetch(`${apiBase}/api/auth/exchange-code`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ code })
-  });
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    nodes.message.textContent = data.error || "Login failed.";
-    return;
+  setExchangeLoginPending(true);
+  try {
+    const response = await fetch(`${apiBase}/api/auth/exchange-code`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code })
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      nodes.message.textContent = data.error || "Sign-in failed.";
+      return;
+    }
+    await chrome.storage.local.set({ sessionToken: data.sessionToken });
+    await refreshAccount(data.sessionToken);
+    nodes.loginCode.value = "";
+    nodes.message.textContent = "Signed in.";
+  } catch (error) {
+    nodes.message.textContent = `Sign-in failed: ${error.message}`;
+  } finally {
+    setExchangeLoginPending(false);
   }
-  await chrome.storage.local.set({ sessionToken: data.sessionToken });
-  await refreshAccount(data.sessionToken);
-  nodes.loginCode.value = "";
-  nodes.message.textContent = "Logged in.";
 });
+
+function setExchangeLoginPending(isPending) {
+  nodes.exchangeLoginCode.disabled = isPending;
+  nodes.exchangeLoginCode.classList.toggle("loading", isPending);
+  nodes.exchangeLoginCodeText.textContent = isPending ? "Signing in" : "Sign in";
+}
 
 document.getElementById("logout").addEventListener("click", async () => {
   await chrome.storage.local.remove(["sessionToken"]);
   await clearPersonalAiLocalSettings();
   setLoggedOut();
-  nodes.message.textContent = "Logged out.";
+  nodes.message.textContent = "Signed out.";
 });
 
 document.getElementById("clearCache").addEventListener("click", async () => {

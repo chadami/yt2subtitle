@@ -4,14 +4,17 @@
     <meta charset="utf-8" />
     <style>
       :root {
-        --bg: #f5f7f3;
-        --panel: #fbfcf8;
-        --ink: #17211d;
-        --muted: #69746e;
-        --line: #dce5dd;
-        --accent: #246d58;
-        --accent-strong: #155340;
-        --accent-soft: #e5f2eb;
+        --bg: #ffffff;
+        --surface: #f7f7f5;
+        --surface-hover: #efefed;
+        --panel: #ffffff;
+        --ink: #2f2f2f;
+        --muted: #787774;
+        --line: #e6e4e1;
+        --line-strong: #d8d6d2;
+        --accent: #2f2f2f;
+        --accent-strong: #1f1f1f;
+        --accent-soft: #f1f1ef;
       }
 
       * {
@@ -23,29 +26,30 @@
         margin: 0;
         background: var(--bg);
         color: var(--ink);
-        font: 13px/1.45 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font: 13px/1.45 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       }
 
       .wrap {
-        padding: 16px;
+        padding: 15px;
       }
 
       header {
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 14px;
+        margin-bottom: 13px;
       }
 
       .mark {
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        background: var(--accent);
+        width: 32px;
+        height: 32px;
+        border-radius: 5px;
+        background: var(--surface);
+        border: 1px solid var(--line);
         display: grid;
         place-items: center;
-        color: #f7fff9;
-        font-weight: 800;
+        color: var(--ink);
+        font-weight: 650;
         letter-spacing: 0;
       }
 
@@ -54,42 +58,43 @@
         font-size: 16px;
         line-height: 1.15;
         letter-spacing: 0;
+        font-weight: 650;
       }
 
       .caption {
-        margin: 2px 0 0;
+        margin: 3px 0 0;
         color: var(--muted);
       }
 
       .status {
         min-height: 56px;
         border: 1px solid var(--line);
-        border-radius: 8px;
+        border-radius: 4px;
         background: var(--panel);
         color: var(--muted);
-        padding: 12px;
+        padding: 10px 11px;
         overflow-wrap: anywhere;
       }
 
       .actions {
         display: grid;
-        gap: 8px;
-        margin-top: 12px;
+        gap: 7px;
+        margin-top: 11px;
       }
 
       .controls {
         display: grid;
-        gap: 12px;
-        margin-top: 12px;
+        gap: 13px;
+        margin-top: 11px;
         border: 1px solid var(--line);
-        border-radius: 8px;
+        border-radius: 4px;
         background: var(--panel);
         padding: 12px;
       }
 
       .control {
         display: grid;
-        gap: 7px;
+        gap: 6px;
       }
 
       .control-head {
@@ -98,12 +103,14 @@
         justify-content: space-between;
         gap: 10px;
         color: var(--muted);
-        font-weight: 700;
+        font-size: 12px;
+        font-weight: 500;
       }
 
       .value {
         color: var(--ink);
         font-variant-numeric: tabular-nums;
+        font-weight: 500;
       }
 
       input[type="range"] {
@@ -114,7 +121,11 @@
       .segments {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 6px;
+        gap: 4px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--surface);
+        padding: 2px;
       }
 
       .segments input {
@@ -124,52 +135,54 @@
       }
 
       .segments label {
-        border: 1px solid var(--line);
-        border-radius: 7px;
+        border: 1px solid transparent;
+        border-radius: 3px;
         cursor: pointer;
-        padding: 8px 10px;
+        padding: 6px 8px;
         text-align: center;
-        font-weight: 750;
+        color: var(--muted);
+        font-weight: 500;
       }
 
       .segments input:checked + span {
-        color: #fff;
+        color: var(--ink);
       }
 
       .segments label:has(input:checked) {
-        background: var(--accent);
-        border-color: var(--accent);
+        background: #ffffff;
+        border-color: var(--line);
       }
 
       button {
         width: 100%;
-        min-height: 40px;
-        border: 1px solid transparent;
-        border-radius: 8px;
+        min-height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
         cursor: pointer;
         font: inherit;
-        font-weight: 750;
+        font-weight: 500;
         letter-spacing: 0;
       }
 
       button.primary {
-        background: var(--accent);
-        color: #fff;
+        background: var(--surface);
+        color: var(--ink);
       }
 
       button.primary:hover:not(:disabled) {
-        background: var(--accent-strong);
+        background: var(--surface-hover);
+        border-color: var(--line-strong);
       }
 
       button.secondary {
-        background: transparent;
+        background: #ffffff;
         border-color: var(--line);
         color: var(--ink);
       }
 
       button.secondary:hover {
-        background: var(--accent-soft);
-        border-color: #bfd4c9;
+        background: var(--surface);
+        border-color: var(--line-strong);
       }
 
       button:disabled {
