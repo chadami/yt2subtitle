@@ -151,11 +151,77 @@
         height: 18px;
       }
 
+      .radio-group {
+        display: grid;
+        gap: 10px;
+      }
+
+      .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcfb;
+        color: var(--ink);
+        cursor: pointer;
+        font-weight: 650;
+        padding: 12px 14px;
+      }
+
+      .radio-option input {
+        width: 18px;
+        height: 18px;
+      }
+
+      .radio-option:has(input:checked) {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+      }
+
       .actions {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         gap: 10px;
+      }
+
+      .email-action-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+        gap: 10px;
+      }
+
+      .email-action-row label {
+        min-width: 0;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.58;
+      }
+
+      button .spinner {
+        display: none;
+        width: 14px;
+        height: 14px;
+        margin-right: 8px;
+        border: 2px solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        vertical-align: -2px;
+        animation: spin 0.75s linear infinite;
+      }
+
+      button.loading .spinner {
+        display: inline-block;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       .split {
@@ -265,6 +331,10 @@
         .split {
           grid-template-columns: 1fr;
         }
+
+        .email-action-row {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -296,11 +366,11 @@
             </div>
 
             <div id="accountLoggedOut" class="fields">
-              <label>Email
-                <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
-              </label>
-              <div class="actions">
-                <button id="sendMagicLink">Send login link</button>
+              <div class="email-action-row">
+                <label>Email
+                  <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
+                </label>
+                <button id="sendMagicLink"><span class="spinner"></span><span id="sendMagicLinkText">Send login code</span></button>
               </div>
               <label>Login code
                 <input id="loginCode" placeholder="Code from email page" autocomplete="one-time-code" />
@@ -329,53 +399,59 @@
 
         <section>
           <div>
-            <h2>Translation</h2>
-            <p class="section-copy">Subtitle behavior</p>
+            <h2>API</h2>
+            <p class="section-copy">Translation provider</p>
           </div>
           <div class="fields">
-            <label>Default translation source
-              <select id="translationMode">
-                <option value="user">My API Key</option>
-                <option value="system">System DeepSeek</option>
-              </select>
-            </label>
-            <label>Target language
-              <input id="targetLang" value="zh-Hans" />
-            </label>
-            <div class="inline">
-              <label><input id="autoLoad" type="checkbox" /> Auto-load completed AI subtitles</label>
+            <div class="radio-group" aria-label="Default translation source">
+              <label class="radio-option">
+                <input type="radio" name="translationMode" value="user" />
+                My API Key
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="translationMode" value="system" />
+                System DeepSeek
+              </label>
+            </div>
+            <div id="personalAiSection" class="fields">
+              <div class="split">
+                <label>AI brand
+                  <select id="aiProvider">
+                    <option value="gemini">Gemini</option>
+                    <option value="deepseek">DeepSeek</option>
+                    <option value="openai">OpenAI</option>
+                    <option value="claude">Claude</option>
+                    <option value="qwen">Qwen</option>
+                    <option value="mimo">Xiaomi MiMo</option>
+                  </select>
+                </label>
+                <label>Model
+                  <select id="aiModel"></select>
+                </label>
+              </div>
+              <label>API Key
+                <input id="aiApiKey" type="password" placeholder="Saved on backend for this email only" autocomplete="off" />
+              </label>
+              <p id="aiStatus" class="hint">Log in, enter an API Key, then fetch models.</p>
+              <div class="actions">
+                <button id="fetchModels" class="secondary">Fetch models</button>
+                <button id="saveAiSettings" class="secondary">Save my API</button>
+              </div>
             </div>
           </div>
         </section>
 
         <section>
           <div>
-            <h2>My AI API</h2>
-            <p class="section-copy">Per email account</p>
+            <h2>Translation</h2>
+            <p class="section-copy">Subtitle behavior</p>
           </div>
           <div class="fields">
-            <div class="split">
-              <label>AI brand
-                <select id="aiProvider">
-                  <option value="gemini">Gemini</option>
-                  <option value="deepseek">DeepSeek</option>
-                  <option value="openai">OpenAI</option>
-                  <option value="claude">Claude</option>
-                  <option value="qwen">Qwen</option>
-                  <option value="mimo">Xiaomi MiMo</option>
-                </select>
-              </label>
-              <label>Model
-                <select id="aiModel"></select>
-              </label>
-            </div>
-            <label>API Key
-              <input id="aiApiKey" type="password" placeholder="Saved on backend for this email only" autocomplete="off" />
+            <label>Target language
+              <input id="targetLang" value="zh-Hans" />
             </label>
-            <p id="aiStatus" class="hint">Log in, enter an API Key, then fetch models.</p>
-            <div class="actions">
-              <button id="fetchModels" class="secondary">Fetch models</button>
-              <button id="saveAiSettings" class="secondary">Save my API</button>
+            <div class="inline">
+              <label><input id="autoLoad" type="checkbox" /> Auto-load completed AI subtitles</label>
             </div>
           </div>
         </section>

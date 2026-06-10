@@ -60,10 +60,20 @@ aiRouter.post("/settings", async (req, res, next) => {
     const userId = await requireLoggedInUser(req.headers.authorization);
     const input = z.object({
       provider: providerSchema,
-      apiKey: z.string().min(8),
+      apiKey: z.string().min(8).optional(),
       model: z.string().min(1),
       models: z.array(z.string()).default([])
     }).parse(req.body);
+    const existing = await query<{ api_key_ciphertext: string }>(
+      "select api_key_ciphertext from user_ai_settings where user_id = $1",
+      [userId]
+    );
+    const apiKeyCiphertext = input.apiKey
+      ? encryptApiKey(input.apiKey.trim())
+      : existing.rows[0]?.api_key_ciphertext;
+    if (!apiKeyCiphertext) {
+      return res.status(400).json({ error: "API Key is required before saving AI settings" });
+    }
 
     await query(
       `insert into user_ai_settings (user_id, provider, api_key_ciphertext, model, available_models_json)
@@ -77,7 +87,7 @@ aiRouter.post("/settings", async (req, res, next) => {
       [
         userId,
         input.provider,
-        encryptApiKey(input.apiKey.trim()),
+        apiKeyCiphertext,
         input.model.trim(),
         JSON.stringify(input.models)
       ]

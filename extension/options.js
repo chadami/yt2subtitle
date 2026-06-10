@@ -1,8 +1,9 @@
 const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
+const API_KEY_MASK = "********";
 
 const fields = {
   apiBase: document.getElementById("apiBase"),
-  translationMode: document.getElementById("translationMode"),
+  translationMode: document.querySelectorAll("input[name='translationMode']"),
   targetLang: document.getElementById("targetLang"),
   autoLoad: document.getElementById("autoLoad"),
   aiProvider: document.getElementById("aiProvider"),
@@ -17,9 +18,14 @@ const nodes = {
   accountEmail: document.getElementById("accountEmail"),
   email: document.getElementById("email"),
   loginCode: document.getElementById("loginCode"),
+  sendMagicLink: document.getElementById("sendMagicLink"),
+  sendMagicLinkText: document.getElementById("sendMagicLinkText"),
+  personalAiSection: document.getElementById("personalAiSection"),
   aiStatus: document.getElementById("aiStatus"),
   message: document.getElementById("message")
 };
+
+let hasVerifiedSession = false;
 
 function normalizeApiBase(value) {
   return (value || DEFAULT_API_BASE).replace(/\/$/, "");
@@ -33,26 +39,25 @@ async function getApiBase() {
 async function load() {
   const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
   fields.apiBase.value = normalizeApiBase(settings.apiBase);
-  fields.translationMode.value = settings.translationMode || "user";
+  setTranslationMode(settings.translationMode || "user");
   fields.targetLang.value = settings.targetLang || "zh-Hans";
   fields.autoLoad.checked = settings.autoLoad !== false;
-  fields.aiProvider.value = settings.aiProvider || "gemini";
-  setModelOptions(settings.aiModels || [], settings.aiModel || "");
+  clearPersonalAiFields();
 
   await chrome.storage.local.set({
     settings: {
       ...settings,
       apiBase: fields.apiBase.value,
-      translationMode: fields.translationMode.value
+      translationMode: getTranslationMode()
     }
   });
 
   await refreshAccount(sessionToken);
-  if (sessionToken) await loadAiSettings(sessionToken);
 }
 
 async function refreshAccount(sessionToken) {
   if (!sessionToken) {
+    await clearPersonalAiLocalSettings();
     setLoggedOut();
     return;
   }
@@ -65,6 +70,7 @@ async function refreshAccount(sessionToken) {
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
       await chrome.storage.local.remove(["sessionToken"]);
+      await clearPersonalAiLocalSettings();
       setLoggedOut();
       nodes.message.textContent = data.error || "Session expired. Please log in again.";
       return;
@@ -85,6 +91,7 @@ async function loadAiSettings(sessionToken) {
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok || !data.configured) {
+      await clearPersonalAiLocalSettings();
       nodes.aiStatus.textContent = "No personal API saved yet.";
       return;
     }
@@ -120,18 +127,61 @@ function authHeaders(sessionToken) {
   return sessionToken ? { Authorization: `Bearer ${sessionToken}` } : {};
 }
 
+function getTranslationMode() {
+  return [...fields.translationMode].find((input) => input.checked)?.value || "user";
+}
+
+function setTranslationMode(value) {
+  for (const input of fields.translationMode) {
+    input.checked = input.value === value;
+  }
+  updatePersonalAiVisibility();
+}
+
+function updatePersonalAiVisibility() {
+  nodes.personalAiSection.classList.toggle("hidden", getTranslationMode() !== "user" || !hasVerifiedSession);
+}
+
+function clearPersonalAiFields() {
+  fields.aiProvider.value = "gemini";
+  setModelOptions([], "");
+  fields.aiApiKey.value = "";
+  nodes.aiStatus.textContent = "Log in, enter an API Key, then fetch models.";
+}
+
+async function clearPersonalAiLocalSettings() {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const { aiProvider, aiModel, aiModels, ...rest } = settings;
+  await chrome.storage.local.set({ settings: rest });
+  clearPersonalAiFields();
+}
+
+function getEnteredApiKey() {
+  const value = fields.aiApiKey.value.trim();
+  return value === API_KEY_MASK ? "" : value;
+}
+
+function hasMaskedApiKey() {
+  return fields.aiApiKey.value.trim() === API_KEY_MASK;
+}
+
 function setLoggedIn(email) {
+  hasVerifiedSession = true;
   nodes.accountStatus.textContent = "Logged in";
   nodes.accountEmail.textContent = email;
   nodes.accountLoggedIn.classList.remove("hidden");
   nodes.accountLoggedOut.classList.add("hidden");
+  updatePersonalAiVisibility();
 }
 
 function setLoggedOut() {
+  hasVerifiedSession = false;
   nodes.accountStatus.textContent = "Not logged in";
   nodes.accountEmail.textContent = "";
   nodes.accountLoggedIn.classList.add("hidden");
   nodes.accountLoggedOut.classList.remove("hidden");
+  clearPersonalAiFields();
+  updatePersonalAiVisibility();
 }
 
 document.getElementById("save").addEventListener("click", async () => {
@@ -140,7 +190,7 @@ document.getElementById("save").addEventListener("click", async () => {
     settings: {
       ...settings,
       apiBase: normalizeApiBase(fields.apiBase.value),
-      translationMode: fields.translationMode.value || "user",
+      translationMode: getTranslationMode(),
       targetLang: fields.targetLang.value || "zh-Hans",
       autoLoad: fields.autoLoad.checked,
       aiProvider: fields.aiProvider.value,
@@ -158,9 +208,11 @@ document.getElementById("fetchModels").addEventListener("click", async () => {
     nodes.aiStatus.textContent = "Log in with email before fetching models.";
     return;
   }
-  const apiKey = fields.aiApiKey.value.trim();
+  const apiKey = getEnteredApiKey();
   if (!apiKey) {
-    nodes.aiStatus.textContent = "Enter an API Key first.";
+    nodes.aiStatus.textContent = hasMaskedApiKey()
+      ? "Enter the API Key again to fetch models."
+      : "Enter an API Key first.";
     return;
   }
   nodes.aiStatus.textContent = "Fetching models...";
@@ -195,10 +247,14 @@ document.getElementById("saveAiSettings").addEventListener("click", async () => 
     nodes.aiStatus.textContent = "Log in with email before saving your API.";
     return;
   }
-  const apiKey = fields.aiApiKey.value.trim();
+  const apiKey = getEnteredApiKey();
   const model = fields.aiModel.value.trim();
-  if (!apiKey || !model) {
-    nodes.aiStatus.textContent = "Enter an API Key and fetch/select a model first.";
+  if (!model) {
+    nodes.aiStatus.textContent = "Fetch/select a model first.";
+    return;
+  }
+  if (!apiKey && !hasMaskedApiKey()) {
+    nodes.aiStatus.textContent = "Enter an API Key first.";
     return;
   }
   try {
@@ -212,7 +268,7 @@ document.getElementById("saveAiSettings").addEventListener("click", async () => 
       },
       body: JSON.stringify({
         provider: fields.aiProvider.value,
-        apiKey,
+        ...(apiKey ? { apiKey } : {}),
         model,
         models
       })
@@ -222,12 +278,12 @@ document.getElementById("saveAiSettings").addEventListener("click", async () => 
       nodes.aiStatus.textContent = data.error || `Save failed: ${response.status}`;
       return;
     }
-    fields.aiApiKey.value = "";
+    fields.aiApiKey.value = API_KEY_MASK;
     await chrome.storage.local.set({
       settings: {
         ...settings,
         apiBase: normalizeApiBase(fields.apiBase.value),
-        translationMode: fields.translationMode.value || "user",
+        translationMode: getTranslationMode(),
         aiProvider: fields.aiProvider.value,
         aiModel: model,
         aiModels: models
@@ -244,6 +300,10 @@ fields.aiProvider.addEventListener("change", () => {
   fields.aiApiKey.value = "";
   nodes.aiStatus.textContent = "Enter an API Key, then fetch models for this brand.";
 });
+
+for (const input of fields.translationMode) {
+  input.addEventListener("change", updatePersonalAiVisibility);
+}
 
 document.getElementById("testConnection").addEventListener("click", async () => {
   try {
@@ -262,15 +322,29 @@ document.getElementById("sendMagicLink").addEventListener("click", async () => {
     return;
   }
 
+  setSendMagicLinkPending();
   const apiBase = normalizeApiBase(fields.apiBase.value || settings.apiBase);
-  const response = await fetch(`${apiBase}/api/auth/magic-link`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, clientId })
-  });
-  const data = await response.json().catch(() => ({}));
-  nodes.message.textContent = response.ok ? "Login link sent. Check your email." : data.error || "Login link failed.";
+  try {
+    const response = await fetch(`${apiBase}/api/auth/magic-link`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, clientId })
+    });
+    const data = await response.json().catch(() => ({}));
+    nodes.message.textContent = response.ok ? "Login link sent. Check your email." : data.error || "Login link failed.";
+  } catch (error) {
+    nodes.message.textContent = `Login link failed: ${error.message}`;
+  } finally {
+    nodes.sendMagicLink.classList.remove("loading");
+    nodes.sendMagicLinkText.textContent = "Code sent";
+  }
 });
+
+function setSendMagicLinkPending() {
+  nodes.sendMagicLink.disabled = true;
+  nodes.sendMagicLink.classList.add("loading");
+  nodes.sendMagicLinkText.textContent = "Sending";
+}
 
 document.getElementById("exchangeLoginCode").addEventListener("click", async () => {
   const apiBase = await getApiBase();
@@ -298,6 +372,7 @@ document.getElementById("exchangeLoginCode").addEventListener("click", async () 
 
 document.getElementById("logout").addEventListener("click", async () => {
   await chrome.storage.local.remove(["sessionToken"]);
+  await clearPersonalAiLocalSettings();
   setLoggedOut();
   nodes.message.textContent = "Logged out.";
 });
