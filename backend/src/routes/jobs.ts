@@ -14,6 +14,30 @@ const cueSchema = z.object({
   text: z.string()
 });
 
+jobsRouter.get("/history", async (req, res, next) => {
+  try {
+    const userId = await requireUserId(req.headers.authorization);
+    const result = await query(
+      `select
+         j.id as "jobId",
+         j.status,
+         j.created_at as "createdAt",
+         j.completed_at as "completedAt",
+         v.title,
+         v.url
+       from translation_jobs j
+       join videos v on v.video_id = j.video_id
+       where j.user_id = $1
+       order by j.created_at desc
+       limit 100`,
+      [userId]
+    );
+    res.json({ history: result.rows });
+  } catch (error) {
+    next(error);
+  }
+});
+
 jobsRouter.post("/", async (req, res, next) => {
   try {
     const input = z.object({

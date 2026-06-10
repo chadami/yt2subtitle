@@ -27,6 +27,11 @@ const DEFAULT_SUBTITLE_STYLE = {
 
 chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
   await loadSubtitleStyle();
+  const { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
+  if (!sessionToken) {
+    showLoggedOutState();
+    return;
+  }
   if (!tab?.url?.includes("youtube.com/watch")) {
     setButtonState("idle", false);
     status.textContent = "Open a YouTube video page to generate AI subtitles.";
@@ -162,6 +167,13 @@ function setButtonState(state, enabled) {
   } else {
     generateText.textContent = "Generate AI subtitles";
   }
+}
+
+function showLoggedOutState() {
+  document.querySelector(".controls").classList.add("hidden");
+  generate.classList.add("hidden");
+  setButtonState("idle", false);
+  status.textContent = "Log in from Settings before generating AI subtitles.";
 }
 
 async function loadSubtitleStyle() {

@@ -21,6 +21,11 @@ const nodes = {
   sendMagicLink: document.getElementById("sendMagicLink"),
   sendMagicLinkText: document.getElementById("sendMagicLinkText"),
   personalAiSection: document.getElementById("personalAiSection"),
+  basicNav: document.getElementById("basicNav"),
+  historyNav: document.getElementById("historyNav"),
+  basicView: document.getElementById("basicView"),
+  historyView: document.getElementById("historyView"),
+  historyRows: document.getElementById("historyRows"),
   aiStatus: document.getElementById("aiStatus"),
   message: document.getElementById("message")
 };
@@ -181,7 +186,17 @@ function setLoggedOut() {
   nodes.accountLoggedIn.classList.add("hidden");
   nodes.accountLoggedOut.classList.remove("hidden");
   clearPersonalAiFields();
+  renderHistoryRows([]);
   updatePersonalAiVisibility();
+}
+
+function showView(view) {
+  const isHistory = view === "history";
+  nodes.basicView.classList.toggle("hidden", isHistory);
+  nodes.historyView.classList.toggle("hidden", !isHistory);
+  nodes.basicNav.classList.toggle("active", !isHistory);
+  nodes.historyNav.classList.toggle("active", isHistory);
+  if (isHistory) loadHistory();
 }
 
 document.getElementById("save").addEventListener("click", async () => {
@@ -303,6 +318,79 @@ fields.aiProvider.addEventListener("change", () => {
 
 for (const input of fields.translationMode) {
   input.addEventListener("change", updatePersonalAiVisibility);
+}
+
+nodes.basicNav.addEventListener("click", () => showView("basic"));
+nodes.historyNav.addEventListener("click", () => showView("history"));
+document.getElementById("refreshHistory").addEventListener("click", () => loadHistory());
+
+async function loadHistory() {
+  const { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
+  if (!sessionToken) {
+    renderHistoryRows([]);
+    return;
+  }
+
+  nodes.historyRows.innerHTML = `<tr><td colspan="4">Loading history...</td></tr>`;
+  try {
+    const apiBase = await getApiBase();
+    const response = await fetch(`${apiBase}/api/jobs/history`, {
+      headers: authHeaders(sessionToken)
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      nodes.historyRows.innerHTML = `<tr><td colspan="4">${escapeHtml(data.error || "Failed to load history.")}</td></tr>`;
+      return;
+    }
+    renderHistoryRows(Array.isArray(data.history) ? data.history : []);
+  } catch (error) {
+    nodes.historyRows.innerHTML = `<tr><td colspan="4">${escapeHtml(error.message || String(error))}</td></tr>`;
+  }
+}
+
+function renderHistoryRows(rows) {
+  if (!hasVerifiedSession) {
+    nodes.historyRows.innerHTML = `<tr><td colspan="4">Log in to view history.</td></tr>`;
+    return;
+  }
+  if (!rows.length) {
+    nodes.historyRows.innerHTML = `<tr><td colspan="4">No generated subtitles yet.</td></tr>`;
+    return;
+  }
+  nodes.historyRows.innerHTML = rows.map((row) => `
+    <tr>
+      <td>${escapeHtml(formatDate(row.createdAt))}</td>
+      <td>${escapeHtml(row.title || "Untitled video")}</td>
+      <td><a href="${escapeAttribute(row.url || "#")}" target="_blank" rel="noreferrer">Open video</a></td>
+      <td><span class="status-text">${escapeHtml(formatJobStatus(row.status))}</span></td>
+    </tr>
+  `).join("");
+}
+
+function formatDate(value) {
+  if (!value) return "-";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "-";
+  return date.toLocaleString();
+}
+
+function formatJobStatus(status) {
+  if (status === "completed") return "已完成";
+  if (status === "failed") return "失败";
+  if (status === "cancelled") return "失败";
+  return "处理中";
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function escapeAttribute(value) {
+  return escapeHtml(value).replace(/'/g, "&#39;");
 }
 
 document.getElementById("testConnection").addEventListener("click", async () => {

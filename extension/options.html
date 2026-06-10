@@ -81,6 +81,39 @@
         overflow: hidden;
       }
 
+      .settings-layout {
+        display: grid;
+        grid-template-columns: 176px minmax(0, 1fr);
+        gap: 16px;
+        align-items: start;
+      }
+
+      .side-nav {
+        display: grid;
+        gap: 8px;
+        position: sticky;
+        top: 20px;
+      }
+
+      .nav-button {
+        width: 100%;
+        background: transparent;
+        border-color: transparent;
+        color: var(--muted);
+        text-align: left;
+      }
+
+      .nav-button:hover,
+      .nav-button.active {
+        background: var(--accent-soft);
+        border-color: #c8ddd2;
+        color: var(--accent-strong);
+      }
+
+      .view {
+        min-width: 0;
+      }
+
       section {
         display: grid;
         grid-template-columns: 210px 1fr;
@@ -299,6 +332,53 @@
         color: var(--muted);
       }
 
+      .history-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .history-table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 12px 14px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 750;
+        text-transform: uppercase;
+      }
+
+      td a {
+        color: var(--accent-strong);
+        text-decoration: none;
+      }
+
+      td a:hover {
+        text-decoration: underline;
+      }
+
+      .status-text {
+        font-weight: 750;
+      }
+
       .hidden {
         display: none !important;
       }
@@ -317,6 +397,15 @@
         footer {
           display: grid;
           grid-template-columns: 1fr;
+        }
+
+        .settings-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .side-nav {
+          position: static;
+          grid-template-columns: 1fr 1fr;
         }
 
         section {
@@ -348,8 +437,15 @@
         <div id="accountStatus" class="status-pill">Checking account</div>
       </header>
 
-      <div class="panel">
-        <section>
+      <div class="settings-layout">
+        <nav class="side-nav" aria-label="Settings navigation">
+          <button id="basicNav" class="nav-button active" type="button">Basic settings</button>
+          <button id="historyNav" class="nav-button" type="button">History</button>
+        </nav>
+
+        <div id="basicView" class="view">
+          <div class="panel">
+            <section>
           <div>
             <h2>Account</h2>
             <p class="section-copy">Email login</p>
@@ -380,9 +476,9 @@
               </div>
             </div>
           </div>
-        </section>
+            </section>
 
-        <section>
+            <section>
           <div>
             <h2>Service</h2>
             <p class="section-copy">Backend connection</p>
@@ -395,9 +491,9 @@
               <button id="testConnection" class="secondary">Test connection</button>
             </div>
           </div>
-        </section>
+            </section>
 
-        <section>
+            <section>
           <div>
             <h2>API</h2>
             <p class="section-copy">Translation provider</p>
@@ -439,9 +535,9 @@
               </div>
             </div>
           </div>
-        </section>
+            </section>
 
-        <section>
+            <section>
           <div>
             <h2>Translation</h2>
             <p class="section-copy">Subtitle behavior</p>
@@ -454,9 +550,9 @@
               <label><input id="autoLoad" type="checkbox" /> Auto-load completed AI subtitles</label>
             </div>
           </div>
-        </section>
+            </section>
 
-        <section>
+            <section>
           <div>
             <h2>Cache</h2>
             <p class="section-copy">Local task state</p>
@@ -464,13 +560,45 @@
           <div class="actions">
             <button id="clearCache" class="secondary">Clear local cache</button>
           </div>
-        </section>
+            </section>
+          </div>
+
+          <footer>
+            <p id="message" class="message"></p>
+            <button id="save">Save settings</button>
+          </footer>
+        </div>
+
+        <div id="historyView" class="view hidden">
+          <div class="panel">
+            <div class="history-toolbar">
+              <div>
+                <h2>History</h2>
+                <p class="section-copy">Current account subtitle jobs</p>
+              </div>
+              <button id="refreshHistory" class="secondary" type="button">Refresh</button>
+            </div>
+            <div class="history-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Generated at</th>
+                    <th>Video</th>
+                    <th>Link</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="historyRows">
+                  <tr>
+                    <td colspan="4">Log in to view history.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <footer>
-        <p id="message" class="message"></p>
-        <button id="save">Save settings</button>
-      </footer>
     </main>
     <script src="options.js"></script>
   </body>
