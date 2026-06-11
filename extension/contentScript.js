@@ -2,8 +2,8 @@ const OVERLAY_ID = "yt-ai-subtitle-overlay";
 const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
-  backgroundOpacity: 82,
-  fontWeight: "bold",
+  backgroundOpacity: 25,
+  fontWeight: "normal",
   positionPercent: 21
 };
 let renderGeneration = 0;
@@ -58,10 +58,10 @@ function applySubtitleStyle(style = {}) {
     ...style
   };
   const fontSize = clampNumber(Number(nextStyle.fontSize), 16, 36);
-  const opacity = clampNumber(Number(nextStyle.backgroundOpacity), 35, 95) / 100;
-  const position = clampNumber(Number(nextStyle.positionPercent), 8, 42);
+  const opacity = clampNumber(Number(nextStyle.backgroundOpacity), 15, 95) / 100;
+  const position = clampNumber(Number(nextStyle.positionPercent), 2, 42);
   overlay.style.fontSize = `${fontSize}px`;
-  overlay.style.fontWeight = nextStyle.fontWeight === "normal" ? "500" : "750";
+  overlay.style.fontWeight = "500";
   overlay.style.background = `rgba(18,28,25,${opacity})`;
   overlay.style.bottom = `${position}%`;
 }

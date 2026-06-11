@@ -311,7 +311,11 @@ async function getApiBase() {
 }
 
 async function load() {
-  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
+  const { settings = {}, sessionToken, accountEmail } = await chrome.storage.local.get([
+    "settings",
+    "sessionToken",
+    "accountEmail"
+  ]);
   currentLanguage = settings.uiLanguage || "en";
   fields.uiLanguage.value = currentLanguage;
   applyI18n();
@@ -330,11 +334,15 @@ async function load() {
     }
   });
 
+  if (sessionToken && accountEmail) {
+    setLoggedIn(accountEmail);
+  }
   await refreshAccount(sessionToken);
 }
 
 async function refreshAccount(sessionToken) {
   if (!sessionToken) {
+    await chrome.storage.local.remove(["accountEmail"]);
     await clearPersonalAiLocalSettings();
     setLoggedOut();
     return;
@@ -347,20 +355,21 @@ async function refreshAccount(sessionToken) {
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
-      await chrome.storage.local.remove(["sessionToken"]);
+      await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
       await clearPersonalAiLocalSettings();
       setLoggedOut();
       setDynamicText(nodes.message, data.error || t("sessionExpired"));
       return;
     }
     if (!data.email) {
-      await chrome.storage.local.remove(["sessionToken"]);
+      await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
       await clearPersonalAiLocalSettings();
       setLoggedOut();
       setDynamicText(nodes.message, t("missingEmail"));
       return;
     }
     setLoggedIn(data.email);
+    await chrome.storage.local.set({ accountEmail: data.email });
     await loadAiSettings(sessionToken);
   } catch (error) {
     setLoggedOut();
@@ -756,7 +765,7 @@ function setExchangeLoginPending(isPending) {
 }
 
 document.getElementById("logout").addEventListener("click", async () => {
-  await chrome.storage.local.remove(["sessionToken"]);
+  await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
   await clearPersonalAiLocalSettings();
   setLoggedOut();
   clearDynamicText(nodes.message);

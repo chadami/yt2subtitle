@@ -229,7 +229,7 @@
 
       <div id="status" class="status">Checking current video...</div>
 
-      <div class="controls">
+      <div class="controls hidden">
         <div class="control">
           <div class="control-head">
             <span data-i18n="fontSize">Font size</span>
@@ -243,31 +243,15 @@
             <span data-i18n="position">Position</span>
             <span id="positionValue" class="value">21%</span>
           </div>
-          <input id="positionPercent" type="range" min="8" max="42" step="1" />
+          <input id="positionPercent" type="range" min="2" max="42" step="1" />
         </div>
 
         <div class="control">
           <div class="control-head">
             <span data-i18n="backgroundOpacity">Background opacity</span>
-            <span id="backgroundOpacityValue" class="value">82%</span>
+            <span id="backgroundOpacityValue" class="value">25%</span>
           </div>
-          <input id="backgroundOpacity" type="range" min="35" max="95" step="1" />
-        </div>
-
-        <div class="control">
-          <div class="control-head">
-            <span data-i18n="fontWeight">Font weight</span>
-          </div>
-          <div class="segments">
-            <label>
-              <input id="weightNormal" name="fontWeight" type="radio" value="normal" />
-              <span data-i18n="normal">Normal</span>
-            </label>
-            <label>
-              <input id="weightBold" name="fontWeight" type="radio" value="bold" />
-              <span data-i18n="bold">Bold</span>
-            </label>
-          </div>
+          <input id="backgroundOpacity" type="range" min="15" max="95" step="1" />
         </div>
       </div>
 

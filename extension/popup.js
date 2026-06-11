@@ -11,8 +11,7 @@ const positionPercent = document.getElementById("positionPercent");
 const positionValue = document.getElementById("positionValue");
 const backgroundOpacity = document.getElementById("backgroundOpacity");
 const backgroundOpacityValue = document.getElementById("backgroundOpacityValue");
-const weightNormal = document.getElementById("weightNormal");
-const weightBold = document.getElementById("weightBold");
+const controlsPanel = document.querySelector(".controls");
 let activeTabId = null;
 let activeVideoId = "";
 let subtitlesReady = false;
@@ -21,8 +20,8 @@ let currentLanguage = "en";
 
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
-  backgroundOpacity: 82,
-  fontWeight: "bold",
+  backgroundOpacity: 25,
+  fontWeight: "normal",
   positionPercent: 21
 };
 
@@ -32,14 +31,11 @@ const translations = {
     fontSize: "Font size",
     position: "Position",
     backgroundOpacity: "Background opacity",
-    fontWeight: "Font weight",
-    normal: "Normal",
-    bold: "Bold",
     generate: "Generate AI subtitles",
     settings: "Settings",
     openYoutube: "Open a YouTube video page to generate AI subtitles.",
     noVideo: "No video detected.",
-    readyVideo: "Ready for video {videoId}",
+    readyVideo: "Click the button below to generate subtitles.",
     extractingStatus: "Extracting video title and captions...",
     generatingStatus: "Generating subtitles. {count} cues found from {type} captions ({lang}).",
     failedCreate: "Failed to create subtitle job.",
@@ -57,14 +53,11 @@ const translations = {
     fontSize: "字号",
     position: "位置",
     backgroundOpacity: "背景透明度",
-    fontWeight: "字重",
-    normal: "常规",
-    bold: "加粗",
     generate: "生成 AI 字幕",
     settings: "设置",
     openYoutube: "打开 YouTube 视频页面后生成 AI 字幕。",
     noVideo: "未检测到视频。",
-    readyVideo: "视频 {videoId} 已就绪",
+    readyVideo: "请点击下方生成字幕按钮",
     extractingStatus: "正在提取视频标题和字幕...",
     generatingStatus: "正在生成字幕。已从{type}字幕中找到 {count} 条字幕（{lang}）。",
     failedCreate: "创建字幕任务失败。",
@@ -82,14 +75,11 @@ const translations = {
     fontSize: "文字サイズ",
     position: "位置",
     backgroundOpacity: "背景の不透明度",
-    fontWeight: "太さ",
-    normal: "通常",
-    bold: "太字",
     generate: "AI 字幕を生成",
     settings: "設定",
     openYoutube: "YouTube の動画ページを開いて AI 字幕を生成してください。",
     noVideo: "動画が検出されません。",
-    readyVideo: "動画 {videoId} の準備ができました",
+    readyVideo: "下のボタンをクリックして字幕を生成してください。",
     extractingStatus: "動画タイトルと字幕を抽出中...",
     generatingStatus: "字幕を生成中。{type} 字幕から {count} 件を検出しました（{lang}）。",
     failedCreate: "字幕タスクの作成に失敗しました。",
@@ -126,6 +116,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
     return;
   }
   if (!tab?.url?.includes("youtube.com/watch")) {
+    hideSubtitleControls();
     setButtonState("idle", false);
     status.textContent = t("openYoutube");
     return;
@@ -133,6 +124,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
   activeTabId = tab.id;
   activeVideoId = new URL(tab.url).searchParams.get("v") || "";
   if (!activeVideoId) {
+    hideSubtitleControls();
     setButtonState("idle", false);
     status.textContent = t("noVideo");
     return;
@@ -165,7 +157,7 @@ generate.addEventListener("click", async () => {
   }
 });
 
-for (const control of [fontSize, positionPercent, backgroundOpacity, weightNormal, weightBold]) {
+for (const control of [fontSize, positionPercent, backgroundOpacity]) {
   control.addEventListener("input", saveAndApplySubtitleStyle);
   control.addEventListener("change", saveAndApplySubtitleStyle);
 }
@@ -173,6 +165,7 @@ for (const control of [fontSize, positionPercent, backgroundOpacity, weightNorma
 async function refreshInitialSubtitleState() {
   const pendingJob = await findPendingJobForActiveVideo();
   if (pendingJob) {
+    hideSubtitleControls();
     status.textContent = t("generatingShort");
     setButtonState("generating", false);
     startJobPolling(pendingJob.jobId);
@@ -182,6 +175,7 @@ async function refreshInitialSubtitleState() {
   const existing = await getExistingSubtitle();
   if (existing?.status === "completed") {
     subtitlesReady = true;
+    showSubtitleControls();
     status.textContent = t("readyLoaded");
     setButtonState("ready-regenerate", true);
     await loadSubtitlesIntoPage();
@@ -189,6 +183,7 @@ async function refreshInitialSubtitleState() {
   }
 
   subtitlesReady = false;
+  hideSubtitleControls();
   setButtonState("ready-generate", true);
 }
 
@@ -229,6 +224,7 @@ async function pollJob(jobId) {
       await chrome.runtime.sendMessage({ type: "CHECK_SUBTITLE_JOBS" }).catch(() => {});
       await loadSubtitlesIntoPage();
       subtitlesReady = true;
+      showSubtitleControls();
       status.textContent = t("readyLoaded");
       setButtonState("ready-regenerate", true);
     } else if (job.status === "failed" || job.status === "cancelled") {
@@ -270,10 +266,18 @@ function setButtonState(state, enabled) {
 }
 
 function showLoggedOutState() {
-  document.querySelector(".controls").classList.add("hidden");
+  hideSubtitleControls();
   generate.classList.add("hidden");
   setButtonState("idle", false);
   status.textContent = t("loginRequired");
+}
+
+function showSubtitleControls() {
+  controlsPanel.classList.remove("hidden");
+}
+
+function hideSubtitleControls() {
+  controlsPanel.classList.add("hidden");
 }
 
 async function loadSubtitleStyle() {
@@ -285,8 +289,6 @@ async function loadSubtitleStyle() {
   fontSize.value = style.fontSize;
   positionPercent.value = style.positionPercent;
   backgroundOpacity.value = style.backgroundOpacity;
-  weightNormal.checked = style.fontWeight === "normal";
-  weightBold.checked = style.fontWeight !== "normal";
   syncStyleLabels(style);
 }
 
@@ -311,7 +313,7 @@ function getSubtitleStyleFromControls() {
     fontSize: Number(fontSize.value),
     positionPercent: Number(positionPercent.value),
     backgroundOpacity: Number(backgroundOpacity.value),
-    fontWeight: weightNormal.checked ? "normal" : "bold"
+    fontWeight: "normal"
   };
 }
 
