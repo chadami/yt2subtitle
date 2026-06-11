@@ -76,6 +76,59 @@
         overflow-wrap: anywhere;
       }
 
+      .notice {
+        margin-top: 10px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--surface);
+        color: var(--muted);
+        padding: 9px 10px;
+      }
+
+      .confirm-panel {
+        display: grid;
+        gap: 9px;
+        margin-top: 11px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--panel);
+        padding: 11px;
+      }
+
+      .confirm-title {
+        margin: 0;
+        color: var(--ink);
+        font-weight: 650;
+      }
+
+      .facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+
+      .fact {
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--surface);
+        padding: 7px;
+      }
+
+      .fact span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .fact strong {
+        display: block;
+        margin-top: 2px;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+      }
+
       .actions {
         display: grid;
         gap: 7px;
@@ -228,6 +281,20 @@
       </header>
 
       <div id="status" class="status">Checking current video...</div>
+      <div id="notice" class="notice hidden"></div>
+
+      <div id="confirmPanel" class="confirm-panel hidden">
+        <p id="confirmTitle" class="confirm-title" data-i18n="confirmTitle">Confirm generation</p>
+        <div class="facts">
+          <div class="fact"><span data-i18n="captionSource">Caption source</span><strong id="summaryCaptionType">-</strong></div>
+          <div class="fact"><span data-i18n="sourceLanguage">Source language</span><strong id="summarySourceLang">-</strong></div>
+          <div class="fact"><span data-i18n="targetLanguage">Target language</span><strong id="summaryTargetLang">-</strong></div>
+          <div class="fact"><span data-i18n="apiMode">API mode</span><strong id="summaryApiMode">-</strong></div>
+          <div class="fact"><span data-i18n="cueCount">Cue count</span><strong id="summaryCueCount">-</strong></div>
+          <div class="fact"><span data-i18n="estimatedTime">Estimated time</span><strong id="summaryEstimatedTime">-</strong></div>
+          <div class="fact"><span data-i18n="estimatedCost">Estimated cost</span><strong id="summaryEstimatedCost">-</strong></div>
+        </div>
+      </div>
 
       <div class="controls hidden">
         <div class="control">

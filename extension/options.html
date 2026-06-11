@@ -566,6 +566,7 @@
                 <span data-i18n="systemApi">System API</span>
               </label>
             </div>
+            <p id="translationModeHelp" class="hint" data-i18n="personalApiHelp">Personal API uses your own key and provider billing. System API uses the built-in service when available.</p>
             <div id="personalAiSection" class="fields">
               <div class="split">
                 <label><span data-i18n="aiProvider">AI provider</span>
@@ -646,8 +647,8 @@
           <div class="panel">
             <div class="history-toolbar">
               <div>
-                <h2 data-i18n="historyTitle">History</h2>
-                <p class="section-copy" data-i18n="historyCopy">Subtitle jobs for this account</p>
+                <h2 data-i18n="historyTitle">Subtitle Library</h2>
+                <p class="section-copy" data-i18n="historyCopy">Generated subtitles for this account</p>
               </div>
               <button id="refreshHistory" class="secondary" type="button" data-i18n="refresh">Refresh</button>
             </div>
@@ -657,13 +658,16 @@
                   <tr>
                     <th data-i18n="generatedAt">Generated at</th>
                     <th data-i18n="video">Video</th>
-                    <th data-i18n="link">Link</th>
+                    <th data-i18n="languagePair">Languages</th>
+                    <th data-i18n="captionSource">Source</th>
+                    <th data-i18n="apiMode">API</th>
                     <th data-i18n="status">Status</th>
+                    <th data-i18n="actions">Actions</th>
                   </tr>
                 </thead>
                 <tbody id="historyRows">
                   <tr>
-                    <td colspan="4" data-i18n="historySignIn">Sign in to view history.</td>
+                    <td colspan="7" data-i18n="historySignIn">Sign in to view history.</td>
                   </tr>
                 </tbody>
               </table>

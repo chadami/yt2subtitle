@@ -28,6 +28,7 @@ const nodes = {
   historyView: document.getElementById("historyView"),
   historyRows: document.getElementById("historyRows"),
   aiStatus: document.getElementById("aiStatus"),
+  translationModeHelp: document.getElementById("translationModeHelp"),
   message: document.getElementById("message")
 };
 
@@ -52,6 +53,8 @@ const translations = {
     translationApiCopy: "Choose which provider handles translation",
     personalApi: "Personal API key",
     systemApi: "System API",
+    personalApiHelp: "Personal API uses your own key and provider billing. You choose the provider and model.",
+    systemApiHelp: "System API uses the built-in translation service when available. It is simpler and does not require your own key.",
     aiProvider: "AI provider",
     modelLabel: "Model",
     apiKeyLabel: "API key",
@@ -65,13 +68,16 @@ const translations = {
     cacheCopy: "Local subtitle task state",
     clearCache: "Clear local cache",
     saveSettings: "Save settings",
-    historyTitle: "History",
-    historyCopy: "Subtitle jobs for this account",
+    historyTitle: "Subtitle Library",
+    historyCopy: "Generated subtitles for this account",
     refresh: "Refresh",
     generatedAt: "Generated at",
     video: "Video",
-    link: "Link",
+    languagePair: "Languages",
+    captionSource: "Source",
+    apiMode: "API",
     status: "Status",
+    actions: "Actions",
     historySignIn: "Sign in to view history.",
     noPersonalApi: "No personal API key saved yet.",
     apiSavedModel: "Personal API key saved. Current model: {model}.",
@@ -94,6 +100,10 @@ const translations = {
     noHistory: "No generated subtitles yet.",
     untitledVideo: "Untitled video",
     openVideo: "Open video",
+    manualCaptions: "Manual",
+    autoCaptions: "Auto",
+    personalApiShort: "Personal",
+    systemApiShort: "System",
     completed: "Completed",
     failed: "Failed",
     processing: "Processing",
@@ -130,6 +140,8 @@ const translations = {
     translationApiCopy: "选择用于翻译的服务",
     personalApi: "个人 API Key",
     systemApi: "系统 API",
+    personalApiHelp: "个人 API 会使用你自己的 Key，由你自己的服务商账号承担调用成本，可自行选择服务商和模型。",
+    systemApiHelp: "系统 API 使用内置翻译服务，可用时更省心，不需要配置自己的 Key。",
     aiProvider: "AI 服务商",
     modelLabel: "模型",
     apiKeyLabel: "API Key",
@@ -143,13 +155,16 @@ const translations = {
     cacheCopy: "本地字幕任务状态",
     clearCache: "清空本地缓存",
     saveSettings: "保存设置",
-    historyTitle: "历史记录",
-    historyCopy: "当前账号的字幕任务",
+    historyTitle: "字幕库",
+    historyCopy: "当前账号已生成的字幕",
     refresh: "刷新",
     generatedAt: "生成时间",
     video: "视频",
-    link: "链接",
+    languagePair: "语言",
+    captionSource: "来源",
+    apiMode: "API",
     status: "状态",
+    actions: "操作",
     historySignIn: "登录后查看历史记录。",
     noPersonalApi: "还没有保存个人 API Key。",
     apiSavedModel: "个人 API Key 已保存。当前模型：{model}。",
@@ -172,6 +187,10 @@ const translations = {
     noHistory: "还没有生成过字幕。",
     untitledVideo: "未命名视频",
     openVideo: "打开视频",
+    manualCaptions: "人工",
+    autoCaptions: "自动",
+    personalApiShort: "个人",
+    systemApiShort: "系统",
     completed: "已完成",
     failed: "失败",
     processing: "处理中",
@@ -208,6 +227,8 @@ const translations = {
     translationApiCopy: "翻訳に使うプロバイダーを選択",
     personalApi: "個人 API キー",
     systemApi: "システム API",
+    personalApiHelp: "個人 API は自分のキーとプロバイダー課金を使用します。プロバイダーとモデルを選べます。",
+    systemApiHelp: "システム API は利用可能な内蔵翻訳サービスを使用します。自分のキーは不要です。",
     aiProvider: "AI プロバイダー",
     modelLabel: "モデル",
     apiKeyLabel: "API キー",
@@ -221,13 +242,16 @@ const translations = {
     cacheCopy: "ローカル字幕タスクの状態",
     clearCache: "ローカルキャッシュを削除",
     saveSettings: "設定を保存",
-    historyTitle: "履歴",
-    historyCopy: "このアカウントの字幕タスク",
+    historyTitle: "字幕ライブラリ",
+    historyCopy: "このアカウントで生成した字幕",
     refresh: "更新",
     generatedAt: "生成日時",
     video: "動画",
-    link: "リンク",
+    languagePair: "言語",
+    captionSource: "ソース",
+    apiMode: "API",
     status: "状態",
+    actions: "操作",
     historySignIn: "ログインすると履歴を表示できます。",
     noPersonalApi: "個人 API キーはまだ保存されていません。",
     apiSavedModel: "個人 API キーは保存済みです。現在のモデル：{model}。",
@@ -250,6 +274,10 @@ const translations = {
     noHistory: "生成済み字幕はまだありません。",
     untitledVideo: "無題の動画",
     openVideo: "動画を開く",
+    manualCaptions: "手動",
+    autoCaptions: "自動",
+    personalApiShort: "個人",
+    systemApiShort: "システム",
     completed: "完了",
     failed: "失敗",
     processing: "処理中",
@@ -287,6 +315,7 @@ function applyI18n() {
     node.textContent = t(node.dataset.i18n);
   }
   nodes.aiStatus.textContent = nodes.aiStatus.dataset.dynamicText || t("aiStatusDefault");
+  updateTranslationModeHelp();
   if (nodes.message.dataset.dynamicText) nodes.message.textContent = nodes.message.dataset.dynamicText;
   renderHistoryRows(lastHistoryRows);
 }
@@ -430,6 +459,11 @@ function setTranslationMode(value) {
 
 function updatePersonalAiVisibility() {
   nodes.personalAiSection.classList.toggle("hidden", getTranslationMode() !== "user" || !hasVerifiedSession);
+  updateTranslationModeHelp();
+}
+
+function updateTranslationModeHelp() {
+  nodes.translationModeHelp.textContent = getTranslationMode() === "user" ? t("personalApiHelp") : t("systemApiHelp");
 }
 
 function clearPersonalAiFields() {
@@ -619,7 +653,7 @@ async function loadHistory() {
     return;
   }
 
-  nodes.historyRows.innerHTML = `<tr><td colspan="4">${escapeHtml(t("loadingHistory"))}</td></tr>`;
+  nodes.historyRows.innerHTML = `<tr><td colspan="7">${escapeHtml(t("loadingHistory"))}</td></tr>`;
   try {
     const apiBase = await getApiBase();
     const response = await fetch(`${apiBase}/api/jobs/history`, {
@@ -627,31 +661,34 @@ async function loadHistory() {
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
-      nodes.historyRows.innerHTML = `<tr><td colspan="4">${escapeHtml(data.error || t("historyLoadFailed"))}</td></tr>`;
+      nodes.historyRows.innerHTML = `<tr><td colspan="7">${escapeHtml(data.error || t("historyLoadFailed"))}</td></tr>`;
       return;
     }
     lastHistoryRows = Array.isArray(data.history) ? data.history : [];
     renderHistoryRows(lastHistoryRows);
   } catch (error) {
-    nodes.historyRows.innerHTML = `<tr><td colspan="4">${escapeHtml(error.message || String(error))}</td></tr>`;
+    nodes.historyRows.innerHTML = `<tr><td colspan="7">${escapeHtml(error.message || String(error))}</td></tr>`;
   }
 }
 
 function renderHistoryRows(rows) {
   if (!hasVerifiedSession) {
-    nodes.historyRows.innerHTML = `<tr><td colspan="4">${escapeHtml(t("historySignIn"))}</td></tr>`;
+    nodes.historyRows.innerHTML = `<tr><td colspan="7">${escapeHtml(t("historySignIn"))}</td></tr>`;
     return;
   }
   if (!rows.length) {
-    nodes.historyRows.innerHTML = `<tr><td colspan="4">${escapeHtml(t("noHistory"))}</td></tr>`;
+    nodes.historyRows.innerHTML = `<tr><td colspan="7">${escapeHtml(t("noHistory"))}</td></tr>`;
     return;
   }
   nodes.historyRows.innerHTML = rows.map((row) => `
     <tr>
       <td>${escapeHtml(formatDate(row.createdAt))}</td>
       <td>${escapeHtml(row.title || t("untitledVideo"))}</td>
-      <td><a href="${escapeAttribute(row.url || "#")}" target="_blank" rel="noreferrer">${escapeHtml(t("openVideo"))}</a></td>
+      <td>${escapeHtml(formatLanguagePair(row))}</td>
+      <td>${escapeHtml(formatCaptionSource(row.captionType))}</td>
+      <td>${escapeHtml(formatApiMode(row))}</td>
       <td><span class="status-text">${escapeHtml(formatJobStatus(row.status))}</span></td>
+      <td><a href="${escapeAttribute(row.url || "#")}" target="_blank" rel="noreferrer">${escapeHtml(t("openVideo"))}</a></td>
     </tr>
   `).join("");
 }
@@ -668,6 +705,21 @@ function formatJobStatus(status) {
   if (status === "failed") return t("failed");
   if (status === "cancelled") return t("failed");
   return t("processing");
+}
+
+function formatLanguagePair(row) {
+  return `${row.sourceLang || "-"} -> ${row.targetLang || "-"}`;
+}
+
+function formatCaptionSource(captionType) {
+  if (captionType === "auto") return t("autoCaptions");
+  if (captionType === "manual") return t("manualCaptions");
+  return "-";
+}
+
+function formatApiMode(row) {
+  const mode = row.providerMode === "system" ? t("systemApiShort") : t("personalApiShort");
+  return row.model ? `${mode} / ${row.model}` : mode;
 }
 
 function escapeHtml(value) {

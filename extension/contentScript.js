@@ -121,8 +121,16 @@ async function tryLoadSubtitle() {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === "PREPARE_AI_SUBTITLES") {
+    prepareAiSubtitles().then(
+      (result) => sendResponse(result),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
+
   if (message?.type === "GENERATE_AI_SUBTITLES") {
-    generateAiSubtitles(message.forceRegenerate === true).then(
+    generateAiSubtitles(message.forceRegenerate === true, message.preparedPayload).then(
       (result) => sendResponse(result),
       (error) => sendResponse({ ok: false, error: error.message || String(error) })
     );
@@ -146,10 +154,9 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   return false;
 });
 
-async function generateAiSubtitles(forceRegenerate = false) {
+async function prepareAiSubtitles() {
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
-  clearOverlay();
 
   const { settings = {}, clientId, sessionToken, pendingJobs = [] } = await chrome.storage.local.get([
     "settings",
@@ -167,8 +174,10 @@ async function generateAiSubtitles(forceRegenerate = false) {
   const rawCues = await fetchCaptionCues(track);
   if (!rawCues.length) throw new Error("Caption track exists, but no usable cues were downloaded.");
 
-  const data = await chrome.runtime.sendMessage({
-    type: "CREATE_SUBTITLE_JOB",
+  const totalSeconds = rawCues.reduce((max, cue) => Math.max(max, cue.end || 0), 0);
+  const characterCount = rawCues.reduce((sum, cue) => sum + (cue.text || "").length, 0);
+  return {
+    ok: true,
     payload: {
       clientId,
       sessionToken,
@@ -178,9 +187,32 @@ async function generateAiSubtitles(forceRegenerate = false) {
       sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
       targetLang: effectiveSettings.targetLang || "zh-Hans",
       translationMode: effectiveSettings.translationMode || "user",
-      forceRegenerate,
       captionType: track.isAuto ? "auto" : "manual",
       rawCues
+    },
+    summary: {
+      rawCueCount: rawCues.length,
+      characterCount,
+      totalSeconds,
+      captionType: track.isAuto ? "auto" : "manual",
+      sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
+      targetLang: effectiveSettings.targetLang || "zh-Hans",
+      translationMode: effectiveSettings.translationMode || "user"
+    }
+  };
+}
+
+async function generateAiSubtitles(forceRegenerate = false, preparedPayload = null) {
+  const videoId = getVideoId();
+  if (!videoId) throw new Error("No YouTube video detected.");
+  clearOverlay();
+
+  const prepared = preparedPayload || (await prepareAiSubtitles()).payload;
+  const data = await chrome.runtime.sendMessage({
+    type: "CREATE_SUBTITLE_JOB",
+    payload: {
+      ...prepared,
+      forceRegenerate,
     }
   });
   if (!data?.ok) throw new Error(data?.error || "Failed to create subtitle job.");
@@ -188,9 +220,9 @@ async function generateAiSubtitles(forceRegenerate = false) {
     ok: true,
     jobId: data.jobId,
     status: data.status,
-    rawCueCount: rawCues.length,
-    captionType: track.isAuto ? "auto" : "manual",
-    sourceLang: track.languageCode
+    rawCueCount: prepared.rawCues.length,
+    captionType: prepared.captionType,
+    sourceLang: prepared.sourceLang
   };
 }
 

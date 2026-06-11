@@ -33,10 +33,17 @@ jobsRouter.get("/history", async (req, res, next) => {
          j.status,
          j.created_at as "createdAt",
          j.completed_at as "completedAt",
+         j.source_lang as "sourceLang",
+         j.target_lang as "targetLang",
+         j.provider_mode as "providerMode",
+         j.ai_provider as "provider",
+         j.ai_model as "model",
+         c.caption_type as "captionType",
          v.title,
          v.url
        from translation_jobs j
        join videos v on v.video_id = j.video_id
+       left join caption_sources c on c.id = j.caption_source_id
        where j.user_id = $1
        order by j.created_at desc
        limit 100`,
