@@ -223,7 +223,7 @@
         <div class="mark">AI</div>
         <div>
           <h1>YouTube AI Subtitle</h1>
-          <p class="caption">Translate current video</p>
+          <p class="caption" data-i18n="caption">Translate current video</p>
         </div>
       </header>
 
@@ -232,7 +232,7 @@
       <div class="controls">
         <div class="control">
           <div class="control-head">
-            <span>Font size</span>
+            <span data-i18n="fontSize">Font size</span>
             <span id="fontSizeValue" class="value">24px</span>
           </div>
           <input id="fontSize" type="range" min="16" max="36" step="1" />
@@ -240,7 +240,7 @@
 
         <div class="control">
           <div class="control-head">
-            <span>Position</span>
+            <span data-i18n="position">Position</span>
             <span id="positionValue" class="value">21%</span>
           </div>
           <input id="positionPercent" type="range" min="8" max="42" step="1" />
@@ -248,7 +248,7 @@
 
         <div class="control">
           <div class="control-head">
-            <span>Background opacity</span>
+            <span data-i18n="backgroundOpacity">Background opacity</span>
             <span id="backgroundOpacityValue" class="value">82%</span>
           </div>
           <input id="backgroundOpacity" type="range" min="35" max="95" step="1" />
@@ -256,24 +256,24 @@
 
         <div class="control">
           <div class="control-head">
-            <span>Font weight</span>
+            <span data-i18n="fontWeight">Font weight</span>
           </div>
           <div class="segments">
             <label>
               <input id="weightNormal" name="fontWeight" type="radio" value="normal" />
-              <span>Normal</span>
+              <span data-i18n="normal">Normal</span>
             </label>
             <label>
               <input id="weightBold" name="fontWeight" type="radio" value="bold" />
-              <span>Bold</span>
+              <span data-i18n="bold">Bold</span>
             </label>
           </div>
         </div>
       </div>
 
       <div class="actions">
-        <button id="generate" class="primary" disabled><span class="spinner"></span><span id="generateText">Generate AI subtitles</span></button>
-        <button id="openOptions" class="secondary">Settings</button>
+        <button id="generate" class="primary" disabled><span class="spinner"></span><span id="generateText" data-i18n="generate">Generate AI subtitles</span></button>
+        <button id="openOptions" class="secondary" data-i18n="settings">Settings</button>
       </div>
     </div>
     <script src="popup.js"></script>

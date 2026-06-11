@@ -78,6 +78,27 @@
         white-space: nowrap;
       }
 
+      .language-switch {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .language-switch select {
+        width: auto;
+        min-height: 32px;
+        background: var(--surface);
+        border-color: transparent;
+        padding: 5px 28px 5px 9px;
+      }
+
+      .language-switch select:hover {
+        background: var(--surface-hover);
+      }
+
       .panel {
         background: var(--panel);
         border: 1px solid var(--line);
@@ -279,6 +300,13 @@
         gap: 10px;
       }
 
+      .model-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+        gap: 8px;
+      }
+
       .hint {
         margin: -4px 0 0;
         color: var(--muted);
@@ -439,6 +467,10 @@
           grid-template-columns: 1fr;
         }
 
+        .model-row {
+          grid-template-columns: 1fr;
+        }
+
         .email-action-row {
           grid-template-columns: 1fr;
         }
@@ -452,45 +484,52 @@
           <h1>YouTube AI Subtitle</h1>
           <p class="subtitle">Settings</p>
         </div>
-        <div id="accountStatus" class="status-pill">Checking account</div>
+        <label class="language-switch">
+          <span data-i18n="uiLanguage">Language</span>
+          <select id="uiLanguage">
+            <option value="en">English</option>
+            <option value="zh-Hans">中文</option>
+            <option value="ja">日本語</option>
+          </select>
+        </label>
       </header>
 
       <div class="settings-layout">
         <nav class="side-nav" aria-label="Settings navigation">
-          <button id="basicNav" class="nav-button active" type="button">Settings</button>
-          <button id="historyNav" class="nav-button" type="button">History</button>
+          <button id="basicNav" class="nav-button active" type="button" data-i18n="settingsNav">Settings</button>
+          <button id="historyNav" class="nav-button" type="button" data-i18n="historyNav">History</button>
         </nav>
 
         <div id="basicView" class="view">
           <div class="panel">
             <section>
           <div>
-            <h2>Account</h2>
-            <p class="section-copy">Sign in to sync your API and history</p>
+            <h2 data-i18n="accountTitle">Account</h2>
+            <p class="section-copy" data-i18n="accountCopy">Sign in to sync your API and history</p>
           </div>
           <div class="fields">
             <div id="accountLoggedIn" class="account-card hidden">
               <div class="email-display">
                 <div>
-                  <div class="section-copy">Current account</div>
+                  <div class="section-copy" data-i18n="currentAccount">Current account</div>
                   <div id="accountEmail" class="email-value"></div>
                 </div>
-                <button id="logout" class="danger">Log out</button>
+                <button id="logout" class="danger" data-i18n="signOut">Sign out</button>
               </div>
             </div>
 
             <div id="accountLoggedOut" class="fields">
               <div class="email-action-row">
-                <label>Email
+                <label><span data-i18n="emailLabel">Email</span>
                   <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
                 </label>
-                <button id="sendMagicLink"><span class="spinner"></span><span id="sendMagicLinkText">Send sign-in code</span></button>
+                <button id="sendMagicLink"><span class="spinner"></span><span id="sendMagicLinkText" data-i18n="sendCode">Send sign-in code</span></button>
               </div>
-              <label>Sign-in code
+              <label><span data-i18n="codeLabel">Sign-in code</span>
                 <input id="loginCode" placeholder="Code from email" autocomplete="one-time-code" />
               </label>
               <div class="actions">
-                <button id="exchangeLoginCode" class="secondary"><span class="spinner"></span><span id="exchangeLoginCodeText">Sign in</span></button>
+                <button id="exchangeLoginCode" class="secondary"><span class="spinner"></span><span id="exchangeLoginCodeText" data-i18n="signIn">Sign in</span></button>
               </div>
             </div>
           </div>
@@ -513,23 +552,23 @@
 
             <section>
           <div>
-            <h2>Translation API</h2>
-            <p class="section-copy">Choose which provider handles translation</p>
+            <h2 data-i18n="translationApiTitle">Translation API</h2>
+            <p class="section-copy" data-i18n="translationApiCopy">Choose which provider handles translation</p>
           </div>
           <div class="fields">
             <div class="radio-group" aria-label="Default translation source">
               <label class="radio-option">
                 <input type="radio" name="translationMode" value="user" />
-                Personal API key
+                <span data-i18n="personalApi">Personal API key</span>
               </label>
               <label class="radio-option">
                 <input type="radio" name="translationMode" value="system" />
-                System API
+                <span data-i18n="systemApi">System API</span>
               </label>
             </div>
             <div id="personalAiSection" class="fields">
               <div class="split">
-                <label>AI provider
+                <label><span data-i18n="aiProvider">AI provider</span>
                   <select id="aiProvider">
                     <option value="gemini">Gemini</option>
                     <option value="deepseek">DeepSeek</option>
@@ -539,17 +578,19 @@
                     <option value="mimo">Xiaomi MiMo</option>
                   </select>
                 </label>
-                <label>Model
-                  <select id="aiModel"></select>
-                </label>
+                <div class="model-row">
+                  <label><span data-i18n="modelLabel">Model</span>
+                    <select id="aiModel"></select>
+                  </label>
+                  <button id="fetchModels" class="secondary" type="button" data-i18n="fetchModels">Fetch models</button>
+                </div>
               </div>
-              <label>API key
+              <label><span data-i18n="apiKeyLabel">API key</span>
                 <input id="aiApiKey" type="password" placeholder="Stored for this account only" autocomplete="off" />
               </label>
-              <p id="aiStatus" class="hint">Sign in, enter an API key, then fetch models.</p>
+              <p id="aiStatus" class="hint" data-i18n="aiStatusDefault">Sign in, enter an API key, then fetch models.</p>
               <div class="actions">
-                <button id="fetchModels" class="secondary">Fetch models</button>
-                <button id="saveAiSettings" class="secondary">Save API settings</button>
+                <button id="saveAiSettings" class="secondary" data-i18n="saveApiSettings">Save API settings</button>
               </div>
             </div>
           </div>
@@ -557,11 +598,11 @@
 
             <section>
           <div>
-            <h2>Subtitle Output</h2>
-            <p class="section-copy">Language and display behavior</p>
+            <h2 data-i18n="subtitleOutputTitle">Subtitle Output</h2>
+            <p class="section-copy" data-i18n="subtitleOutputCopy">Language and display behavior</p>
           </div>
           <div class="fields">
-            <label>Translation language
+            <label><span data-i18n="translationLanguage">Translation language</span>
               <select id="targetLang">
                 <option value="zh-Hans">中文（简体）</option>
                 <option value="zh-Hant">中文（繁體）</option>
@@ -582,25 +623,25 @@
               </select>
             </label>
             <div class="inline">
-              <label><input id="autoLoad" type="checkbox" /> Auto-load completed subtitles</label>
+              <label><input id="autoLoad" type="checkbox" /> <span data-i18n="autoLoad">Auto-load completed subtitles</span></label>
             </div>
           </div>
             </section>
 
             <section>
           <div>
-            <h2>Cache</h2>
-            <p class="section-copy">Local subtitle task state</p>
+            <h2 data-i18n="cacheTitle">Cache</h2>
+            <p class="section-copy" data-i18n="cacheCopy">Local subtitle task state</p>
           </div>
           <div class="actions">
-            <button id="clearCache" class="secondary">Clear local cache</button>
+            <button id="clearCache" class="secondary" data-i18n="clearCache">Clear local cache</button>
           </div>
             </section>
           </div>
 
           <footer>
             <p id="message" class="message"></p>
-            <button id="save">Save settings</button>
+            <button id="save" data-i18n="saveSettings">Save settings</button>
           </footer>
         </div>
 
@@ -608,24 +649,24 @@
           <div class="panel">
             <div class="history-toolbar">
               <div>
-                <h2>History</h2>
-                <p class="section-copy">Subtitle jobs for this account</p>
+                <h2 data-i18n="historyTitle">History</h2>
+                <p class="section-copy" data-i18n="historyCopy">Subtitle jobs for this account</p>
               </div>
-              <button id="refreshHistory" class="secondary" type="button">Refresh</button>
+              <button id="refreshHistory" class="secondary" type="button" data-i18n="refresh">Refresh</button>
             </div>
             <div class="history-table-wrap">
               <table>
                 <thead>
                   <tr>
-                    <th>Generated at</th>
-                    <th>Video</th>
-                    <th>Link</th>
-                    <th>Status</th>
+                    <th data-i18n="generatedAt">Generated at</th>
+                    <th data-i18n="video">Video</th>
+                    <th data-i18n="link">Link</th>
+                    <th data-i18n="status">Status</th>
                   </tr>
                 </thead>
                 <tbody id="historyRows">
                   <tr>
-                    <td colspan="4">Sign in to view history.</td>
+                    <td colspan="4" data-i18n="historySignIn">Sign in to view history.</td>
                   </tr>
                 </tbody>
               </table>
