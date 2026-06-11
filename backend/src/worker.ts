@@ -141,8 +141,28 @@ async function notifyJobOwner(jobId: string, title: string, url: string) {
   }
 }
 
+function errorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
+
+async function markJobAttemptFailed(jobId: string, error: unknown, finalAttempt: boolean) {
+  await query(
+    `update translation_jobs
+     set status = $1, error = $2, updated_at = now()
+     where id = $3`,
+    [finalAttempt ? "failed" : "queued", errorMessage(error), jobId]
+  );
+}
+
 new Worker("subtitle-jobs", async (job) => {
-  await processSubtitleJob(job.data.jobId);
+  try {
+    await processSubtitleJob(job.data.jobId);
+  } catch (error) {
+    const attempts = job.opts.attempts ?? 1;
+    const finalAttempt = job.attemptsMade + 1 >= attempts;
+    await markJobAttemptFailed(job.data.jobId, error, finalAttempt);
+    throw error;
+  }
 }, { connection: redisConnection });
 
 console.log("Subtitle worker started");

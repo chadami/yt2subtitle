@@ -6,7 +6,6 @@ const fields = {
   uiLanguage: document.getElementById("uiLanguage"),
   translationMode: document.querySelectorAll("input[name='translationMode']"),
   targetLang: document.getElementById("targetLang"),
-  autoLoad: document.getElementById("autoLoad"),
   aiProvider: document.getElementById("aiProvider"),
   aiApiKey: document.getElementById("aiApiKey"),
   aiModel: document.getElementById("aiModel")
@@ -62,7 +61,6 @@ const translations = {
     subtitleOutputTitle: "Subtitle Output",
     subtitleOutputCopy: "Language and display behavior",
     translationLanguage: "Translation language",
-    autoLoad: "Auto-load completed subtitles",
     cacheTitle: "Cache",
     cacheCopy: "Local subtitle task state",
     clearCache: "Clear local cache",
@@ -141,7 +139,6 @@ const translations = {
     subtitleOutputTitle: "字幕输出",
     subtitleOutputCopy: "语言和显示行为",
     translationLanguage: "翻译语言",
-    autoLoad: "自动加载已完成字幕",
     cacheTitle: "缓存",
     cacheCopy: "本地字幕任务状态",
     clearCache: "清空本地缓存",
@@ -220,7 +217,6 @@ const translations = {
     subtitleOutputTitle: "字幕出力",
     subtitleOutputCopy: "言語と表示の設定",
     translationLanguage: "翻訳言語",
-    autoLoad: "完了した字幕を自動読み込み",
     cacheTitle: "キャッシュ",
     cacheCopy: "ローカル字幕タスクの状態",
     clearCache: "ローカルキャッシュを削除",
@@ -322,7 +318,6 @@ async function load() {
   fields.apiBase.value = normalizeApiBase(settings.apiBase);
   setTranslationMode(settings.translationMode || "user");
   fields.targetLang.value = settings.targetLang || "zh-Hans";
-  fields.autoLoad.checked = settings.autoLoad !== false;
   clearPersonalAiFields();
 
   await chrome.storage.local.set({
@@ -330,6 +325,7 @@ async function load() {
       ...settings,
       apiBase: fields.apiBase.value,
       uiLanguage: currentLanguage,
+      autoLoad: true,
       translationMode: getTranslationMode()
     }
   });
@@ -495,7 +491,7 @@ document.getElementById("save").addEventListener("click", async () => {
       apiBase: normalizeApiBase(fields.apiBase.value),
       translationMode: getTranslationMode(),
       targetLang: fields.targetLang.value || "zh-Hans",
-      autoLoad: fields.autoLoad.checked,
+      autoLoad: true,
       aiProvider: fields.aiProvider.value,
       aiModel: fields.aiModel.value,
       aiModels: [...fields.aiModel.options].map((option) => option.value).filter(Boolean)

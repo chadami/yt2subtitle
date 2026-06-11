@@ -64,6 +64,7 @@ create table if not exists caption_sources (
   video_id text not null references videos(video_id) on delete cascade,
   source_lang text not null,
   caption_type text not null check (caption_type in ('manual', 'auto')),
+  cue_hash text,
   raw_cues_json jsonb not null,
   clean_cues_json jsonb,
   created_at timestamptz not null default now()
@@ -104,6 +105,10 @@ create table if not exists translated_subtitles (
 
 create index if not exists translation_jobs_video_lang_idx on translation_jobs(video_id, source_lang, target_lang, status);
 create index if not exists translated_subtitles_video_lang_idx on translated_subtitles(video_id, source_lang, target_lang);
+alter table caption_sources add column if not exists cue_hash text;
+create unique index if not exists caption_sources_unique_cue_hash_idx
+  on caption_sources(video_id, source_lang, caption_type, cue_hash)
+  where cue_hash is not null;
 
 alter table translation_jobs add column if not exists provider_mode text not null default 'system';
 alter table translation_jobs add column if not exists ai_provider text;

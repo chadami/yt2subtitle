@@ -77,6 +77,9 @@ async function createSubtitleJob(payload) {
       videoId: payload.videoId,
       title: payload.video.title,
       url: payload.video.url,
+      sourceLang: payload.sourceLang || "en",
+      targetLang: payload.targetLang || "zh-Hans",
+      translationMode,
       createdAt: Date.now()
     }
   ];
@@ -122,9 +125,10 @@ async function getJobStatus(jobId) {
 }
 
 async function checkSubtitleJobs() {
-  const { pendingJobs = [], settings = {} } = await chrome.storage.local.get([
+  const { pendingJobs = [], settings = {}, sessionToken } = await chrome.storage.local.get([
     "pendingJobs",
-    "settings"
+    "settings",
+    "sessionToken"
   ]);
   if (!pendingJobs.length) return;
   const apiBase = normalizeApiBase(settings.apiBase);
@@ -134,7 +138,12 @@ async function checkSubtitleJobs() {
     try {
       const response = await safeFetch(`${apiBase}/api/jobs/${job.jobId}`);
       const status = await response.json();
-      if (status.status !== "completed" && status.status !== "failed" && status.status !== "cancelled") {
+      if (status.status === "completed") {
+        await cacheCompletedSubtitle(job, settings, sessionToken).catch(() => {});
+        await notifySubtitleReady(job).catch(() => {});
+      } else if (status.status === "failed") {
+        await notifySubtitleFailed(job, status.error).catch(() => {});
+      } else if (status.status !== "cancelled") {
         stillPending.push(job);
       }
     } catch {
@@ -143,6 +152,37 @@ async function checkSubtitleJobs() {
   }
   await chrome.storage.local.set({ pendingJobs: stillPending });
   if (stillPending.length) ensureJobAlarm();
+}
+
+async function cacheCompletedSubtitle(job, settings, sessionToken) {
+  if (!job.videoId) return;
+  await getSubtitleByVideo({
+    videoId: job.videoId,
+    sourceLang: job.sourceLang || "en",
+    targetLang: job.targetLang || settings.targetLang || "zh-Hans",
+    translationMode: job.translationMode || settings.translationMode || "user",
+    sessionToken
+  });
+}
+
+async function notifySubtitleReady(job) {
+  if (!chrome.notifications) return;
+  await chrome.notifications.create(`subtitle-ready-${job.jobId}`, {
+    type: "basic",
+    iconUrl: "icons/icon-128.png",
+    title: "AI subtitles ready",
+    message: job.title || "Your translated subtitles are ready."
+  });
+}
+
+async function notifySubtitleFailed(job, error) {
+  if (!chrome.notifications) return;
+  await chrome.notifications.create(`subtitle-failed-${job.jobId}`, {
+    type: "basic",
+    iconUrl: "icons/icon-128.png",
+    title: "AI subtitle generation failed",
+    message: error || job.title || "Open the extension popup to try again."
+  });
 }
 
 async function safeFetch(url, options) {

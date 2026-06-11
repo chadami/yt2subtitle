@@ -104,10 +104,6 @@ async function tryLoadSubtitle() {
     return;
   }
   const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
-  if (settings.autoLoad === false) {
-    clearOverlay();
-    return;
-  }
   const targetLang = settings.targetLang || "zh-Hans";
   const data = await chrome.runtime.sendMessage({
     type: "GET_SUBTITLE_BY_VIDEO",

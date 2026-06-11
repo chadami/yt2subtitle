@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import { Router } from "express";
 import { z } from "zod";
 import { systemAiConfig } from "../ai.js";
@@ -13,6 +14,15 @@ const cueSchema = z.object({
   end: z.number(),
   text: z.string()
 });
+
+function hashRawCues(rawCues: Array<z.infer<typeof cueSchema>>) {
+  const stableCues = rawCues.map((cue) => ({
+    start: Number(cue.start.toFixed(3)),
+    end: Number(cue.end.toFixed(3)),
+    text: cue.text.trim()
+  }));
+  return crypto.createHash("sha256").update(JSON.stringify(stableCues)).digest("hex");
+}
 
 jobsRouter.get("/history", async (req, res, next) => {
   try {
@@ -87,10 +97,15 @@ jobsRouter.post("/", async (req, res, next) => {
       [input.video.videoId, input.video.url, input.video.title, input.video.channel, input.video.description]
     );
 
+    const cueHash = hashRawCues(input.rawCues);
     const caption = await query<{ id: string }>(
-      `insert into caption_sources (video_id, source_lang, caption_type, raw_cues_json)
-       values ($1, $2, $3, $4) returning id`,
-      [input.video.videoId, input.sourceLang, input.captionType, JSON.stringify(input.rawCues)]
+      `insert into caption_sources (video_id, source_lang, caption_type, cue_hash, raw_cues_json)
+       values ($1, $2, $3, $4, $5)
+       on conflict (video_id, source_lang, caption_type, cue_hash)
+       where cue_hash is not null
+       do update set raw_cues_json = caption_sources.raw_cues_json
+       returning id`,
+      [input.video.videoId, input.sourceLang, input.captionType, cueHash, JSON.stringify(input.rawCues)]
     );
 
     const job = await query<{ id: string }>(
