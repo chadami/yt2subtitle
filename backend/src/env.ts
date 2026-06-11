@@ -9,7 +9,7 @@ const envSchema = z.object({
   REDIS_URL: z.string().min(1),
   DEEPSEEK_API_KEY: z.string().min(1),
   DEEPSEEK_API_BASE: z.string().url().default("https://api.deepseek.com"),
-  DEEPSEEK_MODEL: z.string().default("deepseek-v4-pro"),
+  DEEPSEEK_MODEL: z.string().default("deepseek-v4-flash"),
   EMAIL_PROVIDER: z.enum(["local", "resend"]).default("local"),
   EMAIL_FROM: z.string().default("YouTube AI Subtitle <login@example.com>"),
   RESEND_API_KEY: z.string().optional(),

@@ -47,7 +47,7 @@ python3 ai_youtube_subtitle.py 'https://www.youtube.com/watch?v=VIDEO_ID' \
 ```bash
 python3 ai_youtube_subtitle.py 'https://www.youtube.com/watch?v=VIDEO_ID' \
   --provider deepseek \
-  --model deepseek-v4-pro \
+  --model deepseek-v4-flash \
   --source-lang en \
   --target-lang zh-Hans \
   --output output.zh.vtt
@@ -75,7 +75,7 @@ python3 ai_youtube_subtitle.py 'https://www.youtube.com/watch?v=VIDEO_ID' --no-a
 
 - 也可以不改脚本，继续用环境变量。
 - `DEEPSEEK_API_KEY`：使用 DeepSeek 时必填。
-- `DEEPSEEK_MODEL`：可选，默认 `deepseek-v4-pro`。
+- `DEEPSEEK_MODEL`：可选，默认 `deepseek-v4-flash`。
 - `DEEPSEEK_API_BASE`：可选，默认 `https://api.deepseek.com`。
 - `OPENAI_API_KEY`：使用 OpenAI 时必填。
 - `OPENAI_MODEL`：可选，默认 `gpt-4.1-mini`。
