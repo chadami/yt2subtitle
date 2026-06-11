@@ -44,13 +44,7 @@
         width: 32px;
         height: 32px;
         border-radius: 5px;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        display: grid;
-        place-items: center;
-        color: var(--ink);
-        font-weight: 650;
-        letter-spacing: 0;
+        display: block;
       }
 
       h1 {
@@ -273,7 +267,7 @@
   <body>
     <div class="wrap">
       <header>
-        <div class="mark">AI</div>
+        <img class="mark" src="icons/icon-32.png" alt="" />
         <div>
           <h1>YouTube AI Subtitle</h1>
           <p class="caption" data-i18n="caption">Translate current video</p>
@@ -284,7 +278,7 @@
       <div id="notice" class="notice hidden"></div>
 
       <div id="confirmPanel" class="confirm-panel hidden">
-        <p id="confirmTitle" class="confirm-title" data-i18n="confirmTitle">Confirm generation</p>
+        <p id="confirmTitle" class="confirm-title" data-i18n="confirmTitle">Generation details</p>
         <div class="facts">
           <div class="fact"><span data-i18n="captionSource">Caption source</span><strong id="summaryCaptionType">-</strong></div>
           <div class="fact"><span data-i18n="sourceLanguage">Source language</span><strong id="summarySourceLang">-</strong></div>
@@ -292,7 +286,6 @@
           <div class="fact"><span data-i18n="apiMode">API mode</span><strong id="summaryApiMode">-</strong></div>
           <div class="fact"><span data-i18n="cueCount">Cue count</span><strong id="summaryCueCount">-</strong></div>
           <div class="fact"><span data-i18n="estimatedTime">Estimated time</span><strong id="summaryEstimatedTime">-</strong></div>
-          <div class="fact"><span data-i18n="estimatedCost">Estimated cost</span><strong id="summaryEstimatedCost">-</strong></div>
         </div>
       </div>
 

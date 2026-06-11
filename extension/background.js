@@ -92,16 +92,23 @@ async function getSubtitleByVideo(message) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
   const translationMode = message.translationMode || settings.translationMode || "user";
+  const sourceLang = message.sourceLang || "";
+  const targetLang = message.targetLang || "zh-Hans";
   const cacheKey = subtitleCacheKey(
     message.videoId,
-    message.sourceLang || "en",
-    message.targetLang || "zh-Hans",
+    sourceLang || "any",
+    targetLang,
     translationMode
   );
   const cached = await getCachedSubtitle(cacheKey);
   if (cached) return cached;
 
-  const url = `${apiBase}/api/subtitles/by-video/${message.videoId}?sourceLang=${encodeURIComponent(message.sourceLang || "en")}&targetLang=${encodeURIComponent(message.targetLang || "zh-Hans")}&translationMode=${encodeURIComponent(translationMode)}`;
+  const params = new URLSearchParams({
+    targetLang,
+    translationMode
+  });
+  if (sourceLang) params.set("sourceLang", sourceLang);
+  const url = `${apiBase}/api/subtitles/by-video/${message.videoId}?${params.toString()}`;
   const response = await safeFetch(url, {
     headers: translationMode === "user" && message.sessionToken
       ? { Authorization: `Bearer ${message.sessionToken}` }

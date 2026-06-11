@@ -20,13 +20,11 @@ const summaryTargetLang = document.getElementById("summaryTargetLang");
 const summaryApiMode = document.getElementById("summaryApiMode");
 const summaryCueCount = document.getElementById("summaryCueCount");
 const summaryEstimatedTime = document.getElementById("summaryEstimatedTime");
-const summaryEstimatedCost = document.getElementById("summaryEstimatedCost");
 let activeTabId = null;
 let activeVideoId = "";
 let subtitlesReady = false;
 let pollTimer = null;
 let currentLanguage = "en";
-let pendingGeneration = null;
 
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
@@ -42,23 +40,20 @@ const translations = {
     position: "Position",
     backgroundOpacity: "Background opacity",
     generate: "Generate AI subtitles",
-    confirmTitle: "Confirm generation",
+    confirmTitle: "Generation details",
     captionSource: "Caption source",
     sourceLanguage: "Source language",
     targetLanguage: "Target language",
     apiMode: "API mode",
     cueCount: "Cue count",
     estimatedTime: "Estimated time",
-    estimatedCost: "Estimated cost",
-    personalApiCost: "Provider billing",
-    systemApiCost: "Platform credits",
     personalApiMode: "Personal API",
     systemApiMode: "System API",
     manualCaptions: "Manual captions",
     autoCaptions: "Auto captions",
     autoCaptionNotice: "This video only has YouTube auto captions. Translation quality may be limited by the original transcript.",
     longVideoNotice: "This may take a while. You can close this popup; Chrome will notify you when subtitles are ready.",
-    readyToConfirm: "Review the subtitle source and generation estimate, then confirm.",
+    readyToConfirm: "Subtitle source and generation estimate are shown below.",
     settings: "Settings",
     openYoutube: "Open a YouTube video page to generate AI subtitles.",
     noVideo: "No video detected.",
@@ -66,7 +61,6 @@ const translations = {
     extractingStatus: "Extracting video title and captions...",
     generatingStatus: "Generating subtitles. {count} cues found from {type} captions ({lang}).",
     checkingCaptions: "Checking available captions...",
-    confirmGenerate: "Confirm and generate",
     failedCreate: "Failed to create subtitle job.",
     generatingShort: "Generating subtitles...",
     readyLoaded: "AI subtitles are ready and loaded.",
@@ -83,23 +77,20 @@ const translations = {
     position: "位置",
     backgroundOpacity: "背景透明度",
     generate: "生成 AI 字幕",
-    confirmTitle: "确认生成",
+    confirmTitle: "生成信息",
     captionSource: "字幕来源",
     sourceLanguage: "原始语言",
     targetLanguage: "目标语言",
     apiMode: "API 模式",
     cueCount: "字幕条数",
     estimatedTime: "预计耗时",
-    estimatedCost: "成本预期",
-    personalApiCost: "服务商计费",
-    systemApiCost: "平台额度",
     personalApiMode: "个人 API",
     systemApiMode: "系统 API",
     manualCaptions: "人工字幕",
     autoCaptions: "自动字幕",
     autoCaptionNotice: "当前使用 YouTube 自动识别字幕，翻译质量会受原始字幕准确度影响。",
     longVideoNotice: "生成可能需要一段时间。你可以关闭弹窗，完成后 Chrome 会通知你。",
-    readyToConfirm: "请确认字幕来源和预计信息，然后开始生成。",
+    readyToConfirm: "字幕来源和预计信息如下，已开始生成。",
     settings: "设置",
     openYoutube: "打开 YouTube 视频页面后生成 AI 字幕。",
     noVideo: "未检测到视频。",
@@ -107,7 +98,6 @@ const translations = {
     extractingStatus: "正在提取视频标题和字幕...",
     generatingStatus: "正在生成字幕。已从{type}字幕中找到 {count} 条字幕（{lang}）。",
     checkingCaptions: "正在检查可用字幕...",
-    confirmGenerate: "确认并生成",
     failedCreate: "创建字幕任务失败。",
     generatingShort: "正在生成字幕...",
     readyLoaded: "AI 字幕已生成并加载。",
@@ -124,23 +114,20 @@ const translations = {
     position: "位置",
     backgroundOpacity: "背景の不透明度",
     generate: "AI 字幕を生成",
-    confirmTitle: "生成を確認",
+    confirmTitle: "生成情報",
     captionSource: "字幕ソース",
     sourceLanguage: "元の言語",
     targetLanguage: "翻訳先言語",
     apiMode: "API モード",
     cueCount: "字幕数",
     estimatedTime: "推定時間",
-    estimatedCost: "推定コスト",
-    personalApiCost: "プロバイダー課金",
-    systemApiCost: "プラットフォーム枠",
     personalApiMode: "個人 API",
     systemApiMode: "システム API",
     manualCaptions: "手動字幕",
     autoCaptions: "自動字幕",
     autoCaptionNotice: "YouTube の自動字幕を使用しています。翻訳品質は元字幕の精度に影響されます。",
     longVideoNotice: "時間がかかる場合があります。このポップアップを閉じても、完了時に Chrome が通知します。",
-    readyToConfirm: "字幕ソースと見積もりを確認してから生成してください。",
+    readyToConfirm: "字幕ソースと見積もりを表示し、生成を開始しました。",
     settings: "設定",
     openYoutube: "YouTube の動画ページを開いて AI 字幕を生成してください。",
     noVideo: "動画が検出されません。",
@@ -148,7 +135,6 @@ const translations = {
     extractingStatus: "動画タイトルと字幕を抽出中...",
     generatingStatus: "字幕を生成中。{type} 字幕から {count} 件を検出しました（{lang}）。",
     checkingCaptions: "利用可能な字幕を確認中...",
-    confirmGenerate: "確認して生成",
     failedCreate: "字幕タスクの作成に失敗しました。",
     generatingShort: "字幕を生成中...",
     readyLoaded: "AI 字幕の生成と読み込みが完了しました。",
@@ -203,39 +189,25 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
 generate.addEventListener("click", async () => {
   if (!activeTabId) return;
   const forceRegenerate = subtitlesReady;
-  if (!pendingGeneration) {
-    setButtonState("extracting", false);
-    status.textContent = t("checkingCaptions");
-    hideNotice();
-    hideConfirmPanel();
-    try {
-      const prepared = await chrome.tabs.sendMessage(activeTabId, {
-        type: "PREPARE_AI_SUBTITLES"
-      });
-      if (!prepared?.ok) throw new Error(prepared?.error || t("failedCreate"));
-      pendingGeneration = prepared;
-      renderGenerationSummary(prepared.summary);
-      status.textContent = t("readyToConfirm");
-      setButtonState("confirm-generate", true);
-    } catch (error) {
-      status.textContent = actionableError(error);
-      setButtonState(subtitlesReady ? "ready-regenerate" : "ready-generate", true);
-    }
-    return;
-  }
-
-  setButtonState("generating", false);
-  status.textContent = t("extractingStatus");
+  setButtonState("extracting", false);
+  status.textContent = t("checkingCaptions");
+  hideNotice();
+  hideConfirmPanel();
   try {
+    const prepared = await chrome.tabs.sendMessage(activeTabId, {
+      type: "PREPARE_AI_SUBTITLES"
+    });
+    if (!prepared?.ok) throw new Error(prepared?.error || t("failedCreate"));
+    renderGenerationSummary(prepared.summary);
+    status.textContent = t("readyToConfirm");
+    setButtonState("generating", false);
     const result = await chrome.tabs.sendMessage(activeTabId, {
       type: "GENERATE_AI_SUBTITLES",
       forceRegenerate,
-      preparedPayload: pendingGeneration.payload
+      preparedPayload: prepared.payload
     });
     if (!result?.ok) throw new Error(result?.error || t("failedCreate"));
-    const summary = pendingGeneration.summary;
-    pendingGeneration = null;
-    hideConfirmPanel();
+    const summary = prepared.summary;
     showWaitingNotice(summary);
     status.textContent = t("generatingStatus", {
       count: result.rawCueCount,
@@ -256,7 +228,6 @@ for (const control of [fontSize, positionPercent, backgroundOpacity]) {
 }
 
 async function refreshInitialSubtitleState() {
-  pendingGeneration = null;
   hideConfirmPanel();
   hideNotice();
   const pendingJob = await findPendingJobForActiveVideo();
@@ -295,7 +266,6 @@ async function getExistingSubtitle() {
   return chrome.runtime.sendMessage({
     type: "GET_SUBTITLE_BY_VIDEO",
     videoId: activeVideoId,
-    sourceLang: "en",
     targetLang: settings.targetLang || "zh-Hans",
     translationMode: settings.translationMode || "user",
     sessionToken
@@ -322,7 +292,6 @@ async function pollJob(jobId) {
       await chrome.runtime.sendMessage({ type: "CHECK_SUBTITLE_JOBS" }).catch(() => {});
       await loadSubtitlesIntoPage();
       subtitlesReady = true;
-      pendingGeneration = null;
       showSubtitleControls();
       hideConfirmPanel();
       hideNotice();
@@ -360,8 +329,6 @@ function setButtonState(state, enabled) {
     generateText.textContent = t("extracting");
   } else if (state === "generating") {
     generateText.textContent = t("generating");
-  } else if (state === "confirm-generate") {
-    generateText.textContent = t("confirmGenerate");
   } else if (state === "ready-regenerate") {
     generateText.textContent = t("regenerate");
   } else {
@@ -391,7 +358,6 @@ function renderGenerationSummary(summary) {
   summaryApiMode.textContent = summary.translationMode === "system" ? t("systemApiMode") : t("personalApiMode");
   summaryCueCount.textContent = String(summary.rawCueCount || 0);
   summaryEstimatedTime.textContent = estimateDurationText(summary);
-  summaryEstimatedCost.textContent = summary.translationMode === "system" ? t("systemApiCost") : t("personalApiCost");
   confirmPanel.classList.remove("hidden");
   const notices = [];
   if (summary.captionType === "auto") notices.push(t("autoCaptionNotice"));

@@ -108,7 +108,6 @@ async function tryLoadSubtitle() {
   const data = await chrome.runtime.sendMessage({
     type: "GET_SUBTITLE_BY_VIDEO",
     videoId,
-    sourceLang: "en",
     targetLang,
     translationMode: settings.translationMode || "user",
     sessionToken
