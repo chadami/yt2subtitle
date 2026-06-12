@@ -4,7 +4,7 @@ import { query } from "./db.js";
 import { sendSubtitleReadyEmail } from "./email.js";
 import { redisConnection } from "./queue.js";
 import { loadUserAiConfig } from "./routes/ai.js";
-import { chunkCues, resolveOverlaps, sanitizeTiming, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
+import { chunkCues, enforceReadableDurations, resolveOverlaps, sanitizeTiming, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
 
 function maxCharsForDuration(duration: number) {
   if (duration < 1.2) return 8;
@@ -82,7 +82,7 @@ async function processSubtitleJob(jobId: string) {
   }
 
   await query("update translation_jobs set status = 'compressing', progress = 82, updated_at = now() where id = $1", [jobId]);
-  const timed = sanitizeTiming(translated);
+  const timed = enforceReadableDurations(sanitizeTiming(translated));
   const compressed: TranslatedCue[] = [];
   for (const cue of timed) {
     const maxChars = maxCharsForDuration(cue.end - cue.start);
@@ -97,7 +97,7 @@ async function processSubtitleJob(jobId: string) {
   }
 
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1", [jobId]);
-  const finalCues = sanitizeTiming(compressed);
+  const finalCues = enforceReadableDurations(sanitizeTiming(compressed));
   const vtt = toVtt(finalCues);
   await query(
     `insert into translated_subtitles (

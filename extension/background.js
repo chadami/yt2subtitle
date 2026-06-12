@@ -94,24 +94,38 @@ async function getSubtitleByVideo(message) {
   const translationMode = message.translationMode || settings.translationMode || "user";
   const sourceLang = message.sourceLang || "";
   const targetLang = message.targetLang || "zh-Hans";
-  const cacheKey = subtitleCacheKey(
-    message.videoId,
-    sourceLang || "any",
-    targetLang,
-    translationMode
-  );
-  const cached = await getCachedSubtitle(cacheKey);
-  if (cached) return cached;
+  const modes = [translationMode, translationMode === "user" ? "system" : "user"];
+  for (const mode of modes) {
+    const cached = await getCachedSubtitle(subtitleCacheKey(
+      message.videoId,
+      sourceLang || "any",
+      targetLang,
+      mode
+    ));
+    if (cached) return cached;
 
-  const params = new URLSearchParams({
-    targetLang,
-    translationMode
-  });
+    const data = await fetchSubtitleByVideo({
+      apiBase,
+      videoId: message.videoId,
+      sourceLang,
+      targetLang,
+      translationMode: mode,
+      sessionToken: message.sessionToken
+    });
+    if (data.status === "completed") return data;
+  }
+  return { status: "missing" };
+}
+
+async function fetchSubtitleByVideo({ apiBase, videoId, sourceLang, targetLang, translationMode, sessionToken }) {
+  if (translationMode === "user" && !sessionToken) return { status: "missing" };
+  const cacheKey = subtitleCacheKey(videoId, sourceLang || "any", targetLang, translationMode);
+  const params = new URLSearchParams({ targetLang, translationMode });
   if (sourceLang) params.set("sourceLang", sourceLang);
-  const url = `${apiBase}/api/subtitles/by-video/${message.videoId}?${params.toString()}`;
+  const url = `${apiBase}/api/subtitles/by-video/${videoId}?${params.toString()}`;
   const response = await safeFetch(url, {
-    headers: translationMode === "user" && message.sessionToken
-      ? { Authorization: `Bearer ${message.sessionToken}` }
+    headers: translationMode === "user" && sessionToken
+      ? { Authorization: `Bearer ${sessionToken}` }
       : {}
   });
   if (!response.ok) return { status: "missing" };

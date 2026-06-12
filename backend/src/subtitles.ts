@@ -91,7 +91,7 @@ export function chunkCues(cues: CleanCue[], maxChars = 4200) {
 }
 
 export function sanitizeTiming(cues: TranslatedCue[]) {
-  const sorted = cues.sort((a, b) => a.start - b.start || a.end - b.end);
+  const sorted = [...cues].sort((a, b) => a.start - b.start || a.end - b.end);
   const output: TranslatedCue[] = [];
   for (const cue of sorted) {
     let start = cue.start;
@@ -104,6 +104,48 @@ export function sanitizeTiming(cues: TranslatedCue[]) {
     output.push({ start, end, text: cue.text });
   }
   return output;
+}
+
+function visibleTextLength(text: string) {
+  return text.replace(/\s+/g, "").length;
+}
+
+function minReadableDuration(text: string) {
+  const length = visibleTextLength(text);
+  if (length <= 6) return 0.45;
+  if (length <= 10) return 0.8;
+  if (length <= 16) return 1.0;
+  if (length <= 24) return 1.35;
+  if (length <= 34) return 1.7;
+  if (length <= 46) return 2.1;
+  return 2.5;
+}
+
+export function enforceReadableDurations(cues: TranslatedCue[]) {
+  const output = sanitizeTiming(cues).map((cue) => ({ ...cue }));
+  const minGap = 0.04;
+
+  for (let index = 0; index < output.length; index += 1) {
+    const cue = output[index];
+    const desiredDuration = minReadableDuration(cue.text);
+    let missing = desiredDuration - (cue.end - cue.start);
+    if (missing <= 0) continue;
+
+    const next = output[index + 1];
+    const latestEnd = next ? Math.max(cue.start, next.start - minGap) : cue.end + missing;
+    const extendBy = Math.min(missing, Math.max(0, latestEnd - cue.end));
+    cue.end += extendBy;
+    missing -= extendBy;
+
+    if (missing <= 0) continue;
+
+    const previous = output[index - 1];
+    const earliestStart = previous ? previous.end + minGap : 0;
+    const pullBy = Math.min(missing, Math.max(0, cue.start - earliestStart));
+    cue.start -= pullBy;
+  }
+
+  return sanitizeTiming(output);
 }
 
 export function toVtt(cues: TranslatedCue[]) {
