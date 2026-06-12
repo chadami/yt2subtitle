@@ -314,19 +314,40 @@ function applyI18n() {
   for (const node of document.querySelectorAll("[data-i18n]")) {
     node.textContent = t(node.dataset.i18n);
   }
-  nodes.aiStatus.textContent = nodes.aiStatus.dataset.dynamicText || t("aiStatusDefault");
+  nodes.aiStatus.textContent = renderDynamicText(nodes.aiStatus) || t("aiStatusDefault");
   updateTranslationModeHelp();
-  if (nodes.message.dataset.dynamicText) nodes.message.textContent = nodes.message.dataset.dynamicText;
+  if (nodes.message.dataset.dynamicText || nodes.message.dataset.dynamicKey) {
+    nodes.message.textContent = renderDynamicText(nodes.message);
+  }
   renderHistoryRows(lastHistoryRows);
 }
 
 function setDynamicText(node, value) {
+  delete node.dataset.dynamicKey;
+  delete node.dataset.dynamicValues;
   node.dataset.dynamicText = value;
   node.textContent = value;
 }
 
+function setDynamicI18n(node, key, values = {}) {
+  delete node.dataset.dynamicText;
+  node.dataset.dynamicKey = key;
+  node.dataset.dynamicValues = JSON.stringify(values);
+  node.textContent = renderDynamicText(node);
+}
+
+function renderDynamicText(node) {
+  if (node.dataset.dynamicKey) {
+    const values = node.dataset.dynamicValues ? JSON.parse(node.dataset.dynamicValues) : {};
+    return t(node.dataset.dynamicKey, values);
+  }
+  return node.dataset.dynamicText || "";
+}
+
 function clearDynamicText(node) {
   delete node.dataset.dynamicText;
+  delete node.dataset.dynamicKey;
+  delete node.dataset.dynamicValues;
   node.textContent = "";
 }
 
@@ -341,6 +362,7 @@ async function load() {
     "sessionToken",
     "accountEmail"
   ]);
+  hasVerifiedSession = Boolean(sessionToken);
   currentLanguage = settings.uiLanguage || "en";
   fields.uiLanguage.value = currentLanguage;
   applyI18n();
@@ -417,7 +439,7 @@ async function loadAiSettings(sessionToken) {
     fields.aiProvider.value = data.provider || fields.aiProvider.value;
     setModelOptions(Array.isArray(data.models) ? data.models : [], data.model || "");
     fields.aiApiKey.value = data.hasApiKey ? API_KEY_MASK : "";
-    setDynamicText(nodes.aiStatus, t("apiSavedModel", { model: data.model || t("notSelected") }));
+    setDynamicI18n(nodes.aiStatus, "apiSavedModel", { model: data.model || t("notSelected") });
   } catch (error) {
     setDynamicText(nodes.aiStatus, t("cannotLoadAi", { message: error.message }));
   }
@@ -496,6 +518,7 @@ function setLoggedIn(email) {
   nodes.accountLoggedIn.classList.remove("hidden");
   nodes.accountLoggedOut.classList.add("hidden");
   updatePersonalAiVisibility();
+  if (!nodes.historyView.classList.contains("hidden")) renderHistoryRows(lastHistoryRows);
 }
 
 function setLoggedOut() {
@@ -649,9 +672,11 @@ fields.uiLanguage.addEventListener("change", async () => {
 async function loadHistory() {
   const { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
   if (!sessionToken) {
+    hasVerifiedSession = false;
     renderHistoryRows([]);
     return;
   }
+  hasVerifiedSession = true;
 
   nodes.historyRows.innerHTML = `<tr><td colspan="7">${escapeHtml(t("loadingHistory"))}</td></tr>`;
   try {
@@ -682,33 +707,43 @@ function renderHistoryRows(rows) {
   }
   nodes.historyRows.innerHTML = rows.map((row) => `
     <tr>
-      <td>${escapeHtml(formatDate(row.createdAt))}</td>
-      <td>${escapeHtml(row.title || t("untitledVideo"))}</td>
-      <td>${escapeHtml(formatLanguagePair(row))}</td>
-      <td>${escapeHtml(formatCaptionSource(row.captionType))}</td>
-      <td>${escapeHtml(formatApiMode(row))}</td>
-      <td><span class="status-text">${escapeHtml(formatJobStatus(row.status))}</span></td>
+      <td>${renderDateTime(row.createdAt)}</td>
+      <td class="history-video" title="${escapeAttribute(row.title || t("untitledVideo"))}">${escapeHtml(row.title || t("untitledVideo"))}</td>
+      <td>${renderLanguagePair(row)}</td>
+      <td class="history-source">${escapeHtml(formatCaptionSource(row.captionType))}</td>
+      <td>${renderApiMode(row)}</td>
+      <td>${renderJobStatus(row.status)}</td>
       <td><a href="${escapeAttribute(row.url || "#")}" target="_blank" rel="noreferrer">${escapeHtml(t("openVideo"))}</a></td>
     </tr>
   `).join("");
 }
 
-function formatDate(value) {
+function renderDateTime(value) {
   if (!value) return "-";
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "-";
-  return date.toLocaleString();
+  return `
+    <div class="history-stack">
+      <strong>${escapeHtml(date.toLocaleDateString())}</strong>
+      <span>${escapeHtml(date.toLocaleTimeString())}</span>
+    </div>
+  `;
 }
 
-function formatJobStatus(status) {
-  if (status === "completed") return t("completed");
-  if (status === "failed") return t("failed");
-  if (status === "cancelled") return t("failed");
-  return t("processing");
+function renderJobStatus(status) {
+  const text = status === "completed" ? t("completed")
+    : status === "failed" || status === "cancelled" ? t("failed")
+      : t("processing");
+  return `<span class="status-text">${escapeHtml(text)}</span>`;
 }
 
-function formatLanguagePair(row) {
-  return `${row.sourceLang || "-"} -> ${row.targetLang || "-"}`;
+function renderLanguagePair(row) {
+  return `
+    <div class="history-stack">
+      <strong>${escapeHtml(row.sourceLang || "-")}</strong>
+      <span>${escapeHtml(row.targetLang || "-")}</span>
+    </div>
+  `;
 }
 
 function formatCaptionSource(captionType) {
@@ -717,9 +752,14 @@ function formatCaptionSource(captionType) {
   return "-";
 }
 
-function formatApiMode(row) {
+function renderApiMode(row) {
   const mode = row.providerMode === "system" ? t("systemApiShort") : t("personalApiShort");
-  return row.model ? `${mode} / ${row.model}` : mode;
+  return `
+    <div class="history-stack">
+      <strong>${escapeHtml(mode)}</strong>
+      <span title="${escapeAttribute(row.model || "-")}">${escapeHtml(row.model || "-")}</span>
+    </div>
+  `;
 }
 
 function escapeHtml(value) {

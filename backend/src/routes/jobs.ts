@@ -87,9 +87,14 @@ jobsRouter.post("/", async (req, res, next) => {
          where video_id = $1 and source_lang = $2 and target_lang = $3
          and provider_mode = $4
          and ($4 = 'system' or user_id = $5)
+         and exists (
+           select 1 from caption_sources c
+           where c.id = translation_jobs.caption_source_id
+           and c.caption_type = $6
+         )
          and status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
          order by created_at desc limit 1`,
-        [input.video.videoId, input.sourceLang, input.targetLang, input.translationMode, userId]
+        [input.video.videoId, input.sourceLang, input.targetLang, input.translationMode, userId, input.captionType]
       );
       if (existing.rows[0]) {
         return res.json({ jobId: existing.rows[0].id, status: existing.rows[0].status });

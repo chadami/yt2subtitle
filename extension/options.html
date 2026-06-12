@@ -388,13 +388,13 @@
       }
 
       .history-table-wrap {
-        overflow-x: auto;
+        overflow-x: hidden;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 720px;
+        table-layout: fixed;
       }
 
       th,
@@ -410,6 +410,46 @@
         font-size: 12px;
         font-weight: 600;
         text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .history-video {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .history-source {
+        white-space: nowrap;
+      }
+
+      .history-stack {
+        display: grid;
+        gap: 2px;
+        min-width: 0;
+      }
+
+      .history-stack strong,
+      .history-stack span {
+        display: block;
+      }
+
+      .history-stack strong {
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .history-stack span {
+        color: var(--muted);
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       td a {
@@ -423,6 +463,7 @@
 
       .status-text {
         font-weight: 600;
+        white-space: nowrap;
       }
 
       .hidden {
@@ -654,6 +695,15 @@
             </div>
             <div class="history-table-wrap">
               <table>
+                <colgroup>
+                  <col style="width: 15%" />
+                  <col style="width: 24%" />
+                  <col style="width: 12%" />
+                  <col style="width: 10%" />
+                  <col style="width: 18%" />
+                  <col style="width: 11%" />
+                  <col style="width: 10%" />
+                </colgroup>
                 <thead>
                   <tr>
                     <th data-i18n="generatedAt">Generated at</th>

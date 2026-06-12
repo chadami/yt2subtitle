@@ -316,9 +316,16 @@ function findBalancedJson(text, marker) {
 function selectCaptionTrack(tracks, preferredLanguage) {
   const candidates = tracks.filter((track) => track.baseUrl);
   const manual = candidates.filter((track) => !track.isAuto);
-  const preferred = candidates.filter((track) => track.languageCode === preferredLanguage);
+  const preferred = candidates.filter((track) => isLanguageMatch(track.languageCode, preferredLanguage));
   const preferredManual = preferred.filter((track) => !track.isAuto);
   return preferredManual[0] || preferred[0] || manual[0] || candidates[0] || null;
+}
+
+function isLanguageMatch(languageCode, preferredLanguage) {
+  const language = (languageCode || "").toLowerCase();
+  const preferred = (preferredLanguage || "").toLowerCase();
+  if (!language || !preferred) return false;
+  return language === preferred || language.startsWith(`${preferred}-`) || preferred.startsWith(`${language}-`);
 }
 
 async function fetchCaptionCues(track) {
