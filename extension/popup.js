@@ -64,6 +64,7 @@ const translations = {
     failedCreate: "Failed to create subtitle job.",
     generatingShort: "Generating subtitles...",
     readyLoaded: "AI subtitles are ready and loaded.",
+    readyNotVisible: "AI subtitles are ready. Play the video or refresh the YouTube page if they do not appear.",
     checkingJob: "Could not check job status.",
     generatingProgress: "Generating subtitles: {status} {progress}%",
     extracting: "Extracting...",
@@ -101,6 +102,7 @@ const translations = {
     failedCreate: "创建字幕任务失败。",
     generatingShort: "正在生成字幕...",
     readyLoaded: "AI 字幕已生成并加载。",
+    readyNotVisible: "AI 字幕已生成。若视频上没有显示，请播放视频或刷新 YouTube 页面。",
     checkingJob: "无法检查任务状态。",
     generatingProgress: "正在生成字幕：{status} {progress}%",
     extracting: "提取中...",
@@ -138,6 +140,7 @@ const translations = {
     failedCreate: "字幕タスクの作成に失敗しました。",
     generatingShort: "字幕を生成中...",
     readyLoaded: "AI 字幕の生成と読み込みが完了しました。",
+    readyNotVisible: "AI 字幕の生成が完了しました。表示されない場合は動画を再生するか、YouTube ページを更新してください。",
     checkingJob: "タスク状態を確認できません。",
     generatingProgress: "字幕を生成中：{status} {progress}%",
     extracting: "抽出中...",
@@ -244,10 +247,10 @@ async function refreshInitialSubtitleState() {
   if (existing?.status === "completed") {
     subtitlesReady = true;
     showSubtitleControls();
-    status.textContent = t("readyLoaded");
     showNotice("");
     setButtonState("ready-regenerate", true);
-    await loadSubtitlesIntoPage();
+    const loadResult = await loadSubtitlesIntoPage();
+    status.textContent = loadResult?.loaded ? t("readyLoaded") : t("readyNotVisible");
     return;
   }
 
@@ -290,12 +293,12 @@ async function pollJob(jobId) {
     if (job.status === "completed") {
       clearJobPolling();
       await chrome.runtime.sendMessage({ type: "CHECK_SUBTITLE_JOBS" }).catch(() => {});
-      await loadSubtitlesIntoPage();
+      const loadResult = await loadSubtitlesIntoPage();
       subtitlesReady = true;
       showSubtitleControls();
       hideConfirmPanel();
       hideNotice();
-      status.textContent = t("readyLoaded");
+      status.textContent = loadResult?.loaded ? t("readyLoaded") : t("readyNotVisible");
       setButtonState("ready-regenerate", true);
     } else if (job.status === "failed" || job.status === "cancelled") {
       clearJobPolling();
@@ -318,8 +321,12 @@ function clearJobPolling() {
 }
 
 async function loadSubtitlesIntoPage() {
-  if (!activeTabId) return;
-  await chrome.tabs.sendMessage(activeTabId, { type: "LOAD_AI_SUBTITLES" }).catch(() => {});
+  if (!activeTabId) return { loaded: false, reason: "no-active-tab" };
+  return chrome.tabs.sendMessage(activeTabId, { type: "LOAD_AI_SUBTITLES" }).catch((error) => ({
+    ok: false,
+    loaded: false,
+    reason: error?.message || String(error)
+  }));
 }
 
 function setButtonState(state, enabled) {

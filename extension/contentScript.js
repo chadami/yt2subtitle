@@ -80,10 +80,29 @@ function clearOverlay() {
   }
 }
 
-function renderSubtitles(cues, videoId) {
+function waitForVideoElement(timeoutMs = 6000) {
   const video = document.querySelector("video");
+  if (video) return Promise.resolve(video);
+
+  return new Promise((resolve) => {
+    const startedAt = Date.now();
+    const timer = setInterval(() => {
+      const nextVideo = document.querySelector("video");
+      if (nextVideo || Date.now() - startedAt >= timeoutMs) {
+        clearInterval(timer);
+        resolve(nextVideo || null);
+      }
+    }, 100);
+  });
+}
+
+async function renderSubtitles(cues, videoId) {
+  const video = await waitForVideoElement();
+  if (!video) {
+    clearOverlay();
+    return { loaded: false, reason: "video-not-ready", cueCount: cues.length };
+  }
   const overlay = ensureOverlay();
-  if (!video) return;
   const generation = ++renderGeneration;
 
   function tick() {
@@ -95,13 +114,14 @@ function renderSubtitles(cues, videoId) {
     requestAnimationFrame(tick);
   }
   tick();
+  return { loaded: true, cueCount: cues.length };
 }
 
 async function tryLoadSubtitle() {
   const videoId = getVideoId();
   if (!videoId) {
     clearOverlay();
-    return;
+    return { loaded: false, reason: "no-video-id" };
   }
   const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
   const targetLang = settings.targetLang || "zh-Hans";
@@ -112,10 +132,11 @@ async function tryLoadSubtitle() {
     translationMode: settings.translationMode || "user",
     sessionToken
   });
-  if (data.status === "completed" && Array.isArray(data.cues)) {
-    renderSubtitles(data.cues, videoId);
+  if (data.status === "completed" && Array.isArray(data.cues) && data.cues.length) {
+    return renderSubtitles(data.cues, videoId);
   } else {
     clearOverlay();
+    return { loaded: false, reason: data.status || "missing", cueCount: 0 };
   }
 }
 
@@ -138,7 +159,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 
   if (message?.type === "LOAD_AI_SUBTITLES") {
     tryLoadSubtitle().then(
-      () => sendResponse({ ok: true }),
+      (result) => sendResponse({ ok: true, ...result }),
       (error) => sendResponse({ ok: false, error: error.message || String(error) })
     );
     return true;
