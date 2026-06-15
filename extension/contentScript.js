@@ -1,6 +1,4 @@
 const OVERLAY_ID = "yt-ai-subtitle-overlay";
-const QUICK_QUEUE_CLASS = "yt-ai-subtitle-quick-queue";
-const QUICK_QUEUE_PROCESSED_ATTR = "data-ai-subtitle-queue-ready";
 const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
@@ -179,10 +177,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 async function prepareAiSubtitles() {
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
-  return prepareAiSubtitlesForVideo(videoId);
-}
 
-async function prepareAiSubtitlesForVideo(videoId) {
   const { settings = {}, clientId, sessionToken, pendingJobs = [] } = await chrome.storage.local.get([
     "settings",
     "clientId",
@@ -231,11 +226,8 @@ async function generateAiSubtitles(forceRegenerate = false, preparedPayload = nu
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
   clearOverlay();
-  return generateAiSubtitlesForVideo(videoId, forceRegenerate, preparedPayload);
-}
 
-async function generateAiSubtitlesForVideo(videoId, forceRegenerate = false, preparedPayload = null) {
-  const prepared = preparedPayload || (await prepareAiSubtitlesForVideo(videoId)).payload;
+  const prepared = preparedPayload || (await prepareAiSubtitles()).payload;
   const data = await chrome.runtime.sendMessage({
     type: "CREATE_SUBTITLE_JOB",
     payload: {
@@ -394,240 +386,12 @@ function normalizeText(text) {
   return text.replace(/\s+/g, " ").trim();
 }
 
-function installQuickQueueStyles() {
-  if (document.getElementById("yt-ai-subtitle-quick-queue-style")) return;
-  const style = document.createElement("style");
-  style.id = "yt-ai-subtitle-quick-queue-style";
-  style.textContent = `
-    .${QUICK_QUEUE_CLASS} {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      position: absolute;
-      right: 8px;
-      bottom: 8px;
-      z-index: 20;
-      border: .5px solid rgba(15, 23, 42, .10);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .94);
-      color: #0f172a;
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, .08);
-      transition: background .16s ease, border-color .16s ease, color .16s ease, opacity .16s ease, transform .16s ease;
-    }
-    ytd-rich-item-renderer[${QUICK_QUEUE_PROCESSED_ATTR}],
-    ytd-video-renderer[${QUICK_QUEUE_PROCESSED_ATTR}],
-    ytd-grid-video-renderer[${QUICK_QUEUE_PROCESSED_ATTR}] {
-      position: relative;
-    }
-    ytd-rich-item-renderer[${QUICK_QUEUE_PROCESSED_ATTR}]:hover > .${QUICK_QUEUE_CLASS},
-    ytd-video-renderer[${QUICK_QUEUE_PROCESSED_ATTR}]:hover > .${QUICK_QUEUE_CLASS},
-    ytd-grid-video-renderer[${QUICK_QUEUE_PROCESSED_ATTR}]:hover > .${QUICK_QUEUE_CLASS},
-    .${QUICK_QUEUE_CLASS}:focus-visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .${QUICK_QUEUE_CLASS}:hover {
-      background: rgba(243, 244, 246, .96);
-      border-color: rgba(15, 23, 42, .16);
-      color: #111827;
-      transform: translateY(-1px);
-    }
-    .${QUICK_QUEUE_CLASS}:disabled {
-      cursor: default;
-      opacity: .78;
-      transform: none;
-    }
-    .${QUICK_QUEUE_CLASS}[data-state="loading"] {
-      background: rgba(243, 244, 246, .96);
-      border-color: rgba(15, 23, 42, .16);
-      pointer-events: none;
-    }
-    .${QUICK_QUEUE_CLASS}[data-state="queued"] {
-      background: rgba(243, 244, 246, .96);
-      border-color: rgba(34, 197, 94, .42);
-      color: #111827;
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, .16), 0 1px 2px rgba(15, 23, 42, .08);
-    }
-    .${QUICK_QUEUE_CLASS}[data-state="error"] {
-      background: #fee2e2;
-      border-color: #fecaca;
-      color: #991b1b;
-    }
-    .${QUICK_QUEUE_CLASS} svg {
-      width: 22px;
-      height: 22px;
-      display: block;
-      filter: drop-shadow(0 0 2px rgba(255,255,255,.34));
-    }
-    .${QUICK_QUEUE_CLASS} .yt-ai-subtitle-mark-stroke {
-      fill: none;
-      stroke: #e0e0e0;
-      stroke-width: 16;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .${QUICK_QUEUE_CLASS}[data-state="loading"] .yt-ai-subtitle-mark-s1 {
-      stroke-dasharray: 30;
-      animation: ytAiSubtitleDrawS1 2.4s ease-out infinite;
-    }
-    .${QUICK_QUEUE_CLASS}[data-state="loading"] .yt-ai-subtitle-mark-s2 {
-      stroke-dasharray: 144;
-      animation: ytAiSubtitleDrawS2 2.4s ease-out infinite;
-    }
-    .${QUICK_QUEUE_CLASS}[data-state="loading"] .yt-ai-subtitle-mark-s3 {
-      stroke-dasharray: 222;
-      animation: ytAiSubtitleDrawS3 2.4s ease-out infinite;
-    }
-    .${QUICK_QUEUE_CLASS}[data-state="loading"] .yt-ai-subtitle-mark-s4 {
-      stroke-dasharray: 122;
-      animation: ytAiSubtitleDrawS4 2.4s ease-out infinite;
-    }
-    @keyframes ytAiSubtitleDrawS1 {
-      0%, 5% { stroke-dashoffset: 30; }
-      12%, 100% { stroke-dashoffset: 0; }
-    }
-    @keyframes ytAiSubtitleDrawS2 {
-      0%, 12% { stroke-dashoffset: 144; }
-      28%, 100% { stroke-dashoffset: 0; }
-    }
-    @keyframes ytAiSubtitleDrawS3 {
-      0%, 28% { stroke-dashoffset: 222; }
-      56%, 100% { stroke-dashoffset: 0; }
-    }
-    @keyframes ytAiSubtitleDrawS4 {
-      0%, 56% { stroke-dashoffset: 122; }
-      76%, 100% { stroke-dashoffset: 0; }
-    }
-    ytd-video-renderer .${QUICK_QUEUE_CLASS} {
-      right: 12px;
-      bottom: 12px;
-    }
-  `;
-  document.documentElement.appendChild(style);
-}
-
-function scanVideoCardsForQuickQueue() {
-  installQuickQueueStyles();
-  const cards = document.querySelectorAll([
-    "ytd-rich-item-renderer",
-    "ytd-video-renderer",
-    "ytd-grid-video-renderer"
-  ].join(","));
-
-  for (const card of cards) {
-    const videoId = getVideoIdFromCard(card);
-    if (!videoId) continue;
-    const existingButton = card.querySelector(`.${QUICK_QUEUE_CLASS}`);
-    if (existingButton) {
-      if (existingButton.dataset.videoId !== videoId) {
-        existingButton.replaceWith(createQuickQueueButton(videoId));
-      }
-      card.setAttribute(QUICK_QUEUE_PROCESSED_ATTR, "true");
-      continue;
-    }
-    if (card.getAttribute(QUICK_QUEUE_PROCESSED_ATTR) === "true") continue;
-    card.setAttribute(QUICK_QUEUE_PROCESSED_ATTR, "true");
-    card.appendChild(createQuickQueueButton(videoId));
-  }
-}
-
-function getVideoIdFromCard(card) {
-  const link = card.querySelector([
-    "a#thumbnail[href*='/watch']",
-    "a#video-title[href*='/watch']",
-    "a.yt-lockup-view-model-wiz__content-image[href*='/watch']",
-    "a[href*='/watch?v=']"
-  ].join(","));
-  if (!link) return "";
-  try {
-    const url = new URL(link.getAttribute("href"), location.origin);
-    return url.searchParams.get("v") || "";
-  } catch {
-    return "";
-  }
-}
-
-function createQuickQueueButton(videoId) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = QUICK_QUEUE_CLASS;
-  button.dataset.videoId = videoId;
-  button.dataset.state = "idle";
-  button.title = "Add to AI subtitle queue";
-  button.setAttribute("aria-label", "Add to AI subtitle queue");
-  setQuickQueueIcon(button, "idle");
-  button.addEventListener("click", async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    await queueVideoFromCard(videoId, button);
-  });
-  return button;
-}
-
-async function queueVideoFromCard(videoId, button) {
-  try {
-    const { pendingJobs = [] } = await chrome.storage.local.get(["pendingJobs"]);
-    if (pendingJobs.some((job) => job.videoId === videoId)) {
-      setQuickQueueState(button, "queued", "Already in AI subtitle queue");
-      return;
-    }
-    setQuickQueueState(button, "loading", "Adding to AI subtitle queue");
-    const prepared = await prepareAiSubtitlesForVideo(videoId);
-    const result = await generateAiSubtitlesForVideo(videoId, false, prepared.payload);
-    if (!result?.ok) throw new Error(result?.error || "Failed to create subtitle job.");
-    setQuickQueueState(button, "queued", "Added to AI subtitle queue");
-  } catch (error) {
-    setQuickQueueState(button, "error", error?.message || String(error));
-    setTimeout(() => setQuickQueueState(button, "idle", "Add to AI subtitle queue"), 3500);
-  }
-}
-
-function setQuickQueueState(button, state, label) {
-  button.dataset.state = state;
-  button.disabled = state === "loading" || state === "queued";
-  button.title = label;
-  button.setAttribute("aria-label", label);
-  setQuickQueueIcon(button, state);
-}
-
-function setQuickQueueIcon(button, state) {
-  button.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
-      <circle cx="128" cy="128" r="128" fill="#C20C0D"/>
-      <path class="yt-ai-subtitle-mark-stroke yt-ai-subtitle-mark-s1" d="M122 64 L127 77"/>
-      <path class="yt-ai-subtitle-mark-stroke yt-ai-subtitle-mark-s2" d="M64 96 L192 96"/>
-      <path class="yt-ai-subtitle-mark-stroke yt-ai-subtitle-mark-s3" d="M160 96 C160 149 117 192 64 192"/>
-      <path class="yt-ai-subtitle-mark-stroke yt-ai-subtitle-mark-s4" d="M101.47 128 C115 166 151 192 192 192"/>
-    </svg>
-  `;
-}
-
-function observeQuickQueueTargets() {
-  scanVideoCardsForQuickQueue();
-  let scanTimer = null;
-  const observer = new MutationObserver(() => {
-    if (scanTimer) return;
-    scanTimer = setTimeout(() => {
-      scanTimer = null;
-      scanVideoCardsForQuickQueue();
-    }, 250);
-  });
-  observer.observe(document.documentElement, { childList: true, subtree: true });
-}
-
 let lastUrl = "";
 setInterval(() => {
   if (location.href !== lastUrl) {
     lastUrl = location.href;
     tryLoadSubtitle();
-    scanVideoCardsForQuickQueue();
   }
 }, 250);
 
 tryLoadSubtitle();
-observeQuickQueueTargets();
