@@ -1,22 +1,10 @@
 import { Worker } from "bullmq";
-import { translateChunk, compressSubtitle, systemAiConfig, type ProviderMode, type AiProvider } from "./ai.js";
+import { translateChunk, systemAiConfig, type ProviderMode, type AiProvider } from "./ai.js";
 import { query } from "./db.js";
 import { sendSubtitleReadyEmail } from "./email.js";
 import { redisConnection } from "./queue.js";
 import { loadUserAiConfig } from "./routes/ai.js";
 import { chunkCues, enforceReadableDurations, resolveOverlaps, sanitizeTiming, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
-
-function maxCharsForDuration(duration: number) {
-  if (duration < 1.2) return 8;
-  if (duration < 2.0) return 14;
-  if (duration < 3.5) return 22;
-  if (duration < 5.0) return 30;
-  return 36;
-}
-
-function visibleLength(text: string) {
-  return text.replace(/\s+/g, "").length;
-}
 
 async function processSubtitleJob(jobId: string) {
   await query("update translation_jobs set status = 'cleaning', progress = 10, updated_at = now() where id = $1", [jobId]);
@@ -81,23 +69,8 @@ async function processSubtitleJob(jobId: string) {
     ]);
   }
 
-  await query("update translation_jobs set status = 'compressing', progress = 82, updated_at = now() where id = $1", [jobId]);
-  const timed = enforceReadableDurations(sanitizeTiming(translated));
-  const compressed: TranslatedCue[] = [];
-  for (const cue of timed) {
-    const maxChars = maxCharsForDuration(cue.end - cue.start);
-    if (visibleLength(cue.text) > maxChars) {
-      compressed.push({
-        ...cue,
-        text: await compressSubtitle(aiConfig, cue.text, cue.end - cue.start, maxChars, record.target_lang)
-      });
-    } else {
-      compressed.push(cue);
-    }
-  }
-
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1", [jobId]);
-  const finalCues = enforceReadableDurations(sanitizeTiming(compressed));
+  const finalCues = enforceReadableDurations(sanitizeTiming(translated));
   const vtt = toVtt(finalCues);
   await query(
     `insert into translated_subtitles (

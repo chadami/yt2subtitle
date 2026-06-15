@@ -235,17 +235,19 @@ function systemPrompt(targetLanguage: string) {
 You are a senior subtitle translator and timing editor.
 
 Use the video title, channel, description, previous context, and next context to understand topic, names, tone, and terminology.
-Translate only raw_cues into natural, concise ${targetLanguage} subtitles.
+Translate only raw_cues into natural, complete ${targetLanguage} subtitles.
 
 Rules:
 - Output strict JSON only.
 - Output cues only for raw_cues.
 - Use source_indexes from raw_cues.
 - Do not output start/end times.
-- Prefer natural spoken Chinese over literal translation.
-- Keep names, terms, numbers, and speaker intent accurate.
-- Compress filler and repeated phrasing.
-- Prefer 8-18 Chinese characters per cue when possible.
+- Prefer natural spoken wording over literal translation.
+- Keep names, terms, numbers, examples, caveats, contrasts, and speaker intent accurate.
+- Do not summarize, compress, or drop meaning-bearing details for readability.
+- Remove only clear ASR disfluencies like "um" or immediate accidental repetitions that carry no meaning.
+- For Chinese, a cue can be around 80-120 visible characters when needed to preserve meaning.
+- If a cue is long, split at punctuation or clause boundaries instead of shortening the content.
 - Do not reuse the same source index in multiple output cues.
 
 Return:
@@ -291,21 +293,4 @@ export async function translateChunk(input: {
     });
   }
   return output;
-}
-
-export async function compressSubtitle(
-  aiConfig: AiConfig,
-  text: string,
-  duration: number,
-  maxChars: number,
-  targetLanguage: string
-) {
-  const data = await chatJson(aiConfig, [
-    {
-      role: "system",
-      content: `Compress one subtitle into natural ${targetLanguage}. Max visible characters: ${maxChars}. Duration: ${duration.toFixed(2)}s. Return strict JSON: {"text":"..."}.`
-    },
-    { role: "user", content: JSON.stringify({ text }) }
-  ], 0.2);
-  return normalizeText(String(data.text || text));
 }

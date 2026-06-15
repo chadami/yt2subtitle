@@ -658,8 +658,8 @@ def make_ai_units(cues: list[CaptionCue], *, max_chars: int = 4200) -> list[list
 def get_max_chars(target_language: str) -> int:
     lang = target_language.lower()
     if any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
-        return 90
-    return 160
+        return 130
+    return 220
 
 
 def split_text_by_punctuation(text: str) -> tuple[str, str]:
@@ -789,10 +789,10 @@ def merge_incomplete_sentence_cues(cues: list[CaptionCue], max_chars: int) -> li
 def system_prompt(target_language: str) -> str:
     target_lang_lower = target_language.lower()
     if any(code in target_lang_lower for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
-        char_limit_rule = "Readability target: prefer <= 75 visible CJK characters per cue, but never omit source meaning to fit this target."
+        char_limit_rule = "Readability target: prefer <= 120 visible CJK characters per cue, but never omit source meaning to fit this target."
         style_rule = "- For CJK languages, prefer natural spoken phrasing with clear rhythm.\n- Avoid stiff phrases like \"因此/所以说/这意味着\" unless the speaker actually sounds formal."
     else:
-        char_limit_rule = "Readability target: prefer <= 140 characters per cue, but never omit source meaning to fit this target."
+        char_limit_rule = "Readability target: prefer <= 200 characters per cue, but never omit source meaning to fit this target."
         style_rule = "- Prefer clear, easily readable subtitle lines."
 
     return f"""
@@ -901,7 +901,6 @@ def translate_groups(
     api_key: str,
     api_base: str,
     provider: str,
-    compress: bool,
     video_context: VideoContext,
 ) -> list[CaptionCue]:
     output: list[CaptionCue] = []
@@ -930,16 +929,7 @@ def translate_groups(
             file=sys.stderr,
         )
     cleaned = sanitize_timing(merged)
-    if not compress:
-        return cleaned
-    return compress_long_cues(
-        cleaned,
-        target_language=target_language,
-        model=model,
-        api_key=api_key,
-        api_base=api_base,
-        provider=provider,
-    )
+    return cleaned
 
 
 def chat_completion_json(
@@ -1172,119 +1162,6 @@ def parse_source_indexes(value: Any) -> list[int]:
     return sorted(set(indexes))
 
 
-def visible_text_len(text: str) -> int:
-    return len(re.sub(r"\s+", "", text))
-
-
-def max_chars_for_duration(duration: float, target_language: str) -> int:
-    lang = target_language.lower()
-    is_cjk = any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"])
-    if is_cjk:
-        if duration < 1.2:
-            return 24
-        if duration < 2.0:
-            return 40
-        if duration < 3.5:
-            return 60
-        if duration < 5.0:
-            return 85
-        return 110
-    else:
-        if duration < 1.2:
-            return 50
-        if duration < 2.0:
-            return 75
-        if duration < 3.5:
-            return 115
-        if duration < 5.0:
-            return 155
-        return 190
-
-
-def compress_long_cues(
-    cues: list[CaptionCue],
-    *,
-    target_language: str,
-    model: str,
-    api_key: str,
-    api_base: str,
-    provider: str,
-) -> list[CaptionCue]:
-    compressed: list[CaptionCue] = []
-    for index, cue in enumerate(cues, start=1):
-        duration = cue.end - cue.start
-        max_chars = max_chars_for_duration(duration, target_language)
-        if visible_text_len(cue.text) <= max_chars:
-            compressed.append(cue)
-            continue
-
-        print(
-            f"Compressing long subtitle {index}: {visible_text_len(cue.text)} > {max_chars} chars",
-            file=sys.stderr,
-        )
-        shorter = compress_one_subtitle(
-            cue.text,
-            duration=duration,
-            max_chars=max_chars,
-            target_language=target_language,
-            model=model,
-            api_key=api_key,
-            api_base=api_base,
-            provider=provider,
-        )
-        compressed.append(CaptionCue(cue.start, cue.end, shorter or cue.text))
-        time.sleep(0.1)
-    return compressed
-
-
-def compress_one_subtitle(
-    text: str,
-    *,
-    duration: float,
-    max_chars: int,
-    target_language: str,
-    model: str,
-    api_key: str,
-    api_base: str,
-    provider: str,
-) -> str:
-    prompt = f"""
-You are lightly optimizing one translated subtitle line for readability without losing meaning.
-
-Only shorten it when the same information can be expressed more cleanly.
-
-Rules:
-- Preserve all meaning-bearing details, qualifiers, examples, contrasts, and tone.
-- Never summarize the line down to only the core meaning.
-- Remove only wording that is truly redundant in the target language.
-- Prefer keeping a slightly long subtitle over deleting source information.
-- If fitting the target maximum would require deleting meaning, return the original text unchanged.
-- Do not add explanations or notes.
-- Target maximum visible characters: {max_chars}.
-- The subtitle is displayed for {duration:.2f} seconds.
-- Return strict JSON only: {{"text": "optimized subtitle"}}
-""".strip()
-    payload = {
-        "model": model,
-        "messages": [
-            {"role": "system", "content": prompt},
-            {"role": "user", "content": json.dumps({"text": text}, ensure_ascii=False)},
-        ],
-        "temperature": 0.2,
-        "response_format": {"type": "json_object"},
-    }
-    if provider == "deepseek":
-        payload["thinking"] = {"type": "disabled"}
-    url = api_base.rstrip("/") + "/chat/completions"
-    response = http_post_json(url, payload, api_key=api_key)
-    content = response["choices"][0]["message"]["content"]
-    data = json.loads(content)
-    compressed = normalize_text(str(data.get("text", "")))
-    if not compressed:
-        return text
-    return compressed
-
-
 def clamp(value: float, low: float, high: float) -> float:
     return min(max(value, low), high)
 
@@ -1366,7 +1243,7 @@ def main() -> int:
     parser.add_argument(
         "--compress",
         action="store_true",
-        help="Enable post-translation AI length compression. Disabled by default to preserve details.",
+        help="Compatibility no-op; AI subtitle compression is fully disabled.",
     )
     parser.add_argument(
         "--no-compress",
@@ -1464,7 +1341,6 @@ def main() -> int:
             api_key=api_key,
             api_base=api_base,
             provider=args.provider,
-            compress=args.compress and not args.no_compress,
             video_context=video_context,
         )
 
