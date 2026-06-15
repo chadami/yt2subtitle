@@ -658,8 +658,8 @@ def make_ai_units(cues: list[CaptionCue], *, max_chars: int = 4200) -> list[list
 def get_max_chars(target_language: str) -> int:
     lang = target_language.lower()
     if any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
-        return 60
-    return 110
+        return 90
+    return 160
 
 
 def split_text_by_punctuation(text: str) -> tuple[str, str]:
@@ -789,10 +789,10 @@ def merge_incomplete_sentence_cues(cues: list[CaptionCue], max_chars: int) -> li
 def system_prompt(target_language: str) -> str:
     target_lang_lower = target_language.lower()
     if any(code in target_lang_lower for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
-        char_limit_rule = "Readability target: prefer <= 45 visible CJK characters per cue, but never omit source meaning to fit this target."
+        char_limit_rule = "Readability target: prefer <= 75 visible CJK characters per cue, but never omit source meaning to fit this target."
         style_rule = "- For CJK languages, prefer natural spoken phrasing with clear rhythm.\n- Avoid stiff phrases like \"因此/所以说/这意味着\" unless the speaker actually sounds formal."
     else:
-        char_limit_rule = "Readability target: prefer <= 90 characters per cue, but never omit source meaning to fit this target."
+        char_limit_rule = "Readability target: prefer <= 140 characters per cue, but never omit source meaning to fit this target."
         style_rule = "- Prefer clear, easily readable subtitle lines."
 
     return f"""
@@ -817,8 +817,8 @@ Translation style:
 - Preserve all meaning-bearing details, qualifiers, examples, contrasts, and speaker intent.
 - Only remove disfluencies like "um", "uh", or immediate accidental repetitions that carry no meaning.
 {style_rule}
-- Concise means avoiding awkward padding; it never means summarizing or dropping content.
-- If readability conflicts with completeness, prefer completeness and split at punctuation boundaries.
+- Do not shorten a clause just because the source phrasing is detailed, repetitive, or conversational.
+- If readability conflicts with completeness, prefer completeness and split at punctuation boundaries instead of compressing.
 
 Timing and Segmentation Rules:
 - Rule 1 (Punctuation Priority): Always try to split subtitles at natural punctuation boundaries (commas, periods, question marks).
@@ -827,6 +827,7 @@ Timing and Segmentation Rules:
 - {char_limit_rule}
 - Translate only the words present in raw_cues. Do not complete an unfinished sentence using later context.
 - Every meaning-bearing raw_cues item must be represented exactly once in the output.
+- If raw_cues contain examples, caveats, hedges, contrasts, numbers, or technical details, keep them in the translation.
 - Do not output start/end times.
 - Prefer contiguous source_indexes, such as [12, 13, 14].
 - You may merge more than 3 source_indexes if it is necessary to keep a sentence intact.
@@ -1180,24 +1181,24 @@ def max_chars_for_duration(duration: float, target_language: str) -> int:
     is_cjk = any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"])
     if is_cjk:
         if duration < 1.2:
-            return 16
+            return 24
         if duration < 2.0:
-            return 26
+            return 40
         if duration < 3.5:
-            return 38
+            return 60
         if duration < 5.0:
-            return 52
-        return 68
+            return 85
+        return 110
     else:
         if duration < 1.2:
-            return 35
+            return 50
         if duration < 2.0:
-            return 55
+            return 75
         if duration < 3.5:
-            return 80
+            return 115
         if duration < 5.0:
-            return 110
-        return 135
+            return 155
+        return 190
 
 
 def compress_long_cues(
@@ -1248,14 +1249,15 @@ def compress_one_subtitle(
     provider: str,
 ) -> str:
     prompt = f"""
-You are optimizing one translated subtitle line for readability without losing meaning.
+You are lightly optimizing one translated subtitle line for readability without losing meaning.
 
-Shorten it into natural {target_language} only when it can be shortened safely.
+Only shorten it when the same information can be expressed more cleanly.
 
 Rules:
 - Preserve all meaning-bearing details, qualifiers, examples, contrasts, and tone.
 - Never summarize the line down to only the core meaning.
 - Remove only wording that is truly redundant in the target language.
+- Prefer keeping a slightly long subtitle over deleting source information.
 - If fitting the target maximum would require deleting meaning, return the original text unchanged.
 - Do not add explanations or notes.
 - Target maximum visible characters: {max_chars}.
