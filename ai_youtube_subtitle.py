@@ -820,17 +820,15 @@ Translation style:
 - Do not force every English word into the target language if it hurts subtitle readability.
 
 Timing and Segmentation Rules:
-- Avoid clumping too much text into a single subtitle! Keep each subtitle concise enough for on-screen reading.
+- Rule 1 (Punctuation Priority): Always try to split subtitles at natural punctuation boundaries (commas, periods, question marks).
+- Rule 2 (Semantic Completeness): Do not break a single continuous phrase or short sentence across multiple cues. Each cue must be semantically complete.
+- Rule 3 (Readability): Avoid clumping too much text. If a sentence is very long, split it into clauses at commas/conjunctions.
 - {char_limit_rule}
 - Translate only the words present in raw_cues. Do not complete an unfinished sentence using later context.
 - Do not output start/end times.
 - Prefer contiguous source_indexes, such as [12, 13, 14].
-- Do not merge more than 3 source_indexes into one translated cue unless the speech is extremely fragmented.
+- You may merge more than 3 source_indexes if it is necessary to keep a sentence intact.
 - Do not reuse the same source index in multiple output cues.
-- Do not split one complete sentence across multiple subtitle cues.
-- Only split subtitles at natural punctuation boundaries.
-- Every subtitle cue should end at a natural punctuation boundary whenever it is part of a longer sentence.
-- If a translated clause does not naturally end with punctuation, merge it with the next clause instead of outputting it as a separate cue.
 
 Return strict JSON only:
 {{
