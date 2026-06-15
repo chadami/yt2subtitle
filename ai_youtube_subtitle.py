@@ -9,12 +9,16 @@ prototype can run without package installation.
 from __future__ import annotations
 
 import argparse
+import http.client
 import html
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 import time
+import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -36,6 +40,10 @@ USER_AGENT = (
 )
 INNERTUBE_URL = "https://www.youtube.com/youtubei/v1/player"
 INNERTUBE_CONTEXT = {"client": {"clientName": "ANDROID", "clientVersion": "20.10.38"}}
+HTTP_RETRIES = 3
+MIN_DURATION = 0.8
+BOUNDARY_PUNCTUATION = "，,。.!！?？；;：:……"
+SENTENCE_END_MARKS = ("...", "……", "。", ".", "！", "!", "？", "?", "；", ";")
 
 
 @dataclass
@@ -62,26 +70,80 @@ class VideoContext:
     description: str = ""
 
 
-def http_get(url: str, *, headers: dict[str, str] | None = None) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, **(headers or {})})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return resp.read()
+def http_get(
+    url: str,
+    *,
+    headers: dict[str, str] | None = None,
+    allow_partial: bool = False,
+    min_partial_bytes: int = 200_000,
+) -> bytes:
+    last_error: Exception | None = None
+    best_partial = b""
+    for attempt in range(1, HTTP_RETRIES + 1):
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": USER_AGENT,
+                "Accept-Encoding": "identity",
+                "Connection": "close",
+                **(headers or {}),
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=45) as resp:
+                return resp.read()
+        except http.client.IncompleteRead as exc:
+            last_error = exc
+            partial = exc.partial or b""
+            if len(partial) > len(best_partial):
+                best_partial = partial
+            print(
+                f"Incomplete HTTP response while downloading; retrying {attempt}/{HTTP_RETRIES}...",
+                file=sys.stderr,
+            )
+        except TimeoutError as exc:
+            last_error = exc
+            print(f"HTTP timeout; retrying {attempt}/{HTTP_RETRIES}...", file=sys.stderr)
+        if attempt < HTTP_RETRIES:
+            time.sleep(0.8 * attempt)
+    if allow_partial and len(best_partial) >= min_partial_bytes:
+        print(
+            f"Using partial HTTP response after retries ({len(best_partial)} bytes).",
+            file=sys.stderr,
+        )
+        return best_partial
+    raise RuntimeError(f"Failed to download complete response from {url}: {last_error}")
 
 
 def http_post_json(url: str, payload: dict[str, Any], *, api_key: str) -> dict[str, Any]:
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
-    req = urllib.request.Request(
-        url,
-        data=body,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-            "User-Agent": USER_AGENT,
-        },
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    last_error: Exception | None = None
+    for attempt in range(1, HTTP_RETRIES + 1):
+        req = urllib.request.Request(
+            url,
+            data=body,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+                "User-Agent": USER_AGENT,
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=180) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except http.client.IncompleteRead as exc:
+            last_error = exc
+            print(
+                f"Incomplete AI response; retrying {attempt}/{HTTP_RETRIES}...",
+                file=sys.stderr,
+            )
+        except TimeoutError as exc:
+            last_error = exc
+            print(f"AI request timeout; retrying {attempt}/{HTTP_RETRIES}...", file=sys.stderr)
+        if attempt < HTTP_RETRIES:
+            time.sleep(1.2 * attempt)
+    raise RuntimeError(f"Failed to read complete JSON response from {url}: {last_error}")
 
 
 def provider_defaults(provider: str) -> tuple[str, str, str]:
@@ -169,7 +231,11 @@ def find_balanced_json(text: str, marker: str) -> dict[str, Any]:
 
 def fetch_player_response(video_id: str) -> dict[str, Any]:
     url = f"https://www.youtube.com/watch?v={video_id}&hl=en"
-    page = http_get(url, headers={"Accept-Language": "en-US"}).decode("utf-8", errors="replace")
+    page = http_get(
+        url,
+        headers={"Accept-Language": "en-US"},
+        allow_partial=True,
+    ).decode("utf-8", errors="replace")
     if 'action="https://consent.youtube.com/s"' in page:
         consent_match = re.search(r'name="v" value="(.*?)"', page)
         if consent_match:
@@ -179,6 +245,7 @@ def fetch_player_response(video_id: str) -> dict[str, Any]:
                     "Accept-Language": "en-US",
                     "Cookie": f"CONSENT=YES+{consent_match.group(1)}",
                 },
+                allow_partial=True,
             ).decode("utf-8", errors="replace")
 
     api_key_match = re.search(r'"INNERTUBE_API_KEY":\s*"([A-Za-z0-9_-]+)"', page)
@@ -381,6 +448,64 @@ def cues_from_vtt(vtt_text: str) -> list[CaptionCue]:
     return merge_zero_length(cues)
 
 
+def fetch_cues_with_ytdlp(video_id: str, source_lang: str) -> list[CaptionCue]:
+    yt_dlp = shutil.which("yt-dlp")
+    if not yt_dlp:
+        return []
+
+    with tempfile.TemporaryDirectory(prefix="yt-sub-debug-") as temp_dir:
+        output_template = str(Path(temp_dir) / "%(id)s.%(ext)s")
+        command = [
+            yt_dlp,
+            "--skip-download",
+            "--write-subs",
+            "--write-auto-subs",
+            "--sub-langs",
+            source_lang,
+            "--sub-format",
+            "vtt",
+            "-o",
+            output_template,
+            f"https://www.youtube.com/watch?v={video_id}",
+        ]
+        result = subprocess.run(command, text=True, capture_output=True, check=False)
+        if result.returncode != 0:
+            print(result.stderr.strip(), file=sys.stderr)
+            return []
+
+        vtt_files = sorted(Path(temp_dir).glob("*.vtt"))
+        if not vtt_files:
+            return []
+        cues = cues_from_vtt(vtt_files[0].read_text(encoding="utf-8", errors="replace"))
+        return collapse_ytdlp_auto_cues(cues)
+
+
+def collapse_ytdlp_auto_cues(cues: list[CaptionCue]) -> list[CaptionCue]:
+    short_cues = [cue for cue in cues if cue.end - cue.start <= 0.08 and cue.text]
+    if len(short_cues) < max(3, len(cues) // 8):
+        return cues
+
+    collapsed: list[CaptionCue] = []
+    pending_start: float | None = None
+    pending_end: float | None = None
+    for cue in cues:
+        duration = cue.end - cue.start
+        if duration > 0.08:
+            pending_start = cue.start
+            pending_end = cue.end
+            continue
+        if pending_start is None or (pending_end is not None and cue.start - pending_end > 0.35):
+            pending_start = max(collapsed[-1].end if collapsed else 0, cue.end - MIN_DURATION)
+        text = normalize_text(cue.text)
+        if not text:
+            continue
+        collapsed.append(CaptionCue(start=pending_start, end=max(cue.end, pending_start + 0.2), text=text))
+        pending_start = None
+        pending_end = None
+
+    return collapsed or cues
+
+
 def parse_vtt_timestamp(value: str) -> float:
     match = re.fullmatch(r"(?:(\d+):)?(\d{2}):(\d{2})[.,](\d{3})", value)
     if not match:
@@ -530,51 +655,195 @@ def make_ai_units(cues: list[CaptionCue], *, max_chars: int = 4200) -> list[list
     return groups
 
 
+def get_max_chars(target_language: str) -> int:
+    lang = target_language.lower()
+    if any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
+        return 90
+    return 160
+
+
+def split_text_by_punctuation(text: str) -> tuple[str, str]:
+    text = normalize_text(text)
+    if len(text) <= 1:
+        return text, ""
+
+    midpoint = len(text) / 2
+    punctuation = ("...", "……", "，", ",", "。", ".", "！", "!", "？", "?", "；", ";", "：", ":")
+    candidates = [
+        index + len(mark)
+        for mark in punctuation
+        for index in find_all(text, mark)
+        if 0 < index + len(mark) < len(text)
+    ]
+    if not candidates:
+        return text, ""
+
+    split_at = min(candidates, key=lambda index: abs(index - midpoint))
+    return normalize_text(text[:split_at]), normalize_text(text[split_at:])
+
+
+def find_all(text: str, needle: str) -> list[int]:
+    indexes: list[int] = []
+    start = 0
+    while True:
+        index = text.find(needle, start)
+        if index < 0:
+            return indexes
+        indexes.append(index)
+        start = index + len(needle)
+
+
+def ends_at_natural_boundary(text: str) -> bool:
+    return normalize_text(text).rstrip().endswith(tuple(BOUNDARY_PUNCTUATION))
+
+
+def first_sentence_split_index(text: str) -> int | None:
+    candidates = [
+        index + len(mark)
+        for mark in SENTENCE_END_MARKS
+        for index in find_all(text, mark)
+        if 0 < index + len(mark) < len(text)
+    ]
+    return min(candidates) if candidates else None
+
+
+def split_cue_text_at(cue: CaptionCue, split_at: int) -> tuple[CaptionCue, CaptionCue | None]:
+    text = normalize_text(cue.text)
+    first_text = normalize_text(text[:split_at])
+    rest_text = normalize_text(text[split_at:])
+    if not first_text:
+        return cue, None
+    ratio = len(first_text) / max(1, len(text))
+    split_time = cue.start + (cue.end - cue.start) * ratio
+    if (cue.end - cue.start) >= MIN_DURATION * 2:
+        split_time = min(max(split_time, cue.start + MIN_DURATION), cue.end - MIN_DURATION)
+    else:
+        split_time = cue.start + (cue.end - cue.start) / 2
+    first = CaptionCue(cue.start, split_time, first_text)
+    rest = CaptionCue(split_time, cue.end, rest_text) if rest_text else None
+    return first, rest
+
+
+def split_long_cue_by_punctuation(cue: CaptionCue, max_chars: int) -> list[CaptionCue]:
+    text = normalize_text(cue.text)
+    if len(text) <= max_chars:
+        return [cue]
+    part1, part2 = split_text_by_punctuation(text)
+    if not part1 or not part2 or part1 == text:
+        return [cue]
+    if cue.end - cue.start < MIN_DURATION * 2:
+        return [cue]
+    ratio = len(part1) / max(1, len(text))
+    split_time = cue.start + (cue.end - cue.start) * ratio
+    split_time = min(max(split_time, cue.start + MIN_DURATION), cue.end - MIN_DURATION)
+    first = CaptionCue(cue.start, split_time, part1)
+    second = CaptionCue(split_time, cue.end, part2)
+    return split_long_cue_by_punctuation(first, max_chars) + split_long_cue_by_punctuation(second, max_chars)
+
+
+def split_long_cues_by_punctuation(cues: list[CaptionCue], max_chars: int) -> list[CaptionCue]:
+    output: list[CaptionCue] = []
+    for cue in cues:
+        output.extend(split_long_cue_by_punctuation(cue, max_chars))
+    return output
+
+
+def merge_incomplete_sentence_cues(cues: list[CaptionCue], max_chars: int) -> list[CaptionCue]:
+    if not cues:
+        return cues
+
+    merged: list[CaptionCue] = []
+    buffer: CaptionCue | None = None
+
+    for cue in sorted(cues, key=lambda item: (item.start, item.end)):
+        text = normalize_text(cue.text)
+        if not text:
+            continue
+        current = CaptionCue(cue.start, cue.end, text)
+        if buffer is None:
+            buffer = current
+        else:
+            buffer = CaptionCue(
+                start=buffer.start,
+                end=max(buffer.end, current.end),
+                text=normalize_text(f"{buffer.text}{current.text}"),
+            )
+
+        while buffer is not None:
+            split_at = first_sentence_split_index(buffer.text)
+            if split_at is not None:
+                completed, rest = split_cue_text_at(buffer, split_at)
+                merged.append(completed)
+                buffer = rest
+                continue
+            if ends_at_natural_boundary(buffer.text):
+                merged.append(buffer)
+                buffer = None
+            break
+
+    if buffer is not None:
+        merged.append(buffer)
+    return split_long_cues_by_punctuation(merged, max_chars)
+
+
 def system_prompt(target_language: str) -> str:
+    target_lang_lower = target_language.lower()
+    if any(code in target_lang_lower for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
+        char_limit_rule = "Readability target: prefer <= 75 visible CJK characters per cue, but never omit source meaning to fit this target."
+        style_rule = "- For CJK languages, prefer natural spoken phrasing with clear rhythm.\n- Avoid stiff phrases like \"因此/所以说/这意味着\" unless the speaker actually sounds formal."
+    else:
+        char_limit_rule = "Readability target: prefer <= 140 characters per cue, but never omit source meaning to fit this target."
+        style_rule = "- Prefer clear, easily readable subtitle lines."
+
     return f"""
 You are a senior subtitle translator and timing editor.
 
 You translate YouTube captions for viewers who want natural, accurate, easy-to-read subtitles.
-Your translation should sound like fluent spoken Chinese, not literal machine translation.
+Your translation should sound like fluent spoken language, not literal machine translation.
 
 Task:
-- First understand the video title, channel, description, the whole chunk, and nearby context.
-- Re-segment raw YouTube caption cues into natural subtitle lines.
-- Translate the intended meaning accurately into {target_language}.
-- Preserve technical terms, names, numbers, and logical relations.
-- Select which source cue indexes belong to each translated subtitle.
+1. Context Analysis: Read the video title, channel, description, and nearby context to understand the video's topic.
+2. Terminology Extraction: Identify key domain-specific terms, brands, and abbreviations. Determine their accurate {target_language} translations based on the topic.
+3. ASR Error Correction: Raw YouTube cues are auto-generated speech recognition. Correct homophones, spelling, and wrong boundaries before translating.
+4. Faithful Subtitle Translation: Translate the corrected cues into natural, complete {target_language}.
+5. Context is only for terminology and tone. Never translate words or events that are not present in raw_cues.
 
 Translation style:
 - Use natural, conversational wording suitable for subtitles.
 - Prefer idiomatic meaning over word-by-word translation.
 - Keep the tone of the speaker: casual, humorous, serious, skeptical, excited, etc.
 - Resolve pronouns and references using context when the meaning is clear.
-- Use the video title and description to infer topic, speaker identity, domain-specific terms, abbreviations, and named entities.
 - Keep terminology consistent within the chunk and with surrounding context.
-- Remove filler words only when they do not affect meaning.
-- Do not add explanations, notes, brackets, or translator comments.
-- Avoid stiff phrases like "因此/所以说/这意味着" unless the speaker actually sounds formal.
-- For Chinese output, prefer concise spoken Chinese with clear rhythm.
-- Compress harmless filler words and repeated phrasing.
-- Do not force every English word into Chinese if it hurts subtitle readability.
-- Prefer 8-18 Chinese characters per cue when possible.
-- Hard limit: 26 visible Chinese characters per cue unless the source is impossible to compress.
+- Preserve all meaning-bearing details, qualifiers, examples, contrasts, and speaker intent.
+- Only remove disfluencies like "um", "uh", or immediate accidental repetitions that carry no meaning.
+{style_rule}
+- Do not shorten a clause just because the source phrasing is detailed, repetitive, or conversational.
+- If readability conflicts with completeness, prefer completeness and split at punctuation boundaries instead of compressing.
 
-Timing rules:
+Timing and Segmentation Rules:
+- Rule 1 (Punctuation Priority): Always try to split subtitles at natural punctuation boundaries (commas, periods, question marks).
+- Rule 2 (Semantic Completeness): Do not break a single continuous phrase or short sentence across multiple cues. Each cue must be semantically complete.
+- Rule 3 (Readability): Avoid clumping too much text. If a sentence is very long, split it into clauses at commas/conjunctions.
+- {char_limit_rule}
+- Translate only the words present in raw_cues. Do not complete an unfinished sentence using later context.
+- Every meaning-bearing raw_cues item must be represented exactly once in the output.
+- If raw_cues contain examples, caveats, hedges, contrasts, numbers, or technical details, keep them in the translation.
 - Do not output start/end times.
-- The script will calculate timing from source_indexes.
-- Each output cue should be readable and semantically complete.
-- Prefer 1 complete sentence or a short clause per cue.
-- Keep each translated cue concise enough for on-screen reading.
-- If one original idea spans multiple raw cues, merge it and use the combined time.
 - Prefer contiguous source_indexes, such as [12, 13, 14].
+- You may merge more than 3 source_indexes if it is necessary to keep a sentence intact.
 - Do not reuse the same source index in multiple output cues.
 
 Return strict JSON only:
 {{
+  "context_analysis": {{
+    "topic": "Brief summary of the video topic",
+    "key_terms": {{
+      "English term": "Translated term"
+    }}
+  }},
   "cues": [
     {{
-      "source_indexes": [12, 13, 14],
+      "source_indexes": [12, 13],
       "source": "source sentence or clause",
       "translation": "translated subtitle"
     }}
@@ -605,10 +874,11 @@ def build_user_payload(
     return json.dumps(
         {
             "instruction": (
-                "Use video_context, previous_context, and next_context only to understand "
-                "topic, meaning, tone, references, names, and terminology. "
-                "Do not translate or summarize video_context. Output cues only for raw_cues. "
-                "Use source_indexes from raw_cues, not context."
+                "Translate raw_cues only. previous_context and video_context are only for "
+                "domain, terminology, tone, and pronoun understanding. Do not translate, "
+                "summarize, compress, or complete content from previous_context or any future context. "
+                "If a sentence in raw_cues is unfinished, translate only the unfinished part "
+                "that is present in raw_cues. Preserve every meaning-bearing detail in raw_cues."
             ),
             "video_context": {
                 "title": video_context.title,
@@ -616,8 +886,8 @@ def build_user_payload(
                 "description": video_context.description,
             },
             "previous_context": prev_rows,
-            "raw_cues": rows,
             "next_context": next_rows,
+            "raw_cues": rows,
         },
         ensure_ascii=False,
     )
@@ -652,7 +922,14 @@ def translate_groups(
         )
         output.extend(translated)
         time.sleep(0.2)
-    cleaned = sanitize_timing(output)
+    merged_max_chars = get_max_chars(target_language)
+    merged = merge_incomplete_sentence_cues(output, merged_max_chars)
+    if len(merged) != len(output):
+        print(
+            f"Merged {len(output) - len(merged)} subtitle fragments without punctuation boundaries.",
+            file=sys.stderr,
+        )
+    cleaned = sanitize_timing(merged)
     if not compress:
         return cleaned
     return compress_long_cues(
@@ -663,6 +940,120 @@ def translate_groups(
         api_base=api_base,
         provider=provider,
     )
+
+
+def chat_completion_json(
+    *,
+    model: str,
+    api_key: str,
+    api_base: str,
+    provider: str,
+    messages: list[dict[str, str]],
+    temperature: float,
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "model": model,
+        "messages": messages,
+        "temperature": temperature,
+        "response_format": {"type": "json_object"},
+    }
+    if provider == "deepseek":
+        payload["thinking"] = {"type": "disabled"}
+    url = api_base.rstrip("/") + "/chat/completions"
+    response = http_post_json(url, payload, api_key=api_key)
+    content = response["choices"][0]["message"]["content"]
+    return parse_json_object(content)
+
+
+def build_repair_payload(
+    cues: list[CaptionCue],
+    *,
+    video_context: VideoContext,
+    previous_context: list[CaptionCue],
+    next_context: list[CaptionCue],
+) -> str:
+    rows = [
+        {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
+        for cue in cues
+    ]
+    prev_rows = [
+        {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
+        for cue in previous_context
+    ]
+    next_rows = [
+        {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
+        for cue in next_context
+    ]
+    return json.dumps(
+        {
+            "instruction": (
+                "Repair pass. Translate every raw_cues item that is listed here. "
+                "Every source index in raw_cues must appear in exactly one output cue. "
+                "Preserve all meaning-bearing details. Do not summarize, compress, or drop clauses. "
+                "Use previous_context and next_context only to understand terminology and unfinished phrases."
+            ),
+            "video_context": {
+                "title": video_context.title,
+                "channel": video_context.channel,
+                "description": video_context.description,
+            },
+            "previous_context": prev_rows,
+            "next_context": next_rows,
+            "raw_cues": rows,
+        },
+        ensure_ascii=False,
+    )
+
+
+def parse_translated_cues(
+    data: dict[str, Any],
+    *,
+    group_by_index: dict[int, CaptionCue],
+    used_indexes: set[int],
+    target_language: str,
+) -> list[CaptionCue]:
+    cues: list[CaptionCue] = []
+    for item in data.get("cues", []):
+        if not isinstance(item, dict):
+            continue
+        source_indexes = parse_source_indexes(item.get("source_indexes"))
+        source_indexes = [index for index in source_indexes if index in group_by_index]
+        if not source_indexes:
+            continue
+        if any(index in used_indexes for index in source_indexes):
+            continue
+        if max(source_indexes) - min(source_indexes) > 10:
+            continue
+        source_cues = [group_by_index[index] for index in source_indexes]
+        start = min(cue.start for cue in source_cues)
+        end = max(cue.end for cue in source_cues)
+        if (end - start) < MIN_DURATION:
+            end = start + MIN_DURATION
+        text = normalize_text(str(item.get("translation") or item.get("text") or ""))
+        if not text:
+            continue
+
+        max_chars = get_max_chars(target_language)
+        if len(text) > max_chars:
+            part1, part2 = split_text_by_punctuation(text)
+            if part1 and part2:
+                if (end - start) < MIN_DURATION * 2:
+                    end = start + MIN_DURATION * 2
+                ratio = len(part1) / max(1, len(text))
+                mid_time = start + (end - start) * ratio
+                mid_time = min(max(mid_time, start + MIN_DURATION), end - MIN_DURATION)
+                cues.append(CaptionCue(start=start, end=mid_time, text=part1))
+                cues.append(CaptionCue(start=mid_time, end=end, text=part2))
+                used_indexes.update(source_indexes)
+                continue
+
+        cues.append(CaptionCue(start=start, end=end, text=text))
+        used_indexes.update(source_indexes)
+    return cues
+
+
+def missing_source_indexes(group: list[CaptionCue], used_indexes: set[int]) -> list[int]:
+    return [cue.index for cue in group if cue.index not in used_indexes]
 
 
 def translate_one_group(
@@ -677,9 +1068,14 @@ def translate_one_group(
     api_base: str,
     provider: str,
 ) -> list[CaptionCue]:
-    payload = {
-        "model": model,
-        "messages": [
+    group_by_index = {cue.index: cue for cue in group}
+    used_indexes: set[int] = set()
+    data = chat_completion_json(
+        model=model,
+        api_key=api_key,
+        api_base=api_base,
+        provider=provider,
+        messages=[
             {"role": "system", "content": system_prompt(target_language)},
             {
                 "role": "user",
@@ -691,36 +1087,77 @@ def translate_one_group(
                 ),
             },
         ],
-        "temperature": 0.35,
-        "response_format": {"type": "json_object"},
-    }
-    if provider == "deepseek":
-        payload["thinking"] = {"type": "disabled"}
-    url = api_base.rstrip("/") + "/chat/completions"
-    response = http_post_json(url, payload, api_key=api_key)
-    content = response["choices"][0]["message"]["content"]
-    data = json.loads(content)
+        temperature=0.25,
+    )
+    cues = parse_translated_cues(
+        data,
+        group_by_index=group_by_index,
+        used_indexes=used_indexes,
+        target_language=target_language,
+    )
 
-    group_by_index = {cue.index: cue for cue in group}
-    cues = []
-    for item in data.get("cues", []):
-        source_indexes = parse_source_indexes(item.get("source_indexes"))
-        source_cues = [group_by_index[index] for index in source_indexes if index in group_by_index]
-        if not source_cues and "start" in item and "end" in item:
-            start = clamp(float(item["start"]), group[0].start, group[-1].end)
-            end = clamp(float(item["end"]), start + 0.2, group[-1].end)
-        elif source_cues:
-            start = min(cue.start for cue in source_cues)
-            end = max(cue.end for cue in source_cues)
-        else:
-            continue
-        text = normalize_text(str(item.get("translation") or item.get("text") or ""))
-        if text:
-            cues.append(CaptionCue(start=start, end=end, text=text))
+    missing_indexes = missing_source_indexes(group, used_indexes)
+    if missing_indexes:
+        print(
+            f"AI missed {len(missing_indexes)} source cues; retrying missing cues...",
+            file=sys.stderr,
+        )
+        repair_group = [group_by_index[index] for index in missing_indexes]
+        repair_data = chat_completion_json(
+            model=model,
+            api_key=api_key,
+            api_base=api_base,
+            provider=provider,
+            messages=[
+                {"role": "system", "content": system_prompt(target_language)},
+                {
+                    "role": "user",
+                    "content": build_repair_payload(
+                        repair_group,
+                        video_context=video_context,
+                        previous_context=previous_context,
+                        next_context=next_context,
+                    ),
+                },
+            ],
+            temperature=0.15,
+        )
+        cues.extend(
+            parse_translated_cues(
+                repair_data,
+                group_by_index=group_by_index,
+                used_indexes=used_indexes,
+                target_language=target_language,
+            )
+        )
+
+    remaining_indexes = missing_source_indexes(group, used_indexes)
+    if remaining_indexes:
+        preview = ", ".join(str(index) for index in remaining_indexes[:20])
+        suffix = "..." if len(remaining_indexes) > 20 else ""
+        raise ValueError(f"AI did not translate all source cues after repair: {preview}{suffix}")
 
     if not cues:
         raise ValueError("AI returned no cues for a chunk.")
-    return cues
+    return sorted(cues, key=lambda cue: (cue.start, cue.end))
+
+
+def parse_json_object(text: str) -> dict[str, Any]:
+    cleaned = text.strip()
+    if cleaned.startswith("```json"):
+        cleaned = cleaned[7:].strip()
+    elif cleaned.startswith("```"):
+        cleaned = cleaned[3:].strip()
+    if cleaned.endswith("```"):
+        cleaned = cleaned[:-3].strip()
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        start = cleaned.find("{")
+        end = cleaned.rfind("}")
+        if start >= 0 and end > start:
+            return json.loads(cleaned[start : end + 1])
+        raise
 
 
 def parse_source_indexes(value: Any) -> list[int]:
@@ -739,16 +1176,29 @@ def visible_text_len(text: str) -> int:
     return len(re.sub(r"\s+", "", text))
 
 
-def max_chars_for_duration(duration: float) -> int:
-    if duration < 1.2:
-        return 8
-    if duration < 2.0:
-        return 14
-    if duration < 3.5:
-        return 22
-    if duration < 5.0:
-        return 30
-    return 36
+def max_chars_for_duration(duration: float, target_language: str) -> int:
+    lang = target_language.lower()
+    is_cjk = any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"])
+    if is_cjk:
+        if duration < 1.2:
+            return 24
+        if duration < 2.0:
+            return 40
+        if duration < 3.5:
+            return 60
+        if duration < 5.0:
+            return 85
+        return 110
+    else:
+        if duration < 1.2:
+            return 50
+        if duration < 2.0:
+            return 75
+        if duration < 3.5:
+            return 115
+        if duration < 5.0:
+            return 155
+        return 190
 
 
 def compress_long_cues(
@@ -763,7 +1213,7 @@ def compress_long_cues(
     compressed: list[CaptionCue] = []
     for index, cue in enumerate(cues, start=1):
         duration = cue.end - cue.start
-        max_chars = max_chars_for_duration(duration)
+        max_chars = max_chars_for_duration(duration, target_language)
         if visible_text_len(cue.text) <= max_chars:
             compressed.append(cue)
             continue
@@ -799,18 +1249,20 @@ def compress_one_subtitle(
     provider: str,
 ) -> str:
     prompt = f"""
-You are optimizing one translated subtitle line for readability.
+You are lightly optimizing one translated subtitle line for readability without losing meaning.
 
-Compress it into natural {target_language} for on-screen subtitles.
+Only shorten it when the same information can be expressed more cleanly.
 
 Rules:
-- Keep the core meaning and tone.
-- Make it conversational and concise.
-- Remove filler and redundant wording.
+- Preserve all meaning-bearing details, qualifiers, examples, contrasts, and tone.
+- Never summarize the line down to only the core meaning.
+- Remove only wording that is truly redundant in the target language.
+- Prefer keeping a slightly long subtitle over deleting source information.
+- If fitting the target maximum would require deleting meaning, return the original text unchanged.
 - Do not add explanations or notes.
 - Target maximum visible characters: {max_chars}.
 - The subtitle is displayed for {duration:.2f} seconds.
-- Return strict JSON only: {{"text": "compressed subtitle"}}
+- Return strict JSON only: {{"text": "optimized subtitle"}}
 """.strip()
     payload = {
         "model": model,
@@ -844,10 +1296,10 @@ def sanitize_timing(cues: list[CaptionCue]) -> list[CaptionCue]:
     cleaned = []
     for cue in cues:
         start = cue.start
-        end = max(cue.end, start + 0.2)
+        end = max(cue.end, start + MIN_DURATION)
         if cleaned and start < cleaned[-1].end:
             start = cleaned[-1].end
-            end = max(end, start + 0.2)
+            end = max(end, start + MIN_DURATION)
         cleaned.append(CaptionCue(start, end, cue.text))
     return cleaned
 
@@ -911,7 +1363,16 @@ def main() -> int:
     parser.add_argument("--raw-output", help="Optional raw caption JSON path")
     parser.add_argument("--clean-output", help="Optional cleaned caption JSON path")
     parser.add_argument("--raw-only", action="store_true", help="Download raw captions and exit")
-    parser.add_argument("--no-compress", action="store_true", help="Disable post-translation length compression")
+    parser.add_argument(
+        "--compress",
+        action="store_true",
+        help="Enable post-translation AI length compression. Disabled by default to preserve details.",
+    )
+    parser.add_argument(
+        "--no-compress",
+        action="store_true",
+        help="Compatibility flag; compression is already disabled by default.",
+    )
     parser.add_argument(
         "--provider",
         choices=["openai", "deepseek"],
@@ -960,6 +1421,9 @@ def main() -> int:
 
         raw_cues = fetch_cues(track)
         if not raw_cues:
+            print("Timedtext returned no cues; trying yt-dlp subtitle fallback...", file=sys.stderr)
+            raw_cues = fetch_cues_with_ytdlp(video_id, track.language_code or args.source_lang or "en")
+        if not raw_cues:
             raise ValueError("Caption track exists, but no usable cue text was downloaded.")
         print(f"Downloaded {len(raw_cues)} raw caption cues.", file=sys.stderr)
         clean_cues = resolve_overlaps(raw_cues)
@@ -1000,7 +1464,7 @@ def main() -> int:
             api_key=api_key,
             api_base=api_base,
             provider=args.provider,
-            compress=not args.no_compress,
+            compress=args.compress and not args.no_compress,
             video_context=video_context,
         )
 
