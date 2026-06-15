@@ -658,8 +658,8 @@ def make_ai_units(cues: list[CaptionCue], *, max_chars: int = 4200) -> list[list
 def get_max_chars(target_language: str) -> int:
     lang = target_language.lower()
     if any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
-        return 35
-    return 75
+        return 60
+    return 110
 
 
 def split_text_by_punctuation(text: str) -> tuple[str, str]:
@@ -789,10 +789,10 @@ def merge_incomplete_sentence_cues(cues: list[CaptionCue], max_chars: int) -> li
 def system_prompt(target_language: str) -> str:
     target_lang_lower = target_language.lower()
     if any(code in target_lang_lower for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
-        char_limit_rule = "Hard limit: 26 visible characters per cue unless impossible to compress."
-        style_rule = "- For CJK languages, prefer concise spoken phrasing with clear rhythm.\n- Avoid stiff phrases like \"因此/所以说/这意味着\" unless the speaker actually sounds formal."
+        char_limit_rule = "Readability target: prefer <= 45 visible CJK characters per cue, but never omit source meaning to fit this target."
+        style_rule = "- For CJK languages, prefer natural spoken phrasing with clear rhythm.\n- Avoid stiff phrases like \"因此/所以说/这意味着\" unless the speaker actually sounds formal."
     else:
-        char_limit_rule = "Hard limit: Max 60 characters (about 1-2 short lines) per cue."
+        char_limit_rule = "Readability target: prefer <= 90 characters per cue, but never omit source meaning to fit this target."
         style_rule = "- Prefer clear, easily readable subtitle lines."
 
     return f"""
@@ -805,7 +805,7 @@ Task:
 1. Context Analysis: Read the video title, channel, description, and nearby context to understand the video's topic.
 2. Terminology Extraction: Identify key domain-specific terms, brands, and abbreviations. Determine their accurate {target_language} translations based on the topic.
 3. ASR Error Correction: Raw YouTube cues are auto-generated speech recognition. Correct homophones, spelling, and wrong boundaries before translating.
-4. Subtitle Translation: Translate the corrected cues into natural, concise {target_language}.
+4. Faithful Subtitle Translation: Translate the corrected cues into natural, complete {target_language}.
 5. Context is only for terminology and tone. Never translate words or events that are not present in raw_cues.
 
 Translation style:
@@ -814,10 +814,11 @@ Translation style:
 - Keep the tone of the speaker: casual, humorous, serious, skeptical, excited, etc.
 - Resolve pronouns and references using context when the meaning is clear.
 - Keep terminology consistent within the chunk and with surrounding context.
-- Remove filler words only when they do not affect meaning.
+- Preserve all meaning-bearing details, qualifiers, examples, contrasts, and speaker intent.
+- Only remove disfluencies like "um", "uh", or immediate accidental repetitions that carry no meaning.
 {style_rule}
-- Compress harmless filler words and repeated phrasing.
-- Do not force every English word into the target language if it hurts subtitle readability.
+- Concise means avoiding awkward padding; it never means summarizing or dropping content.
+- If readability conflicts with completeness, prefer completeness and split at punctuation boundaries.
 
 Timing and Segmentation Rules:
 - Rule 1 (Punctuation Priority): Always try to split subtitles at natural punctuation boundaries (commas, periods, question marks).
@@ -825,6 +826,7 @@ Timing and Segmentation Rules:
 - Rule 3 (Readability): Avoid clumping too much text. If a sentence is very long, split it into clauses at commas/conjunctions.
 - {char_limit_rule}
 - Translate only the words present in raw_cues. Do not complete an unfinished sentence using later context.
+- Every meaning-bearing raw_cues item must be represented exactly once in the output.
 - Do not output start/end times.
 - Prefer contiguous source_indexes, such as [12, 13, 14].
 - You may merge more than 3 source_indexes if it is necessary to keep a sentence intact.
@@ -854,6 +856,7 @@ def build_user_payload(
     *,
     video_context: VideoContext,
     previous_context: list[CaptionCue],
+    next_context: list[CaptionCue],
 ) -> str:
     rows = [
         {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
@@ -863,14 +866,18 @@ def build_user_payload(
         {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
         for cue in previous_context
     ]
+    next_rows = [
+        {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
+        for cue in next_context
+    ]
     return json.dumps(
         {
             "instruction": (
                 "Translate raw_cues only. previous_context and video_context are only for "
                 "domain, terminology, tone, and pronoun understanding. Do not translate, "
-                "summarize, or complete content from previous_context or any future context. "
+                "summarize, compress, or complete content from previous_context or any future context. "
                 "If a sentence in raw_cues is unfinished, translate only the unfinished part "
-                "that is present in raw_cues."
+                "that is present in raw_cues. Preserve every meaning-bearing detail in raw_cues."
             ),
             "video_context": {
                 "title": video_context.title,
@@ -878,6 +885,7 @@ def build_user_payload(
                 "description": video_context.description,
             },
             "previous_context": prev_rows,
+            "next_context": next_rows,
             "raw_cues": rows,
         },
         ensure_ascii=False,
@@ -899,10 +907,12 @@ def translate_groups(
     for index, group in enumerate(groups, start=1):
         print(f"AI processing chunk {index}/{len(groups)}...", file=sys.stderr)
         previous_context = groups[index - 2][-8:] if index > 1 else []
+        next_context = groups[index][:8] if index < len(groups) else []
         translated = translate_one_group(
             group,
             video_context=video_context,
             previous_context=previous_context,
+            next_context=next_context,
             target_language=target_language,
             model=model,
             api_key=api_key,
@@ -911,7 +921,8 @@ def translate_groups(
         )
         output.extend(translated)
         time.sleep(0.2)
-    merged = merge_incomplete_sentence_cues(output, get_max_chars(target_language))
+    merged_max_chars = get_max_chars(target_language)
+    merged = merge_incomplete_sentence_cues(output, merged_max_chars)
     if len(merged) != len(output):
         print(
             f"Merged {len(output) - len(merged)} subtitle fragments without punctuation boundaries.",
@@ -930,31 +941,19 @@ def translate_groups(
     )
 
 
-def translate_one_group(
-    group: list[CaptionCue],
+def chat_completion_json(
     *,
-    video_context: VideoContext,
-    previous_context: list[CaptionCue],
-    target_language: str,
     model: str,
     api_key: str,
     api_base: str,
     provider: str,
-) -> list[CaptionCue]:
-    payload = {
+    messages: list[dict[str, str]],
+    temperature: float,
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
         "model": model,
-        "messages": [
-            {"role": "system", "content": system_prompt(target_language)},
-            {
-                "role": "user",
-                "content": build_user_payload(
-                    group,
-                    video_context=video_context,
-                    previous_context=previous_context,
-                ),
-            },
-        ],
-        "temperature": 0.35,
+        "messages": messages,
+        "temperature": temperature,
         "response_format": {"type": "json_object"},
     }
     if provider == "deepseek":
@@ -962,11 +961,57 @@ def translate_one_group(
     url = api_base.rstrip("/") + "/chat/completions"
     response = http_post_json(url, payload, api_key=api_key)
     content = response["choices"][0]["message"]["content"]
-    data = parse_json_object(content)
+    return parse_json_object(content)
 
-    group_by_index = {cue.index: cue for cue in group}
-    used_indexes: set[int] = set()
-    cues = []
+
+def build_repair_payload(
+    cues: list[CaptionCue],
+    *,
+    video_context: VideoContext,
+    previous_context: list[CaptionCue],
+    next_context: list[CaptionCue],
+) -> str:
+    rows = [
+        {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
+        for cue in cues
+    ]
+    prev_rows = [
+        {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
+        for cue in previous_context
+    ]
+    next_rows = [
+        {"i": cue.index, "start": round(cue.start, 3), "end": round(cue.end, 3), "text": cue.text}
+        for cue in next_context
+    ]
+    return json.dumps(
+        {
+            "instruction": (
+                "Repair pass. Translate every raw_cues item that is listed here. "
+                "Every source index in raw_cues must appear in exactly one output cue. "
+                "Preserve all meaning-bearing details. Do not summarize, compress, or drop clauses. "
+                "Use previous_context and next_context only to understand terminology and unfinished phrases."
+            ),
+            "video_context": {
+                "title": video_context.title,
+                "channel": video_context.channel,
+                "description": video_context.description,
+            },
+            "previous_context": prev_rows,
+            "next_context": next_rows,
+            "raw_cues": rows,
+        },
+        ensure_ascii=False,
+    )
+
+
+def parse_translated_cues(
+    data: dict[str, Any],
+    *,
+    group_by_index: dict[int, CaptionCue],
+    used_indexes: set[int],
+    target_language: str,
+) -> list[CaptionCue]:
+    cues: list[CaptionCue] = []
     for item in data.get("cues", []):
         if not isinstance(item, dict):
             continue
@@ -1003,10 +1048,97 @@ def translate_one_group(
 
         cues.append(CaptionCue(start=start, end=end, text=text))
         used_indexes.update(source_indexes)
+    return cues
+
+
+def missing_source_indexes(group: list[CaptionCue], used_indexes: set[int]) -> list[int]:
+    return [cue.index for cue in group if cue.index not in used_indexes]
+
+
+def translate_one_group(
+    group: list[CaptionCue],
+    *,
+    video_context: VideoContext,
+    previous_context: list[CaptionCue],
+    next_context: list[CaptionCue],
+    target_language: str,
+    model: str,
+    api_key: str,
+    api_base: str,
+    provider: str,
+) -> list[CaptionCue]:
+    group_by_index = {cue.index: cue for cue in group}
+    used_indexes: set[int] = set()
+    data = chat_completion_json(
+        model=model,
+        api_key=api_key,
+        api_base=api_base,
+        provider=provider,
+        messages=[
+            {"role": "system", "content": system_prompt(target_language)},
+            {
+                "role": "user",
+                "content": build_user_payload(
+                    group,
+                    video_context=video_context,
+                    previous_context=previous_context,
+                    next_context=next_context,
+                ),
+            },
+        ],
+        temperature=0.25,
+    )
+    cues = parse_translated_cues(
+        data,
+        group_by_index=group_by_index,
+        used_indexes=used_indexes,
+        target_language=target_language,
+    )
+
+    missing_indexes = missing_source_indexes(group, used_indexes)
+    if missing_indexes:
+        print(
+            f"AI missed {len(missing_indexes)} source cues; retrying missing cues...",
+            file=sys.stderr,
+        )
+        repair_group = [group_by_index[index] for index in missing_indexes]
+        repair_data = chat_completion_json(
+            model=model,
+            api_key=api_key,
+            api_base=api_base,
+            provider=provider,
+            messages=[
+                {"role": "system", "content": system_prompt(target_language)},
+                {
+                    "role": "user",
+                    "content": build_repair_payload(
+                        repair_group,
+                        video_context=video_context,
+                        previous_context=previous_context,
+                        next_context=next_context,
+                    ),
+                },
+            ],
+            temperature=0.15,
+        )
+        cues.extend(
+            parse_translated_cues(
+                repair_data,
+                group_by_index=group_by_index,
+                used_indexes=used_indexes,
+                target_language=target_language,
+            )
+        )
+
+    remaining_indexes = missing_source_indexes(group, used_indexes)
+    if remaining_indexes:
+        preview = ", ".join(str(index) for index in remaining_indexes[:20])
+        suffix = "..." if len(remaining_indexes) > 20 else ""
+        raise ValueError(f"AI did not translate all source cues after repair: {preview}{suffix}")
 
     if not cues:
         raise ValueError("AI returned no cues for a chunk.")
-    return cues
+    return sorted(cues, key=lambda cue: (cue.start, cue.end))
 
 
 def parse_json_object(text: str) -> dict[str, Any]:
@@ -1048,24 +1180,24 @@ def max_chars_for_duration(duration: float, target_language: str) -> int:
     is_cjk = any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"])
     if is_cjk:
         if duration < 1.2:
-            return 10
-        if duration < 2.0:
             return 16
+        if duration < 2.0:
+            return 26
         if duration < 3.5:
-            return 24
+            return 38
         if duration < 5.0:
-            return 32
-        return 38
+            return 52
+        return 68
     else:
         if duration < 1.2:
-            return 25
+            return 35
         if duration < 2.0:
-            return 40
+            return 55
         if duration < 3.5:
-            return 60
-        if duration < 5.0:
             return 80
-        return 95
+        if duration < 5.0:
+            return 110
+        return 135
 
 
 def compress_long_cues(
@@ -1116,18 +1248,19 @@ def compress_one_subtitle(
     provider: str,
 ) -> str:
     prompt = f"""
-You are optimizing one translated subtitle line for readability.
+You are optimizing one translated subtitle line for readability without losing meaning.
 
-Compress it into natural {target_language} for on-screen subtitles.
+Shorten it into natural {target_language} only when it can be shortened safely.
 
 Rules:
-- Keep the core meaning and tone.
-- Make it conversational and concise.
-- Remove filler and redundant wording.
+- Preserve all meaning-bearing details, qualifiers, examples, contrasts, and tone.
+- Never summarize the line down to only the core meaning.
+- Remove only wording that is truly redundant in the target language.
+- If fitting the target maximum would require deleting meaning, return the original text unchanged.
 - Do not add explanations or notes.
 - Target maximum visible characters: {max_chars}.
 - The subtitle is displayed for {duration:.2f} seconds.
-- Return strict JSON only: {{"text": "compressed subtitle"}}
+- Return strict JSON only: {{"text": "optimized subtitle"}}
 """.strip()
     payload = {
         "model": model,
@@ -1228,7 +1361,16 @@ def main() -> int:
     parser.add_argument("--raw-output", help="Optional raw caption JSON path")
     parser.add_argument("--clean-output", help="Optional cleaned caption JSON path")
     parser.add_argument("--raw-only", action="store_true", help="Download raw captions and exit")
-    parser.add_argument("--no-compress", action="store_true", help="Disable post-translation length compression")
+    parser.add_argument(
+        "--compress",
+        action="store_true",
+        help="Enable post-translation AI length compression. Disabled by default to preserve details.",
+    )
+    parser.add_argument(
+        "--no-compress",
+        action="store_true",
+        help="Compatibility flag; compression is already disabled by default.",
+    )
     parser.add_argument(
         "--provider",
         choices=["openai", "deepseek"],
@@ -1320,7 +1462,7 @@ def main() -> int:
             api_key=api_key,
             api_base=api_base,
             provider=args.provider,
-            compress=not args.no_compress,
+            compress=args.compress and not args.no_compress,
             video_context=video_context,
         )
 
