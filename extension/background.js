@@ -62,12 +62,11 @@ async function createSubtitleJob(payload) {
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || `Job request failed: ${response.status}`);
   if (payload.forceRegenerate === true) {
-    await removeCachedSubtitle(subtitleCacheKey(
+    await removeCachedSubtitlesForVideo(
       payload.videoId,
-      payload.sourceLang || "en",
       payload.targetLang || "zh-Hans",
       translationMode
-    ));
+    );
   }
 
   const nextPendingJobs = [
@@ -177,11 +176,17 @@ async function checkSubtitleJobs() {
 
 async function cacheCompletedSubtitle(job, settings, sessionToken) {
   if (!job.videoId) return;
-  await getSubtitleByVideo({
+  const apiBase = normalizeApiBase(settings.apiBase);
+  const sourceLang = job.sourceLang || "en";
+  const targetLang = job.targetLang || settings.targetLang || "zh-Hans";
+  const translationMode = job.translationMode || settings.translationMode || "user";
+  await removeCachedSubtitlesForVideo(job.videoId, targetLang, translationMode);
+  await fetchSubtitleByVideo({
+    apiBase,
     videoId: job.videoId,
-    sourceLang: job.sourceLang || "en",
-    targetLang: job.targetLang || settings.targetLang || "zh-Hans",
-    translationMode: job.translationMode || settings.translationMode || "user",
+    sourceLang,
+    targetLang,
+    translationMode,
     sessionToken
   });
 }
@@ -260,10 +265,21 @@ async function setCachedSubtitle(cacheKey, data) {
   await chrome.storage.local.set({ subtitleCache: Object.fromEntries(entries) });
 }
 
-async function removeCachedSubtitle(cacheKey) {
+async function removeCachedSubtitlesForVideo(videoId, targetLang, translationMode) {
   const { subtitleCache = {} } = await chrome.storage.local.get(["subtitleCache"]);
-  if (!subtitleCache[cacheKey]) return;
   const nextCache = { ...subtitleCache };
-  delete nextCache[cacheKey];
-  await chrome.storage.local.set({ subtitleCache: nextCache });
+  const prefix = `${videoId}:`;
+  const suffix = `:${targetLang}:${translationMode}`;
+  let changed = false;
+
+  for (const cacheKey of Object.keys(nextCache)) {
+    if (cacheKey.startsWith(prefix) && cacheKey.endsWith(suffix)) {
+      delete nextCache[cacheKey];
+      changed = true;
+    }
+  }
+
+  if (changed) {
+    await chrome.storage.local.set({ subtitleCache: nextCache });
+  }
 }
