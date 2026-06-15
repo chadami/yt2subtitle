@@ -15,3 +15,4 @@ raw-captions.json
 clean-captions.json
 output*.zh.vtt
 *.zh.vtt
+local_deepseek_debug_subtitle.py
