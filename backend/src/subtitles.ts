@@ -14,6 +14,9 @@ export type TranslatedCue = {
   text: string;
 };
 
+const BOUNDARY_PUNCTUATION = ["...", "……", "，", ",", "。", ".", "！", "!", "？", "?", "；", ";", "：", ":"];
+const SENTENCE_END_MARKS = ["...", "……", "。", ".", "！", "!", "？", "?", "；", ";"];
+
 export function normalizeText(text: string) {
   return text.replace(/\s+/g, " ").trim();
 }
@@ -104,6 +107,119 @@ export function sanitizeTiming(cues: TranslatedCue[]) {
     output.push({ start, end, text: cue.text });
   }
   return output;
+}
+
+function findAll(text: string, needle: string) {
+  const indexes: number[] = [];
+  let start = 0;
+  while (start < text.length) {
+    const index = text.indexOf(needle, start);
+    if (index < 0) break;
+    indexes.push(index);
+    start = index + needle.length;
+  }
+  return indexes;
+}
+
+function endsAtPunctuationBoundary(text: string) {
+  const normalized = normalizeText(text);
+  return BOUNDARY_PUNCTUATION.some((mark) => normalized.endsWith(mark));
+}
+
+function firstSentenceSplitIndex(text: string) {
+  const candidates = SENTENCE_END_MARKS.flatMap((mark) =>
+    findAll(text, mark).map((index) => index + mark.length)
+  ).filter((index) => index > 0 && index < text.length);
+  return candidates.length ? Math.min(...candidates) : null;
+}
+
+function splitTextByPunctuation(text: string) {
+  const normalized = normalizeText(text);
+  if (normalized.length <= 1) return [normalized, ""] as const;
+  const midpoint = normalized.length / 2;
+  const candidates = BOUNDARY_PUNCTUATION.flatMap((mark) =>
+    findAll(normalized, mark).map((index) => index + mark.length)
+  ).filter((index) => index > 0 && index < normalized.length);
+  if (!candidates.length) return [normalized, ""] as const;
+  const splitAt = candidates.reduce((best, index) =>
+    Math.abs(index - midpoint) < Math.abs(best - midpoint) ? index : best
+  );
+  return [
+    normalizeText(normalized.slice(0, splitAt)),
+    normalizeText(normalized.slice(splitAt))
+  ] as const;
+}
+
+function joinTranslatedText(first: string, second: string) {
+  const left = normalizeText(first);
+  const right = normalizeText(second);
+  if (!left) return right;
+  if (!right) return left;
+  return /[A-Za-z0-9]$/.test(left) && /^[A-Za-z0-9]/.test(right)
+    ? `${left} ${right}`
+    : `${left}${right}`;
+}
+
+function splitCueTextAt(cue: TranslatedCue, splitAt: number) {
+  const text = normalizeText(cue.text);
+  const firstText = normalizeText(text.slice(0, splitAt));
+  const restText = normalizeText(text.slice(splitAt));
+  if (!firstText) return [cue, null] as const;
+  const ratio = firstText.length / Math.max(1, text.length);
+  const splitTime = cue.start + (cue.end - cue.start) * ratio;
+  return [
+    { start: cue.start, end: splitTime, text: firstText },
+    restText ? { start: splitTime, end: cue.end, text: restText } : null
+  ] as const;
+}
+
+function splitLongCueByPunctuation(cue: TranslatedCue, maxChars: number): TranslatedCue[] {
+  const text = normalizeText(cue.text);
+  if (text.length <= maxChars) return [cue];
+  const [part1, part2] = splitTextByPunctuation(text);
+  if (!part1 || !part2 || part1 === text) return [cue];
+  const ratio = part1.length / Math.max(1, text.length);
+  const splitTime = cue.start + (cue.end - cue.start) * ratio;
+  return [
+    ...splitLongCueByPunctuation({ start: cue.start, end: splitTime, text: part1 }, maxChars),
+    ...splitLongCueByPunctuation({ start: splitTime, end: cue.end, text: part2 }, maxChars)
+  ];
+}
+
+export function enforcePunctuationSegmentation(cues: TranslatedCue[], maxChars: number) {
+  const merged: TranslatedCue[] = [];
+  let buffer: TranslatedCue | null = null;
+
+  for (const cue of [...cues].sort((a, b) => a.start - b.start || a.end - b.end)) {
+    const text = normalizeText(cue.text);
+    if (!text) continue;
+    const current = { ...cue, text };
+    buffer = buffer
+      ? {
+          start: buffer.start,
+          end: Math.max(buffer.end, current.end),
+          text: joinTranslatedText(buffer.text, current.text)
+        }
+      : current;
+
+    while (buffer) {
+      const splitAt = firstSentenceSplitIndex(buffer.text);
+      if (splitAt !== null) {
+        const [completed, rest] = splitCueTextAt(buffer, splitAt);
+        merged.push(completed);
+        buffer = rest;
+        continue;
+      }
+      if (endsAtPunctuationBoundary(buffer.text)) {
+        merged.push(buffer);
+        buffer = null;
+      }
+      break;
+    }
+  }
+
+  if (buffer) merged.push(buffer);
+  return merged.flatMap((cue) => splitLongCueByPunctuation(cue, maxChars));
 }
 
 function visibleTextLength(text: string) {

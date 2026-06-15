@@ -4,7 +4,11 @@ import { query } from "./db.js";
 import { sendSubtitleReadyEmail } from "./email.js";
 import { redisConnection } from "./queue.js";
 import { loadUserAiConfig } from "./routes/ai.js";
-import { chunkCues, enforceReadableDurations, resolveOverlaps, sanitizeTiming, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
+import { chunkCues, enforcePunctuationSegmentation, enforceReadableDurations, resolveOverlaps, sanitizeTiming, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
+
+function maxSegmentChars(targetLanguage: string) {
+  return /zh|cn|tw|hk|ja|ko/i.test(targetLanguage) ? 130 : 220;
+}
 
 async function processSubtitleJob(jobId: string) {
   await query("update translation_jobs set status = 'cleaning', progress = 10, updated_at = now() where id = $1", [jobId]);
@@ -70,7 +74,8 @@ async function processSubtitleJob(jobId: string) {
   }
 
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1", [jobId]);
-  const finalCues = enforceReadableDurations(sanitizeTiming(translated));
+  const segmented = enforcePunctuationSegmentation(translated, maxSegmentChars(record.target_lang));
+  const finalCues = enforceReadableDurations(sanitizeTiming(segmented));
   const vtt = toVtt(finalCues);
   await query(
     `insert into translated_subtitles (

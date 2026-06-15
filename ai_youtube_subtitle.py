@@ -821,9 +821,10 @@ Translation style:
 - If readability conflicts with completeness, prefer completeness and split at punctuation boundaries instead of compressing.
 
 Timing and Segmentation Rules:
-- Rule 1 (Punctuation Priority): Always try to split subtitles at natural punctuation boundaries (commas, periods, question marks).
-- Rule 2 (Semantic Completeness): Do not break a single continuous phrase or short sentence across multiple cues. Each cue must be semantically complete.
-- Rule 3 (Readability): Avoid clumping too much text. If a sentence is very long, split it into clauses at commas/conjunctions.
+- Rule 1 (Strict Punctuation Boundary): Split subtitles only at punctuation boundaries: comma, period, question mark, exclamation mark, semicolon, colon, or ellipsis.
+- Rule 2 (No Inferred Breaks): Do not split at a conjunction, phrase boundary, or model-inferred pause unless punctuation is present there.
+- Rule 3 (Semantic Completeness): Do not break a single continuous phrase or short sentence across multiple cues. Each cue must be semantically complete.
+- Rule 4 (No Mid-Sentence Cuts): Each output cue should end with punctuation unless raw_cues ends mid-sentence. If a sentence has no punctuation, keep it in one longer cue.
 - {char_limit_rule}
 - Translate only the words present in raw_cues. Do not complete an unfinished sentence using later context.
 - Every meaning-bearing raw_cues item must be represented exactly once in the output.
@@ -980,6 +981,7 @@ def build_repair_payload(
                 "Repair pass. Translate every raw_cues item that is listed here. "
                 "Every source index in raw_cues must appear in exactly one output cue. "
                 "Preserve all meaning-bearing details. Do not summarize, compress, or drop clauses. "
+                "Split only at real punctuation boundaries; do not infer mid-sentence breaks. "
                 "Use previous_context and next_context only to understand terminology and unfinished phrases."
             ),
             "video_context": {

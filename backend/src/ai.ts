@@ -247,7 +247,10 @@ Rules:
 - Do not summarize, compress, or drop meaning-bearing details for readability.
 - Remove only clear ASR disfluencies like "um" or immediate accidental repetitions that carry no meaning.
 - For Chinese, a cue can be around 80-120 visible characters when needed to preserve meaning.
-- If a cue is long, split at punctuation or clause boundaries instead of shortening the content.
+- Split cues only at punctuation boundaries: comma, period, question mark, exclamation mark, semicolon, colon, or ellipsis.
+- Do not split at a conjunction, phrase boundary, or model-inferred pause unless punctuation is present there.
+- Each output cue should end with punctuation unless raw_cues ends mid-sentence.
+- If a sentence has no punctuation, keep it in one longer cue instead of cutting it in the middle.
 - Do not reuse the same source index in multiple output cues.
 
 Return:
