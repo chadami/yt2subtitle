@@ -15,7 +15,7 @@ export type TranslatedCue = {
 };
 
 const BOUNDARY_PUNCTUATION = ["...", "……", "，", ",", "。", ".", "！", "!", "？", "?", "；", ";", "：", ":"];
-const SENTENCE_END_MARKS = ["...", "……", "。", ".", "！", "!", "？", "?", "；", ";"];
+const MIN_DISPLAY_DURATION = 1.2;
 
 export function normalizeText(text: string) {
   return text.replace(/\s+/g, " ").trim();
@@ -109,45 +109,9 @@ export function sanitizeTiming(cues: TranslatedCue[]) {
   return output;
 }
 
-function findAll(text: string, needle: string) {
-  const indexes: number[] = [];
-  let start = 0;
-  while (start < text.length) {
-    const index = text.indexOf(needle, start);
-    if (index < 0) break;
-    indexes.push(index);
-    start = index + needle.length;
-  }
-  return indexes;
-}
-
 function endsAtPunctuationBoundary(text: string) {
   const normalized = normalizeText(text);
   return BOUNDARY_PUNCTUATION.some((mark) => normalized.endsWith(mark));
-}
-
-function firstSentenceSplitIndex(text: string) {
-  const candidates = SENTENCE_END_MARKS.flatMap((mark) =>
-    findAll(text, mark).map((index) => index + mark.length)
-  ).filter((index) => index > 0 && index < text.length);
-  return candidates.length ? Math.min(...candidates) : null;
-}
-
-function splitTextByPunctuation(text: string) {
-  const normalized = normalizeText(text);
-  if (normalized.length <= 1) return [normalized, ""] as const;
-  const midpoint = normalized.length / 2;
-  const candidates = BOUNDARY_PUNCTUATION.flatMap((mark) =>
-    findAll(normalized, mark).map((index) => index + mark.length)
-  ).filter((index) => index > 0 && index < normalized.length);
-  if (!candidates.length) return [normalized, ""] as const;
-  const splitAt = candidates.reduce((best, index) =>
-    Math.abs(index - midpoint) < Math.abs(best - midpoint) ? index : best
-  );
-  return [
-    normalizeText(normalized.slice(0, splitAt)),
-    normalizeText(normalized.slice(splitAt))
-  ] as const;
 }
 
 function joinTranslatedText(first: string, second: string) {
@@ -160,33 +124,7 @@ function joinTranslatedText(first: string, second: string) {
     : `${left}${right}`;
 }
 
-function splitCueTextAt(cue: TranslatedCue, splitAt: number) {
-  const text = normalizeText(cue.text);
-  const firstText = normalizeText(text.slice(0, splitAt));
-  const restText = normalizeText(text.slice(splitAt));
-  if (!firstText) return [cue, null] as const;
-  const ratio = firstText.length / Math.max(1, text.length);
-  const splitTime = cue.start + (cue.end - cue.start) * ratio;
-  return [
-    { start: cue.start, end: splitTime, text: firstText },
-    restText ? { start: splitTime, end: cue.end, text: restText } : null
-  ] as const;
-}
-
-function splitLongCueByPunctuation(cue: TranslatedCue, maxChars: number): TranslatedCue[] {
-  const text = normalizeText(cue.text);
-  if (text.length <= maxChars) return [cue];
-  const [part1, part2] = splitTextByPunctuation(text);
-  if (!part1 || !part2 || part1 === text) return [cue];
-  const ratio = part1.length / Math.max(1, text.length);
-  const splitTime = cue.start + (cue.end - cue.start) * ratio;
-  return [
-    ...splitLongCueByPunctuation({ start: cue.start, end: splitTime, text: part1 }, maxChars),
-    ...splitLongCueByPunctuation({ start: splitTime, end: cue.end, text: part2 }, maxChars)
-  ];
-}
-
-export function enforcePunctuationSegmentation(cues: TranslatedCue[], maxChars: number) {
+export function enforcePunctuationSegmentation(cues: TranslatedCue[]) {
   const merged: TranslatedCue[] = [];
   let buffer: TranslatedCue | null = null;
 
@@ -202,63 +140,49 @@ export function enforcePunctuationSegmentation(cues: TranslatedCue[], maxChars: 
         }
       : current;
 
-    while (buffer) {
-      const splitAt = firstSentenceSplitIndex(buffer.text);
-      if (splitAt !== null) {
-        const [completed, rest] = splitCueTextAt(buffer, splitAt);
-        merged.push(completed);
-        buffer = rest;
-        continue;
-      }
-      if (endsAtPunctuationBoundary(buffer.text)) {
-        merged.push(buffer);
-        buffer = null;
-      }
-      break;
+    if (endsAtPunctuationBoundary(buffer.text)) {
+      merged.push(buffer);
+      buffer = null;
     }
   }
 
   if (buffer) merged.push(buffer);
-  return merged.flatMap((cue) => splitLongCueByPunctuation(cue, maxChars));
-}
-
-function visibleTextLength(text: string) {
-  return text.replace(/\s+/g, "").length;
-}
-
-function minReadableDuration(text: string) {
-  const length = visibleTextLength(text);
-  if (length <= 6) return 0.45;
-  if (length <= 10) return 0.8;
-  if (length <= 16) return 1.0;
-  if (length <= 24) return 1.35;
-  if (length <= 34) return 1.7;
-  if (length <= 46) return 2.1;
-  return 2.5;
+  return merged;
 }
 
 export function enforceReadableDurations(cues: TranslatedCue[]) {
-  const output = sanitizeTiming(cues).map((cue) => ({ ...cue }));
-  const minGap = 0.04;
+  const input = sanitizeTiming(cues);
+  const output: TranslatedCue[] = [];
 
-  for (let index = 0; index < output.length; index += 1) {
-    const cue = output[index];
-    const desiredDuration = minReadableDuration(cue.text);
-    let missing = desiredDuration - (cue.end - cue.start);
-    if (missing <= 0) continue;
+  for (let index = 0; index < input.length; index += 1) {
+    let current = { ...input[index] };
+    const next = input[index + 1];
+    const missing = MIN_DISPLAY_DURATION - (current.end - current.start);
 
-    const next = output[index + 1];
-    const latestEnd = next ? Math.max(cue.start, next.start - minGap) : cue.end + missing;
-    const extendBy = Math.min(missing, Math.max(0, latestEnd - cue.end));
-    cue.end += extendBy;
-    missing -= extendBy;
+    if (missing > 0 && next) {
+      current.end += Math.min(missing, Math.max(0, next.start - current.end));
+    }
 
-    if (missing <= 0) continue;
+    while (current.end - current.start < MIN_DISPLAY_DURATION && index + 1 < input.length) {
+      const following = input[index + 1];
+      current = {
+        start: current.start,
+        end: following.end,
+        text: joinTranslatedText(current.text, following.text)
+      };
+      index += 1;
+    }
 
-    const previous = output[index - 1];
-    const earliestStart = previous ? previous.end + minGap : 0;
-    const pullBy = Math.min(missing, Math.max(0, cue.start - earliestStart));
-    cue.start -= pullBy;
+    if (current.end - current.start < MIN_DISPLAY_DURATION && output.length) {
+      const previous = output.pop()!;
+      current = {
+        start: previous.start,
+        end: current.end,
+        text: joinTranslatedText(previous.text, current.text)
+      };
+    }
+
+    output.push(current);
   }
 
   return sanitizeTiming(output);

@@ -246,7 +246,10 @@ Rules:
 - Keep names, terms, numbers, examples, caveats, contrasts, and speaker intent accurate.
 - Do not summarize, compress, or drop meaning-bearing details for readability.
 - Remove only clear ASR disfluencies like "um" or immediate accidental repetitions that carry no meaning.
-- For Chinese, a cue can be around 80-120 visible characters when needed to preserve meaning.
+- For Chinese, prefer no more than about 48-56 visible characters per cue.
+- Preserve the full translation by producing more punctuation-delimited cues; never shorten content to meet the length target.
+- Restore natural punctuation after correcting the ASR transcript, even when raw_cues contains no punctuation.
+- A translation longer than the length target must include natural punctuation boundaries before it is split.
 - Split cues only at punctuation boundaries: comma, period, question mark, exclamation mark, semicolon, colon, or ellipsis.
 - Do not split at a conjunction, phrase boundary, or model-inferred pause unless punctuation is present there.
 - Each output cue should end with punctuation unless raw_cues ends mid-sentence.

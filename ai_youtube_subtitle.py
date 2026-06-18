@@ -41,7 +41,7 @@ USER_AGENT = (
 INNERTUBE_URL = "https://www.youtube.com/youtubei/v1/player"
 INNERTUBE_CONTEXT = {"client": {"clientName": "ANDROID", "clientVersion": "20.10.38"}}
 HTTP_RETRIES = 3
-MIN_DURATION = 0.8
+MIN_DURATION = 1.2
 BOUNDARY_PUNCTUATION = "，,。.!！?？；;：:……"
 SENTENCE_END_MARKS = ("...", "……", "。", ".", "！", "!", "？", "?", "；", ";")
 
@@ -658,8 +658,8 @@ def make_ai_units(cues: list[CaptionCue], *, max_chars: int = 4200) -> list[list
 def get_max_chars(target_language: str) -> int:
     lang = target_language.lower()
     if any(code in lang for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
-        return 130
-    return 220
+        return 56
+    return 100
 
 
 def split_text_by_punctuation(text: str) -> tuple[str, str]:
@@ -789,10 +789,10 @@ def merge_incomplete_sentence_cues(cues: list[CaptionCue], max_chars: int) -> li
 def system_prompt(target_language: str) -> str:
     target_lang_lower = target_language.lower()
     if any(code in target_lang_lower for code in ["zh", "cn", "tw", "hk", "ja", "ko"]):
-        char_limit_rule = "Readability target: prefer <= 120 visible CJK characters per cue, but never omit source meaning to fit this target."
+        char_limit_rule = "Readability target: prefer 48-56 visible CJK characters per cue. Preserve all content by producing more punctuation-delimited cues."
         style_rule = "- For CJK languages, prefer natural spoken phrasing with clear rhythm.\n- Avoid stiff phrases like \"因此/所以说/这意味着\" unless the speaker actually sounds formal."
     else:
-        char_limit_rule = "Readability target: prefer <= 200 characters per cue, but never omit source meaning to fit this target."
+        char_limit_rule = "Readability target: prefer <= 100 characters per cue. Preserve all content by producing more punctuation-delimited cues."
         style_rule = "- Prefer clear, easily readable subtitle lines."
 
     return f"""
@@ -825,6 +825,7 @@ Timing and Segmentation Rules:
 - Rule 2 (No Inferred Breaks): Do not split at a conjunction, phrase boundary, or model-inferred pause unless punctuation is present there.
 - Rule 3 (Semantic Completeness): Do not break a single continuous phrase or short sentence across multiple cues. Each cue must be semantically complete.
 - Rule 4 (No Mid-Sentence Cuts): Each output cue should end with punctuation unless raw_cues ends mid-sentence. If a sentence has no punctuation, keep it in one longer cue.
+- Rule 5 (Punctuation Restoration): Restore natural punctuation after correcting the ASR transcript. Any translation longer than the length target must include natural punctuation boundaries before it is split.
 - {char_limit_rule}
 - Translate only the words present in raw_cues. Do not complete an unfinished sentence using later context.
 - Every meaning-bearing raw_cues item must be represented exactly once in the output.
