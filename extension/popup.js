@@ -171,14 +171,15 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
     showLoggedOutState();
     return;
   }
-  if (!tab?.url?.includes("youtube.com/watch")) {
+  const currentVideo = await resolveCurrentVideo(tab);
+  if (!currentVideo.isYoutube) {
     hideSubtitleControls();
     setButtonState("idle", false);
     status.textContent = t("openYoutube");
     return;
   }
-  activeTabId = tab.id;
-  activeVideoId = new URL(tab.url).searchParams.get("v") || "";
+  activeTabId = currentVideo.tabId;
+  activeVideoId = currentVideo.videoId;
   if (!activeVideoId) {
     hideSubtitleControls();
     setButtonState("idle", false);
@@ -189,6 +190,76 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
   await refreshInitialSubtitleState();
 });
 
+async function resolveCurrentVideo(tab) {
+  const tabId = tab?.id || null;
+  let best = videoContextFromUrl(tab?.url || "");
+  if (!tabId) return { tabId, ...best };
+
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    const pageContext = await getPageVideoContext(tabId);
+    if (pageContext?.isVideoPage && pageContext.videoId) {
+      return {
+        tabId,
+        isYoutube: true,
+        isVideoPage: true,
+        videoId: pageContext.videoId,
+        url: pageContext.url || best.url
+      };
+    }
+
+    const [freshTab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    best = videoContextFromUrl(freshTab?.id === tabId ? freshTab.url : tab?.url || "");
+    if (best.isVideoPage && best.videoId) return { tabId, ...best };
+    if (!best.isYoutube) return { tabId, ...best };
+    await delay(150);
+  }
+
+  return { tabId, ...best };
+}
+
+async function getPageVideoContext(tabId) {
+  return chrome.tabs.sendMessage(tabId, { type: "GET_CURRENT_VIDEO" }).catch(() => null);
+}
+
+function videoContextFromUrl(url) {
+  const videoId = parseVideoId(url);
+  return {
+    isYoutube: isYoutubeUrl(url),
+    isVideoPage: Boolean(videoId),
+    videoId,
+    url
+  };
+}
+
+function parseVideoId(url) {
+  try {
+    const parsed = new URL(url);
+    if (!isYoutubeHost(parsed.hostname)) return "";
+    if (parsed.pathname.startsWith("/shorts/")) {
+      return parsed.pathname.split("/").filter(Boolean)[1] || "";
+    }
+    return parsed.searchParams.get("v") || "";
+  } catch {
+    return "";
+  }
+}
+
+function isYoutubeUrl(url) {
+  try {
+    return isYoutubeHost(new URL(url).hostname);
+  } catch {
+    return false;
+  }
+}
+
+function isYoutubeHost(hostname) {
+  return hostname === "youtube.com" || hostname.endsWith(".youtube.com");
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 generate.addEventListener("click", async () => {
   if (!activeTabId) return;
   const forceRegenerate = subtitlesReady;
@@ -197,20 +268,13 @@ generate.addEventListener("click", async () => {
   hideNotice();
   hideConfirmPanel();
   try {
-    const prepared = await chrome.tabs.sendMessage(activeTabId, {
-      type: "PREPARE_AI_SUBTITLES"
-    });
-    if (!prepared?.ok) throw new Error(prepared?.error || t("failedCreate"));
-    renderGenerationSummary(prepared.summary);
-    status.textContent = t("readyToConfirm");
-    setButtonState("generating", false);
     const result = await chrome.tabs.sendMessage(activeTabId, {
       type: "GENERATE_AI_SUBTITLES",
-      forceRegenerate,
-      preparedPayload: prepared.payload
+      forceRegenerate
     });
     if (!result?.ok) throw new Error(result?.error || t("failedCreate"));
-    const summary = prepared.summary;
+    const summary = result.summary;
+    renderGenerationSummary(summary);
     showWaitingNotice(summary);
     status.textContent = t("generatingStatus", {
       count: result.rawCueCount,

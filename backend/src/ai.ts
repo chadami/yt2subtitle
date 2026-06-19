@@ -295,7 +295,8 @@ export async function translateChunk(input: {
     output.push({
       start: Math.min(...sourceCues.map((cue) => cue.start)),
       end: Math.max(...sourceCues.map((cue) => cue.end)),
-      text: translation
+      text: translation,
+      sourceIndexes: [...new Set(sourceIndexes)].sort((a, b) => a - b)
     });
   }
   return output;

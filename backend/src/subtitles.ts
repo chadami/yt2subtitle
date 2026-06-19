@@ -12,10 +12,14 @@ export type TranslatedCue = {
   start: number;
   end: number;
   text: string;
+  sourceIndexes?: number[];
 };
 
 const BOUNDARY_PUNCTUATION = ["...", "……", "，", ",", "。", ".", "！", "!", "？", "?", "；", ";", "：", ":"];
 const MIN_DISPLAY_DURATION = 1.2;
+export const MAX_SUBTITLE_CHARACTERS = 56;
+export const MAX_SUBTITLE_DURATION = 8;
+export const MAX_SOURCE_INDEX_SPAN = 6;
 
 export function normalizeText(text: string) {
   return text.replace(/\s+/g, " ").trim();
@@ -104,7 +108,7 @@ export function sanitizeTiming(cues: TranslatedCue[]) {
       start = previous.end;
       end = Math.max(end, start + 0.2);
     }
-    output.push({ start, end, text: cue.text });
+    output.push({ ...cue, start, end, text: cue.text });
   }
   return output;
 }
@@ -124,6 +128,11 @@ function joinTranslatedText(first: string, second: string) {
     : `${left}${right}`;
 }
 
+function mergeSourceIndexes(first?: number[], second?: number[]) {
+  const indexes = [...(first || []), ...(second || [])];
+  return indexes.length ? [...new Set(indexes)].sort((a, b) => a - b) : undefined;
+}
+
 export function enforcePunctuationSegmentation(cues: TranslatedCue[]) {
   const merged: TranslatedCue[] = [];
   let buffer: TranslatedCue | null = null;
@@ -136,7 +145,8 @@ export function enforcePunctuationSegmentation(cues: TranslatedCue[]) {
       ? {
           start: buffer.start,
           end: Math.max(buffer.end, current.end),
-          text: joinTranslatedText(buffer.text, current.text)
+          text: joinTranslatedText(buffer.text, current.text),
+          sourceIndexes: mergeSourceIndexes(buffer.sourceIndexes, current.sourceIndexes)
         }
       : current;
 
@@ -168,7 +178,8 @@ export function enforceReadableDurations(cues: TranslatedCue[]) {
       current = {
         start: current.start,
         end: following.end,
-        text: joinTranslatedText(current.text, following.text)
+        text: joinTranslatedText(current.text, following.text),
+        sourceIndexes: mergeSourceIndexes(current.sourceIndexes, following.sourceIndexes)
       };
       index += 1;
     }
@@ -178,11 +189,96 @@ export function enforceReadableDurations(cues: TranslatedCue[]) {
       current = {
         start: previous.start,
         end: current.end,
-        text: joinTranslatedText(previous.text, current.text)
+        text: joinTranslatedText(previous.text, current.text),
+        sourceIndexes: mergeSourceIndexes(previous.sourceIndexes, current.sourceIndexes)
       };
     }
 
     output.push(current);
+  }
+
+  return sanitizeTiming(output);
+}
+
+function isBoundaryCharacter(character: string) {
+  return /[，,。.!！？?；;：:…]/u.test(character);
+}
+
+function sourceIndexSpan(indexes?: number[]) {
+  if (!indexes?.length) return 0;
+  return Math.max(...indexes) - Math.min(...indexes) + 1;
+}
+
+function splitTextIntoParts(text: string, partCount: number) {
+  const characters = Array.from(normalizeText(text));
+  const parts: string[] = [];
+  let offset = 0;
+
+  for (let partIndex = 0; partIndex < partCount; partIndex += 1) {
+    const partsLeft = partCount - partIndex;
+    const remaining = characters.length - offset;
+    if (partsLeft === 1) {
+      parts.push(characters.slice(offset).join("").trim());
+      break;
+    }
+
+    const idealLength = Math.ceil(remaining / partsLeft);
+    const maxLength = Math.min(MAX_SUBTITLE_CHARACTERS, remaining - (partsLeft - 1));
+    const minimumUsefulLength = Math.max(1, Math.floor(idealLength * 0.6));
+    let cutLength = Math.min(idealLength, maxLength);
+    let closestBoundaryDistance = Number.POSITIVE_INFINITY;
+
+    for (let candidate = minimumUsefulLength; candidate <= maxLength; candidate += 1) {
+      if (isBoundaryCharacter(characters[offset + candidate - 1])) {
+        const distance = Math.abs(candidate - idealLength);
+        if (distance < closestBoundaryDistance) {
+          cutLength = candidate;
+          closestBoundaryDistance = distance;
+        }
+      }
+    }
+
+    parts.push(characters.slice(offset, offset + cutLength).join("").trim());
+    offset += cutLength;
+  }
+
+  return parts.filter(Boolean);
+}
+
+function distributeIndexes(indexes: number[] | undefined, partIndex: number, partCount: number) {
+  if (!indexes?.length) return undefined;
+  const start = Math.floor((indexes.length * partIndex) / partCount);
+  const end = Math.floor((indexes.length * (partIndex + 1)) / partCount);
+  return indexes.slice(start, Math.max(start + 1, end));
+}
+
+export function enforceSubtitleLimits(cues: TranslatedCue[]) {
+  const output: TranslatedCue[] = [];
+
+  for (const cue of sanitizeTiming(cues)) {
+    const textLength = Array.from(normalizeText(cue.text)).length;
+    if (!textLength) continue;
+    const duration = Math.max(0.2, cue.end - cue.start);
+    const isShortLabel = textLength <= 12 && sourceIndexSpan(cue.sourceIndexes) <= MAX_SOURCE_INDEX_SPAN;
+    const requiredParts = Math.max(
+      1,
+      Math.ceil(textLength / MAX_SUBTITLE_CHARACTERS),
+      isShortLabel ? 1 : Math.ceil(duration / MAX_SUBTITLE_DURATION),
+      Math.ceil(sourceIndexSpan(cue.sourceIndexes) / MAX_SOURCE_INDEX_SPAN)
+    );
+    const parts = splitTextIntoParts(cue.text, Math.min(requiredParts, textLength));
+    const partDuration = Math.min(duration / parts.length, MAX_SUBTITLE_DURATION);
+
+    parts.forEach((text, index) => {
+      const start = cue.start + partDuration * index;
+      const end = start + partDuration;
+      output.push({
+        start,
+        end,
+        text,
+        sourceIndexes: distributeIndexes(cue.sourceIndexes, index, parts.length)
+      });
+    });
   }
 
   return sanitizeTiming(output);

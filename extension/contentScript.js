@@ -9,7 +9,29 @@ const DEFAULT_SUBTITLE_STYLE = {
 let renderGeneration = 0;
 
 function getVideoId() {
-  return new URL(location.href).searchParams.get("v");
+  return parseVideoId(location.href);
+}
+
+function parseVideoId(url) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.pathname.startsWith("/shorts/")) {
+      return parsed.pathname.split("/").filter(Boolean)[1] || "";
+    }
+    return parsed.searchParams.get("v") || "";
+  } catch {
+    return "";
+  }
+}
+
+function getCurrentVideoContext() {
+  const videoId = getVideoId();
+  return {
+    ok: true,
+    videoId,
+    url: location.href,
+    isVideoPage: Boolean(videoId)
+  };
 }
 
 function ensureOverlay() {
@@ -141,6 +163,11 @@ async function tryLoadSubtitle() {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === "GET_CURRENT_VIDEO") {
+    sendResponse(getCurrentVideoContext());
+    return true;
+  }
+
   if (message?.type === "PREPARE_AI_SUBTITLES") {
     prepareAiSubtitles().then(
       (result) => sendResponse(result),
@@ -227,7 +254,10 @@ async function generateAiSubtitles(forceRegenerate = false, preparedPayload = nu
   if (!videoId) throw new Error("No YouTube video detected.");
   clearOverlay();
 
-  const prepared = preparedPayload || (await prepareAiSubtitles()).payload;
+  const preparation = preparedPayload
+    ? { payload: preparedPayload, summary: summarizePreparedPayload(preparedPayload) }
+    : await prepareAiSubtitles();
+  const prepared = preparation.payload;
   const data = await chrome.runtime.sendMessage({
     type: "CREATE_SUBTITLE_JOB",
     payload: {
@@ -242,7 +272,21 @@ async function generateAiSubtitles(forceRegenerate = false, preparedPayload = nu
     status: data.status,
     rawCueCount: prepared.rawCues.length,
     captionType: prepared.captionType,
-    sourceLang: prepared.sourceLang
+    sourceLang: prepared.sourceLang,
+    summary: preparation.summary
+  };
+}
+
+function summarizePreparedPayload(prepared) {
+  const rawCues = Array.isArray(prepared.rawCues) ? prepared.rawCues : [];
+  return {
+    rawCueCount: rawCues.length,
+    characterCount: rawCues.reduce((sum, cue) => sum + (cue.text || "").length, 0),
+    totalSeconds: rawCues.reduce((max, cue) => Math.max(max, cue.end || 0), 0),
+    captionType: prepared.captionType,
+    sourceLang: prepared.sourceLang,
+    targetLang: prepared.targetLang,
+    translationMode: prepared.translationMode
   };
 }
 
