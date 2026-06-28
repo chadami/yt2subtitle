@@ -6,7 +6,12 @@ const DEFAULT_SUBTITLE_STYLE = {
   fontWeight: "normal",
   positionPercent: 21
 };
+const PARTIAL_SUBTITLE_POLL_INTERVAL_MS = 2500;
 let renderGeneration = 0;
+let partialSubtitlePollTimer = null;
+let partialSubtitleJobId = "";
+let partialSubtitleVideoId = "";
+let loadedPartialChunkCount = 0;
 
 function getVideoId() {
   return parseVideoId(location.href);
@@ -162,6 +167,68 @@ async function tryLoadSubtitle() {
   }
 }
 
+function startPartialSubtitlePolling(jobId, videoId = getVideoId()) {
+  if (!jobId || !videoId) return;
+  if (partialSubtitlePollTimer && partialSubtitleJobId === jobId && partialSubtitleVideoId === videoId) return;
+  stopPartialSubtitlePolling();
+  partialSubtitleJobId = jobId;
+  partialSubtitleVideoId = videoId;
+  loadedPartialChunkCount = 0;
+  partialSubtitlePollTimer = setInterval(() => {
+    pollPartialSubtitles(jobId, videoId).catch(() => {});
+  }, PARTIAL_SUBTITLE_POLL_INTERVAL_MS);
+  pollPartialSubtitles(jobId, videoId).catch(() => {});
+}
+
+function stopPartialSubtitlePolling() {
+  if (partialSubtitlePollTimer) clearInterval(partialSubtitlePollTimer);
+  partialSubtitlePollTimer = null;
+  partialSubtitleJobId = "";
+  partialSubtitleVideoId = "";
+  loadedPartialChunkCount = 0;
+}
+
+async function pollPartialSubtitles(jobId, videoId) {
+  if (getVideoId() !== videoId) {
+    stopPartialSubtitlePolling();
+    return;
+  }
+
+  const partial = await chrome.runtime.sendMessage({ type: "GET_PARTIAL_SUBTITLES", jobId });
+  if (!partial?.ok) return;
+
+  if (partial.status === "completed") {
+    stopPartialSubtitlePolling();
+    await tryLoadSubtitle();
+    return;
+  }
+  if (partial.status === "failed" || partial.status === "cancelled") {
+    stopPartialSubtitlePolling();
+    return;
+  }
+
+  const chunkCount = Number(partial.chunkCount || 0);
+  if (!Array.isArray(partial.cues) || !partial.cues.length || chunkCount <= loadedPartialChunkCount) return;
+
+  const result = await renderSubtitles(partial.cues, videoId);
+  if (result.loaded) {
+    loadedPartialChunkCount = chunkCount;
+  }
+}
+
+async function resumePendingPartialPolling() {
+  const videoId = getVideoId();
+  if (!videoId) {
+    stopPartialSubtitlePolling();
+    return;
+  }
+  const { pendingJobs = [] } = await chrome.storage.local.get(["pendingJobs"]);
+  const pendingJob = pendingJobs.find((job) => job.videoId === videoId);
+  if (pendingJob?.jobId) {
+    startPartialSubtitlePolling(pendingJob.jobId, videoId);
+  }
+}
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "GET_CURRENT_VIDEO") {
     sendResponse(getCurrentVideoContext());
@@ -279,6 +346,7 @@ async function generateAiSubtitles(forceRegenerate = false, preparedPayload = nu
     }
   });
   if (!data?.ok) throw new Error(data?.error || "Failed to create subtitle job.");
+  startPartialSubtitlePolling(data.jobId, videoId);
   return {
     ok: true,
     jobId: data.jobId,
@@ -448,7 +516,9 @@ setInterval(() => {
   if (location.href !== lastUrl) {
     lastUrl = location.href;
     tryLoadSubtitle();
+    resumePendingPartialPolling().catch(() => {});
   }
 }, 250);
 
 tryLoadSubtitle();
+resumePendingPartialPolling().catch(() => {});
