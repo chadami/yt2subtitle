@@ -55,7 +55,7 @@ function ensureOverlay() {
     "font-family:Arial,'Microsoft YaHei',sans-serif",
     "line-height:1.42",
     "letter-spacing:0",
-    "text-align:center",
+    "text-align:left",
     "text-shadow:0 2px 8px rgba(0,0,0,.5)",
     "pointer-events:none",
     "display:none",

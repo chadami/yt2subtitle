@@ -4,7 +4,7 @@ import { query } from "./db.js";
 import { sendSubtitleReadyEmail } from "./email.js";
 import { redisConnection } from "./queue.js";
 import { loadUserAiConfig } from "./routes/ai.js";
-import { chunkCues, enforcePunctuationSegmentation, enforceReadableDurations, enforceSubtitleLimits, resolveOverlaps, sanitizeTiming, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
+import { chunkCues, groupBySourceTiming, prepareSourceCues, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
 
 async function processSubtitleJob(jobId: string) {
   await query("update translation_jobs set status = 'cleaning', progress = 10, updated_at = now() where id = $1", [jobId]);
@@ -22,10 +22,11 @@ async function processSubtitleJob(jobId: string) {
     provider_mode: ProviderMode;
     ai_provider: AiProvider | null;
     ai_model: string | null;
+    caption_type: "manual" | "auto";
   }>(
     `select j.video_id, j.source_lang, j.target_lang, j.caption_source_id, j.user_id,
      j.provider_mode, j.ai_provider, j.ai_model,
-     c.raw_cues_json, v.title, v.channel, v.description, v.url
+     c.raw_cues_json, c.caption_type, v.title, v.channel, v.description, v.url
      from translation_jobs j
      join caption_sources c on c.id = j.caption_source_id
      join videos v on v.video_id = j.video_id
@@ -38,7 +39,7 @@ async function processSubtitleJob(jobId: string) {
     ? await loadUserAiConfig(record.user_id)
     : systemAiConfig();
 
-  const cleanCues = resolveOverlaps(record.raw_cues_json);
+  const cleanCues = prepareSourceCues(record.raw_cues_json, record.caption_type);
   await query(
     "update caption_sources set clean_cues_json = $1 where id = $2",
     [JSON.stringify(cleanCues), record.caption_source_id]
@@ -70,9 +71,7 @@ async function processSubtitleJob(jobId: string) {
   }
 
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1", [jobId]);
-  const segmented = enforcePunctuationSegmentation(translated);
-  const readable = enforceReadableDurations(sanitizeTiming(segmented));
-  const finalCues = enforceSubtitleLimits(readable).map(({ start, end, text }) => ({ start, end, text }));
+  const finalCues = groupBySourceTiming(translated).map(({ start, end, text }) => ({ start, end, text }));
   const vtt = toVtt(finalCues);
   await query(
     `insert into translated_subtitles (

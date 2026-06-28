@@ -25,6 +25,10 @@ export type AiConfig = {
   model: string;
 };
 
+const MAX_SOURCE_REALIGN_SPAN = 10;
+const MIN_SOURCE_REALIGN_SCORE = 0.6;
+const MIN_SOURCE_REALIGN_IMPROVEMENT = 0.2;
+
 const providerDefaults: Record<AiProvider, { baseUrl: string; fallbackModel: string }> = {
   gemini: {
     baseUrl: "https://generativelanguage.googleapis.com/v1beta",
@@ -53,10 +57,13 @@ const providerDefaults: Record<AiProvider, { baseUrl: string; fallbackModel: str
 };
 
 export function systemAiConfig(): AiConfig {
+  if (!env.DEEPSEEK_API_KEY.trim()) {
+    throw new Error("DEEPSEEK_API_KEY is required for system translation mode");
+  }
   return {
     providerMode: "system",
     provider: "deepseek",
-    apiKey: env.DEEPSEEK_API_KEY,
+    apiKey: env.DEEPSEEK_API_KEY.trim(),
     model: env.DEEPSEEK_MODEL
   };
 }
@@ -226,6 +233,69 @@ function tryParse(text: string) {
   }
 }
 
+function sourceTokens(text: string) {
+  return normalizeText(text)
+    .toLowerCase()
+    .match(/[a-z0-9]+/g) || [];
+}
+
+function tokenOverlapScore(expectedText: string, actualText: string) {
+  const expected = sourceTokens(expectedText);
+  if (!expected.length) return 0;
+
+  const actualCounts = new Map<string, number>();
+  for (const token of sourceTokens(actualText)) {
+    actualCounts.set(token, (actualCounts.get(token) || 0) + 1);
+  }
+
+  let matches = 0;
+  for (const token of expected) {
+    const count = actualCounts.get(token) || 0;
+    if (count > 0) {
+      matches += 1;
+      actualCounts.set(token, count - 1);
+    }
+  }
+  return matches / expected.length;
+}
+
+function joinSourceText(cues: CleanCue[]) {
+  return normalizeText(cues.map((cue) => cue.text).join(" "));
+}
+
+function realignSourceCues(input: {
+  sourceText: string;
+  sourceCues: CleanCue[];
+  rawCues: CleanCue[];
+}) {
+  const sourceText = normalizeText(input.sourceText);
+  if (!sourceText) return input.sourceCues;
+
+  const claimedScore = tokenOverlapScore(sourceText, joinSourceText(input.sourceCues));
+  let bestScore = claimedScore;
+  let bestCues = input.sourceCues;
+
+  for (let start = 0; start < input.rawCues.length; start += 1) {
+    for (let end = start; end < Math.min(input.rawCues.length, start + MAX_SOURCE_REALIGN_SPAN); end += 1) {
+      const candidate = input.rawCues.slice(start, end + 1);
+      const score = tokenOverlapScore(sourceText, joinSourceText(candidate));
+      if (score > bestScore) {
+        bestScore = score;
+        bestCues = candidate;
+      }
+    }
+  }
+
+  if (
+    bestCues !== input.sourceCues
+    && bestScore >= MIN_SOURCE_REALIGN_SCORE
+    && bestScore - claimedScore >= MIN_SOURCE_REALIGN_IMPROVEMENT
+  ) {
+    return bestCues;
+  }
+  return input.sourceCues;
+}
+
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -239,25 +309,25 @@ Translate only raw_cues into natural, complete ${targetLanguage} subtitles.
 
 Rules:
 - Output strict JSON only.
-- Output cues only for raw_cues.
-- Use source_indexes from raw_cues.
+- Output exactly one cue for each raw_cue in the current raw_cues array.
+- Keep the same order as raw_cues.
+- Each output cue must use exactly one source index: the matching raw_cue index.
+- Do not merge, skip, duplicate, or reorder source indexes.
 - Do not output start/end times.
+- Translate only the text of the matching raw_cue.
+- Do not move words, meaning, examples, conclusions, or context from neighboring raw_cues into the current output cue.
+- If a raw_cue is only a sentence fragment, translate only that fragment; do not complete it with later raw_cues.
+- The source field must copy the matching raw_cue text exactly.
 - Prefer natural spoken wording over literal translation.
 - Keep names, terms, numbers, examples, caveats, contrasts, and speaker intent accurate.
 - Do not summarize, compress, or drop meaning-bearing details for readability.
 - Remove only clear ASR disfluencies like "um" or immediate accidental repetitions that carry no meaning.
-- For Chinese, prefer no more than about 48-56 visible characters per cue.
-- Preserve the full translation by producing more punctuation-delimited cues; never shorten content to meet the length target.
+- Preserve the full translation; never shorten content to meet a length target.
 - Restore natural punctuation after correcting the ASR transcript, even when raw_cues contains no punctuation.
-- A translation longer than the length target must include natural punctuation boundaries before it is split.
-- Split cues only at punctuation boundaries: comma, period, question mark, exclamation mark, semicolon, colon, or ellipsis.
-- Do not split at a conjunction, phrase boundary, or model-inferred pause unless punctuation is present there.
-- Each output cue should end with punctuation unless raw_cues ends mid-sentence.
-- If a sentence has no punctuation, keep it in one longer cue instead of cutting it in the middle.
-- Do not reuse the same source index in multiple output cues.
+- It is okay if one output cue is a fragment; backend timing/readability cleanup will merge fragments.
 
 Return:
-{"cues":[{"source_indexes":[1,2],"source":"source text","translation":"translated subtitle"}]}
+{"cues":[{"source_indexes":[1],"source":"source text","translation":"translated subtitle"}]}
 `.trim();
 }
 
@@ -271,32 +341,36 @@ export async function translateChunk(input: {
 }) {
   const modelInput = {
     videoContext: input.videoContext,
-    previousContext: input.previousContext,
     rawCues: input.rawCues,
-    nextContext: input.nextContext,
     targetLanguage: input.targetLanguage
   };
   const data = await chatJson(input.aiConfig, [
     { role: "system", content: systemPrompt(input.targetLanguage) },
     { role: "user", content: JSON.stringify(modelInput) }
-  ], 0.35);
+  ], 0.2);
 
   const byIndex = new Map(input.rawCues.map((cue) => [cue.index, cue]));
   const output: TranslatedCue[] = [];
   const cues = Array.isArray(data.cues) ? data.cues : [];
-  for (const item of cues) {
+  const usePositionTiming = cues.length >= input.rawCues.length * 0.9;
+  for (let itemIndex = 0; itemIndex < cues.length; itemIndex += 1) {
+    const item = cues[itemIndex];
     if (!item || typeof item !== "object") continue;
     const sourceIndexes = Array.isArray((item as { source_indexes?: unknown }).source_indexes)
       ? (item as { source_indexes: unknown[] }).source_indexes.map(Number).filter(Number.isFinite)
       : [];
-    const sourceCues = sourceIndexes.map((index) => byIndex.get(index)).filter(Boolean) as CleanCue[];
+    const sourceText = String((item as { source?: unknown }).source || "");
+    let sourceCues = usePositionTiming && input.rawCues[itemIndex]
+      ? [input.rawCues[itemIndex]]
+      : sourceIndexes.map((index) => byIndex.get(index)).filter(Boolean) as CleanCue[];
+    sourceCues = realignSourceCues({ sourceText, sourceCues, rawCues: input.rawCues });
     const translation = normalizeText(String((item as { translation?: unknown }).translation || ""));
     if (!sourceCues.length || !translation) continue;
     output.push({
       start: Math.min(...sourceCues.map((cue) => cue.start)),
       end: Math.max(...sourceCues.map((cue) => cue.end)),
       text: translation,
-      sourceIndexes: [...new Set(sourceIndexes)].sort((a, b) => a - b)
+      sourceIndexes: sourceCues.map((cue) => cue.index)
     });
   }
   return output;

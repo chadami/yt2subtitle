@@ -46,7 +46,7 @@ async function createSubtitleJob(payload) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(payload.sessionToken ? { Authorization: `Bearer ${payload.sessionToken}` } : {})
+      ...(translationMode === "user" && payload.sessionToken ? { Authorization: `Bearer ${payload.sessionToken}` } : {})
     },
     body: JSON.stringify({
       clientId: payload.clientId,
@@ -60,6 +60,10 @@ async function createSubtitleJob(payload) {
     })
   });
   const data = await response.json().catch(() => ({}));
+  if (response.status === 401) {
+    await clearAuthSession();
+    throw new Error(data.error || "Session expired. Open Settings and sign in again.");
+  }
   if (!response.ok) throw new Error(data.error || `Job request failed: ${response.status}`);
   if (payload.forceRegenerate === true) {
     await removeCachedSubtitlesForVideo(
@@ -95,23 +99,21 @@ async function getSubtitleByVideo(message) {
   const targetLang = message.targetLang || "zh-Hans";
   const modes = [translationMode, translationMode === "user" ? "system" : "user"];
   for (const mode of modes) {
-    const cached = await getCachedSubtitle(subtitleCacheKey(
-      message.videoId,
-      sourceLang || "any",
-      targetLang,
-      mode
-    ));
-    if (cached) return cached;
-
-    const data = await fetchSubtitleByVideo({
-      apiBase,
-      videoId: message.videoId,
-      sourceLang,
-      targetLang,
-      translationMode: mode,
-      sessionToken: message.sessionToken
-    });
-    if (data.status === "completed") return data;
+    const cacheKey = subtitleCacheKey(message.videoId, sourceLang || "any", targetLang, mode);
+    try {
+      const data = await fetchSubtitleByVideo({
+        apiBase,
+        videoId: message.videoId,
+        sourceLang,
+        targetLang,
+        translationMode: mode,
+        sessionToken: message.sessionToken
+      });
+      if (data.status === "completed") return data;
+    } catch {
+      const cached = await getCachedSubtitle(cacheKey);
+      if (cached) return cached;
+    }
   }
   return { status: "missing" };
 }
@@ -127,6 +129,10 @@ async function fetchSubtitleByVideo({ apiBase, videoId, sourceLang, targetLang, 
       ? { Authorization: `Bearer ${sessionToken}` }
       : {}
   });
+  if (response.status === 401) {
+    await clearAuthSession();
+    return { status: "missing" };
+  }
   if (!response.ok) return { status: "missing" };
   const data = await response.json();
   if (data.status === "completed" && Array.isArray(data.cues)) {
@@ -217,6 +223,10 @@ async function safeFetch(url, options) {
   } catch (error) {
     throw new Error(`Cannot reach backend API. Check Backend API URL, extension host permissions, and Render service status. URL: ${url}`);
   }
+}
+
+async function clearAuthSession() {
+  await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
 }
 
 chrome.runtime.onInstalled.addListener(async () => {

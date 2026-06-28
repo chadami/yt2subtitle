@@ -3,6 +3,14 @@ import jwt from "jsonwebtoken";
 import { env } from "./env.js";
 import { query } from "./db.js";
 
+export class AuthError extends Error {
+  status = 401;
+
+  constructor(message = "Session expired. Please sign in again.") {
+    super(message);
+  }
+}
+
 export function hashToken(token: string) {
   return crypto.createHash("sha256").update(token).digest("hex");
 }
@@ -36,9 +44,13 @@ export async function resolveAnonymousUser(clientId: string) {
 export async function requireUserId(authHeader: string | undefined, clientId?: string) {
   if (authHeader?.startsWith("Bearer ")) {
     const token = authHeader.slice("Bearer ".length);
-    const payload = jwt.verify(token, env.JWT_SECRET) as { sub: string };
-    return payload.sub;
+    try {
+      const payload = jwt.verify(token, env.JWT_SECRET) as { sub: string };
+      return payload.sub;
+    } catch {
+      throw new AuthError();
+    }
   }
   if (clientId) return resolveAnonymousUser(clientId);
-  throw new Error("Missing auth token or clientId");
+  throw new AuthError("Missing auth token or clientId");
 }
