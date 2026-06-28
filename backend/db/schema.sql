@@ -103,8 +103,18 @@ create table if not exists translated_subtitles (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists translation_job_chunks (
+  job_id uuid not null references translation_jobs(id) on delete cascade,
+  chunk_index integer not null,
+  cues_json jsonb not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  primary key (job_id, chunk_index)
+);
+
 create index if not exists translation_jobs_video_lang_idx on translation_jobs(video_id, source_lang, target_lang, status);
 create index if not exists translated_subtitles_video_lang_idx on translated_subtitles(video_id, source_lang, target_lang);
+create index if not exists translation_job_chunks_job_idx on translation_job_chunks(job_id, chunk_index);
 alter table caption_sources add column if not exists cue_hash text;
 create unique index if not exists caption_sources_unique_cue_hash_idx
   on caption_sources(video_id, source_lang, caption_type, cue_hash)

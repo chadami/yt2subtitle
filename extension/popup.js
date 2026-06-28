@@ -24,6 +24,7 @@ let activeTabId = null;
 let activeVideoId = "";
 let subtitlesReady = false;
 let pollTimer = null;
+let loadedPartialChunkCount = 0;
 let currentLanguage = "en";
 
 const DEFAULT_SUBTITLE_STYLE = {
@@ -341,6 +342,7 @@ async function getExistingSubtitle() {
 
 function startJobPolling(jobId) {
   clearJobPolling();
+  loadedPartialChunkCount = 0;
   pollTimer = setInterval(() => pollJob(jobId), 2500);
   pollJob(jobId);
 }
@@ -370,12 +372,28 @@ async function pollJob(jobId) {
       status.textContent = actionableError(job.error || `Subtitle job ${job.status}.`);
       setButtonState(subtitlesReady ? "ready-regenerate" : "ready-generate", true);
     } else {
+      await loadPartialSubtitlesIntoPage(jobId);
       setButtonState("generating", false);
     }
   } catch (error) {
     clearJobPolling();
     status.textContent = actionableError(error);
     setButtonState(subtitlesReady ? "ready-regenerate" : "ready-generate", true);
+  }
+}
+
+async function loadPartialSubtitlesIntoPage(jobId) {
+  if (!activeTabId || !activeVideoId) return;
+  const partial = await chrome.runtime.sendMessage({ type: "GET_PARTIAL_SUBTITLES", jobId }).catch(() => null);
+  const chunkCount = Number(partial?.chunkCount || 0);
+  if (!partial?.ok || !Array.isArray(partial.cues) || !partial.cues.length || chunkCount <= loadedPartialChunkCount) return;
+  const result = await chrome.tabs.sendMessage(activeTabId, {
+    type: "LOAD_PARTIAL_AI_SUBTITLES",
+    videoId: activeVideoId,
+    cues: partial.cues
+  }).catch(() => null);
+  if (result?.loaded) {
+    loadedPartialChunkCount = chunkCount;
   }
 }
 

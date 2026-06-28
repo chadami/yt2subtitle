@@ -44,6 +44,7 @@ async function processSubtitleJob(jobId: string) {
     "update caption_sources set clean_cues_json = $1 where id = $2",
     [JSON.stringify(cleanCues), record.caption_source_id]
   );
+  await query("delete from translation_job_chunks where job_id = $1", [jobId]);
 
   await query("update translation_jobs set status = 'translating', progress = 25, updated_at = now() where id = $1", [jobId]);
   const chunks = chunkCues(cleanCues);
@@ -52,7 +53,7 @@ async function processSubtitleJob(jobId: string) {
     const chunk = chunks[index];
     const previousContext = index > 0 ? chunks[index - 1].slice(-8) : [];
     const nextContext = index < chunks.length - 1 ? chunks[index + 1].slice(0, 8) : [];
-    translated.push(...await translateChunk({
+    const translatedChunk = await translateChunk({
       aiConfig,
       videoContext: {
         title: record.title,
@@ -63,7 +64,15 @@ async function processSubtitleJob(jobId: string) {
       rawCues: chunk,
       nextContext,
       targetLanguage: record.target_lang
-    }));
+    });
+    translated.push(...translatedChunk);
+    await query(
+      `insert into translation_job_chunks (job_id, chunk_index, cues_json)
+       values ($1, $2, $3)
+       on conflict (job_id, chunk_index)
+       do update set cues_json = excluded.cues_json, updated_at = now()`,
+      [jobId, index, JSON.stringify(translatedChunk)]
+    );
     await query("update translation_jobs set progress = $1, updated_at = now() where id = $2", [
       25 + Math.round(((index + 1) / chunks.length) * 55),
       jobId

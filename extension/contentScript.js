@@ -192,6 +192,19 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     return true;
   }
 
+  if (message?.type === "LOAD_PARTIAL_AI_SUBTITLES") {
+    const cues = Array.isArray(message.cues) ? message.cues : [];
+    if (!cues.length) {
+      sendResponse({ ok: true, loaded: false, cueCount: 0 });
+      return true;
+    }
+    renderSubtitles(cues, message.videoId || getVideoId()).then(
+      (result) => sendResponse({ ok: true, partial: true, ...result }),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
+
   if (message?.type === "APPLY_SUBTITLE_STYLE") {
     applySubtitleStyle(message.style);
     sendResponse({ ok: true });

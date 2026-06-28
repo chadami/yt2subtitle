@@ -35,6 +35,13 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     );
     return true;
   }
+  if (message?.type === "GET_PARTIAL_SUBTITLES") {
+    getPartialSubtitles(message.jobId).then(
+      (result) => sendResponse(result),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
   return false;
 });
 
@@ -148,6 +155,15 @@ async function getJobStatus(jobId) {
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || `Job status failed: ${response.status}`);
   return { ok: true, job: data };
+}
+
+async function getPartialSubtitles(jobId) {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const apiBase = normalizeApiBase(settings.apiBase);
+  const response = await safeFetch(`${apiBase}/api/jobs/${encodeURIComponent(jobId)}/partial-subtitles`);
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || `Partial subtitles failed: ${response.status}`);
+  return { ok: true, ...data };
 }
 
 async function checkSubtitleJobs() {

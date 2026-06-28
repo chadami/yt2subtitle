@@ -5,6 +5,7 @@ import { systemAiConfig } from "../ai.js";
 import { requireUserId } from "../auth.js";
 import { query } from "../db.js";
 import { subtitleQueue } from "../queue.js";
+import { groupBySourceTiming, type TranslatedCue } from "../subtitles.js";
 import { loadUserAiConfig } from "./ai.js";
 
 export const jobsRouter = Router();
@@ -140,6 +141,47 @@ jobsRouter.post("/", async (req, res, next) => {
 
     await subtitleQueue.add("translate", { jobId: job.rows[0].id }, { attempts: 2 });
     res.json({ jobId: job.rows[0].id, status: "queued" });
+  } catch (error) {
+    next(error);
+  }
+});
+
+function parseChunkCues(value: unknown): TranslatedCue[] {
+  const parsed = typeof value === "string" ? JSON.parse(value) : value;
+  if (!Array.isArray(parsed)) return [];
+  return parsed.filter((cue): cue is TranslatedCue => {
+    return cue
+      && typeof cue === "object"
+      && typeof (cue as { start?: unknown }).start === "number"
+      && typeof (cue as { end?: unknown }).end === "number"
+      && typeof (cue as { text?: unknown }).text === "string";
+  });
+}
+
+jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
+  try {
+    const job = await query(
+      "select id as \"jobId\", status, progress from translation_jobs where id = $1",
+      [req.params.jobId]
+    );
+    if (!job.rows[0]) return res.status(404).json({ error: "Job not found" });
+
+    const chunks = await query<{ cues: unknown }>(
+      `select cues_json as cues
+       from translation_job_chunks
+       where job_id = $1
+       order by chunk_index asc`,
+      [req.params.jobId]
+    );
+    const translated = chunks.rows.flatMap((row) => parseChunkCues(row.cues));
+    const cues = groupBySourceTiming(translated).map(({ start, end, text }) => ({ start, end, text }));
+    res.json({
+      ...job.rows[0],
+      status: cues.length ? "partial" : job.rows[0].status,
+      cues,
+      cueCount: cues.length,
+      chunkCount: chunks.rows.length
+    });
   } catch (error) {
     next(error);
   }
