@@ -131,10 +131,11 @@ function renderOverlayCue(overlay, sourceText, translationText) {
   const sourceLine = document.createElement("div");
   sourceLine.textContent = normalizedSource;
   sourceLine.style.cssText = [
-    "font-size:.78em",
-    "line-height:1.34",
+    "font-size:1em",
+    "font-weight:500",
+    "line-height:1.38",
     "color:rgba(246,255,249,.82)",
-    "margin-bottom:3px",
+    "margin-bottom:4px",
     "overflow-wrap:anywhere"
   ].join(";");
 
@@ -142,6 +143,7 @@ function renderOverlayCue(overlay, sourceText, translationText) {
   translationLine.textContent = normalizedTranslation;
   translationLine.style.cssText = [
     "font-size:1em",
+    "font-weight:300",
     "line-height:1.38",
     "color:#f6fff9",
     "overflow-wrap:anywhere"
