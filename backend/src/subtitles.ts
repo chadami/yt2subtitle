@@ -27,8 +27,9 @@ const AUTO_GROUP_MAX_GAP = 0.8;
 const MAX_SOURCE_TIMED_GROUP_CHARACTERS = 100;
 const MAX_SOURCE_TIMED_GROUP_DURATION = 13;
 const MAX_SOURCE_TIMED_GROUP_GAP = 0.6;
-const MIN_STANDALONE_DURATION = 0.8;
-const MIN_SOURCE_UNIT_DURATION = 1.2;
+const MIN_STANDALONE_DURATION = 0.5;
+const MIN_SOURCE_SPLIT_PART_DURATION = 1;
+const SHORT_FINAL_SOURCE_PART_DURATION = 0.75;
 
 export function normalizeText(text: string) {
   return text.replace(/\s+/g, " ").trim();
@@ -78,6 +79,16 @@ function endsAtSourceBoundary(text: string) {
   return /(?:[.!?;:]|\.\.\.|……|\[[^\]]*(?:music|音乐)[^\]]*\])$/iu.test(normalizeText(text));
 }
 
+function splitTrailingIncompleteSourceFragment(text: string) {
+  const match = normalizeText(text).match(/^(.+[.!?;:])\s+([^.!?;:]+)$/u);
+  if (!match) return null;
+
+  const prefix = normalizeText(match[1]);
+  const tail = normalizeText(match[2]);
+  if (!prefix || !tail || endsAtSourceBoundary(tail) || sourceWords(tail).length > 5) return null;
+  return { prefix, tail };
+}
+
 function isStandaloneSourceMusic(text: string) {
   return /^\s*\[[^\]]*(music|音乐)[^\]]*\]\s*$/iu.test(text);
 }
@@ -90,12 +101,6 @@ function resolveSourceUnitOverlaps(cues: RawCue[]) {
     const previous = output[output.length - 1];
     if (previous && previous.end > cue.start) {
       const trimmedDuration = cue.start - previous.start;
-      const shiftedDuration = cue.end - previous.end;
-      if (trimmedDuration < MIN_SOURCE_UNIT_DURATION && shiftedDuration >= MIN_SOURCE_UNIT_DURATION) {
-        cue.start = previous.end;
-        output.push(cue);
-        continue;
-      }
       if (trimmedDuration >= 0.2) {
         previous.end = cue.start;
       } else if (isStandaloneSourceMusic(previous.text)) {
@@ -103,16 +108,40 @@ function resolveSourceUnitOverlaps(cues: RawCue[]) {
       } else {
         output.pop();
         cue = {
-          start: previous.start,
+          start: Math.min(previous.start, cue.start),
           end: Math.max(previous.end, cue.end),
           text: joinSourceFragments(previous.text, cue.text)
         };
+        const prior = output[output.length - 1];
+        if (prior && prior.end > cue.start && cue.start - prior.start >= 0.2) {
+          prior.end = cue.start;
+        }
       }
     }
     output.push(cue);
   }
 
   return output.filter((cue) => cue.end - cue.start >= 0.2);
+}
+
+function enforceSourceCueOrder(cues: RawCue[]) {
+  const output: RawCue[] = [];
+
+  for (const originalCue of cues) {
+    const cue = { ...originalCue };
+    const previous = output[output.length - 1];
+    if (previous && previous.end > cue.start) {
+      const trimmedPreviousDuration = cue.start - previous.start;
+      if (trimmedPreviousDuration >= 0.2) {
+        previous.end = cue.start;
+      } else {
+        cue.start = previous.end;
+      }
+    }
+    if (cue.end - cue.start >= 0.2) output.push(cue);
+  }
+
+  return output;
 }
 
 function splitSourceUnitAtBoundaries(cue: RawCue) {
@@ -122,9 +151,20 @@ function splitSourceUnitAtBoundaries(cue: RawCue) {
 
   const duration = cue.end - cue.start;
   const totalLength = parts.reduce((sum, part) => sum + Array.from(part).length, 0);
-  if (!totalLength || duration / parts.length < 0.8) return [cue];
+  if (!totalLength || duration / parts.length < MIN_SOURCE_SPLIT_PART_DURATION) return [cue];
 
   const output: RawCue[] = [];
+  if (parts.length === 2 && duration <= 3 && sourceWords(parts[1]).length <= 6) {
+    const shortFinalDuration = Math.min(SHORT_FINAL_SOURCE_PART_DURATION, duration - MIN_SOURCE_SPLIT_PART_DURATION);
+    if (shortFinalDuration >= 0.5) {
+      const boundary = cue.end - shortFinalDuration;
+      return [
+        { start: cue.start, end: boundary, text: parts[0] },
+        { start: boundary, end: cue.end, text: parts[1] }
+      ];
+    }
+  }
+
   let start = cue.start;
   let consumed = 0;
   for (let index = 0; index < parts.length; index += 1) {
@@ -137,40 +177,6 @@ function splitSourceUnitAtBoundaries(cue: RawCue) {
     output.push({ start, end, text: part });
     start = end;
   }
-  if (output.some((part) => part.end - part.start < MIN_SOURCE_UNIT_DURATION)) return [cue];
-  return output;
-}
-
-function mergeShortSourceUnits(cues: RawCue[]) {
-  const output: RawCue[] = [];
-
-  for (let index = 0; index < cues.length; index += 1) {
-    const cue = cues[index];
-    const duration = cue.end - cue.start;
-    const next = cues[index + 1];
-    if (duration < MIN_SOURCE_UNIT_DURATION && next && next.start - cue.end <= 0.05) {
-      output.push({
-        start: cue.start,
-        end: next.end,
-        text: joinSourceFragments(cue.text, next.text)
-      });
-      index += 1;
-      continue;
-    }
-
-    const previous = output[output.length - 1];
-    if (duration < MIN_SOURCE_UNIT_DURATION && previous && cue.start - previous.end <= 0.05) {
-      output[output.length - 1] = {
-        start: previous.start,
-        end: cue.end,
-        text: joinSourceFragments(previous.text, cue.text)
-      };
-      continue;
-    }
-
-    output.push(cue);
-  }
-
   return output;
 }
 
@@ -220,9 +226,13 @@ export function prepareSourceCues(cues: RawCue[], captionType: "manual" | "auto"
 
   const grouped: RawCue[] = [];
   let current: RawCue | null = null;
+  let carriedText = "";
 
   for (let index = 0; index < normalized.length; index += 1) {
-    const cue = normalized[index];
+    const cue = carriedText
+      ? { ...normalized[index], text: joinSourceFragments(carriedText, normalized[index].text) }
+      : normalized[index];
+    carriedText = "";
     current = current
       ? {
           start: current.start,
@@ -241,13 +251,29 @@ export function prepareSourceCues(cues: RawCue[], captionType: "manual" | "auto"
     const hasGap = nextGap > AUTO_GROUP_MAX_GAP;
 
     if (!next || hasBoundary || hasGap || wouldExceedLength || wouldExceedDuration) {
-      grouped.push(current);
+      const trailingFragment = next && !hasBoundary && next.start < current.end
+        ? splitTrailingIncompleteSourceFragment(current.text)
+        : null;
+      if (trailingFragment && next.start - current.start >= 0.2) {
+        grouped.push({ ...current, end: next.start, text: trailingFragment.prefix });
+        carriedText = trailingFragment.tail;
+        current = null;
+        continue;
+      }
+
+      const shouldCapAtNextStart = Boolean(
+        next
+        && hasBoundary
+        && next.start < current.end
+        && next.start - current.start >= 0.2
+      );
+      grouped.push(shouldCapAtNextStart ? { ...current, end: next.start } : current);
       current = null;
     }
   }
 
   const split = grouped.flatMap(splitSourceUnitAtBoundaries);
-  return mergeShortSourceUnits(resolveSourceUnitOverlaps(split)).map((cue, index) => ({ ...cue, index }));
+  return enforceSourceCueOrder(resolveSourceUnitOverlaps(split)).map((cue, index) => ({ ...cue, index }));
 }
 
 export function chunkCues(cues: CleanCue[], maxChars = 4200) {
