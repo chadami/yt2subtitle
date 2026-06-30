@@ -7,11 +7,13 @@ const DEFAULT_SUBTITLE_STYLE = {
   positionPercent: 21
 };
 const PARTIAL_SUBTITLE_POLL_INTERVAL_MS = 2500;
+const PENDING_TRANSLATION_TEXT = "字幕正在准备中，即将完成";
 let renderGeneration = 0;
 let partialSubtitlePollTimer = null;
 let partialSubtitleJobId = "";
 let partialSubtitleVideoId = "";
 let loadedPartialChunkCount = 0;
+let partialSourceCues = [];
 
 function getVideoId() {
   return parseVideoId(location.href);
@@ -107,6 +109,48 @@ function clearOverlay() {
   }
 }
 
+function findCurrentCue(cues, currentTime) {
+  return cues.find((item) => currentTime >= item.start && currentTime <= item.end);
+}
+
+function sourceTextForTranslatedCue(cue, sourceCues) {
+  if (cue?.sourceText) return cue.sourceText;
+  const sourceCue = findCurrentCue(sourceCues, (cue.start + cue.end) / 2);
+  return sourceCue?.text || "";
+}
+
+function renderOverlayCue(overlay, sourceText, translationText) {
+  const normalizedSource = normalizeText(sourceText || "");
+  const normalizedTranslation = normalizeText(translationText || "");
+  if (!normalizedSource && !normalizedTranslation) {
+    overlay.textContent = "";
+    overlay.style.display = "none";
+    return;
+  }
+
+  const sourceLine = document.createElement("div");
+  sourceLine.textContent = normalizedSource;
+  sourceLine.style.cssText = [
+    "font-size:.78em",
+    "line-height:1.34",
+    "color:rgba(246,255,249,.82)",
+    "margin-bottom:3px",
+    "overflow-wrap:anywhere"
+  ].join(";");
+
+  const translationLine = document.createElement("div");
+  translationLine.textContent = normalizedTranslation;
+  translationLine.style.cssText = [
+    "font-size:1em",
+    "line-height:1.38",
+    "color:#f6fff9",
+    "overflow-wrap:anywhere"
+  ].join(";");
+
+  overlay.replaceChildren(sourceLine, translationLine);
+  overlay.style.display = "block";
+}
+
 function waitForVideoElement(timeoutMs = 6000) {
   const video = document.querySelector("video");
   if (video) return Promise.resolve(video);
@@ -123,7 +167,17 @@ function waitForVideoElement(timeoutMs = 6000) {
   });
 }
 
-async function renderSubtitles(cues, videoId) {
+function normalizeSourceCues(cues = []) {
+  return cues
+    .map((cue) => ({
+      start: Number(cue.start),
+      end: Number(cue.end),
+      text: normalizeText(cue.sourceText || cue.text || "")
+    }))
+    .filter((cue) => Number.isFinite(cue.start) && Number.isFinite(cue.end) && cue.end > cue.start && cue.text);
+}
+
+async function renderSubtitles(cues, videoId, options = {}) {
   const video = await waitForVideoElement();
   if (!video) {
     clearOverlay();
@@ -131,17 +185,24 @@ async function renderSubtitles(cues, videoId) {
   }
   const overlay = ensureOverlay();
   const generation = ++renderGeneration;
+  const translatedCues = Array.isArray(cues) ? cues : [];
+  const sourceCues = normalizeSourceCues(options.sourceCues || []);
+  const pendingText = options.pendingText || "";
 
   function tick() {
     if (generation !== renderGeneration || getVideoId() !== videoId) return;
     const current = video.currentTime;
-    const cue = cues.find((item) => current >= item.start && current <= item.end);
-    overlay.textContent = cue?.text || "";
-    overlay.style.display = cue ? "block" : "none";
+    const cue = findCurrentCue(translatedCues, current);
+    if (cue) {
+      renderOverlayCue(overlay, sourceTextForTranslatedCue(cue, sourceCues), cue.text);
+    } else {
+      const sourceCue = pendingText ? findCurrentCue(sourceCues, current) : null;
+      renderOverlayCue(overlay, sourceCue?.text || "", sourceCue ? pendingText : "");
+    }
     requestAnimationFrame(tick);
   }
   tick();
-  return { loaded: true, cueCount: cues.length };
+  return { loaded: true, cueCount: translatedCues.length };
 }
 
 async function tryLoadSubtitle() {
@@ -167,16 +228,23 @@ async function tryLoadSubtitle() {
   }
 }
 
-function startPartialSubtitlePolling(jobId, videoId = getVideoId()) {
+function startPartialSubtitlePolling(jobId, videoId = getVideoId(), sourceCues = []) {
   if (!jobId || !videoId) return;
   if (partialSubtitlePollTimer && partialSubtitleJobId === jobId && partialSubtitleVideoId === videoId) return;
   stopPartialSubtitlePolling();
   partialSubtitleJobId = jobId;
   partialSubtitleVideoId = videoId;
+  partialSourceCues = normalizeSourceCues(sourceCues);
   loadedPartialChunkCount = 0;
   partialSubtitlePollTimer = setInterval(() => {
     pollPartialSubtitles(jobId, videoId).catch(() => {});
   }, PARTIAL_SUBTITLE_POLL_INTERVAL_MS);
+  if (partialSourceCues.length) {
+    renderSubtitles([], videoId, {
+      sourceCues: partialSourceCues,
+      pendingText: PENDING_TRANSLATION_TEXT
+    }).catch(() => {});
+  }
   pollPartialSubtitles(jobId, videoId).catch(() => {});
 }
 
@@ -185,6 +253,7 @@ function stopPartialSubtitlePolling() {
   partialSubtitlePollTimer = null;
   partialSubtitleJobId = "";
   partialSubtitleVideoId = "";
+  partialSourceCues = [];
   loadedPartialChunkCount = 0;
 }
 
@@ -210,7 +279,10 @@ async function pollPartialSubtitles(jobId, videoId) {
   const chunkCount = Number(partial.chunkCount || 0);
   if (!Array.isArray(partial.cues) || !partial.cues.length || chunkCount <= loadedPartialChunkCount) return;
 
-  const result = await renderSubtitles(partial.cues, videoId);
+  const result = await renderSubtitles(partial.cues, videoId, {
+    sourceCues: partialSourceCues,
+    pendingText: PENDING_TRANSLATION_TEXT
+  });
   if (result.loaded) {
     loadedPartialChunkCount = chunkCount;
   }
@@ -346,7 +418,7 @@ async function generateAiSubtitles(forceRegenerate = false, preparedPayload = nu
     }
   });
   if (!data?.ok) throw new Error(data?.error || "Failed to create subtitle job.");
-  startPartialSubtitlePolling(data.jobId, videoId);
+  startPartialSubtitlePolling(data.jobId, videoId, prepared.rawCues);
   return {
     ok: true,
     jobId: data.jobId,

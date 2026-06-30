@@ -174,7 +174,7 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
       [req.params.jobId]
     );
     const translated = chunks.rows.flatMap((row) => parseChunkCues(row.cues));
-    const cues = groupBySourceTiming(translated).map(({ start, end, text }) => ({ start, end, text }));
+    const cues = groupBySourceTiming(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
     res.json({
       ...job.rows[0],
       hasPartial: cues.length > 0,

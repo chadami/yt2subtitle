@@ -6,6 +6,19 @@ import { redisConnection } from "./queue.js";
 import { loadUserAiConfig } from "./routes/ai.js";
 import { chunkCues, groupBySourceTiming, prepareSourceCues, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
 
+function sourceTextForCue(cue: TranslatedCue, cleanCues: Array<RawCue & { index: number }>) {
+  const indexes = new Set(cue.sourceIndexes || []);
+  const sourceCues = cleanCues.filter((sourceCue) => indexes.has(sourceCue.index));
+  return sourceCues.map((sourceCue) => sourceCue.text).join(" ").replace(/\s+/g, " ").trim();
+}
+
+function attachSourceText(cues: TranslatedCue[], cleanCues: Array<RawCue & { index: number }>) {
+  return cues.map((cue) => ({
+    ...cue,
+    sourceText: cue.sourceText || sourceTextForCue(cue, cleanCues)
+  }));
+}
+
 async function processSubtitleJob(jobId: string) {
   await query("update translation_jobs set status = 'cleaning', progress = 10, updated_at = now() where id = $1", [jobId]);
   const found = await query<{
@@ -53,7 +66,7 @@ async function processSubtitleJob(jobId: string) {
     const chunk = chunks[index];
     const previousContext = index > 0 ? chunks[index - 1].slice(-8) : [];
     const nextContext = index < chunks.length - 1 ? chunks[index + 1].slice(0, 8) : [];
-    const translatedChunk = await translateChunk({
+    const translatedChunk = attachSourceText(await translateChunk({
       aiConfig,
       videoContext: {
         title: record.title,
@@ -64,7 +77,7 @@ async function processSubtitleJob(jobId: string) {
       rawCues: chunk,
       nextContext,
       targetLanguage: record.target_lang
-    });
+    }), cleanCues);
     translated.push(...translatedChunk);
     await query(
       `insert into translation_job_chunks (job_id, chunk_index, cues_json)
@@ -80,7 +93,7 @@ async function processSubtitleJob(jobId: string) {
   }
 
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1", [jobId]);
-  const finalCues = groupBySourceTiming(translated).map(({ start, end, text }) => ({ start, end, text }));
+  const finalCues = groupBySourceTiming(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
   const vtt = toVtt(finalCues);
   await query(
     `insert into translated_subtitles (

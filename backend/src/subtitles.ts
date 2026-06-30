@@ -12,6 +12,7 @@ export type TranslatedCue = {
   start: number;
   end: number;
   text: string;
+  sourceText?: string;
   sourceIndexes?: number[];
 };
 
@@ -261,6 +262,10 @@ function joinTranslatedText(first: string, second: string) {
     : `${left}${right}`;
 }
 
+function joinSourceText(first?: string, second?: string) {
+  return joinSourceFragments(first || "", second || "");
+}
+
 function visibleLength(text: string) {
   return Array.from(normalizeText(text)).length;
 }
@@ -301,6 +306,7 @@ function absorbShortFragments(cues: TranslatedCue[]) {
         start: previous.start,
         end: cue.end,
         text: joinTranslatedText(previous.text, cue.text),
+        sourceText: joinSourceText(previous.sourceText, cue.sourceText),
         sourceIndexes: mergeSourceIndexes(previous.sourceIndexes, cue.sourceIndexes)
       };
     } else {
@@ -323,6 +329,7 @@ export function groupBySourceTiming(cues: TranslatedCue[]) {
         start: current.start,
         end: Math.max(current.end, next.end),
         text: joinTranslatedText(current.text, next.text),
+        sourceText: joinSourceText(current.sourceText, next.sourceText),
         sourceIndexes: mergeSourceIndexes(current.sourceIndexes, next.sourceIndexes)
       };
     } else {
@@ -353,6 +360,7 @@ export function enforcePunctuationSegmentation(cues: TranslatedCue[]) {
           start: buffer.start,
           end: Math.max(buffer.end, current.end),
           text: joinTranslatedText(buffer.text, current.text),
+          sourceText: joinSourceText(buffer.sourceText, current.sourceText),
           sourceIndexes: mergeSourceIndexes(buffer.sourceIndexes, current.sourceIndexes)
         }
       : current;
@@ -386,6 +394,7 @@ export function enforceReadableDurations(cues: TranslatedCue[]) {
         start: current.start,
         end: following.end,
         text: joinTranslatedText(current.text, following.text),
+        sourceText: joinSourceText(current.sourceText, following.sourceText),
         sourceIndexes: mergeSourceIndexes(current.sourceIndexes, following.sourceIndexes)
       };
       index += 1;
@@ -397,6 +406,7 @@ export function enforceReadableDurations(cues: TranslatedCue[]) {
         start: previous.start,
         end: current.end,
         text: joinTranslatedText(previous.text, current.text),
+        sourceText: joinSourceText(previous.sourceText, current.sourceText),
         sourceIndexes: mergeSourceIndexes(previous.sourceIndexes, current.sourceIndexes)
       };
     }
@@ -483,6 +493,7 @@ export function enforceSubtitleLimits(cues: TranslatedCue[]) {
         start,
         end,
         text,
+        sourceText: cue.sourceText,
         sourceIndexes: distributeIndexes(cue.sourceIndexes, index, parts.length)
       });
     });
