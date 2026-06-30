@@ -4,7 +4,8 @@ const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
   backgroundOpacity: 25,
   fontWeight: "normal",
-  positionPercent: 21
+  positionPercent: 21,
+  showSourceText: true
 };
 const PARTIAL_SUBTITLE_POLL_INTERVAL_MS = 2500;
 const PENDING_TRANSLATION_TEXT = "字幕正在准备中，即将完成";
@@ -14,6 +15,7 @@ let partialSubtitleJobId = "";
 let partialSubtitleVideoId = "";
 let loadedPartialChunkCount = 0;
 let partialSourceCues = [];
+let currentSubtitleStyle = { ...DEFAULT_SUBTITLE_STYLE };
 
 function getVideoId() {
   return parseVideoId(location.href);
@@ -86,6 +88,7 @@ function applySubtitleStyle(style = {}) {
     ...DEFAULT_SUBTITLE_STYLE,
     ...style
   };
+  currentSubtitleStyle = nextStyle;
   const fontSize = clampNumber(Number(nextStyle.fontSize), 16, 36);
   const opacity = clampNumber(Number(nextStyle.backgroundOpacity), 15, 95) / 100;
   const position = clampNumber(Number(nextStyle.positionPercent), 2, 42);
@@ -122,22 +125,12 @@ function sourceTextForTranslatedCue(cue, sourceCues) {
 function renderOverlayCue(overlay, sourceText, translationText) {
   const normalizedSource = normalizeText(sourceText || "");
   const normalizedTranslation = normalizeText(translationText || "");
-  if (!normalizedSource && !normalizedTranslation) {
+  const shouldShowSource = currentSubtitleStyle.showSourceText !== false;
+  if ((!shouldShowSource || !normalizedSource) && !normalizedTranslation) {
     overlay.textContent = "";
     overlay.style.display = "none";
     return;
   }
-
-  const sourceLine = document.createElement("div");
-  sourceLine.textContent = normalizedSource;
-  sourceLine.style.cssText = [
-    "font-size:1em",
-    "font-weight:500",
-    "line-height:1.38",
-    "color:rgba(246,255,249,.82)",
-    "margin-bottom:4px",
-    "overflow-wrap:anywhere"
-  ].join(";");
 
   const translationLine = document.createElement("div");
   translationLine.textContent = normalizedTranslation;
@@ -149,7 +142,21 @@ function renderOverlayCue(overlay, sourceText, translationText) {
     "overflow-wrap:anywhere"
   ].join(";");
 
-  overlay.replaceChildren(sourceLine, translationLine);
+  if (!shouldShowSource || !normalizedSource) {
+    overlay.replaceChildren(translationLine);
+  } else {
+    const sourceLine = document.createElement("div");
+    sourceLine.textContent = normalizedSource;
+    sourceLine.style.cssText = [
+      "font-size:1em",
+      "font-weight:500",
+      "line-height:1.38",
+      "color:rgba(246,255,249,.82)",
+      "margin-top:4px",
+      "overflow-wrap:anywhere"
+    ].join(";");
+    overlay.replaceChildren(translationLine, sourceLine);
+  }
   overlay.style.display = "block";
 }
 
@@ -186,6 +193,7 @@ async function renderSubtitles(cues, videoId, options = {}) {
     return { loaded: false, reason: "video-not-ready", cueCount: cues.length };
   }
   const overlay = ensureOverlay();
+  await applyStoredSubtitleStyle();
   const generation = ++renderGeneration;
   const translatedCues = Array.isArray(cues) ? cues : [];
   const sourceCues = normalizeSourceCues(options.sourceCues || []);

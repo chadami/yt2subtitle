@@ -31,7 +31,8 @@ const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
   backgroundOpacity: 25,
   fontWeight: "normal",
-  positionPercent: 21
+  positionPercent: 21,
+  showSourceText: true
 };
 
 const translations = {
@@ -520,8 +521,8 @@ async function loadSubtitleStyle() {
 }
 
 async function saveAndApplySubtitleStyle() {
-  const style = getSubtitleStyleFromControls();
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const style = getSubtitleStyleFromControls(settings.subtitleStyle);
   await chrome.storage.local.set({
     settings: {
       ...settings,
@@ -535,12 +536,13 @@ async function saveAndApplySubtitleStyle() {
   }
 }
 
-function getSubtitleStyleFromControls() {
+function getSubtitleStyleFromControls(currentStyle = {}) {
   return {
     fontSize: Number(fontSize.value),
     positionPercent: Number(positionPercent.value),
     backgroundOpacity: Number(backgroundOpacity.value),
-    fontWeight: "normal"
+    fontWeight: "normal",
+    showSourceText: currentStyle.showSourceText !== false
   };
 }
 
