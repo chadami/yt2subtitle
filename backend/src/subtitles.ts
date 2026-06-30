@@ -28,6 +28,7 @@ const MAX_SOURCE_TIMED_GROUP_CHARACTERS = 100;
 const MAX_SOURCE_TIMED_GROUP_DURATION = 13;
 const MAX_SOURCE_TIMED_GROUP_GAP = 0.6;
 const MIN_STANDALONE_DURATION = 0.8;
+const MIN_SOURCE_UNIT_DURATION = 1.2;
 
 export function normalizeText(text: string) {
   return text.replace(/\s+/g, " ").trim();
@@ -89,6 +90,12 @@ function resolveSourceUnitOverlaps(cues: RawCue[]) {
     const previous = output[output.length - 1];
     if (previous && previous.end > cue.start) {
       const trimmedDuration = cue.start - previous.start;
+      const shiftedDuration = cue.end - previous.end;
+      if (trimmedDuration < MIN_SOURCE_UNIT_DURATION && shiftedDuration >= MIN_SOURCE_UNIT_DURATION) {
+        cue.start = previous.end;
+        output.push(cue);
+        continue;
+      }
       if (trimmedDuration >= 0.2) {
         previous.end = cue.start;
       } else if (isStandaloneSourceMusic(previous.text)) {
@@ -130,6 +137,40 @@ function splitSourceUnitAtBoundaries(cue: RawCue) {
     output.push({ start, end, text: part });
     start = end;
   }
+  if (output.some((part) => part.end - part.start < MIN_SOURCE_UNIT_DURATION)) return [cue];
+  return output;
+}
+
+function mergeShortSourceUnits(cues: RawCue[]) {
+  const output: RawCue[] = [];
+
+  for (let index = 0; index < cues.length; index += 1) {
+    const cue = cues[index];
+    const duration = cue.end - cue.start;
+    const next = cues[index + 1];
+    if (duration < MIN_SOURCE_UNIT_DURATION && next && next.start - cue.end <= 0.05) {
+      output.push({
+        start: cue.start,
+        end: next.end,
+        text: joinSourceFragments(cue.text, next.text)
+      });
+      index += 1;
+      continue;
+    }
+
+    const previous = output[output.length - 1];
+    if (duration < MIN_SOURCE_UNIT_DURATION && previous && cue.start - previous.end <= 0.05) {
+      output[output.length - 1] = {
+        start: previous.start,
+        end: cue.end,
+        text: joinSourceFragments(previous.text, cue.text)
+      };
+      continue;
+    }
+
+    output.push(cue);
+  }
+
   return output;
 }
 
@@ -206,7 +247,7 @@ export function prepareSourceCues(cues: RawCue[], captionType: "manual" | "auto"
   }
 
   const split = grouped.flatMap(splitSourceUnitAtBoundaries);
-  return resolveSourceUnitOverlaps(split).map((cue, index) => ({ ...cue, index }));
+  return mergeShortSourceUnits(resolveSourceUnitOverlaps(split)).map((cue, index) => ({ ...cue, index }));
 }
 
 export function chunkCues(cues: CleanCue[], maxChars = 4200) {
