@@ -18,16 +18,19 @@ export type TranslatedCue = {
 
 const BOUNDARY_PUNCTUATION = ["...", "……", "，", ",", "。", ".", "！", "!", "？", "?", "；", ";", "：", ":"];
 const MIN_DISPLAY_DURATION = 1.2;
-export const MAX_SUBTITLE_CHARACTERS = 56;
-export const MAX_SUBTITLE_DURATION = 8;
-export const MAX_SOURCE_INDEX_SPAN = 6;
+export const MAX_SUBTITLE_CHARACTERS = 42;
+export const MAX_SUBTITLE_DURATION = 6;
+export const MAX_SOURCE_INDEX_SPAN = 4;
+const MAX_UNBROKEN_SUBTITLE_CHARACTERS = 84;
+const MAX_UNBROKEN_SUBTITLE_DURATION = 9;
 const AUTO_GROUP_MAX_SOURCE_CHARACTERS = 120;
 const AUTO_GROUP_MAX_DURATION = 8;
 const AUTO_GROUP_MAX_GAP = 0.8;
-const MAX_SOURCE_TIMED_GROUP_CHARACTERS = 100;
-const MAX_SOURCE_TIMED_GROUP_DURATION = 13;
-const MAX_SOURCE_TIMED_GROUP_GAP = 0.6;
+const MAX_SOURCE_TIMED_GROUP_CHARACTERS = 72;
+const MAX_SOURCE_TIMED_GROUP_DURATION = 6;
+const MAX_SOURCE_TIMED_GROUP_GAP = 0.45;
 const MIN_STANDALONE_DURATION = 0.5;
+const MIN_SPLIT_FRAGMENT_CHARACTERS = 4;
 const MIN_SOURCE_SPLIT_PART_DURATION = 1;
 const SHORT_FINAL_SOURCE_PART_DURATION = 0.75;
 
@@ -414,6 +417,17 @@ function mergeSourceIndexes(first?: number[], second?: number[]) {
   return indexes.length ? [...new Set(indexes)].sort((a, b) => a - b) : undefined;
 }
 
+function shouldBreakPunctuationBuffer(buffer: TranslatedCue, current: TranslatedCue) {
+  const combinedText = joinTranslatedText(buffer.text, current.text);
+  const combinedIndexes = mergeSourceIndexes(buffer.sourceIndexes, current.sourceIndexes);
+  return current.start - buffer.end > MAX_SOURCE_TIMED_GROUP_GAP
+    || current.end - buffer.start > MAX_SOURCE_TIMED_GROUP_DURATION
+    || visibleLength(combinedText) > MAX_SOURCE_TIMED_GROUP_CHARACTERS
+    || sourceIndexSpan(combinedIndexes) > MAX_SOURCE_INDEX_SPAN
+    || isStandaloneMusic(buffer.text)
+    || isStandaloneMusic(current.text);
+}
+
 export function enforcePunctuationSegmentation(cues: TranslatedCue[]) {
   const merged: TranslatedCue[] = [];
   let buffer: TranslatedCue | null = null;
@@ -422,6 +436,10 @@ export function enforcePunctuationSegmentation(cues: TranslatedCue[]) {
     const text = normalizeText(cue.text);
     if (!text) continue;
     const current = { ...cue, text };
+    if (buffer && shouldBreakPunctuationBuffer(buffer, current)) {
+      merged.push(buffer);
+      buffer = null;
+    }
     buffer = buffer
       ? {
           start: buffer.start,
@@ -485,7 +503,17 @@ export function enforceReadableDurations(cues: TranslatedCue[]) {
 }
 
 function isBoundaryCharacter(character: string) {
-  return /[，,。.!！？?；;：:…]/u.test(character);
+  return boundaryPriority(character) > 0;
+}
+
+function boundaryPriority(character: string) {
+  if (/[。.!！？?…]/u.test(character)) return 2;
+  if (/[，,、；;：:]/u.test(character)) return 1;
+  return 0;
+}
+
+function isPunctuationOnly(text: string) {
+  return /^[\s，,、。.!！？?；;：:…]+$/u.test(text);
 }
 
 function sourceIndexSpan(indexes?: number[]) {
@@ -493,7 +521,45 @@ function sourceIndexSpan(indexes?: number[]) {
   return Math.max(...indexes) - Math.min(...indexes) + 1;
 }
 
-function splitTextIntoParts(text: string, partCount: number) {
+function findWordBoundary(characters: string[], offset: number, maxLength: number) {
+  for (let length = maxLength; length > Math.max(1, Math.floor(maxLength * 0.55)); length -= 1) {
+    const previous = characters[offset + length - 1];
+    const next = characters[offset + length];
+    if (/\s/u.test(previous) || /\s/u.test(next || "")) return length;
+  }
+  return maxLength;
+}
+
+function findBoundaryCut(input: {
+  characters: string[];
+  offset: number;
+  minLength: number;
+  maxLength: number;
+  idealLength: number;
+}) {
+  const limit = Math.min(
+    input.maxLength,
+    input.characters.length - input.offset - 1
+  );
+  if (limit < input.minLength) return 0;
+
+  let bestLength = 0;
+  let bestPriority = 0;
+  let bestDistance = Number.POSITIVE_INFINITY;
+  for (let length = input.minLength; length <= limit; length += 1) {
+    const priority = boundaryPriority(input.characters[input.offset + length - 1]);
+    if (!priority) continue;
+    const distance = Math.abs(length - input.idealLength);
+    if (priority > bestPriority || (priority === bestPriority && distance < bestDistance)) {
+      bestLength = length;
+      bestPriority = priority;
+      bestDistance = distance;
+    }
+  }
+  return bestLength;
+}
+
+function splitTextIntoParts(text: string, partCount: number, forceSafetySplit = false) {
   const characters = Array.from(normalizeText(text));
   const parts: string[] = [];
   let offset = 0;
@@ -507,26 +573,139 @@ function splitTextIntoParts(text: string, partCount: number) {
     }
 
     const idealLength = Math.ceil(remaining / partsLeft);
-    const maxLength = Math.min(MAX_SUBTITLE_CHARACTERS, remaining - (partsLeft - 1));
-    const minimumUsefulLength = Math.max(1, Math.floor(idealLength * 0.6));
-    let cutLength = Math.min(idealLength, maxLength);
-    let closestBoundaryDistance = Number.POSITIVE_INFINITY;
-
-    for (let candidate = minimumUsefulLength; candidate <= maxLength; candidate += 1) {
-      if (isBoundaryCharacter(characters[offset + candidate - 1])) {
-        const distance = Math.abs(candidate - idealLength);
-        if (distance < closestBoundaryDistance) {
-          cutLength = candidate;
-          closestBoundaryDistance = distance;
-        }
-      }
+    const minimumUsefulLength = Math.max(1, Math.floor(Math.min(idealLength, MAX_SUBTITLE_CHARACTERS) * 0.55));
+    const naturalLimit = Math.min(
+      Math.max(MAX_SUBTITLE_CHARACTERS, idealLength + 10),
+      MAX_UNBROKEN_SUBTITLE_CHARACTERS,
+      remaining - (partsLeft - 1)
+    );
+    const boundaryCutLength = findBoundaryCut({
+      characters,
+      offset,
+      minLength: minimumUsefulLength,
+      maxLength: naturalLimit,
+      idealLength
+    });
+    const safetyLimit = Math.min(
+      forceSafetySplit ? Math.max(idealLength, MAX_SUBTITLE_CHARACTERS) : MAX_UNBROKEN_SUBTITLE_CHARACTERS,
+      MAX_UNBROKEN_SUBTITLE_CHARACTERS,
+      remaining - (partsLeft - 1)
+    );
+    let cutLength = boundaryCutLength || (
+      remaining <= safetyLimit && !forceSafetySplit
+        ? remaining
+        : findWordBoundary(characters, offset, safetyLimit)
+    );
+    const trailingText = characters.slice(offset + cutLength).join("").trim();
+    if (
+      trailingText
+      && (isPunctuationOnly(trailingText) || visibleLength(trailingText) < MIN_SPLIT_FRAGMENT_CHARACTERS)
+    ) {
+      cutLength = remaining;
     }
 
     parts.push(characters.slice(offset, offset + cutLength).join("").trim());
     offset += cutLength;
   }
 
+  return mergeTinyParts(mergePunctuationOnlyParts(parts.filter(Boolean)));
+}
+
+function mergePunctuationOnlyParts(parts: string[]) {
+  const output: string[] = [];
+  for (const part of parts) {
+    if (isPunctuationOnly(part) && output.length) {
+      output[output.length - 1] = `${output[output.length - 1]}${part}`;
+    } else {
+      output.push(part);
+    }
+  }
+
+  while (output.length > 1 && isPunctuationOnly(output[0])) {
+    output[1] = `${output[0]}${output[1]}`;
+    output.shift();
+  }
+  return output;
+}
+
+function mergeTinyParts(parts: string[]) {
+  const output: string[] = [];
+  for (const part of parts) {
+    if (visibleLength(part) < MIN_SPLIT_FRAGMENT_CHARACTERS && output.length) {
+      output[output.length - 1] = joinTranslatedText(output[output.length - 1], part);
+    } else {
+      output.push(part);
+    }
+  }
+
+  while (output.length > 1 && visibleLength(output[0]) < MIN_SPLIT_FRAGMENT_CHARACTERS) {
+    output[1] = joinTranslatedText(output[0], output[1]);
+    output.shift();
+  }
+  return output;
+}
+
+function splitWordsIntoParts(words: string[], partCount: number) {
+  const parts: string[] = [];
+  let offset = 0;
+
+  for (let partIndex = 0; partIndex < partCount; partIndex += 1) {
+    const partsLeft = partCount - partIndex;
+    if (partsLeft === 1) {
+      parts.push(words.slice(offset).join(" "));
+      break;
+    }
+
+    const remainingWords = words.slice(offset);
+    const idealLength = visibleLength(remainingWords.join(" ")) / partsLeft;
+    const maxEnd = words.length - (partsLeft - 1);
+    let bestEnd = offset + 1;
+    let bestDistance = Number.POSITIVE_INFINITY;
+
+    for (let end = offset + 1; end <= maxEnd; end += 1) {
+      const text = words.slice(offset, end).join(" ");
+      const distance = Math.abs(visibleLength(text) - idealLength);
+      if (distance < bestDistance) {
+        bestEnd = end;
+        bestDistance = distance;
+      }
+    }
+
+    parts.push(words.slice(offset, bestEnd).join(" "));
+    offset = bestEnd;
+  }
+
   return parts.filter(Boolean);
+}
+
+function splitCharactersEvenly(text: string, partCount: number) {
+  const characters = Array.from(text);
+  const parts: string[] = [];
+  let offset = 0;
+
+  for (let partIndex = 0; partIndex < partCount; partIndex += 1) {
+    const partsLeft = partCount - partIndex;
+    const remaining = characters.length - offset;
+    const length = Math.ceil(remaining / partsLeft);
+    parts.push(characters.slice(offset, offset + length).join("").trim());
+    offset += length;
+  }
+
+  return parts.filter(Boolean);
+}
+
+function splitSourceTextIntoParts(sourceText: string | undefined, partCount: number, forceSafetySplit: boolean) {
+  const text = normalizeText(sourceText || "");
+  if (!text) return [];
+  if (partCount <= 1) return [text];
+
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length >= partCount) return splitWordsIntoParts(words, partCount);
+
+  const naturalParts = splitTextIntoParts(text, partCount, forceSafetySplit);
+  if (naturalParts.length === partCount) return naturalParts;
+
+  return splitCharactersEvenly(text, partCount);
 }
 
 function distributeIndexes(indexes: number[] | undefined, partIndex: number, partCount: number) {
@@ -540,7 +719,8 @@ export function enforceSubtitleLimits(cues: TranslatedCue[]) {
   const output: TranslatedCue[] = [];
 
   for (const cue of sanitizeTiming(cues)) {
-    const textLength = Array.from(normalizeText(cue.text)).length;
+    const normalizedText = normalizeText(cue.text);
+    const textLength = Array.from(normalizedText).length;
     if (!textLength) continue;
     const duration = Math.max(0.2, cue.end - cue.start);
     const isShortLabel = textLength <= 12 && sourceIndexSpan(cue.sourceIndexes) <= MAX_SOURCE_INDEX_SPAN;
@@ -550,23 +730,75 @@ export function enforceSubtitleLimits(cues: TranslatedCue[]) {
       isShortLabel ? 1 : Math.ceil(duration / MAX_SUBTITLE_DURATION),
       Math.ceil(sourceIndexSpan(cue.sourceIndexes) / MAX_SOURCE_INDEX_SPAN)
     );
-    const parts = splitTextIntoParts(cue.text, Math.min(requiredParts, textLength));
-    const partDuration = Math.min(duration / parts.length, MAX_SUBTITLE_DURATION);
+    const forceSafetySplit = duration > MAX_UNBROKEN_SUBTITLE_DURATION;
+    const parts = splitTextIntoParts(normalizedText, Math.min(requiredParts, textLength), forceSafetySplit);
+    const sourceParts = splitSourceTextIntoParts(cue.sourceText, parts.length, forceSafetySplit);
+    const partDuration = duration / parts.length;
 
     parts.forEach((text, index) => {
       const start = cue.start + partDuration * index;
-      const end = start + partDuration;
+      const isLast = index === parts.length - 1;
+      const end = isLast ? cue.end : start + partDuration;
       output.push({
         start,
         end,
         text,
-        sourceText: cue.sourceText,
+        sourceText: sourceParts[index] || cue.sourceText,
         sourceIndexes: distributeIndexes(cue.sourceIndexes, index, parts.length)
       });
     });
   }
 
   return sanitizeTiming(output);
+}
+
+function continuationPunctuation(text: string) {
+  return /[\u3400-\u9fff]/u.test(text) ? "，" : ",";
+}
+
+function terminalPunctuation(text: string) {
+  return /[\u3400-\u9fff]/u.test(text) ? "。" : ".";
+}
+
+function endsAtReadablePunctuation(text: string) {
+  return /[，,、。.!！？?；;：:…]$/u.test(normalizeText(text));
+}
+
+function addContinuationPunctuation(cues: TranslatedCue[]) {
+  return cues.map((cue, index) => {
+    const next = cues[index + 1];
+    if (
+      endsAtReadablePunctuation(cue.text)
+      || isStandaloneMusic(cue.text)
+      || (next && isStandaloneMusic(next.text))
+    ) {
+      return cue;
+    }
+
+    if (!next || next.start - cue.end > MAX_SOURCE_TIMED_GROUP_GAP) {
+      return {
+        ...cue,
+        text: `${cue.text}${terminalPunctuation(cue.text)}`
+      };
+    }
+
+    return {
+      ...cue,
+      text: `${cue.text}${continuationPunctuation(cue.text)}`
+    };
+  });
+}
+
+export function finalizeTranslatedCues(cues: TranslatedCue[]) {
+  return addContinuationPunctuation(
+    enforceSubtitleLimits(
+      enforceReadableDurations(
+        enforcePunctuationSegmentation(
+          groupBySourceTiming(cues)
+        )
+      )
+    )
+  );
 }
 
 export function toVtt(cues: TranslatedCue[]) {

@@ -1,10 +1,19 @@
 import { Worker } from "bullmq";
-import { translateChunk, systemAiConfig, type ProviderMode, type AiProvider } from "./ai.js";
+import {
+  analyzeSubtitleContext,
+  translateChunk,
+  systemAiConfig,
+  type ProviderMode,
+  type AiProvider,
+  type SubtitleTranslationContext
+} from "./ai.js";
 import { query } from "./db.js";
 import { sendSubtitleReadyEmail } from "./email.js";
+import { env } from "./env.js";
 import { redisConnection } from "./queue.js";
 import { loadUserAiConfig } from "./routes/ai.js";
-import { chunkCues, groupBySourceTiming, prepareSourceCues, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
+import { chunkCues, finalizeTranslatedCues, prepareSourceCues, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
+import { getTranslationStrategy } from "./translationStrategies.js";
 
 function sourceTextForCue(cue: TranslatedCue, cleanCues: Array<RawCue & { index: number }>) {
   const indexes = new Set(cue.sourceIndexes || []);
@@ -35,10 +44,12 @@ async function processSubtitleJob(jobId: string) {
     provider_mode: ProviderMode;
     ai_provider: AiProvider | null;
     ai_model: string | null;
+    strategy_id: string | null;
+    strategy_version: string | null;
     caption_type: "manual" | "auto";
   }>(
     `select j.video_id, j.source_lang, j.target_lang, j.caption_source_id, j.user_id,
-     j.provider_mode, j.ai_provider, j.ai_model,
+     j.provider_mode, j.ai_provider, j.ai_model, j.strategy_id, j.strategy_version,
      c.raw_cues_json, c.caption_type, v.title, v.channel, v.description, v.url
      from translation_jobs j
      join caption_sources c on c.id = j.caption_source_id
@@ -51,6 +62,15 @@ async function processSubtitleJob(jobId: string) {
   const aiConfig = record.provider_mode === "user"
     ? await loadUserAiConfig(record.user_id)
     : systemAiConfig();
+  const strategy = getTranslationStrategy(record.target_lang);
+  const strategyId = record.strategy_id || strategy.id;
+  const strategyVersion = record.strategy_version || strategy.version;
+  if (!record.strategy_id || !record.strategy_version) {
+    await query(
+      "update translation_jobs set strategy_id = $1, strategy_version = $2, updated_at = now() where id = $3",
+      [strategyId, strategyVersion, jobId]
+    );
+  }
 
   const cleanCues = prepareSourceCues(record.raw_cues_json, record.caption_type);
   await query(
@@ -58,6 +78,24 @@ async function processSubtitleJob(jobId: string) {
     [JSON.stringify(cleanCues), record.caption_source_id]
   );
   await query("delete from translation_job_chunks where job_id = $1", [jobId]);
+
+  await query("update translation_jobs set progress = 20, updated_at = now() where id = $1", [jobId]);
+  let translationContext: SubtitleTranslationContext | undefined;
+  try {
+    translationContext = await analyzeSubtitleContext({
+      aiConfig,
+      videoContext: {
+        title: record.title,
+        channel: record.channel,
+        description: record.description
+      },
+      cues: cleanCues,
+      sourceLanguage: record.source_lang,
+      targetLanguage: record.target_lang
+    });
+  } catch (error) {
+    console.error("Failed to analyze subtitle context; continuing with chunk-only translation", error);
+  }
 
   await query("update translation_jobs set status = 'translating', progress = 25, updated_at = now() where id = $1", [jobId]);
   const chunks = chunkCues(cleanCues);
@@ -73,6 +111,7 @@ async function processSubtitleJob(jobId: string) {
         channel: record.channel,
         description: record.description
       },
+      translationContext,
       previousContext,
       rawCues: chunk,
       nextContext,
@@ -93,14 +132,14 @@ async function processSubtitleJob(jobId: string) {
   }
 
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1", [jobId]);
-  const finalCues = groupBySourceTiming(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
+  const finalCues = finalizeTranslatedCues(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
   const vtt = toVtt(finalCues);
   await query(
     `insert into translated_subtitles (
        video_id, source_lang, target_lang, provider_mode, provider, model,
-       created_by_user_id, cues_json, vtt_text
+       strategy_id, strategy_version, created_by_user_id, cues_json, vtt_text
      )
-     values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+     values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
     [
       record.video_id,
       record.source_lang,
@@ -108,6 +147,8 @@ async function processSubtitleJob(jobId: string) {
       aiConfig.providerMode,
       aiConfig.provider,
       aiConfig.model,
+      strategyId,
+      strategyVersion,
       record.user_id,
       JSON.stringify(finalCues),
       vtt
@@ -159,6 +200,6 @@ new Worker("subtitle-jobs", async (job) => {
     await markJobAttemptFailed(job.data.jobId, error, finalAttempt);
     throw error;
   }
-}, { connection: redisConnection });
+}, { connection: redisConnection, concurrency: env.WORKER_CONCURRENCY });
 
-console.log("Subtitle worker started");
+console.log(`Subtitle worker started with concurrency=${env.WORKER_CONCURRENCY}`);

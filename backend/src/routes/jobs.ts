@@ -5,7 +5,8 @@ import { systemAiConfig } from "../ai.js";
 import { requireUserId } from "../auth.js";
 import { query } from "../db.js";
 import { subtitleQueue } from "../queue.js";
-import { groupBySourceTiming, type TranslatedCue } from "../subtitles.js";
+import { finalizeTranslatedCues, type TranslatedCue } from "../subtitles.js";
+import { getTranslationStrategy } from "../translationStrategies.js";
 import { loadUserAiConfig } from "./ai.js";
 
 export const jobsRouter = Router();
@@ -39,6 +40,8 @@ jobsRouter.get("/history", async (req, res, next) => {
          j.provider_mode as "providerMode",
          j.ai_provider as "provider",
          j.ai_model as "model",
+         j.strategy_id as "strategyId",
+         j.strategy_version as "strategyVersion",
          c.caption_type as "captionType",
          v.title,
          v.url
@@ -82,6 +85,7 @@ jobsRouter.post("/", async (req, res, next) => {
     const aiConfig = input.translationMode === "user"
       ? await loadUserAiConfig(userId)
       : systemAiConfig();
+    const strategy = getTranslationStrategy(input.targetLang);
     if (!input.forceRegenerate) {
       const existing = await query<{ id: string; status: string }>(
         `select id, status from translation_jobs
@@ -124,9 +128,9 @@ jobsRouter.post("/", async (req, res, next) => {
     const job = await query<{ id: string }>(
       `insert into translation_jobs (
          user_id, video_id, source_lang, target_lang, caption_source_id,
-         provider_mode, ai_provider, ai_model, status
+         provider_mode, ai_provider, ai_model, strategy_id, strategy_version, status
        )
-       values ($1, $2, $3, $4, $5, $6, $7, $8, 'queued') returning id`,
+       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 'queued') returning id`,
       [
         userId,
         input.video.videoId,
@@ -135,7 +139,9 @@ jobsRouter.post("/", async (req, res, next) => {
         caption.rows[0].id,
         aiConfig.providerMode,
         aiConfig.provider,
-        aiConfig.model
+        aiConfig.model,
+        strategy.id,
+        strategy.version
       ]
     );
 
@@ -174,7 +180,7 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
       [req.params.jobId]
     );
     const translated = chunks.rows.flatMap((row) => parseChunkCues(row.cues));
-    const cues = groupBySourceTiming(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
+    const cues = finalizeTranslatedCues(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
     res.json({
       ...job.rows[0],
       hasPartial: cues.length > 0,

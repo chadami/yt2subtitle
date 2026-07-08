@@ -7,6 +7,7 @@ const envSchema = z.object({
   EXTENSION_ORIGIN: z.string().default("*"),
   DATABASE_URL: z.string().min(1),
   REDIS_URL: z.string().min(1),
+  WORKER_CONCURRENCY: z.coerce.number().int().min(1).max(8).default(2),
   DEEPSEEK_API_KEY: z.string().default(""),
   DEEPSEEK_API_BASE: z.string().url().default("https://api.deepseek.com"),
   DEEPSEEK_MODEL: z.string().default("deepseek-v4-flash"),

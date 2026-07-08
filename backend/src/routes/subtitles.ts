@@ -14,7 +14,8 @@ subtitlesRouter.get("/by-video/:videoId", async (req, res, next) => {
     const userId = translationMode === "user" ? await requireUserId(req.headers.authorization) : null;
     const result = await query(
       `select id as "subtitleId", video_id as "videoId", source_lang as "sourceLang",
-       target_lang as "targetLang", cues_json as cues, vtt_text as "vttText"
+       target_lang as "targetLang", strategy_id as "strategyId", strategy_version as "strategyVersion",
+       cues_json as cues, vtt_text as "vttText"
        from translated_subtitles
        where video_id = $1 and ($2::text is null or source_lang = $2) and target_lang = $3 and provider_mode = $4
        and ($4 = 'system' or created_by_user_id = $5)

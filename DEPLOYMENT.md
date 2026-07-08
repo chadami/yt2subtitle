@@ -74,6 +74,7 @@ Limitations:
 - Free Web Services can spin down when idle.
 - Background processing can pause if the Web Service sleeps.
 - Free Postgres has Render free-tier limits.
+- `WORKER_CONCURRENCY=2` means the in-process worker can translate two queued jobs at the same time.
 - This is suitable for validation, not production.
 
 When moving to production, split the worker back into a dedicated Render Background Worker and upgrade Postgres/Key Value plans.

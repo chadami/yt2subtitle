@@ -80,6 +80,8 @@ create table if not exists translation_jobs (
   provider_mode text not null default 'system' check (provider_mode in ('system', 'user')),
   ai_provider text,
   ai_model text,
+  strategy_id text,
+  strategy_version text,
   status text not null,
   progress integer not null default 0,
   error text,
@@ -96,6 +98,8 @@ create table if not exists translated_subtitles (
   provider_mode text not null default 'system' check (provider_mode in ('system', 'user')),
   provider text not null,
   model text not null,
+  strategy_id text,
+  strategy_version text,
   created_by_user_id uuid references users(id) on delete set null,
   cues_json jsonb not null,
   vtt_text text not null,
@@ -123,4 +127,8 @@ create unique index if not exists caption_sources_unique_cue_hash_idx
 alter table translation_jobs add column if not exists provider_mode text not null default 'system';
 alter table translation_jobs add column if not exists ai_provider text;
 alter table translation_jobs add column if not exists ai_model text;
+alter table translation_jobs add column if not exists strategy_id text;
+alter table translation_jobs add column if not exists strategy_version text;
 alter table translated_subtitles add column if not exists provider_mode text not null default 'system';
+alter table translated_subtitles add column if not exists strategy_id text;
+alter table translated_subtitles add column if not exists strategy_version text;

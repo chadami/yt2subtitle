@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>YouTube AI 字幕插件 - 系统架构 UML</title>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    background: #1a1a2e;
+    color: #eaeaea;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  h1 { text-align: center; color: #00d4ff; margin-bottom: 8px; }
+  h2 { color: #7ee8fa; margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+  .diagram-container {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .mermaid { display: flex; justify-content: center; }
+  .description {
+    color: #a0a0c0;
+    font-size: 14px;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<h1>YouTube AI 翻译字幕插件 — 系统架构 UML</h1>
+
+<h2>1. 系统总体架构图 (System Architecture)</h2>
+<div class="diagram-container">
+<div class="mermaid">
+flowchart TD
+    subgraph Browser["Chrome 浏览器扩展层"]
+        direction LR
+        Popup["Popup 弹窗<br/>popup.html / popup.js"]
+        Options["Options 设置页<br/>options.html / options.js"]
+        ContentScript["Content Script<br/>contentScript.js<br/>字幕叠加层 / 视频检测 / 字幕提取"]
+        Background["Background Service Worker<br/>background.js<br/>任务轮询 / 通知 / API 代理"]
+        ChromeStorage["chrome.storage.local<br/>设置 / 缓存 / 待处理任务"]
+        
+        Popup --> ContentScript
+        Options --> ChromeStorage
+        ContentScript --> Background
+        Background --> ChromeStorage
+    end
+
+    subgraph Backend["后端服务层 (Node.js + Express)"]
+        direction TB
+        APIServer["Express API Server<br/>server.ts"]
+        
+        subgraph Routes["API 路由层"]
+            AuthRoutes["/api/auth<br/>auth.ts<br/>身份认证 / Magic Link"]
+            JobsRoutes["/api/jobs<br/>jobs.ts<br/>任务创建 / 状态查询 / 部分结果"]
+            SubtitlesRoutes["/api/subtitles<br/>subtitles.ts<br/>字幕查询 / 按视频查找"]
+            AiRoutes["/api/ai<br/>ai.ts<br/>用户 AI Key 管理"]
+        end
+        
+        subgraph CoreModules["核心业务模块"]
+            AuthModule["auth.ts<br/>JWT / 匿名身份解析"]
+            SubtitleModule["subtitles.ts<br/>字幕清洗 / 分块 / 时间轴校准 / VTT 输出"]
+            AiModule["ai.ts<br/>多 AI 提供商适配 / 上下文分析 / 翻译调用"]
+            QueueModule["queue.ts<br/>BullMQ 任务队列"]
+            DbModule["db.ts<br/>PostgreSQL 连接池"]
+            EmailModule["email.ts<br/>邮件通知"]
+        end
+        
+        APIServer --> Routes
+        Routes --> CoreModules
+    end
+
+    subgraph Worker["Worker 工作进程"]
+        SubtitleWorker["Subtitle Worker<br/>worker.ts<br/>字幕翻译流水线"]
+    end
+
+    subgraph ExternalServices["外部依赖"]
+        direction LR
+        YouTube["YouTube<br/>视频页面 / 字幕轨道"]
+        AiProviders["AI 提供商<br/>DeepSeek / OpenAI / Gemini / Claude / Qwen / Mimo"]
+        Postgres["PostgreSQL<br/>数据持久化"]
+        Redis["Redis<br/>BullMQ 队列存储"]
+    end
+
+    ContentScript -->|"抓取字幕"| YouTube
+    Background -->|"HTTP API"| APIServer
+    QueueModule --> Redis
+    SubtitleWorker -->|"消费任务"| Redis
+    SubtitleWorker -->|"调用翻译"| AiProviders
+    DbModule --> Postgres
+    SubtitleWorker -->|"读写数据"| Postgres
+    EmailModule -->|"发送邮件"| AiProviders
+</div>
+</div>
+<p class="description">系统分为三层：浏览器扩展层（用户交互 + 字幕提取 + 叠加显示）、后端 API 层（身份认证、任务管理、数据访问）、Worker 层（异步字幕翻译流水线）。通过 Redis/BullMQ 实现 API 与 Worker 的解耦。</p>
+
+<h2>2. 字幕翻译核心流程时序图 (Translation Flow)</h2>
+<div class="diagram-container">
+<div class="mermaid">
+sequenceDiagram
+    actor User as 用户
+    participant CS as ContentScript
+    participant BG as Background
+    participant API as Express API
+    participant Queue as BullMQ 队列
+    participant Worker as Subtitle Worker
+    participant AI as AI Provider
+    participant DB as PostgreSQL
+    participant Cache as chrome.storage
+
+    User->>CS: 点击 "生成字幕"
+    CS->>CS: 提取 videoId + 视频元信息
+    CS->>YouTube: 请求 playerResponse
+    YouTube-->>CS: captionTracks + 视频详情
+    CS->>YouTube: 下载原始字幕 (XML/JSON3)
+    YouTube-->>CS: rawCues
+    CS->>BG: CREATE_SUBTITLE_JOB
+    BG->>API: POST /api/jobs (rawCues + video info)
+    
+    API->>DB: 查询是否已有结果/进行中任务
+    alt 已有完成字幕
+        DB-->>API: 返回 subtitleId
+        API-->>BG: jobId + status=completed
+    else 无结果
+        API->>DB: INSERT videos / caption_sources / translation_jobs
+        API->>Queue: add("translate", { jobId })
+        API-->>BG: jobId + status=queued
+    end
+    
+    BG->>Cache: 保存 pendingJobs
+    BG->>BG: chrome.alarms 启动轮询
+    
+    Note over Worker: 异步消费队列
+    Queue->>Worker: 领取任务
+    Worker->>DB: 更新状态: cleaning (10%)
+    Worker->>Worker: prepareSourceCues<br/>去重叠 / 去说话人标记 / 时间轴校准
+    Worker->>DB: 更新 clean_cues_json
+    
+    Worker->>DB: 更新状态: translating (25%)
+    Worker->>Worker: chunkCues 分块
+    loop 每个翻译块
+        Worker->>AI: translateChunk (带上下文)
+        AI-->>Worker: translated cues
+        Worker->>DB: 保存 chunk 到 translation_job_chunks
+        Worker->>DB: 更新 progress
+    end
+    
+    Worker->>DB: 更新状态: finalizing (95%)
+    Worker->>Worker: finalizeTranslatedCues<br/>按标点断句 / 时长限制 / 字数限制
+    Worker->>Worker: toVtt 生成 VTT
+    Worker->>DB: INSERT translated_subtitles
+    Worker->>DB: 更新状态: completed (100%)
+    Worker->>Worker: 邮件通知 (可选)
+    
+    Note over BG: 轮询检测完成
+    BG->>API: GET /api/jobs/:jobId
+    API->>DB: 查询 job 状态
+    DB-->>API: status=completed
+    API-->>BG: status=completed
+    BG->>API: GET /api/subtitles/by-video/:id
+    API->>DB: 查询翻译结果
+    DB-->>API: cues + vtt
+    API-->>BG: 字幕数据
+    BG->>Cache: 缓存字幕结果
+    BG->>BG: chrome.notifications 桌面通知
+    
+    CS->>CS: 轮询 partial-subtitles<br/>边翻译边显示
+    CS->>CS: 渲染字幕叠加层
+</div>
+</div>
+<p class="description">核心翻译流程：扩展端抓取字幕 → API 创建任务并入队 → Worker 异步消费（清洗→分块→逐块翻译→时间轴校准→VTT输出）→ 扩展端轮询进度并通过叠加层实时显示部分结果。</p>
+
+<h2>3. 数据库 ER 图 (Database Schema)</h2>
+<div class="diagram-container">
+<div class="mermaid">
+erDiagram
+    users {
+        uuid id PK
+        timestamptz created_at
+        timestamptz last_seen_at
+    }
+    
+    identities {
+        uuid id PK
+        uuid user_id FK
+        text type "anonymous/email/google"
+        text identifier
+        timestamptz created_at
+        timestamptz verified_at
+    }
+    
+    magic_links {
+        uuid id PK
+        uuid user_id FK
+        text email
+        text token_hash
+        timestamptz expires_at
+        timestamptz used_at
+        timestamptz created_at
+    }
+    
+    login_codes {
+        uuid id PK
+        uuid user_id FK
+        text email
+        text code_hash
+        timestamptz expires_at
+        timestamptz used_at
+        timestamptz created_at
+    }
+    
+    user_ai_settings {
+        uuid user_id PK
+        text provider "gemini/deepseek/openai/claude/qwen/mimo"
+        text api_key_ciphertext
+        text model
+        jsonb available_models_json
+        timestamptz created_at
+        timestamptz updated_at
+    }
+    
+    videos {
+        text video_id PK
+        text url
+        text title
+        text channel
+        text description
+        integer duration
+        timestamptz created_at
+        timestamptz updated_at
+    }
+    
+    caption_sources {
+        uuid id PK
+        text video_id FK
+        text source_lang
+        text caption_type "manual/auto"
+        text cue_hash
+        jsonb raw_cues_json
+        jsonb clean_cues_json
+        timestamptz created_at
+    }
+    
+    translation_jobs {
+        uuid id PK
+        uuid user_id FK
+        text video_id FK
+        text source_lang
+        text target_lang
+        uuid caption_source_id FK
+        text provider_mode "system/user"
+        text ai_provider
+        text ai_model
+        text status "queued/cleaning/translating/finalizing/completed/failed"
+        integer progress
+        text error
+        timestamptz created_at
+        timestamptz updated_at
+        timestamptz completed_at
+    }
+    
+    translated_subtitles {
+        uuid id PK
+        text video_id FK
+        text source_lang
+        text target_lang
+        text provider_mode
+        text provider
+        text model
+        uuid created_by_user_id FK
+        jsonb cues_json
+        text vtt_text
+        timestamptz created_at
+        timestamptz updated_at
+    }
+    
+    translation_job_chunks {
+        uuid job_id PK
+        integer chunk_index PK
+        jsonb cues_json
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    users ||--o{ identities : "has"
+    users ||--o{ magic_links : "has"
+    users ||--o{ login_codes : "has"
+    users ||--o| user_ai_settings : "has"
+    users ||--o{ translation_jobs : "owns"
+    users ||--o{ translated_subtitles : "created"
+    videos ||--o{ caption_sources : "has"
+    videos ||--o{ translation_jobs : "for"
+    videos ||--o{ translated_subtitles : "for"
+    caption_sources ||--o{ translation_jobs : "source of"
+    translation_jobs ||--o{ translation_job_chunks : "has"
+</div>
+</div>
+<p class="description">数据库核心实体：users + identities 实现多身份系统（匿名/邮箱）、videos + caption_sources 存储视频和原始字幕、translation_jobs + translation_job_chunks 管理翻译任务进度、translated_subtitles 存储最终结果。user_ai_settings 存储用户自有 API Key（AES-256-GCM 加密）。</p>
+
+<h2>4. 后端模块类图 / 依赖关系 (Backend Modules)</h2>
+<div class="diagram-container">
+<div class="mermaid">
+classDiagram
+    class server {
+        +Express app
+        +initDatabase()
+        +listen(port)
+        中间件: cors / json / logging / error
+    }
+    
+    class env {
+        +PORT
+        +DATABASE_URL
+        +REDIS_URL
+        +JWT_SECRET
+        +DEEPSEEK_API_KEY
+        +DEEPSEEK_MODEL
+        +DEEPSEEK_API_BASE
+        +EXTENSION_ORIGIN
+    }
+    
+    class db {
+        +Pool db
+        +query<T>(text, values)
+    }
+    
+    class auth_ts {
+        +class AuthError
+        +hashToken(token) string
+        +createRandomToken() string
+        +signSession(userId) string
+        +resolveAnonymousUser(clientId) string
+        +requireUserId(authHeader, clientId?) string
+    }
+    
+    class ai_ts {
+        +type AiProvider
+        +type ProviderMode
+        +type AiConfig
+        +type SubtitleTranslationContext
+        +systemAiConfig() AiConfig
+        +encryptApiKey(apiKey) string
+        +decryptApiKey(value) string
+        +fetchProviderModels(provider, apiKey) string[]
+        +analyzeSubtitleContext(input) SubtitleTranslationContext
+        +translateChunk(input) TranslatedCue[]
+    }
+    
+    class subtitles_ts {
+        +type RawCue
+        +type CleanCue
+        +type TranslatedCue
+        +normalizeText(text) string
+        +prepareSourceCues(cues, captionType) CleanCue[]
+        +resolveOverlaps(cues) CleanCue[]
+        +chunkCues(cues, maxChars) CleanCue[][]
+        +finalizeTranslatedCues(cues) TranslatedCue[]
+        +toVtt(cues) string
+    }
+    
+    class queue_ts {
+        +redisConnection
+        +type SubtitleJobPayload
+        +subtitleQueue: Queue
+    }
+    
+    class worker_ts {
+        +processSubtitleJob(jobId)
+        +notifyJobOwner(jobId, title, url)
+        +markJobAttemptFailed(jobId, error, finalAttempt)
+        Worker "subtitle-jobs"
+    }
+    
+    class email_ts {
+        +sendSubtitleReadyEmail(to, data)
+        +sendLoginCode(email, code)
+    }
+    
+    class migrate_ts {
+        +initDatabase()
+    }
+    
+    class auth_router {
+        <<Router>>
+        POST /magic-link
+        GET /verify
+        POST /exchange-code
+        GET /me
+    }
+    
+    class jobs_router {
+        <<Router>>
+        GET /history
+        POST /
+        GET /:jobId
+        GET /:jobId/partial-subtitles
+    }
+    
+    class subtitles_router {
+        <<Router>>
+        GET /by-video/:videoId
+        GET /:subtitleId
+    }
+    
+    class ai_router {
+        <<Router>>
+        GET /settings
+        PUT /settings
+        POST /validate-key
+    }
+    
+    server --> auth_router
+    server --> jobs_router
+    server --> subtitles_router
+    server --> ai_router
+    server --> migrate_ts
+    server --> env
+    
+    auth_router --> auth_ts
+    auth_router --> db
+    auth_router --> email_ts
+    
+    jobs_router --> auth_ts
+    jobs_router --> db
+    jobs_router --> queue_ts
+    jobs_router --> subtitles_ts
+    jobs_router --> ai_ts
+    
+    subtitles_router --> auth_ts
+    subtitles_router --> db
+    
+    ai_router --> auth_ts
+    ai_router --> ai_ts
+    ai_router --> db
+    
+    worker_ts --> ai_ts
+    worker_ts --> subtitles_ts
+    worker_ts --> db
+    worker_ts --> queue_ts
+    worker_ts --> email_ts
+    
+    ai_ts --> env
+    ai_ts --> subtitles_ts
+    
+    subtitles_ts --> "自身工具函数" : normalizeText / resolveOverlaps 等
+    
+    migrate_ts --> db
+    migrate_ts --> env
+    
+    email_ts --> env
+</div>
+</div>
+<p class="description">后端模块结构：Express server 作为入口，挂载 4 个路由（auth/jobs/subtitles/ai）。每个路由依赖相应的业务模块（auth.ts / ai.ts / subtitles.ts / db.ts / queue.ts / email.ts）。worker.ts 作为独立进程，消费 BullMQ 队列任务，调用 ai.ts 和 subtitles.ts 完成翻译流水线。</p>
+
+<h2>5. 浏览器扩展架构图 (Extension Architecture)</h2>
+<div class="diagram-container">
+<div class="mermaid">
+flowchart LR
+    subgraph Manifest["manifest.json<br/>MV3 配置"]
+        Permissions["permissions:<br/>storage / alarms / notifications"]
+        HostPermissions["host_permissions:<br/>youtube.com / API 域名"]
+        BackgroundDef["background.service_worker"]
+        ContentDef["content_scripts:<br/>youtube.com/*"]
+        Action["action.popup: popup.html"]
+        OptionsDef["options_ui: options.html"]
+    end
+
+    subgraph Popup["popup.js / popup.html"]
+        PopupUI["UI 界面"]
+        PopupStatus["字幕状态显示"]
+        PopupGenerate["生成字幕按钮"]
+        PopupProgress["进度条"]
+    end
+
+    subgraph Options["options.js / options.html"]
+        SettingsForm["设置表单<br/>目标语言 / 翻译模式"]
+        ApiKeySettings["AI Key 设置"]
+        SubtitleStyle["字幕样式设置"]
+        AccountInfo["账号信息 / 登录"]
+        HistoryList["翻译历史"]
+        CacheManage["缓存管理"]
+    end
+
+    subgraph Content["contentScript.js"]
+        VideoDetect["视频页面检测<br/>parseVideoId / SPA 路由监听"]
+        CaptionExtract["字幕提取<br/>fetchPlayerResponse / parseTranscriptXml"]
+        Overlay["字幕叠加层<br/>renderOverlayCue / renderSubtitles"]
+        PartialPoll["部分结果轮询<br/>startPartialSubtitlePolling"]
+        MessageListener["消息监听<br/>chrome.runtime.onMessage"]
+    end
+
+    subgraph Background["background.js"]
+        BgMessage["消息路由"]
+        JobManager["任务管理<br/>createSubtitleJob / getJobStatus"]
+        JobAlarm["定时轮询<br/>chrome.alarms"]
+        Notification["桌面通知<br/>chrome.notifications"]
+        CacheLayer["字幕缓存<br/>subtitleCache (LRU 8条)"]
+        PendingJobs["待办任务<br/>pendingJobs"]
+    end
+
+    subgraph Storage["chrome.storage.local"]
+        ClientId["clientId"]
+        SettingsKey["settings"]
+        SessionToken["sessionToken"]
+        PendingJobsKey["pendingJobs"]
+        SubtitleCacheKey["subtitleCache"]
+    end
+
+    Popup --> Background
+    Options --> Storage
+    Content --> Background
+    Background --> Storage
+    
+    VideoDetect --> CaptionExtract
+    CaptionExtract --> Overlay
+    PartialPoll --> Overlay
+    
+    BgMessage --> JobManager
+    JobManager --> JobAlarm
+    JobAlarm --> JobManager
+    JobManager --> Notification
+    JobManager --> CacheLayer
+    CacheLayer --> PendingJobs
+</div>
+</div>
+<p class="description">浏览器扩展采用 MV3 架构：Content Script 注入 YouTube 页面负责字幕提取和叠加显示；Background Service Worker 负责 API 通信、任务轮询、本地缓存和桌面通知；Popup 和 Options 页面提供用户交互界面。三者通过 chrome.runtime.sendMessage 通信，数据存储在 chrome.storage.local 中。</p>
+
+<h2>6. 字幕处理流水线状态图 (Subtitle Pipeline States)</h2>
+<div class="diagram-container">
+<div class="mermaid">
+stateDiagram-v2
+    [*] --> Queued: 任务入队
+
+    state Queued {
+        description 等待 Worker 领取
+    }
+
+    Queued --> Cleaning: Worker 领取任务
+    state Cleaning {
+        description 进度 10%
+        stripSpeakerMarker: 去除说话人标记
+        resolveOverlaps: 解决时间重叠
+        prepareSourceCues: 标准化原始字幕
+        autoCaptionGroup: 自动字幕分组(ASR)
+    }
+
+    Cleaning --> Translating: 清洗完成
+    state Translating {
+        description 进度 25% ~ 80%
+        analyzeContext: 分析视频上下文(话题/术语表)
+        chunkCues: 按字符数分块
+        translateChunk: 逐块调用 AI 翻译
+        saveChunks: 保存 chunk 到 DB
+    }
+
+    Translating --> Finalizing: 所有块翻译完成
+    state Finalizing {
+        description 进度 95%
+        groupBySourceTiming: 按原始时间分组
+        enforcePunctuationSegmentation: 按标点断句
+        enforceReadableDurations: 确保可读时长
+        enforceSubtitleLimits: 字数/时长限制
+        addContinuationPunctuation: 补充标点
+        toVtt: 生成 VTT 格式
+    }
+
+    Finalizing --> Completed: 持久化完成
+    state Completed {
+        description 进度 100%
+        saveSubtitles: 保存到 translated_subtitles
+        notifyUser: 邮件 / 浏览器通知
+    }
+
+    Cleaning --> Failed: 清洗失败
+    Translating --> Failed: 翻译失败(重试耗尽)
+    Finalizing --> Failed: 后处理失败
+
+    state Failed {
+        description 记录 error
+        markFailed: 更新状态 + error
+    }
+
+    Completed --> [*]
+    Failed --> [*]
+</div>
+</div>
+<p class="description">翻译任务状态机：Queued → Cleaning（字幕清洗）→ Translating（AI 翻译，含分块逐块处理）→ Finalizing（时间轴校准 + 字数/时长限制 + 标点断句）→ Completed。任何阶段失败且重试耗尽则进入 Failed 状态。</p>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    primaryColor: '#16213e',
+    primaryTextColor: '#eaeaea',
+    primaryBorderColor: '#00d4ff',
+    lineColor: '#7ee8fa',
+    secondaryColor: '#1a1a2e',
+    tertiaryColor: '#0f3460',
+    nodeBorder: '#00d4ff',
+    clusterBkg: '#0f3460',
+    clusterBorder: '#533483',
+    titleColor: '#00d4ff'
+  }
+});
+</script>
+
+</body>
+</html>

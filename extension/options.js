@@ -806,6 +806,7 @@ document.getElementById("sendMagicLink").addEventListener("click", async () => {
 
   setSendMagicLinkPending();
   const apiBase = normalizeApiBase(fields.apiBase.value || settings.apiBase);
+  let sent = false;
   try {
     const response = await fetch(`${apiBase}/api/auth/magic-link`, {
       method: "POST",
@@ -813,12 +814,19 @@ document.getElementById("sendMagicLink").addEventListener("click", async () => {
       body: JSON.stringify({ email, clientId })
     });
     const data = await response.json().catch(() => ({}));
-    setDynamicText(nodes.message, response.ok ? t("codeSentMessage") : data.error || t("sendCodeFailed"));
+    sent = response.ok;
+    setDynamicText(
+      nodes.message,
+      response.ok
+        ? t("codeSentMessage")
+        : data.error || t("sendCodeFailedMessage", { message: response.status })
+    );
   } catch (error) {
     setDynamicText(nodes.message, t("sendCodeFailedMessage", { message: error.message }));
   } finally {
+    nodes.sendMagicLink.disabled = false;
     nodes.sendMagicLink.classList.remove("loading");
-    nodes.sendMagicLinkText.textContent = t("codeSent");
+    nodes.sendMagicLinkText.textContent = sent ? t("codeSent") : t("sendCode");
   }
 });
 

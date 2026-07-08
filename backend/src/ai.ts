@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import { env } from "./env.js";
 import type { CleanCue, TranslatedCue } from "./subtitles.js";
 import { normalizeText } from "./subtitles.js";
+import { getTranslationStrategy, type TranslationStrategy } from "./translationStrategies.js";
 
 export const aiProviders = ["gemini", "deepseek", "openai", "claude", "qwen", "mimo"] as const;
 export type AiProvider = typeof aiProviders[number];
@@ -11,6 +12,20 @@ type VideoContext = {
   title: string;
   channel: string;
   description: string;
+};
+
+export type SubtitleTranslationContext = {
+  topic: string;
+  summary: string;
+  tone: string;
+  audience: string;
+  glossary: Array<{
+    source: string;
+    target: string;
+    note: string;
+  }>;
+  properNouns: string[];
+  styleGuide: string[];
 };
 
 type ChatMessage = {
@@ -28,6 +43,9 @@ export type AiConfig = {
 const MAX_SOURCE_REALIGN_SPAN = 10;
 const MIN_SOURCE_REALIGN_SCORE = 0.6;
 const MIN_SOURCE_REALIGN_IMPROVEMENT = 0.2;
+const MAX_ANALYSIS_TRANSCRIPT_CHARS = 12000;
+const MAX_CONTEXT_ITEMS = 12;
+const MAX_CONTEXT_TEXT_LENGTH = 180;
 
 const providerDefaults: Record<AiProvider, { baseUrl: string; fallbackModel: string }> = {
   gemini: {
@@ -300,12 +318,166 @@ function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
 }
 
-function systemPrompt(targetLanguage: string) {
+function boundedText(value: unknown, maxLength = MAX_CONTEXT_TEXT_LENGTH) {
+  if (typeof value !== "string") return "";
+  const text = normalizeText(value);
+  return text.length > maxLength ? `${text.slice(0, maxLength).trim()}...` : text;
+}
+
+function boundedStringList(value: unknown, limit = MAX_CONTEXT_ITEMS) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => boundedText(item))
+    .filter(Boolean)
+    .slice(0, limit);
+}
+
+function boundedGlossary(value: unknown) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => {
+      if (!item || typeof item !== "object") return null;
+      const source = boundedText((item as { source?: unknown }).source, 80);
+      const target = boundedText((item as { target?: unknown }).target, 80);
+      const note = boundedText((item as { note?: unknown }).note, 120);
+      if (!source || !target) return null;
+      return { source, target, note };
+    })
+    .filter((item): item is SubtitleTranslationContext["glossary"][number] => Boolean(item))
+    .slice(0, MAX_CONTEXT_ITEMS);
+}
+
+function transcriptLines(cues: CleanCue[]) {
+  return cues.map((cue) => `${cue.index}: ${normalizeText(cue.text)}`).filter(Boolean);
+}
+
+function transcriptDigest(cues: CleanCue[]) {
+  const lines = transcriptLines(cues);
+  const allText = lines.join("\n");
+  if (allText.length <= MAX_ANALYSIS_TRANSCRIPT_CHARS) return allText;
+
+  const headBudget = Math.floor(MAX_ANALYSIS_TRANSCRIPT_CHARS * 0.42);
+  const middleBudget = Math.floor(MAX_ANALYSIS_TRANSCRIPT_CHARS * 0.2);
+  const tailBudget = Math.floor(MAX_ANALYSIS_TRANSCRIPT_CHARS * 0.32);
+  const head: string[] = [];
+  const middle: string[] = [];
+  const tail: string[] = [];
+
+  let size = 0;
+  for (const line of lines) {
+    if (size + line.length + 1 > headBudget) break;
+    head.push(line);
+    size += line.length + 1;
+  }
+
+  size = 0;
+  const middleStart = Math.max(0, Math.floor(lines.length / 2) - Math.floor(lines.length * 0.08));
+  for (const line of lines.slice(middleStart)) {
+    if (size + line.length + 1 > middleBudget) break;
+    middle.push(line);
+    size += line.length + 1;
+  }
+
+  size = 0;
+  for (let index = lines.length - 1; index >= 0; index -= 1) {
+    const line = lines[index];
+    if (size + line.length + 1 > tailBudget) break;
+    tail.unshift(line);
+    size += line.length + 1;
+  }
+
+  return [
+    ...head,
+    "[...middle transcript omitted for length...]",
+    ...middle,
+    "[...later transcript omitted for length...]",
+    ...tail
+  ].join("\n");
+}
+
+function guidanceBullets(items: string[]) {
+  return items.map((item) => `- ${item}`).join("\n");
+}
+
+function strategyPromptSection(strategy: TranslationStrategy) {
+  return `
+Strategy:
+- Strategy ID: ${strategy.id}
+- Strategy version: ${strategy.version}
+- Strategy name: ${strategy.displayName}
+${strategy.fallbackNotes ? `- Notes: ${strategy.fallbackNotes}` : ""}
+`.trim();
+}
+
+function analysisPrompt(targetLanguage: string, strategy: TranslationStrategy) {
+  return `
+You are preparing a translation brief for a subtitle translator.
+
+Read the video metadata and transcript sample to infer the subject, terminology, named entities, tone, and likely audience.
+The brief will be used only as context while translating subtitles into ${targetLanguage}.
+
+${strategyPromptSection(strategy)}
+
+Rules:
+- Output strict JSON only.
+- Do not translate the transcript.
+- Do not invent facts that are not supported by the metadata or transcript.
+- Glossary entries should cover recurring or important terms, names, product names, technical terms, jokes, idioms, and ambiguous words.
+- Glossary target values must be concise ${targetLanguage} recommendations.
+- Style guide items should describe practical translation choices for conversational subtitles, not generic advice.
+- Prefer everyday spoken phrasing over formal, bookish, or overly literal wording.
+
+Language-specific brief guidance:
+${guidanceBullets(strategy.analysisGuidance)}
+
+Return:
+{"topic":"short topic","summary":"brief summary","tone":"tone","audience":"audience","glossary":[{"source":"term","target":"translation","note":"why or when to use it"}],"properNouns":["name"],"styleGuide":["instruction"]}
+`.trim();
+}
+
+export async function analyzeSubtitleContext(input: {
+  aiConfig: AiConfig;
+  videoContext: VideoContext;
+  cues: CleanCue[];
+  sourceLanguage: string;
+  targetLanguage: string;
+}): Promise<SubtitleTranslationContext> {
+  const strategy = getTranslationStrategy(input.targetLanguage);
+  const modelInput = {
+    videoContext: input.videoContext,
+    sourceLanguage: input.sourceLanguage,
+    targetLanguage: input.targetLanguage,
+    translationStrategy: {
+      id: strategy.id,
+      version: strategy.version,
+      name: strategy.displayName
+    },
+    transcript: transcriptDigest(input.cues)
+  };
+  const data = await chatJson(input.aiConfig, [
+    { role: "system", content: analysisPrompt(input.targetLanguage, strategy) },
+    { role: "user", content: JSON.stringify(modelInput) }
+  ], 0.1);
+
+  return {
+    topic: boundedText(data.topic),
+    summary: boundedText(data.summary, 500),
+    tone: boundedText(data.tone),
+    audience: boundedText(data.audience),
+    glossary: boundedGlossary(data.glossary),
+    properNouns: boundedStringList(data.properNouns),
+    styleGuide: boundedStringList(data.styleGuide)
+  };
+}
+
+function systemPrompt(targetLanguage: string, strategy: TranslationStrategy) {
   return `
 You are a senior subtitle translator and timing editor.
 
-Use the video title, channel, description, previous context, and next context to understand topic, names, tone, and terminology.
+Use the video title, channel, description, translation brief, previous context, and next context to understand topic, names, tone, and terminology.
 Translate only raw_cues into natural, complete ${targetLanguage} subtitles.
+
+${strategyPromptSection(strategy)}
 
 Rules:
 - Output strict JSON only.
@@ -319,12 +491,20 @@ Rules:
 - If a raw_cue is only a sentence fragment, translate only that fragment; do not complete it with later raw_cues.
 - The source field must copy the matching raw_cue text exactly.
 - Prefer natural spoken wording over literal translation.
+- Write subtitles in conversational language that viewers can understand instantly while watching.
+- Prefer short, direct clauses. Avoid formal, bookish, corporate, or translated-sounding wording unless the speaker is intentionally formal.
 - Keep names, terms, numbers, examples, caveats, contrasts, and speaker intent accurate.
+- Follow the translation brief for terminology and style when it matches the raw subtitle text.
+- Treat the raw_cue text as the source of truth. Do not add information from the brief or neighboring context that is not present in the current raw_cue.
 - Do not summarize, compress, or drop meaning-bearing details for readability.
+- You may lightly reorder words within the current raw_cue so the subtitle sounds natural in ${targetLanguage}, but keep every meaning-bearing detail.
 - Remove only clear ASR disfluencies like "um" or immediate accidental repetitions that carry no meaning.
 - Preserve the full translation; never shorten content to meet a length target.
 - Restore natural punctuation after correcting the ASR transcript, even when raw_cues contains no punctuation.
 - It is okay if one output cue is a fragment; backend timing/readability cleanup will merge fragments.
+
+Language-specific translation guidance:
+${guidanceBullets(strategy.translationGuidance)}
 
 Return:
 {"cues":[{"source_indexes":[1],"source":"source text","translation":"translated subtitle"}]}
@@ -334,18 +514,28 @@ Return:
 export async function translateChunk(input: {
   aiConfig: AiConfig;
   videoContext: VideoContext;
+  translationContext?: SubtitleTranslationContext;
   previousContext: CleanCue[];
   rawCues: CleanCue[];
   nextContext: CleanCue[];
   targetLanguage: string;
 }) {
+  const strategy = getTranslationStrategy(input.targetLanguage);
   const modelInput = {
     videoContext: input.videoContext,
+    translationBrief: input.translationContext,
+    previousContext: input.previousContext,
     rawCues: input.rawCues,
-    targetLanguage: input.targetLanguage
+    nextContext: input.nextContext,
+    targetLanguage: input.targetLanguage,
+    translationStrategy: {
+      id: strategy.id,
+      version: strategy.version,
+      name: strategy.displayName
+    }
   };
   const data = await chatJson(input.aiConfig, [
-    { role: "system", content: systemPrompt(input.targetLanguage) },
+    { role: "system", content: systemPrompt(input.targetLanguage, strategy) },
     { role: "user", content: JSON.stringify(modelInput) }
   ], 0.2);
 
