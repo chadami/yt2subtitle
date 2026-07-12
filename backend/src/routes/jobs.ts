@@ -1,10 +1,11 @@
 import crypto from "node:crypto";
 import { Router } from "express";
 import { z } from "zod";
-import { systemAiConfig } from "../ai.js";
 import { requireUserId } from "../auth.js";
-import { query } from "../db.js";
+import { db, query } from "../db.js";
+import { getUserEntitlement } from "../entitlements.js";
 import { subtitleQueue } from "../queue.js";
+import { createGenerationKey, hashRawCues, PUBLIC_STYLE_ID } from "../subtitleLibrary.js";
 import { finalizeTranslatedCues, type TranslatedCue } from "../subtitles.js";
 import { getTranslationStrategy } from "../translationStrategies.js";
 import { loadUserAiConfig } from "./ai.js";
@@ -17,13 +18,10 @@ const cueSchema = z.object({
   text: z.string()
 });
 
-function hashRawCues(rawCues: Array<z.infer<typeof cueSchema>>) {
-  const stableCues = rawCues.map((cue) => ({
-    start: Number(cue.start.toFixed(3)),
-    end: Number(cue.end.toFixed(3)),
-    text: cue.text.trim()
-  }));
-  return crypto.createHash("sha256").update(JSON.stringify(stableCues)).digest("hex");
+class JobRequestError extends Error {
+  constructor(message: string, public status = 400, public code?: string) {
+    super(message);
+  }
 }
 
 jobsRouter.get("/history", async (req, res, next) => {
@@ -62,91 +60,165 @@ jobsRouter.get("/history", async (req, res, next) => {
 jobsRouter.post("/", async (req, res, next) => {
   try {
     const input = z.object({
-      clientId: z.string().min(8).optional(),
+      captionSourceId: z.string().uuid().optional(),
       video: z.object({
         videoId: z.string().min(6),
         url: z.string().url(),
         title: z.string().default(""),
         channel: z.string().default(""),
         description: z.string().default("")
-      }),
+      }).optional(),
       sourceLang: z.string().default("en"),
       targetLang: z.string().default("zh-Hans"),
-      translationMode: z.enum(["system", "user"]).default("system"),
+      translationMode: z.enum(["system", "user"]).default("user"),
       forceRegenerate: z.boolean().default(false),
       captionType: z.enum(["manual", "auto"]).default("manual"),
-      rawCues: z.array(cueSchema).min(1)
+      styleId: z.string().default(PUBLIC_STYLE_ID),
+      rawCues: z.array(cueSchema).min(1).optional()
     }).parse(req.body);
-
-    const userId = await requireUserId(
-      req.headers.authorization,
-      input.translationMode === "user" ? undefined : input.clientId
-    );
-    const aiConfig = input.translationMode === "user"
-      ? await loadUserAiConfig(userId)
-      : systemAiConfig();
-    const strategy = getTranslationStrategy(input.targetLang);
-    if (!input.forceRegenerate) {
-      const existing = await query<{ id: string; status: string }>(
-        `select id, status from translation_jobs
-         where video_id = $1 and source_lang = $2 and target_lang = $3
-         and provider_mode = $4
-         and ($4 = 'system' or user_id = $5)
-         and exists (
-           select 1 from caption_sources c
-           where c.id = translation_jobs.caption_source_id
-           and c.caption_type = $6
-         )
-         and status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
-         order by created_at desc limit 1`,
-        [input.video.videoId, input.sourceLang, input.targetLang, input.translationMode, userId, input.captionType]
-      );
-      if (existing.rows[0]) {
-        return res.json({ jobId: existing.rows[0].id, status: existing.rows[0].status });
-      }
+    if (input.translationMode !== "user") {
+      throw new JobRequestError("System translation is not available. Configure a personal API key.", 400, "PERSONAL_API_REQUIRED");
     }
-
-    await query(
-      `insert into videos (video_id, url, title, channel, description)
-       values ($1, $2, $3, $4, $5)
-       on conflict (video_id) do update set title = excluded.title, channel = excluded.channel,
-       description = excluded.description, updated_at = now()`,
-      [input.video.videoId, input.video.url, input.video.title, input.video.channel, input.video.description]
+    const userId = await requireUserId(req.headers.authorization);
+    const aiConfig = await loadUserAiConfig(userId);
+    const strategy = getTranslationStrategy(input.targetLang);
+    let captionSourceId = input.captionSourceId;
+    if (!captionSourceId) {
+      if (!input.video || !input.rawCues) throw new JobRequestError("captionSourceId or video/rawCues is required");
+      await query(
+        `insert into videos (video_id, url, title, channel, description)
+         values ($1, $2, $3, $4, $5)
+         on conflict (video_id) do update set title = excluded.title, channel = excluded.channel,
+         description = excluded.description, updated_at = now()`,
+        [input.video.videoId, input.video.url, input.video.title, input.video.channel, input.video.description]
+      );
+      const caption = await query<{ id: string }>(
+        `insert into caption_sources (video_id, source_lang, caption_type, cue_hash, raw_cues_json)
+         values ($1, $2, $3, $4, $5)
+         on conflict (video_id, source_lang, caption_type, cue_hash)
+         where cue_hash is not null
+         do update set raw_cues_json = excluded.raw_cues_json returning id`,
+        [input.video.videoId, input.sourceLang, input.captionType, hashRawCues(input.rawCues), JSON.stringify(input.rawCues)]
+      );
+      captionSourceId = caption.rows[0].id;
+    }
+    const caption = await query<{ video_id: string; source_lang: string }>(
+      "select video_id, source_lang from caption_sources where id = $1",
+      [captionSourceId]
     );
-
-    const cueHash = hashRawCues(input.rawCues);
-    const caption = await query<{ id: string }>(
-      `insert into caption_sources (video_id, source_lang, caption_type, cue_hash, raw_cues_json)
-       values ($1, $2, $3, $4, $5)
-       on conflict (video_id, source_lang, caption_type, cue_hash)
-       where cue_hash is not null
-       do update set raw_cues_json = caption_sources.raw_cues_json
-       returning id`,
-      [input.video.videoId, input.sourceLang, input.captionType, cueHash, JSON.stringify(input.rawCues)]
-    );
-
-    const job = await query<{ id: string }>(
-      `insert into translation_jobs (
-         user_id, video_id, source_lang, target_lang, caption_source_id,
-         provider_mode, ai_provider, ai_model, strategy_id, strategy_version, status
-       )
-       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 'queued') returning id`,
-      [
-        userId,
-        input.video.videoId,
-        input.sourceLang,
-        input.targetLang,
-        caption.rows[0].id,
-        aiConfig.providerMode,
-        aiConfig.provider,
-        aiConfig.model,
-        strategy.id,
-        strategy.version
-      ]
-    );
-
-    await subtitleQueue.add("translate", { jobId: job.rows[0].id }, { attempts: 2 });
-    res.json({ jobId: job.rows[0].id, status: "queued" });
+    if (!caption.rows[0]) throw new JobRequestError("Caption source not found", 404);
+    const baseGenerationKey = createGenerationKey({
+      captionSourceId,
+      targetLang: input.targetLang,
+      styleId: input.styleId,
+      strategyId: strategy.id,
+      strategyVersion: strategy.version,
+      provider: aiConfig.provider,
+      model: aiConfig.model
+    });
+    const generationKey = input.forceRegenerate ? `${baseGenerationKey}:${crypto.randomUUID()}` : baseGenerationKey;
+    const client = await db.connect();
+    let jobId = "";
+    let status = "queued";
+    try {
+      await client.query("begin");
+      const entitlement = await getUserEntitlement(userId, client);
+      if (entitlement.plan !== "free" && !entitlement.unlimitedGeneration) {
+        throw new JobRequestError("Your membership has expired. Existing private subtitles remain available.", 403, "MEMBERSHIP_EXPIRED");
+      }
+      const contributionEligible = entitlement.canContribute && input.styleId === PUBLIC_STYLE_ID;
+      await client.query("select pg_advisory_xact_lock(hashtext($1))", [
+        `${contributionEligible ? "public" : userId}:${generationKey}`
+      ]);
+      if (!input.forceRegenerate) {
+        const existing = await client.query<{ id: string; status: string; user_id: string; contribution_eligible: boolean }>(
+          `select j.id, j.status, j.user_id, j.contribution_eligible from translation_jobs j
+           where j.generation_key = $1
+             and ((j.contribution_eligible = true and $2 = true) or j.user_id = $3)
+             and j.status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
+             and (j.status <> 'completed' or exists (
+               select 1 from translated_subtitles t where t.job_id = j.id
+             ))
+           order by j.created_at desc limit 1`,
+          [generationKey, contributionEligible, userId]
+        );
+        if (existing.rows[0]) {
+          jobId = existing.rows[0].id;
+          status = existing.rows[0].status;
+          if (existing.rows[0].user_id !== userId) {
+            await client.query(
+              "insert into translation_job_watchers (job_id, user_id) values ($1, $2) on conflict do nothing",
+              [jobId, userId]
+            );
+          }
+          await client.query("commit");
+          return res.json({ jobId, status, shared: existing.rows[0].user_id !== userId });
+        }
+      }
+      if (!entitlement.unlimitedGeneration) {
+        await client.query("select pg_advisory_xact_lock(hashtext($1))", [userId]);
+        const usage = await client.query<{ status: string }>(
+          "select status from user_video_usage where user_id = $1 and video_id = $2",
+          [userId, caption.rows[0].video_id]
+        );
+        if (!usage.rows[0]) {
+          const count = await client.query<{ count: string }>(
+            "select count(*)::text as count from user_video_usage where user_id = $1",
+            [userId]
+          );
+          if (Number(count.rows[0]?.count || 0) >= 5) {
+            throw new JobRequestError("Free plan supports up to 5 different videos.", 403, "FREE_VIDEO_LIMIT_REACHED");
+          }
+          await client.query(
+            `insert into user_video_usage (user_id, video_id, status)
+             values ($1, $2, 'reserved')`,
+            [userId, caption.rows[0].video_id]
+          );
+        }
+      }
+      const created = await client.query<{ id: string }>(
+        `insert into translation_jobs (
+           user_id, video_id, source_lang, target_lang, caption_source_id,
+           provider_mode, ai_provider, ai_model, strategy_id, strategy_version,
+           style_id, generation_key, contribution_eligible, consent_version, status
+         ) values ($1, $2, $3, $4, $5, 'user', $6, $7, $8, $9, $10, $11, $12, $13, 'queued') returning id`,
+        [userId, caption.rows[0].video_id, caption.rows[0].source_lang, input.targetLang, captionSourceId,
+          aiConfig.provider, aiConfig.model, strategy.id, strategy.version, input.styleId, generationKey,
+          contributionEligible, contributionEligible ? entitlement.consentVersion : null]
+      );
+      jobId = created.rows[0].id;
+      await client.query(
+        `update user_video_usage set first_job_id = coalesce(first_job_id, $1)
+         where user_id = $2 and video_id = $3`,
+        [jobId, userId, caption.rows[0].video_id]
+      );
+      await client.query("commit");
+    } catch (error) {
+      await client.query("rollback");
+      throw error;
+    } finally {
+      client.release();
+    }
+    try {
+      await subtitleQueue.add("translate", { jobId }, { attempts: 2 });
+    } catch (error) {
+      await query("update translation_jobs set status = 'failed', error = $1, updated_at = now() where id = $2", [
+        error instanceof Error ? error.message : String(error),
+        jobId
+      ]);
+      await query(
+        `delete from user_video_usage u using translation_jobs j
+         where j.id = $1 and u.user_id = j.user_id and u.video_id = j.video_id and u.status = 'reserved'
+           and not exists (
+             select 1 from translation_jobs other
+             where other.id <> j.id and other.user_id = j.user_id and other.video_id = j.video_id
+               and other.status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
+           )`,
+        [jobId]
+      );
+      throw error;
+    }
+    res.json({ jobId, status });
   } catch (error) {
     next(error);
   }
@@ -164,8 +236,23 @@ function parseChunkCues(value: unknown): TranslatedCue[] {
   });
 }
 
+async function requireJobAccess(jobId: string, authorization: string | undefined) {
+  const userId = await requireUserId(authorization);
+  const access = await query(
+    `select j.id from translation_jobs j
+     where j.id = $1 and (
+       j.user_id = $2 or exists (
+         select 1 from translation_job_watchers w where w.job_id = j.id and w.user_id = $2
+       )
+     )`,
+    [jobId, userId]
+  );
+  if (!access.rows[0]) throw new JobRequestError("Job not found", 404);
+}
+
 jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
   try {
+    await requireJobAccess(req.params.jobId, req.headers.authorization);
     const job = await query(
       "select id as \"jobId\", status, progress from translation_jobs where id = $1",
       [req.params.jobId]
@@ -195,6 +282,7 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
 
 jobsRouter.get("/:jobId", async (req, res, next) => {
   try {
+    await requireJobAccess(req.params.jobId, req.headers.authorization);
     const result = await query(
       "select id as \"jobId\", status, progress, error from translation_jobs where id = $1",
       [req.params.jobId]

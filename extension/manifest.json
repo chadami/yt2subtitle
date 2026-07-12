@@ -3,11 +3,11 @@
   "name": "YouTube AI Subtitle",
   "version": "0.1.0",
   "description": "Generate and load AI-translated subtitles for YouTube videos.",
-  "permissions": ["storage", "alarms", "notifications"],
+  "permissions": ["storage", "alarms", "notifications", "scripting"],
   "host_permissions": [
     "https://www.youtube.com/*",
     "https://*.onrender.com/*",
-    "https://subtitle.invisiblewind.cn/*",
+    "https://api.vidlingo.online/*",
     "http://localhost:3000/*",
     "http://127.0.0.1:3000/*"
   ],

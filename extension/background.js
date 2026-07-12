@@ -1,4 +1,5 @@
-const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
+const DEFAULT_API_BASE = "https://api.vidlingo.online";
+const LEGACY_API_BASE = "https://subtitle.invisiblewind.cn";
 const SUBTITLE_CACHE_LIMIT = 8;
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
@@ -21,10 +22,17 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     );
     return true;
   }
-  if (message?.type === "GET_SUBTITLE_BY_VIDEO") {
-    getSubtitleByVideo(message).then(
+  if (message?.type === "RESOLVE_SUBTITLE") {
+    resolveSubtitle(message.payload).then(
       (result) => sendResponse(result),
-      () => sendResponse({ status: "missing" })
+      (error) => sendResponse({ status: "missing", error: error.message || String(error) })
+    );
+    return true;
+  }
+  if (message?.type === "GET_ENTITLEMENTS") {
+    getEntitlements().then(
+      (result) => sendResponse({ ok: true, ...result }),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
     );
     return true;
   }
@@ -48,21 +56,20 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 async function createSubtitleJob(payload) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
-  const translationMode = payload.translationMode || "user";
   const response = await safeFetch(`${apiBase}/api/jobs`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(translationMode === "user" && payload.sessionToken ? { Authorization: `Bearer ${payload.sessionToken}` } : {})
+      ...(payload.sessionToken ? { Authorization: `Bearer ${payload.sessionToken}` } : {})
     },
     body: JSON.stringify({
-      clientId: payload.clientId,
       video: payload.video,
       sourceLang: payload.sourceLang,
       targetLang: payload.targetLang,
-      translationMode,
+      translationMode: "user",
       forceRegenerate: payload.forceRegenerate === true,
       captionType: payload.captionType,
+      styleId: payload.styleId || "accurate",
       rawCues: payload.rawCues
     })
   });
@@ -76,7 +83,7 @@ async function createSubtitleJob(payload) {
     await removeCachedSubtitlesForVideo(
       payload.videoId,
       payload.targetLang || "zh-Hans",
-      translationMode
+      "user"
     );
   }
 
@@ -89,7 +96,9 @@ async function createSubtitleJob(payload) {
       url: payload.video.url,
       sourceLang: payload.sourceLang || "en",
       targetLang: payload.targetLang || "zh-Hans",
-      translationMode,
+      translationMode: "user",
+      captionType: payload.captionType,
+      styleId: payload.styleId || "accurate",
       createdAt: Date.now()
     }
   ];
@@ -98,69 +107,83 @@ async function createSubtitleJob(payload) {
   return { ok: true, ...data };
 }
 
-async function getSubtitleByVideo(message) {
+async function resolveSubtitle(payload) {
+  if (!payload.sessionToken) return { status: "missing", error: "Sign in to load subtitles." };
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
-  const translationMode = message.translationMode || settings.translationMode || "user";
-  const sourceLang = message.sourceLang || "";
-  const targetLang = message.targetLang || "zh-Hans";
-  const modes = [translationMode, translationMode === "user" ? "system" : "user"];
-  for (const mode of modes) {
-    const cacheKey = subtitleCacheKey(message.videoId, sourceLang || "any", targetLang, mode);
-    try {
-      const data = await fetchSubtitleByVideo({
-        apiBase,
-        videoId: message.videoId,
-        sourceLang,
-        targetLang,
-        translationMode: mode,
-        sessionToken: message.sessionToken
-      });
-      if (data.status === "completed") return data;
-    } catch {
-      const cached = await getCachedSubtitle(cacheKey);
-      if (cached) return cached;
+  const cueHash = await hashRawCues(payload.rawCues || []);
+  const cacheKey = subtitleCacheKey(
+    payload.video.videoId,
+    payload.sourceLang || "en",
+    payload.captionType || "manual",
+    payload.targetLang || "zh-Hans",
+    payload.styleId || "accurate",
+    cueHash
+  );
+  try {
+    const response = await safeFetch(`${apiBase}/api/subtitles/resolve`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${payload.sessionToken}`
+      },
+      body: JSON.stringify({
+        video: payload.video,
+        sourceLang: payload.sourceLang || "en",
+        targetLang: payload.targetLang || "zh-Hans",
+        captionType: payload.captionType || "manual",
+        styleId: payload.styleId || "accurate",
+        rawCues: payload.rawCues
+      })
+    });
+    const data = await response.json().catch(() => ({}));
+    if (response.status === 401) {
+      await clearAuthSession();
+      return { status: "missing", error: data.error || "Session expired." };
     }
+    if (response.status === 404) return data;
+    if (!response.ok) throw new Error(data.error || `Subtitle resolve failed: ${response.status}`);
+    if (data.status === "completed" && Array.isArray(data.cues)) {
+      await setCachedSubtitle(cacheKey, data);
+    }
+    return data;
+  } catch (error) {
+    const cached = await getCachedSubtitle(cacheKey);
+    if (cached) return cached;
+    throw error;
   }
-  return { status: "missing" };
 }
 
-async function fetchSubtitleByVideo({ apiBase, videoId, sourceLang, targetLang, translationMode, sessionToken }) {
-  if (translationMode === "user" && !sessionToken) return { status: "missing" };
-  const cacheKey = subtitleCacheKey(videoId, sourceLang || "any", targetLang, translationMode);
-  const params = new URLSearchParams({ targetLang, translationMode });
-  if (sourceLang) params.set("sourceLang", sourceLang);
-  const url = `${apiBase}/api/subtitles/by-video/${videoId}?${params.toString()}`;
-  const response = await safeFetch(url, {
-    headers: translationMode === "user" && sessionToken
-      ? { Authorization: `Bearer ${sessionToken}` }
-      : {}
+async function getEntitlements() {
+  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
+  if (!sessionToken) throw new Error("Sign in required.");
+  const response = await safeFetch(`${normalizeApiBase(settings.apiBase)}/api/account/entitlements`, {
+    headers: { Authorization: `Bearer ${sessionToken}` }
   });
-  if (response.status === 401) {
-    await clearAuthSession();
-    return { status: "missing" };
-  }
-  if (!response.ok) return { status: "missing" };
-  const data = await response.json();
-  if (data.status === "completed" && Array.isArray(data.cues)) {
-    setCachedSubtitle(cacheKey, data).catch(() => {});
-  }
+  const data = await response.json().catch(() => ({}));
+  if (response.status === 401) await clearAuthSession();
+  if (!response.ok) throw new Error(data.error || `Entitlements failed: ${response.status}`);
+  if (!data.canUsePublicSubtitles) await clearPublicSubtitleCache();
   return data;
 }
 
 async function getJobStatus(jobId) {
-  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
   const apiBase = normalizeApiBase(settings.apiBase);
-  const response = await safeFetch(`${apiBase}/api/jobs/${encodeURIComponent(jobId)}`);
+  const response = await safeFetch(`${apiBase}/api/jobs/${encodeURIComponent(jobId)}`, {
+    headers: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : {}
+  });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || `Job status failed: ${response.status}`);
   return { ok: true, job: data };
 }
 
 async function getPartialSubtitles(jobId) {
-  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
   const apiBase = normalizeApiBase(settings.apiBase);
-  const response = await safeFetch(`${apiBase}/api/jobs/${encodeURIComponent(jobId)}/partial-subtitles`);
+  const response = await safeFetch(`${apiBase}/api/jobs/${encodeURIComponent(jobId)}/partial-subtitles`, {
+    headers: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : {}
+  });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || `Partial subtitles failed: ${response.status}`);
   return { ok: true, ...data };
@@ -178,10 +201,11 @@ async function checkSubtitleJobs() {
   const stillPending = [];
   for (const job of pendingJobs) {
     try {
-      const response = await safeFetch(`${apiBase}/api/jobs/${job.jobId}`);
+      const response = await safeFetch(`${apiBase}/api/jobs/${job.jobId}`, {
+        headers: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : {}
+      });
       const status = await response.json();
       if (status.status === "completed") {
-        await cacheCompletedSubtitle(job, settings, sessionToken).catch(() => {});
         await notifySubtitleReady(job).catch(() => {});
       } else if (status.status === "failed") {
         await notifySubtitleFailed(job, status.error).catch(() => {});
@@ -194,23 +218,6 @@ async function checkSubtitleJobs() {
   }
   await chrome.storage.local.set({ pendingJobs: stillPending });
   if (stillPending.length) ensureJobAlarm();
-}
-
-async function cacheCompletedSubtitle(job, settings, sessionToken) {
-  if (!job.videoId) return;
-  const apiBase = normalizeApiBase(settings.apiBase);
-  const sourceLang = job.sourceLang || "en";
-  const targetLang = job.targetLang || settings.targetLang || "zh-Hans";
-  const translationMode = job.translationMode || settings.translationMode || "user";
-  await removeCachedSubtitlesForVideo(job.videoId, targetLang, translationMode);
-  await fetchSubtitleByVideo({
-    apiBase,
-    videoId: job.videoId,
-    sourceLang,
-    targetLang,
-    translationMode,
-    sessionToken
-  });
 }
 
 async function notifySubtitleReady(job) {
@@ -229,7 +236,7 @@ async function notifySubtitleFailed(job, error) {
     type: "basic",
     iconUrl: "icons/icon-128.png",
     title: "AI subtitle generation failed",
-    message: error || job.title || "Open the extension popup to try again."
+    message: job.title || "Subtitle generation did not complete. Please try again."
   });
 }
 
@@ -243,6 +250,7 @@ async function safeFetch(url, options) {
 
 async function clearAuthSession() {
   await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
+  await clearPublicSubtitleCache();
 }
 
 chrome.runtime.onInstalled.addListener(async () => {
@@ -262,18 +270,39 @@ function ensureJobAlarm() {
 }
 
 function normalizeApiBase(value) {
-  return (value || DEFAULT_API_BASE).replace(/\/$/, "");
+  const apiBase = (value || DEFAULT_API_BASE).replace(/\/$/, "");
+  return apiBase === LEGACY_API_BASE ? DEFAULT_API_BASE : apiBase;
 }
 
-function subtitleCacheKey(videoId, sourceLang, targetLang, translationMode) {
-  return `${videoId}:${sourceLang}:${targetLang}:${translationMode}`;
+function subtitleCacheKey(videoId, sourceLang, captionType, targetLang, styleId, cueHash) {
+  return `${videoId}:${sourceLang}:${captionType}:${targetLang}:${styleId}:${cueHash}`;
 }
 
 async function getCachedSubtitle(cacheKey) {
   const { subtitleCache = {} } = await chrome.storage.local.get(["subtitleCache"]);
   const cached = subtitleCache[cacheKey];
   if (!cached?.data) return null;
+  if (cached.data.accessSource === "public" && Date.now() - Number(cached.savedAt || 0) > 24 * 60 * 60 * 1000) {
+    return null;
+  }
   return cached.data;
+}
+
+async function clearPublicSubtitleCache() {
+  const { subtitleCache = {} } = await chrome.storage.local.get(["subtitleCache"]);
+  const privateEntries = Object.entries(subtitleCache).filter(([, entry]) => entry?.data?.accessSource !== "public");
+  await chrome.storage.local.set({ subtitleCache: Object.fromEntries(privateEntries) });
+}
+
+async function hashRawCues(rawCues) {
+  const stable = rawCues.map((cue) => ({
+    start: Number(Number(cue.start).toFixed(3)),
+    end: Number(Number(cue.end).toFixed(3)),
+    text: String(cue.text || "").trim()
+  }));
+  const bytes = new TextEncoder().encode(JSON.stringify(stable));
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
 async function setCachedSubtitle(cacheKey, data) {
@@ -291,15 +320,14 @@ async function setCachedSubtitle(cacheKey, data) {
   await chrome.storage.local.set({ subtitleCache: Object.fromEntries(entries) });
 }
 
-async function removeCachedSubtitlesForVideo(videoId, targetLang, translationMode) {
+async function removeCachedSubtitlesForVideo(videoId, targetLang) {
   const { subtitleCache = {} } = await chrome.storage.local.get(["subtitleCache"]);
   const nextCache = { ...subtitleCache };
   const prefix = `${videoId}:`;
-  const suffix = `:${targetLang}:${translationMode}`;
   let changed = false;
 
   for (const cacheKey of Object.keys(nextCache)) {
-    if (cacheKey.startsWith(prefix) && cacheKey.endsWith(suffix)) {
+    if (cacheKey.startsWith(prefix) && cacheKey.includes(`:${targetLang}:`)) {
       delete nextCache[cacheKey];
       changed = true;
     }

@@ -45,6 +45,10 @@ Keep translation quality context-aware.
 - Always pass nearby previous/next caption context.
 - Prefer natural spoken Chinese over literal translation.
 - Preserve names, terms, numbers, and speaker intent.
+- Prefer complete semantic source sentences over rigidly preserving every raw caption fragment.
+- Do not overfit fixes to one video, phrase, language, or timestamp.
+- Accept small timing deviations when they prevent duplicated translation, unreadably short display time, meaning drift, or clearly incorrect sentence breaks.
+- Treat duplicated meaning, short unreadable cues, translation drift, and broken semantic segmentation as higher-priority defects than minor timeline differences.
 
 Keep Chrome extension permissions minimal.
 

@@ -3,6 +3,7 @@ import express from "express";
 import { env } from "./env.js";
 import { initDatabase } from "./migrate.js";
 import { aiRouter } from "./routes/ai.js";
+import { accountRouter } from "./routes/account.js";
 import { authRouter } from "./routes/auth.js";
 import { jobsRouter } from "./routes/jobs.js";
 import { subtitlesRouter } from "./routes/subtitles.js";
@@ -29,6 +30,7 @@ app.get("/health", (_req, res) => {
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/account", accountRouter);
 app.use("/api/ai", aiRouter);
 app.use("/api/jobs", jobsRouter);
 app.use("/api/subtitles", subtitlesRouter);
@@ -44,7 +46,10 @@ app.use((error: unknown, _req: express.Request, res: express.Response, _next: ex
     console.warn(error instanceof Error ? error.message : error);
   }
   res.status(responseStatus).json({
-    error: error instanceof Error ? error.message : "Internal server error"
+    error: error instanceof Error ? error.message : "Internal server error",
+    ...(typeof error === "object" && error !== null && "code" in error
+      ? { code: String((error as { code?: unknown }).code || "") }
+      : {})
   });
 });
 

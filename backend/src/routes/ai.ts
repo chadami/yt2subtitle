@@ -108,7 +108,11 @@ export async function loadUserAiConfig(userId: string) {
     [userId]
   );
   const row = found.rows[0];
-  if (!row) throw new Error("User AI API key is not configured");
+  if (!row) {
+    const error = new Error("User AI API key is not configured") as Error & { status: number };
+    error.status = 400;
+    throw error;
+  }
   return {
     providerMode: "user" as const,
     provider: row.provider,

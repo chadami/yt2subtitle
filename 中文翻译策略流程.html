@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>中文翻译策略流程</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0d1117; --panel:#151b23; --line:#2c3542; --text:#edf2f7; --muted:#9aa7b5; --red:#ff6b6b; --green:#4dd4ac; --amber:#f4c76b; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif; }
+    main { width:min(1440px,100%); margin:auto; padding:36px; }
+    header { display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom:24px; }
+    h1 { margin:0 0 8px; font-size:30px; }
+    p { margin:0; color:var(--muted); line-height:1.7; }
+    .tag { padding:7px 12px; border:1px solid #744; border-radius:999px; color:#ffb0b0; white-space:nowrap; }
+    .layout { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:20px; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px; }
+    .mermaid { display:flex; justify-content:center; min-height:680px; }
+    h2 { margin:0 0 16px; font-size:17px; }
+    .rule { padding:14px 0; border-top:1px solid var(--line); }
+    .rule:first-of-type { border-top:0; padding-top:0; }
+    .rule strong { display:block; margin-bottom:5px; font-size:14px; }
+    .rule span { color:var(--muted); font-size:13px; line-height:1.6; }
+    .legend { display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; color:var(--muted); font-size:12px; }
+    .dot { display:inline-block; width:9px; height:9px; margin-right:6px; border-radius:50%; }
+    @media (max-width:900px) { main{padding:20px}.layout{grid-template-columns:1fr}header{align-items:start;flex-direction:column}.mermaid{min-height:0} }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>中文 AI 字幕：翻译策略与处理流程</h1>
+        <p>语言策略负责“怎么翻”，通用流水线负责“不漏译、时间正确、可阅读”。</p>
+      </div>
+      <div class="tag">策略 zh · 2026-07-08.1</div>
+    </header>
+
+    <div class="layout">
+      <section class="panel">
+        <div class="mermaid">
+flowchart TD
+    A["视频信息 + 英文原始字幕"] --> B["清洗字幕<br/>去重叠、恢复顺序、保留时间锚点"]
+    B --> C{"目标语言"}
+    C -->|"zh / zh-Hans / zh-Hant"| D["选择中文策略"]
+    C -->|"其他语言"| E["选择对应语言策略或默认策略"]
+
+    D --> F["分析全局语境<br/>主题、术语、人名、语气、受众"]
+    F --> G["生成中文翻译简报<br/>常用译法 + 口语风格"]
+    G --> H["按上下文分块翻译"]
+
+    subgraph ZH["中文表达约束"]
+      Z1["自然口语普通话"]
+      Z2["优先：所以 / 但 / 还有 / 这个"]
+      Z3["避免：因此 / 然而 / 此外 / 该 / 其"]
+      Z4["保留名称、术语、数字、例子与限定条件"]
+      Z5["不压缩、不总结、不借用相邻字幕补全"]
+    end
+
+    ZH -.-> H
+    H --> I{"每个 source index<br/>是否完整返回？"}
+    I -->|"是"| L["按原始索引排序"]
+    I -->|"否"| J["只取缺失片段<br/>并带上前后各一条"]
+    J --> K["小范围补译<br/>继续使用同一中文策略"]
+    K --> I
+
+    L --> M["合并自然语句与标点分段"]
+    M --> N["修复最短展示时长<br/>但不推动全局时间轴"]
+    N --> O["控制单条长度与最长时长"]
+    O --> P["生成双语字幕<br/>译文在上，原文在下"]
+    P --> Q["分块流式展示 + 最终缓存"]
+
+    classDef source fill:#202a36,stroke:#64748b,color:#edf2f7;
+    classDef strategy fill:#3a2023,stroke:#ff6b6b,color:#fff;
+    classDef guard fill:#332b18,stroke:#f4c76b,color:#fff;
+    classDef output fill:#17352e,stroke:#4dd4ac,color:#fff;
+    class A,B,C,E source;
+    class D,F,G,H,Z1,Z2,Z3,Z4,Z5 strategy;
+    class I,J,K,L,M,N,O guard;
+    class P,Q output;
+        </div>
+        <div class="legend">
+          <span><i class="dot" style="background:#64748b"></i>输入与路由</span>
+          <span><i class="dot" style="background:#ff6b6b"></i>中文专属策略</span>
+          <span><i class="dot" style="background:#f4c76b"></i>通用质量保障</span>
+          <span><i class="dot" style="background:#4dd4ac"></i>输出</span>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <h2>中文策略的核心判断</h2>
+        <div class="rule"><strong>1. 准确优先</strong><span>名称、术语、数字、例子、转折和限定条件不能丢。</span></div>
+        <div class="rule"><strong>2. 口语化改写</strong><span>不照搬英文语序，改成中国观众自然会说、容易瞬间读懂的表达。</span></div>
+        <div class="rule"><strong>3. 不主动压缩</strong><span>字幕过长由后端分段处理，模型不能为了变短而总结内容。</span></div>
+        <div class="rule"><strong>4. 单条严格对齐</strong><span>每条译文只能对应一个原始索引，不能跳过、合并或借用后文补全。</span></div>
+        <div class="rule"><strong>5. 缺失局部修复</strong><span>发现漏译时只补译缺失位置和相邻片段，不重新翻译整个大分块。</span></div>
+        <div class="rule"><strong>6. 时间由代码决定</strong><span>AI 不决定时间；最终开始和结束时间始终来自原始字幕索引。</span></div>
+      </aside>
+    </div>
+  </main>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "base",
+      themeVariables: {
+        background: "#151b23",
+        primaryTextColor: "#edf2f7",
+        lineColor: "#758196",
+        fontFamily: "Inter, PingFang SC, sans-serif"
+      },
+      flowchart: { curve: "basis", nodeSpacing: 26, rankSpacing: 38 }
+    });
+  </script>
+</body>
+</html>

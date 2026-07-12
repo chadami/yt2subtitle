@@ -26,6 +26,8 @@ const MAX_UNBROKEN_SUBTITLE_DURATION = 9;
 const AUTO_GROUP_MAX_SOURCE_CHARACTERS = 120;
 const AUTO_GROUP_MAX_DURATION = 8;
 const AUTO_GROUP_MAX_GAP = 0.8;
+const SEMANTIC_SOURCE_MAX_CHARACTERS = 260;
+const SEMANTIC_SOURCE_MAX_DURATION = 14;
 const MAX_SOURCE_TIMED_GROUP_CHARACTERS = 72;
 const MAX_SOURCE_TIMED_GROUP_DURATION = 6;
 const MAX_SOURCE_TIMED_GROUP_GAP = 0.45;
@@ -147,6 +149,30 @@ function enforceSourceCueOrder(cues: RawCue[]) {
   return output;
 }
 
+function mergeIncompleteSourceCues(cues: RawCue[]) {
+  const output: RawCue[] = [];
+  for (const cue of cues) {
+    const previous = output[output.length - 1];
+    const combinedText = previous ? joinSourceFragments(previous.text, cue.text) : cue.text;
+    const canCompletePrevious = previous
+      && !endsAtSourceBoundary(previous.text)
+      && cue.start - previous.end <= AUTO_GROUP_MAX_GAP
+      && cue.end - previous.start <= SEMANTIC_SOURCE_MAX_DURATION
+      && Array.from(combinedText).length <= SEMANTIC_SOURCE_MAX_CHARACTERS;
+
+    if (canCompletePrevious) {
+      output[output.length - 1] = {
+        start: previous.start,
+        end: Math.max(previous.end, cue.end),
+        text: combinedText
+      };
+    } else {
+      output.push({ ...cue });
+    }
+  }
+  return output;
+}
+
 function splitSourceUnitAtBoundaries(cue: RawCue) {
   const text = normalizeText(cue.text);
   const parts = text.split(/(?<=[.!?;:])\s+(?=[A-Z\[])/u).filter(Boolean);
@@ -220,7 +246,9 @@ export function resolveOverlaps(cues: RawCue[]) {
 }
 
 export function prepareSourceCues(cues: RawCue[], captionType: "manual" | "auto" = "manual") {
-  if (captionType !== "auto") return resolveOverlaps(cues);
+  if (captionType !== "auto") {
+    return mergeIncompleteSourceCues(resolveOverlaps(cues)).map((cue, index) => ({ ...cue, index }));
+  }
 
   const normalized = cues
     .map((cue) => ({ ...cue, text: stripSpeakerMarker(cue.text) }))
@@ -276,7 +304,9 @@ export function prepareSourceCues(cues: RawCue[], captionType: "manual" | "auto"
   }
 
   const split = grouped.flatMap(splitSourceUnitAtBoundaries);
-  return enforceSourceCueOrder(resolveSourceUnitOverlaps(split)).map((cue, index) => ({ ...cue, index }));
+  return mergeIncompleteSourceCues(
+    enforceSourceCueOrder(resolveSourceUnitOverlaps(split))
+  ).map((cue, index) => ({ ...cue, index }));
 }
 
 export function chunkCues(cues: CleanCue[], maxChars = 4200) {
@@ -512,6 +542,32 @@ function boundaryPriority(character: string) {
   return 0;
 }
 
+function isDigit(character?: string) {
+  return Boolean(character && /[0-9]/u.test(character));
+}
+
+function isNumericTokenCharacter(character?: string) {
+  return Boolean(character && /[0-9.,:％%$¥￥€£]/u.test(character));
+}
+
+function boundaryPriorityAt(characters: string[], index: number) {
+  const character = characters[index];
+  const previous = characters[index - 1];
+  const next = characters[index + 1];
+  if (/[.,:]/u.test(character) && isDigit(previous) && isDigit(next)) return 0;
+  return boundaryPriority(character);
+}
+
+function keepNumericTokenIntact(characters: string[], offset: number, cutLength: number) {
+  let cut = offset + cutLength;
+  const previous = characters[cut - 1];
+  const next = characters[cut];
+  if (!isNumericTokenCharacter(previous) || !isNumericTokenCharacter(next)) return cutLength;
+
+  while (cut < characters.length && isNumericTokenCharacter(characters[cut])) cut += 1;
+  return cut - offset;
+}
+
 function isPunctuationOnly(text: string) {
   return /^[\s，,、。.!！？?；;：:…]+$/u.test(text);
 }
@@ -547,7 +603,7 @@ function findBoundaryCut(input: {
   let bestPriority = 0;
   let bestDistance = Number.POSITIVE_INFINITY;
   for (let length = input.minLength; length <= limit; length += 1) {
-    const priority = boundaryPriority(input.characters[input.offset + length - 1]);
+    const priority = boundaryPriorityAt(input.characters, input.offset + length - 1);
     if (!priority) continue;
     const distance = Math.abs(length - input.idealLength);
     if (priority > bestPriority || (priority === bestPriority && distance < bestDistance)) {
@@ -596,6 +652,7 @@ function splitTextIntoParts(text: string, partCount: number, forceSafetySplit = 
         ? remaining
         : findWordBoundary(characters, offset, safetyLimit)
     );
+    cutLength = keepNumericTokenIntact(characters, offset, cutLength);
     const trailingText = characters.slice(offset + cutLength).join("").trim();
     if (
       trailingText

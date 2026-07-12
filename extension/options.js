@@ -1,4 +1,5 @@
-const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
+const DEFAULT_API_BASE = "https://api.vidlingo.online";
+const LEGACY_API_BASE = "https://subtitle.invisiblewind.cn";
 const API_KEY_MASK = "********";
 
 const fields = {
@@ -305,7 +306,8 @@ const translations = {
 };
 
 function normalizeApiBase(value) {
-  return (value || DEFAULT_API_BASE).replace(/\/$/, "");
+  const apiBase = (value || DEFAULT_API_BASE).replace(/\/$/, "");
+  return apiBase === LEGACY_API_BASE ? DEFAULT_API_BASE : apiBase;
 }
 
 function t(key, values = {}) {

@@ -46,6 +46,10 @@ const MIN_SOURCE_REALIGN_IMPROVEMENT = 0.2;
 const MAX_ANALYSIS_TRANSCRIPT_CHARS = 12000;
 const MAX_CONTEXT_ITEMS = 12;
 const MAX_CONTEXT_TEXT_LENGTH = 180;
+const AI_REQUEST_TIMEOUT_MS = 120_000;
+const JSON_FORMAT_REPAIR_INSTRUCTION = `Your previous response could not be parsed as JSON.
+Return the answer again as one valid JSON object only.
+Do not use markdown fences, comments, explanations, or trailing commas.`;
 
 const providerDefaults: Record<AiProvider, { baseUrl: string; fallbackModel: string }> = {
   gemini: {
@@ -153,12 +157,46 @@ async function fetchClaudeModels(apiKey: string) {
 }
 
 async function chatJson(config: AiConfig, messages: ChatMessage[], temperature: number) {
-  const text = config.provider === "gemini"
-    ? await geminiChat(config, messages, temperature)
+  const request = (requestMessages: ChatMessage[], requestTemperature: number) => config.provider === "gemini"
+    ? geminiChat(config, requestMessages, requestTemperature)
     : config.provider === "claude"
-      ? await claudeChat(config, messages, temperature)
-      : await openAiCompatibleChat(config, messages, temperature);
-  return parseJsonObject(text);
+      ? claudeChat(config, requestMessages, requestTemperature)
+      : openAiCompatibleChat(config, requestMessages, requestTemperature);
+
+  const text = await request(messages, temperature);
+  const parsed = parseJsonObject(text);
+  if (parsed) return parsed;
+
+  console.warn("AI JSON response required format repair", {
+    provider: config.provider,
+    model: config.model || providerDefaults[config.provider].fallbackModel,
+    response: summarizeInvalidJson(text)
+  });
+
+  const repairedText = await request([
+    ...messages,
+    { role: "user", content: JSON_FORMAT_REPAIR_INSTRUCTION }
+  ], 0);
+  const repaired = parseJsonObject(repairedText);
+  if (repaired) return repaired;
+
+  console.error("AI JSON format repair failed", {
+    provider: config.provider,
+    model: config.model || providerDefaults[config.provider].fallbackModel,
+    response: summarizeInvalidJson(repairedText)
+  });
+  throw new Error(`AI response was not valid JSON (${config.provider}/${config.model || providerDefaults[config.provider].fallbackModel})`);
+}
+
+async function fetchAi(url: string, init: RequestInit) {
+  try {
+    return await fetch(url, { ...init, signal: AbortSignal.timeout(AI_REQUEST_TIMEOUT_MS) });
+  } catch (error) {
+    if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError")) {
+      throw new Error(`AI request timed out after ${AI_REQUEST_TIMEOUT_MS / 1000}s`);
+    }
+    throw error;
+  }
 }
 
 async function openAiCompatibleChat(config: AiConfig, messages: ChatMessage[], temperature: number) {
@@ -173,7 +211,7 @@ async function openAiCompatibleChat(config: AiConfig, messages: ChatMessage[], t
   };
   if (config.provider === "deepseek") body.thinking = { type: "disabled" };
 
-  const response = await fetch(`${baseUrl.replace(/\/$/, "")}/chat/completions`, {
+  const response = await fetchAi(`${baseUrl.replace(/\/$/, "")}/chat/completions`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${config.apiKey}`,
@@ -190,7 +228,7 @@ async function geminiChat(config: AiConfig, messages: ChatMessage[], temperature
   const system = messages.find((message) => message.role === "system")?.content || "";
   const user = messages.filter((message) => message.role === "user").map((message) => message.content).join("\n\n");
   const model = config.model || providerDefaults.gemini.fallbackModel;
-  const response = await fetch(`${providerDefaults.gemini.baseUrl}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(config.apiKey)}`, {
+  const response = await fetchAi(`${providerDefaults.gemini.baseUrl}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(config.apiKey)}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -210,7 +248,7 @@ async function geminiChat(config: AiConfig, messages: ChatMessage[], temperature
 async function claudeChat(config: AiConfig, messages: ChatMessage[], temperature: number) {
   const system = messages.find((message) => message.role === "system")?.content || "";
   const userMessages = messages.filter((message) => message.role === "user");
-  const response = await fetch(`${providerDefaults.claude.baseUrl}/messages`, {
+  const response = await fetchAi(`${providerDefaults.claude.baseUrl}/messages`, {
     method: "POST",
     headers: {
       "x-api-key": config.apiKey,
@@ -234,13 +272,53 @@ function parseJsonObject(text: string) {
   const trimmed = text.trim().replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/\s*```$/i, "");
   const direct = tryParse(trimmed);
   if (direct) return direct;
-  const start = trimmed.indexOf("{");
-  const end = trimmed.lastIndexOf("}");
-  if (start >= 0 && end > start) {
-    const extracted = tryParse(trimmed.slice(start, end + 1));
+  for (const candidate of jsonObjectCandidates(trimmed)) {
+    const extracted = tryParse(candidate) || tryParse(removeTrailingCommas(candidate));
     if (extracted) return extracted;
   }
-  throw new Error("AI response was not valid JSON");
+  return null;
+}
+
+function jsonObjectCandidates(text: string) {
+  const candidates: string[] = [];
+  let start = -1;
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (char === "\\") escaped = true;
+      else if (char === '"') inString = false;
+      continue;
+    }
+    if (char === '"') {
+      inString = true;
+    } else if (char === "{") {
+      if (depth === 0) start = index;
+      depth += 1;
+    } else if (char === "}" && depth > 0) {
+      depth -= 1;
+      if (depth === 0 && start >= 0) candidates.push(text.slice(start, index + 1));
+    }
+  }
+  return candidates;
+}
+
+function removeTrailingCommas(text: string) {
+  return text.replace(/,\s*([}\]])/g, "$1");
+}
+
+function summarizeInvalidJson(text: string) {
+  const trimmed = text.trim();
+  return {
+    length: text.length,
+    hash: crypto.createHash("sha256").update(text).digest("hex").slice(0, 12),
+    startsWithFence: /^```/.test(trimmed),
+    firstCharacter: trimmed[0] || "",
+    lastCharacter: trimmed.at(-1) || ""
+  };
 }
 
 function tryParse(text: string) {
@@ -534,34 +612,79 @@ export async function translateChunk(input: {
       name: strategy.displayName
     }
   };
-  const data = await chatJson(input.aiConfig, [
-    { role: "system", content: systemPrompt(input.targetLanguage, strategy) },
-    { role: "user", content: JSON.stringify(modelInput) }
-  ], 0.2);
-
   const byIndex = new Map(input.rawCues.map((cue) => [cue.index, cue]));
-  const output: TranslatedCue[] = [];
-  const cues = Array.isArray(data.cues) ? data.cues : [];
-  const usePositionTiming = cues.length >= input.rawCues.length * 0.9;
-  for (let itemIndex = 0; itemIndex < cues.length; itemIndex += 1) {
-    const item = cues[itemIndex];
-    if (!item || typeof item !== "object") continue;
-    const sourceIndexes = Array.isArray((item as { source_indexes?: unknown }).source_indexes)
-      ? (item as { source_indexes: unknown[] }).source_indexes.map(Number).filter(Number.isFinite)
-      : [];
-    const sourceText = String((item as { source?: unknown }).source || "");
-    let sourceCues = usePositionTiming && input.rawCues[itemIndex]
-      ? [input.rawCues[itemIndex]]
-      : sourceIndexes.map((index) => byIndex.get(index)).filter(Boolean) as CleanCue[];
-    sourceCues = realignSourceCues({ sourceText, sourceCues, rawCues: input.rawCues });
-    const translation = normalizeText(String((item as { translation?: unknown }).translation || ""));
-    if (!sourceCues.length || !translation) continue;
-    output.push({
-      start: Math.min(...sourceCues.map((cue) => cue.start)),
-      end: Math.max(...sourceCues.map((cue) => cue.end)),
-      text: translation,
-      sourceIndexes: sourceCues.map((cue) => cue.index)
-    });
+  const expectedIndexes = input.rawCues.map((cue) => cue.index);
+  const translatedByIndex = new Map<number, TranslatedCue>();
+
+  async function requestCues(rawCues: CleanCue[], repair = false) {
+    const requestedIndexes = new Set(rawCues.map((cue) => cue.index));
+    const requestInput = { ...modelInput, rawCues };
+    const repairInstruction = repair
+      ? `This is a small repair request. Return exactly ${rawCues.length} cues, one for each raw cue, in this exact index order: ${rawCues.map((cue) => cue.index).join(", ")}. Do not merge fragments or complete a fragment using neighboring context.`
+      : "";
+    const data = await chatJson(input.aiConfig, [
+      { role: "system", content: systemPrompt(input.targetLanguage, strategy) },
+      { role: "user", content: JSON.stringify(requestInput) },
+      ...(repairInstruction ? [{ role: "user" as const, content: repairInstruction }] : [])
+    ], 0.2);
+
+    const cues = Array.isArray(data.cues) ? data.cues : [];
+    const output = new Map<number, TranslatedCue>();
+    for (const item of cues) {
+      if (!item || typeof item !== "object") continue;
+      const sourceIndexes = Array.isArray((item as { source_indexes?: unknown }).source_indexes)
+        ? (item as { source_indexes: unknown[] }).source_indexes.map(Number).filter(Number.isFinite)
+        : [];
+      const sourceText = String((item as { source?: unknown }).source || "");
+      let sourceCues = sourceIndexes.map((index) => byIndex.get(index)).filter(Boolean) as CleanCue[];
+      sourceCues = realignSourceCues({ sourceText, sourceCues, rawCues: input.rawCues });
+      const translation = normalizeText(String((item as { translation?: unknown }).translation || ""));
+      if (sourceCues.length !== 1 || !requestedIndexes.has(sourceCues[0].index) || !translation) continue;
+      output.set(sourceCues[0].index, {
+        start: Math.min(...sourceCues.map((cue) => cue.start)),
+        end: Math.max(...sourceCues.map((cue) => cue.end)),
+        text: translation,
+        sourceIndexes: sourceCues.map((cue) => cue.index)
+      });
+    }
+    return output;
   }
-  return output;
+
+  for (const [index, cue] of await requestCues(input.rawCues)) {
+    translatedByIndex.set(index, cue);
+  }
+
+  const missingIndexes = expectedIndexes.filter((index) => !translatedByIndex.has(index));
+  if (missingIndexes.length) {
+    const positionsToRepair = new Set<number>();
+    for (const missingIndex of missingIndexes) {
+      const position = input.rawCues.findIndex((cue) => cue.index === missingIndex);
+      for (let offset = -1; offset <= 1; offset += 1) {
+        if (position + offset >= 0 && position + offset < input.rawCues.length) {
+          positionsToRepair.add(position + offset);
+        }
+      }
+    }
+    const repairCues = [...positionsToRepair]
+      .sort((a, b) => a - b)
+      .map((position) => input.rawCues[position]);
+
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const repaired = await requestCues(repairCues, true);
+      if (repaired.size !== repairCues.length) continue;
+      for (const [index, cue] of repaired) translatedByIndex.set(index, cue);
+      break;
+    }
+  }
+
+  const stillMissing = expectedIndexes.filter((index) => !translatedByIndex.has(index));
+  if (stillMissing.length) {
+    console.error("AI subtitle source coverage repair failed", {
+      expectedIndexes,
+      missingIndexes: stillMissing
+    });
+    throw new Error("AI subtitle source coverage repair failed");
+  }
+
+  return expectedIndexes.map((index) => translatedByIndex.get(index)!);
 }

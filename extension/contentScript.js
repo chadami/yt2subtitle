@@ -1,5 +1,6 @@
 const OVERLAY_ID = "yt-ai-subtitle-overlay";
-const DEFAULT_API_BASE = "https://subtitle.invisiblewind.cn";
+const DEFAULT_API_BASE = "https://api.vidlingo.online";
+const LEGACY_API_BASE = "https://subtitle.invisiblewind.cn";
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
   backgroundOpacity: 25,
@@ -9,6 +10,7 @@ const DEFAULT_SUBTITLE_STYLE = {
 };
 const PARTIAL_SUBTITLE_POLL_INTERVAL_MS = 2500;
 const PENDING_TRANSLATION_TEXT = "字幕正在准备中，即将完成";
+const SUBTITLE_PREPARATION_CACHE_MS = 30 * 1000;
 let renderGeneration = 0;
 let partialSubtitlePollTimer = null;
 let partialSubtitleJobId = "";
@@ -16,6 +18,7 @@ let partialSubtitleVideoId = "";
 let loadedPartialChunkCount = 0;
 let partialSourceCues = [];
 let currentSubtitleStyle = { ...DEFAULT_SUBTITLE_STYLE };
+let subtitlePreparationCache = null;
 
 function getVideoId() {
   return parseVideoId(location.href);
@@ -221,17 +224,15 @@ async function tryLoadSubtitle() {
     clearOverlay();
     return { loaded: false, reason: "no-video-id" };
   }
-  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
-  const targetLang = settings.targetLang || "zh-Hans";
+  const preparation = await prepareAiSubtitles();
+  const prepared = preparation.payload;
   const data = await chrome.runtime.sendMessage({
-    type: "GET_SUBTITLE_BY_VIDEO",
-    videoId,
-    targetLang,
-    translationMode: settings.translationMode || "user",
-    sessionToken
+    type: "RESOLVE_SUBTITLE",
+    payload: prepared
   });
   if (data.status === "completed" && Array.isArray(data.cues) && data.cues.length) {
-    return renderSubtitles(data.cues, videoId);
+    const rendered = await renderSubtitles(data.cues, videoId);
+    return { ...rendered, status: "completed", accessSource: data.accessSource, publicLabel: data.publicLabel };
   } else {
     clearOverlay();
     return { loaded: false, reason: data.status || "missing", cueCount: 0 };
@@ -367,6 +368,33 @@ async function prepareAiSubtitles() {
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
 
+  if (
+    subtitlePreparationCache?.videoId === videoId
+    && Date.now() - subtitlePreparationCache.createdAt < SUBTITLE_PREPARATION_CACHE_MS
+  ) {
+    return subtitlePreparationCache.promise;
+  }
+
+  const cacheEntry = {
+    videoId,
+    createdAt: Date.now(),
+    promise: prepareAiSubtitlesForVideo(videoId)
+  };
+  subtitlePreparationCache = cacheEntry;
+  try {
+    return await cacheEntry.promise;
+  } catch (error) {
+    if (subtitlePreparationCache === cacheEntry) subtitlePreparationCache = null;
+    throw error;
+  }
+}
+
+function normalizeApiBase(value) {
+  const apiBase = (value || DEFAULT_API_BASE).replace(/\/$/, "");
+  return apiBase === LEGACY_API_BASE ? DEFAULT_API_BASE : apiBase;
+}
+
+async function prepareAiSubtitlesForVideo(videoId) {
   const { settings = {}, clientId, sessionToken, pendingJobs = [] } = await chrome.storage.local.get([
     "settings",
     "clientId",
@@ -375,7 +403,7 @@ async function prepareAiSubtitles() {
   ]);
   const effectiveSettings = {
     ...settings,
-    apiBase: (settings.apiBase || DEFAULT_API_BASE).replace(/\/$/, "")
+    apiBase: normalizeApiBase(settings.apiBase)
   };
 
   const video = await collectVideoPayload(videoId);
@@ -395,7 +423,8 @@ async function prepareAiSubtitles() {
       video: video.video,
       sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
       targetLang: effectiveSettings.targetLang || "zh-Hans",
-      translationMode: effectiveSettings.translationMode || "user",
+      translationMode: "user",
+      styleId: "accurate",
       captionType: track.isAuto ? "auto" : "manual",
       rawCues
     },
@@ -406,7 +435,7 @@ async function prepareAiSubtitles() {
       captionType: track.isAuto ? "auto" : "manual",
       sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
       targetLang: effectiveSettings.targetLang || "zh-Hans",
-      translationMode: effectiveSettings.translationMode || "user"
+      translationMode: "user"
     }
   };
 }

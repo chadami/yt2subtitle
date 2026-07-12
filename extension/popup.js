@@ -5,6 +5,7 @@ document.getElementById("openOptions").addEventListener("click", () => {
 const generate = document.getElementById("generate");
 const generateText = document.getElementById("generateText");
 const status = document.getElementById("status");
+const entitlementStatus = document.getElementById("entitlement");
 const fontSize = document.getElementById("fontSize");
 const fontSizeValue = document.getElementById("fontSizeValue");
 const positionPercent = document.getElementById("positionPercent");
@@ -26,6 +27,9 @@ let subtitlesReady = false;
 let pollTimer = null;
 let loadedPartialChunkCount = 0;
 let currentLanguage = "en";
+let contentScriptInjectionPromise = null;
+let initialSubtitleCheckPromise = null;
+let primaryActionInProgress = false;
 
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
@@ -68,6 +72,11 @@ const translations = {
     readyLoaded: "AI subtitles are ready and loaded.",
     readyNotVisible: "AI subtitles are ready. Play the video or refresh the YouTube page if they do not appear.",
     checkingJob: "Could not check job status.",
+    generationFailed: "Subtitle generation did not complete. Please try again.",
+    freeQuota: "Free plan: {remaining} of 5 video translations remaining.",
+    standardPlan: "Annual member · Public subtitle access enabled.",
+    contributorPlan: "Contributor member · Public subtitle access and contribution enabled.",
+    expiredPlan: "Membership expired · Your private subtitles remain available.",
     generatingProgress: "Generating subtitles: {status} {progress}%",
     extracting: "Extracting...",
     generating: "Generating...",
@@ -106,6 +115,11 @@ const translations = {
     readyLoaded: "AI 字幕已生成并加载。",
     readyNotVisible: "AI 字幕已生成。若视频上没有显示，请播放视频或刷新 YouTube 页面。",
     checkingJob: "无法检查任务状态。",
+    generationFailed: "字幕生成未完成，请重试。",
+    freeQuota: "免费版：还可翻译 {remaining} 个视频（共 5 个）。",
+    standardPlan: "年费会员 · 已开放公共字幕。",
+    contributorPlan: "贡献会员 · 已开放公共字幕和字幕贡献。",
+    expiredPlan: "会员已过期 · 仍可使用自己的历史字幕。",
     generatingProgress: "正在生成字幕：{status} {progress}%",
     extracting: "提取中...",
     generating: "生成中...",
@@ -144,6 +158,11 @@ const translations = {
     readyLoaded: "AI 字幕の生成と読み込みが完了しました。",
     readyNotVisible: "AI 字幕の生成が完了しました。表示されない場合は動画を再生するか、YouTube ページを更新してください。",
     checkingJob: "タスク状態を確認できません。",
+    generationFailed: "字幕の生成が完了しませんでした。もう一度お試しください。",
+    freeQuota: "無料プラン：残り {remaining}/5 本を翻訳できます。",
+    standardPlan: "年間会員 · 公開字幕を利用できます。",
+    contributorPlan: "コントリビューター会員 · 公開字幕と字幕提供が有効です。",
+    expiredPlan: "会員期限切れ · 自分の過去の字幕は引き続き利用できます。",
     generatingProgress: "字幕を生成中：{status} {progress}%",
     extracting: "抽出中...",
     generating: "生成中...",
@@ -173,6 +192,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
     showLoggedOutState();
     return;
   }
+  refreshEntitlements();
   const currentVideo = await resolveCurrentVideo(tab);
   if (!currentVideo.isYoutube) {
     hideSubtitleControls();
@@ -189,8 +209,21 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
     return;
   }
   status.textContent = t("readyVideo", { videoId: activeVideoId });
-  await refreshInitialSubtitleState();
+  setButtonState("ready-generate", true);
+  initialSubtitleCheckPromise = refreshInitialSubtitleState();
 });
+
+async function refreshEntitlements() {
+  const data = await chrome.runtime.sendMessage({ type: "GET_ENTITLEMENTS" }).catch(() => null);
+  if (!data?.ok) return;
+  let text = "";
+  if (data.status !== "active") text = t("expiredPlan");
+  else if (data.plan === "contributor") text = t("contributorPlan");
+  else if (data.plan === "standard") text = t("standardPlan");
+  else text = t("freeQuota", { remaining: data.generation?.remainingVideos ?? 0 });
+  entitlementStatus.textContent = text;
+  entitlementStatus.classList.remove("hidden");
+}
 
 async function resolveCurrentVideo(tab) {
   const tabId = tab?.id || null;
@@ -220,7 +253,7 @@ async function resolveCurrentVideo(tab) {
 }
 
 async function getPageVideoContext(tabId) {
-  return chrome.tabs.sendMessage(tabId, { type: "GET_CURRENT_VIDEO" }).catch(() => null);
+  return sendTabMessage(tabId, { type: "GET_CURRENT_VIDEO" }).catch(() => null);
 }
 
 function videoContextFromUrl(url) {
@@ -262,15 +295,43 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function sendTabMessage(tabId, message) {
+  try {
+    return await chrome.tabs.sendMessage(tabId, message);
+  } catch (error) {
+    const text = error?.message || String(error);
+    if (!text.includes("Receiving end does not exist")) throw error;
+
+    contentScriptInjectionPromise ||= chrome.scripting.executeScript({
+      target: { tabId },
+      files: ["contentScript.js"]
+    }).finally(() => {
+      contentScriptInjectionPromise = null;
+    });
+    await contentScriptInjectionPromise;
+    return chrome.tabs.sendMessage(tabId, message);
+  }
+}
+
 generate.addEventListener("click", async () => {
   if (!activeTabId) return;
   const forceRegenerate = subtitlesReady;
+  primaryActionInProgress = true;
   setButtonState("extracting", false);
   status.textContent = t("checkingCaptions");
   hideNotice();
   hideConfirmPanel();
   try {
-    const result = await chrome.tabs.sendMessage(activeTabId, {
+    if (!forceRegenerate && initialSubtitleCheckPromise) {
+      const initialState = await initialSubtitleCheckPromise;
+      if (initialState.status === "pending" || initialState.status === "completed") {
+        primaryActionInProgress = false;
+        applyInitialSubtitleState(initialState);
+        return;
+      }
+    }
+
+    const result = await sendTabMessage(activeTabId, {
       type: "GENERATE_AI_SUBTITLES",
       forceRegenerate
     });
@@ -285,7 +346,9 @@ generate.addEventListener("click", async () => {
     });
     setButtonState("generating", false);
     startJobPolling(result.jobId);
+    primaryActionInProgress = false;
   } catch (error) {
+    primaryActionInProgress = false;
     status.textContent = actionableError(error);
     setButtonState(subtitlesReady ? "ready-regenerate" : "ready-generate", true);
   }
@@ -301,22 +364,38 @@ async function refreshInitialSubtitleState() {
   hideNotice();
   const pendingJob = await findPendingJobForActiveVideo();
   if (pendingJob) {
-    hideSubtitleControls();
-    status.textContent = t("generatingShort");
-    showNotice(t("longVideoNotice"));
-    setButtonState("generating", false);
-    startJobPolling(pendingJob.jobId);
-    return;
+    const state = { status: "pending", job: pendingJob };
+    if (!primaryActionInProgress) applyInitialSubtitleState(state);
+    return state;
   }
 
   const existing = await getExistingSubtitle();
   if (existing?.status === "completed") {
+    if (!primaryActionInProgress) applyInitialSubtitleState(existing);
+    return existing;
+  }
+
+  const state = { status: "missing" };
+  if (!primaryActionInProgress) applyInitialSubtitleState(state);
+  return state;
+}
+
+function applyInitialSubtitleState(state) {
+  if (state.status === "pending") {
+    hideSubtitleControls();
+    status.textContent = t("generatingShort");
+    showNotice(t("longVideoNotice"));
+    setButtonState("generating", false);
+    startJobPolling(state.job.jobId);
+    return;
+  }
+
+  if (state.status === "completed") {
     subtitlesReady = true;
     showSubtitleControls();
-    showNotice("");
+    showNotice(state.publicLabel || "");
     setButtonState("ready-regenerate", true);
-    const loadResult = await loadSubtitlesIntoPage();
-    status.textContent = loadResult?.loaded ? t("readyLoaded") : t("readyNotVisible");
+    status.textContent = state.loaded ? t("readyLoaded") : t("readyNotVisible");
     return;
   }
 
@@ -331,14 +410,11 @@ async function findPendingJobForActiveVideo() {
 }
 
 async function getExistingSubtitle() {
-  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
-  return chrome.runtime.sendMessage({
-    type: "GET_SUBTITLE_BY_VIDEO",
-    videoId: activeVideoId,
-    targetLang: settings.targetLang || "zh-Hans",
-    translationMode: settings.translationMode || "user",
-    sessionToken
-  }).catch(() => ({ status: "missing" }));
+  if (!activeTabId) return { status: "missing" };
+  const result = await sendTabMessage(activeTabId, { type: "LOAD_AI_SUBTITLES" }).catch(() => null);
+  return result?.ok && result.loaded
+    ? { status: "completed", ...result }
+    : { status: "missing" };
 }
 
 function startJobPolling(jobId) {
@@ -370,7 +446,7 @@ async function pollJob(jobId) {
     } else if (job.status === "failed" || job.status === "cancelled") {
       clearJobPolling();
       hideNotice();
-      status.textContent = actionableError(job.error || `Subtitle job ${job.status}.`);
+      status.textContent = t("generationFailed");
       setButtonState(subtitlesReady ? "ready-regenerate" : "ready-generate", true);
     } else {
       await loadPartialSubtitlesIntoPage(jobId);
@@ -388,7 +464,7 @@ async function loadPartialSubtitlesIntoPage(jobId) {
   const partial = await chrome.runtime.sendMessage({ type: "GET_PARTIAL_SUBTITLES", jobId }).catch(() => null);
   const chunkCount = Number(partial?.chunkCount || 0);
   if (!partial?.ok || !Array.isArray(partial.cues) || !partial.cues.length || chunkCount <= loadedPartialChunkCount) return;
-  const result = await chrome.tabs.sendMessage(activeTabId, {
+  const result = await sendTabMessage(activeTabId, {
     type: "LOAD_PARTIAL_AI_SUBTITLES",
     videoId: activeVideoId,
     cues: partial.cues
@@ -405,7 +481,7 @@ function clearJobPolling() {
 
 async function loadSubtitlesIntoPage() {
   if (!activeTabId) return { loaded: false, reason: "no-active-tab" };
-  return chrome.tabs.sendMessage(activeTabId, { type: "LOAD_AI_SUBTITLES" }).catch((error) => ({
+  return sendTabMessage(activeTabId, { type: "LOAD_AI_SUBTITLES" }).catch((error) => ({
     ok: false,
     loaded: false,
     reason: error?.message || String(error)
@@ -532,7 +608,7 @@ async function saveAndApplySubtitleStyle() {
   syncStyleLabels(style);
 
   if (activeTabId) {
-    chrome.tabs.sendMessage(activeTabId, { type: "APPLY_SUBTITLE_STYLE", style }).catch(() => {});
+    sendTabMessage(activeTabId, { type: "APPLY_SUBTITLE_STYLE", style }).catch(() => {});
   }
 }
 

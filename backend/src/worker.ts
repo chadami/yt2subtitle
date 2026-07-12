@@ -14,6 +14,12 @@ import { redisConnection } from "./queue.js";
 import { loadUserAiConfig } from "./routes/ai.js";
 import { chunkCues, finalizeTranslatedCues, prepareSourceCues, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
 import { getTranslationStrategy } from "./translationStrategies.js";
+import {
+  assessSubtitleQuality,
+  cleanupSubtitleArtifacts,
+  hashTranslatedCues,
+  promotePublicSubtitle
+} from "./subtitleLibrary.js";
 
 function sourceTextForCue(cue: TranslatedCue, cleanCues: Array<RawCue & { index: number }>) {
   const indexes = new Set(cue.sourceIndexes || []);
@@ -46,10 +52,15 @@ async function processSubtitleJob(jobId: string) {
     ai_model: string | null;
     strategy_id: string | null;
     strategy_version: string | null;
+    style_id: string;
+    generation_key: string | null;
+    contribution_eligible: boolean;
+    consent_version: string | null;
     caption_type: "manual" | "auto";
   }>(
     `select j.video_id, j.source_lang, j.target_lang, j.caption_source_id, j.user_id,
      j.provider_mode, j.ai_provider, j.ai_model, j.strategy_id, j.strategy_version,
+     j.style_id, j.generation_key, j.contribution_eligible, j.consent_version,
      c.raw_cues_json, c.caption_type, v.title, v.channel, v.description, v.url
      from translation_jobs j
      join caption_sources c on c.id = j.caption_source_id
@@ -132,14 +143,20 @@ async function processSubtitleJob(jobId: string) {
   }
 
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1", [jobId]);
-  const finalCues = finalizeTranslatedCues(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
+  const finalized = finalizeTranslatedCues(translated);
+  const quality = assessSubtitleQuality(cleanCues, finalized, record.target_lang);
+  const finalCues = finalized.map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
   const vtt = toVtt(finalCues);
-  await query(
+  const initialPublicationStatus = record.contribution_eligible && quality.hardPass ? "candidate" : "private";
+  const saved = await query<{ id: string }>(
     `insert into translated_subtitles (
        video_id, source_lang, target_lang, provider_mode, provider, model,
-       strategy_id, strategy_version, created_by_user_id, cues_json, vtt_text
+       strategy_id, strategy_version, job_id, caption_source_id, style_id, generation_key,
+       content_hash, publication_status, quality_score, quality_metrics_json, consent_version,
+       created_by_user_id, cues_json, vtt_text
      )
-     values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
+     values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)
+     returning id`,
     [
       record.video_id,
       record.source_lang,
@@ -149,12 +166,44 @@ async function processSubtitleJob(jobId: string) {
       aiConfig.model,
       strategyId,
       strategyVersion,
+      jobId,
+      record.caption_source_id,
+      record.style_id,
+      record.generation_key,
+      hashTranslatedCues(finalCues),
+      initialPublicationStatus,
+      quality.score,
+      JSON.stringify(quality.metrics),
+      record.consent_version,
       record.user_id,
       JSON.stringify(finalCues),
       vtt
     ]
   );
+  if (initialPublicationStatus === "candidate") {
+    await promotePublicSubtitle({
+      subtitleId: saved.rows[0].id,
+      userId: record.user_id,
+      captionSourceId: record.caption_source_id,
+      targetLang: record.target_lang,
+      styleId: record.style_id,
+      qualityScore: quality.score
+    });
+  } else {
+    await query(
+      `delete from translated_subtitles
+       where id <> $1 and created_by_user_id = $2 and caption_source_id = $3
+         and target_lang = $4 and style_id = $5 and publication_status = 'private'`,
+      [saved.rows[0].id, record.user_id, record.caption_source_id, record.target_lang, record.style_id]
+    );
+  }
+  await query(
+    `update user_video_usage set status = 'completed', completed_at = now()
+     where user_id = $1 and video_id = $2`,
+    [record.user_id, record.video_id]
+  );
   await query("update translation_jobs set status = 'completed', progress = 100, completed_at = now(), updated_at = now() where id = $1", [jobId]);
+  await cleanupSubtitleArtifacts().catch((error) => console.error("Subtitle cleanup failed", error));
   await notifyJobOwner(jobId, record.title, record.url);
 }
 
@@ -189,6 +238,20 @@ async function markJobAttemptFailed(jobId: string, error: unknown, finalAttempt:
      where id = $3`,
     [finalAttempt ? "failed" : "queued", errorMessage(error), jobId]
   );
+  if (finalAttempt) {
+    await query(
+      `delete from user_video_usage u
+       using translation_jobs j
+       where j.id = $1 and u.user_id = j.user_id and u.video_id = j.video_id
+         and u.status = 'reserved'
+         and not exists (
+           select 1 from translation_jobs other
+           where other.id <> j.id and other.user_id = j.user_id and other.video_id = j.video_id
+             and other.status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
+         )`,
+      [jobId]
+    );
+  }
 }
 
 new Worker("subtitle-jobs", async (job) => {

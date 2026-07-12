@@ -583,7 +583,7 @@
           </div>
           <div class="fields">
             <label>Backend API URL
-              <input id="apiBase" placeholder="https://subtitle.invisiblewind.cn" />
+              <input id="apiBase" placeholder="https://api.vidlingo.online" />
             </label>
             <div class="actions">
               <button id="testConnection" class="secondary">Test connection</button>
@@ -597,17 +597,8 @@
             <p class="section-copy" data-i18n="translationApiCopy">Choose which provider handles translation</p>
           </div>
           <div class="fields">
-            <div class="radio-group" aria-label="Default translation source">
-              <label class="radio-option">
-                <input type="radio" name="translationMode" value="user" />
-                <span data-i18n="personalApi">Personal API key</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="translationMode" value="system" />
-                <span data-i18n="systemApi">System API</span>
-              </label>
-            </div>
-            <p id="translationModeHelp" class="hint" data-i18n="personalApiHelp">Personal API uses your own key and provider billing. System API uses the built-in service when available.</p>
+            <input type="hidden" name="translationMode" value="user" checked />
+            <p id="translationModeHelp" class="hint" data-i18n="personalApiHelp">Personal API uses your own key and provider billing. You choose the provider and model.</p>
             <div id="personalAiSection" class="fields">
               <div class="split">
                 <label><span data-i18n="aiProvider">AI provider</span>
