@@ -37,6 +37,7 @@ const nodes = {
 let hasVerifiedSession = false;
 let currentLanguage = "en";
 let lastHistoryRows = [];
+let messageHideTimer = null;
 
 const translations = {
   en: {
@@ -86,7 +87,7 @@ const translations = {
     apiSavedModel: "Personal API key saved. Current model: {model}.",
     notSelected: "not selected",
     cannotLoadAi: "Cannot load AI settings: {message}",
-    settingsSaved: "Settings saved.",
+    settingsSaved: "Saved successfully.",
     signInFetch: "Sign in before fetching models.",
     enterApiAgain: "Enter the API key again to fetch models.",
     enterApiFirst: "Enter an API key first.",
@@ -174,7 +175,7 @@ const translations = {
     apiSavedModel: "个人 API Key 已保存。当前模型：{model}。",
     notSelected: "未选择",
     cannotLoadAi: "无法加载 AI 设置：{message}",
-    settingsSaved: "设置已保存。",
+    settingsSaved: "保存成功",
     signInFetch: "登录后才能抓取模型。",
     enterApiAgain: "请重新输入真实 API Key 后再抓取模型。",
     enterApiFirst: "请先输入 API Key。",
@@ -262,7 +263,7 @@ const translations = {
     apiSavedModel: "個人 API キーは保存済みです。現在のモデル：{model}。",
     notSelected: "未選択",
     cannotLoadAi: "AI 設定を読み込めません：{message}",
-    settingsSaved: "設定を保存しました。",
+    settingsSaved: "保存しました。",
     signInFetch: "モデル取得にはログインが必要です。",
     enterApiAgain: "モデル取得には API キーを再入力してください。",
     enterApiFirst: "先に API キーを入力してください。",
@@ -333,6 +334,11 @@ function setDynamicText(node, value) {
   delete node.dataset.dynamicValues;
   node.dataset.dynamicText = value;
   node.textContent = value;
+  if (node === nodes.message) {
+    clearTimeout(messageHideTimer);
+    node.classList.add("visible");
+    messageHideTimer = setTimeout(() => clearDynamicText(node), 2400);
+  }
 }
 
 function setDynamicI18n(node, key, values = {}) {
@@ -351,6 +357,10 @@ function renderDynamicText(node) {
 }
 
 function clearDynamicText(node) {
+  if (node === nodes.message) {
+    clearTimeout(messageHideTimer);
+    node.classList.remove("visible");
+  }
   delete node.dataset.dynamicText;
   delete node.dataset.dynamicKey;
   delete node.dataset.dynamicValues;
@@ -551,7 +561,7 @@ function showView(view) {
   if (isHistory) loadHistory();
 }
 
-document.getElementById("save").addEventListener("click", async () => {
+async function saveGeneralSettings() {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   await chrome.storage.local.set({
     settings: {
@@ -563,15 +573,24 @@ document.getElementById("save").addEventListener("click", async () => {
         ...(settings.subtitleStyle || {}),
         showSourceText: fields.showSourceText.checked
       },
-      autoLoad: true,
-      aiProvider: fields.aiProvider.value,
-      aiModel: fields.aiModel.value,
-      aiModels: [...fields.aiModel.options].map((option) => option.value).filter(Boolean)
+      autoLoad: true
     }
   });
   fields.apiBase.value = normalizeApiBase(fields.apiBase.value);
   setDynamicText(nodes.message, t("settingsSaved"));
+}
+
+let apiBaseSaveTimer = null;
+fields.apiBase.addEventListener("input", () => {
+  clearTimeout(apiBaseSaveTimer);
+  apiBaseSaveTimer = setTimeout(saveGeneralSettings, 400);
 });
+fields.apiBase.addEventListener("change", () => {
+  clearTimeout(apiBaseSaveTimer);
+  saveGeneralSettings();
+});
+fields.targetLang.addEventListener("change", saveGeneralSettings);
+fields.showSourceText.addEventListener("change", saveGeneralSettings);
 
 document.getElementById("fetchModels").addEventListener("click", async () => {
   const { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
@@ -682,6 +701,7 @@ fields.uiLanguage.addEventListener("change", async () => {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   await chrome.storage.local.set({ settings: { ...settings, uiLanguage: currentLanguage } });
   applyI18n();
+  setDynamicText(nodes.message, t("settingsSaved"));
 });
 
 async function loadHistory() {

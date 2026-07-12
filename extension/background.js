@@ -54,13 +54,17 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 });
 
 async function createSubtitleJob(payload) {
+  const { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
+  if (!sessionToken || !payload?.sessionToken) {
+    throw new Error("Sign in from Settings before generating AI subtitles.");
+  }
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
   const response = await safeFetch(`${apiBase}/api/jobs`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(payload.sessionToken ? { Authorization: `Bearer ${payload.sessionToken}` } : {})
+      Authorization: `Bearer ${sessionToken}`
     },
     body: JSON.stringify({
       video: payload.video,

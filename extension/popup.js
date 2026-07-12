@@ -192,7 +192,11 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
     showLoggedOutState();
     return;
   }
-  refreshEntitlements();
+  const sessionIsValid = await refreshEntitlements();
+  if (!sessionIsValid) {
+    showLoggedOutState();
+    return;
+  }
   const currentVideo = await resolveCurrentVideo(tab);
   if (!currentVideo.isYoutube) {
     hideSubtitleControls();
@@ -215,7 +219,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, async ([tab]) => {
 
 async function refreshEntitlements() {
   const data = await chrome.runtime.sendMessage({ type: "GET_ENTITLEMENTS" }).catch(() => null);
-  if (!data?.ok) return;
+  if (!data?.ok) return false;
   let text = "";
   if (data.status !== "active") text = t("expiredPlan");
   else if (data.plan === "contributor") text = t("contributorPlan");
@@ -223,6 +227,7 @@ async function refreshEntitlements() {
   else text = t("freeQuota", { remaining: data.generation?.remainingVideos ?? 0 });
   entitlementStatus.textContent = text;
   entitlementStatus.classList.remove("hidden");
+  return true;
 }
 
 async function resolveCurrentVideo(tab) {

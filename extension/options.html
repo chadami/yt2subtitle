@@ -373,9 +373,27 @@
       }
 
       .message {
-        min-height: 22px;
-        margin: 14px 0 0;
-        color: var(--muted);
+        position: fixed;
+        z-index: 1000;
+        top: 18px;
+        left: 50%;
+        max-width: min(460px, calc(100vw - 32px));
+        margin: 0;
+        padding: 10px 16px;
+        border: 1px solid var(--line-strong);
+        border-radius: 6px;
+        background: #ffffff;
+        color: var(--ink);
+        box-shadow: 0 8px 24px rgba(15, 15, 15, 0.12);
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, -10px);
+        transition: opacity 160ms ease, transform 160ms ease;
+      }
+
+      .message.visible {
+        opacity: 1;
+        transform: translate(-50%, 0);
       }
 
       .history-toolbar {
@@ -519,6 +537,7 @@
     </style>
   </head>
   <body>
+    <p id="message" class="message" role="status" aria-live="polite"></p>
     <main class="shell">
       <header>
         <div>
@@ -675,10 +694,6 @@
             </section>
           </div>
 
-          <footer>
-            <p id="message" class="message"></p>
-            <button id="save" data-i18n="saveSettings">Save settings</button>
-          </footer>
         </div>
 
         <div id="historyView" class="view hidden">

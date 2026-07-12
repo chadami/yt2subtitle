@@ -107,11 +107,25 @@ adminRouter.get("/jobs", async (req, res, next) => {
       j.target_lang as "targetLang",j.ai_provider as provider,j.ai_model as model,j.style_id as "styleId",j.created_at as "createdAt",
       j.updated_at as "updatedAt",j.completed_at as "completedAt",coalesce(max(i.identifier) filter (where i.type='email'),j.user_id::text) as "userIdentity"
       from translation_jobs j join videos v on v.video_id=j.video_id left join identities i on i.user_id=j.user_id
-      where ($1='' or j.id::text ilike '%'||$1||'%' or j.video_id ilike '%'||$1||'%' or v.title ilike '%'||$1||'%') and ($2='' or j.status=$2)
+      where ($1='' or j.id::text ilike '%'||$1||'%' or j.video_id ilike '%'||$1||'%' or v.title ilike '%'||$1||'%' or i.identifier ilike '%'||$1||'%') and ($2='' or j.status=$2)
       group by j.id,v.title order by j.created_at desc limit $3 offset $4`, [search, status, limit, offset]);
     const count = await query<{ total: number }>(`select count(*)::int total from translation_jobs j join videos v on v.video_id=j.video_id
-      where ($1='' or j.id::text ilike '%'||$1||'%' or j.video_id ilike '%'||$1||'%' or v.title ilike '%'||$1||'%') and ($2='' or j.status=$2)`, [search, status]);
+      where ($1='' or j.id::text ilike '%'||$1||'%' or j.video_id ilike '%'||$1||'%' or v.title ilike '%'||$1||'%'
+        or exists(select 1 from identities i where i.user_id=j.user_id and i.identifier ilike '%'||$1||'%')) and ($2='' or j.status=$2)`, [search, status]);
     res.json({ items: items.rows, total: count.rows[0].total, page, limit });
+  } catch (error) { next(error); }
+});
+
+adminRouter.get("/jobs/:jobId/download", async (req, res, next) => {
+  try {
+    const result = await query<{ vtt_text: string; video_id: string; target_lang: string }>(
+      `select t.vtt_text,t.video_id,t.target_lang from translated_subtitles t
+       where t.job_id=$1 order by t.created_at desc limit 1`,
+      [req.params.jobId]
+    );
+    const subtitle = result.rows[0];
+    if (!subtitle) throw new AdminError("该任务还没有可下载的字幕结果", 404);
+    sendVtt(res, subtitle.vtt_text, `${subtitle.video_id}.${subtitle.target_lang}.vtt`);
   } catch (error) { next(error); }
 });
 
@@ -137,11 +151,24 @@ adminRouter.get("/subtitles", async (req, res, next) => {
       t.style_id as "styleId",t.publication_status as "publicationStatus",t.quality_score as "qualityScore",jsonb_array_length(t.cues_json) as "cueCount",
       length(t.vtt_text) as "characterCount",t.created_at as "createdAt",coalesce(max(i.identifier) filter (where i.type='email'),t.created_by_user_id::text) as "userIdentity"
       from translated_subtitles t join videos v on v.video_id=t.video_id left join identities i on i.user_id=t.created_by_user_id
-      where ($1='' or t.id::text ilike '%'||$1||'%' or t.video_id ilike '%'||$1||'%' or v.title ilike '%'||$1||'%') and ($2='' or t.publication_status=$2)
+      where ($1='' or t.id::text ilike '%'||$1||'%' or t.video_id ilike '%'||$1||'%' or v.title ilike '%'||$1||'%' or i.identifier ilike '%'||$1||'%') and ($2='' or t.publication_status=$2)
       group by t.id,v.title order by t.created_at desc limit $3 offset $4`, [search, publication, limit, offset]);
     const count = await query<{ total: number }>(`select count(*)::int total from translated_subtitles t join videos v on v.video_id=t.video_id
-      where ($1='' or t.id::text ilike '%'||$1||'%' or t.video_id ilike '%'||$1||'%' or v.title ilike '%'||$1||'%') and ($2='' or t.publication_status=$2)`, [search, publication]);
+      where ($1='' or t.id::text ilike '%'||$1||'%' or t.video_id ilike '%'||$1||'%' or v.title ilike '%'||$1||'%'
+        or exists(select 1 from identities i where i.user_id=t.created_by_user_id and i.identifier ilike '%'||$1||'%')) and ($2='' or t.publication_status=$2)`, [search, publication]);
     res.json({ items: items.rows, total: count.rows[0].total, page, limit });
+  } catch (error) { next(error); }
+});
+
+adminRouter.get("/subtitles/:subtitleId/download", async (req, res, next) => {
+  try {
+    const result = await query<{ vtt_text: string; video_id: string; target_lang: string }>(
+      "select vtt_text,video_id,target_lang from translated_subtitles where id=$1",
+      [req.params.subtitleId]
+    );
+    const subtitle = result.rows[0];
+    if (!subtitle) throw new AdminError("字幕不存在", 404);
+    sendVtt(res, subtitle.vtt_text, `${subtitle.video_id}.${subtitle.target_lang}.vtt`);
   } catch (error) { next(error); }
 });
 
@@ -176,3 +203,10 @@ adminRouter.get("/videos", async (req, res, next) => {
     res.json({ items: items.rows, total: count.rows[0].total, page, limit });
   } catch (error) { next(error); }
 });
+
+function sendVtt(res: import("express").Response, content: string, filename: string) {
+  const safeFilename = filename.replace(/[^a-zA-Z0-9._-]/g, "_");
+  res.setHeader("Content-Type", "text/vtt; charset=utf-8");
+  res.setHeader("Content-Disposition", `attachment; filename="${safeFilename}"`);
+  res.send(content);
+}

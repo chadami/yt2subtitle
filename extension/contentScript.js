@@ -406,6 +406,10 @@ async function prepareAiSubtitlesForVideo(videoId) {
     apiBase: normalizeApiBase(settings.apiBase)
   };
 
+  if (!sessionToken) {
+    throw new Error("Sign in from Settings before generating AI subtitles.");
+  }
+
   const video = await collectVideoPayload(videoId);
   const track = selectCaptionTrack(video.captionTracks, effectiveSettings.sourceLang || "en");
   const rawCues = await fetchCaptionCues(track);
