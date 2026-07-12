@@ -33,8 +33,8 @@ app.get("/health", (_req, res) => {
 });
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
-const adminPublicDir = path.resolve(currentDir, "../admin-public");
-app.use("/admin/assets", express.static(adminPublicDir));
+const adminPublicDir = path.resolve(currentDir, "../admin-public/out");
+app.use("/admin", express.static(adminPublicDir));
 app.get(["/admin", "/admin/"], (_req, res) => res.sendFile(path.join(adminPublicDir, "index.html")));
 
 app.use("/api/auth", authRouter);
