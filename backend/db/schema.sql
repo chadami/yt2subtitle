@@ -6,6 +6,9 @@ create table if not exists users (
   last_seen_at timestamptz not null default now()
 );
 
+alter table users add column if not exists last_login_ip inet;
+alter table users add column if not exists last_login_at timestamptz;
+
 create table if not exists identities (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references users(id) on delete cascade,

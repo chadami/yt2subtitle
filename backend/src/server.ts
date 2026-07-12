@@ -1,5 +1,7 @@
 import cors from "cors";
 import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { env } from "./env.js";
 import { initDatabase } from "./migrate.js";
 import { aiRouter } from "./routes/ai.js";
@@ -7,6 +9,7 @@ import { accountRouter } from "./routes/account.js";
 import { authRouter } from "./routes/auth.js";
 import { jobsRouter } from "./routes/jobs.js";
 import { subtitlesRouter } from "./routes/subtitles.js";
+import { adminRouter } from "./routes/admin.js";
 
 const app = express();
 
@@ -29,11 +32,17 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
 
+const currentDir = path.dirname(fileURLToPath(import.meta.url));
+const adminPublicDir = path.resolve(currentDir, "../admin-public");
+app.use("/admin/assets", express.static(adminPublicDir));
+app.get(["/admin", "/admin/"], (_req, res) => res.sendFile(path.join(adminPublicDir, "index.html")));
+
 app.use("/api/auth", authRouter);
 app.use("/api/account", accountRouter);
 app.use("/api/ai", aiRouter);
 app.use("/api/jobs", jobsRouter);
 app.use("/api/subtitles", subtitlesRouter);
+app.use("/api/admin", adminRouter);
 
 app.use((error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   const status = typeof error === "object" && error !== null && "status" in error

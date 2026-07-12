@@ -1,4 +1,5 @@
 import { Router } from "express";
+import net from "node:net";
 import { z } from "zod";
 import { createRandomToken, hashToken, requireUserId, resolveAnonymousUser, signSession } from "../auth.js";
 import { query } from "../db.js";
@@ -88,6 +89,16 @@ authRouter.post("/exchange-code", async (req, res, next) => {
       );
       sessionUserId = identity.rows[0]?.user_id ?? code.user_id;
     }
+    const forwardedIp = req.headers["x-forwarded-for"];
+    const rawLoginIp = (Array.isArray(forwardedIp) ? forwardedIp[0] : forwardedIp?.split(",")[0])?.trim()
+      || req.socket.remoteAddress
+      || null;
+    const normalizedIp = rawLoginIp?.startsWith("::ffff:") ? rawLoginIp.slice(7) : rawLoginIp;
+    const loginIp = normalizedIp && net.isIP(normalizedIp) ? normalizedIp : null;
+    await query(
+      "update users set last_seen_at = now(), last_login_at = now(), last_login_ip = $2::inet where id = $1",
+      [sessionUserId, loginIp]
+    );
     res.json({ sessionToken: signSession(sessionUserId) });
   } catch (error) {
     next(error);

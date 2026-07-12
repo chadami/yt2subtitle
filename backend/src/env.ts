@@ -15,6 +15,8 @@ const envSchema = z.object({
   EMAIL_FROM: z.string().default("YouTube AI Subtitle <login@example.com>"),
   RESEND_API_KEY: z.string().optional(),
   JWT_SECRET: z.string().min(24),
+  ADMIN_EMAIL: z.string().email().default("admin@example.com"),
+  ADMIN_PASSWORD: z.string().min(12).optional(),
   MAGIC_LINK_TTL_MINUTES: z.coerce.number().default(20),
   DEFAULT_TARGET_LANG: z.string().default("zh-Hans")
 });
