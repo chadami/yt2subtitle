@@ -45,4 +45,4 @@ services:
 
 databases:
   - name: youtube-ai-subtitle-db
-    plan: free
+    plan: basic-256mb
