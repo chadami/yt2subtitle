@@ -31,6 +31,10 @@ services:
         value: 2
       - key: DEEPSEEK_API_KEY
         sync: false
+      - key: GOOGLE_CLOUD_TRANSLATION_API_KEY
+        sync: false
+      - key: GOOGLE_CLOUD_TRANSLATION_ENDPOINT
+        value: https://translation.googleapis.com
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_EMAIL

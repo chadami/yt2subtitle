@@ -145,6 +145,16 @@ create table if not exists translation_job_chunks (
   primary key (job_id, chunk_index)
 );
 
+create table if not exists translation_job_machine_chunks (
+  job_id uuid not null references translation_jobs(id) on delete cascade,
+  chunk_index integer not null,
+  provider text not null default 'google',
+  cues_json jsonb not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  primary key (job_id, chunk_index)
+);
+
 create table if not exists translation_job_watchers (
   job_id uuid not null references translation_jobs(id) on delete cascade,
   user_id uuid not null references users(id) on delete cascade,
@@ -190,6 +200,8 @@ alter table translated_subtitles add column if not exists consent_version text;
 create index if not exists translation_jobs_video_lang_idx on translation_jobs(video_id, source_lang, target_lang, status);
 create index if not exists translated_subtitles_video_lang_idx on translated_subtitles(video_id, source_lang, target_lang);
 create index if not exists translation_job_chunks_job_idx on translation_job_chunks(job_id, chunk_index);
+create index if not exists translation_job_machine_chunks_job_idx on translation_job_machine_chunks(job_id, chunk_index);
+alter table translation_job_machine_chunks alter column provider set default 'google';
 create index if not exists translated_subtitles_identity_idx
   on translated_subtitles(caption_source_id, target_lang, style_id, publication_status);
 create index if not exists translated_subtitles_content_hash_idx on translated_subtitles(content_hash);

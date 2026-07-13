@@ -12,6 +12,7 @@ import { sendSubtitleReadyEmail } from "./email.js";
 import { env } from "./env.js";
 import { redisConnection } from "./queue.js";
 import { loadUserAiConfig } from "./routes/ai.js";
+import { machineTranslationConfigured, translateMachineCues } from "./machineTranslation.js";
 import { chunkCues, finalizeTranslatedCues, prepareSourceCues, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
 import { getTranslationStrategy } from "./translationStrategies.js";
 import {
@@ -89,6 +90,24 @@ async function processSubtitleJob(jobId: string) {
     [JSON.stringify(cleanCues), record.caption_source_id]
   );
   await query("delete from translation_job_chunks where job_id = $1", [jobId]);
+  await query("delete from translation_job_machine_chunks where job_id = $1", [jobId]);
+
+  if (machineTranslationConfigured()) {
+    translateMachineCues({
+      cues: cleanCues,
+      sourceLanguage: record.source_lang,
+      targetLanguage: record.target_lang,
+      onBatch: async ({ batchIndex, cues }) => {
+        await query(
+          `insert into translation_job_machine_chunks (job_id, chunk_index, provider, cues_json)
+           values ($1, $2, 'google', $3)
+           on conflict (job_id, chunk_index)
+           do update set cues_json = excluded.cues_json, updated_at = now()`,
+          [jobId, batchIndex, JSON.stringify(cues)]
+        );
+      }
+    }).catch((error) => console.error(`Quick machine translation failed for job ${jobId}`, error));
+  }
 
   await query("update translation_jobs set progress = 20, updated_at = now() where id = $1", [jobId]);
   let translationContext: SubtitleTranslationContext | undefined;

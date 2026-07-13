@@ -51,6 +51,7 @@ Flow:
 2. In Render, create from `render.yaml` if using Blueprint.
 3. Set required secret environment variables:
    - `DEEPSEEK_API_KEY`
+   - `GOOGLE_CLOUD_TRANSLATION_API_KEY`
    - `EXTENSION_ORIGIN`
    - `RESEND_API_KEY`
 4. Run `backend/db/schema.sql` against Render Postgres.

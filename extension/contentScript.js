@@ -16,7 +16,9 @@ let partialSubtitlePollTimer = null;
 let partialSubtitleJobId = "";
 let partialSubtitleVideoId = "";
 let loadedPartialChunkCount = 0;
+let loadedMachineChunkCount = 0;
 let partialSourceCues = [];
+let activeRenderedCue = null;
 let currentSubtitleStyle = { ...DEFAULT_SUBTITLE_STYLE };
 let subtitlePreparationCache = null;
 
@@ -108,6 +110,7 @@ function clampNumber(value, min, max) {
 
 function clearOverlay() {
   renderGeneration += 1;
+  activeRenderedCue = null;
   const overlay = document.getElementById(OVERLAY_ID);
   if (overlay) {
     overlay.textContent = "";
@@ -199,16 +202,29 @@ async function renderSubtitles(cues, videoId, options = {}) {
   await applyStoredSubtitleStyle();
   const generation = ++renderGeneration;
   const translatedCues = Array.isArray(cues) ? cues : [];
+  const machineCues = Array.isArray(options.machineCues) ? options.machineCues : [];
   const sourceCues = normalizeSourceCues(options.sourceCues || []);
   const pendingText = options.pendingText || "";
 
   function tick() {
     if (generation !== renderGeneration || getVideoId() !== videoId) return;
     const current = video.currentTime;
-    const cue = findCurrentCue(translatedCues, current);
+    const keepCurrentMachineCue = activeRenderedCue?.videoId === videoId
+      && activeRenderedCue.kind === "machine"
+      && current >= activeRenderedCue.cue.start
+      && current <= activeRenderedCue.cue.end;
+    const aiCue = findCurrentCue(translatedCues, current);
+    const machineCue = findCurrentCue(machineCues, current);
+    const cue = keepCurrentMachineCue ? activeRenderedCue.cue : (aiCue || machineCue);
     if (cue) {
+      activeRenderedCue = {
+        videoId,
+        kind: keepCurrentMachineCue || (!aiCue && machineCue) ? "machine" : "ai",
+        cue
+      };
       renderOverlayCue(overlay, sourceTextForTranslatedCue(cue, sourceCues), cue.text);
     } else {
+      activeRenderedCue = null;
       const sourceCue = pendingText ? findCurrentCue(sourceCues, current) : null;
       renderOverlayCue(overlay, sourceCue?.text || "", sourceCue ? pendingText : "");
     }
@@ -247,6 +263,7 @@ function startPartialSubtitlePolling(jobId, videoId = getVideoId(), sourceCues =
   partialSubtitleVideoId = videoId;
   partialSourceCues = normalizeSourceCues(sourceCues);
   loadedPartialChunkCount = 0;
+  loadedMachineChunkCount = 0;
   partialSubtitlePollTimer = setInterval(() => {
     pollPartialSubtitles(jobId, videoId).catch(() => {});
   }, PARTIAL_SUBTITLE_POLL_INTERVAL_MS);
@@ -266,6 +283,7 @@ function stopPartialSubtitlePolling() {
   partialSubtitleVideoId = "";
   partialSourceCues = [];
   loadedPartialChunkCount = 0;
+  loadedMachineChunkCount = 0;
 }
 
 async function pollPartialSubtitles(jobId, videoId) {
@@ -287,15 +305,22 @@ async function pollPartialSubtitles(jobId, videoId) {
     return;
   }
 
-  const chunkCount = Number(partial.chunkCount || 0);
-  if (!Array.isArray(partial.cues) || !partial.cues.length || chunkCount <= loadedPartialChunkCount) return;
+  const chunkCount = Number(partial.aiChunkCount ?? partial.chunkCount ?? 0);
+  const machineChunkCount = Number(partial.machineChunkCount || 0);
+  const aiCues = Array.isArray(partial.aiCues) ? partial.aiCues : (Array.isArray(partial.cues) ? partial.cues : []);
+  const machineCues = Array.isArray(partial.machineCues) ? partial.machineCues : [];
+  const hasNewAiCues = aiCues.length > 0 && chunkCount > loadedPartialChunkCount;
+  const hasNewMachineCues = machineCues.length > 0 && machineChunkCount > loadedMachineChunkCount;
+  if (!hasNewAiCues && !hasNewMachineCues) return;
 
-  const result = await renderSubtitles(partial.cues, videoId, {
+  const result = await renderSubtitles(aiCues, videoId, {
+    machineCues,
     sourceCues: partialSourceCues,
     pendingText: PENDING_TRANSLATION_TEXT
   });
   if (result.loaded) {
     loadedPartialChunkCount = chunkCount;
+    loadedMachineChunkCount = machineChunkCount;
   }
 }
 
@@ -343,12 +368,13 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   }
 
   if (message?.type === "LOAD_PARTIAL_AI_SUBTITLES") {
-    const cues = Array.isArray(message.cues) ? message.cues : [];
-    if (!cues.length) {
+    const cues = Array.isArray(message.aiCues) ? message.aiCues : (Array.isArray(message.cues) ? message.cues : []);
+    const machineCues = Array.isArray(message.machineCues) ? message.machineCues : [];
+    if (!cues.length && !machineCues.length) {
       sendResponse({ ok: true, loaded: false, cueCount: 0 });
       return true;
     }
-    renderSubtitles(cues, message.videoId || getVideoId()).then(
+    renderSubtitles(cues, message.videoId || getVideoId(), { machineCues }).then(
       (result) => sendResponse({ ok: true, partial: true, ...result }),
       (error) => sendResponse({ ok: false, error: error.message || String(error) })
     );

@@ -26,6 +26,7 @@ let activeVideoId = "";
 let subtitlesReady = false;
 let pollTimer = null;
 let loadedPartialChunkCount = 0;
+let loadedMachineChunkCount = 0;
 let currentLanguage = "en";
 let contentScriptInjectionPromise = null;
 let initialSubtitleCheckPromise = null;
@@ -425,6 +426,7 @@ async function getExistingSubtitle() {
 function startJobPolling(jobId) {
   clearJobPolling();
   loadedPartialChunkCount = 0;
+  loadedMachineChunkCount = 0;
   pollTimer = setInterval(() => pollJob(jobId), 2500);
   pollJob(jobId);
 }
@@ -467,15 +469,23 @@ async function pollJob(jobId) {
 async function loadPartialSubtitlesIntoPage(jobId) {
   if (!activeTabId || !activeVideoId) return;
   const partial = await chrome.runtime.sendMessage({ type: "GET_PARTIAL_SUBTITLES", jobId }).catch(() => null);
-  const chunkCount = Number(partial?.chunkCount || 0);
-  if (!partial?.ok || !Array.isArray(partial.cues) || !partial.cues.length || chunkCount <= loadedPartialChunkCount) return;
+  const chunkCount = Number(partial?.aiChunkCount ?? partial?.chunkCount ?? 0);
+  const machineChunkCount = Number(partial?.machineChunkCount || 0);
+  const aiCues = Array.isArray(partial?.aiCues) ? partial.aiCues : (Array.isArray(partial?.cues) ? partial.cues : []);
+  const machineCues = Array.isArray(partial?.machineCues) ? partial.machineCues : [];
+  const hasNewAiCues = aiCues.length > 0 && chunkCount > loadedPartialChunkCount;
+  const hasNewMachineCues = machineCues.length > 0 && machineChunkCount > loadedMachineChunkCount;
+  if (!partial?.ok || (!hasNewAiCues && !hasNewMachineCues)) return;
   const result = await sendTabMessage(activeTabId, {
     type: "LOAD_PARTIAL_AI_SUBTITLES",
     videoId: activeVideoId,
-    cues: partial.cues
+    cues: aiCues,
+    aiCues,
+    machineCues
   }).catch(() => null);
   if (result?.loaded) {
     loadedPartialChunkCount = chunkCount;
+    loadedMachineChunkCount = machineChunkCount;
   }
 }
 

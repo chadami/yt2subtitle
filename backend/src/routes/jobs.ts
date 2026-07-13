@@ -266,14 +266,27 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
        order by chunk_index asc`,
       [req.params.jobId]
     );
+    const machineChunks = await query<{ cues: unknown }>(
+      `select cues_json as cues
+       from translation_job_machine_chunks
+       where job_id = $1
+       order by chunk_index asc`,
+      [req.params.jobId]
+    );
     const translated = chunks.rows.flatMap((row) => parseChunkCues(row.cues));
     const cues = finalizeTranslatedCues(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
+    const machineCues = machineChunks.rows.flatMap((row) => parseChunkCues(row.cues))
+      .map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
     res.json({
       ...job.rows[0],
-      hasPartial: cues.length > 0,
+      hasPartial: cues.length > 0 || machineCues.length > 0,
       cues,
+      aiCues: cues,
+      machineCues,
       cueCount: cues.length,
-      chunkCount: chunks.rows.length
+      chunkCount: chunks.rows.length,
+      aiChunkCount: chunks.rows.length,
+      machineChunkCount: machineChunks.rows.length
     });
   } catch (error) {
     next(error);

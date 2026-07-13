@@ -11,6 +11,8 @@ const envSchema = z.object({
   DEEPSEEK_API_KEY: z.string().default(""),
   DEEPSEEK_API_BASE: z.string().url().default("https://api.deepseek.com"),
   DEEPSEEK_MODEL: z.string().default("deepseek-v4-flash"),
+  GOOGLE_CLOUD_TRANSLATION_API_KEY: z.string().default(""),
+  GOOGLE_CLOUD_TRANSLATION_ENDPOINT: z.string().url().default("https://translation.googleapis.com"),
   EMAIL_PROVIDER: z.enum(["local", "resend"]).default("local"),
   EMAIL_FROM: z.string().default("YouTube AI Subtitle <login@example.com>"),
   RESEND_API_KEY: z.string().optional(),
