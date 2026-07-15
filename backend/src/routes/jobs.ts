@@ -6,7 +6,8 @@ import { db, query } from "../db.js";
 import { getUserEntitlement } from "../entitlements.js";
 import { subtitleQueue } from "../queue.js";
 import { createGenerationKey, hashRawCues, PUBLIC_STYLE_ID } from "../subtitleLibrary.js";
-import { finalizeTranslatedCues, type TranslatedCue } from "../subtitles.js";
+import { machineTranslationConfigured, translateMachineCues } from "../machineTranslation.js";
+import { finalizeTranslatedCues, prepareSourceCues, type TranslatedCue } from "../subtitles.js";
 import { getTranslationStrategy } from "../translationStrategies.js";
 import { loadUserAiConfig } from "./ai.js";
 
@@ -17,6 +18,42 @@ const cueSchema = z.object({
   end: z.number(),
   text: z.string()
 });
+
+const machineCueSchema = cueSchema.extend({
+  sourceText: z.string().optional(),
+  sourceIndexes: z.array(z.number().int()).optional()
+});
+
+function primaryLanguageCode(language: string) {
+  return normalizeLanguageCode(language).split("-")[0];
+}
+
+function normalizeLanguageCode(language: string) {
+  return language.trim().replace(/_/g, "-").toLowerCase();
+}
+
+function chineseScript(language: string) {
+  const normalized = normalizeLanguageCode(language);
+  if (["zh-hans", "zh-cn", "zh-sg", "zh-my"].includes(normalized)) return "simplified";
+  if (["zh-hant", "zh-tw", "zh-hk", "zh-mo"].includes(normalized)) return "traditional";
+  return "";
+}
+
+function isSameLanguage(sourceLanguage: string, targetLanguage: string) {
+  const normalizedSource = normalizeLanguageCode(sourceLanguage);
+  const normalizedTarget = normalizeLanguageCode(targetLanguage);
+  if (!normalizedSource || !normalizedTarget) return false;
+  if (normalizedSource === normalizedTarget) return true;
+  const source = primaryLanguageCode(sourceLanguage);
+  const target = primaryLanguageCode(targetLanguage);
+  if (!source || source !== target) return false;
+  if (target === "zh") {
+    const sourceScript = chineseScript(sourceLanguage);
+    const targetScript = chineseScript(targetLanguage);
+    return Boolean(sourceScript && targetScript && sourceScript === targetScript);
+  }
+  return true;
+}
 
 class JobRequestError extends Error {
   constructor(message: string, public status = 400, public code?: string) {
@@ -57,6 +94,37 @@ jobsRouter.get("/history", async (req, res, next) => {
   }
 });
 
+jobsRouter.post("/machine-preview", async (req, res, next) => {
+  try {
+    await requireUserId(req.headers.authorization);
+    if (!machineTranslationConfigured()) {
+      return res.status(503).json({ error: "Google machine translation is not configured." });
+    }
+    const input = z.object({
+      sourceLang: z.string().default("en"),
+      targetLang: z.string().default("zh-Hans"),
+      captionType: z.enum(["manual", "auto"]).default("manual"),
+      rawCues: z.array(cueSchema).min(1)
+    }).parse(req.body);
+    if (isSameLanguage(input.sourceLang, input.targetLang)) {
+      throw new JobRequestError("Subtitle language already matches the target language.", 400, "SAME_LANGUAGE");
+    }
+    const cleanCues = prepareSourceCues(input.rawCues, input.captionType);
+    const cues: TranslatedCue[] = [];
+    await translateMachineCues({
+      cues: cleanCues,
+      sourceLanguage: input.sourceLang,
+      targetLanguage: input.targetLang,
+      onBatch: async ({ cues: batch }) => {
+        cues.push(...batch);
+      }
+    });
+    res.json({ ok: true, cues });
+  } catch (error) {
+    next(error);
+  }
+});
+
 jobsRouter.post("/", async (req, res, next) => {
   try {
     const input = z.object({
@@ -74,7 +142,8 @@ jobsRouter.post("/", async (req, res, next) => {
       forceRegenerate: z.boolean().default(false),
       captionType: z.enum(["manual", "auto"]).default("manual"),
       styleId: z.string().default(PUBLIC_STYLE_ID),
-      rawCues: z.array(cueSchema).min(1).optional()
+      rawCues: z.array(cueSchema).min(1).optional(),
+      machineCues: z.array(machineCueSchema).optional()
     }).parse(req.body);
     if (input.translationMode !== "user") {
       throw new JobRequestError("System translation is not available. Configure a personal API key.", 400, "PERSONAL_API_REQUIRED");
@@ -107,6 +176,9 @@ jobsRouter.post("/", async (req, res, next) => {
       [captionSourceId]
     );
     if (!caption.rows[0]) throw new JobRequestError("Caption source not found", 404);
+    if (isSameLanguage(caption.rows[0].source_lang, input.targetLang)) {
+      throw new JobRequestError("Subtitle language already matches the target language.", 400, "SAME_LANGUAGE");
+    }
     const baseGenerationKey = createGenerationKey({
       captionSourceId,
       targetLang: input.targetLang,
@@ -187,6 +259,15 @@ jobsRouter.post("/", async (req, res, next) => {
           contributionEligible, contributionEligible ? entitlement.consentVersion : null]
       );
       jobId = created.rows[0].id;
+      if (input.machineCues?.length) {
+        await client.query(
+          `insert into translation_job_machine_chunks (job_id, chunk_index, provider, cues_json)
+           values ($1, 0, 'google', $2)
+           on conflict (job_id, chunk_index)
+           do update set cues_json = excluded.cues_json, updated_at = now()`,
+          [jobId, JSON.stringify(input.machineCues)]
+        );
+      }
       await client.query(
         `update user_video_usage set first_job_id = coalesce(first_job_id, $1)
          where user_id = $2 and video_id = $3`,

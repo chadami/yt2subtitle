@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "YouTube AI Subtitle",
+  "name": "VidLingo",
   "version": "0.1.0",
-  "description": "Generate and load AI-translated subtitles for YouTube videos.",
+  "description": "Create natural, readable YouTube subtitles with your own AI API key.",
   "permissions": ["storage", "alarms", "notifications", "scripting"],
   "host_permissions": [
     "https://www.youtube.com/*",
@@ -22,9 +22,15 @@
       "run_at": "document_idle"
     }
   ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/icon-32.png", "icons/icon-48.png", "icons/ai-sparkle.png"],
+      "matches": ["https://www.youtube.com/*"]
+    }
+  ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "AI Subtitles",
+    "default_title": "VidLingo",
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png",

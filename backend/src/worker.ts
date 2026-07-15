@@ -90,9 +90,12 @@ async function processSubtitleJob(jobId: string) {
     [JSON.stringify(cleanCues), record.caption_source_id]
   );
   await query("delete from translation_job_chunks where job_id = $1", [jobId]);
-  await query("delete from translation_job_machine_chunks where job_id = $1", [jobId]);
+  const existingMachineTranslation = await query<{ count: string }>(
+    "select count(*)::text as count from translation_job_machine_chunks where job_id = $1",
+    [jobId]
+  );
 
-  if (machineTranslationConfigured()) {
+  if (machineTranslationConfigured() && Number(existingMachineTranslation.rows[0]?.count || 0) === 0) {
     translateMachineCues({
       cues: cleanCues,
       sourceLanguage: record.source_lang,

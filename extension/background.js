@@ -8,6 +8,13 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
 });
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === "OPEN_OPTIONS") {
+    chrome.runtime.openOptionsPage().then(
+      () => sendResponse({ ok: true }),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
   if (message?.type === "CHECK_SUBTITLE_JOBS") {
     checkSubtitleJobs().then(
       () => sendResponse({ ok: true }),
@@ -17,6 +24,13 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   }
   if (message?.type === "CREATE_SUBTITLE_JOB") {
     createSubtitleJob(message.payload).then(
+      (result) => sendResponse(result),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
+  if (message?.type === "TRANSLATE_MACHINE_PREVIEW") {
+    translateMachinePreview(message.payload).then(
       (result) => sendResponse(result),
       (error) => sendResponse({ ok: false, error: error.message || String(error) })
     );
@@ -74,7 +88,8 @@ async function createSubtitleJob(payload) {
       forceRegenerate: payload.forceRegenerate === true,
       captionType: payload.captionType,
       styleId: payload.styleId || "accurate",
-      rawCues: payload.rawCues
+      rawCues: payload.rawCues,
+      machineCues: Array.isArray(payload.machineCues) ? payload.machineCues : undefined
     })
   });
   const data = await response.json().catch(() => ({}));
@@ -109,6 +124,29 @@ async function createSubtitleJob(payload) {
   await chrome.storage.local.set({ pendingJobs: nextPendingJobs });
   await checkSubtitleJobs();
   return { ok: true, ...data };
+}
+
+async function translateMachinePreview(payload) {
+  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
+  if (!sessionToken) throw new Error("Sign in from Settings before translating subtitles.");
+  const apiBase = normalizeApiBase(settings.apiBase);
+  const response = await safeFetch(`${apiBase}/api/jobs/machine-preview`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionToken}`
+    },
+    body: JSON.stringify({
+      sourceLang: payload.sourceLang,
+      targetLang: payload.targetLang,
+      captionType: payload.captionType,
+      rawCues: payload.rawCues
+    })
+  });
+  const data = await response.json().catch(() => ({}));
+  if (response.status === 401) await clearAuthSession();
+  if (!response.ok) throw new Error(data.error || `Machine translation failed: ${response.status}`);
+  return { ok: true, cues: Array.isArray(data.cues) ? data.cues : [] };
 }
 
 async function resolveSubtitle(payload) {

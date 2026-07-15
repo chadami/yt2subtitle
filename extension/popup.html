@@ -1,326 +1,40 @@
 <!doctype html>
-<html>
+<html lang="zh-Hans">
   <head>
     <meta charset="utf-8" />
     <style>
-      :root {
-        --bg: #ffffff;
-        --surface: #f7f7f5;
-        --surface-hover: #efefed;
-        --panel: #ffffff;
-        --ink: #2f2f2f;
-        --muted: #787774;
-        --line: #e6e4e1;
-        --line-strong: #d8d6d2;
-        --accent: #2f2f2f;
-        --accent-strong: #1f1f1f;
-        --accent-soft: #f1f1ef;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        width: 340px;
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font: 13px/1.45 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      }
-
-      .wrap {
-        padding: 15px;
-      }
-
-      header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 13px;
-      }
-
-      .mark {
-        width: 32px;
-        height: 32px;
-        border-radius: 5px;
-        display: block;
-      }
-
-      h1 {
-        margin: 0;
-        font-size: 16px;
-        line-height: 1.15;
-        letter-spacing: 0;
-        font-weight: 650;
-      }
-
-      .caption {
-        margin: 3px 0 0;
-        color: var(--muted);
-      }
-
-      .status {
-        min-height: 56px;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: var(--panel);
-        color: var(--muted);
-        padding: 10px 11px;
-        overflow-wrap: anywhere;
-      }
-
-      .notice {
-        margin-top: 10px;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: var(--surface);
-        color: var(--muted);
-        padding: 9px 10px;
-      }
-
-      .confirm-panel {
-        display: grid;
-        gap: 9px;
-        margin-top: 11px;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: var(--panel);
-        padding: 11px;
-      }
-
-      .confirm-title {
-        margin: 0;
-        color: var(--ink);
-        font-weight: 650;
-      }
-
-      .facts {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6px;
-      }
-
-      .fact {
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: var(--surface);
-        padding: 7px;
-      }
-
-      .fact span {
-        display: block;
-        color: var(--muted);
-        font-size: 11px;
-      }
-
-      .fact strong {
-        display: block;
-        margin-top: 2px;
-        color: var(--ink);
-        font-size: 12px;
-        font-weight: 600;
-        overflow-wrap: anywhere;
-      }
-
-      .actions {
-        display: grid;
-        gap: 7px;
-        margin-top: 11px;
-      }
-
-      .controls {
-        display: grid;
-        gap: 13px;
-        margin-top: 11px;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: var(--panel);
-        padding: 12px;
-      }
-
-      .control {
-        display: grid;
-        gap: 6px;
-      }
-
-      .control-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 500;
-      }
-
-      .value {
-        color: var(--ink);
-        font-variant-numeric: tabular-nums;
-        font-weight: 500;
-      }
-
-      input[type="range"] {
-        width: 100%;
-        accent-color: var(--accent);
-      }
-
-      .segments {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4px;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: var(--surface);
-        padding: 2px;
-      }
-
-      .segments input {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .segments label {
-        border: 1px solid transparent;
-        border-radius: 3px;
-        cursor: pointer;
-        padding: 6px 8px;
-        text-align: center;
-        color: var(--muted);
-        font-weight: 500;
-      }
-
-      .segments input:checked + span {
-        color: var(--ink);
-      }
-
-      .segments label:has(input:checked) {
-        background: #ffffff;
-        border-color: var(--line);
-      }
-
-      button {
-        width: 100%;
-        min-height: 36px;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        cursor: pointer;
-        font: inherit;
-        font-weight: 500;
-        letter-spacing: 0;
-      }
-
-      button.primary {
-        background: var(--surface);
-        color: var(--ink);
-      }
-
-      button.primary:hover:not(:disabled) {
-        background: var(--surface-hover);
-        border-color: var(--line-strong);
-      }
-
-      button.secondary {
-        background: #ffffff;
-        border-color: var(--line);
-        color: var(--ink);
-      }
-
-      button.secondary:hover {
-        background: var(--surface);
-        border-color: var(--line-strong);
-      }
-
-      button:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-      }
-
-      .hidden {
-        display: none !important;
-      }
-
-      button .spinner {
-        display: none;
-        width: 14px;
-        height: 14px;
-        margin-right: 8px;
-        border: 2px solid currentColor;
-        border-right-color: transparent;
-        border-radius: 50%;
-        vertical-align: -2px;
-        animation: spin 0.75s linear infinite;
-      }
-
-      button.loading .spinner {
-        display: inline-block;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+      :root { color-scheme: light; --ink:#191919; --muted:#737373; --line:#e8e8e8; --surface:#f7f7f7; }
+      * { box-sizing: border-box; }
+      body { width: 320px; margin: 0; background:#fff; color:var(--ink); font:13px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif; }
+      main { padding: 18px; }
+      header { display:flex; align-items:center; gap:11px; padding-bottom:16px; border-bottom:1px solid var(--line); }
+      .logo { width:36px; height:36px; border-radius:8px; }
+      h1 { margin:0; font-size:15px; font-weight:650; }
+      .subtitle { margin:2px 0 0; color:var(--muted); font-size:12px; }
+      .account { display:flex; align-items:center; gap:10px; margin:15px 0; padding:12px; border:1px solid var(--line); border-radius:10px; background:var(--surface); }
+      .dot { width:9px; height:9px; border-radius:50%; background:#aaa; box-shadow:0 0 0 4px rgba(0,0,0,.04); }
+      .account[data-state="active"] .dot { background:#22a06b; }
+      .account-copy { flex:1; min-width:0; }
+      .account-state { font-weight:600; }
+      .account-email { margin-top:2px; overflow:hidden; color:var(--muted); text-overflow:ellipsis; white-space:nowrap; font-size:12px; }
+      button { width:100%; height:38px; border:1px solid #d9d9d9; border-radius:8px; background:#fff; color:var(--ink); cursor:pointer; font:600 13px/1 inherit; }
+      button:hover { background:#f5f5f5; border-color:#c9c9c9; }
+      .hint { margin:12px 2px 0; color:var(--muted); font-size:12px; }
     </style>
   </head>
   <body>
-    <div class="wrap">
+    <main>
       <header>
-        <img class="mark" src="icons/icon-32.png" alt="" />
-        <div>
-          <h1>YouTube AI Subtitle</h1>
-          <p class="caption" data-i18n="caption">Translate current video</p>
-        </div>
+        <img class="logo" src="icons/icon-48.png" alt="" />
+        <div><h1>VidLingo</h1><p class="subtitle">播放器内字幕翻译</p></div>
       </header>
-
-      <div id="status" class="status">Checking current video...</div>
-      <div id="entitlement" class="status hidden"></div>
-      <div id="notice" class="notice hidden"></div>
-
-      <div id="confirmPanel" class="confirm-panel hidden">
-        <p id="confirmTitle" class="confirm-title" data-i18n="confirmTitle">Generation details</p>
-        <div class="facts">
-          <div class="fact"><span data-i18n="captionSource">Caption source</span><strong id="summaryCaptionType">-</strong></div>
-          <div class="fact"><span data-i18n="sourceLanguage">Source language</span><strong id="summarySourceLang">-</strong></div>
-          <div class="fact"><span data-i18n="targetLanguage">Target language</span><strong id="summaryTargetLang">-</strong></div>
-          <div class="fact"><span data-i18n="apiMode">API mode</span><strong id="summaryApiMode">-</strong></div>
-          <div class="fact"><span data-i18n="cueCount">Cue count</span><strong id="summaryCueCount">-</strong></div>
-          <div class="fact"><span data-i18n="estimatedTime">Estimated time</span><strong id="summaryEstimatedTime">-</strong></div>
-        </div>
-      </div>
-
-      <div class="controls hidden">
-        <div class="control">
-          <div class="control-head">
-            <span data-i18n="fontSize">Font size</span>
-            <span id="fontSizeValue" class="value">24px</span>
-          </div>
-          <input id="fontSize" type="range" min="16" max="36" step="1" />
-        </div>
-
-        <div class="control">
-          <div class="control-head">
-            <span data-i18n="position">Position</span>
-            <span id="positionValue" class="value">21%</span>
-          </div>
-          <input id="positionPercent" type="range" min="2" max="42" step="1" />
-        </div>
-
-        <div class="control">
-          <div class="control-head">
-            <span data-i18n="backgroundOpacity">Background opacity</span>
-            <span id="backgroundOpacityValue" class="value">25%</span>
-          </div>
-          <input id="backgroundOpacity" type="range" min="15" max="95" step="1" />
-        </div>
-      </div>
-
-      <div class="actions">
-        <button id="generate" class="primary" disabled><span class="spinner"></span><span id="generateText" data-i18n="generate">Generate AI subtitles</span></button>
-        <button id="openOptions" class="secondary" data-i18n="settings">Settings</button>
-      </div>
-    </div>
+      <section id="account" class="account" data-state="checking">
+        <span class="dot"></span>
+        <div class="account-copy"><div id="accountState" class="account-state">正在检查账号…</div><div id="accountEmail" class="account-email"></div></div>
+      </section>
+      <button id="openOptions" type="button">打开设置</button>
+      <p class="hint">字幕开启、自动翻译和字幕样式已移到 YouTube 播放器控制栏。</p>
+    </main>
     <script src="popup.js"></script>
   </body>
 </html>
