@@ -34,8 +34,24 @@ app.get("/health", (_req, res) => {
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const adminPublicDir = path.resolve(currentDir, "../admin-public/out");
+const adminPages = new Set(["", "dashboard", "users", "jobs", "subtitles", "videos"]);
+
 app.use("/admin", express.static(adminPublicDir));
-app.get(["/admin", "/admin/"], (_req, res) => res.sendFile(path.join(adminPublicDir, "index.html")));
+app.get(/^\/admin(?:\/.*)?$/, (req, res, next) => {
+  const route = req.path.replace(/^\/admin\/?/, "").replace(/\/$/, "");
+  if (!adminPages.has(route)) {
+    res.sendFile(path.join(adminPublicDir, "index.html"));
+    return;
+  }
+
+  const pageDir = route === "dashboard" ? "" : route;
+  const file = pageDir
+    ? path.join(adminPublicDir, pageDir, "index.html")
+    : path.join(adminPublicDir, "index.html");
+  res.sendFile(file, (error) => {
+    if (error) next(error);
+  });
+});
 
 app.use("/api/auth", authRouter);
 app.use("/api/account", accountRouter);

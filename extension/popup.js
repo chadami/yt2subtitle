@@ -17,16 +17,15 @@ async function loadAccountState() {
     renderLoggedOut("登录已失效");
     return;
   }
-  const planNames = { free: "免费版", standard: "年费会员", contributor: "贡献会员" };
   account.dataset.state = "active";
-  accountState.textContent = result.status === "active" ? `已登录 · ${planNames[result.plan] || result.plan || "账号正常"}` : "会员已过期";
-  accountEmail.textContent = email || "账号状态正常";
+  accountState.textContent = "当前账号";
+  accountEmail.textContent = result.status === "active" ? email || "账号状态正常" : "会员已过期";
 }
 
 function renderLoggedOut(label = "未登录") {
   account.dataset.state = "logged-out";
-  accountState.textContent = label;
-  accountEmail.textContent = "打开设置后登录";
+  accountState.textContent = "当前账号";
+  accountEmail.textContent = label;
 }
 
 loadAccountState();
