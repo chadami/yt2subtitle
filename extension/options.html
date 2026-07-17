@@ -59,6 +59,20 @@
         font-weight: 700;
       }
 
+      .brand-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+        display: block;
+        flex: 0 0 38px;
+      }
+
       h2 {
         font-size: 16px;
         font-weight: 650;
@@ -541,7 +555,10 @@
     <main class="shell">
       <header>
         <div>
-          <h1>VidLingo</h1>
+          <div class="brand-title">
+            <img class="brand-logo" src="icons/icon-48.png" alt="" />
+            <h1>VidLingo</h1>
+          </div>
           <p class="subtitle">Settings</p>
         </div>
         <label class="language-switch">

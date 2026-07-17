@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { SiteCopy } from "@/lib/i18n";
 
 export function ProductDemo({ copy }: { copy: SiteCopy["demo"] }) {
@@ -25,7 +26,7 @@ export function ProductDemo({ copy }: { copy: SiteCopy["demo"] }) {
         </div>
         <aside className="settings-panel">
           <div className="panel-heading">
-            <span className="mini-mark">V</span>
+            <Image className="mini-mark" src="/vidlingo-icon.png" width={128} height={128} alt="" aria-hidden="true" />
             <div><strong>VidLingo</strong><span>Subtitle workspace</span></div>
           </div>
           <div className="status-row"><span className="status-dot" />{copy.status}</div>

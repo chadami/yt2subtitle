@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { InstallLink } from "@/components/install-link";
 import { ProductDemo } from "@/components/product-demo";
-import { ProviderMarquee } from "@/components/provider-marquee";
+import { ProviderLogos, ProviderMarquee } from "@/components/provider-marquee";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { copy, isLocale, providers } from "@/lib/i18n";
+import { copy, isLocale } from "@/lib/i18n";
 import { getChromeWebStoreUrl, pageMetadata } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -25,7 +25,7 @@ export default async function HomePage({ params }: PageProps) {
   const storeUrl = getChromeWebStoreUrl();
 
   return (
-    <main className="home-page gradient-koke-no-oka">
+    <main className="home-page glass-peach-theme">
       <ScrollReveal />
       <SiteHeader locale={locale} copy={content} storeUrl={storeUrl} />
 
@@ -79,7 +79,7 @@ export default async function HomePage({ params }: PageProps) {
           <div className="key-visual" aria-hidden="true"><span>sk</span><i /><i /><i /><i /><b>✓</b></div>
           <ul>{content.byok.points.map((point) => <li key={point}><span>✓</span>{point}</li>)}</ul>
         </div>
-        <div className="provider-row" data-reveal><span>{content.byok.providersLabel}</span><div>{providers.map((provider) => <strong key={provider}>{provider}</strong>)}</div></div>
+        <div className="provider-row" data-reveal><span>{content.byok.providersLabel}</span><ProviderLogos /></div>
       </section>
 
       <section className="section-shell faq-section">

@@ -7,19 +7,31 @@ document.getElementById("openOptions").addEventListener("click", () => {
 });
 
 async function loadAccountState() {
-  const { sessionToken, accountEmail: email } = await chrome.storage.local.get(["sessionToken", "accountEmail"]);
+  const {
+    sessionToken,
+    accountEmail: email,
+    entitlementsStatus
+  } = await chrome.storage.local.get(["sessionToken", "accountEmail", "entitlementsStatus"]);
   if (!sessionToken) {
     renderLoggedOut();
     return;
   }
+
+  renderAccount(email, entitlementsStatus);
+
   const result = await chrome.runtime.sendMessage({ type: "GET_ENTITLEMENTS" }).catch(() => null);
   if (!result?.ok) {
-    renderLoggedOut("登录已失效");
+    const { sessionToken: currentToken } = await chrome.storage.local.get(["sessionToken"]);
+    if (!currentToken) renderLoggedOut("登录已失效");
     return;
   }
+  renderAccount(email, result.status);
+}
+
+function renderAccount(email, status = "active") {
   account.dataset.state = "active";
   accountState.textContent = "当前账号";
-  accountEmail.textContent = result.status === "active" ? email || "账号状态正常" : "会员已过期";
+  accountEmail.textContent = status === "active" ? email || "账号状态正常" : "会员已过期";
 }
 
 function renderLoggedOut(label = "未登录") {

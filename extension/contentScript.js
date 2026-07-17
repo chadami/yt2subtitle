@@ -991,21 +991,25 @@ function ensurePlayerControlStyles() {
   style.textContent = `
     #${PLAYER_BUTTON_ID} {
       position: relative;
+      z-index: 3000;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 48px;
+      height: 100%;
       padding: 0;
-      opacity: .9;
+      overflow: visible;
+      opacity: 1 !important;
+      filter: none;
     }
     #${PLAYER_BUTTON_ID}:hover,
     #${PLAYER_BUTTON_ID}[aria-expanded="true"] { opacity: 1; }
     #${PLAYER_BUTTON_ID} img {
       width: 24px;
       height: 24px;
-      border-radius: 5px;
+      border-radius: 6px;
       display: block;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,.28));
+      opacity: 1;
     }
     #${PLAYER_BUTTON_ID}[data-state="working"] img { animation: ytAiPulse 1.2s ease-in-out infinite; }
     @keyframes ytAiPulse { 50% { opacity: .52; transform: scale(.92); } }
@@ -1179,7 +1183,7 @@ function ensurePlayerControl() {
     button.setAttribute("aria-label", "AI 字幕");
     button.setAttribute("aria-expanded", "false");
     const icon = document.createElement("img");
-    icon.src = chrome.runtime.getURL("icons/icon-32.png");
+    icon.src = chrome.runtime.getURL("icons/player-icon.png");
     icon.alt = "";
     button.appendChild(icon);
     button.addEventListener("click", (event) => {

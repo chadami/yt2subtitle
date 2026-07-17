@@ -206,6 +206,11 @@ async function getEntitlements() {
   if (response.status === 401) await clearAuthSession();
   if (!response.ok) throw new Error(data.error || `Entitlements failed: ${response.status}`);
   if (!data.canUsePublicSubtitles) await clearPublicSubtitleCache();
+  await chrome.storage.local.set({
+    entitlementsStatus: data.status || "active",
+    entitlementsCanUsePublicSubtitles: data.canUsePublicSubtitles === true,
+    entitlementsCheckedAt: Date.now()
+  });
   return data;
 }
 
@@ -291,7 +296,13 @@ async function safeFetch(url, options) {
 }
 
 async function clearAuthSession() {
-  await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
+  await chrome.storage.local.remove([
+    "sessionToken",
+    "accountEmail",
+    "entitlementsStatus",
+    "entitlementsCanUsePublicSubtitles",
+    "entitlementsCheckedAt"
+  ]);
   await clearPublicSubtitleCache();
 }
 

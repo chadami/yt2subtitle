@@ -129,7 +129,7 @@ export const copy = {
       title: "VidLingo provides the subtitle workflow—not a hidden AI markup.",
       description: "The public beta only translates with an API key you provide. Your provider charges your account directly according to its own pricing.",
       points: ["Keys are encrypted before they are stored.", "Your saved key is only used to call the provider and model you selected.", "VidLingo never promises bundled or free model usage during beta."],
-      providersLabel: "Supported providers",
+      providersLabel: "Supports the following AI models",
     },
     faq: {
       eyebrow: "Questions, answered plainly",
@@ -215,7 +215,7 @@ export const copy = {
       title: "VidLingo 提供字幕工作流，不在 AI 调用费上隐藏加价。",
       description: "Beta 公测只能使用你提供的 API Key 翻译。AI 服务商会按其价格直接向你的账户计费。",
       points: ["API Key 会在保存前加密。", "已保存的 Key 只用于调用你选择的服务商和模型。", "Beta 期间不承诺内置或免费的模型额度。"],
-      providersLabel: "已支持的服务商",
+      providersLabel: "支持以下 AI 大模型",
     },
     faq: {
       eyebrow: "把问题说清楚",
@@ -297,7 +297,7 @@ export const copy = {
       title: "VidLingo が提供するのは字幕のワークフロー。AI 料金への上乗せではありません。",
       description: "パブリックベータでは、あなたが登録した API キーのみを使用します。利用料金は各プロバイダーの価格に従い、直接あなたのアカウントに請求されます。",
       points: ["API キーは保存前に暗号化されます。", "保存されたキーは、選択したプロバイダーとモデルの呼び出しにのみ使用されます。", "ベータ中、モデルの無料利用枠やバンドル提供はありません。"],
-      providersLabel: "対応プロバイダー",
+      providersLabel: "以下の AI モデルに対応",
     },
     faq: {
       eyebrow: "よくある質問",

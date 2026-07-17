@@ -32,6 +32,18 @@
         letter-spacing: -1px;
         line-height: 1.18;
       }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand-logo {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: block;
+        flex: 0 0 32px;
+      }
       .subtitle {
         margin: 6px 0 0;
         color: var(--muted);
@@ -88,7 +100,10 @@
   <body>
     <main>
       <header>
-        <h1>VidLingo</h1>
+        <div class="brand">
+          <img class="brand-logo" src="icons/icon-32.png" alt="" />
+          <h1>VidLingo</h1>
+        </div>
         <p class="subtitle">YouTube 字幕 AI 翻译插件</p>
       </header>
       <section id="account" class="account" data-state="checking">

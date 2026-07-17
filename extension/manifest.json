@@ -24,7 +24,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["icons/icon-32.png", "icons/icon-48.png", "icons/ai-sparkle.png"],
+      "resources": ["icons/player-icon.png", "icons/icon-24.png", "icons/icon-32.png", "icons/icon-48.png", "icons/ai-sparkle.png"],
       "matches": ["https://www.youtube.com/*"]
     }
   ],

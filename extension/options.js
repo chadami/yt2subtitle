@@ -410,7 +410,7 @@ async function load() {
 
 async function refreshAccount(sessionToken) {
   if (!sessionToken) {
-    await chrome.storage.local.remove(["accountEmail"]);
+    await chrome.storage.local.remove(["accountEmail", "entitlementsStatus", "entitlementsCanUsePublicSubtitles", "entitlementsCheckedAt"]);
     await clearPersonalAiLocalSettings();
     setLoggedOut();
     return;
@@ -423,14 +423,14 @@ async function refreshAccount(sessionToken) {
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
-      await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
+      await chrome.storage.local.remove(["sessionToken", "accountEmail", "entitlementsStatus", "entitlementsCanUsePublicSubtitles", "entitlementsCheckedAt"]);
       await clearPersonalAiLocalSettings();
       setLoggedOut();
       setDynamicText(nodes.message, data.error || t("sessionExpired"));
       return;
     }
     if (!data.email) {
-      await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
+      await chrome.storage.local.remove(["sessionToken", "accountEmail", "entitlementsStatus", "entitlementsCanUsePublicSubtitles", "entitlementsCheckedAt"]);
       await clearPersonalAiLocalSettings();
       setLoggedOut();
       setDynamicText(nodes.message, t("missingEmail"));
@@ -896,7 +896,7 @@ function setExchangeLoginPending(isPending) {
 }
 
 document.getElementById("logout").addEventListener("click", async () => {
-  await chrome.storage.local.remove(["sessionToken", "accountEmail"]);
+  await chrome.storage.local.remove(["sessionToken", "accountEmail", "entitlementsStatus", "entitlementsCanUsePublicSubtitles", "entitlementsCheckedAt"]);
   await clearPersonalAiLocalSettings();
   setLoggedOut();
   clearDynamicText(nodes.message);

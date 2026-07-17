@@ -20,9 +20,23 @@ function BrandList({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
+export function ProviderLogos() {
+  return (
+    <div className="provider-logo-list">
+      {brands.map((brand) => (
+        <span className="provider-brand" key={brand.name}>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d={brand.path} /></svg>
+          <strong>{brand.name}</strong>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function ProviderMarquee({ label }: { label: string }) {
   return (
     <div className="provider-marquee" aria-label={label}>
+      <p className="provider-marquee-label">{label}</p>
       <div className="provider-marquee-track">
         <BrandList />
         <BrandList hidden />
