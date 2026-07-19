@@ -11,6 +11,7 @@ export type UserEntitlement = {
   consentVersion: string | null;
   canUsePublicSubtitles: boolean;
   canContribute: boolean;
+  generationVideoLimit: number | null;
   unlimitedGeneration: boolean;
 };
 
@@ -18,6 +19,7 @@ type EntitlementRow = {
   plan: EntitlementPlan;
   status: EntitlementStatus;
   valid_until: Date | string | null;
+  generation_video_limit: number | null;
   contribution_consent_version: string | null;
   contribution_consented_at: Date | string | null;
   contribution_withdrawn_at: Date | string | null;
@@ -38,7 +40,8 @@ function normalize(row?: EntitlementRow): UserEntitlement {
       consentVersion: null,
       canUsePublicSubtitles: false,
       canContribute: false,
-      unlimitedGeneration: false
+      generationVideoLimit: null,
+      unlimitedGeneration: true
     };
   }
   const status = effectiveStatus(row);
@@ -53,12 +56,13 @@ function normalize(row?: EntitlementRow): UserEntitlement {
     consentVersion: row.contribution_consent_version,
     canUsePublicSubtitles: paidActive,
     canContribute: paidActive && consentActive,
-    unlimitedGeneration: paidActive
+    generationVideoLimit: row.generation_video_limit,
+    unlimitedGeneration: row.generation_video_limit === null
   };
 }
 
 export async function getUserEntitlement(userId: string, client?: PoolClient) {
-  const sql = `select plan, status, valid_until, contribution_consent_version,
+  const sql = `select plan, status, valid_until, generation_video_limit, contribution_consent_version,
     contribution_consented_at, contribution_withdrawn_at
     from user_entitlements where user_id = $1`;
   const result = client

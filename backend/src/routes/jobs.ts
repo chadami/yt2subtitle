@@ -195,7 +195,7 @@ jobsRouter.post("/", async (req, res, next) => {
     try {
       await client.query("begin");
       const entitlement = await getUserEntitlement(userId, client);
-      if (entitlement.plan !== "free" && !entitlement.unlimitedGeneration) {
+      if (entitlement.plan !== "free" && entitlement.status !== "active") {
         throw new JobRequestError("Your membership has expired. Existing private subtitles remain available.", 403, "MEMBERSHIP_EXPIRED");
       }
       const contributionEligible = entitlement.canContribute && input.styleId === PUBLIC_STYLE_ID;
@@ -227,7 +227,7 @@ jobsRouter.post("/", async (req, res, next) => {
           return res.json({ jobId, status, shared: existing.rows[0].user_id !== userId });
         }
       }
-      if (!entitlement.unlimitedGeneration) {
+      if (entitlement.generationVideoLimit !== null) {
         await client.query("select pg_advisory_xact_lock(hashtext($1))", [userId]);
         const usage = await client.query<{ status: string }>(
           "select status from user_video_usage where user_id = $1 and video_id = $2",
@@ -238,8 +238,12 @@ jobsRouter.post("/", async (req, res, next) => {
             "select count(*)::text as count from user_video_usage where user_id = $1",
             [userId]
           );
-          if (Number(count.rows[0]?.count || 0) >= 5) {
-            throw new JobRequestError("Free plan supports up to 5 different videos.", 403, "FREE_VIDEO_LIMIT_REACHED");
+          if (Number(count.rows[0]?.count || 0) >= entitlement.generationVideoLimit) {
+            throw new JobRequestError(
+              `This account supports up to ${entitlement.generationVideoLimit} different videos.`,
+              403,
+              "VIDEO_LIMIT_REACHED"
+            );
           }
           await client.query(
             `insert into user_video_usage (user_id, video_id, status)

@@ -11,7 +11,6 @@ accountRouter.get("/entitlements", async (req, res, next) => {
       getUserEntitlement(userId),
       getGenerationUsage(userId)
     ]);
-    const freeCanGenerate = entitlement.plan === "free" && entitlement.status === "active";
     res.json({
       plan: entitlement.plan,
       status: entitlement.status,
@@ -20,10 +19,11 @@ accountRouter.get("/entitlements", async (req, res, next) => {
       canContribute: entitlement.canContribute,
       generation: {
         unlimited: entitlement.unlimitedGeneration,
+        videoLimit: entitlement.generationVideoLimit,
         usedVideos,
         remainingVideos: entitlement.unlimitedGeneration
           ? null
-          : freeCanGenerate ? Math.max(0, 5 - usedVideos) : 0
+          : Math.max(0, (entitlement.generationVideoLimit ?? 0) - usedVideos)
       }
     });
   } catch (error) {

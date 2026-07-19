@@ -56,6 +56,7 @@ create table if not exists user_entitlements (
   plan text not null default 'free' check (plan in ('free', 'standard', 'contributor')),
   status text not null default 'active' check (status in ('active', 'expired', 'canceled')),
   valid_until timestamptz,
+  generation_video_limit integer check (generation_video_limit is null or generation_video_limit >= 0),
   contribution_consent_version text,
   contribution_consented_at timestamptz,
   contribution_withdrawn_at timestamptz,
@@ -183,6 +184,17 @@ create table if not exists public_subtitle_selections (
 );
 
 -- Existing installations need the new columns before indexes referencing them are created.
+alter table user_entitlements add column if not exists generation_video_limit integer;
+do $$
+begin
+  if not exists (
+    select 1 from pg_constraint where conname = 'user_entitlements_generation_video_limit_check'
+  ) then
+    alter table user_entitlements
+      add constraint user_entitlements_generation_video_limit_check
+      check (generation_video_limit is null or generation_video_limit >= 0);
+  end if;
+end $$;
 alter table translation_jobs add column if not exists style_id text not null default 'accurate';
 alter table translation_jobs add column if not exists generation_key text;
 alter table translation_jobs add column if not exists contribution_eligible boolean not null default false;

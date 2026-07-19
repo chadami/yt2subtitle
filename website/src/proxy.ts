@@ -9,10 +9,6 @@ function preferredLocale(header: string | null) {
 
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
-  if (url.hostname === "www.vidlingo.online") {
-    url.hostname = "vidlingo.online";
-    return NextResponse.redirect(url, 308);
-  }
   if (url.pathname === "/") {
     url.pathname = `/${preferredLocale(request.headers.get("accept-language"))}`;
     return NextResponse.redirect(url, 307);

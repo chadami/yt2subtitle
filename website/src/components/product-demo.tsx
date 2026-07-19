@@ -20,7 +20,7 @@ export function ProductDemo({ copy }: { copy: SiteCopy["demo"] }) {
               <div className="caption raw-caption"><small>{copy.original}</small>{copy.originalText}</div>
               <div className="caption translated-caption"><small>{copy.translated}</small>{copy.translatedText}</div>
             </div>
-            <div className="timeline"><span /><i /></div>
+            <div className="timeline"><span /></div>
           </div>
           <div className="video-meta"><strong>{copy.videoTitle}</strong><span>{copy.channel}</span></div>
         </div>
@@ -33,7 +33,7 @@ export function ProductDemo({ copy }: { copy: SiteCopy["demo"] }) {
           <div className="context-chip">{copy.context}</div>
           <div className="field-grid">
             <div className="demo-field"><span>{copy.provider}</span><strong>DeepSeek</strong></div>
-            <div className="demo-field"><span>{copy.model}</span><strong>deepseek-chat</strong></div>
+            <div className="demo-field"><span>{copy.model}</span><strong>DeepSeekV4</strong></div>
             <div className="demo-field full"><span>{copy.target}</span><strong>{copy.targetValue}</strong></div>
           </div>
           <div className="saved-row"><span aria-hidden="true">✓</span>{copy.saved}</div>

@@ -173,7 +173,7 @@ export const copy = {
     hero: {
       eyebrow: "Beta 公测 · 需要自备 API Key",
       title: "让 YouTube 字幕",
-      accent: "像人话，也像字幕。",
+      accent: "像字幕也像人话",
       description: "VidLingo 会理解视频上下文，把生硬、破碎的原字幕整理成自然且易读的翻译，同时保留你对模型的选择权。",
       cta: "将 VidLingo 添加到 Chrome",
       note: "Chrome 扩展 · AI 服务商直接向你计费",

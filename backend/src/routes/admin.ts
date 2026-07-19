@@ -73,13 +73,14 @@ adminRouter.get("/users", async (req, res, next) => {
       u.last_login_at as "lastLoginAt", host(u.last_login_ip) as "lastLoginIp",
       coalesce(max(i.identifier) filter (where i.type = 'email'), max(i.identifier) filter (where i.type = 'anonymous')) as identity,
       coalesce(e.plan, 'free') as plan, coalesce(e.status, 'active') as "memberStatus", e.valid_until as "validUntil",
+      e.generation_video_limit as "videoLimit",
       exists(select 1 from user_ai_settings a where a.user_id = u.id) as "hasAiConfig",
       (select count(*)::int from user_video_usage vu where vu.user_id = u.id and vu.status = 'completed') as "videoUsage",
       (select count(*)::int from translation_jobs j where j.user_id = u.id) as "jobCount"
       from users u left join identities i on i.user_id = u.id left join user_entitlements e on e.user_id = u.id
       where ($1 = '' or u.id::text ilike '%' || $1 || '%' or i.identifier ilike '%' || $1 || '%')
         and ($2 = '' or coalesce(e.plan, 'free') = $2)
-      group by u.id, e.plan, e.status, e.valid_until order by u.created_at desc limit $3 offset $4`, [search, plan, limit, offset]);
+      group by u.id, e.plan, e.status, e.valid_until, e.generation_video_limit order by u.created_at desc limit $3 offset $4`, [search, plan, limit, offset]);
     const count = await query<{ total: number }>(`select count(distinct u.id)::int total from users u left join identities i on i.user_id = u.id
       left join user_entitlements e on e.user_id = u.id where ($1 = '' or u.id::text ilike '%' || $1 || '%' or i.identifier ilike '%' || $1 || '%')
       and ($2 = '' or coalesce(e.plan, 'free') = $2)`, [search, plan]);
@@ -89,13 +90,48 @@ adminRouter.get("/users", async (req, res, next) => {
 
 adminRouter.patch("/users/:userId/membership", async (req, res, next) => {
   try {
-    const input = z.object({ plan: z.enum(["free", "standard", "contributor"]), status: z.enum(["active", "expired", "canceled"]), validUntil: z.string().datetime().nullable() }).parse(req.body);
+    const input = z.object({
+      plan: z.enum(["free", "standard", "contributor"]),
+      status: z.enum(["active", "expired", "canceled"]),
+      validUntil: z.string().datetime().nullable(),
+      videoLimit: z.number().int().min(0).nullable()
+    }).parse(req.body);
     const user = await query("select id from users where id = $1", [req.params.userId]);
     if (!user.rows[0]) throw new AdminError("用户不存在", 404);
-    const result = await query(`insert into user_entitlements (user_id, plan, status, valid_until) values ($1,$2,$3,$4)
-      on conflict (user_id) do update set plan=excluded.plan,status=excluded.status,valid_until=excluded.valid_until,updated_at=now()
-      returning plan,status,valid_until as "validUntil"`, [req.params.userId, input.plan, input.status, input.validUntil]);
-    res.json(result.rows[0]);
+    const client = await db.connect();
+    try {
+      await client.query("begin");
+      if (input.videoLimit !== null) {
+        await client.query(
+          `insert into user_video_usage (user_id, video_id, status, first_job_id, completed_at)
+           select $1, j.video_id,
+             case when bool_or(j.status = 'completed') then 'completed' else 'reserved' end,
+             (array_agg(j.id order by j.created_at))[1],
+             max(j.completed_at)
+           from translation_jobs j
+           where j.user_id = $1
+             and j.status in ('queued','cleaning','translating','compressing','finalizing','completed')
+           group by j.video_id
+           on conflict (user_id, video_id) do update set
+             status = case when user_video_usage.status = 'completed' or excluded.status = 'completed' then 'completed' else 'reserved' end,
+             first_job_id = coalesce(user_video_usage.first_job_id, excluded.first_job_id),
+             completed_at = coalesce(user_video_usage.completed_at, excluded.completed_at)`,
+          [req.params.userId]
+        );
+      }
+      const result = await client.query(`insert into user_entitlements (user_id, plan, status, valid_until, generation_video_limit) values ($1,$2,$3,$4,$5)
+        on conflict (user_id) do update set plan=excluded.plan,status=excluded.status,valid_until=excluded.valid_until,
+          generation_video_limit=excluded.generation_video_limit,updated_at=now()
+        returning plan,status,valid_until as "validUntil",generation_video_limit as "videoLimit"`,
+        [req.params.userId, input.plan, input.status, input.validUntil, input.videoLimit]);
+      await client.query("commit");
+      res.json(result.rows[0]);
+    } catch (error) {
+      await client.query("rollback");
+      throw error;
+    } finally {
+      client.release();
+    }
   } catch (error) { next(error); }
 });
 

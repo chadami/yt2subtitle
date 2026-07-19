@@ -56,7 +56,7 @@ export function AdminConsole({ initialPage = "dashboard" }: { initialPage?: Admi
   const [now, setNow] = useState('');
 
   // Modals state
-  const [memberModal, setMemberModal] = useState<{isOpen: boolean, id: string, plan: string, status: string, validUntil: string}>({isOpen: false, id: '', plan: '', status: '', validUntil: ''});
+  const [memberModal, setMemberModal] = useState<{isOpen: boolean, id: string, plan: string, status: string, validUntil: string, videoLimit: string}>({isOpen: false, id: '', plan: '', status: '', validUntil: '', videoLimit: ''});
   const [subtitleModal, setSubtitleModal] = useState<{isOpen: boolean, id: string, status: string, score: number | null}>({isOpen: false, id: '', status: '', score: null});
 
   // Login Form
@@ -185,13 +185,14 @@ export function AdminConsole({ initialPage = "dashboard" }: { initialPage?: Admi
 
   const saveMember = async () => {
     try {
-      const { id, plan, status, validUntil } = memberModal;
+      const { id, plan, status, validUntil, videoLimit } = memberModal;
       await fetchApi(`/users/${id}/membership`, {
         method: 'PATCH',
         body: JSON.stringify({
           plan,
           status,
-          validUntil: validUntil ? new Date(validUntil + 'T23:59:59Z').toISOString() : null
+          validUntil: validUntil ? new Date(validUntil + 'T23:59:59Z').toISOString() : null,
+          videoLimit: videoLimit === '' ? null : Number(videoLimit)
         })
       });
       setMemberModal({ ...memberModal, isOpen: false });
@@ -375,13 +376,13 @@ export function AdminConsole({ initialPage = "dashboard" }: { initialPage?: Admi
                     <TableCell className="text-sm text-muted-foreground">{u.hasAiConfig ? '已配置' : '未配置'}</TableCell>
                     <TableCell>
                       <div className="text-sm">{u.videoUsage} 个视频</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">{u.jobCount} 个任务</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{u.jobCount} 个任务 · {u.videoLimit === null ? '不限量' : `上限 ${u.videoLimit}`}</div>
                     </TableCell>
                     <TableCell>
                       <Button variant="outline" size="sm" onClick={() => {
                         const end = u.validUntil ? new Date(u.validUntil).toISOString().slice(0, 10) : '';
-                        setMemberModal({ isOpen: true, id: u.id, plan: u.plan, status: u.memberStatus, validUntil: end });
-                      }}>设置会员</Button>
+                        setMemberModal({ isOpen: true, id: u.id, plan: u.plan, status: u.memberStatus, validUntil: end, videoLimit: u.videoLimit === null ? '' : String(u.videoLimit) });
+                      }}>设置权限</Button>
                     </TableCell>
                   </TableRow>
                 )) : <TableRow><TableCell colSpan={6} className="h-24 text-center text-muted-foreground">没有符合条件的数据</TableCell></TableRow>}
@@ -573,7 +574,7 @@ export function AdminConsole({ initialPage = "dashboard" }: { initialPage?: Admi
       <Dialog open={memberModal.isOpen} onOpenChange={isOpen => setMemberModal(m => ({ ...m, isOpen }))}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>设置会员</DialogTitle>
+            <DialogTitle>设置用户权限</DialogTitle>
             <DialogDescription className="font-mono text-xs mt-1">ID: {memberModal.id}</DialogDescription>
           </DialogHeader>
           <div className="grid grid-cols-2 gap-4 py-4">
@@ -621,6 +622,18 @@ export function AdminConsole({ initialPage = "dashboard" }: { initialPage?: Admi
                   />
                 </PopoverContent>
               </Popover>
+            </div>
+            <div className="space-y-2 col-span-2">
+              <label className="text-sm font-medium">可翻译视频数量上限</label>
+              <Input
+                type="number"
+                min="0"
+                step="1"
+                placeholder="留空表示不限量"
+                value={memberModal.videoLimit}
+                onChange={e => setMemberModal(m => ({ ...m, videoLimit: e.target.value }))}
+              />
+              <p className="text-xs text-muted-foreground">默认不限量；填 0 表示禁止新增视频，填正整数表示最多可翻译的不同视频数。</p>
             </div>
           </div>
           <DialogFooter>
