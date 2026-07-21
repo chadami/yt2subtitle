@@ -440,6 +440,7 @@ async function renderSubtitles(cues, videoId, options = {}) {
   }
   const overlay = ensureOverlay();
   await applyStoredSubtitleStyle();
+  if (options.replaceCurrentCue === true) activeRenderedCue = null;
   const generation = ++renderGeneration;
   const translatedCues = Array.isArray(cues) ? cues : [];
   const machineCues = Array.isArray(options.machineCues) ? options.machineCues : [];
@@ -478,7 +479,7 @@ async function renderSubtitles(cues, videoId, options = {}) {
   return { loaded: true, cueCount: translatedCues.length };
 }
 
-async function tryLoadSubtitle() {
+async function tryLoadSubtitle(options = {}) {
   const videoId = getVideoId();
   if (!videoId) {
     clearOverlay();
@@ -487,7 +488,10 @@ async function tryLoadSubtitle() {
   const preparation = await prepareAiSubtitles();
   const prepared = preparation.payload;
   if (prepared.usesNativeTargetTrack) {
-    const rendered = await renderSubtitles(prepared.rawCues, videoId, { nativeTrack: true });
+    const rendered = await renderSubtitles(prepared.rawCues, videoId, {
+      nativeTrack: true,
+      replaceCurrentCue: options.replaceCurrentCue === true
+    });
     return {
       ...rendered,
       status: "completed",
@@ -501,7 +505,9 @@ async function tryLoadSubtitle() {
     payload: prepared
   });
   if (data.status === "completed" && Array.isArray(data.cues) && data.cues.length) {
-    const rendered = await renderSubtitles(data.cues, videoId);
+    const rendered = await renderSubtitles(data.cues, videoId, {
+      replaceCurrentCue: options.replaceCurrentCue === true
+    });
     return { ...rendered, status: "completed", accessSource: data.accessSource, publicLabel: data.publicLabel };
   } else {
     clearOverlay();
@@ -556,7 +562,7 @@ async function pollPartialSubtitles(jobId, videoId) {
 
   if (partial.status === "completed") {
     stopPartialSubtitlePolling();
-    await tryLoadSubtitle();
+    await tryLoadSubtitle({ replaceCurrentCue: true });
     return;
   }
   if (partial.status === "failed" || partial.status === "cancelled") {
@@ -871,7 +877,11 @@ function selectCaptionTrack(tracks, preferredLanguage) {
 function selectTargetCaptionTrack(tracks, targetLanguage) {
   const matching = tracks
     .filter((track) => track.baseUrl && isTargetLanguageMatch(track.languageCode, targetLanguage))
-    .sort((left, right) => Number(left.isAuto) - Number(right.isAuto));
+    .sort((left, right) => {
+      const scoreDiff = targetLanguageMatchScore(right.languageCode, targetLanguage) - targetLanguageMatchScore(left.languageCode, targetLanguage);
+      if (scoreDiff) return scoreDiff;
+      return Number(left.isAuto) - Number(right.isAuto);
+    });
   return matching[0] || null;
 }
 
@@ -886,21 +896,26 @@ function chineseScript(language) {
   return "";
 }
 
-function isTargetLanguageMatch(languageCode, targetLanguage) {
+function targetLanguageMatchScore(languageCode, targetLanguage) {
   const language = normalizeLanguageCode(languageCode);
   const target = normalizeLanguageCode(targetLanguage);
-  if (!language || !target) return false;
-  if (language === target) return true;
+  if (!language || !target) return 0;
+  if (language === target) return 3;
 
   const languagePrimary = primaryLanguageCode(language);
   const targetPrimary = primaryLanguageCode(target);
-  if (languagePrimary !== targetPrimary) return false;
-  if (targetPrimary === "zh") {
-    const targetScript = chineseScript(target);
-    const languageScript = chineseScript(language);
-    return Boolean(targetScript && languageScript && targetScript === languageScript);
-  }
-  return true;
+  if (languagePrimary !== targetPrimary) return 0;
+  if (targetPrimary !== "zh") return 2;
+
+  const targetScript = chineseScript(target);
+  const languageScript = chineseScript(language);
+  if (targetScript && languageScript && targetScript === languageScript) return 2;
+  if (!languageScript) return 1;
+  return 0;
+}
+
+function isTargetLanguageMatch(languageCode, targetLanguage) {
+  return targetLanguageMatchScore(languageCode, targetLanguage) > 0;
 }
 
 function isLanguageMatch(languageCode, preferredLanguage) {
@@ -1443,7 +1458,7 @@ function startPanelJobPolling(jobId, videoId) {
     if (job.status === "completed") {
       stopPanelJobPolling();
       await chrome.runtime.sendMessage({ type: "CHECK_SUBTITLE_JOBS" }).catch(() => {});
-      const loaded = await tryLoadSubtitle().catch(() => null);
+      const loaded = await tryLoadSubtitle({ replaceCurrentCue: true }).catch(() => null);
       setPanelState("ready", loaded?.loaded ? "AI 字幕已生成并加载" : "AI 字幕已生成");
     } else if (job.status === "failed" || job.status === "cancelled") {
       stopPanelJobPolling();

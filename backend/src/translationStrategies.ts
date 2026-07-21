@@ -45,7 +45,7 @@ export const translationStrategies: TranslationStrategy[] = [
   },
   {
     id: "ja",
-    version: "2026-07-08.1",
+    version: "2026-07-21.1",
     languageCodes: ["ja", "ja-JP"],
     displayName: "Natural Japanese subtitle strategy",
     analysisGuidance: [
@@ -56,7 +56,9 @@ export const translationStrategies: TranslationStrategy[] = [
       "Translate into natural Japanese subtitles, not literal source-language word order.",
       "Omit subjects or repeated references when Japanese naturally does so and meaning remains clear.",
       "Keep sentence endings and politeness level consistent with the speaker and video context.",
-      "Avoid overusing long noun chains; use short spoken clauses that are easy to read at video speed."
+      "Avoid overusing long noun chains; use short spoken clauses that are easy to read at video speed.",
+      "Never use the full-width comma ， in Japanese text. Use the Japanese comma 、 instead.",
+      "Keep Japanese words and established terms intact within a cue. In particular, never split a katakana word such as スタイルガイド into partial strings."
     ],
     fallbackNotes: "Japanese-specific subtitle flow and politeness guidance."
   },

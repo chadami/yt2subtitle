@@ -1,5 +1,5 @@
 import { env } from "./env.js";
-import type { CleanCue, TranslatedCue } from "./subtitles.js";
+import { normalizeTranslatedText, type CleanCue, type TranslatedCue } from "./subtitles.js";
 
 const MAX_BATCH_CUES = 50;
 const MAX_BATCH_CHARACTERS = 4_500;
@@ -100,7 +100,7 @@ export async function translateMachineCues(input: TranslateMachineCuesInput) {
     }
 
     const translated = batch.map((cue, index): TranslatedCue => {
-      const text = translatedText(translations[index]);
+      const text = normalizeTranslatedText(translatedText(translations[index]), input.targetLanguage);
       if (!text) throw new Error(`Google Cloud Translation returned empty text for cue ${cue.index}`);
       return {
         start: cue.start,

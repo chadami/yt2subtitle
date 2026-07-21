@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <style>
@@ -104,14 +104,14 @@
           <img class="brand-logo" src="icons/icon-32.png" alt="" />
           <h1>VidLingo</h1>
         </div>
-        <p class="subtitle">YouTube 字幕 AI 翻译插件</p>
+        <p id="popupSubtitle" class="subtitle">AI translation for YouTube subtitles</p>
       </header>
       <section id="account" class="account" data-state="checking">
-        <div id="accountState" class="account-state">当前账号</div>
-        <div id="accountEmail" class="account-email">正在检查账号…</div>
+        <div id="accountState" class="account-state">Current account</div>
+        <div id="accountEmail" class="account-email">Checking account…</div>
       </section>
-      <button id="openOptions" type="button">打开设置</button>
-      <p class="hint">字幕开启、自动翻译和字幕样式已移到 YouTube 播放器控制栏。</p>
+      <button id="openOptions" type="button">Open settings</button>
+      <p id="popupHint" class="hint">Subtitle display, auto-translation, and subtitle style are available in the YouTube player controls.</p>
     </main>
     <script src="popup.js"></script>
   </body>

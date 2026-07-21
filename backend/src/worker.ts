@@ -165,7 +165,7 @@ async function processSubtitleJob(jobId: string) {
   }
 
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1", [jobId]);
-  const finalized = finalizeTranslatedCues(translated);
+  const finalized = finalizeTranslatedCues(translated, record.target_lang);
   const quality = assessSubtitleQuality(cleanCues, finalized, record.target_lang);
   const finalCues = finalized.map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
   const vtt = toVtt(finalCues);

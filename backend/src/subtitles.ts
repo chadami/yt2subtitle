@@ -40,6 +40,15 @@ export function normalizeText(text: string) {
   return text.replace(/\s+/g, " ").trim();
 }
 
+function isJapaneseTarget(targetLanguage?: string) {
+  return targetLanguage?.trim().toLowerCase().replace(/_/g, "-").split("-")[0] === "ja";
+}
+
+export function normalizeTranslatedText(text: string, targetLanguage?: string) {
+  const normalized = normalizeText(text);
+  return isJapaneseTarget(targetLanguage) ? normalized.replace(/，/gu, "、") : normalized;
+}
+
 export function stripSpeakerMarker(text: string) {
   return normalizeText(
     text
@@ -586,6 +595,32 @@ function findWordBoundary(characters: string[], offset: number, maxLength: numbe
   return maxLength;
 }
 
+function isKatakanaWordCharacter(character?: string) {
+  return Boolean(character && /[\u30a0-\u30ff\u31f0-\u31ff\uff66-\uff9f]/u.test(character));
+}
+
+function protectJapaneseKatakanaBoundary(
+  characters: string[],
+  offset: number,
+  cutLength: number,
+  maximumCutLength: number
+) {
+  const cut = offset + cutLength;
+  if (!isKatakanaWordCharacter(characters[cut - 1]) || !isKatakanaWordCharacter(characters[cut])) {
+    return cutLength;
+  }
+
+  let tokenStart = cut - 1;
+  while (tokenStart > offset && isKatakanaWordCharacter(characters[tokenStart - 1])) tokenStart -= 1;
+  let tokenEnd = cut;
+  while (tokenEnd < characters.length && isKatakanaWordCharacter(characters[tokenEnd])) tokenEnd += 1;
+
+  const rightCutLength = tokenEnd - offset;
+  if (rightCutLength <= maximumCutLength) return rightCutLength;
+  if (tokenStart > offset) return tokenStart - offset;
+  return cutLength;
+}
+
 function findBoundaryCut(input: {
   characters: string[];
   offset: number;
@@ -615,8 +650,8 @@ function findBoundaryCut(input: {
   return bestLength;
 }
 
-function splitTextIntoParts(text: string, partCount: number, forceSafetySplit = false) {
-  const characters = Array.from(normalizeText(text));
+function splitTextIntoParts(text: string, partCount: number, forceSafetySplit = false, targetLanguage?: string) {
+  const characters = Array.from(normalizeTranslatedText(text, targetLanguage));
   const parts: string[] = [];
   let offset = 0;
 
@@ -653,6 +688,14 @@ function splitTextIntoParts(text: string, partCount: number, forceSafetySplit = 
         : findWordBoundary(characters, offset, safetyLimit)
     );
     cutLength = keepNumericTokenIntact(characters, offset, cutLength);
+    if (isJapaneseTarget(targetLanguage)) {
+      cutLength = protectJapaneseKatakanaBoundary(
+        characters,
+        offset,
+        cutLength,
+        remaining - (partsLeft - 1)
+      );
+    }
     const trailingText = characters.slice(offset + cutLength).join("").trim();
     if (
       trailingText
@@ -772,11 +815,11 @@ function distributeIndexes(indexes: number[] | undefined, partIndex: number, par
   return indexes.slice(start, Math.max(start + 1, end));
 }
 
-export function enforceSubtitleLimits(cues: TranslatedCue[]) {
+export function enforceSubtitleLimits(cues: TranslatedCue[], targetLanguage?: string) {
   const output: TranslatedCue[] = [];
 
   for (const cue of sanitizeTiming(cues)) {
-    const normalizedText = normalizeText(cue.text);
+    const normalizedText = normalizeTranslatedText(cue.text, targetLanguage);
     const textLength = Array.from(normalizedText).length;
     if (!textLength) continue;
     const duration = Math.max(0.2, cue.end - cue.start);
@@ -788,7 +831,7 @@ export function enforceSubtitleLimits(cues: TranslatedCue[]) {
       Math.ceil(sourceIndexSpan(cue.sourceIndexes) / MAX_SOURCE_INDEX_SPAN)
     );
     const forceSafetySplit = duration > MAX_UNBROKEN_SUBTITLE_DURATION;
-    const parts = splitTextIntoParts(normalizedText, Math.min(requiredParts, textLength), forceSafetySplit);
+    const parts = splitTextIntoParts(normalizedText, Math.min(requiredParts, textLength), forceSafetySplit, targetLanguage);
     const sourceParts = splitSourceTextIntoParts(cue.sourceText, parts.length, forceSafetySplit);
     const partDuration = duration / parts.length;
 
@@ -809,11 +852,13 @@ export function enforceSubtitleLimits(cues: TranslatedCue[]) {
   return sanitizeTiming(output);
 }
 
-function continuationPunctuation(text: string) {
+function continuationPunctuation(text: string, targetLanguage?: string) {
+  if (isJapaneseTarget(targetLanguage)) return "、";
   return /[\u3400-\u9fff]/u.test(text) ? "，" : ",";
 }
 
-function terminalPunctuation(text: string) {
+function terminalPunctuation(text: string, targetLanguage?: string) {
+  if (isJapaneseTarget(targetLanguage)) return "。";
   return /[\u3400-\u9fff]/u.test(text) ? "。" : ".";
 }
 
@@ -821,7 +866,7 @@ function endsAtReadablePunctuation(text: string) {
   return /[，,、。.!！？?；;：:…]$/u.test(normalizeText(text));
 }
 
-function addContinuationPunctuation(cues: TranslatedCue[]) {
+function addContinuationPunctuation(cues: TranslatedCue[], targetLanguage?: string) {
   return cues.map((cue, index) => {
     const next = cues[index + 1];
     if (
@@ -835,26 +880,28 @@ function addContinuationPunctuation(cues: TranslatedCue[]) {
     if (!next || next.start - cue.end > MAX_SOURCE_TIMED_GROUP_GAP) {
       return {
         ...cue,
-        text: `${cue.text}${terminalPunctuation(cue.text)}`
+        text: `${normalizeTranslatedText(cue.text, targetLanguage)}${terminalPunctuation(cue.text, targetLanguage)}`
       };
     }
 
     return {
       ...cue,
-      text: `${cue.text}${continuationPunctuation(cue.text)}`
+      text: `${normalizeTranslatedText(cue.text, targetLanguage)}${continuationPunctuation(cue.text, targetLanguage)}`
     };
   });
 }
 
-export function finalizeTranslatedCues(cues: TranslatedCue[]) {
+export function finalizeTranslatedCues(cues: TranslatedCue[], targetLanguage?: string) {
   return addContinuationPunctuation(
     enforceSubtitleLimits(
       enforceReadableDurations(
         enforcePunctuationSegmentation(
           groupBySourceTiming(cues)
         )
-      )
-    )
+      ),
+      targetLanguage
+    ),
+    targetLanguage
   );
 }
 

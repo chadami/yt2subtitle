@@ -7,7 +7,7 @@ import { getUserEntitlement } from "../entitlements.js";
 import { subtitleQueue } from "../queue.js";
 import { createGenerationKey, hashRawCues, PUBLIC_STYLE_ID } from "../subtitleLibrary.js";
 import { machineTranslationConfigured, translateMachineCues } from "../machineTranslation.js";
-import { finalizeTranslatedCues, prepareSourceCues, type TranslatedCue } from "../subtitles.js";
+import { finalizeTranslatedCues, normalizeTranslatedText, prepareSourceCues, type TranslatedCue } from "../subtitles.js";
 import { getTranslationStrategy } from "../translationStrategies.js";
 import { loadUserAiConfig } from "./ai.js";
 
@@ -339,7 +339,7 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
   try {
     await requireJobAccess(req.params.jobId, req.headers.authorization);
     const job = await query(
-      "select id as \"jobId\", status, progress from translation_jobs where id = $1",
+      "select id as \"jobId\", status, progress, target_lang as \"targetLang\" from translation_jobs where id = $1",
       [req.params.jobId]
     );
     if (!job.rows[0]) return res.status(404).json({ error: "Job not found" });
@@ -359,9 +359,15 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
       [req.params.jobId]
     );
     const translated = chunks.rows.flatMap((row) => parseChunkCues(row.cues));
-    const cues = finalizeTranslatedCues(translated).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
+    const targetLanguage = String(job.rows[0].targetLang || "");
+    const cues = finalizeTranslatedCues(translated, targetLanguage).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
     const machineCues = machineChunks.rows.flatMap((row) => parseChunkCues(row.cues))
-      .map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
+      .map(({ start, end, text, sourceText }) => ({
+        start,
+        end,
+        text: normalizeTranslatedText(text, targetLanguage),
+        sourceText
+      }));
     res.json({
       ...job.rows[0],
       hasPartial: cues.length > 0 || machineCues.length > 0,

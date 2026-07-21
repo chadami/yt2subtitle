@@ -2,6 +2,7 @@
   "name": "@youtube-ai-subtitle/extension",
   "private": true,
   "scripts": {
-    "build": "mkdir -p dist && cp manifest.json background.js contentScript.js popup.html popup.js options.html options.js icon.svg dist/ && cp -R icons dist/"
+    "build": "mkdir -p dist && cp manifest.json background.js contentScript.js popup.html popup.js options.html options.js dist/ && cp -R icons dist/",
+    "package": "npm run build && cd dist && zip -qrFS ../vidlingo-chrome-store.zip . -x '*.DS_Store' -x '__MACOSX/*'"
   }
 }
