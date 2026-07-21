@@ -58,7 +58,8 @@ export const translationStrategies: TranslationStrategy[] = [
       "Keep sentence endings and politeness level consistent with the speaker and video context.",
       "Avoid overusing long noun chains; use short spoken clauses that are easy to read at video speed.",
       "Never use the full-width comma ， in Japanese text. Use the Japanese comma 、 instead.",
-      "Keep Japanese words and established terms intact within a cue. In particular, never split a katakana word such as スタイルガイド into partial strings."
+      "Keep Japanese words and established terms intact within a cue. In particular, never split a katakana word such as スタイルガイド into partial strings.",
+      "Keep file names and multiword Latin product names intact. Never split forms such as DESIGN.md, CLAUDE.md, Claude Design, or Subtle Gradient Design System across cues."
     ],
     fallbackNotes: "Japanese-specific subtitle flow and politeness guidance."
   },

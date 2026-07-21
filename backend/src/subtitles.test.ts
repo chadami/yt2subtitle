@@ -29,3 +29,44 @@ test("Japanese safety splitting keeps katakana terms intact", () => {
   assert.equal(cues.some((cue) => cue.text.endsWith("スタイルガ")), false);
   assert.equal(cues.some((cue) => cue.text.startsWith("イド")), false);
 });
+
+test("Japanese boundary repair keeps file names and Latin product names intact", () => {
+  const cues = finalizeTranslatedCues([
+    { start: 0, end: 2, text: "主要ブランドのDESIGN." },
+    { start: 2, end: 4, text: "mdファイルが公開されています。" },
+    { start: 5, end: 7, text: "Claude、" },
+    { start: 7, end: 9, text: "Designにファイルを追加します。" }
+  ], "ja-JP");
+  const text = cues.map((cue) => cue.text).join("");
+
+  assert.ok(text.includes("DESIGN.mdファイル"));
+  assert.ok(text.includes("Claude Design"));
+  assert.equal(cues.some((cue) => cue.text.endsWith("DESIGN.")), false);
+  assert.equal(cues.some((cue) => cue.text.startsWith("mdファイル")), false);
+  assert.equal(cues.some((cue) => cue.text.endsWith("Claude、")), false);
+});
+
+test("Japanese boundary repair reconnects particles, endings, and leading punctuation", () => {
+  const cues = finalizeTranslatedCues([
+    { start: 0, end: 2, text: "Claude Design用に最適化されたスタイルガイド、" },
+    { start: 2, end: 4, text: "で、生のDESIGN.mdを変換します。" },
+    { start: 5, end: 7, text: "新しいチャットを開始すればいいので、" },
+    { start: 7, end: 9, text: "す。なぜなら、学びが引き継がれるからです。" },
+    { start: 10, end: 12, text: "ファイルを開けば、" },
+    { start: 12, end: 14, text: "、どんなブラウザでも表示できます。" }
+  ], "ja");
+  const text = cues.map((cue) => cue.text).join("");
+
+  assert.ok(text.includes("スタイルガイドで、"));
+  assert.ok(text.includes("開始すればいいのです。"));
+  assert.equal(text.includes("、、"), false);
+  assert.equal(cues.some((cue) => cue.text.startsWith("、")), false);
+});
+
+test("Japanese punctuation cleanup does not append punctuation after a quoted sentence", () => {
+  const cues = finalizeTranslatedCues([
+    { start: 0, end: 2, text: "「そのままにしてください。」、" }
+  ], "ja");
+
+  assert.equal(cues[0].text, "「そのままにしてください。」");
+});

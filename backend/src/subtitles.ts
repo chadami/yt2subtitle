@@ -46,7 +46,11 @@ function isJapaneseTarget(targetLanguage?: string) {
 
 export function normalizeTranslatedText(text: string, targetLanguage?: string) {
   const normalized = normalizeText(text);
-  return isJapaneseTarget(targetLanguage) ? normalized.replace(/，/gu, "、") : normalized;
+  return isJapaneseTarget(targetLanguage)
+    ? normalized
+      .replace(/，/gu, "、")
+      .replace(/([。！？])」、/gu, "$1」")
+    : normalized;
 }
 
 export function stripSpeakerMarker(text: string) {
@@ -354,11 +358,12 @@ export function sanitizeTiming(cues: TranslatedCue[]) {
 
 function endsAtPunctuationBoundary(text: string) {
   const normalized = normalizeText(text);
-  return BOUNDARY_PUNCTUATION.some((mark) => normalized.endsWith(mark));
+  const withoutClosingMarks = normalized.replace(/[」』）】》〉]+$/u, "");
+  return BOUNDARY_PUNCTUATION.some((mark) => withoutClosingMarks.endsWith(mark));
 }
 
 function endsAtStrongPunctuation(text: string) {
-  return /(?:[。.!！？?；;]|\[[^\]]*(?:music|音乐)[^\]]*\])$/iu.test(normalizeText(text));
+  return /(?:[。.!！？?；;][」』）】》〉]*|\[[^\]]*(?:music|音乐)[^\]]*\])$/iu.test(normalizeText(text));
 }
 
 function joinTranslatedText(first: string, second: string) {
@@ -369,6 +374,62 @@ function joinTranslatedText(first: string, second: string) {
   return /[A-Za-z0-9]$/.test(left) && /^[A-Za-z0-9]/.test(right)
     ? `${left} ${right}`
     : `${left}${right}`;
+}
+
+function mergeTranslatedCues(first: TranslatedCue, second: TranslatedCue, text: string): TranslatedCue {
+  return {
+    start: first.start,
+    end: Math.max(first.end, second.end),
+    text: normalizeText(text),
+    sourceText: joinSourceText(first.sourceText, second.sourceText),
+    sourceIndexes: mergeSourceIndexes(first.sourceIndexes, second.sourceIndexes)
+  };
+}
+
+function repairJapaneseCueBoundaries(cues: TranslatedCue[], targetLanguage?: string) {
+  if (!isJapaneseTarget(targetLanguage)) return cues;
+
+  const output: TranslatedCue[] = [];
+  for (const originalCue of sanitizeTiming(cues)) {
+    let current = {
+      ...originalCue,
+      text: normalizeTranslatedText(originalCue.text, targetLanguage).replace(/^、+/u, "")
+    };
+    if (!current.text) continue;
+
+    const previous = output[output.length - 1];
+    if (!previous) {
+      output.push(current);
+      continue;
+    }
+
+    const isFileExtensionBoundary = /[A-Za-z0-9_-]+\.$/u.test(previous.text)
+      && /^(?:md|html?|css|jsx?|tsx?|json|ya?ml|txt|pdf|pptx?|docx?)(?=[^A-Za-z]|$)/iu.test(current.text);
+    const isLatinNameBoundary = /[A-Za-z][A-Za-z0-9'’-]*、$/u.test(previous.text)
+      && /^[A-Z][A-Za-z0-9'’-]*/u.test(current.text);
+    const isDetachedParticle = /、$/u.test(previous.text)
+      && /^(?:で|を|に|が|は|も|の|と|へ|から|まで|より|って)(?=[、。！？\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}])/u.test(current.text);
+    const isDetachedDesuEnding = /で、$/u.test(previous.text) && /^す(?:[。！？]|$)/u.test(current.text);
+
+    if (isFileExtensionBoundary) {
+      output[output.length - 1] = mergeTranslatedCues(previous, current, `${previous.text}${current.text}`);
+    } else if (isLatinNameBoundary) {
+      output[output.length - 1] = mergeTranslatedCues(
+        previous,
+        current,
+        `${previous.text.slice(0, -1)} ${current.text}`
+      );
+    } else if (isDetachedDesuEnding || isDetachedParticle) {
+      output[output.length - 1] = mergeTranslatedCues(
+        previous,
+        current,
+        `${previous.text.slice(0, -1)}${current.text}`
+      );
+    } else {
+      output.push(current);
+    }
+  }
+  return output;
 }
 
 function joinSourceText(first?: string, second?: string) {
@@ -564,6 +625,7 @@ function boundaryPriorityAt(characters: string[], index: number) {
   const previous = characters[index - 1];
   const next = characters[index + 1];
   if (/[.,:]/u.test(character) && isDigit(previous) && isDigit(next)) return 0;
+  if (character === "." && /[A-Za-z0-9_-]/u.test(previous || "") && /[A-Za-z]/u.test(next || "")) return 0;
   return boundaryPriority(character);
 }
 
@@ -615,10 +677,72 @@ function protectJapaneseKatakanaBoundary(
   let tokenEnd = cut;
   while (tokenEnd < characters.length && isKatakanaWordCharacter(characters[tokenEnd])) tokenEnd += 1;
 
+  if (/^(?:で|を|に|が|は|も|の|と|へ)$/u.test(characters[tokenEnd] || "") && tokenStart > offset) {
+    return tokenStart - offset;
+  }
+
   const rightCutLength = tokenEnd - offset;
   if (rightCutLength <= maximumCutLength) return rightCutLength;
   if (tokenStart > offset) return tokenStart - offset;
   return cutLength;
+}
+
+function isLatinTermCharacter(character?: string) {
+  return Boolean(character && /[A-Za-z0-9._'’\-]/u.test(character));
+}
+
+function protectJapaneseLatinTermBoundary(
+  characters: string[],
+  offset: number,
+  cutLength: number,
+  maximumCutLength: number
+) {
+  const cut = offset + cutLength;
+  let left = cut - 1;
+  let right = cut;
+  while (left >= offset && /\s/u.test(characters[left])) left -= 1;
+  while (right < characters.length && /\s/u.test(characters[right])) right += 1;
+  if (!isLatinTermCharacter(characters[left]) || !isLatinTermCharacter(characters[right])) return cutLength;
+
+  let termStart = left;
+  while (termStart > offset) {
+    const previous = characters[termStart - 1];
+    if (isLatinTermCharacter(previous)) {
+      termStart -= 1;
+      continue;
+    }
+    if (/\s/u.test(previous || "")) {
+      let beforeSpace = termStart - 1;
+      while (beforeSpace >= offset && /\s/u.test(characters[beforeSpace])) beforeSpace -= 1;
+      if (isLatinTermCharacter(characters[beforeSpace])) {
+        termStart = beforeSpace;
+        continue;
+      }
+    }
+    break;
+  }
+
+  let termEnd = right;
+  while (termEnd < characters.length) {
+    const character = characters[termEnd];
+    if (isLatinTermCharacter(character)) {
+      termEnd += 1;
+      continue;
+    }
+    if (/\s/u.test(character || "")) {
+      let afterSpace = termEnd;
+      while (afterSpace < characters.length && /\s/u.test(characters[afterSpace])) afterSpace += 1;
+      if (isLatinTermCharacter(characters[afterSpace])) {
+        termEnd = afterSpace;
+        continue;
+      }
+    }
+    break;
+  }
+
+  if (termStart > offset) return termStart - offset;
+  const rightCutLength = termEnd - offset;
+  return rightCutLength <= maximumCutLength ? rightCutLength : cutLength;
 }
 
 function findBoundaryCut(input: {
@@ -690,6 +814,12 @@ function splitTextIntoParts(text: string, partCount: number, forceSafetySplit = 
     cutLength = keepNumericTokenIntact(characters, offset, cutLength);
     if (isJapaneseTarget(targetLanguage)) {
       cutLength = protectJapaneseKatakanaBoundary(
+        characters,
+        offset,
+        cutLength,
+        remaining - (partsLeft - 1)
+      );
+      cutLength = protectJapaneseLatinTermBoundary(
         characters,
         offset,
         cutLength,
@@ -863,7 +993,7 @@ function terminalPunctuation(text: string, targetLanguage?: string) {
 }
 
 function endsAtReadablePunctuation(text: string) {
-  return /[，,、。.!！？?；;：:…]$/u.test(normalizeText(text));
+  return /[，,、。.!！？?；;：:…][」』）】》〉]*$/u.test(normalizeText(text));
 }
 
 function addContinuationPunctuation(cues: TranslatedCue[], targetLanguage?: string) {
@@ -896,7 +1026,7 @@ export function finalizeTranslatedCues(cues: TranslatedCue[], targetLanguage?: s
     enforceSubtitleLimits(
       enforceReadableDurations(
         enforcePunctuationSegmentation(
-          groupBySourceTiming(cues)
+          groupBySourceTiming(repairJapaneseCueBoundaries(cues, targetLanguage))
         )
       ),
       targetLanguage
