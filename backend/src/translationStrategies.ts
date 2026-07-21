@@ -45,7 +45,7 @@ export const translationStrategies: TranslationStrategy[] = [
   },
   {
     id: "ja",
-    version: "2026-07-21.1",
+    version: "2026-07-21.2",
     languageCodes: ["ja", "ja-JP"],
     displayName: "Natural Japanese subtitle strategy",
     analysisGuidance: [
@@ -59,7 +59,9 @@ export const translationStrategies: TranslationStrategy[] = [
       "Avoid overusing long noun chains; use short spoken clauses that are easy to read at video speed.",
       "Never use the full-width comma ， in Japanese text. Use the Japanese comma 、 instead.",
       "Keep Japanese words and established terms intact within a cue. In particular, never split a katakana word such as スタイルガイド into partial strings.",
-      "Keep file names and multiword Latin product names intact. Never split forms such as DESIGN.md, CLAUDE.md, Claude Design, or Subtle Gradient Design System across cues."
+      "Keep file names and multiword Latin product names intact. Never split forms such as DESIGN.md, CLAUDE.md, Claude Design, or Subtle Gradient Design System across cues.",
+      "Never place 、 immediately after an opening Japanese quote such as 「 or 『. Keep the quoted name with its opening quote.",
+      "Do not split a Japanese attributive modifier from the noun it modifies. Keep forms such as 最適化されたスタイルガイド and この新しいチャット together."
     ],
     fallbackNotes: "Japanese-specific subtitle flow and politeness guidance."
   },

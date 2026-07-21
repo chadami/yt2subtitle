@@ -49,6 +49,7 @@ export function normalizeTranslatedText(text: string, targetLanguage?: string) {
   return isJapaneseTarget(targetLanguage)
     ? normalized
       .replace(/，/gu, "、")
+      .replace(/([「『（【《〈])、/gu, "$1")
       .replace(/([。！？])」、/gu, "$1」")
     : normalized;
 }
@@ -410,8 +411,13 @@ function repairJapaneseCueBoundaries(cues: TranslatedCue[], targetLanguage?: str
     const isDetachedParticle = /、$/u.test(previous.text)
       && /^(?:で|を|に|が|は|も|の|と|へ|から|まで|より|って)(?=[、。！？\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}])/u.test(current.text);
     const isDetachedDesuEnding = /で、$/u.test(previous.text) && /^す(?:[。！？]|$)/u.test(current.text);
+    const isOpenQuoteBoundary = /[「『（【《〈]$/u.test(previous.text);
+    const isAttributiveModifierBoundary = /(?:された|している|できる|になる|ではない|この新しい|その新しい|あの新しい|同じ)$/u.test(previous.text.replace(/、$/u, ""))
+      && /^[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}A-Za-z0-9]/u.test(current.text);
 
-    if (isFileExtensionBoundary) {
+    if (isOpenQuoteBoundary) {
+      output[output.length - 1] = mergeTranslatedCues(previous, current, `${previous.text}${current.text}`);
+    } else if (isFileExtensionBoundary) {
       output[output.length - 1] = mergeTranslatedCues(previous, current, `${previous.text}${current.text}`);
     } else if (isLatinNameBoundary) {
       output[output.length - 1] = mergeTranslatedCues(
@@ -419,11 +425,11 @@ function repairJapaneseCueBoundaries(cues: TranslatedCue[], targetLanguage?: str
         current,
         `${previous.text.slice(0, -1)} ${current.text}`
       );
-    } else if (isDetachedDesuEnding || isDetachedParticle) {
+    } else if (isDetachedDesuEnding || isDetachedParticle || isAttributiveModifierBoundary) {
       output[output.length - 1] = mergeTranslatedCues(
         previous,
         current,
-        `${previous.text.slice(0, -1)}${current.text}`
+        `${previous.text.replace(/、$/u, "")}${current.text}`
       );
     } else {
       output.push(current);
@@ -745,6 +751,52 @@ function protectJapaneseLatinTermBoundary(
   return rightCutLength <= maximumCutLength ? rightCutLength : cutLength;
 }
 
+function protectJapaneseAttributiveBoundary(
+  characters: string[],
+  offset: number,
+  cutLength: number,
+  maximumCutLength: number
+) {
+  const cut = offset + cutLength;
+  const left = characters.slice(offset, cut).join("");
+  const right = characters.slice(cut).join("");
+  const splitsModifier = /(?:された|している|できる|になる|ではない|この新しい|その新しい|あの新しい|同じ)$/u.test(left)
+    && /^[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}A-Za-z0-9]/u.test(right);
+  if (!splitsModifier) return cutLength;
+
+  const maximumCut = offset + maximumCutLength;
+  for (let index = cut; index < maximumCut; index += 1) {
+    if (/[、。！？]/u.test(characters[index])) return index + 1 - offset;
+  }
+  return cutLength;
+}
+
+function protectJapaneseQuoteBoundary(
+  characters: string[],
+  offset: number,
+  cutLength: number,
+  maximumCutLength: number
+) {
+  const cut = offset + cutLength;
+  const beforeCut = characters.slice(offset, cut).join("");
+  const quotePairs: Array<[string, string]> = [["「", "」"], ["『", "』"]];
+
+  for (const [opening, closing] of quotePairs) {
+    if (beforeCut.lastIndexOf(opening) <= beforeCut.lastIndexOf(closing)) continue;
+    const maximumCut = offset + maximumCutLength;
+    for (let index = cut; index < maximumCut; index += 1) {
+      if (characters[index] !== closing) continue;
+      for (let tailIndex = index + 1; tailIndex <= maximumCut; tailIndex += 1) {
+        if (/[、。！？]/u.test(characters[tailIndex] || "")) {
+          return tailIndex - offset;
+        }
+      }
+      return index + 1 - offset;
+    }
+  }
+  return cutLength;
+}
+
 function findBoundaryCut(input: {
   characters: string[];
   offset: number;
@@ -820,6 +872,18 @@ function splitTextIntoParts(text: string, partCount: number, forceSafetySplit = 
         remaining - (partsLeft - 1)
       );
       cutLength = protectJapaneseLatinTermBoundary(
+        characters,
+        offset,
+        cutLength,
+        remaining - (partsLeft - 1)
+      );
+      cutLength = protectJapaneseAttributiveBoundary(
+        characters,
+        offset,
+        cutLength,
+        remaining - (partsLeft - 1)
+      );
+      cutLength = protectJapaneseQuoteBoundary(
         characters,
         offset,
         cutLength,
@@ -963,12 +1027,22 @@ export function enforceSubtitleLimits(cues: TranslatedCue[], targetLanguage?: st
     const forceSafetySplit = duration > MAX_UNBROKEN_SUBTITLE_DURATION;
     const parts = splitTextIntoParts(normalizedText, Math.min(requiredParts, textLength), forceSafetySplit, targetLanguage);
     const sourceParts = splitSourceTextIntoParts(cue.sourceText, parts.length, forceSafetySplit);
-    const partDuration = duration / parts.length;
+    const partLengths = parts.map((part) => Math.max(1, visibleLength(part)));
+    const totalPartLength = partLengths.reduce((sum, length) => sum + length, 0);
+    const minimumPartDuration = isJapaneseTarget(targetLanguage) && duration >= parts.length * MIN_DISPLAY_DURATION
+      ? MIN_DISPLAY_DURATION
+      : 0;
+    const flexibleDuration = duration - minimumPartDuration * parts.length;
+    let consumedDuration = 0;
 
     parts.forEach((text, index) => {
-      const start = cue.start + partDuration * index;
+      const start = cue.start + consumedDuration;
       const isLast = index === parts.length - 1;
-      const end = isLast ? cue.end : start + partDuration;
+      const weightedDuration = isJapaneseTarget(targetLanguage)
+        ? minimumPartDuration + flexibleDuration * (partLengths[index] / totalPartLength)
+        : duration / parts.length;
+      const end = isLast ? cue.end : start + weightedDuration;
+      consumedDuration += weightedDuration;
       output.push({
         start,
         end,
@@ -1001,6 +1075,7 @@ function addContinuationPunctuation(cues: TranslatedCue[], targetLanguage?: stri
     const next = cues[index + 1];
     if (
       endsAtReadablePunctuation(cue.text)
+      || (isJapaneseTarget(targetLanguage) && /[「『（【《〈]$/u.test(cue.text))
       || isStandaloneMusic(cue.text)
       || (next && isStandaloneMusic(next.text))
     ) {
