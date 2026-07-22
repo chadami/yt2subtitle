@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
 import { JsonLd } from "@/components/json-ld";
 import { htmlLanguages, isLocale } from "@/lib/i18n";
 import { chromeWebStoreUrl, siteName, siteUrl } from "@/lib/site";
@@ -39,6 +40,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           ]}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );

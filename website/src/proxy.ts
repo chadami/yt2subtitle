@@ -1,19 +1,20 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-function preferredLocale(header: string | null) {
-  const value = (header || "").toLowerCase();
-  if (/(^|,)\s*zh(?:-|;|,|$)/.test(value)) return "zh";
-  if (/(^|,)\s*ja(?:-|;|,|$)/.test(value)) return "ja";
+export function localeForCountry(country: string | null) {
+  const value = country?.trim().toUpperCase();
+  if (value === "CN") return "zh";
+  if (value === "JP") return "ja";
   return "en";
 }
 
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
-  if (url.pathname === "/") {
-    url.pathname = `/${preferredLocale(request.headers.get("accept-language"))}`;
-    return NextResponse.redirect(url, 307);
-  }
-  return NextResponse.next();
+  url.pathname = `/${localeForCountry(request.headers.get("x-vercel-ip-country"))}`;
+
+  const response = NextResponse.redirect(url, 307);
+  response.headers.set("Cache-Control", "private, no-store");
+  response.headers.set("Vary", "X-Vercel-IP-Country");
+  return response;
 }
 
-export const config = { matcher: ["/:path*"] };
+export const config = { matcher: ["/"] };
