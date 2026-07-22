@@ -1,0 +1,70 @@
+{
+  "topic": "Language regulation and standardization",
+  "summary": "Explores organizations that attempt to control language, including the Académie Française, Iceland's Personal Names Committee, the Ho-Chunk Nation's language revitalization efforts, and the lack of a formal regulator for English.",
+  "tone": "informative, conversational, slightly humorous",
+  "audience": "General public interested in linguistics, language enthusiasts, PBS viewers",
+  "glossary": [
+    {
+      "source": "Académie Française",
+      "target": "アカデミー・フランセーズ",
+      "note": "French language academy; keep as proper noun with Japanese transliteration"
+    },
+    {
+      "source": "Ho-Chunk",
+      "target": "ホーチャンク",
+      "note": "Native American tribe and language; use this transliteration"
+    },
+    {
+      "source": "courriel",
+      "target": "クーリエル",
+      "note": "French equivalent for email recommended by Académie Française"
+    },
+    {
+      "source": "le wifi",
+      "target": "ル・ウィフィ",
+      "note": "Common French term for Wi-Fi; use as is"
+    },
+    {
+      "source": "Personal Names Committee",
+      "target": "人名委員会",
+      "note": "Icelandic committee regulating baby names"
+    },
+    {
+      "source": "language regulator",
+      "target": "言語規制機関",
+      "note": "General term for bodies that standardize language"
+    },
+    {
+      "source": "prescriptive",
+      "target": "規範的",
+      "note": "Describing dictionaries that prescribe correct usage"
+    },
+    {
+      "source": "descriptive",
+      "target": "記述的",
+      "note": "Describing dictionaries that describe actual usage"
+    }
+  ],
+  "properNouns": [
+    "Mark Carney",
+    "Dan Quayle",
+    "Rishi Sunak",
+    "Erica Brozovsky",
+    "Otherwords",
+    "PBS",
+    "Académie Française",
+    "Ho-Chunk Nation",
+    "Oxford English Dictionary",
+    "Royal Spanish Academy",
+    "Māori Language Commission",
+    "Editors Canada"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with polite forms (です・ます) for the host's narration.",
+    "Keep English proper nouns in katakana (e.g., マーク・カーニー).",
+    "For humorous or sarcastic lines, use colloquial expressions like なんだって or まさか.",
+    "When quoting French or Icelandic terms, use katakana with a brief explanation if needed.",
+    "Avoid overly formal or academic phrasing; prefer everyday spoken Japanese.",
+    "For the animated lips segment 'Otherwords', use アザーワーズ or keep as is with furigana if possible."
+  ]
+}

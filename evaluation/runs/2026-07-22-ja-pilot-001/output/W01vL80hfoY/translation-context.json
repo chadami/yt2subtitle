@@ -1,0 +1,56 @@
+{
+  "topic": "Global declining birth rates and demographic trends",
+  "summary": "Data journalist John Burn-Murdoch discusses the global decline in birth rates, challenging common assumptions and exploring causes such as economic factors, housing costs, and the role of smartphones, with a focus on South Korea as an extreme case.",
+  "tone": "Conversational, analytical, and explanatory with occasional humor",
+  "audience": "General public interested in social science, economics, and demographic trends",
+  "glossary": [
+    {
+      "source": "replacement rate",
+      "target": "人口置換水準",
+      "note": "Standard demographic term for 2.1 children per woman"
+    },
+    {
+      "source": "baby bust",
+      "target": "少子化",
+      "note": "Common Japanese term for declining birth rates"
+    },
+    {
+      "source": "pronatalist",
+      "target": "出生奨励派",
+      "note": "Refers to policies or views promoting higher birth rates"
+    },
+    {
+      "source": "reactionary turn",
+      "target": "反動的な傾向",
+      "note": "Describes political shift among young men in South Korea"
+    },
+    {
+      "source": "baby bonus",
+      "target": "出産一時金",
+      "note": "Financial incentive for having children"
+    }
+  ],
+  "properNouns": [
+    "John Burn-Murdoch",
+    "Christine Emba",
+    "Financial Times",
+    "Elon Musk",
+    "Dr. Oz",
+    "South Korea",
+    "China",
+    "Finland",
+    "UK",
+    "US",
+    "Mexico",
+    "Indonesia"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with polite forms (です・ます) for host and guest, but keep it natural.",
+    "Translate 'um', 'you know', 'like' as filler words like えっと, まあ, なんか only when natural; omit if unnecessary.",
+    "For data terms like 'replacement rate', use standard Japanese demographic terms.",
+    "Keep proper nouns in original English (e.g., John Burn-Murdoch) but add Japanese reading in parentheses if needed.",
+    "Use 〜ということだ or 〜そうだ for reported speech or explanations.",
+    "Avoid overly literal translations; prefer natural phrasing like '少子化が進んでいる' for 'birth rates are falling'.",
+    "For humor or sarcasm (e.g., 'not ideal'), use あまり良くなさそう or similar understatement."
+  ]
+}

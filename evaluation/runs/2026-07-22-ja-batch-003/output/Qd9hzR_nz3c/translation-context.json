@@ -1,0 +1,82 @@
+{
+  "topic": "Family trip to China and Hong Kong",
+  "summary": "A vlogger travels to Guangzhou and Hong Kong with her grandparents, reflecting on family history, culture shock, and personal growth.",
+  "tone": "casual, reflective, warm",
+  "audience": "Young adults interested in travel, family stories, and lifestyle content",
+  "glossary": [
+    {
+      "source": "clean girl look",
+      "target": "すっぴん風メイク",
+      "note": "Natural makeup trend"
+    },
+    {
+      "source": "chaperone",
+      "target": "付き添い",
+      "note": "Context: she's guiding her grandparents"
+    },
+    {
+      "source": "full-circle moment",
+      "target": "巡り合わせ",
+      "note": "Emotional return to a past situation"
+    },
+    {
+      "source": "culture shock",
+      "target": "カルチャーショック",
+      "note": "Common loanword"
+    },
+    {
+      "source": "VPN",
+      "target": "VPN",
+      "note": "Keep as is, common term"
+    },
+    {
+      "source": "data leak",
+      "target": "データ漏洩",
+      "note": "Technical term"
+    },
+    {
+      "source": "phishing",
+      "target": "フィッシング詐欺",
+      "note": "Common term"
+    },
+    {
+      "source": "satay sauce",
+      "target": "サテソース",
+      "note": "Indonesian peanut sauce"
+    },
+    {
+      "source": "cha chan teng",
+      "target": "茶餐廳",
+      "note": "Hong Kong-style cafe"
+    },
+    {
+      "source": "TVB dramas",
+      "target": "TVBドラマ",
+      "note": "Hong Kong TV series"
+    }
+  ],
+  "properNouns": [
+    "Weylie Hoang",
+    "Guangzhou",
+    "Hong Kong",
+    "Surfshark",
+    "Fujifilm X-M5",
+    "Canon V10",
+    "Fenty Beauty",
+    "Rhode",
+    "Saie",
+    "Colorgram",
+    "MCH foundation",
+    "Wah So Bing Sut"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である体 for narration, but polite ます/です体 for direct address to viewers.",
+    "Keep brand names and product names in English or katakana as appropriate.",
+    "Translate 'you' as 君 or あなた sparingly; prefer implicit subject or みんな for general audience.",
+    "For emotional moments, use natural Japanese interjections like ああ, もう, やばい.",
+    "Maintain the vlogger's reflective and warm tone; avoid overly formal expressions.",
+    "For technical terms like VPN, use common loanwords or explain briefly if needed.",
+    "When quoting others or inner thoughts, use と思う or って感じ.",
+    "Keep laughter and reactions like [laughter] as (笑) or 笑."
+  ]
+}

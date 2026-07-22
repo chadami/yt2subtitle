@@ -1,0 +1,1903 @@
+[
+  {
+    "start": 5.239,
+    "end": 7.259,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 16.375,
+    "end": 18.395,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 22.27,
+    "end": 24.29,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 30.92,
+    "end": 34.715,
+    "text": "今、ネットで話題になってる小さな本があるんです。",
+    "sourceText": "There's this little book going around the internet right now.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 34.715,
+    "end": 38.612,
+    "text": "適当なページを開くと、突然コーデが決まり、",
+    "sourceText": "You open to a [music] random page, and suddenly your outfits look intentional,",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 38.612,
+    "end": 42.894285714285715,
+    "text": "部屋がおしゃれになり、インテリアやスマホの壁紙、",
+    "sourceText": "your room looks designed, your decorations, your phone wallpaper, the",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 42.894285714285715,
+    "end": 48.204,
+    "text": "混ぜたばかりのペンキまで、全部プロがやったみたいに見えるんです。",
+    "sourceText": "the paint you just mixed, all looks like it was done by a professional.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 48.204,
+    "end": 52.2,
+    "text": "それは日本の配色の本です。",
+    "sourceText": "It's a Japanese color book.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 52.2,
+    "end": 56.4,
+    "text": "中には348の配色が載っていて、何も理解する必要がないというのがコンセプトです。",
+    "sourceText": "Inside are 348 color combinations, and the whole idea is that you don't need to understand [music] any of it.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 56.4,
+    "end": 58.31342465753424,
+    "text": "信じるしかないんです。",
+    "sourceText": "You just trust it.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 58.31342465753424,
+    "end": 62.92912280701754,
+    "text": "誰も語らないことが一つあります。それは、この色の背後にいる人物です。",
+    "sourceText": "There's one thing that no one talks about, and it's the person behind the colors.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 62.92912280701754,
+    "end": 68.8,
+    "text": "アカデミー賞を受賞し、開催されなかったオリンピックのポスターをデザインし、",
+    "sourceText": "The man who won an Academy Award, designed a poster for the Olympics that never happened, [music]",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 68.8,
+    "end": 74.36,
+    "text": "そして、あまりに美しい色彩の映画が50年も行方不明になった人物です。",
+    "sourceText": "and colored a film so beautiful it vanished for 50 years.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 74.36,
+    "end": 78.42330561330562,
+    "text": "あなたがこの本を手に取って次のコーデを選ぶ頃には、",
+    "sourceText": "By the time you're picking up this book to choose your next outfit,",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 78.42330561330562,
+    "end": 82.71567567567568,
+    "text": "彼の独創的な仕事は死後60年経っても生き続けています。",
+    "sourceText": "[music] his ingenious work still lives on 60 years after his death.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 82.71567567567568,
+    "end": 86.60456635740218,
+    "text": "だから、他人に服を選ばせる前に、彼が実際どんな人物だったかお話しします。",
+    "sourceText": "So, before you let a stranger dress you, let me tell you who he",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 86.60456635740218,
+    "end": 90.12,
+    "text": "なぜなら、その物語はあなたが思うよりずっと素晴らしいからです。",
+    "sourceText": "actually was, because the story is so much better than you might think.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 90.12,
+    "end": 93.16210526315788,
+    "text": "そして、もしかしたら本そのものよりも面白いかもしれません。",
+    "sourceText": "And maybe perhaps better than the actual book.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 93.16210526315788,
+    "end": 98.72,
+    "text": "今回は、配色辞典の生みの親、和田三造についてです。",
+    "sourceText": "This is about Sanzo Wada, the man behind the color dictionary.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 98.72,
+    "end": 102.98924731182795,
+    "text": "1883年、兵庫県に生まれた和田三造は、",
+    "sourceText": "Born in 1883 in Hyogo, Sanzo Wada was the",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 102.98924731182795,
+    "end": 105.87733333333333,
+    "text": "田舎医者の四男でした。",
+    "sourceText": "fourth son of a country [music] doctor.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 105.87733333333333,
+    "end": 111.14814350945858,
+    "text": "伝説によると、子供の頃、柔道の授業で先生を殴って退学になり、",
+    "sourceText": "The story goes that as a kid, he hit one of his teachers during judo class and got",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 111.14814350945858,
+    "end": 117.77589041095891,
+    "text": "16歳で東京に逃げ出し、画家になるという一つの計画だけを胸に抱いていたそうです。",
+    "sourceText": "expelled, and then more or less ran away to Tokyo at 16 with one plan, to become a painter.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 117.77589041095891,
+    "end": 121.60328767123288,
+    "text": "日本の伝記で彼を表す言葉は、",
+    "sourceText": "The words that describe him in [music] Japanese",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 121.60328767123288,
+    "end": 124.68,
+    "text": "自由、大胆、規格外。",
+    "sourceText": "biographies are free, bold, larger than life.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 124.68,
+    "end": 131.03555555555556,
+    "text": "三造は、西洋絵画を日本に紹介した黒田清輝に師事し、",
+    "sourceText": "Sanzo studied oil painting under Kuroda Seiki, the man who essentially introduced Western",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 131.03555555555556,
+    "end": 136.36,
+    "text": "1904年に東京美術学校を卒業しました。",
+    "sourceText": "[music] painting to Japan, and graduated from the Tokyo School of Fine Arts in 1904.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 136.36,
+    "end": 142.72000000000003,
+    "text": "24歳で、彼は最初の傑作『南風』を描きました。",
+    "sourceText": "At 24, he painted [music] his first masterpiece, South Wind.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 154.76,
+    "end": 157.959,
+    "text": "漂流する船に乗った4人の難破した男たち。",
+    "sourceText": "Four shipwrecked men on a drifting boat.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 157.959,
+    "end": 161.8213831831832,
+    "text": "中央の上半身裸の人物が水平線を見つめており、",
+    "sourceText": "A bare-chested figure in the center staring down the",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 161.8213831831832,
+    "end": 165.8047837837838,
+    "text": "批評家たちはその時点で何かに気づいていました。",
+    "sourceText": "horizon, and critics noticed something even then.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 165.8047837837838,
+    "end": 169.73,
+    "text": "中央の男の体は日本人には見えない。",
+    "sourceText": "The body of the man in the middle doesn't look Japanese.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 169.73,
+    "end": 172.67277108433734,
+    "text": "西洋人だ。完璧な夢のような姿。",
+    "sourceText": "It's Western. Perfect dream-like figure.",
+    "sourceIndexes": [
+      23,
+      24
+    ]
+  },
+  {
+    "start": 172.67277108433734,
+    "end": 177.48,
+    "text": "しかし三造は、借り物のヨーロッパの言語で描く若い日本人だった。",
+    "sourceText": "But Sanzo was a young Japanese man painting in a borrowed European language [music]",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 177.48,
+    "end": 182.4,
+    "text": "日本の主題を描くのは、当時としては非常に異例だった。",
+    "sourceText": "about a Japanese subject, quite out of the ordinary for the time.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 182.4,
+    "end": 190.28,
+    "text": "『南風』は日本初の官展である文展で最高賞を受賞した。",
+    "sourceText": "South Wind won the top prize at the very first government-sponsored art exhibition in Japan, the Bunten exhibition.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 190.28,
+    "end": 195.36,
+    "text": "現在は東京国立近代美術館所蔵の重要文化財だ。",
+    "sourceText": "It's now an important cultural property living at the Museum of Modern Art, Tokyo.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 195.36,
+    "end": 200.76,
+    "text": "わずか24歳で、和田は日本で最も称賛される油彩画家の一人だった。",
+    "sourceText": "At just 24, Wada was one of the most celebrated oil painters in the country.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 200.76,
+    "end": 204.8,
+    "text": "そのまま名声に乗って一生を終えることもできた。",
+    "sourceText": "He could have just ridden that horse for the rest of his life.",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 204.8,
+    "end": 209.519,
+    "text": "しかし政府は彼をヨーロッパに派遣し、彼は8年間滞在した。",
+    "sourceText": "Instead, the government sent him to Europe, and he stayed for 8 years.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 209.519,
+    "end": 212.20062857142858,
+    "text": "でも彼は絵画だけを学んだわけではない。",
+    "sourceText": "But he didn't only study painting.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 212.20062857142858,
+    "end": 215.04,
+    "text": "インド、ビルマ、ジャワにも足を運んだ。",
+    "sourceText": "He went to India, to Burma, to Java.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 215.04,
+    "end": 219.44,
+    "text": "そこで布、染料、織物、さまざまな文化が色を布に取り入れる方法を学んだ。",
+    "sourceText": "There he studied cloth, dyes, weaving, all the ways different cultures put color [music] into fabric.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 219.44,
+    "end": 222.56,
+    "text": "その間に、彼の中で何かが変わった。",
+    "sourceText": "Whilst there, something shifts in him.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 222.56,
+    "end": 227.94140000000002,
+    "text": "1915年に帰国し、名声高い西洋式油彩画家が、",
+    "sourceText": "He came home in 1915, and the celebrated Western-style oil painter started [music]",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 227.94140000000002,
+    "end": 234.05,
+    "text": "伝統的な日本画、木版画、染織、漆器、陶芸を描き始めた。",
+    "sourceText": "painting in the traditional Japanese style, woodblock, textile, lacquer, ceramics.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 234.05,
+    "end": 237.65823333333333,
+    "text": "彼は一つの流派にこだわるのをやめ、両方を行き来し始めた。",
+    "sourceText": "He stops [music] choosing a side and start moving between",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 237.65823333333333,
+    "end": 240.5784,
+    "text": "誰も記録していないことに気づいたからだ。",
+    "sourceText": "them because he noticed something nobody was writing down.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 240.5784,
+    "end": 245.2,
+    "text": "日本人の目と西洋人の目では、色の見え方が違った。[音楽]、",
+    "sourceText": "The Japanese eye and the Western eye didn't read color the same way. [music]",
+    "sourceIndexes": [
+      39,
+      40
+    ]
+  },
+  {
+    "start": 245.2,
+    "end": 249.64812727272727,
+    "text": "当時の西洋の色彩理論は体系に基づいていた。",
+    "sourceText": "Western color theory of the time was built on systems, the color wheel, the primary and secondary",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 249.64812727272727,
+    "end": 256.107,
+    "text": "色相環、原色と二次色、証明できる数学。しかし和田が育った色は違った。",
+    "sourceText": "[music] colors, mathematics you could prove, but the color Wada grew up with was different.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 256.107,
+    "end": 259.8074189189189,
+    "text": "[音楽]着物の落ち着いた染料、寺院の顔料、",
+    "sourceText": "[music] The muted dyes of a kimono, temple pigments,",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 259.8074189189189,
+    "end": 262.91249999999997,
+    "text": "木版画の柔らかなグラデーション。",
+    "sourceText": "the soft gradations of a wood block print.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 262.91249999999997,
+    "end": 266.95466666666664,
+    "text": "季節や感情や素材に名前がついた色。",
+    "sourceText": "[music] Colors that had names for seasons, for feelings, for materials.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 266.95466666666664,
+    "end": 271.35612,
+    "text": "すべて異なる色で、隣り合って初めて意味をなす。",
+    "sourceText": "All different colors that only [music] made sense sitting next to each other.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 271.35612,
+    "end": 274.05064,
+    "text": "それをカタログ化した者は誰もいなかった。",
+    "sourceText": "Nobody had ever cataloged that.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 274.05064,
+    "end": 279.64,
+    "text": "そこで彼はそれを変える決意をし、その過程で色の世界を永久に変えた。",
+    "sourceText": "So, he decided to change that and while he was doing so, changing the world of color for good.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 279.64,
+    "end": 281.653,
+    "text": "この執着がどこから始まったか、こんな話がある。",
+    "sourceText": "There's a story about where this obsession started.",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 281.653,
+    "end": 286.24,
+    "text": "ヨーロッパからの帰途、彼はインドに立ち寄った。そこで名もない男が、",
+    "sourceText": "[music] On his way home from Europe, he stopped in India where an unnamed man [music]",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 286.24,
+    "end": 291.37333333333333,
+    "text": "貿易会社に勤める男が、退屈でとても高くつく問題を教えてくれた。",
+    "sourceText": "working for a trading company told him about a very boring, very expensive problem.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 291.37333333333333,
+    "end": 294.8883333333333,
+    "text": "国際ビジネスでは、誰も色を決められませんでした。",
+    "sourceText": "In international business, nobody could agree on a color.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 294.8883333333333,
+    "end": 299.84,
+    "text": "[音楽]ある色合いを注文しても、別のものが届くのです。",
+    "sourceText": "[music] You'd order one shade and receive another.",
+    "sourceIndexes": [
+      52,
+      53
+    ]
+  },
+  {
+    "start": 299.84,
+    "end": 301.863,
+    "text": "共通の基準も標準もなかった。",
+    "sourceText": "There was no shared reference, no standard.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 301.863,
+    "end": 307.08,
+    "text": "和田はそれが許せなかった。彼は何年も色のついた素材の切れ端を集めていた。",
+    "sourceText": "Wada couldn't let that go. [music] He'd been collecting scraps of colored materials for years.",
+    "sourceIndexes": [
+      55,
+      56
+    ]
+  },
+  {
+    "start": 307.08,
+    "end": 310.12,
+    "text": "キャンバス、布、革、紙、陶器、",
+    "sourceText": "Canvas, cloth, leather, paper, ceramic, [music]",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 310.12,
+    "end": 314.11064935064934,
+    "text": "金属、パステル、クレヨン——行く先々で。",
+    "sourceText": "metal, pastel, and crayons everywhere he went.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 314.11064935064934,
+    "end": 316.0418181818182,
+    "text": "学生たちはその山にあだ名をつけていた。",
+    "sourceText": "His students had a nickname for the pile.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 316.0418181818182,
+    "end": 319.24,
+    "text": "彼らはそれを「10万個の色のゴミ」と呼んでいた。",
+    "sourceText": "They called [music] it a hundred thousand pieces of color garbage.",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 319.24,
+    "end": 324,
+    "text": "彼はそのゴミを、現代日本の色彩の基盤に変えた。",
+    "sourceText": "He turned that garbage into the foundation of color in modern Japan.",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 324,
+    "end": 327.7614814814815,
+    "text": "その10万の切れ端は500色に絞られ、",
+    "sourceText": "Those hundred thousand scraps were narrowed down to",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 327.7614814814815,
+    "end": 330.04,
+    "text": "絹に染められた。",
+    "sourceText": "five hundred final colors, then dyed into silk [music]",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 330.04,
+    "end": 334.2593394858273,
+    "text": "三種類の織り方で。同じ色でも生地が違えば見え方が違うと、",
+    "sourceText": "in three different weaves because Sanzo understood that",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 334.2593394858273,
+    "end": 336.86117567567567,
+    "text": "三造は理解していたからだ。",
+    "sourceText": "the same color reads differently on different fabrics.",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 336.86117567567567,
+    "end": 339.919,
+    "text": "これが日本初の体系化された色見本となった。",
+    "sourceText": "This became Japan's first organized color samples. [music]",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 339.919,
+    "end": 345.2,
+    "text": "1927年、彼は後の日本色彩研究所を設立し、",
+    "sourceText": "In 1927, he founded what would become the Japan Color Research Institute [music]",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 345.2,
+    "end": 347.4,
+    "text": "生涯にわたって運営した。",
+    "sourceText": "and ran it for the rest of his life.",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 347.4,
+    "end": 353.56,
+    "text": "1931年、彼は約1300色の参考セットを天皇に献上した。",
+    "sourceText": "In 1931, he presented a reference set of around 1,300 colors to the emperor.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 353.56,
+    "end": 354.88,
+    "text": "1951年、",
+    "sourceText": "In 1951, [music]",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 354.88,
+    "end": 358.207,
+    "text": "彼は色の標準セットを完成させました。",
+    "sourceText": "he completed his set of color standards, 1,062 colors, [music] Japan's",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 358.207,
+    "end": 364.37,
+    "text": "1,062色、[音楽] 色合いが均等かつ科学的に配置された日本初の色彩システムです。",
+    "sourceText": "first color system with the shades spaced evenly and scientifically.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 364.37,
+    "end": 367.7503923735839,
+    "text": "[音楽]彼は10年かけてマンセル色彩システムを物理的なものに変えました。",
+    "sourceText": "[music] He spent 10 years turning the Munsell",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 367.7503923735839,
+    "end": 369.6166233766234,
+    "text": "[音楽]チップにした。",
+    "sourceText": "color system into physical [music] chips.",
+    "sourceIndexes": [
+      71,
+      72
+    ]
+  },
+  {
+    "start": 369.6166233766234,
+    "end": 373.89807995925645,
+    "text": "あなたのFYPにあるあのかわいい小さな本は、",
+    "sourceText": "The pretty little book on your FYP page was made by the man who more",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 373.89807995925645,
+    "end": 379.16,
+    "text": "一国の色彩のルールブックをほぼ書き上げた男が作ったものだ。",
+    "sourceText": "or less wrote the rulebook for what color is in an entire country.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 379.16,
+    "end": 383.5254054054054,
+    "text": "布地の染色から印刷、工業規格に至るまで、彼の足跡はすべてに残っている。",
+    "sourceText": "From fabric dye to printing to [music] industrial standards, his fingerprints are on all of it.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 383.5254054054054,
+    "end": 387.62393822393824,
+    "text": "自由奔放で掴みどころのない画家か、",
+    "sourceText": "The free-spirited runaway painter who couldn't be pinned down or the careful scientist",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 387.62393822393824,
+    "end": 394.28,
+    "text": "それとも色を正確に読み取る機械で千の色を測定した慎重な科学者か。",
+    "sourceText": "who measured the thousand colors with a machine built to read color exactly.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 394.28,
+    "end": 397.1187096774193,
+    "text": "たいていの人はどちらか一方です。",
+    "sourceText": "Most people are one of the other.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 397.1187096774193,
+    "end": 398.32301075268816,
+    "text": "和田はその両方でした。",
+    "sourceText": "Wada was both.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 398.32301075268816,
+    "end": 402.28,
+    "text": "そして、その組み合わせこそが配色辞典を機能させているのです。",
+    "sourceText": "And that combination is exactly what makes the color book work.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 402.28,
+    "end": 404.33714285714285,
+    "text": "時は流れて1953年。",
+    "sourceText": "Fast forward, it's 1953.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 404.33714285714285,
+    "end": 406.48,
+    "text": "和田はもう70歳です。",
+    "sourceText": "Wada is now 70 years old.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 406.48,
+    "end": 411.36857142857144,
+    "text": "大映というスタジオが、非常に高額な賭けに出ようとしていました。初のカラー映画です。",
+    "sourceText": "A studio called Daiei is about to make a very expensive gamble, their first color film.",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 411.36857142857144,
+    "end": 416.16,
+    "text": "それまで日本はカラー映画にほとんど苦戦していました。",
+    "sourceText": "Up until this point, Japan had mostly struggled with color films.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 416.16,
+    "end": 421.28,
+    "text": "画質は不安定で安っぽく、ハリウッドがはるかに先を行っていました。",
+    "sourceText": "It was fragile, it looked cheap, and Hollywood was miles ahead.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 421.28,
+    "end": 426.64,
+    "text": "大映は西洋市場に進出したいと考え、すべてをカラーに賭けたのです。",
+    "sourceText": "And Daiei wanted to break into the Western market, and they bet everything on color.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 426.64,
+    "end": 430.08013698630134,
+    "text": "その映画は『地獄門』。中世の悲劇で、",
+    "sourceText": "The film was called Gate of Hell, a medieval tragedy",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 430.08013698630134,
+    "end": 435.01369863013696,
+    "text": "コダック製の輸入イーストマンカラーフィルムで撮影されました。",
+    "sourceText": "shot on imported Eastman color film made by Kodak.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 435.01369863013696,
+    "end": 439.7468493150685,
+    "text": "海外公開された初の日本カラー映画となり、",
+    "sourceText": "It would become the first Japanese color film to ever release overseas, and",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 439.7468493150685,
+    "end": 444.48,
+    "text": "色彩と衣装を任されたのが和田三造でした。",
+    "sourceText": "the man they put in charge of the color and the costumes was Sanzo Wada.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 444.48,
+    "end": 448.51914418604656,
+    "text": "西洋に日本の映画の実力を見せつけるという目的の映画に、",
+    "sourceText": "Think about who they hired for a film whose entire",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 448.51914418604656,
+    "end": 451.40160000000003,
+    "text": "誰を雇ったか考えてみてください。",
+    "sourceText": "purpose was to show the West what Japanese film could do.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 451.40160000000003,
+    "end": 455.9936,
+    "text": "衣装の専門家でも受賞歴のある監督でもなく、彼らが雇ったのは、",
+    "sourceText": "Not a costume guy or an award-winning director, they hired",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 455.9936,
+    "end": 460.9248,
+    "text": "日本でただ一人、生涯をかけて一つの問いに取り組んできた人物でした。",
+    "sourceText": "the one person in Japan who had spent his entire life on a",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 460.9248,
+    "end": 464.16,
+    "text": "色同士が隣り合うとどう振る舞うのか？",
+    "sourceText": "single question, how do colors behave next to each other?",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 464.16,
+    "end": 466.3413043478261,
+    "text": "そして彼は期待以上の成果を上げました。",
+    "sourceText": "And he did more than deliver.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 466.3413043478261,
+    "end": 468.74826086956523,
+    "text": "批評家たちはただ「美しい」とは言いませんでした。",
+    "sourceText": "Critics didn't just call pretty.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 468.74826086956523,
+    "end": 473.6,
+    "text": "色彩が演技をしている、と言ったのです。異なる感情に異なる色。",
+    "sourceText": "They said the colors were doing the acting. A different color for a different feeling.",
+    "sourceIndexes": [
+      91,
+      92
+    ]
+  },
+  {
+    "start": 473.6,
+    "end": 478.36,
+    "text": "金色はろうそくの灯り、赤は執着、冷たい青は孤独。",
+    "sourceText": "Gold for candlelight, red for obsession, cold blue for isolation.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 478.36,
+    "end": 482.2270422535211,
+    "text": "映画の途中に競馬のシーンがあり、騎手は色分けされています。",
+    "sourceText": "There's a horse race in the middle of the film where the riders are color-coded.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 482.2270422535211,
+    "end": 483.64,
+    "text": "赤と紫の対決。",
+    "sourceText": "Red against purple.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 483.64,
+    "end": 485.64,
+    "text": "ライバル心を感じさせるためです。",
+    "sourceText": "Just so you can feel the rivalry.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 485.64,
+    "end": 490.32,
+    "text": "その後、監督たちはその手法を何年も研究しました。",
+    "sourceText": "Directors studied that trick for years afterward.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 490.32,
+    "end": 494.52,
+    "text": "ある評論家はこの映画全体を「動く絵画」と呼びました。",
+    "sourceText": "One writer called the whole film a painting in motion.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 494.52,
+    "end": 499.784,
+    "text": "1954年、『地獄門』はカンヌ国際映画祭でグランプリ、その年の最高賞を受賞しました。",
+    "sourceText": "In 1954, Gate of Hell won the Grand Prix at the Cannes Film Festival, the top prize of that year.",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 499.784,
+    "end": 503.4293333333333,
+    "text": "そして翌春のアカデミー賞で、",
+    "sourceText": "And when the Academy Awards came around the following spring,",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 503.4293333333333,
+    "end": 509.52,
+    "text": "この映画は外国語映画賞として名誉オスカーを受賞しました。",
+    "sourceText": "the film took an honorary Oscar for the best foreign films.",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 509.52,
+    "end": 514.84,
+    "text": "そして和田三造自身がアカデミー賞衣裳デザイン賞を受賞しました。",
+    "sourceText": "And Sanzo Wada personally won the Academy Award for best costume design.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 514.84,
+    "end": 517.8155866666667,
+    "text": "つまり、これは委員会が作った無名の見本帳ではないんです。",
+    "sourceText": "So, this is not an anonymous swatchbook made by a committee.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 517.8155866666667,
+    "end": 521.8060159064328,
+    "text": "あなたがTシャツを選ぶときに使っているパレットを構成したのと同じ目が、",
+    "sourceText": "The exact same eye that arranged the palette you're using to",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 521.8060159064328,
+    "end": 524.76,
+    "text": "映画に色をつけてオスカーを獲った目なんです。",
+    "sourceText": "pick a t-shirt is the eye that won an Oscar coloring a film.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 524.76,
+    "end": 530.04,
+    "text": "40年後、日本政府は彼を文化功労者に選びました。",
+    "sourceText": "40 years later, the Japanese government named him a person of cultural merit.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 530.04,
+    "end": 534.7876923076923,
+    "text": "残念ながら、彼は1967年に84歳で亡くなりました。",
+    "sourceText": "Unfortunately, he passed in 1967 at the age of 84.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 534.7876923076923,
+    "end": 538.0491858795571,
+    "text": "『地獄門』をあれほど美しくしたもの、",
+    "sourceText": "The very thing that made Gate of Hell so beautiful, that cheap",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 538.0491858795571,
+    "end": 543.9448101265823,
+    "text": "あの安くて便利なイーストマンカラーフィルムこそが、同時にそれを破壊したものでした。",
+    "sourceText": "convenient Eastman color, was the thing that also destroyed it.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 543.9448101265823,
+    "end": 545.16,
+    "text": "それは不安定だったんです。",
+    "sourceText": "It was unstable.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 545.16,
+    "end": 549.1643835616438,
+    "text": "染料は数十年のうちに褪せてしまいました。",
+    "sourceText": "The dyes faded within a couple of decades.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 549.1643835616438,
+    "end": 552.12,
+    "text": "文字通り、和田が作った通りの映画を見ることができなかったんです。",
+    "sourceText": "You literally could not see the film the way Wada made it.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 552.12,
+    "end": 555.5600000000001,
+    "text": "彼がオスカーを獲った色が、プリントから抜け落ちていました。",
+    "sourceText": "The color he'd won an Oscar for drained out of the print.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 555.5600000000001,
+    "end": 560.306976744186,
+    "text": "約50年間、これまで作られた中で最も美しいカラー映画の一つは、",
+    "sourceText": "For about 50 years, one of the most beautiful",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 560.306976744186,
+    "end": 562.88,
+    "text": "事実上失われていました。",
+    "sourceText": "color films ever made was in effect gone.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 562.88,
+    "end": 568.0424,
+    "text": "完全な修復が必要でした。色情報を静かに保存していた白黒マスターから再構築して、",
+    "sourceText": "It took a full restoration, rebuilt from black and white masters",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 568.0424,
+    "end": 570.36,
+    "text": "それを復元したのです。",
+    "sourceText": "that had quietly preserved the color information to bring it back.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 570.36,
+    "end": 574.8,
+    "text": "彼の色は消え、そして彼の色は戻ってきました。",
+    "sourceText": "His colors disappeared, and then his colors came back.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 574.8,
+    "end": 577.12,
+    "text": "しかし、こういうことが起きたのはこれだけではありません。",
+    "sourceText": "But this wasn't the only time something like this happened.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 577.12,
+    "end": 582.5370952012383,
+    "text": "1936年に遡ると、和田は1940年東京オリンピックの公式ポスターをデザインしました。",
+    "sourceText": "Going back to 1936, Wada designed the official poster for the 1940 Tokyo",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 582.5370952012383,
+    "end": 586.188894736842,
+    "text": "東洋で初めて開催されるはずだったオリンピックです。",
+    "sourceText": "Olympics, the first Olympics that would have been held in the East.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 586.188894736842,
+    "end": 589.9785610902255,
+    "text": "そこには[音楽]そびえ立つ寺院の守護像の前で競技する選手たちが描かれていましたが、",
+    "sourceText": "It featured [music] athletes in front of towering",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 589.9785610902255,
+    "end": 592.126,
+    "text": "その大会は実現しませんでした。",
+    "sourceText": "temple guarding statue, but those games never happened.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 592.126,
+    "end": 597.96,
+    "text": "[音楽]1940年東京大会は、戦争への道のりによって中止されました。",
+    "sourceText": "[music] Tokyo 1940 was canceled by the March towards war.",
+    "sourceIndexes": [
+      117,
+      118
+    ]
+  },
+  {
+    "start": 597.96,
+    "end": 600.1297959183673,
+    "text": "彼は、存在する前に消えてしまったオリンピックのために、",
+    "sourceText": "He designed a bold and beautiful piece for an",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 600.1297959183673,
+    "end": 602.12,
+    "text": "大胆で美しい作品をデザインしました。[音楽]、",
+    "sourceText": "Olympics that vanished before [music] they existed.",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 602.12,
+    "end": 607.56,
+    "text": "1930年代、和田は弟子たちのためのいわばスタジオを運営していました。[音楽]、",
+    "sourceText": "In the 1930s, Wada ran what were basically studios for disciples, [music]",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 607.56,
+    "end": 612.431,
+    "text": "彼の研究所に集まった若い芸術家たちや、頻繁に訪れる学生たちです。",
+    "sourceText": "young artists who gathered around him at his labs and students who kept dropping by.",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 612.6,
+    "end": 619.9813698630137,
+    "text": "計画は野心的で、14人のクリエイターによる500点の全く新しいデザインをコレクションとして出版するというものでした。",
+    "sourceText": "The plan was ambitious, 500 brand new designs from 14 creators published as a collection.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 619.9813698630137,
+    "end": 623.953579736366,
+    "text": "着物、陶器、漆器、カーペット、ポスター、包装紙。",
+    "sourceText": "Kimono, ceramics, lacquer, carpets, posters, wrapping",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 623.953579736366,
+    "end": 628.5033333333333,
+    "text": "ある時代の趣味をまるごと切り取ったスナップショットだった。",
+    "sourceText": "paper, a snapshot of an entire [music] era's taste.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 628.5033333333333,
+    "end": 630.4183098591549,
+    "text": "でももちろん、その計画を台無しにする何かが起きた。",
+    "sourceText": "But of course something had to ruin that plan.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 630.4183098591549,
+    "end": 633.8891428571429,
+    "text": "台風が直撃し、原画のほとんどが破損した。",
+    "sourceText": "A typhoon [music] hit and destroyed most of the original artworks.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 633.8891428571429,
+    "end": 638.56,
+    "text": "計画された500点のうち、印刷に耐えたのは約200点だけだった。",
+    "sourceText": "Out of 500 planned, only about [music] 200 survived to print.",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 638.56,
+    "end": 640.53,
+    "text": "そして、配色辞典自体もまったく同じことをした。",
+    "sourceText": "And the color book itself did the exact same thing.",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 640.53,
+    "end": 644.89275,
+    "text": "[音楽]1933年と34年に出版されたオリジナルの全6巻は、",
+    "sourceText": "[music] The original six volumes published",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 644.89275,
+    "end": 647.147,
+    "text": "戦後に絶版となった。",
+    "sourceText": "1933 and 34 went out of print after war.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 647.147,
+    "end": 651.1516909090909,
+    "text": "[音楽]手描きの色がすべてのページに貼り付けられた、",
+    "sourceText": "[music] Hand painted color pasted onto every page, a first",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 651.1516909090909,
+    "end": 655.48,
+    "text": "前例のない作品で、実際に購入できる人はほとんどいなかった。",
+    "sourceText": "of its kind work that almost nobody could actually buy.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 655.48,
+    "end": 658.88,
+    "text": "あのフィルムと同じように、消え去った。",
+    "sourceText": "Faded out just like the film.",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 658.88,
+    "end": 664.24,
+    "text": "そして2010年、京都の出版社・青幻舎が、ひっそりと大事なことをやった。",
+    "sourceText": "Then in 2010, a Kyoto publisher called [music] Seigensha did something important very quietly.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 664.24,
+    "end": 667.0655555555555,
+    "text": "彼らはその6巻を元に、",
+    "sourceText": "They took those six volumes and narrowed 348",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 667.0655555555555,
+    "end": 671.96,
+    "text": "348の配色を1冊のポケットサイズの本にまとめた。",
+    "sourceText": "combinations into a single pocket-sized book.",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 671.96,
+    "end": 674.8,
+    "text": "そして、非常に重要な2つの小さな変更を加えた。",
+    "sourceText": "And they made two small changes that mattered enormously.",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 674.8,
+    "end": 680.0053670886076,
+    "text": "CMYK値を追加し、色が画面でも使えるようにした。",
+    "sourceText": "They added CMYK values so the colors would work on a screen.",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 680.0053670886076,
+    "end": 685.28,
+    "text": "また、後ろに切り離せるカラーチップを追加した。実際に切り取って使える色の断片だ。",
+    "sourceText": "They also added tear-out color chips in the back, actual pieces of color you can cut out [music]",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 685.28,
+    "end": 690.2,
+    "text": "壁や布、写真に当ててみることができる。",
+    "sourceText": "and hold against a wall, a fabric, a photo.",
+    "sourceIndexes": [
+      138
+    ]
+  },
+  {
+    "start": 690.2,
+    "end": 694.1013203367302,
+    "text": "和田三造の他の作品と同じように、この90年前の本は、破壊されること、",
+    "sourceText": "Just like Sanzo Wada's other artwork, this 90-year-old book was",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 694.1013203367302,
+    "end": 697.4464864864865,
+    "text": "ハサミでバラバラにされることを前提に再デザインされた。",
+    "sourceText": "redesigned to be destroyed, to be taken apart with scissors.",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 697.4464864864865,
+    "end": 701.2846801231611,
+    "text": "そして2020年、第二巻[音楽]が登場した。",
+    "sourceText": "Then came a second volume [music] in 2020, the applied edition, 72 palettes tied to",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 701.2846801231611,
+    "end": 709.32,
+    "text": "応用編で、日本の12か月に対応した72のパレット、季節としての色、そして161の実在するデザインが収められている。",
+    "sourceText": "the 12 months of the Japanese year, color as seasons, and 161 real designs pulled",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 709.32,
+    "end": 714.0054545454545,
+    "text": "1930年代のものから、台風を生き延びたものも含まれ、",
+    "sourceText": "from the 1930s, including the ones that survived",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 714.0054545454545,
+    "end": 717.4,
+    "text": "実際に使われている色を示している。",
+    "sourceText": "the typhoon, showing the colors actually in use.",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 717.4,
+    "end": 722.5747368421053,
+    "text": "そしてその本、半世紀にわたって失われていた本は、",
+    "sourceText": "And that book, the one that was gone for half a century, is now so steadily",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 722.5747368421053,
+    "end": 729.24,
+    "text": "今や安定した人気を誇り、私が今手にしているこのコピーは83刷目だ。",
+    "sourceText": "popular that the copy that the copy I'm holding right now is the 83rd print.",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 729.24,
+    "end": 734.08,
+    "text": "彼が色を並べてから90年後、彼の色は再び戻ってきた。",
+    "sourceText": "90 years after he arranged them on a phone screen, his colors came back again.",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 734.08,
+    "end": 737.2592592592592,
+    "text": "死んだ画家が、明日の朝に見知らぬ人が着るものを静かに選んでいる。",
+    "sourceText": "A dead painter quietly picking out what a stranger wears tomorrow morning.",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 737.2592592592592,
+    "end": 741.6041558441558,
+    "text": "[音楽]どうしても気になることが一つ残っている。",
+    "sourceText": "[music] There's one thing left that I can't get past.",
+    "sourceIndexes": [
+      145,
+      146
+    ]
+  },
+  {
+    "start": 741.6041558441558,
+    "end": 744.3848648648649,
+    "text": "この本は辞典と呼ばれていますが、実際は違います。",
+    "sourceText": "The book is called a dictionary, and it [music] actually isn't one.",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 744.3848648648649,
+    "end": 746.72,
+    "text": "辞典は物事の意味を教えてくれます。",
+    "sourceText": "A dictionary tells you what things mean.",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 746.72,
+    "end": 749.1143661971831,
+    "text": "正解が載っています。",
+    "sourceText": "It has the right answers.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 749.1143661971831,
+    "end": 751.8200273211173,
+    "text": "この本には正解がありません。",
+    "sourceText": "The book has no right answers because color is personal taste,",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 751.8200273211173,
+    "end": 756.4615384615385,
+    "text": "色は個人の好みであり、好みは人、部屋、光によって変わるからです。",
+    "sourceText": "[music] and taste changes with the person, the room, the light.",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 756.4615384615385,
+    "end": 760.4369230769231,
+    "text": "和田はそれを誰よりもよく知っていました。",
+    "sourceText": "Wada knew that better than anyone.",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 760.4369230769231,
+    "end": 763.787149321267,
+    "text": "原著の序文で彼はこう断言しています。",
+    "sourceText": "In his own forward to the original, he said it flatly, \"Whether a color stands alone or",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 763.787149321267,
+    "end": 770.96,
+    "text": "「色が単独であれ組み合わせであれ、好むと好まざるとにかかわらず、それは常に個人の好みに帰着します。」",
+    "sourceText": "in a combination, whether you like it or not, it always comes down to personal taste.",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 770.96,
+    "end": 775.2,
+    "text": "「正解はありません。」彼自身がそう書きました。",
+    "sourceText": "There is no correct answer.\" He wrote that himself.",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 775.2,
+    "end": 778.2768194444444,
+    "text": "では、なぜ辞典と呼ぶのでしょうか？",
+    "sourceText": "So, why call it a dictionary?",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 778.2768194444444,
+    "end": 782.089,
+    "text": "なぜなら、「辞典」という言葉が許可を与えてくれるからです。",
+    "sourceText": "Because dictionary is a word that gives you permission.",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 782.089,
+    "end": 787.532868852459,
+    "text": "色は人を不安にさせます。ほとんどの人は安全のために黒やグレーを選びます。",
+    "sourceText": "Color makes people nervous. Most of us default to black or gray to be safe,",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 787.532868852459,
+    "end": 791.68,
+    "text": "色が嫌いだからではなく、間違えるのが怖いからです。",
+    "sourceText": "not because we don't like color, because we're afraid of getting it wrong.",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 791.68,
+    "end": 794.7679245283018,
+    "text": "そして辞典は答えを知っているように聞こえます。",
+    "sourceText": "And a dictionary sounds like it knows the answer.",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 794.7679245283018,
+    "end": 799.212,
+    "text": "正解がすでにページに載っていて、あとはそれをコピーするだけのように聞こえます。",
+    "sourceText": "It sounds like the right answer is already sitting on the page, [music] and all you have to do is copy it.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 799.212,
+    "end": 802.6,
+    "text": "これが和田三造が世界に残した贈り物です。[音楽]、",
+    "sourceText": "This is the gift Sanzo Wada left with the world. [music]",
+    "sourceIndexes": [
+      160,
+      161
+    ]
+  },
+  {
+    "start": 802.6,
+    "end": 806.2677647058824,
+    "text": "彼は生涯を通じて、色は関係性の中にしか存在せず、",
+    "sourceText": "The man spent a lifetime insisting that color only lives",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 806.2677647058824,
+    "end": 810.244,
+    "text": "決して単独ではなく、常に何かの隣にあると主張しました。",
+    "sourceText": "in a relationship, never alone, always next to something.",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 810.244,
+    "end": 815.8309433962264,
+    "text": "[音楽]理論を学ぶ必要はありません。勇気を出してページを指さすだけでいいのです。",
+    "sourceText": "[music] You don't need to learn the theory, you just have to be brave enough to point at a page.",
+    "sourceIndexes": [
+      163,
+      164
+    ]
+  },
+  {
+    "start": 815.8309433962264,
+    "end": 820.24,
+    "text": "彼のパレットは、きつくて派手な原色を避けています。",
+    "sourceText": "His palettes avoid harsh, screaming primaries.",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 820.24,
+    "end": 825.2155223880596,
+    "text": "ほとんどすべての組み合わせには、アンダートーン、温度、ムード、",
+    "sourceText": "Almost every combination shares [music] an undertone, a temperature, a mood, a",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 825.2155223880596,
+    "end": 830.8,
+    "text": "少しの余白、静かなトーン、他の色を引き立てるスペースが共有されています。",
+    "sourceText": "little room to breathe, a quiet tone, a bit of space that lets other colors speak.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 830.8,
+    "end": 833.6,
+    "text": "色は決して混み合っていません。",
+    "sourceText": "The colors are never crowded.",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 833.6,
+    "end": 839.925,
+    "text": "家出した少年が国の偉大な画家の一人となり、一色が隣の色をどう変えるかに生涯を捧げ、",
+    "sourceText": "A runaway kid becomes one of the country's great painters, spends his life obsessed with",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 839.925,
+    "end": 844,
+    "text": "オスカーを獲得し、国の色彩基準を確立しました。",
+    "sourceText": "how one color changes the color beside it, wins an Oscar for it, sets the color standard",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 844,
+    "end": 849.16,
+    "text": "そして、自分が作り上げたほとんどすべてが消えていくのを見届けました。",
+    "sourceText": "for an entire nation, and then watches nearly everything he made disappear.",
+    "sourceIndexes": [
+      169
+    ]
+  },
+  {
+    "start": 849.16,
+    "end": 851.5775,
+    "text": "彼のオリンピック、映画、彼の本。",
+    "sourceText": "His Olympics, his films, [music] his book.",
+    "sourceIndexes": [
+      170,
+      171
+    ]
+  },
+  {
+    "start": 851.5775,
+    "end": 855.12,
+    "text": "そして、そのすべてが戻ってきました。",
+    "sourceText": "And every single one of them came back.",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 855.12,
+    "end": 858.4144761904762,
+    "text": "映画は復元され、本は復刻されました。",
+    "sourceText": "The film was restored, the book was reprinted.",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 858.4144761904762,
+    "end": 863.2745396825396,
+    "text": "そして今、彼が配色を編み出してから100年後、彼の色はもう一度よみがえり、",
+    "sourceText": "And now, a hundred years after he arranged them, his colors are back one more",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 863.2745396825396,
+    "end": 867.64,
+    "text": "彼が想像もしなかった画面の上で人々のワードローブを彩っています。",
+    "sourceText": "time, running people's wardrobes on a screen he could have never imagined.",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 867.64,
+    "end": 871.5852631578947,
+    "text": "彼は誰にもルールブックも公式も暗記すべき理論も渡しませんでした。",
+    "sourceText": "He never handed anyone a rulebook, no formulas, no theory to memorize.",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 871.5852631578947,
+    "end": 874.3436011080332,
+    "text": "ただひたすら色を並べて、",
+    "sourceText": "He just laid one color beside another over and",
+    "sourceIndexes": [
+      176
+    ]
+  },
+  {
+    "start": 874.3436011080332,
+    "end": 878.92,
+    "text": "あなたの目が彼と同じものを見るのを信じていたのです。",
+    "sourceText": "over, and trusted your eye to see what he saw.",
+    "sourceIndexes": [
+      176
+    ]
+  },
+  {
+    "start": 878.92,
+    "end": 881.8,
+    "text": "二つの色を並べて、",
+    "sourceText": "Two colors, side by side, and the quiet confidence",
+    "sourceIndexes": [
+      177
+    ]
+  },
+  {
+    "start": 881.8,
+    "end": 885.8000000000001,
+    "text": "見ればわかるという静かな確信。",
+    "sourceText": "you'll know it works when you look at it.",
+    "sourceIndexes": [
+      177
+    ]
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "topic": "Language regulation and standardization",
+  "summary": "Explores organizations that attempt to control language, including the Académie Française, Iceland's Personal Names Committee, and the Ho-Chunk Nation's language revitalization efforts, contrasting prescriptive and descriptive approaches.",
+  "tone": "informative, conversational, slightly humorous",
+  "audience": "General viewers interested in linguistics, language history, and cultural identity",
+  "glossary": [
+    {
+      "source": "Académie Française",
+      "target": "アカデミー・フランセーズ",
+      "note": "French language academy; keep French pronunciation in katakana"
+    },
+    {
+      "source": "Ho-Chunk",
+      "target": "ホーチャンク",
+      "note": "Native American tribe and language; use this katakana spelling"
+    },
+    {
+      "source": "Otherwords",
+      "target": "アザーワーズ",
+      "note": "PBS series title; keep as is in katakana"
+    },
+    {
+      "source": "prescriptive",
+      "target": "規範的",
+      "note": "Linguistic term; use when referring to setting rules"
+    },
+    {
+      "source": "descriptive",
+      "target": "記述的",
+      "note": "Linguistic term; use when referring to describing actual usage"
+    },
+    {
+      "source": "loanword",
+      "target": "借用語",
+      "note": "Word borrowed from another language"
+    },
+    {
+      "source": "gaffe",
+      "target": "失言",
+      "note": "Embarrassing mistake in speech or writing"
+    }
+  ],
+  "properNouns": [
+    "Mark Carney",
+    "Dan Quayle",
+    "Rishi Sunak",
+    "Erica Brozovsky",
+    "Académie Française",
+    "Iceland's Personal Names Committee",
+    "Ho-Chunk Nation",
+    "Royal Spanish Academy",
+    "Māori Language Commission",
+    "Oxford English Dictionary",
+    "Associated Press Stylebook",
+    "Editors Canada"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with polite forms (です・ます) for host narration, but keep it natural and not stiff.",
+    "For humorous or sarcastic lines, use colloquial expressions like なんだって or まさか.",
+    "Keep proper names in katakana, but for well-known figures (e.g., Mark Carney) use standard Japanese media spellings.",
+    "When translating 'you' or 'we', use あなた or 私たち sparingly; prefer implicit subjects or みんな for general audience.",
+    "For technical terms like 'prescriptive' and 'descriptive', use standard linguistic terminology in Japanese.",
+    "Maintain the host's explanatory but engaging tone; avoid overly academic phrasing.",
+    "For the animated lips segment 'Otherwords', keep as アザーワーズ in katakana.",
+    "When quoting French or Icelandic terms, use katakana with a brief explanation if needed."
+  ]
+}

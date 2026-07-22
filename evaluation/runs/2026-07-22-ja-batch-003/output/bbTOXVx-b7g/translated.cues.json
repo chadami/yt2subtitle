@@ -1,0 +1,2235 @@
+[
+  {
+    "start": 0.08,
+    "end": 3.498162162162162,
+    "text": "人生で一度もサッカーの試合を見たことがなかったんだ。",
+    "sourceText": "I had never been to a football match in my life.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 3.498162162162162,
+    "end": 8.639,
+    "text": "なのに初めての試合がFIFAワールドカップになっちゃった。",
+    "sourceText": "So somehow my first one ended up being at the FIFA World Cup.",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 8.639,
+    "end": 13.58352,
+    "text": "その後11日間で、4都市を飛び回り、6試合を観戦し、",
+    "sourceText": "Over the next 11 days, I flew across four cities, attended six",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 13.58352,
+    "end": 18.24,
+    "text": "ゴールの真後ろに立ち、選手ロッカールームに入り、",
+    "sourceText": "matches, stood right behind the goal, entered the players locker",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 18.24,
+    "end": 21.578455598455598,
+    "text": "YouTubeのCEOにも会って、",
+    "sourceText": "room, met the CEO of YouTube, and somehow",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 21.578455598455598,
+    "end": 25.294285714285714,
+    "text": "なぜかサッカーに感情移入しちゃったんだ。",
+    "sourceText": "became emotionally attached to football.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 25.294285714285714,
+    "end": 29.16,
+    "text": "これがそのすべてだよ。",
+    "sourceText": "This is everything that happened.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 29.439,
+    "end": 33.84,
+    "text": "でも旅が始まる前に、ロッキーに別れを告げなきゃいけなかった。",
+    "sourceText": "But before the trip could begin, I had to say goodbye to Rocky.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 33.84,
+    "end": 37.57714285714286,
+    "text": "ほぼ3週間も離れることになって、",
+    "sourceText": "I was leaving him for almost three weeks,",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 37.57714285714286,
+    "end": 40.68000000000001,
+    "text": "正直それが一番辛かった。",
+    "sourceText": "and honestly, that was the hardest part.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 47.6,
+    "end": 50.92333333333333,
+    "text": "そして24時間の旅が始まり、",
+    "sourceText": "And then began my 24-hour",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 50.92333333333333,
+    "end": 53.64,
+    "text": "シアトルへ向かった。",
+    "sourceText": "journey to Seattle.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 60.915,
+    "end": 62.935,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 64.879,
+    "end": 68.19780769230769,
+    "text": "長いフライトの後、",
+    "sourceText": "After a very long flight, I finally",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 68.19780769230769,
+    "end": 73.4,
+    "text": "ようやく旅の最初の都市に到着した。",
+    "sourceText": "arrived in the first city of this trip.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 76.24,
+    "end": 79.35384615384615,
+    "text": "シアトルに着いたよ。",
+    "sourceText": "We made it to Seattle.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 79.35384615384615,
+    "end": 82.96,
+    "text": "やった。ホテルにチェックインしたところ。",
+    "sourceText": "Yay. I just checked into the hotel.",
+    "sourceIndexes": [
+      11,
+      12
+    ]
+  },
+  {
+    "start": 82.96,
+    "end": 86.88492307692307,
+    "text": "じゃあ、簡単に部屋を紹介するね。",
+    "sourceText": "So, let me do a quick little room tour because honestly,",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 86.88492307692307,
+    "end": 91.32076923076924,
+    "text": "正直、シャワー浴びて寝たいだけだから。",
+    "sourceText": "I just want to shower and sleep and that's it.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 91.32076923076924,
+    "end": 93.59529411764706,
+    "text": "みんな、私たちの部屋へようこそ。",
+    "sourceText": "So, guys, welcome to our room guys.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 93.59529411764706,
+    "end": 97.588,
+    "text": "やった。ここに4日間滞在するよ。",
+    "sourceText": "Yay. We will stay here for the next 4 days.",
+    "sourceIndexes": [
+      15,
+      16
+    ]
+  },
+  {
+    "start": 97.588,
+    "end": 99.6,
+    "text": "じゃあ、始めよう。",
+    "sourceText": "So, let's start.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 99.6,
+    "end": 102.34235294117647,
+    "text": "まず左側にバスルーム。",
+    "sourceText": "First, on the left, we have bathroom.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 102.34235294117647,
+    "end": 104.64,
+    "text": "わあ、この鏡すごくいい。",
+    "sourceText": "Wow, I really like this mirror.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 104.64,
+    "end": 109.759,
+    "text": "鏡が1番、2番、3番ってあって、照明も付いてる。",
+    "sourceText": "You have like mirror number one, number two, number three, and the light.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 109.759,
+    "end": 112.399,
+    "text": "やばい、すごくいい感じ。",
+    "sourceText": "Oh my god, it looks so good.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 112.399,
+    "end": 115.439,
+    "text": "そしてここにもう一つ鏡がある。",
+    "sourceText": "And we have another mirror right here.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 115.439,
+    "end": 118.24,
+    "text": "それに洗面台、タオル、シャワー、トイレ。",
+    "sourceText": "Also sink, towels, shower, and toilet.",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 118.24,
+    "end": 120.29,
+    "text": "シャワーを見てみよう。",
+    "sourceText": "Let me look into the shower.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 120.29,
+    "end": 124.079,
+    "text": "わあ、なんか可愛いね。そしてみんな、ああ、私たちの部屋へようこそ。",
+    "sourceText": "Wow, it's kind of cute though. And then guys, oh, welcome to our room.",
+    "sourceIndexes": [
+      25,
+      26
+    ]
+  },
+  {
+    "start": 124.079,
+    "end": 126.64,
+    "text": "ダブルベッドが2つあるよ。",
+    "sourceText": "We have two double beds.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 126.64,
+    "end": 132.319,
+    "text": "なんでツインじゃなくてダブルが2つなのかわかんないけど。",
+    "sourceText": "I don't know why it's just not like a twin, it's two double beds.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 132.319,
+    "end": 134.129,
+    "text": "すごいけど、別に気にしない。",
+    "sourceText": "That's crazy, but I don't mind it.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 134.129,
+    "end": 137.48529032258062,
+    "text": "ベッド1番。ベッド2番、サイドテーブル、",
+    "sourceText": "Bed number one. Bed number two, side table,",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 137.48529032258062,
+    "end": 140.41032258064516,
+    "text": "絵画、それにテレビ台とミニバー。",
+    "sourceText": "paintings, also a TV table and mini bar.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 140.41032258064516,
+    "end": 142.64,
+    "text": "そして景色も。",
+    "sourceText": "And also our view.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 142.64,
+    "end": 145.76,
+    "text": "景色を見せてあげる。",
+    "sourceText": "Let me show you our view.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 145.76,
+    "end": 149.52,
+    "text": "そう、ただのビル群だけど、全然問題ないよ。",
+    "sourceText": "Yes, it's just buildings, but that's just totally fine.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 149.52,
+    "end": 153.44,
+    "text": "というわけで、ルームツアーはここまで。",
+    "sourceText": "So, this is the end of our room tour.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 153.44,
+    "end": 156.44,
+    "text": "やったー。",
+    "sourceText": "Yay.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 158.64,
+    "end": 160.73,
+    "text": "おはよう、みんな。",
+    "sourceText": "Good morning, guys.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 160.73,
+    "end": 162.16,
+    "text": "今、朝の7時。",
+    "sourceText": "It's 700 a.m.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 162.16,
+    "end": 169.04,
+    "text": "認証パスを受け取りに行くところ。",
+    "sourceText": "right now and I'm heading to pick up my credentials.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 169.04,
+    "end": 171.84677966101694,
+    "text": "これがFIFAのアクセスパスみたいなもの。",
+    "sourceText": "These are basically my access passes for FIFA.",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 171.84677966101694,
+    "end": 173.73777777777775,
+    "text": "じゃあ、行こう。こんにちは。ありがとう。",
+    "sourceText": "So, let's go. Hi. Thank you.",
+    "sourceIndexes": [
+      41,
+      42,
+      43
+    ]
+  },
+  {
+    "start": 173.73777777777775,
+    "end": 177.2,
+    "text": "中には本当に何でも入ってる。",
+    "sourceText": "We literally have like everything inside.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 177.2,
+    "end": 179.36,
+    "text": "そう、充電器もあるし。",
+    "sourceText": "Yeah, cuz you got a charger.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 179.36,
+    "end": 180.8,
+    "text": "日焼け止め。",
+    "sourceText": "Sunscreen.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 180.8,
+    "end": 183.28,
+    "text": "おはよう。",
+    "sourceText": "Good morning.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 183.28,
+    "end": 189.12,
+    "text": "中は撮影できなかったから、見せられるのはこの謎のドアだけ。",
+    "sourceText": "I couldn't film inside, so all I can show you is this very mysterious door.",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 189.12,
+    "end": 197.2342857142857,
+    "text": "みんな、ホテルに戻って認証パスを受け取ったんだけど、残念ながら見せられないんだ。",
+    "sourceText": "Okay guys, so I'm back at the hotel and I picked up my credentials, [music]",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 197.2342857142857,
+    "end": 201.2,
+    "text": "個人情報がたくさん載ってるから。",
+    "sourceText": "but unfortunately I can show them to you because there is a lot of personal",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 201.2,
+    "end": 204.319,
+    "text": "個人情報がね。",
+    "sourceText": "information on them.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 204.319,
+    "end": 207.44,
+    "text": "それと、YouTubeから小さなギフトをもらったよ。",
+    "sourceText": "And also guys, I got a small gift from YouTube.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 207.44,
+    "end": 209.29818181818183,
+    "text": "すごく嬉しい。",
+    "sourceText": "It's so sweet.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 209.29818181818183,
+    "end": 214.33316666666667,
+    "text": "試合中に必要なものが全部入ったメイクポーチ。",
+    "sourceText": "It's a makeup bag with all the essentials I might need during the match.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 214.33316666666667,
+    "end": 218.62153846153845,
+    "text": "じゃあ、簡単に開封してパッキングしよう。",
+    "sourceText": "So, let me do a quick unboxing and packing.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 218.62153846153845,
+    "end": 220.0946129032258,
+    "text": "まずは携帯ファン。",
+    "sourceText": "So, we have here a portable fan.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 220.0946129032258,
+    "end": 223.44,
+    "text": "やばい、すごく嬉しい。",
+    "sourceText": "Oh my god, that's so sweet.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 223.44,
+    "end": 224.9854406779661,
+    "text": "それからモバイルバッテリー。",
+    "sourceText": "Also, a power bank.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 224.9854406779661,
+    "end": 227.26293220338982,
+    "text": "膝だ。私だよ、みんな。",
+    "sourceText": "It's a knee. It's a me, guys.",
+    "sourceIndexes": [
+      58,
+      59
+    ]
+  },
+  {
+    "start": 227.26293220338982,
+    "end": 230.52542857142856,
+    "text": "日焼け止め。これは…あ、ミントだ。",
+    "sourceText": "A sunscreen. This is [music] Oh, it's mint.",
+    "sourceIndexes": [
+      60,
+      61
+    ]
+  },
+  {
+    "start": 230.52542857142856,
+    "end": 234.72,
+    "text": "いいね。そしてリップバーム。",
+    "sourceText": "Oh, so nice. And then we have a lip balm.",
+    "sourceIndexes": [
+      62,
+      63
+    ]
+  },
+  {
+    "start": 234.72,
+    "end": 237.7653076923077,
+    "text": "これは…あ、ドリンクだ。水分補給ドリンク。",
+    "sourceText": "And this is Oh, it's a drink. Hydration drink.",
+    "sourceIndexes": [
+      64,
+      65
+    ]
+  },
+  {
+    "start": 237.7653076923077,
+    "end": 242,
+    "text": "やったー。モバイルバッテリーでファンを充電しよう。うん。",
+    "sourceText": "Yay. Okay, let me charge fan with a power bank. Yeah.",
+    "sourceIndexes": [
+      66,
+      67,
+      68
+    ]
+  },
+  {
+    "start": 242,
+    "end": 247.12969696969697,
+    "text": "それに、準備に1時間もないんだ。",
+    "sourceText": "And guys, also I have less than an hour to get ready.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 247.12969696969697,
+    "end": 249.36,
+    "text": "だから急ごう。",
+    "sourceText": "So, let's move fast.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 249.36,
+    "end": 252.9795,
+    "text": "やばい、あと35分しかない。",
+    "sourceText": "Oh my god, I have 35 minutes.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 252.9795,
+    "end": 255.35089655172413,
+    "text": "冗談でしょ？",
+    "sourceText": "Are you kidding me?",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 255.35089655172413,
+    "end": 256.599,
+    "text": "やばい。",
+    "sourceText": "Oh my god.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 258.4,
+    "end": 261.6,
+    "text": "髪はできた。",
+    "sourceText": "Okay, hair is done.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 261.6,
+    "end": 263.25,
+    "text": "じゃあメイクしよう。",
+    "sourceText": "So, let's do the makeup.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 263.25,
+    "end": 265.579975,
+    "text": "まずはプライマーから。",
+    "sourceText": "Let's start with the primer. I have never been to a",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 265.579975,
+    "end": 269.759,
+    "text": "サッカーの試合に行ったことがないから、ちょっと緊張してる。",
+    "sourceText": "football soccer match before, so I'm a little nervous.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 269.759,
+    "end": 271.4395,
+    "text": "どうしよう？",
+    "sourceText": "What should I do?",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 271.4395,
+    "end": 273.12,
+    "text": "どうしよう？",
+    "sourceText": "What should I do?",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 273.12,
+    "end": 278.3095652173913,
+    "text": "ちょっと緊張してるってわけじゃなくてめっちゃ緊張してる。",
+    "sourceText": "Okay, I'm not like a little nervous. I'm nervous.",
+    "sourceIndexes": [
+      80,
+      81
+    ]
+  },
+  {
+    "start": 278.3095652173913,
+    "end": 280.72,
+    "text": "みんな、",
+    "sourceText": "Okay, guys.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 280.72,
+    "end": 285.04,
+    "text": "正直、まだサッカーファンじゃないんだ。",
+    "sourceText": "Honestly, I'm not a football fan yet.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 285.04,
+    "end": 290.8,
+    "text": "だから何が起こるかマジでわかんないけど、すごく楽しみ。",
+    "sourceText": "So, I literally don't know what to expect, but I'm so excited.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 290.8,
+    "end": 293.075,
+    "text": "やばい、感じるよ、これ。",
+    "sourceText": "Oh my god, we are going to feel it.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 293.075,
+    "end": 294.96,
+    "text": "想像できる？これ現実？",
+    "sourceText": "Can you imagine? Is this real?",
+    "sourceIndexes": [
+      86,
+      87
+    ]
+  },
+  {
+    "start": 294.96,
+    "end": 296.96,
+    "text": "眉毛やろう。",
+    "sourceText": "Let me do my brows.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 296.96,
+    "end": 300.42064516129034,
+    "text": "それに、みんな、全部がすごく新鮮なんだ。",
+    "sourceText": "And guys, everything feels very new to me.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 300.42064516129034,
+    "end": 305.3190697674419,
+    "text": "やばい。でもね、あのね、",
+    "sourceText": "Oh my god. But you know what?",
+    "sourceIndexes": [
+      90,
+      91,
+      92
+    ]
+  },
+  {
+    "start": 305.3190697674419,
+    "end": 308.88,
+    "text": "それがこの旅を面白くしてると思うんだ。",
+    "sourceText": "I feel like that's what makes this [music] exciting.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 308.88,
+    "end": 312.24,
+    "text": "みんなは私の目を通してFIFAを見ることになるよ。",
+    "sourceText": "You will see FIFA through my eyes.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 312.24,
+    "end": 315.28355555555555,
+    "text": "全部を初めて発見する人間としてね。",
+    "sourceText": "As someone discovering it all for the very first time",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 315.28355555555555,
+    "end": 319.52,
+    "text": "だってみんな、私はサッカーについて何も知らないんだから。",
+    "sourceText": "because [music] guys, I know nothing about football, soccer.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 319.52,
+    "end": 322.479,
+    "text": "例えば、2つの国が22人でやるってことくらい。",
+    "sourceText": "Like I know it's two countries, 22 [music] people.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 322.479,
+    "end": 325.5487674418605,
+    "text": "レッドカード、イエローカード。",
+    "sourceText": "Go red card, yellow card.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 325.5487674418605,
+    "end": 327.1450465116279,
+    "text": "それだけ。",
+    "sourceText": "Um that's it.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 327.1450465116279,
+    "end": 329.75297222222224,
+    "text": "うん。もうすぐ終わるよ。",
+    "sourceText": "Yeah. And we are almost done.",
+    "sourceIndexes": [
+      99,
+      100
+    ]
+  },
+  {
+    "start": 329.75297222222224,
+    "end": 333.44,
+    "text": "やば。服。もちろん服。",
+    "sourceText": "Oh no. Outfit. Outfit of course.",
+    "sourceIndexes": [
+      101,
+      102,
+      103
+    ]
+  },
+  {
+    "start": 333.44,
+    "end": 336.479,
+    "text": "いいね。リップバームも。",
+    "sourceText": "Nice. And lip balm.",
+    "sourceIndexes": [
+      104,
+      105
+    ]
+  },
+  {
+    "start": 336.479,
+    "end": 339.6,
+    "text": "リップライナーも足そう。",
+    "sourceText": "Let me add a lip liner.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 339.6,
+    "end": 343.12,
+    "text": "うん、いい、いい、いい、いい。",
+    "sourceText": "Yeah. Nice. Nice. Nice. Nice.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 343.12,
+    "end": 346.19136,
+    "text": "髪とメイク。",
+    "sourceText": "Hair and makeup.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 346.19136,
+    "end": 347.919,
+    "text": "完了。やった。",
+    "sourceText": "Done. Yay.",
+    "sourceIndexes": [
+      109,
+      110
+    ]
+  },
+  {
+    "start": 347.919,
+    "end": 351.17481395348835,
+    "text": "さて、次は服の時間だよ。",
+    "sourceText": "Okay, now it's time for our outfit.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 351.17481395348835,
+    "end": 354.16142424242423,
+    "text": "ちょっと貸して。シンプルにしようかな。",
+    "sourceText": "Give me. So, I feel like let's keep it simple.",
+    "sourceIndexes": [
+      112,
+      113
+    ]
+  },
+  {
+    "start": 354.16142424242423,
+    "end": 355.919,
+    "text": "これを着るだけ。",
+    "sourceText": "I will just wear this [music]",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 355.919,
+    "end": 359.36,
+    "text": "黒いTシャツ。",
+    "sourceText": "black t-shirt.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 359.36,
+    "end": 363.2634545454546,
+    "text": "それから黒いパンツ。",
+    "sourceText": "I will be then just [music] a black pants.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 363.2634545454546,
+    "end": 365.494,
+    "text": "ベルトを足そう、みんな。たー。",
+    "sourceText": "Let's add belt, guys. Ta.",
+    "sourceIndexes": [
+      117,
+      118
+    ]
+  },
+  {
+    "start": 365.494,
+    "end": 368.72,
+    "text": "アクセサリーもつけよう。",
+    "sourceText": "Let's add some [music] accessories.",
+    "sourceIndexes": [
+      119,
+      120
+    ]
+  },
+  {
+    "start": 368.72,
+    "end": 371.039,
+    "text": "あと12分。",
+    "sourceText": "We have 12 minutes.",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 371.039,
+    "end": 373.919,
+    "text": "このブラウニーバッグを持っていくよ。",
+    "sourceText": "I will wear this brownie bag.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 373.919,
+    "end": 377.28,
+    "text": "中に認証パスを入れよう。",
+    "sourceText": "Let's put inside my credentials.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 377.28,
+    "end": 381.6,
+    "text": "グレートボール、可愛い写真用のデジカメ、扇子。",
+    "sourceText": "Great ball, digital camera for cute photos, fan.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 381.6,
+    "end": 382.89647058823533,
+    "text": "あ、モバイルバッテリー。",
+    "sourceText": "Oh, and power bank.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 382.89647058823533,
+    "end": 386.24,
+    "text": "うん、もちろん。モバイルバッテリー、スマホ、カメラ。",
+    "sourceText": "Yeah, of course. Power bank, phone, and my camera.",
+    "sourceIndexes": [
+      126,
+      127
+    ]
+  },
+  {
+    "start": 386.24,
+    "end": 389.12,
+    "text": "以上！今日のコーデはこれ。やったー。",
+    "sourceText": "And that's it. This is our outfit for today. Yay.",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 389.12,
+    "end": 390.85,
+    "text": "やばい、靴。",
+    "sourceText": "Oh my god, my shoes.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 390.85,
+    "end": 396.16,
+    "text": "靴。ブラウンのスニーカーを履こう。",
+    "sourceText": "Shoes. Let's wear just brown [music] sneakers.",
+    "sourceIndexes": [
+      130,
+      131
+    ]
+  },
+  {
+    "start": 396.16,
+    "end": 399.5512,
+    "text": "どう思う、みんな？",
+    "sourceText": "So, what do we think, guys?",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 399.5512,
+    "end": 401.9376,
+    "text": "準備完了。",
+    "sourceText": "We are ready to go.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 401.9376,
+    "end": 405.449,
+    "text": "やったー。ありがとう。",
+    "sourceText": "Yay. Thank you.",
+    "sourceIndexes": [
+      134,
+      135
+    ]
+  },
+  {
+    "start": 405.449,
+    "end": 409.09,
+    "text": "[音楽]やばい、みんな。",
+    "sourceText": "[music] Oh my god, guys.",
+    "sourceIndexes": [
+      136,
+      137
+    ]
+  },
+  {
+    "start": 409.09,
+    "end": 415.88,
+    "text": "着いたよ。で、これがなぜこんなにすごいのか分かった気がする。",
+    "sourceText": "We are here. And now, okay, I get why this feels so huge.",
+    "sourceIndexes": [
+      138,
+      139
+    ]
+  },
+  {
+    "start": 417.199,
+    "end": 421.92357142857145,
+    "text": "スタジアムの中だよ、みんな。",
+    "sourceText": "We are inside the stadium, guys.",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 421.92357142857145,
+    "end": 423.40000000000003,
+    "text": "ありがとう。",
+    "sourceText": "Thank you.",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 424.08,
+    "end": 427.704,
+    "text": "マジでフィールドに立ってる。",
+    "sourceText": "I'm literally on the field.",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 427.704,
+    "end": 430.12,
+    "text": "これ見てよ。",
+    "sourceText": "Just look at that.",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 430.994,
+    "end": 433.014,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 435.579,
+    "end": 437.599,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 440,
+    "end": 445.4,
+    "text": "やばい、信じられない。",
+    "sourceText": "Oh my god, that's insane.",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 448.68,
+    "end": 450.7,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 452.88,
+    "end": 458.16,
+    "text": "試合前のセレモニーは、上の観客席から見たよ。",
+    "sourceText": "For the pre-match ceremony, I watched from the observer seats upstairs.",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 458.16,
+    "end": 460.5369736842106,
+    "text": "スタジアムの素晴らしい景色と、",
+    "sourceText": "We had an amazing view of the stadium and a tablet",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 460.5369736842106,
+    "end": 464.3263157894737,
+    "text": "試合情報がリアルタイムで見えるタブレットがあって、すごく助かった。",
+    "sourceText": "with live match information, which was really helpful.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 464.3263157894737,
+    "end": 467.44,
+    "text": "それから試合のためにゴール裏に戻った。",
+    "sourceText": "Then I went back down behind the goal for the game.",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 467.44,
+    "end": 470.295,
+    "text": "後半戦だよ、みんな。",
+    "sourceText": "A second half, guys.",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 470.295,
+    "end": 474.599,
+    "text": "[音楽]あらまあ。",
+    "sourceText": "[music] Oh my.",
+    "sourceIndexes": [
+      152,
+      153
+    ]
+  },
+  {
+    "start": 475.28,
+    "end": 480,
+    "text": "最初の試合で一瞬でサッカーファンになったわけじゃない。",
+    "sourceText": "I don't think the first match instantly turned me into a football fan.",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 480,
+    "end": 484.9506976744186,
+    "text": "まだ何が起きてるか理解しようとしてたけど、",
+    "sourceText": "I was still trying to figure out what was happening, but being inside",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 484.9506976744186,
+    "end": 490.08,
+    "text": "スタジアムの中は画面で見るのとは全然違った。",
+    "sourceText": "the stadium felt completely different from watching it on a screen.",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 490.08,
+    "end": 495.49769696969696,
+    "text": "みんな、YouTubeからカスタムのFIFAワールドカップグッズが届いたんだ。",
+    "sourceText": "Guys, YouTube sent me some custom FIFA World Cup merch.",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 495.49769696969696,
+    "end": 497.599,
+    "text": "これ見て。",
+    "sourceText": "And look at this.",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 497.599,
+    "end": 502.479,
+    "text": "やばい、すごく嬉しい。",
+    "sourceText": "Oh my god, that's so sweet.",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 502.479,
+    "end": 504.71973684210525,
+    "text": "一緒に開けなきゃ。",
+    "sourceText": "We have to open it together.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 504.71973684210525,
+    "end": 506.2914285714285,
+    "text": "やばい。わあ。おっと。",
+    "sourceText": "Oh my god. Wow. Oops.",
+    "sourceIndexes": [
+      160,
+      161,
+      162
+    ]
+  },
+  {
+    "start": 506.2914285714285,
+    "end": 511.52,
+    "text": "重い。みんな、今本当に幸せ。",
+    "sourceText": "That's heavy. Guys, I'm just I'm genuinely so happy right now.",
+    "sourceIndexes": [
+      163,
+      164
+    ]
+  },
+  {
+    "start": 511.52,
+    "end": 516.24,
+    "text": "まず最初に、この風船見て。",
+    "sourceText": "First of all, first of all, look at this balloons.",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 516.24,
+    "end": 518.45,
+    "text": "特にこのサッカーボール型のやつ。",
+    "sourceText": "Especially this one in shape of the football.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 518.45,
+    "end": 522.695,
+    "text": "うん、すごくいいね。かわいい。",
+    "sourceText": "Yeah, that's so sweet. That's so cute.",
+    "sourceIndexes": [
+      167,
+      168
+    ]
+  },
+  {
+    "start": 522.695,
+    "end": 527.279,
+    "text": "あ、それから、ちょっとパッケージを鑑賞していい？",
+    "sourceText": "Oh, and now, please, [music] can we take a moment to appreciate the packaging, guys?",
+    "sourceIndexes": [
+      169
+    ]
+  },
+  {
+    "start": 527.279,
+    "end": 529.0003793103448,
+    "text": "この箱見て。",
+    "sourceText": "Look at the box.",
+    "sourceIndexes": [
+      170
+    ]
+  },
+  {
+    "start": 529.0003793103448,
+    "end": 530.399,
+    "text": "すごすぎる。",
+    "sourceText": "That's crazy.",
+    "sourceIndexes": [
+      171
+    ]
+  },
+  {
+    "start": 530.399,
+    "end": 531.7710545454545,
+    "text": "特にこの細部が。",
+    "sourceText": "Especially this detail.",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 531.7710545454545,
+    "end": 533.68,
+    "text": "マジでYouTubeのボタンだよ。",
+    "sourceText": "It's literally a YouTube bottom.",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 533.68,
+    "end": 535.7248999999999,
+    "text": "もう夢中。",
+    "sourceText": "I'm obsessed.",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 535.7248999999999,
+    "end": 538.399,
+    "text": "すごくいい感じ。",
+    "sourceText": "It looks so good.",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 538.399,
+    "end": 542,
+    "text": "タタ。よし、この小さな…を始めよう。",
+    "sourceText": "Ta ta. Okay, let's start this little No.",
+    "sourceIndexes": [
+      176,
+      177
+    ]
+  },
+  {
+    "start": 542,
+    "end": 544.0445981468282,
+    "text": "FIFAワールドカップ2026がついに来ました。",
+    "sourceText": "The FIFA World Cup 2026 is finally here and we couldn't be more",
+    "sourceIndexes": [
+      178
+    ]
+  },
+  {
+    "start": 544.0445981468282,
+    "end": 546.5466869565217,
+    "text": "あなたがこの体験に協力してくれることを、私たちはとても嬉しく思っています。",
+    "sourceText": "thrilled that you were partnering with us on this experience.",
+    "sourceIndexes": [
+      178
+    ]
+  },
+  {
+    "start": 546.5466869565217,
+    "end": 548.4134347826086,
+    "text": "あなたこそが、この場所を特別なものにしているのです。",
+    "sourceText": "You are what makes you to the special place.",
+    "sourceIndexes": [
+      179
+    ]
+  },
+  {
+    "start": 548.4134347826086,
+    "end": 550.5311264559754,
+    "text": "コミュニティへの関わり方、素晴らしいクリエイティブ、",
+    "sourceText": "A the way you show up for your community, the great creative you",
+    "sourceIndexes": [
+      180
+    ]
+  },
+  {
+    "start": 550.5311264559754,
+    "end": 552.8252972972973,
+    "text": "そしてすべての動画に注ぐエネルギーは、決して無駄になりません。",
+    "sourceText": "bring in, and the energy you put into every video, it doesn't go on.",
+    "sourceIndexes": [
+      180
+    ]
+  },
+  {
+    "start": 552.8252972972973,
+    "end": 554.4814403669725,
+    "text": "そしてこの夏、私たちは一緒に本当に素晴らしいことをします。",
+    "sourceText": "And this summer, we get to do something truly incredible together.",
+    "sourceIndexes": [
+      181
+    ]
+  },
+  {
+    "start": 554.4814403669725,
+    "end": 556.7089829619922,
+    "text": "あなたはFIFAワールドカップ26に向かい、あなたの視聴者も一緒です。",
+    "sourceText": "You are heading to the FIFA World 26 and",
+    "sourceIndexes": [
+      182
+    ]
+  },
+  {
+    "start": 556.7089829619922,
+    "end": 558.32,
+    "text": "あなたがやる。それを生きる。",
+    "sourceText": "your audience is coming. You do it. Live it.",
+    "sourceIndexes": [
+      183,
+      184
+    ]
+  },
+  {
+    "start": 558.32,
+    "end": 562.32,
+    "text": "あなたのものにする。最大の、最高の場所。",
+    "sourceText": "Make it yours. The biggest [laughter] best spot.",
+    "sourceIndexes": [
+      185,
+      186
+    ]
+  },
+  {
+    "start": 562.32,
+    "end": 566.959,
+    "text": "世界最大のサッカーステージが、もう少し大きくなりました。",
+    "sourceText": "the biggest sucker at football stage in the world just got a little more.",
+    "sourceIndexes": [
+      187
+    ]
+  },
+  {
+    "start": 566.959,
+    "end": 570.16,
+    "text": "あなたが何を生み出すか、待ちきれません。",
+    "sourceText": "You can't wait to see what you create.",
+    "sourceIndexes": [
+      188
+    ]
+  },
+  {
+    "start": 570.16,
+    "end": 572.959,
+    "text": "Team YouTubeのみんな、本当に優しいね。",
+    "sourceText": "Team YouTube guys, you are so sweet.",
+    "sourceIndexes": [
+      189
+    ]
+  },
+  {
+    "start": 572.959,
+    "end": 576.16,
+    "text": "マジで泣きそう。",
+    "sourceText": "I literally want to cry.",
+    "sourceIndexes": [
+      190
+    ]
+  },
+  {
+    "start": 576.16,
+    "end": 577.8057142857143,
+    "text": "あ、やばい。",
+    "sourceText": "A Oh my god.",
+    "sourceIndexes": [
+      191
+    ]
+  },
+  {
+    "start": 577.8057142857143,
+    "end": 580,
+    "text": "よし、次だよ。",
+    "sourceText": "Okay, next guys.",
+    "sourceIndexes": [
+      192
+    ]
+  },
+  {
+    "start": 580,
+    "end": 582.24,
+    "text": "これを見せてあげる。",
+    "sourceText": "Let me show you this.",
+    "sourceIndexes": [
+      193
+    ]
+  },
+  {
+    "start": 582.24,
+    "end": 584.0634,
+    "text": "見ての通り、おっと。",
+    "sourceText": "As you can see, oops.",
+    "sourceIndexes": [
+      194
+    ]
+  },
+  {
+    "start": 584.0634,
+    "end": 585.279,
+    "text": "ユニフォームだ。",
+    "sourceText": "It's a jersey.",
+    "sourceIndexes": [
+      195
+    ]
+  },
+  {
+    "start": 585.279,
+    "end": 589.3755405405406,
+    "text": "見て、YouTubeと…",
+    "sourceText": "Look at it with YouTube and people",
+    "sourceIndexes": [
+      196
+    ]
+  },
+  {
+    "start": 589.3755405405406,
+    "end": 593.9548378378379,
+    "text": "そして私の名前と背番号27。",
+    "sourceText": "woke up loa and also with my name and",
+    "sourceIndexes": [
+      196
+    ]
+  },
+  {
+    "start": 593.9548378378379,
+    "end": 597.81,
+    "text": "27日に生まれたから。",
+    "sourceText": "number 27 because I was born on 27s.",
+    "sourceIndexes": [
+      196
+    ]
+  },
+  {
+    "start": 597.81,
+    "end": 601.4021052631579,
+    "text": "すごくかっこいい。私のユニフォームだ。",
+    "sourceText": "[music] That's so cool. It's my jersey.",
+    "sourceIndexes": [
+      197,
+      198
+    ]
+  },
+  {
+    "start": 601.4021052631579,
+    "end": 605.519,
+    "text": "わあ。とても質の良いユニフォーム。",
+    "sourceText": "Wow. A very good quality jersey.",
+    "sourceIndexes": [
+      199,
+      200
+    ]
+  },
+  {
+    "start": 605.519,
+    "end": 610.6179104477612,
+    "text": "それにYouTubeのロゴ入りのカスタムスニーカーとソックスも。わあ。",
+    "sourceText": "And we also have custom sneakers and socks with YouTube logo. Wow.",
+    "sourceIndexes": [
+      201,
+      202
+    ]
+  },
+  {
+    "start": 610.6179104477612,
+    "end": 614.5253731343284,
+    "text": "この細かいところを見てよ。",
+    "sourceText": "Just look all those little details.",
+    "sourceIndexes": [
+      203
+    ]
+  },
+  {
+    "start": 614.5253731343284,
+    "end": 616.2,
+    "text": "なんてこった。",
+    "sourceText": "Oh my goodness.",
+    "sourceIndexes": [
+      204
+    ]
+  },
+  {
+    "start": 616.24,
+    "end": 619.92,
+    "text": "本当に優しいね。",
+    "sourceText": "That is so sweet.",
+    "sourceIndexes": [
+      205
+    ]
+  },
+  {
+    "start": 619.92,
+    "end": 621.2144736842105,
+    "text": "ありがとう。",
+    "sourceText": "Thank you.",
+    "sourceIndexes": [
+      206
+    ]
+  },
+  {
+    "start": 621.2144736842105,
+    "end": 622.508947368421,
+    "text": "ありがとう。",
+    "sourceText": "Thank you.",
+    "sourceIndexes": [
+      207
+    ]
+  },
+  {
+    "start": 622.508947368421,
+    "end": 624.8389999999999,
+    "text": "本当にありがとう。",
+    "sourceText": "Thank you so much.",
+    "sourceIndexes": [
+      208
+    ]
+  },
+  {
+    "start": 625.532,
+    "end": 627.552,
+    "text": "[音楽]、",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      209
+    ]
+  },
+  {
+    "start": 627.92,
+    "end": 632.6967179487178,
+    "text": "それに今日は試合前日の体験だよ。",
+    "sourceText": "And also today is our pre-match day experience.",
+    "sourceIndexes": [
+      210
+    ]
+  },
+  {
+    "start": 632.6967179487178,
+    "end": 636.8296981132075,
+    "text": "空のスタジアムを完全に見学するはずだった。",
+    "sourceText": "I was supposed to get a full tour of the empty stadium.",
+    "sourceIndexes": [
+      211
+    ]
+  },
+  {
+    "start": 636.8296981132075,
+    "end": 639.519,
+    "text": "少なくとも、それが計画だった。",
+    "sourceText": "At least that was the plan.",
+    "sourceIndexes": [
+      212
+    ]
+  },
+  {
+    "start": 639.519,
+    "end": 642.24,
+    "text": "その日は両チームが記者会見を開いていて、",
+    "sourceText": "Both teams were holding press conference that day.",
+    "sourceIndexes": [
+      213
+    ]
+  },
+  {
+    "start": 642.24,
+    "end": 647.12,
+    "text": "ほとんどすべてのエリアが立ち入り禁止だったんだ。うん。",
+    "sourceText": "So almost every area was restricted. Mhm.",
+    "sourceIndexes": [
+      214,
+      215
+    ]
+  },
+  {
+    "start": 647.12,
+    "end": 650.71355,
+    "text": "満喫できるはずのスタジアムツアーは、",
+    "sourceText": "My full empty stadium tour quickly",
+    "sourceIndexes": [
+      216
+    ]
+  },
+  {
+    "start": 650.71355,
+    "end": 654.839,
+    "text": "あっという間に短い廊下ツアーになっちゃった。",
+    "sourceText": "turned into a very short hallway tour.",
+    "sourceIndexes": [
+      216
+    ]
+  },
+  {
+    "start": 671.36,
+    "end": 675.04,
+    "text": "マッチデー2日目へようこそ、みんな。",
+    "sourceText": "Welcome to match day two, guys.",
+    "sourceIndexes": [
+      217
+    ]
+  },
+  {
+    "start": 675.04,
+    "end": 680,
+    "text": "今日はエジプト対イランの試合に行くよ。",
+    "sourceText": "Today we are going to the Egypt versus Iran match.",
+    "sourceIndexes": [
+      218
+    ]
+  },
+  {
+    "start": 680,
+    "end": 682.72,
+    "text": "それで、準備の様子をちょっと撮りたいんだ。",
+    "sourceText": "And I really want to film a little get ready with me video.",
+    "sourceIndexes": [
+      219
+    ]
+  },
+  {
+    "start": 682.72,
+    "end": 686.2,
+    "text": "これがビフォーで、",
+    "sourceText": "So, this is my before",
+    "sourceIndexes": [
+      220
+    ]
+  },
+  {
+    "start": 686.2,
+    "end": 689.68,
+    "text": "こちらがアフター。",
+    "sourceText": "and here is my after.",
+    "sourceIndexes": [
+      220
+    ]
+  },
+  {
+    "start": 689.68,
+    "end": 692.8,
+    "text": "今日のコーディネートはこれだよ、みんな。",
+    "sourceText": "So, this is our outfit for today, guys.",
+    "sourceIndexes": [
+      221
+    ]
+  },
+  {
+    "start": 692.8,
+    "end": 695.9191836734693,
+    "text": "それで本当にユニフォームが欲しくて、",
+    "sourceText": "And I really, really, really want to get a jersey just to get",
+    "sourceIndexes": [
+      222
+    ]
+  },
+  {
+    "start": 695.9191836734693,
+    "end": 700.4244444444444,
+    "text": "FIFAワールドカップの雰囲気を満喫したいんだ、わかるでしょ？",
+    "sourceText": "fully into the FIFA World Cup mood, you know what I mean?",
+    "sourceIndexes": [
+      222
+    ]
+  },
+  {
+    "start": 700.4244444444444,
+    "end": 703.5950256410256,
+    "text": "でも残念ながら、街中どこも売り切れだったんだ。",
+    "sourceText": "But unfortunately, they were sold out everywhere in the city.",
+    "sourceIndexes": [
+      223
+    ]
+  },
+  {
+    "start": 703.5950256410256,
+    "end": 707.5026415094339,
+    "text": "だから今日はスタジアムで運試ししてみるよ。",
+    "sourceText": "So, I'm going to try my luck today at the stadium.",
+    "sourceIndexes": [
+      224
+    ]
+  },
+  {
+    "start": 707.5026415094339,
+    "end": 710.5403773584906,
+    "text": "指をクロスして、みんな。",
+    "sourceText": "So, finger crossed, guys.",
+    "sourceIndexes": [
+      225
+    ]
+  },
+  {
+    "start": 710.5403773584906,
+    "end": 712.12,
+    "text": "行こう。",
+    "sourceText": "And let's go.",
+    "sourceIndexes": [
+      226
+    ]
+  },
+  {
+    "start": 713.2,
+    "end": 717.36,
+    "text": "やばい、何が起きてるの？",
+    "sourceText": "Oh my god, what is happening?",
+    "sourceIndexes": [
+      227
+    ]
+  },
+  {
+    "start": 717.36,
+    "end": 720.24,
+    "text": "うん。",
+    "sourceText": "Yeah.",
+    "sourceIndexes": [
+      228
+    ]
+  },
+  {
+    "start": 720.24,
+    "end": 722.88,
+    "text": "運命の瞬間。",
+    "sourceText": "The moment of truth.",
+    "sourceIndexes": [
+      229
+    ]
+  },
+  {
+    "start": 722.88,
+    "end": 726.7900000000001,
+    "text": "ユニフォームがあるか見てみよう。",
+    "sourceText": "Let's see if they have the jersey.",
+    "sourceIndexes": [
+      230
+    ]
+  },
+  {
+    "start": 726.7900000000001,
+    "end": 729.32,
+    "text": "やばい、見つけた。",
+    "sourceText": "Oh my god, I found it.",
+    "sourceIndexes": [
+      231
+    ]
+  },
+  {
+    "start": 739.503,
+    "end": 741.523,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      232
+    ]
+  },
+  {
+    "start": 746.708,
+    "end": 748.728,
+    "text": "[叫び声]。",
+    "sourceText": "[screaming]",
+    "sourceIndexes": [
+      233
+    ]
+  },
+  {
+    "start": 755.223,
+    "end": 757.2429999999999,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      234
+    ]
+  },
+  {
+    "start": 763.519,
+    "end": 766.1744074074074,
+    "text": "やばい、みんな。",
+    "sourceText": "Oh my god, guys.",
+    "sourceIndexes": [
+      235
+    ]
+  },
+  {
+    "start": 766.1744074074074,
+    "end": 768,
+    "text": "なんて日だ。",
+    "sourceText": "What a day.",
+    "sourceIndexes": [
+      236
+    ]
+  },
+  {
+    "start": 768,
+    "end": 773.76,
+    "text": "2試合目までに、ユニフォームを買って、オフサイドルールも覚えた。",
+    "sourceText": "By match number two, I had bowed a jersey and learned the offside rule.",
+    "sourceIndexes": [
+      237
+    ]
+  },
+  {
+    "start": 773.76,
+    "end": 776.893,
+    "text": "進んでる。[音楽と歓声]。",
+    "sourceText": "Progress. [music and cheering]",
+    "sourceIndexes": [
+      238,
+      239
+    ]
+  },
+  {
+    "start": 784.699,
+    "end": 788.8,
+    "text": "[音楽]よし、みんな。",
+    "sourceText": "[music] All right, guys.",
+    "sourceIndexes": [
+      240,
+      241
+    ]
+  },
+  {
+    "start": 788.8,
+    "end": 791.6483018867924,
+    "text": "今日はシアトルを出発するよ。イェイ。",
+    "sourceText": "So, today we are leaving Seattle. Yay.",
+    "sourceIndexes": [
+      242,
+      243
+    ]
+  },
+  {
+    "start": 791.6483018867924,
+    "end": 792.88,
+    "text": "あ、それはすごく寂しい。",
+    "sourceText": "A That's so sad.",
+    "sourceIndexes": [
+      244
+    ]
+  },
+  {
+    "start": 792.88,
+    "end": 796.639,
+    "text": "すごく気に入ってたのに。",
+    "sourceText": "I really liked it.",
+    "sourceIndexes": [
+      245
+    ]
+  },
+  {
+    "start": 796.639,
+    "end": 800.2848333333334,
+    "text": "でも次の目的地に飛ぶんだ。",
+    "sourceText": "But we are flying to our next stop.",
+    "sourceIndexes": [
+      246
+    ]
+  },
+  {
+    "start": 800.2848333333334,
+    "end": 801.639,
+    "text": "じゃあ、行こう。",
+    "sourceText": "So, let's go.",
+    "sourceIndexes": [
+      247
+    ]
+  },
+  {
+    "start": 803.694,
+    "end": 807.3958208955224,
+    "text": "[音楽]休む時間はなかった。",
+    "sourceText": "[music] There was no time to rest.",
+    "sourceIndexes": [
+      248,
+      249
+    ]
+  },
+  {
+    "start": 807.3958208955224,
+    "end": 810.48,
+    "text": "シアトルからロサンゼルスへ飛んでいたんだ。",
+    "sourceText": "I was flying from Seattle to Los Angeles.",
+    "sourceIndexes": [
+      250
+    ]
+  },
+  {
+    "start": 810.48,
+    "end": 814.5060000000001,
+    "text": "だから飛行機の中でメイクをしたんだ。",
+    "sourceText": "So, I did my makeup on the plane because after I",
+    "sourceIndexes": [
+      251
+    ]
+  },
+  {
+    "start": 814.5060000000001,
+    "end": 819.1600000000001,
+    "text": "着いたらすぐにスタジアムツアーに行ったから。",
+    "sourceText": "went straight to a stadium tour as soon as I landed.",
+    "sourceIndexes": [
+      251
+    ]
+  },
+  {
+    "start": 822.399,
+    "end": 826.839,
+    "text": "LAに着いたよ、みんな。",
+    "sourceText": "We are in LA, guys.",
+    "sourceIndexes": [
+      252
+    ]
+  },
+  {
+    "start": 841.279,
+    "end": 846.1565438596491,
+    "text": "わあ。試合中のスタジアムも興奮するけど、",
+    "sourceText": "Wow. Seeing a stadium during a match is exciting,",
+    "sourceIndexes": [
+      253
+    ]
+  },
+  {
+    "start": 846.1565438596491,
+    "end": 851.9534736842105,
+    "text": "誰もいなくて次の試合の準備をしているのを見るのは、",
+    "sourceText": "but seeing it completely empty while everyone is",
+    "sourceIndexes": [
+      253
+    ]
+  },
+  {
+    "start": 851.9534736842105,
+    "end": 855.36,
+    "text": "もっと特別な感じがする。",
+    "sourceText": "preparing for the next game feels almost more special.",
+    "sourceIndexes": [
+      254
+    ]
+  },
+  {
+    "start": 855.36,
+    "end": 861.519,
+    "text": "なぜかチームが到着する前にロッカールームに入らせてもらえたんだ。",
+    "sourceText": "And somehow I was allowed inside the locker rooms before the teams arrived.",
+    "sourceIndexes": [
+      255
+    ]
+  },
+  {
+    "start": 861.519,
+    "end": 864.56,
+    "text": "想像できる？",
+    "sourceText": "Can you imagine guys?",
+    "sourceIndexes": [
+      256
+    ]
+  },
+  {
+    "start": 864.56,
+    "end": 867.68,
+    "text": "これがロッカールームだよ。",
+    "sourceText": "These are the locker rooms.",
+    "sourceIndexes": [
+      257
+    ]
+  },
+  {
+    "start": 867.68,
+    "end": 871.68,
+    "text": "やばい。準備はいい？",
+    "sourceText": "Crazy. Are you ready, guys?",
+    "sourceIndexes": [
+      258,
+      259
+    ]
+  },
+  {
+    "start": 871.68,
+    "end": 874.24,
+    "text": "震えてる。",
+    "sourceText": "I'm shaking.",
+    "sourceIndexes": [
+      260
+    ]
+  },
+  {
+    "start": 874.24,
+    "end": 880.079,
+    "text": "ロッカールームの中にいるよ。",
+    "sourceText": "We are inside inside the locker room.",
+    "sourceIndexes": [
+      261
+    ]
+  },
+  {
+    "start": 880.079,
+    "end": 881.5690810810811,
+    "text": "わかんない。",
+    "sourceText": "I don't know.",
+    "sourceIndexes": [
+      262
+    ]
+  },
+  {
+    "start": 881.5690810810811,
+    "end": 884.32,
+    "text": "ここに入っていいのかな？",
+    "sourceText": "Am I allowed to go here?",
+    "sourceIndexes": [
+      263
+    ]
+  },
+  {
+    "start": 884.32,
+    "end": 888.057064516129,
+    "text": "明日はカナダの選手たちがここに来るんだ。",
+    "sourceText": "And tomorrow, Canada players will be here.",
+    "sourceIndexes": [
+      264
+    ]
+  },
+  {
+    "start": 888.057064516129,
+    "end": 892.519,
+    "text": "私たちはここにいるよ。",
+    "sourceText": "We'll be right here, guys.",
+    "sourceIndexes": [
+      265
+    ]
+  },
+  {
+    "start": 893.44,
+    "end": 896.5802666666666,
+    "text": "このボールがトリアンダって呼ばれてるの知ってた？",
+    "sourceText": "Did you know that this ball is called Trianda?",
+    "sourceIndexes": [
+      266
+    ]
+  },
+  {
+    "start": 896.5802666666666,
+    "end": 898.56,
+    "text": "あ、トリオンだ。ごめんごめん。",
+    "sourceText": "Oh, Triion. See, I'm so sorry.",
+    "sourceIndexes": [
+      267,
+      268
+    ]
+  },
+  {
+    "start": 898.56,
+    "end": 900,
+    "text": "トリオンボール。ちょっとここに座ってて。",
+    "sourceText": "Triion ball. Just sit here for a moment.",
+    "sourceIndexes": [
+      269
+    ]
+  }
+]

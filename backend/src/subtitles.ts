@@ -35,6 +35,8 @@ const MIN_STANDALONE_DURATION = 0.5;
 const MIN_SPLIT_FRAGMENT_CHARACTERS = 4;
 const MIN_SOURCE_SPLIT_PART_DURATION = 1;
 const SHORT_FINAL_SOURCE_PART_DURATION = 0.75;
+const MAX_JAPANESE_CHARACTERS_PER_SECOND = 18;
+const MAX_JAPANESE_BOUNDARY_SHIFT = 0.5;
 
 export function normalizeText(text: string) {
   return text.replace(/\s+/g, " ").trim();
@@ -387,17 +389,54 @@ function mergeTranslatedCues(first: TranslatedCue, second: TranslatedCue, text: 
   };
 }
 
-function repairJapaneseCueBoundaries(cues: TranslatedCue[], targetLanguage?: string) {
+function leadingJapanesePunctuation(text: string) {
+  return normalizeText(text).match(/^((?:[、。！？]+[」』）】》〉]*)|(?:[」』）】》〉]+[、。！？]*))/u);
+}
+
+function appendJapanesePunctuation(previousText: string, punctuation: string) {
+  const previous = normalizeText(previousText);
+  if (!punctuation) return previous;
+  if (/^[。！？]/u.test(punctuation)) {
+    const previousClosing = previous.match(/[」』）】》〉]+$/u)?.[0] || "";
+    const punctuationClosing = punctuation.match(/[」』）】》〉]+$/u)?.[0] || "";
+    const previousStem = previous
+      .slice(0, previous.length - previousClosing.length)
+      .replace(/[、。！？]+$/u, "");
+    const punctuationMarks = punctuation.slice(0, punctuation.length - punctuationClosing.length);
+    return `${previousStem}${punctuationMarks}${punctuationClosing || previousClosing}`;
+  }
+  if (punctuation.startsWith("、")) {
+    return /[、。！？][」』）】》〉]*$/u.test(previous) ? previous : `${previous}、`;
+  }
+  return `${previous}${punctuation}`;
+}
+
+function repairJapaneseLeadingPunctuation(cues: TranslatedCue[], targetLanguage?: string) {
   if (!isJapaneseTarget(targetLanguage)) return cues;
 
   const output: TranslatedCue[] = [];
   for (const originalCue of sanitizeTiming(cues)) {
-    let current = {
-      ...originalCue,
-      text: normalizeTranslatedText(originalCue.text, targetLanguage).replace(/^、+/u, "")
-    };
-    if (!current.text) continue;
+    const normalizedText = normalizeTranslatedText(originalCue.text, targetLanguage);
+    const leading = leadingJapanesePunctuation(normalizedText);
+    const previous = output[output.length - 1];
+    if (leading && previous) {
+      previous.text = appendJapanesePunctuation(previous.text, leading[0]);
+    }
 
+    const text = leading
+      ? normalizeText(normalizedText.slice(leading[0].length))
+      : normalizedText;
+    const repairedText = previous ? text : text.replace(/^[、。！？」』）】》〉]+/u, "");
+    if (repairedText) output.push({ ...originalCue, text: repairedText });
+  }
+  return output;
+}
+
+function repairJapaneseCueBoundaries(cues: TranslatedCue[], targetLanguage?: string) {
+  if (!isJapaneseTarget(targetLanguage)) return cues;
+
+  const output: TranslatedCue[] = [];
+  for (const current of repairJapaneseLeadingPunctuation(cues, targetLanguage)) {
     const previous = output[output.length - 1];
     if (!previous) {
       output.push(current);
@@ -1096,8 +1135,64 @@ function addContinuationPunctuation(cues: TranslatedCue[], targetLanguage?: stri
   });
 }
 
+function minimumJapaneseDuration(cue: TranslatedCue) {
+  return Math.max(
+    MIN_DISPLAY_DURATION,
+    visibleLength(cue.text) / MAX_JAPANESE_CHARACTERS_PER_SECOND + 0.001
+  );
+}
+
+function balanceJapaneseReadingSpeed(cues: TranslatedCue[], targetLanguage?: string) {
+  if (!isJapaneseTarget(targetLanguage)) return cues;
+  const output = sanitizeTiming(cues).map((cue) => ({ ...cue }));
+
+  for (let index = 0; index < output.length; index += 1) {
+    const current = output[index];
+    let deficit = minimumJapaneseDuration(current) - (current.end - current.start);
+    if (deficit <= 0.001) continue;
+    deficit = Math.min(deficit, MAX_JAPANESE_BOUNDARY_SHIFT);
+
+    const previous = output[index - 1];
+    const next = output[index + 1];
+    if (previous) {
+      const freeGap = Math.max(0, current.start - previous.end);
+      const borrowedGap = Math.min(deficit, freeGap);
+      current.start -= borrowedGap;
+      deficit -= borrowedGap;
+    } else {
+      const borrowedGap = Math.min(deficit, current.start);
+      current.start -= borrowedGap;
+      deficit -= borrowedGap;
+    }
+
+    if (deficit > 0.001 && next) {
+      const freeGap = Math.max(0, next.start - current.end);
+      const borrowedGap = Math.min(deficit, freeGap);
+      current.end += borrowedGap;
+      deficit -= borrowedGap;
+    }
+
+    if (deficit > 0.001 && next && Math.abs(next.start - current.end) <= 0.05) {
+      const available = Math.max(0, (next.end - next.start) - minimumJapaneseDuration(next));
+      const borrowed = Math.min(deficit, available);
+      current.end += borrowed;
+      next.start += borrowed;
+      deficit -= borrowed;
+    }
+
+    if (deficit > 0.001 && previous && Math.abs(current.start - previous.end) <= 0.05) {
+      const available = Math.max(0, (previous.end - previous.start) - minimumJapaneseDuration(previous));
+      const borrowed = Math.min(deficit, available);
+      previous.end -= borrowed;
+      current.start -= borrowed;
+    }
+  }
+
+  return sanitizeTiming(output);
+}
+
 export function finalizeTranslatedCues(cues: TranslatedCue[], targetLanguage?: string) {
-  return addContinuationPunctuation(
+  const punctuated = addContinuationPunctuation(
     enforceSubtitleLimits(
       enforceReadableDurations(
         enforcePunctuationSegmentation(
@@ -1106,6 +1201,10 @@ export function finalizeTranslatedCues(cues: TranslatedCue[], targetLanguage?: s
       ),
       targetLanguage
     ),
+    targetLanguage
+  );
+  return balanceJapaneseReadingSpeed(
+    repairJapaneseLeadingPunctuation(punctuated, targetLanguage),
     targetLanguage
   );
 }

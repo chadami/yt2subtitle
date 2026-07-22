@@ -1,0 +1,94 @@
+{
+  "topic": "Shopping in Korea",
+  "summary": "A vlogger explores Seoul's shopping scene, comparing prices of Nike, Adidas, and Korean brands to US/UK, highlighting tax refunds and weak won.",
+  "tone": "casual, enthusiastic, explanatory",
+  "audience": "sneaker enthusiasts, travelers interested in shopping deals",
+  "glossary": [
+    {
+      "source": "Jordan flight store",
+      "target": "ジョーダンフライトストア",
+      "note": "Official Jordan Brand flagship store"
+    },
+    {
+      "source": "VAT refund",
+      "target": "付加価値税還付",
+      "note": "Tax refund for tourists"
+    },
+    {
+      "source": "won",
+      "target": "ウォン",
+      "note": "Korean currency"
+    },
+    {
+      "source": "Sinsong",
+      "target": "シンソン",
+      "note": "Likely a mispronunciation of a Seoul district; keep as is or use 'シンソン'"
+    },
+    {
+      "source": "Mayadong",
+      "target": "マヤドン",
+      "note": "Likely a mispronunciation; keep as is"
+    },
+    {
+      "source": "Musinsa Standard",
+      "target": "ムシンサスタンダード",
+      "note": "Korean fashion brand"
+    },
+    {
+      "source": "Gentle Monster",
+      "target": "ジェントルモンスター",
+      "note": "Korean eyewear brand"
+    },
+    {
+      "source": "Mason Margela",
+      "target": "メゾンマルジェラ",
+      "note": "Likely Maison Margiela; correct to standard Japanese name"
+    },
+    {
+      "source": "Evo SL",
+      "target": "エヴォSL",
+      "note": "Adidas shoe model"
+    },
+    {
+      "source": "Brooks Adrenaline GTS10",
+      "target": "ブルックス アドレナリンGTS10",
+      "note": "Running shoe model"
+    },
+    {
+      "source": "Pegasus Premium",
+      "target": "ペガサスプレミアム",
+      "note": "Nike shoe model"
+    },
+    {
+      "source": "Vomero 18",
+      "target": "ヴォメロ18",
+      "note": "Nike shoe model"
+    }
+  ],
+  "properNouns": [
+    "Seoul",
+    "South Korea",
+    "Nike",
+    "Adidas",
+    "Jordan",
+    "Levi's",
+    "Maison Margiela",
+    "Gentle Monster",
+    "Musinsa Standard",
+    "Brooks",
+    "Evo SL",
+    "Pegasus Premium"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with sentence-ending particles like ね, よ, だね, じゃん.",
+    "Keep brand names in English or use standard Japanese katakana (e.g., ナイキ, アディダス).",
+    "For prices, convert to yen equivalent or keep in won with approximate USD/GBP in parentheses.",
+    "Use 激安 for 'dirt cheap', やばい for 'crazy/cool', イカす for 'banger'.",
+    "Maintain the speaker's enthusiastic tone with exclamations like すげえ, マジで, やばい.",
+    "For mispronounced place names, use the intended correct name in katakana (e.g., シンソン, マヤドン).",
+    "Use 付加価値税還付 for 'VAT refund' and explain briefly if needed.",
+    "Keep 'won' as ウォン and use ウォン for currency.",
+    "For 'Asia Tour 2.0', use アジアツアー2.0.",
+    "Use 限定 for 'exclusive' and コラボ for 'collab'."
+  ]
+}

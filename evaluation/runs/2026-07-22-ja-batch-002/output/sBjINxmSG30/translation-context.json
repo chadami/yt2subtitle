@@ -1,0 +1,66 @@
+{
+  "topic": "Raw egg culture in Japan",
+  "summary": "Explores the history, safety, and cultural significance of tamago kake gohan (TKG), a Japanese dish of raw egg on rice, including expert interviews and viewer reactions.",
+  "tone": "Casual, informative, and slightly humorous",
+  "audience": "General audience interested in Japanese food culture",
+  "glossary": [
+    {
+      "source": "TKG",
+      "target": "TKG（たまごかけご飯）",
+      "note": "Abbreviation for tamago kake gohan; use full form on first mention, then TKG."
+    },
+    {
+      "source": "tamago kake gohan",
+      "target": "たまごかけご飯",
+      "note": "Standard Japanese term for raw egg on rice."
+    },
+    {
+      "source": "Ajitama",
+      "target": "味玉",
+      "note": "Seasoned soft-boiled egg in ramen."
+    },
+    {
+      "source": "furikake",
+      "target": "ふりかけ",
+      "note": "Japanese rice seasoning."
+    },
+    {
+      "source": "salmonella",
+      "target": "サルモネラ菌",
+      "note": "Bacteria associated with raw eggs."
+    },
+    {
+      "source": "bloom",
+      "target": "ブルーム（卵殻膜）",
+      "note": "Protective membrane on eggshell."
+    },
+    {
+      "source": "cage-free",
+      "target": "ケージフリー",
+      "note": "Housing system for chickens."
+    }
+  ],
+  "properNouns": [
+    "World Egg Organization",
+    "Ginko Kashida",
+    "Yurin An",
+    "Kisaburo",
+    "Dr. Andrea Udder",
+    "University of Vermont",
+    "FDA",
+    "National Poultry Improvement Plan",
+    "Harasan",
+    "1010en",
+    "Nishiawa Kura"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である style for narration, but polite です/ます for interviews.",
+    "Keep sentence endings natural; avoid overly literal translations.",
+    "For humor, use colloquial expressions like やばい or すごい.",
+    "Translate 'you' as あなた only when necessary; prefer omitting or using context.",
+    "Keep on-screen text (e.g., QR code) untranslated or add a brief note.",
+    "For laughter, use (笑) or keep as [laughter] if timing is tight.",
+    "Use loanwords like サルモネラ and ブルーム as-is with katakana.",
+    "Break long sentences into shorter subtitle-friendly chunks."
+  ]
+}

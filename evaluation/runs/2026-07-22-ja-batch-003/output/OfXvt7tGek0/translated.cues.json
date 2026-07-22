@@ -1,0 +1,995 @@
+[
+  {
+    "start": 0.12,
+    "end": 5.093684210526316,
+    "text": "カナダのマーク・カーニー首相が連邦予算書でSをZに変えた時、",
+    "sourceText": "- When Canadian Prime Minister Mark Carney swapped some S's for Zs in a federal budget",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 5.093684210526316,
+    "end": 9.69,
+    "text": "政治家がスペルミスを指摘されたのは初めてではなかった。",
+    "sourceText": "document, it wasn't the first time a politician was called out for poor spelling.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 9.69,
+    "end": 14.89,
+    "text": "彼は元米国副大統領ダン・クエールや元英国首相リシ・スナクと並び、",
+    "sourceText": "He joined the ranks of former US Vice President Dan Quayle and former",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 14.89,
+    "end": 18.09,
+    "text": "記憶に残るスペルの失態を犯した。",
+    "sourceText": "UK Prime Minister Rishi Sunak in making a memorable spelling gaffe.",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 18.09,
+    "end": 22.04,
+    "text": "しかし、深夜のトーク番組やSNSで叩かれる代わりに、",
+    "sourceText": "But instead of being roasted in late-night monologues or social media posts, Mark Carney got",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 22.04,
+    "end": 28.740000000000002,
+    "text": "マーク・カーニーは言語専門家から公開書簡を受け取り、カナダのアイデンティティを損なっていると指摘された。",
+    "sourceText": "an open letter from language experts telling him he was undermining the Canadian identity.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 28.740000000000002,
+    "end": 31.22603773584906,
+    "text": "長年英国で働いていたカーニーは、",
+    "sourceText": "Carney, who worked in the United Kingdom for many years, was",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 31.22603773584906,
+    "end": 35.400000000000006,
+    "text": "utiliseやemphasiseのような単語を英国式の綴りで使っていた。",
+    "sourceText": "using the British spelling of words like utilise and emphasise.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 35.400000000000006,
+    "end": 40.68,
+    "text": "その書簡はカーニーとカナダ政府に対し、標準的なカナダ英語に戻すよう警告した。",
+    "sourceText": "The letter admonished Carney and the Canadian government to return to using standard Canadian English.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 40.68,
+    "end": 44.512499999999996,
+    "text": "でも、国のリーダーがその国の言語の基準を決めないなら、",
+    "sourceText": "But if a leader of a country doesn't set the standard",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 44.512499999999996,
+    "end": 46.98,
+    "text": "誰がルールを作るんだろう？",
+    "sourceText": "for that country's language, who does make the rules?",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 46.98,
+    "end": 49.47279069767442,
+    "text": "マントと剣を身につけた秘密結社が、",
+    "sourceText": "Is there some secret society with capes and swords",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 49.47279069767442,
+    "end": 52.650000000000006,
+    "text": "私たちが使う言語について公式な決定を下しているのか？",
+    "sourceText": "making official decisions about the language we all use?",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 52.650000000000006,
+    "end": 55.41,
+    "text": "実は、文字通りそういう場合もある。",
+    "sourceText": "Well, in some cases, literally yes.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 55.41,
+    "end": 60.54,
+    "text": "だから、彼らが実際にどうやって言語を標準化し、なぜ規制したいのかについて話そう。",
+    "sourceText": "So let's talk about how they actually standardize language and why they want to regulate it at all.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 60.54,
+    "end": 63.041,
+    "text": "私はエリカ・ブロゾフスキー博士、そしてこれはOtherwordsです。",
+    "sourceText": "I'm Dr. Erica Brozovsky, and this is Otherwords.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 63.041,
+    "end": 66.541,
+    "text": "（柔らかなインストゥルメンタル音楽）。",
+    "sourceText": "(soft instrumental music)",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 70.582,
+    "end": 73.8,
+    "text": "【アニメの唇】Otherwords。",
+    "sourceText": "- [Animated Lips] Otherwords.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 73.8,
+    "end": 76.66339285714285,
+    "text": "アメリカ英語を話す人にとって、",
+    "sourceText": "- If you're an American English speaker, the idea of an official government",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 76.66339285714285,
+    "end": 82.41,
+    "text": "政府の公式機関が言語に関するルールや規制を作るという考えは少し奇妙に思えるだろう。",
+    "sourceText": "institution making rules and regulations around language seems a little weird.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 82.41,
+    "end": 85.76345454545455,
+    "text": "IRSやDMVと並んで、話し方局があって、",
+    "sourceText": "Imagine if along with the IRS and the DMV, there was the Office of Elocution",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 85.76345454545455,
+    "end": 90.45,
+    "text": "ネットミームで覚えた新しい言葉を使うなと言ってくるのを想像してみて。",
+    "sourceText": "telling you not to use that new word you picked up from an internet meme.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 90.45,
+    "end": 94.74263157894737,
+    "text": "しかし、世界中の多くの言語には、語彙の選択から文法、",
+    "sourceText": "But for many languages around the world, there are formal institutions that",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 94.74263157894737,
+    "end": 99.63000000000001,
+    "text": "そしてそう、スペルに至るまで規制しようとする正式な機関がある。",
+    "sourceText": "try to regulate language from word choice to grammar to, yes, even spelling.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 99.63000000000001,
+    "end": 102.6,
+    "text": "では、これらの言語規制機関は何をしようとしているのか？",
+    "sourceText": "So what are these language regulators trying to do?",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 102.6,
+    "end": 108.49615384615385,
+    "text": "有名な堅物のアカデミー・フランセーズに聞けば、その使命はフランス語を守り、",
+    "sourceText": "Well, if you ask the notoriously stodgy Académie Française, their mission is to defend the",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 108.49615384615385,
+    "end": 113.25,
+    "text": "純粋で、雄弁で、芸術や科学に対応できるようにすることだ。",
+    "sourceText": "French language and make it pure, eloquent, and capable of dealing with the arts and sciences.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 113.25,
+    "end": 116.49,
+    "text": "そして「純粋」という言葉にはかなり含みがある。",
+    "sourceText": "And pure is a pretty loaded word there.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 116.49,
+    "end": 118.78565217391304,
+    "text": "アカデミー・フランセーズは、",
+    "sourceText": "The Académie Française is an exclusive group of 40",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 118.78565217391304,
+    "end": 122.49000000000001,
+    "text": "フランスの著名な文学者や学者40人からなる排他的なグループです。",
+    "sourceText": "notable literary figures and scholars in France.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 122.49000000000001,
+    "end": 127.74,
+    "text": "メンバーの平均年齢は70代で、それにふさわしい古風な傾向があります。",
+    "sourceText": "The average age of their members is in the 70s, and they have some old-fashioned tendencies to match.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 127.74,
+    "end": 132.6,
+    "text": "アカデミーは、外来語をフランス語に取り入れることに抵抗があることで知られています。",
+    "sourceText": "The Academy is known for being resistant to incorporating loanwords from other languages into French.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 132.6,
+    "end": 136.17,
+    "text": "そのため、新しい言葉が必要なときにフランス語の相当語を考えるのも仕事の一部です。",
+    "sourceText": "So part of their work is coming up with French equivalents when new words are needed.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 136.17,
+    "end": 140.7641463414634,
+    "text": "オランダ語話者が「emailen」、ウルドゥー語話者が「ai mel」と呼ぶemailの代わりに、",
+    "sourceText": "Instead of email, which Dutch speakers call 'emailen' and Urdu speakers",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 140.7641463414634,
+    "end": 144.52707317073168,
+    "text": "アカデミー・フランセーズは「courriel」という言葉を推奨しています。",
+    "sourceText": "call 'ai mel,' the Académie Française recommends the word 'courriel.'",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 144.5270731707317,
+    "end": 148.29,
+    "text": "しかし、こうしたトップダウンのお達しはいつもうまくいくわけではありません。",
+    "sourceText": "But these top-down pronouncements aren't always successful.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 148.29,
+    "end": 154.44844660194173,
+    "text": "当局は無線インターネットを「L'accès sans fil à l'Internet」と呼ぶよう主張しましたが、",
+    "sourceText": "While the authorities insisted that wireless internet is called \"L'accès",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 154.44844660194173,
+    "end": 158.21621359223298,
+    "text": "ほとんどのフランス人は単に「le wifi」と言います。",
+    "sourceText": "sans fil à l'Internet,\" most French people just say \"le wifi.\" Many",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 158.216213592233,
+    "end": 161.01,
+    "text": "多くの言語規制機関は、言語の標準化と、",
+    "sourceText": "language regulators are trying to navigate the challenge of standardizing",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 161.01,
+    "end": 164.07,
+    "text": "現代化を同時に行うという課題に取り組んでいます。",
+    "sourceText": "and modernizing language at the same time.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 164.07,
+    "end": 166.8276923076923,
+    "text": "例えば、アイスランドの人名委員会は、",
+    "sourceText": "The Iceland's Personal Names Committee, for example, regulates",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 166.8276923076923,
+    "end": 170.97,
+    "text": "アイスランドで使用できる赤ちゃんの名前の公式リストを規制しています。",
+    "sourceText": "an official list of baby names that can be used in Iceland.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 170.97,
+    "end": 173.40661016949153,
+    "text": "新しい名前を追加することはできますが、",
+    "sourceText": "While new names can be added, the committee tries to standardize",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 173.40661016949153,
+    "end": 177.21,
+    "text": "委員会はアイスランド語のアルファベットのみを使用する綴りに標準化しようとします。",
+    "sourceText": "them to spellings that use only the Icelandic alphabet.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 177.21,
+    "end": 180.6198,
+    "text": "Caraという名前はKaraと標準化されるかもしれません。",
+    "sourceText": "The name Cara might be standardized as Kara,",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 180.6198,
+    "end": 183.42,
+    "text": "アイスランド語にはCの文字がないからです。",
+    "sourceText": "because Icelandic doesn't include the letter C.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 183.42,
+    "end": 188.23190476190476,
+    "text": "しかし、人々がアイスランドに移住し、母国の伝統的な名前を持ち込むにつれて、",
+    "sourceText": "But as people immigrate to Iceland, bringing with them traditional names from their",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 188.23190476190476,
+    "end": 191.97,
+    "text": "人名委員会はもう少し柔軟にならざるを得ませんでした。",
+    "sourceText": "home countries, the personal names committee has had to become a bit more flexible.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 191.97,
+    "end": 194.56468085106383,
+    "text": "そして、一部の議員は、制限が厳しすぎるとして、",
+    "sourceText": "And some legislators have proposed dissolving the",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 194.56468085106383,
+    "end": 197.22,
+    "text": "命名委員会を完全に廃止することを提案しています。",
+    "sourceText": "naming committee altogether for being too restrictive.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 197.22,
+    "end": 202.77,
+    "text": "しかし、言語標準化の目的は、常に言語の変化を防ぐことではありません。",
+    "sourceText": "But the purpose of language standardization isn't always to prevent a language from changing.",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 202.77,
+    "end": 205.8326865671642,
+    "text": "ウィスコンシン州のホーチャンクの人々が、",
+    "sourceText": "After the Ho-Chunk people in Wisconsin underwent decades of forced assimilation",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 205.8326865671642,
+    "end": 211.41,
+    "text": "英語のみの寄宿学校で何十年にもわたる強制同化を経験した後、彼らの言語は消滅の危機に瀕しました。",
+    "sourceText": "in English-only boarding schools, their language was in danger of disappearing.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 211.41,
+    "end": 215.58,
+    "text": "現在、母語話者は約40人しかいないと推定されています。",
+    "sourceText": "The nation estimates that there are only about 40 native speakers living today.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 215.58,
+    "end": 219.64881355932204,
+    "text": "そこで、ホーチャンクを生きた言語として復活させることを目標に、",
+    "sourceText": "So with the goal of revitalizing Ho-Chunk as a living language,",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 219.64881355932204,
+    "end": 223.44,
+    "text": "ホーチャンク・ネーションは政府の言語部門を設立しました。",
+    "sourceText": "the Ho-Chunk Nation established a governmental language division.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 223.44,
+    "end": 230.88000000000002,
+    "text": "その組織は長老たちの録音を行い、ネイティブスピーカーがホーチャンク語の単語を発音する音声付きのオンライン辞書を作成しました。",
+    "sourceText": "That organization recorded elders and created an online dictionary featuring recordings of native speakers pronouncing Ho-Chunk words.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 230.88000000000002,
+    "end": 235.35344262295084,
+    "text": "アプリや地域の学校で受講できるカリキュラムを開発し、",
+    "sourceText": "They developed curriculum for classes that can be taken either through an app or in area schools",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 235.35344262295084,
+    "end": 240.96,
+    "text": "さらにイマージョン保育園を設立して、新しい世代に言語を紹介しています。",
+    "sourceText": "and even established an immersion daycare center to introduce the language to a new generation.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 240.96,
+    "end": 243.88363636363636,
+    "text": "ホーチャンク語を救うこれらの取り組みは、",
+    "sourceText": "These efforts to save Ho-Chunk represent the more urgent end of the mission",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 243.88363636363636,
+    "end": 247.84145454545452,
+    "text": "多くの言語規制機関が共有する使命のより緊急な側面を示しています。",
+    "sourceText": "that many language regulators share to protect a language and promote its use",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 247.84145454545455,
+    "end": 254.04,
+    "text": "それは、言語に刻まれた歴史、文化、アイデンティティのすべてを保存するために、言語を保護しその使用を促進することです。",
+    "sourceText": "in order to preserve all the history, culture, and identity encoded within it.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 254.04,
+    "end": 257.34,
+    "text": "では、言語が規制されていない場合はどうなるのでしょうか？",
+    "sourceText": "But what happens when a language isn't regulated?",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 257.34,
+    "end": 262.1428571428571,
+    "text": "世界中で15億人が話す英語ですが、首相を軽んじたり、",
+    "sourceText": "Despite being spoken by 1.5 billion people around the world, English has no formal regulating",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 262.1428571428571,
+    "end": 268.46999999999997,
+    "text": "ゲーマー用語の正式な翻訳を発表したりするような正式な規制機関はありません。",
+    "sourceText": "body to pooh-pooh, prime ministers, or announce formal translations of gamer slang.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 268.47,
+    "end": 273.27000000000004,
+    "text": "しかし、より小規模に言語を標準化する組織はたくさんあります。",
+    "sourceText": "But there are plenty of organizations that standardize the language on a smaller scale.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 273.27000000000004,
+    "end": 277.2316981132076,
+    "text": "ジャーナリストなら、AP通信スタイルブックを参照するかもしれません。",
+    "sourceText": "If you're a journalist, you may refer to the Associated Press Stylebook, which",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 277.2316981132076,
+    "end": 281.84320754716987,
+    "text": "これは、スペルや文法、さらにはニュースメディア全体で特定の主題をどのように言及するか、",
+    "sourceText": "tries to standardize spelling, grammar, and even conventions on how to refer to",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 281.84320754716987,
+    "end": 285.48,
+    "text": "という慣習を標準化しようとするもので、そのメディアの消費者が、",
+    "sourceText": "certain subjects across news media, which can influence how consumers of that media",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 285.48,
+    "end": 287.40000000000003,
+    "text": "自ら言語を使用する方法に影響を与える可能性があります。",
+    "sourceText": "use language themselves.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 287.40000000000003,
+    "end": 291.42,
+    "text": "あるいは、言語が時間とともにどのように変化してきたかを理解しようとするなら、",
+    "sourceText": "Or if you're trying to understand how the language has changed over time,",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 291.42,
+    "end": 294.401052631579,
+    "text": "オックスフォード英語辞典を調べることもできます。",
+    "sourceText": "you could look at the Oxford English Dictionary, which tracks the history",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 294.401052631579,
+    "end": 298.05,
+    "text": "これは、11世紀まで遡る英語の単語とその用法の歴史を追跡しており、",
+    "sourceText": "of English words and their usage going back as far as the 11th century,",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 298.05,
+    "end": 300.36,
+    "text": "それにかなりの制度的影響力を与えています。",
+    "sourceText": "giving it some serious institutional clout.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 300.36,
+    "end": 302.8346511627907,
+    "text": "それでも、これらの言語の裁定者のいずれも、",
+    "sourceText": "Still, none of these arbiters of language",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 302.8346511627907,
+    "end": 305.37,
+    "text": "本格的な政府機関のような力は持っていません。",
+    "sourceText": "have the power of a full-on government body.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 305.37,
+    "end": 309.58275,
+    "text": "ただ、話す人々にとっては言語の規制機関のように見え、感じられるかもしれません。",
+    "sourceText": "They just might look and feel like regulators of language to the people who speak it,",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 309.58275,
+    "end": 314.49074999999993,
+    "text": "なぜなら、言語規制機関の目標が新しい言葉を排除することであれ、新しい話者を受け入れることであれ、",
+    "sourceText": "because no matter whether language regulator's goal is to keep new words out or let",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 314.49075,
+    "end": 318.23999999999995,
+    "text": "彼らは同じようなツールを使って自分たちの宣言を定着させるからです。",
+    "sourceText": "new speakers in, they use some of these same tools to make their pronouncements stick.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 318.24,
+    "end": 324.5011475409836,
+    "text": "王立スペインアカデミーやニュージーランドのマオリ語委員会のような規制機関の多くは、",
+    "sourceText": "Many of these regulatory agencies like the Royal Spanish Academy or the Māori Language",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 324.5011475409836,
+    "end": 328.17,
+    "text": "管轄する言語の公式辞書を発行しています。",
+    "sourceText": "Commission of New Zealand produce official dictionaries of the languages in their charge.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 328.17,
+    "end": 336.27000000000004,
+    "text": "これらは規範的で、正しく言語を使おうとするときに参照する標準的な綴りや定義を提示します。",
+    "sourceText": "These can be prescriptive in that they put forth standard spellings and definitions for words that we might refer to if we're trying to use the language correctly.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 336.27000000000004,
+    "end": 339.7113559322034,
+    "text": "しかし、これらの辞書は記述的でもあり、",
+    "sourceText": "But these dictionaries can also be beautifully descriptive because they create regularly",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 339.7113559322034,
+    "end": 345.63,
+    "text": "私たちが使う言葉とその使い方を定期的に更新したスナップショットとして提供します。",
+    "sourceText": "updated snapshots of the words we use and how we use them at a particular moment in time.",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 345.63,
+    "end": 350.37,
+    "text": "言語規制機関は学校のカリキュラムや評価基準にも影響を与えます。",
+    "sourceText": "Language regulators can also influence school curriculums and evaluation standards.",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 350.37,
+    "end": 355.53214285714284,
+    "text": "ホーチャンク・ネーションのように特定の言語パターンを学業の成功で報いることもできれば、",
+    "sourceText": "They can reward certain language patterns with academic success, as we saw with",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 355.53214285714284,
+    "end": 360.51,
+    "text": "かつてホーチャンク語の使用を discourag しようとした米国の議員のように、",
+    "sourceText": "the Ho-Chunk Nation, or stigmatize language patterns as incorrect or unprofessional,",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 360.51,
+    "end": 364.28999999999996,
+    "text": "言語パターンを誤りや非専門的と烙印を押すこともできます。",
+    "sourceText": "as we saw in the US lawmakers who once sought to discourage Ho-Chunk's use.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 364.29,
+    "end": 368.88189873417724,
+    "text": "アカデミー・フランセーズやエディターズ・カナダのように、",
+    "sourceText": "They can, like the Académie Française or Editors Canada, write open",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 368.88189873417724,
+    "end": 373.47379746835446,
+    "text": "公開書簡やプレスリリースを出して言語使用者を説得したり、",
+    "sourceText": "letters or issue press releases to try to persuade language users,",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 373.47379746835446,
+    "end": 377.46,
+    "text": "政府文書での言語使用に影響を与えたりできます。",
+    "sourceText": "or they can influence how language is used in government documents.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 377.46,
+    "end": 380.52206896551724,
+    "text": "例えば、アイスランドの人名委員会は、",
+    "sourceText": "The Iceland's Personal Names Committee, for example, has a history of rejecting",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 380.52206896551724,
+    "end": 385.86,
+    "text": "標準化された綴りに合わない名前を持つ人のパスポートを拒否してきた歴史があります。",
+    "sourceText": "passports for those whose names don't conform to standardized spelling.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 385.86,
+    "end": 390.2727906976744,
+    "text": "一方、ニューヨーク市は、公的扶助や学校登録書類をアラビア語、",
+    "sourceText": "Whereas the New York City government requires documents like public assistance and",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 390.2727906976744,
+    "end": 395.11395348837203,
+    "text": "ベンガル語、ハイチ・クレオール語など10言語で提供するよう義務付け、",
+    "sourceText": "school registration forms to be available in 10 languages, from Arabic to Bengali",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 395.1139534883721,
+    "end": 398.66999999999996,
+    "text": "市民生活での幅広い言語使用を促進しています。",
+    "sourceText": "to Haitian Creole, to promote the use of a broad range of languages in civic life.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 398.67,
+    "end": 402.87,
+    "text": "そして、これらの手段は一般の人々の言語使用を大きく形作ることができます。",
+    "sourceText": "And these tools can do a lot to shape how everyday people use language.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 402.87,
+    "end": 405.37,
+    "text": "なんと、カナダの首相でさえ、",
+    "sourceText": "Heck, not even the Prime Minister of Canada can switch up",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 405.37,
+    "end": 409.17,
+    "text": "外部からの圧力に直面せずに綴りを変えることはできません。",
+    "sourceText": "his spelling without facing outside pressure to comply.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 409.17,
+    "end": 412.9486046511628,
+    "text": "しかし、言語学者が知るように、言語は狡猾で、",
+    "sourceText": "But as linguists know, language is a wily thing that changes",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 412.9486046511628,
+    "end": 416.61,
+    "text": "人から人へ伝わるたびに少しずつ変化します。",
+    "sourceText": "a little bit every time it passes from person to person.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 416.61,
+    "end": 419.76,
+    "text": "だから、言語を規範化できる範囲には限りがあります。",
+    "sourceText": "So prescribing language can only go so far.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 419.76,
+    "end": 422.6066666666667,
+    "text": "最良の場合、言語規制機関は綴りの標準化などによって、",
+    "sourceText": "At their best, language regulators help us",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 422.6066666666667,
+    "end": 425.01,
+    "text": "より良いコミュニケーションを助けます。",
+    "sourceText": "communicate better by, say, standardizing spelling.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 425.01,
+    "end": 432.76,
+    "text": "しかし同時に、私たちが使う言語をその奇妙で進化する栄光のままにカタログ化し記述することで、言語に成長の余地を与えてもいます。",
+    "sourceText": "But they also give language room to grow as they catalog and describe language as we use it in all its quirky, evolving glory.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 432.76,
+    "end": 434.62,
+    "text": "アカデミー。アカデミー。",
+    "sourceText": "Académie.",
+    "sourceIndexes": [
+      60,
+      61
+    ]
+  },
+  {
+    "start": 434.62,
+    "end": 438.68,
+    "text": "そして、ある議員が提案したのは…提・提・提案。",
+    "sourceText": "And some legislators have proposed... Pro-prop-propose.",
+    "sourceIndexes": [
+      62,
+      63
+    ]
+  },
+  {
+    "start": 438.68,
+    "end": 441.473,
+    "text": "（エリカ、咳払い）ああ、もう！",
+    "sourceText": "(Erica clears throat) Oh my God!",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 441.473,
+    "end": 445.04999999999995,
+    "text": "あっ！（ため息）そして、規制…",
+    "sourceText": "- [Speaker] Oh! (Erica sighs) - And feel like regula...",
+    "sourceIndexes": [
+      65,
+      66
+    ]
+  },
+  {
+    "start": 445.05,
+    "end": 448.948,
+    "text": "規制機関ね。（くすくす）。",
+    "sourceText": "Regulators. (chuckles) (soft music)",
+    "sourceIndexes": [
+      67
+    ]
+  }
+]

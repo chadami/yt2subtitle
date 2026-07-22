@@ -1,0 +1,92 @@
+{
+  "topic": "DIY medium format digital camera",
+  "summary": "The creator builds the cheapest possible medium format digital camera using a Phase One P45+ digital back, a Mamiya Press lens, and 3D-printed parts, discussing research, challenges, and results.",
+  "tone": "casual, enthusiastic, explanatory",
+  "audience": "photography enthusiasts, DIY camera builders, budget-conscious creators",
+  "glossary": [
+    {
+      "source": "medium format",
+      "target": "中判",
+      "note": "Standard term for medium format in photography"
+    },
+    {
+      "source": "digital back",
+      "target": "デジタルバック",
+      "note": "Common term for the sensor unit in modular cameras"
+    },
+    {
+      "source": "sync cable",
+      "target": "シンクロケーブル",
+      "note": "Cable to synchronize shutter and digital back"
+    },
+    {
+      "source": "flange distance",
+      "target": "フランジバック",
+      "note": "Distance from lens mount to sensor, critical for focus"
+    },
+    {
+      "source": "live view",
+      "target": "ライブビュー",
+      "note": "Feature to preview image on screen in real time"
+    },
+    {
+      "source": "two-shot approach",
+      "target": "2ショット方式",
+      "note": "Technique to trigger digital back with two shutter releases"
+    },
+    {
+      "source": "CCD",
+      "target": "CCD",
+      "note": "Type of image sensor, keep as is"
+    },
+    {
+      "source": "Hasselblad",
+      "target": "ハッセルブラッド",
+      "note": "Brand name, keep as is"
+    },
+    {
+      "source": "Phase One",
+      "target": "フェーズワン",
+      "note": "Brand name, keep as is"
+    },
+    {
+      "source": "Mamiya Press",
+      "target": "マミヤプレス",
+      "note": "Camera system name, keep as is"
+    },
+    {
+      "source": "P45+",
+      "target": "P45+",
+      "note": "Model number, keep as is"
+    },
+    {
+      "source": "3D print",
+      "target": "3Dプリント",
+      "note": "Common term for 3D printing"
+    }
+  ],
+  "properNouns": [
+    "Snappiness",
+    "Valerion",
+    "Hasselblad",
+    "Phase One",
+    "Mamiya Press",
+    "Leaf",
+    "Kodak",
+    "Fujifilm GFX",
+    "Pentax 645Z",
+    "ThinkPad",
+    "Polaroid PDC 2000",
+    "eBay"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である style for narration, but polite です/ます for direct address to viewers.",
+    "Keep brand and model names in English (e.g., Hasselblad, Phase One P45+).",
+    "Translate technical terms like 'sync cable' to common Japanese equivalents (シンクロケーブル).",
+    "For idioms like 'spill the beans', use natural Japanese equivalents (ネタバレする).",
+    "Maintain the creator's enthusiastic tone with interjections like ね, よ, さ.",
+    "Use short, clear sentences suitable for subtitles; avoid complex clauses.",
+    "For measurements, convert to metric (mm) and keep as is.",
+    "When referring to camera parts, use standard Japanese photography terms (e.g., レンズ, シャッター, センサー)."
+  ]
+}

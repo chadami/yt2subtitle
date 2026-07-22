@@ -1,0 +1,1982 @@
+[
+  {
+    "start": 0.32,
+    "end": 5.2,
+    "text": "このスマホはテクノロジーの傑作だ。",
+    "sourceText": "This phone is a masterpiece of technology.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 5.2,
+    "end": 7.4135465116279065,
+    "text": "衛星ネットワークと同期してる。",
+    "sourceText": "It's synced to a satellite network.",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 7.4135465116279065,
+    "end": 9.81682558139535,
+    "text": "ミリ秒単位で時間を刻む。",
+    "sourceText": "It tells time down to the millisecond.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 9.81682558139535,
+    "end": 15.44,
+    "text": "1000ドルもする。そして10年も経たずに完全に時代遅れになる。",
+    "sourceText": "Costs $1,000. And in less than a decade, it's going to be completely obsolete.",
+    "sourceIndexes": [
+      3,
+      4
+    ]
+  },
+  {
+    "start": 15.44,
+    "end": 19.76,
+    "text": "賞味期限付きの道具なんだ。",
+    "sourceText": "It is a tool with an expiration date.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 19.76,
+    "end": 21.744,
+    "text": "で、こっちはもっと劣った技術だ。",
+    "sourceText": "Now, this is worse technology.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 21.744,
+    "end": 24.72,
+    "text": "デジタルじゃない。完璧に正確ってわけでもない。",
+    "sourceText": "It's not digital. It's not perfectly accurate.",
+    "sourceIndexes": [
+      7,
+      8
+    ]
+  },
+  {
+    "start": 24.72,
+    "end": 27.279,
+    "text": "バッテリーも回路もない。",
+    "sourceText": "It doesn't have a battery or any circuits.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 27.279,
+    "end": 29.519,
+    "text": "でもちゃんと手入れすれば、この時計は動き続ける。",
+    "sourceText": "But if it's taken care of, this will be ticking.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 29.519,
+    "end": 34.32,
+    "text": "100年後もまったく同じように。",
+    "sourceText": "exactly like this in a hundred years.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 34.32,
+    "end": 36.719,
+    "text": "でもね、実はね。",
+    "sourceText": "But here's the thing, though.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 36.719,
+    "end": 39.92,
+    "text": "時計って敷居が高いんだ。",
+    "sourceText": "Watches can be intimidating.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 39.92,
+    "end": 43.2,
+    "text": "車やジム通い、服やアートみたいなものだ。",
+    "sourceText": "They're like cars or going to the gym or clothes or art.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 43.2,
+    "end": 48.636378378378375,
+    "text": "高くつく可能性もあるし、失敗するとすごくがっかりする。",
+    "sourceText": "They're potentially expensive and it's really disappointing if you get them wrong.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 48.636378378378375,
+    "end": 50.559,
+    "text": "でも、そんなに構える必要はないって伝えたいんだ。",
+    "sourceText": "But I'm here to tell you that they don't have to be intimidating.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 50.559,
+    "end": 55.85122950819672,
+    "text": "何時間もネットで調べて、何人もの専門家に話を聞いて、",
+    "sourceText": "After countless hours researching on the internet, after talking",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 55.85122950819672,
+    "end": 59.726918032786884,
+    "text": "スイスまで行って、本を2冊読んで、",
+    "sourceText": "to multiple experts, after going to freaking Switzerland and",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 59.726918032786884,
+    "end": 63.76,
+    "text": "この完全な初心者ガイドを作ったんだ。",
+    "sourceText": "reading two books, we've put together this complete rookies guide",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 63.76,
+    "end": 66.82301369863013,
+    "text": "時計のね。どう動くのか説明するよ。",
+    "sourceText": "to watch it. We're explaining how they work.",
+    "sourceIndexes": [
+      18,
+      19
+    ]
+  },
+  {
+    "start": 66.82301369863013,
+    "end": 68.96,
+    "text": "歴史にも深く潜る。",
+    "sourceText": "We're diving into the history.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 68.96,
+    "end": 73.49333333333334,
+    "text": "なぜ高級時計の多くがスイス製なのか？",
+    "sourceText": "Why are so many of the fancy ones made in Switzerland?",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 73.49333333333334,
+    "end": 75.76,
+    "text": "そして時計を買うときに何をチェックすべきか教えるよ。",
+    "sourceText": "And we're going to tell you what to look for when buying a watch.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 75.76,
+    "end": 80.159,
+    "text": "ネタバレすると、カッコいいのに高級である必要はない。",
+    "sourceText": "Spoiler, they don't have to be expensive to be cool.",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 80.159,
+    "end": 85.88000000000001,
+    "text": "まず最初に学ぶのは用語だ。",
+    "sourceText": "And the first thing we're going to learn is vocabulary.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 87.04,
+    "end": 90.033031946956,
+    "text": "何かに興味を持って話そうとしたときに、",
+    "sourceText": "There's no worse feeling than trying to get into something and have",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 90.033031946956,
+    "end": 93.40354430379747,
+    "text": "間違った言葉を使ってしまうほど嫌な気分はない。",
+    "sourceText": "a conversation about it and accidentally using the wrong words.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 93.40354430379747,
+    "end": 96.199125,
+    "text": "車好きと話すとき、リムじゃなくてホイールって言いたいだろ。",
+    "sourceText": "You're talking to a car guy, you want to call it a wheel, not a rim.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 96.199125,
+    "end": 101.52,
+    "text": "服好きと話すとき、ワイドカラーのシャツをボタンダウンって呼んじゃダメだ。",
+    "sourceText": "If you're talking to a closed guy, you don't want to call a shirt with a spread collar a button-d down.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 101.52,
+    "end": 106.26461538461538,
+    "text": "だから今日は、そんな気まずい思いをしないように、",
+    "sourceText": "So to save yourself from this environment embariment today",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 106.26461538461538,
+    "end": 109.68,
+    "text": "時計の完全な構造を解説するよ。",
+    "sourceText": "we're going to break down the complete anatomy of a watch.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 109.68,
+    "end": 114.079,
+    "text": "よし。まず、ブレスレットかストラップのどちらかがある。",
+    "sourceText": "All right. You have either a bracelet or a strap.",
+    "sourceIndexes": [
+      29,
+      30
+    ]
+  },
+  {
+    "start": 114.079,
+    "end": 116.29,
+    "text": "ブレスレットは硬いリンクでできている。",
+    "sourceText": "Bracelets are made of rigid links.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 116.29,
+    "end": 119.759,
+    "text": "ストラップはベルトみたいなもの。バンドとは呼ばないで。",
+    "sourceText": "A strap is like a belt. Don't call it a band.",
+    "sourceIndexes": [
+      32,
+      33
+    ]
+  },
+  {
+    "start": 119.759,
+    "end": 124.82687822014053,
+    "text": "クラスプ、ブレスレットで一番多いタイプはフォールディングクラスプ、",
+    "sourceText": "The clasp, the most common type on brackets is called a deployment",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 124.82687822014053,
+    "end": 129.3087142857143,
+    "text": "またはデプロイって呼ばれる。その日のフランス気分次第で。",
+    "sourceText": "or deploy depending on how France you want to be that day.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 129.3087142857143,
+    "end": 134.56,
+    "text": "ケースは時計の筐体で、ラグを使ってブレスレットやストラップを固定する。",
+    "sourceText": "The case is the watch housing with lugs used to secure the bracelet or strap to the case.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 134.56,
+    "end": 137.59384615384616,
+    "text": "ラグはサイズ選びにおいてケース径と同じくらい重要。",
+    "sourceText": "Lugs are just as important to sizing as the case diameter.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 137.59384615384616,
+    "end": 142.92251121794874,
+    "text": "クリスタルがある。うっかり時計のクリスタルを傷つけても、",
+    "sourceText": "There's the crystal. You accidentally scratch the crystal on your watch, not",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 142.92251121794874,
+    "end": 149.4307948717949,
+    "text": "ガラスとかレンズとは言わない。たとえガラス製でレンズみたいに見えてもね。",
+    "sourceText": "the glass or the lens, even if it's made out of glass and looks like a lens.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 149.4307948717949,
+    "end": 154.879,
+    "text": "ベゼルはクリスタルを固定するリング。",
+    "sourceText": "The bezel is the ring that holds the crystal in place.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 154.879,
+    "end": 160.56,
+    "text": "あー、時計によっては、バスでいじるのがすごく楽しい。",
+    "sourceText": "Uh on some watches, it goes is very fun to fidget with on the bus.",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 160.56,
+    "end": 162.84484848484848,
+    "text": "リューズはねじる部分。",
+    "sourceText": "The crown is the twisty part.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 162.84484848484848,
+    "end": 165.76,
+    "text": "えっと、時刻を合わせるのに使う。",
+    "sourceText": "Uh it's what you use to set the time.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 165.76,
+    "end": 169.76,
+    "text": "そしてケースバック、これで時計の内部にアクセスできる。",
+    "sourceText": "And the case back, which is how you access the internal workings of the watch.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 169.76,
+    "end": 175.30095238095237,
+    "text": "さて、これ全部すごく専門的で、初心者を排除するような専門用語に聞こえるのは分かってる。",
+    "sourceText": "Now, I know this all sounds like very specific potentially gatekeepy jargon, but the more I've",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 175.30095238095237,
+    "end": 180.64,
+    "text": "でも考えれば考えるほど、共通の語彙ってどんな趣味でも重要な役割を果たすと思うんだ。",
+    "sourceText": "thought about it, the more that I think a shared vocabulary plays an important role with any hobby.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 180.64,
+    "end": 185.44727272727272,
+    "text": "例えば400ドルの時計を買うためにたくさん調べて貯金したなら、",
+    "sourceText": "If you spent a lot of time researching and saving for, let's say, a $400 watch,",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 185.44727272727272,
+    "end": 189.44,
+    "text": "手に入れる頃にはもう全部の用語を知ってるだろう。",
+    "sourceText": "you're probably going to know all of the terms by the time that you get it.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 189.44,
+    "end": 195.23037974683544,
+    "text": "そうすれば他の時計好きもそれを尊重して、君の道のりを聞きたがる。",
+    "sourceText": "And the other watch guys will respect that and want to hear about your journey.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 195.23037974683544,
+    "end": 200.01672555292808,
+    "text": "でも、金持ちアピールのために2万ドルのロレックスを買っただけなら、",
+    "sourceText": "But if you just spent $20,000 on some Rolex because you want people to know how",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 200.01672555292808,
+    "end": 203.28159132007232,
+    "text": "文字盤のことをフェイスって言った瞬間、",
+    "sourceText": "rich you are, the second that you say face instead of dial, everyone's going",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 203.28159132007232,
+    "end": 208.72,
+    "text": "みんなに「こいつはダサい理由でやってて、時計をリスペクトしてない」ってバレる。",
+    "sourceText": "to know that you're into it for lame reasons and you don't respect the thing.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 208.72,
+    "end": 213.84,
+    "text": "そういうわけで、文字盤は時間が表示されるプレートのこと。",
+    "sourceText": "So on that note, the dial is the plate where the time is displayed.",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 213.84,
+    "end": 217.599,
+    "text": "フェイスみたいなものだけど、フェイスとは呼ばずにダイヤルと呼ぶ。",
+    "sourceText": "It's like the face, but you don't call it the face, you call it the dial.",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 217.599,
+    "end": 222.1772,
+    "text": "そして文字盤に印刷や装着されているもの全部を何て呼ぶか、",
+    "sourceText": "And everything you see printed or applied on",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 222.1772,
+    "end": 224.3424,
+    "text": "誰か当ててみる？",
+    "sourceText": "the dial is called, anyone want to guess?",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 224.3424,
+    "end": 227.2,
+    "text": "ダイヤルファニチャー。",
+    "sourceText": "The dial furniture.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 227.2,
+    "end": 229.599,
+    "text": "それが僕にとって一番面白い用語だ。",
+    "sourceText": "That's the funniest one to me.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 229.599,
+    "end": 232.68514285714286,
+    "text": "もちろん針もある。",
+    "sourceText": "Then there are, of course, the hands",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 232.68514285714286,
+    "end": 236.4,
+    "text": "スタイルはたくさんある。",
+    "sourceText": "of which there are a ton of styles.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 236.4,
+    "end": 240.56,
+    "text": "バトン、ドーフィン、ソード、ペンシル、スノーフレーク、スケルトン。",
+    "sourceText": "baton, doine, sword, pencil, snowflake, skeleton.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 240.56,
+    "end": 244.56,
+    "text": "インデックスは、時と分を表す目盛りや印のことです。",
+    "sourceText": "The indices are the markings or ticks that represent hours and minutes.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 244.56,
+    "end": 247.27296,
+    "text": "そして、数字は数字じゃありません。",
+    "sourceText": "And the numbers are not numbers.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 247.27296,
+    "end": 248.799,
+    "text": "ヌメラル（数字）です。",
+    "sourceText": "They are numerals.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 248.799,
+    "end": 251.2,
+    "text": "ローマ数字かアラビア数字のどちらかです。",
+    "sourceText": "They're either Roman or Arabic.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 251.2,
+    "end": 254.319,
+    "text": "これらは印刷か、またはアプライド（立体）のどちらかです。",
+    "sourceText": "And these can either be printed or applied.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 254.319,
+    "end": 259.639,
+    "text": "さて、時計によって変わる特別な機能がいくつかあります。",
+    "sourceText": "Now, a couple of specialty things that change depending on your watch.",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 259.639,
+    "end": 261.4955957446808,
+    "text": "あなたの時計には日付を表示する窓があるかもしれません。",
+    "sourceText": "Your watch might have a window displaying the date.",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 261.4955957446808,
+    "end": 263.84,
+    "text": "それはアパチャー（窓）と呼ばれます。",
+    "sourceText": "That's called the aperture.",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 263.84,
+    "end": 266.3671929824561,
+    "text": "スモールセコンドやムーンフェイズ、",
+    "sourceText": "You might have sub dials showing seconds or moon phases",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 266.3671929824561,
+    "end": 270.69,
+    "text": "さらにはメインスプリングの残りテンションを示すサブダイヤルがあるかもしれません。",
+    "sourceText": "or even how much tension is left in the main spring.",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 270.69,
+    "end": 273.53756944444444,
+    "text": "つまり、動力源です。時計にストップウォッチ機能があっても、",
+    "sourceText": "Your power supply. If your watch has a stopwatch",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 273.53756944444444,
+    "end": 275.8170114942529,
+    "text": "それはストップウォッチとは呼びません。",
+    "sourceText": "function, it's not called a stopwatch.",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 275.8170114942529,
+    "end": 277.04,
+    "text": "クロノグラフです。",
+    "sourceText": "It's a chronograph.",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 277.04,
+    "end": 281.12,
+    "text": "そして、それを操作する側面のボタンはプッシャーと呼ばれます。",
+    "sourceText": "And the buttons on the side used to control that are called pushers.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 281.12,
+    "end": 286.32,
+    "text": "一部の時計はベゼルに24時間表示があります。",
+    "sourceText": "Some watches also have 24-hour markings on their bezels.",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 286.32,
+    "end": 291.08608695652174,
+    "text": "そして、24時間で一回転するGMT針があります。",
+    "sourceText": "And another hand that rotates every 24 hours called a GMT hand.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 291.08608695652174,
+    "end": 292.9239253731343,
+    "text": "これは他のタイムゾーンを追跡するために使われます。",
+    "sourceText": "This is used to keep track of other time zones.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 292.9239253731343,
+    "end": 296.87791950085636,
+    "text": "50年代に人々が世界中を飛び回るようになり、",
+    "sourceText": "Uh it gained popularity when people started flying all over the place in",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 296.87791950085636,
+    "end": 302.96,
+    "text": "ロレックスがパナマのパイロットにGMTマスターを提供したことで人気が出ました。",
+    "sourceText": "the '50s and Rolex provided their GMT master watches for Panama's pilots.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 302.96,
+    "end": 305.68,
+    "text": "GMTはグリニッジ標準時を意味します。",
+    "sourceText": "GMT stands for Greenwich mean time.",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 305.68,
+    "end": 311.59578947368425,
+    "text": "イギリスのグリニッジ天文台は、世界が時間を管理する場所として選んだようなもので、",
+    "sourceText": "The Greenwich Observatory in England is where the world has",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 311.59578947368425,
+    "end": 314.8,
+    "text": "そこでは原子時計が使われています。",
+    "sourceText": "sort of nominated to keep time and they use an atomic clock.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 314.8,
+    "end": 320.32,
+    "text": "原子時計は、同位体の正確な崩壊を測定することで動作します。",
+    "sourceText": "And an atomic clock works by measuring the exact decay of an isotope.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 320.32,
+    "end": 324.88,
+    "text": "崩壊する速度を測定し、それで原子時計の時間が決まります。",
+    "sourceText": "They can measure the rate at which it decays and that determines the atomic time.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 324.88,
+    "end": 328.76437288135594,
+    "text": "GMTは時計の中で一番好きな技術の一つです。",
+    "sourceText": "GMTs are one of my favorite technologies in watches because up until that",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 328.76437288135594,
+    "end": 334.479,
+    "text": "なぜなら、それまでは異なるタイムゾーンの時刻を知る必要がなかったからです。",
+    "sourceText": "point, we had no reason to be able to tell time in different time zones.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 334.479,
+    "end": 337.3226363636363,
+    "text": "GMTは、私たちが時間を制御しつつあったから作られました。",
+    "sourceText": "GMTs were made because we were mastering time.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 337.3226363636363,
+    "end": 339.919,
+    "text": "私たちは時間そのものよりも速く移動していたのです。",
+    "sourceText": "We were traveling faster than time itself.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 339.919,
+    "end": 344.72,
+    "text": "だから、それを追跡する方法を考え出す必要がありました。",
+    "sourceText": "And so we had to figure out a way to keep track of that.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 344.72,
+    "end": 348.14484883720934,
+    "text": "そして、クロノグラフ、GMT、ムーンフェイズ、",
+    "sourceText": "And I love that all of these extra functions, chronographs,",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 348.14484883720934,
+    "end": 352.8272209302326,
+    "text": "日付といった追加機能はすべてコンプリケーションと呼ばれるのが大好きです。",
+    "sourceText": "GMT, moon phases, dates are all referred to as complications",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 352.8272209302326,
+    "end": 356.639,
+    "text": "なぜなら、それらは時計の製造をより複雑にするからです。",
+    "sourceText": "because they make the watch more complicated to build.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 356.639,
+    "end": 360.5027317073171,
+    "text": "時計の内部の話をする前に、",
+    "sourceText": "To even start talking about the inside of a watch, we need",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 360.5027317073171,
+    "end": 367.44,
+    "text": "そもそも時計がどう動くのかを分解して説明する必要がある。",
+    "sourceText": "to break down how watches and clocks in general work.",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 367.44,
+    "end": 370.46922784810124,
+    "text": "機械式時計は、腕時計でも何でも、",
+    "sourceText": "At their core, all mechanical clocks, watches or",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 370.46922784810124,
+    "end": 373.49845569620254,
+    "text": "基本的に5つの部品でできている。",
+    "sourceText": "otherwise, are made up of five basic components.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 373.49845569620254,
+    "end": 377.40708750687946,
+    "text": "動力源、脱進機、調速機、",
+    "sourceText": "You have a power source, you have an escapement,",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 377.40708750687946,
+    "end": 381.09,
+    "text": "輪列、そして表示部だ。",
+    "sourceText": "you have a regulator, a going train, and a display.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 381.09,
+    "end": 383.49540869565215,
+    "text": "この時計は俺がデザインしたわけじゃない。Engine Easyって人が作ったんだ。",
+    "sourceText": "I did not design these clocks. A guy named Engine Easy did.",
+    "sourceIndexes": [
+      84,
+      85
+    ]
+  },
+  {
+    "start": 383.49540869565215,
+    "end": 385.8011565217391,
+    "text": "彼のYouTubeチャンネルはめっちゃ面白い。",
+    "sourceText": "He's got a really cool YouTube channel.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 385.8011565217391,
+    "end": 387.3383217391304,
+    "text": "すごいコンテンツがたくさんある。",
+    "sourceText": "A lot of cool stuff there.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 387.3383217391304,
+    "end": 391.68,
+    "text": "で、これらがどう動くかを示すために、すごくシンプルな基本の機械式時計を使う。",
+    "sourceText": "So, to show how all of these work, we're going to use a really simple basic mechanical clock.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 391.68,
+    "end": 395.62570570570574,
+    "text": "動力源として、腕時計ならぜんまいを使うけど、",
+    "sourceText": "For our power source, a watch would use a coiled up main",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 395.62570570570574,
+    "end": 398.572972972973,
+    "text": "今回は紐に付けた重りを使う。",
+    "sourceText": "spring, but for us, we're going to use a weight on a string.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 398.572972972973,
+    "end": 402.8,
+    "text": "その重りが紐を引っ張って、歯車を回す。",
+    "sourceText": "And that weight is going to pull on the string and spin a wheel.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 402.8,
+    "end": 408.639,
+    "text": "でも、歯車が一気に回って全部の力を解放してほしくない。",
+    "sourceText": "But we don't want the wheel to spin all at once and release or escape at once.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 408.639,
+    "end": 410.780670212766,
+    "text": "そこで脱進機の出番だ。",
+    "sourceText": "That's where the escapement comes in.",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 410.780670212766,
+    "end": 414.08,
+    "text": "脱進機は歯車を一定の単位で回転させる。",
+    "sourceText": "It allows the wheel to spin in consistent discrete units.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 414.08,
+    "end": 417.59950544432735,
+    "text": "これは「バージ脱進機」と呼ばれ、",
+    "sourceText": "This escapement is called a verge escapement and from everything that",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 417.59950544432735,
+    "end": 422.13379452054795,
+    "text": "調べた限りでは時計で最初の機械式脱進機だった。",
+    "sourceText": "I researched was the very first mechanical escapement on a clock.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 422.13379452054795,
+    "end": 425.599,
+    "text": "これで歯車が計測された動きでカチカチと動く。",
+    "sourceText": "Now our wheel is ticking away in metered movements.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 425.599,
+    "end": 428.16,
+    "text": "でも、この1カチはどれくらいの時間なんだ？",
+    "sourceText": "But how long is one of these ticks?",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 428.16,
+    "end": 430.21,
+    "text": "1秒なのか？",
+    "sourceText": "Is it 1 second?",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 430.21,
+    "end": 435.4211111111111,
+    "text": "3秒間に2回なのか？この計測された動きの速度をどう制御するのか？",
+    "sourceText": "Is it two every 3 seconds? How do we control the speed of these metered movements?",
+    "sourceIndexes": [
+      98,
+      99
+    ]
+  },
+  {
+    "start": 435.4211111111111,
+    "end": 436.8,
+    "text": "調速機を使う。",
+    "sourceText": "With a regulator.",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 436.8,
+    "end": 439.6943820224719,
+    "text": "今回の調速機は振り子だ。",
+    "sourceText": "And in this case, our regulator is a pendulum.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 439.6943820224719,
+    "end": 442.568287258851,
+    "text": "振り子が特別なのは「等時性」があることだ。",
+    "sourceText": "And what makes pendulums so special is that they're isocchronous, which means that",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 442.568287258851,
+    "end": 446.319,
+    "text": "つまり、システムにどれだけエネルギーがあっても同じ周波数で動く。",
+    "sourceText": "they operate at the same frequency no matter how much energy is in the system.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 446.319,
+    "end": 449.8580375291375,
+    "text": "この高さから振り子を振り始めても、",
+    "sourceText": "If we start swinging the pendulum from this height, it completes a full",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 449.8580375291375,
+    "end": 454.08502727272725,
+    "text": "この高さからでも、1周期の時間は全く同じだ。",
+    "sourceText": "cycle in the exact same amount of time as it would from this height.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 454.08502727272725,
+    "end": 458.82439473684207,
+    "text": "どれだけエネルギーを加えても、常に全く同じ周波数で振れる。",
+    "sourceText": "No matter how much energy we're putting into it, it will always swing at the exact same frequency.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 458.82439473684207,
+    "end": 462.0251872705018,
+    "text": "そこで振り子を脱進機に接続し、",
+    "sourceText": "So, we connect our pendulum to our escapement, and we can tune the",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 462.0251872705018,
+    "end": 466.96,
+    "text": "振り子の重りを調整することで時計の進む速度を調整できる。",
+    "sourceText": "speed at which our clock ticks by adjusting the weight on the pendulum.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 466.96,
+    "end": 471.8229333333333,
+    "text": "歯車がアンカーのパレットを押して、振り子が振れ続けるようにしている。",
+    "sourceText": "The wheel pushes against the pallets on the anchor to make sure that the pendulum keeps swinging and we don't have",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 471.8229333333333,
+    "end": 477.44,
+    "text": "振り子の振れ幅がどれだけ大きくても、周波数は常に同じだからあまり気にしなくていい。",
+    "sourceText": "to worry too much about how big of an arc the pendulum swings at because the frequency will always be the same.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 477.44,
+    "end": 481.8356254272044,
+    "text": "よし、これで時計は一定の速度で刻むようになった。",
+    "sourceText": "Okay, so with our clock ticking away at a consistent rate",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 481.8356254272044,
+    "end": 484.89974025974027,
+    "text": "あとはそれを伝達するだけだ。",
+    "sourceText": "that we can control, we just need to run it through.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 484.89974025974027,
+    "end": 488.1003391053391,
+    "text": "これは専門用語で「ギャングトレイン」って言うんだ。",
+    "sourceText": "And this is a technical term, the going train,",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 488.1003391053391,
+    "end": 490.9008181818182,
+    "text": "ガンズ・アンド・ローゼズの曲みたいだろ。",
+    "sourceText": "which sounds like a sick Guns and Roses song.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 490.9008181818182,
+    "end": 496.0317312252964,
+    "text": "「アイム・ゴーイング」！これは異なる比率で連結された一連の歯車で、",
+    "sourceText": "I'M GOING. This is just a series of gears connected at different ratios that lets us convert",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 496.0317312252964,
+    "end": 501.52,
+    "text": "脱進機の動きを秒や分、時、さらにはムーブメントのサイクルに変換するんだ。",
+    "sourceText": "our escapement wheels movement into seconds or minutes or hours or even cycles of the move.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 501.52,
+    "end": 505.52,
+    "text": "適切な歯車比があれば、必要な時間単位は何でも計測できる。",
+    "sourceText": "As long as we have the right gear ratios, we can track any unit of time that we need.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 505.52,
+    "end": 510.479,
+    "text": "もちろん、針と文字盤を取り付けて、この情報をわかりやすく表示する。",
+    "sourceText": "And of course, we attach hands and dials to legibly display all of this information.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 510.479,
+    "end": 514.5033529411764,
+    "text": "これが機械式時計の仕組みだ。",
+    "sourceText": "And that is how any mechanical clock works.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 514.5033529411764,
+    "end": 525.2,
+    "text": "このすでにかなり複雑な機械式の、",
+    "sourceText": "And it is impossible to talk about all of the technology required to take this already pretty extremely complicated mechanical",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 525.2,
+    "end": 531.4133333333333,
+    "text": "コンセプトを、腕に収まるサイズに詰め込むために必要な技術のすべてを語るには、",
+    "sourceText": "concept and cram it into something that fits on your wrist",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 531.4133333333333,
+    "end": 535.12,
+    "text": "その狂気の歴史に触れずにはいられない。",
+    "sourceText": "without talking about the insane history of how we did it.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 535.12,
+    "end": 538.6529032258064,
+    "text": "「私たち」ってのは人類のことで、",
+    "sourceText": "And by we, I mean",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 538.6529032258064,
+    "end": 542.04,
+    "text": "Speeedのことじゃないよ。",
+    "sourceText": "mankind, not speed.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 542.16,
+    "end": 548.223870967742,
+    "text": "最初の腕時計、つまり携帯時計は「ニュルンベルクの卵」だ。",
+    "sourceText": "The first watch, and by watch I mean portable clock, was the",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 548.223870967742,
+    "end": 552.8980645161291,
+    "text": "すごく高そうなデザートみたいな名前だろ。",
+    "sourceText": "Nurburgg egg, which sounds like a very expensive dessert.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 552.8980645161291,
+    "end": 556.8,
+    "text": "ドイツのピーター・ハインラインって奴が作ったんだ。",
+    "sourceText": "It was made in Germany by a dude named Peter Heinland.",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 556.8,
+    "end": 561.0194871794871,
+    "text": "動力は重りじゃなくてぜんまいで、",
+    "sourceText": "It was powered by a coil spring instead of weights and it",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 561.0194871794871,
+    "end": 566.56,
+    "text": "時間を刻むのはめちゃくちゃ、本当にひどかった。",
+    "sourceText": "was very extremely really, really bad at telling time.",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 566.56,
+    "end": 569.519,
+    "text": "毎日2時間もズレてたんだ。",
+    "sourceText": "Like it was off by two hours every day.",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 569.519,
+    "end": 571.92,
+    "text": "大きな問題が2つあった。",
+    "sourceText": "There were two big problems.",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 571.92,
+    "end": 577.44,
+    "text": "まず、時計を動かすぜんまいが単純な渦巻き状だったこと。",
+    "sourceText": "First, the spring powering the watch was just a simple spiral coil.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 577.44,
+    "end": 583.04,
+    "text": "そのため、ほどけるにつれて力が弱まり、時計が遅くなった。",
+    "sourceText": "So, as it unwound, it delivered less and less force and the clock slowed down.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 583.04,
+    "end": 586.592380952381,
+    "text": "2つ目の問題は、脱進機はあったものの、",
+    "sourceText": "Second problem, even though the egg had an escapement, it",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 586.592380952381,
+    "end": 590.64,
+    "text": "時間を一定に保つ適切な調速機がなかったことだ。",
+    "sourceText": "didn't really have a proper regulator to keep timing steady.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 590.64,
+    "end": 600.72,
+    "text": "幸い、ニュルンベルクの卵はたった150年で急速に改良された。",
+    "sourceText": "Luckily, the Nurburgg egg was rapidly improved upon after just 150 years.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 600.72,
+    "end": 604.12315,
+    "text": "昔は革新にずっと時間がかかったものだ。",
+    "sourceText": "Things used to take a lot longer to innovate on.",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 604.12315,
+    "end": 607.5862630650155,
+    "text": "そこで、このレギュレーター問題を解決するために、",
+    "sourceText": "So, to solve this regulator problem, Dutchman Christian",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 607.5862630650155,
+    "end": 612.1809326625387,
+    "text": "大きな時計の振り子を考案したオランダ人のクリスティアーン・ホイヘンスが、",
+    "sourceText": "Huygens, who had come up with the pendulum for big clocks,",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 612.1809326625387,
+    "end": 615.7383421052631,
+    "text": "小さな時計用にひげぜんまいとテンプを考案したんだ。",
+    "sourceText": "came up with the hairspring balance wheel for tiny clocks.",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 615.7383421052631,
+    "end": 618.7136162280701,
+    "text": "振り子が前後に揺れる代わりに、",
+    "sourceText": "Instead of a pendulum swinging back and forth, you've got",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 618.7136162280701,
+    "end": 622.399,
+    "text": "小さな歯車とぜんまいが前後に振動するんだ。",
+    "sourceText": "a tiny little wheel and spring oscillating back and forth.",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 622.399,
+    "end": 626.88,
+    "text": "そして、このひげぜんまいとテンプは、今でもすべての機械式時計に使われている。",
+    "sourceText": "And the hairspring balance wheel is still used in every mechanical watch today.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 626.88,
+    "end": 632.56,
+    "text": "これで、時計の誤差は1日1〜2時間から、数分程度になったんだ。",
+    "sourceText": "So now watches went from losing one to two hours a day to maybe just a few minutes.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 632.56,
+    "end": 636.1509743589743,
+    "text": "ほとんどの人にとっては、それで十分だった。",
+    "sourceText": "And for most people, that was good enough.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 636.1509743589743,
+    "end": 641.6,
+    "text": "でも、それでも十分じゃない人たちがいたんだ。",
+    "sourceText": "But there was still one group of people for whom that wasn't good enough.",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 641.6,
+    "end": 646.32,
+    "text": "それが船乗りたちだ。",
+    "sourceText": "And those people are sailors.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 646.32,
+    "end": 652.0634146341464,
+    "text": "というのも、海上で南北の位置を特定するのは簡単なんだ。",
+    "sourceText": "Because you see, figuring out how far north or south you are at sea is pretty easy.",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 652.0634146341464,
+    "end": 654.8591360552157,
+    "text": "星を見れば、",
+    "sourceText": "Apparently, you can just look at the stars and it's",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 654.8591360552157,
+    "end": 659.5165324675324,
+    "text": "緯度は簡単にわかるらしい。",
+    "sourceText": "pretty easy to figure out how far up or down you are.",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 659.5165324675324,
+    "end": 664.399,
+    "text": "でも地球は自転しているから、東西の位置を知るのはずっと難しい。",
+    "sourceText": "But because the Earth is spinning, knowing how far east or west you are is much harder.",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 664.399,
+    "end": 670.0311896551724,
+    "text": "ジョン・ハリソンは、解決策は超高精度な時計だと考えた。",
+    "sourceText": "John Harrison believed that the solution was a super precise clock, which is very hard to do because",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 670.0311896551724,
+    "end": 676.32,
+    "text": "でも船は揺れるし、温度や湿度も一定じゃないから、とても難しい。",
+    "sourceText": "the ships bouncing all over the place, the temperature and the humidity are all over the map.",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 676.32,
+    "end": 681.839,
+    "text": "人々はほとんど不可能だと思っていた。",
+    "sourceText": "People thought that this was pretty much impossible.",
+    "sourceIndexes": [
+      138
+    ]
+  },
+  {
+    "start": 681.839,
+    "end": 685.9347391304348,
+    "text": "でも老ハリソンは、H4を作ってみんなの間違いを証明した。",
+    "sourceText": "But old John Harrison proved them all wrong when he built the",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 685.9347391304348,
+    "end": 690.0304782608695,
+    "text": "H4は基本的に5インチの懐中時計で、革新が詰まっていた。",
+    "sourceText": "H4, basically a 5in pocket watch packed with innovations.",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 690.0304782608695,
+    "end": 695.12,
+    "text": "本当に面白い話で、Legion of Speedのポッドキャストで詳しく取り上げてる。",
+    "sourceText": "It's all a really interesting story uh that we cover more in depth on the Legion of Speed podcast.",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 695.12,
+    "end": 699.0257534246575,
+    "text": "詳しくはspeed.coに行ってみて。",
+    "sourceText": "So, go to speed.co to learn more about that.",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 699.0257534246575,
+    "end": 704.8422242990654,
+    "text": "H4の後、ついに正確な携帯時計ができて、みんなが欲しがるようになった。",
+    "sourceText": "After the H4, we finally have portable watches that are pretty accurate and everyone wants one.",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 704.8422242990654,
+    "end": 706.6131666666666,
+    "text": "所有できる中で最高にテクノロジーなものだったんだ。",
+    "sourceText": "It's the highest tech techy thing that you could own.",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 706.6131666666666,
+    "end": 710.079,
+    "text": "AIみたいなものだけど、人々は実際に好きだったんだよね。",
+    "sourceText": "It's kind of like AI, but people actually like it.",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 710.079,
+    "end": 715.76,
+    "text": "時計の歴史の話では、ドイツからオランダ、そしてイギリスへと移ってきた。",
+    "sourceText": "So, so far in the watch history story, we've gone from Germany to the Netherlands to England.",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 715.76,
+    "end": 721.4851428571428,
+    "text": "で、思うかもしれない。時計がそれらの国で発明されたなら、",
+    "sourceText": "And you might be asking yourself, if watches were invented in those",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 721.4851428571428,
+    "end": 726.079,
+    "text": "なぜ今の高級時計は全部スイス製なのかって。",
+    "sourceText": "places, why are all the nice watches these days from Switzerland?",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 726.079,
+    "end": 728.9656923076923,
+    "text": "その答えを探すために、スイスに来たんだ。",
+    "sourceText": "To find out, I came to Switzerland.",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 728.9656923076923,
+    "end": 731.44,
+    "text": "今いるのはチューダーの製造工場だ。",
+    "sourceText": "I'm at the Tutor manufacturer.",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 731.44,
+    "end": 735.2,
+    "text": "チューダーが製造施設を案内してくれたんだ。",
+    "sourceText": "Tutor gave us a tour of their manufacturing facility.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 735.2,
+    "end": 743.399,
+    "text": "機械や工具を見せてくれて、えっと。",
+    "sourceText": "They showed us their machines, tooling, and uh",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 751.44,
+    "end": 756.1396078431372,
+    "text": "何時間も手作業の職人技と自動化の魔法を観察し、",
+    "sourceText": "after hours of observing both manual craftsmanship and automated wizardry and",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 756.1396078431372,
+    "end": 761.6,
+    "text": "設計と組み立てのプロセスを学んだ後は、簡単にわかったよ。",
+    "sourceText": "learning about the process of design and assembly, it was pretty easy to see how",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 761.6,
+    "end": 768.64,
+    "text": "この場所が、極めて正確な小さな機械のメッカと見なされている理由が。",
+    "sourceText": "this place is considered the mecca of extreme extremely accurate tiny little machines.",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 768.64,
+    "end": 773.432380952381,
+    "text": "それに、時計がどれだけ信じられないほど複雑で、",
+    "sourceText": "It also sheds some light on how insanely intricate",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 773.432380952381,
+    "end": 777.6,
+    "text": "作るのが難しいかもわかったよ、みんな。",
+    "sourceText": "watches are and they are so hard to build you guys.",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 777.6,
+    "end": 780.8033333333333,
+    "text": "挑戦したんだ。部品がめっちゃ小さいの。",
+    "sourceText": "I tried. The parts are so small.",
+    "sourceIndexes": [
+      154,
+      155
+    ]
+  },
+  {
+    "start": 780.8033333333333,
+    "end": 785.0560606060606,
+    "text": "人生で見た中で一番小さなネジを合わせようとして、",
+    "sourceText": "Like you'll be like lining up the tiniest screw that you've ever seen in",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 785.0560606060606,
+    "end": 788.8,
+    "text": "「あ、もうすぐ穴の真上だ」ってなるんだ。",
+    "sourceText": "your life and you're like, \"Oh, I'm like almost right above the hole.",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 788.8,
+    "end": 793.2,
+    "text": "「手をほんの少し動かそう」って思って、結局こんな感じで。",
+    "sourceText": "Let me just move my hand the slightest amount.\" And then you're just like basically doing that.",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 793.2,
+    "end": 795.733090909091,
+    "text": "急にめっちゃ遠くに行っちゃうんだ。",
+    "sourceText": "You're so far away from it all of a sudden.",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 795.733090909091,
+    "end": 799.68,
+    "text": "そしたらスタッフが「実はそれ、時計の中で一番大きなネジだよ」って言うの。",
+    "sourceText": "And then the guy tells you that's actually the biggest screw in the entire watch.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 799.68,
+    "end": 801.6,
+    "text": "ネジはムーブメントに入ったよ。",
+    "sourceText": "The screw went into the movement.",
+    "sourceIndexes": [
+      160
+    ]
+  },
+  {
+    "start": 801.6,
+    "end": 803.7495081967213,
+    "text": "めっちゃ焦った。やばい。",
+    "sourceText": "Freaked out. Oh my god.",
+    "sourceIndexes": [
+      161,
+      162
+    ]
+  },
+  {
+    "start": 803.7495081967213,
+    "end": 807.5600000000001,
+    "text": "もう一回挑戦して、それで。",
+    "sourceText": "I'm going to try one more time and then",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 810.48,
+    "end": 811.92,
+    "text": "終わった。",
+    "sourceText": "it's finished.",
+    "sourceIndexes": [
+      164
+    ]
+  },
+  {
+    "start": 811.92,
+    "end": 814,
+    "text": "炎だ。",
+    "sourceText": "The flame.",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 814,
+    "end": 817.6204305385558,
+    "text": "1800年代、イギリスが時計の技術最先端だったけど、",
+    "sourceText": "Even though the British were at the technological frontier with watches",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 817.6204305385558,
+    "end": 821.8925154528765,
+    "text": "スイスは信じられないほど効率的で機敏な製造ネットワークを作り上げ、",
+    "sourceText": "in the 1800s, the Swiss had created an incredibly efficient and agile",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 821.8925154528765,
+    "end": 825.6060394736843,
+    "text": "より短時間で多くの時計を製造できるようにしていたんだ。",
+    "sourceText": "network of manufacturing that could build more watches in less time.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 825.6060394736843,
+    "end": 830.856824391172,
+    "text": "1500年代に遡ると、カルヴァン派がジュネーブで宝飾品を禁止したんだ。",
+    "sourceText": "So back in the 1500s, the Calvinists had banned jewelry in",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 830.856824391172,
+    "end": 834.2558219178082,
+    "text": "過剰で贅沢なものは罪だとされたからね。",
+    "sourceText": "Geneva because that type of excess and extravagance was sinful.",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 834.2558219178082,
+    "end": 837.4010931506849,
+    "text": "でも宝石商にとって幸運なことに、",
+    "sourceText": "But luckily for the jewelers, watches weren't",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 837.4010931506849,
+    "end": 841.519,
+    "text": "時計は道具として扱われ、禁止の対象外だったんだ。",
+    "sourceText": "included in the ban because they are tools.",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 841.519,
+    "end": 846.639,
+    "text": "だから、スイスの金細工師や宝石商はみんな時計を作り始めたんだ。",
+    "sourceText": "So basically every Swiss goldsmith and jeweler just started making watches.",
+    "sourceIndexes": [
+      169
+    ]
+  },
+  {
+    "start": 846.639,
+    "end": 849.5710784313725,
+    "text": "やがてその産業は谷間にも広がり、",
+    "sourceText": "Eventually that industry spread into the valleys and was taken up by farmers who were snowed",
+    "sourceIndexes": [
+      170
+    ]
+  },
+  {
+    "start": 849.5710784313725,
+    "end": 854.56,
+    "text": "半年間雪に閉ざされて暇な時期に副収入が必要な農家たちが手を出したんだ。",
+    "sourceText": "in for half the year and needed some way to bring in extra cash during their downtime.",
+    "sourceIndexes": [
+      170
+    ]
+  },
+  {
+    "start": 854.56,
+    "end": 859.68,
+    "text": "そうして、農家ごとに特定の部品を作るネットワークが生まれたんだ。",
+    "sourceText": "So an entire network sprung up with different farmers making specific pieces.",
+    "sourceIndexes": [
+      171
+    ]
+  },
+  {
+    "start": 859.68,
+    "end": 865.36,
+    "text": "ある人は歯車を作り、別の人はネジを作る。",
+    "sourceText": "One guy makes the gears, the other guy makes the screws.",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 865.36,
+    "end": 870.959,
+    "text": "このネットワークがスイスを大量生産の時計大国にしたんだ。",
+    "sourceText": "This network made Switzerland the powerhouse of mass market watchmaking.",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 870.959,
+    "end": 875.5430625,
+    "text": "でも1876年、スイスの時計職人たちがフィラデルフィアの万博に行って、",
+    "sourceText": "However, in 1876, some Swiss watch makers went over to Philadelphia",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 875.5430625,
+    "end": 878,
+    "text": "めっちゃ衝撃を受けたんだ。",
+    "sourceText": "for the World's Fair and got a major freaking wakeup call.",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 878,
+    "end": 883.959,
+    "text": "1876年の万博、やばかったんだよ。",
+    "sourceText": "The 1876 World's Fair pops, dude.",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 886.079,
+    "end": 892.8086517412936,
+    "text": "スイス人がデブでバカだと思ってたアメリカ人が、産業用機械と組み立てラインを持ってて、",
+    "sourceText": "The Americans, who the Swiss thought were a bunch of fat morons, had all these industrial",
+    "sourceIndexes": [
+      176
+    ]
+  },
+  {
+    "start": 892.8086517412936,
+    "end": 897.3001111111112,
+    "text": "スイスで何時間もかかる工程が数秒で終わってたんだ。",
+    "sourceText": "machines and assembly lines. processes that took the Swiss hours were being done in seconds.",
+    "sourceIndexes": [
+      176
+    ]
+  },
+  {
+    "start": 897.3001111111112,
+    "end": 900,
+    "text": "そこでスイスはすぐに組織的な。",
+    "sourceText": "So the Swiss immediately launched a coordinated",
+    "sourceIndexes": [
+      177
+    ]
+  }
+]

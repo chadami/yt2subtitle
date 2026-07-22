@@ -1,0 +1,54 @@
+{
+  "topic": "Declining global birth rates and their causes",
+  "summary": "Discussion between Christine Emba and John Burn-Murdoch about falling fertility rates worldwide, focusing on the role of smartphones, economic factors, and government policy failures.",
+  "tone": "conversational, analytical, slightly informal",
+  "audience": "English-speaking viewers interested in social science, demography, and current affairs",
+  "glossary": [
+    {
+      "source": "replacement rate",
+      "target": "置き換え水準",
+      "note": "人口維持に必要な出生率（2.1）"
+    },
+    {
+      "source": "baby bust",
+      "target": "ベビーバスト",
+      "note": "出生率急減現象"
+    },
+    {
+      "source": "pronatalist",
+      "target": "出生奨励派",
+      "note": "出生率向上を推進する立場"
+    },
+    {
+      "source": "girl boss",
+      "target": "キャリアウーマン",
+      "note": "ここでは皮肉を込めて"
+    },
+    {
+      "source": "reactionary turn",
+      "target": "保守化",
+      "note": "政治的な後退傾向"
+    }
+  ],
+  "properNouns": [
+    "Christine Emba",
+    "John Burn-Murdoch",
+    "Financial Times",
+    "Elon Musk",
+    "Dr. Oz",
+    "South Korea",
+    "China",
+    "Finland",
+    "UK",
+    "US",
+    "Mexico",
+    "Turkey"
+  ],
+  "styleGuide": [
+    "Use casual spoken Japanese, avoid formal written style.",
+    "Keep sentence endings consistent with polite but natural tone (e.g., です/ます).",
+    "Translate 'um', 'you know', 'like' as filler words like えっと, まあ, なんか when natural.",
+    "For numbers and statistics, use Arabic numerals for clarity.",
+    "Maintain speaker's analytical tone without adding extra politeness."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "topic": "Personal growth and identity in Paris",
+  "summary": "Grace Brosnan discusses her journey from a difficult arrival in Paris, including toxic roommates and a draining fashion design program, to finding her creative identity and balancing femininity and masculinity in her style and relationships.",
+  "tone": "casual, reflective, conversational",
+  "audience": "Young adults interested in Parisian lifestyle, personal development, and fashion",
+  "glossary": [
+    {
+      "source": "Parisian Vibe",
+      "target": "パリジャン・ヴァイブ",
+      "note": "Channel name, keep as is or use katakana"
+    },
+    {
+      "source": "Grace Brosnan",
+      "target": "グレース・ブロスナン",
+      "note": "Name of the guest"
+    },
+    {
+      "source": "hojicha",
+      "target": "ほうじ茶",
+      "note": "Japanese roasted green tea"
+    },
+    {
+      "source": "15 square meters",
+      "target": "15平方メートル",
+      "note": "Room size, keep numeric"
+    },
+    {
+      "source": "fashion design program",
+      "target": "ファッションデザインのプログラム",
+      "note": "Academic program"
+    },
+    {
+      "source": "masculinity and femininity",
+      "target": "男性性と女性性",
+      "note": "Key theme"
+    },
+    {
+      "source": "Montauk",
+      "target": "モントーク",
+      "note": "Place name in New York"
+    },
+    {
+      "source": "Triumph motorcycle belt",
+      "target": "トライアンフのバイクベルト",
+      "note": "Brand name"
+    }
+  ],
+  "properNouns": [
+    "ParisianVibe",
+    "Grace Brosnan",
+    "Paris",
+    "Montauk",
+    "Triumph",
+    "Le Progrès",
+    "Tuileries",
+    "17th (arrondissement)"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である style for narration, but polite です/ます for direct speech to the interviewer.",
+    "Keep French phrases like 'Voila' as is, but add Japanese explanation if needed.",
+    "Translate 'you know' as 'なんか' or omit for natural flow.",
+    "Use '～てる' contractions for spoken feel (e.g., 'やってる' instead of 'やっている').",
+    "For 'I feel like', use '気がする' or '感じる'.",
+    "Keep chapter titles in English or translate concisely (e.g., 'On Relationships' → '恋愛について').",
+    "Avoid overly literal translations; prioritize natural Japanese phrasing."
+  ]
+}

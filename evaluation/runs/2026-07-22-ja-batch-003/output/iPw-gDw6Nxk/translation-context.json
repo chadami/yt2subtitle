@@ -1,0 +1,94 @@
+{
+  "topic": "Streaming services and TV nostalgia",
+  "summary": "Sabrina explores how streaming services like Netflix changed TV viewing and why she feels disconnected from modern streaming, seeking to recapture the joy of watching shows.",
+  "tone": "casual, conversational, nostalgic, humorous",
+  "audience": "Young adults interested in media, streaming culture, and internet culture",
+  "glossary": [
+    {
+      "source": "streaming",
+      "target": "ストリーミング",
+      "note": "General term for streaming services"
+    },
+    {
+      "source": "cable",
+      "target": "ケーブルテレビ",
+      "note": "Traditional TV service"
+    },
+    {
+      "source": "DVR",
+      "target": "DVR",
+      "note": "Digital video recorder, keep as is"
+    },
+    {
+      "source": "box set",
+      "target": "ボックスセット",
+      "note": "DVD box set"
+    },
+    {
+      "source": "piracy",
+      "target": "海賊版",
+      "note": "Piracy, illegal downloading"
+    },
+    {
+      "source": "bootlicker",
+      "target": "ゴマすり",
+      "note": "Informal, sycophant"
+    },
+    {
+      "source": "residuals",
+      "target": "ロイヤリティ",
+      "note": "Residual payments to creators"
+    },
+    {
+      "source": "disposable income",
+      "target": "可処分所得",
+      "note": "Disposable income"
+    },
+    {
+      "source": "friction",
+      "target": "ストレス",
+      "note": "In user experience context"
+    },
+    {
+      "source": "cooked",
+      "target": "やばい",
+      "note": "Slang for 'crazy' or 'exhausted'"
+    },
+    {
+      "source": "traffic",
+      "target": "渋滞",
+      "note": "Metaphor for slow experience"
+    },
+    {
+      "source": "insufferable",
+      "target": "耐えられない",
+      "note": "Unbearable"
+    }
+  ],
+  "properNouns": [
+    "Netflix",
+    "Disney+",
+    "HBO Max",
+    "Amazon Prime Video",
+    "Castle",
+    "30 Rock",
+    "Psych",
+    "Scrubs",
+    "The Mindy Project",
+    "Barry",
+    "Widow's Bay",
+    "The West Wing"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with sentence-ending particles like ね, よ, だよね, なあ to match the speaker's friendly tone.",
+    "Keep humor and sarcasm intact; use とか, って感じ for informal lists and impressions.",
+    "For technical terms like 'streaming', 'DVR', 'nodes', use katakana as in glossary.",
+    "When the speaker uses slang (e.g., 'cooked', 'boop'), find a natural Japanese equivalent that fits the context.",
+    "For proper nouns (show titles, brands), keep original English or use common Japanese transliterations (e.g., ネットフリックス for Netflix).",
+    "Maintain the rhythm of the original speech; break long sentences into shorter subtitle lines.",
+    "Avoid overly polite forms (desu/masu) unless the speaker is being formal; use plain form (だ, である) for narration and casual speech.",
+    "For the sponsor segment (Hostinger), keep the promotional tone but ensure it sounds natural in Japanese.",
+    "When the speaker references internet culture (e.g., 'Tumblr girl', 'fan fiction'), use terms familiar to Japanese internet users (e.g., 二次創作 for fan fiction).",
+    "For the website demonstration parts, use clear and concise Japanese to explain the functionality."
+  ]
+}

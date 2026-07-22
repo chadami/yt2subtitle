@@ -1,0 +1,63 @@
+{
+  "topic": "World Cup experience",
+  "summary": "A first-time football attendee documents her journey through multiple World Cup matches, stadium tours, and personal reactions.",
+  "tone": "casual, excited, personal",
+  "audience": "general YouTube viewers, likely young adults interested in travel and lifestyle content",
+  "glossary": [
+    {
+      "source": "football",
+      "target": "サッカー",
+      "note": "Use サッカー throughout as the sport is soccer/football."
+    },
+    {
+      "source": "FIFA World Cup",
+      "target": "FIFAワールドカップ",
+      "note": "Standard term."
+    },
+    {
+      "source": "credentials",
+      "target": "認証パス",
+      "note": "Refers to access passes."
+    },
+    {
+      "source": "offside rule",
+      "target": "オフサイドルール",
+      "note": "Soccer term."
+    },
+    {
+      "source": "jersey",
+      "target": "ユニフォーム",
+      "note": "Or ジャージ but ユニフォーム is more natural for sports."
+    },
+    {
+      "source": "Triion ball",
+      "target": "Triion（トライオン）ボール",
+      "note": "Proper name, keep as is with katakana."
+    },
+    {
+      "source": "red card, yellow card",
+      "target": "レッドカード、イエローカード",
+      "note": "Standard soccer terms."
+    }
+  ],
+  "properNouns": [
+    "Kika Kim",
+    "Rocky",
+    "Seattle",
+    "Los Angeles",
+    "YouTube",
+    "FIFA",
+    "Egypt",
+    "Iran",
+    "Canada"
+  ],
+  "styleGuide": [
+    "Use casual, friendly Japanese (だ/である調 is too formal; use ですます調 or plain だ調 depending on context, but keep consistent with speaker's excited tone).",
+    "Keep interjections like 'Oh my god' as うわっ or やばい to match excitement.",
+    "Translate 'guys' as みんな or omit if natural in context.",
+    "For product names like 'Triion ball', keep original with katakana explanation.",
+    "Use サッカー for football/soccer to avoid confusion.",
+    "Keep time references (e.g., '7:00 a.m.') as 午前7時 or just 7時.",
+    "For 'get ready with me' style segments, use natural conversational phrases like 準備の様子をお届け."
+  ]
+}

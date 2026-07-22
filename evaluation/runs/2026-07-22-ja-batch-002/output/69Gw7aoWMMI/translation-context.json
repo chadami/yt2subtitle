@@ -1,0 +1,81 @@
+{
+  "topic": "Short-form video interface design and psychology",
+  "summary": "Exploration of how TikTok, Instagram Reels, and YouTube Shorts are engineered to maximize engagement through custom UI, psychology, and algorithms.",
+  "tone": "casual explanatory with expert insights",
+  "audience": "Tech-savvy viewers interested in UX design, psychology, and content creation",
+  "glossary": [
+    {
+      "source": "short-form content",
+      "target": "ショート動画",
+      "note": "Standard term for short video platforms"
+    },
+    {
+      "source": "unit bias",
+      "target": "単位バイアス",
+      "note": "Psychological term; keep as is"
+    },
+    {
+      "source": "chronoception",
+      "target": "時間知覚",
+      "note": "Psychological term for time perception"
+    },
+    {
+      "source": "design pattern",
+      "target": "デザインパターン",
+      "note": "Common UX term"
+    },
+    {
+      "source": "retention graph",
+      "target": "視聴維持率グラフ",
+      "note": "Analytics term for viewer retention"
+    },
+    {
+      "source": "algorithm drift",
+      "target": "アルゴリズムドリフト",
+      "note": "Concept from TikTok paper; keep as is"
+    },
+    {
+      "source": "Monolith",
+      "target": "Monolith",
+      "note": "TikTok's recommendation system name; keep in English"
+    },
+    {
+      "source": "UX",
+      "target": "UX",
+      "note": "Common abbreviation; keep as is"
+    },
+    {
+      "source": "UI kit",
+      "target": "UIキット",
+      "note": "Standard term"
+    },
+    {
+      "source": "friction",
+      "target": "摩擦",
+      "note": "UX term for points of resistance"
+    }
+  ],
+  "properNouns": [
+    "TikTok",
+    "Instagram",
+    "YouTube Shorts",
+    "Reels",
+    "Flask",
+    "UXPilot",
+    "Monolith",
+    "Alasdair",
+    "Armand Conqueer"
+  ],
+  "styleGuide": [
+    "Use casual spoken Japanese with だ/である endings for explanatory parts, but switch to ます/です for direct quotes or polite emphasis.",
+    "Keep English platform names (TikTok, Instagram, etc.) as is; do not translate.",
+    "Translate 'you' as あなた or omit; use みんな for general audience.",
+    "For technical terms like 'unit bias', use the Japanese term in glossary; if not common, add brief explanation in subtitle.",
+    "Keep numbers as digits for clarity (e.g., 616,572 years → 616,572年).",
+    "Use 〜てる/〜てるよ for casual contractions where appropriate.",
+    "For 'I'm Ammar' (speaker intro), use 私はアンマーです but note the transcript says 'Ammar' while channel is Enrico; adjust to エンリコです based on context.",
+    "Avoid overly literal translations; prioritize natural flow over word-for-word accuracy.",
+    "For 'design pattern', use デザインパターン as a loanword; it's understood in tech context.",
+    "When translating 'you' in instructions (e.g., 'Try to swipe'), use 〜してみてください or 〜してみよう for casual tone."
+  ]
+}

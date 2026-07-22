@@ -45,7 +45,7 @@ export const translationStrategies: TranslationStrategy[] = [
   },
   {
     id: "ja",
-    version: "2026-07-21.2",
+    version: "2026-07-22.2",
     languageCodes: ["ja", "ja-JP"],
     displayName: "Natural Japanese subtitle strategy",
     analysisGuidance: [
@@ -61,7 +61,9 @@ export const translationStrategies: TranslationStrategy[] = [
       "Keep Japanese words and established terms intact within a cue. In particular, never split a katakana word such as スタイルガイド into partial strings.",
       "Keep file names and multiword Latin product names intact. Never split forms such as DESIGN.md, CLAUDE.md, Claude Design, or Subtle Gradient Design System across cues.",
       "Never place 、 immediately after an opening Japanese quote such as 「 or 『. Keep the quoted name with its opening quote.",
-      "Do not split a Japanese attributive modifier from the noun it modifies. Keep forms such as 最適化されたスタイルガイド and この新しいチャット together."
+      "Do not split a Japanese attributive modifier from the noun it modifies. Keep forms such as 最適化されたスタイルガイド and この新しいチャット together.",
+      "Before returning each cue, compare it with that cue's own source text. Never swap a clause, example, conclusion, or explanation with an adjacent cue, even when the source sentence crosses cue boundaries.",
+      "Preserve every explicit number, percentage, date, amount, rank, and count in the matching cue. Never omit a number merely because its unit or explanation continues in the next cue."
     ],
     fallbackNotes: "Japanese-specific subtitle flow and politeness guidance."
   },
@@ -122,4 +124,17 @@ export function getTranslationStrategy(targetLanguage: string): TranslationStrat
     return strategy.languageCodes.some((code) => languageFamily(code) === targetFamily);
   });
   return family || defaultStrategy;
+}
+
+function numericExpressionCount(text: string, includeJapaneseNumerals: boolean) {
+  const pattern = includeJapaneseNumerals
+    ? /[0-9０-９]+(?:[.,:．，：][0-9０-９]+)*|[〇零一二三四五六七八九十百千万億兆]+/gu
+    : /[0-9０-９]+(?:[.,:．，：][0-9０-９]+)*/gu;
+  return text.match(pattern)?.length || 0;
+}
+
+export function hasJapaneseNumericCoverage(sourceText: string, translatedText: string) {
+  const sourceCount = numericExpressionCount(sourceText, false);
+  if (!sourceCount) return true;
+  return numericExpressionCount(translatedText, true) >= sourceCount;
 }

@@ -1,0 +1,80 @@
+{
+  "topic": "Short-form video interface design and psychology",
+  "summary": "Exploration of the engineering, psychology, and design behind short-form video feeds like TikTok, Instagram Reels, and YouTube Shorts, including custom physics engines, unit bias, chronoception, and the recommendation algorithm.",
+  "tone": "Casual, explanatory, enthusiastic",
+  "audience": "Tech-savvy viewers interested in UX design, psychology, and content creation",
+  "glossary": [
+    {
+      "source": "short-form content",
+      "target": "ショート動画",
+      "note": "General term for short videos"
+    },
+    {
+      "source": "Reels",
+      "target": "リール",
+      "note": "Instagram's short-form video feature"
+    },
+    {
+      "source": "Shorts",
+      "target": "ショート",
+      "note": "YouTube's short-form video feature"
+    },
+    {
+      "source": "UI kit",
+      "target": "UIキット",
+      "note": "User interface toolkit"
+    },
+    {
+      "source": "unit bias",
+      "target": "単位バイアス",
+      "note": "Psychological principle"
+    },
+    {
+      "source": "chronoception",
+      "target": "時間知覚",
+      "note": "Perception of time"
+    },
+    {
+      "source": "design pattern",
+      "target": "デザインパターン",
+      "note": "Recurring design solution"
+    },
+    {
+      "source": "retention graph",
+      "target": "維持率グラフ",
+      "note": "Analytics showing viewer retention"
+    },
+    {
+      "source": "algorithm",
+      "target": "アルゴリズム",
+      "note": "Recommendation algorithm"
+    },
+    {
+      "source": "Monolith",
+      "target": "Monolith",
+      "note": "TikTok's recommendation system name, keep as is"
+    }
+  ],
+  "properNouns": [
+    "Enrico Tartarotti",
+    "Alasdair",
+    "Armand Conqueer",
+    "TikTok",
+    "Instagram",
+    "YouTube",
+    "Apple",
+    "Google",
+    "Flask",
+    "UXPilot"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である style for narration, but switch to ます/です for direct quotes or polite explanations.",
+    "Keep English proper nouns (app names, people) as is, but add Japanese gloss if needed.",
+    "Translate technical terms like 'physics engine' as '物理エンジン' but prefer simpler phrasing like '動きの仕組み' when context allows.",
+    "For psychological terms, use common Japanese equivalents (e.g., '単位バイアス' for unit bias).",
+    "Maintain the enthusiastic, explanatory tone with natural sentence endings like んだ, よね, ですよ.",
+    "Avoid overly literal translations; prioritize natural flow over word-for-word accuracy.",
+    "For numbers like '616,572 years', use Japanese numerals (61万6572年) for readability.",
+    "Keep the rhythm of short sentences; use line breaks appropriately for subtitle timing."
+  ]
+}

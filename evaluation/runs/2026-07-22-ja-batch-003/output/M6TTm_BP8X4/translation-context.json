@@ -1,0 +1,94 @@
+{
+  "topic": "DIY medium format digital camera",
+  "summary": "Building the cheapest possible medium format digital camera using an old Phase One P45+ digital back and 3D-printed parts.",
+  "tone": "casual, enthusiastic, explanatory",
+  "audience": "photography enthusiasts, DIY camera builders, budget-conscious creators",
+  "glossary": [
+    {
+      "source": "medium format",
+      "target": "中判",
+      "note": "Standard term for medium format in photography."
+    },
+    {
+      "source": "digital back",
+      "target": "デジタルバック",
+      "note": "Common term; keep as is."
+    },
+    {
+      "source": "sync cable",
+      "target": "シンクロケーブル",
+      "note": "Standard term for sync cable."
+    },
+    {
+      "source": "flange distance",
+      "target": "フランジバック",
+      "note": "Standard term for flange focal distance."
+    },
+    {
+      "source": "two-shot approach",
+      "target": "2ショット方式",
+      "note": "Describes the method of firing twice to capture an image."
+    },
+    {
+      "source": "live view",
+      "target": "ライブビュー",
+      "note": "Standard term; keep as is."
+    },
+    {
+      "source": "CCD",
+      "target": "CCD",
+      "note": "Keep as is; common abbreviation."
+    },
+    {
+      "source": "Hasselblad",
+      "target": "ハッセルブラッド",
+      "note": "Brand name; standard Japanese spelling."
+    },
+    {
+      "source": "Phase One",
+      "target": "フェーズワン",
+      "note": "Brand name; standard Japanese spelling."
+    },
+    {
+      "source": "Mamiya Press",
+      "target": "マミヤプレス",
+      "note": "Brand name; standard Japanese spelling."
+    },
+    {
+      "source": "Leaf",
+      "target": "リーフ",
+      "note": "Brand name; standard Japanese spelling."
+    },
+    {
+      "source": "Kodak",
+      "target": "コダック",
+      "note": "Brand name; standard Japanese spelling."
+    }
+  ],
+  "properNouns": [
+    "Hasselblad",
+    "Phase One",
+    "Mamiya Press",
+    "Leaf",
+    "Kodak",
+    "Pentax 645Z",
+    "Fujifilm GFX",
+    "Hasselblad X2D II",
+    "Hasselblad H mount",
+    "Mamiya Press adapter",
+    "ThinkPad",
+    "Polaroid PDC 2000"
+  ],
+  "styleGuide": [
+    "Use casual, friendly tone with だ/である体 for narration, but switch to ですます体 for direct address to viewers.",
+    "Keep brand and model names in English or standard Japanese katakana as listed in glossary.",
+    "Translate technical terms like 'sync cable' and 'flange distance' consistently using glossary.",
+    "For 'two-shot approach', explain briefly if needed, but use the glossary term.",
+    "Use natural Japanese phrasing for idioms like 'spill the beans' → '秘密をばらす' or 'ネタバレする'.",
+    "Keep sentence endings consistent: use 〜んだ/〜のだ for explanatory tone, 〜よ/〜ね for emphasis.",
+    "Avoid overly literal translations; prefer conversational flow.",
+    "For numbers and measurements, use Japanese numerals and units (e.g., 39メガピクセル, 49.1×36.8mm).",
+    "When the speaker uses filler words like 'um', omit or replace with natural pauses like 'えっと'.",
+    "For sponsor mentions, keep the brand name as is and use natural phrasing like 'スポンサーのValerionから提供されました'."
+  ]
+}

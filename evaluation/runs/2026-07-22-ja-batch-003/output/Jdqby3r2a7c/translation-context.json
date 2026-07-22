@@ -1,0 +1,91 @@
+{
+  "topic": "Korean fried chicken recipe and cooking science",
+  "summary": "A detailed guide to making Korean fried chicken, covering butchering, curing, dredging, double frying, and four sauces, with scientific explanations.",
+  "tone": "casual, enthusiastic, humorous, explanatory",
+  "audience": "home cooks interested in Korean cuisine and cooking techniques",
+  "glossary": [
+    {
+      "source": "Korean fried chicken",
+      "target": "韓国風フライドチキン",
+      "note": "Standard term for the dish"
+    },
+    {
+      "source": "master curing blend",
+      "target": "ベースのキュアブレンド",
+      "note": "Salt-sugar mix for brining"
+    },
+    {
+      "source": "dredge",
+      "target": "衣",
+      "note": "Flour mixture for coating"
+    },
+    {
+      "source": "double frying",
+      "target": "二度揚げ",
+      "note": "Key technique for crispiness"
+    },
+    {
+      "source": "yangnyeom sauce",
+      "target": "ヤンニョムソース",
+      "note": "Spicy gochujang-based sauce"
+    },
+    {
+      "source": "soy honey glaze",
+      "target": "醤油ハチミツグレーズ",
+      "note": "Sweet and salty glaze"
+    },
+    {
+      "source": "confit garlic sauce",
+      "target": "コンフィガーリックソース",
+      "note": "Garlic oil-based sauce"
+    },
+    {
+      "source": "cheese powder",
+      "target": "チーズパウダー",
+      "note": "Seasoning powder for coating"
+    },
+    {
+      "source": "gochujang",
+      "target": "コチュジャン",
+      "note": "Korean chili paste"
+    },
+    {
+      "source": "gochugaru",
+      "target": "コチュカル",
+      "note": "Korean chili flakes"
+    },
+    {
+      "source": "tapioca flour",
+      "target": "タピオカ粉",
+      "note": "Starch for crunchiness"
+    },
+    {
+      "source": "capsicum powder",
+      "target": "パプリカパウダー",
+      "note": "Spicy chili powder"
+    }
+  ],
+  "properNouns": [
+    "Doobydobap",
+    "Korean fried chicken",
+    "Yangnyeom",
+    "Gochujang",
+    "Gochugaru",
+    "Kosher Diamond",
+    "Taiwan",
+    "American Southern fried chicken",
+    "Japanese karaage",
+    "China"
+  ],
+  "styleGuide": [
+    "Use casual, friendly tone with だ/である体 for narration, but polite です/ます for direct instructions.",
+    "Keep cooking terms consistent with common Japanese cooking show vocabulary.",
+    "Translate humor and puns naturally; e.g., 'Let's get clucking' → 'さあ始めよう'.",
+    "For on-screen text (e.g., ingredient lists), use concise Japanese without particles.",
+    "Maintain the speaker's enthusiastic and slightly sarcastic tone.",
+    "Use loanwords for Korean-specific terms (e.g., コチュジャン, ヤンニョム) but explain if needed.",
+    "Keep scientific explanations clear but not overly technical.",
+    "For sound effects like 'snorts', use onomatopoeia like 'プッ' or omit.",
+    "Ensure subtitle length fits reading speed; split long sentences if necessary."
+  ]
+}

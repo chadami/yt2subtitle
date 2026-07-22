@@ -1,0 +1,80 @@
+{
+  "topic": "Hokkaido travel vlog",
+  "summary": "A travel vlog covering a 5-day trip to Hakodate and Sapporo, including flights with Japan Airlines, food experiences, and sightseeing.",
+  "tone": "casual, enthusiastic, conversational",
+  "audience": "Travel enthusiasts, Japan lovers, vlog viewers",
+  "glossary": [
+    {
+      "source": "JAL SKY SUITE III",
+      "target": "JAL SKY SUITE III",
+      "note": "Proper name of seat type, keep as is"
+    },
+    {
+      "source": "Shaolin Soccer",
+      "target": "少林サッカー",
+      "note": "Movie title, use common Japanese title"
+    },
+    {
+      "source": "Tokyu Stay Ginza",
+      "target": "東急ステイ銀座",
+      "note": "Hotel name, use Japanese name"
+    },
+    {
+      "source": "Potato Head",
+      "target": "ポテトヘッド",
+      "note": "Bar name, keep as is"
+    },
+    {
+      "source": "Tabelog",
+      "target": "食べログ",
+      "note": "Restaurant review site, use Japanese name"
+    },
+    {
+      "source": "Nouilles",
+      "target": "ヌイユ",
+      "note": "Ramen shop name, use Japanese pronunciation"
+    },
+    {
+      "source": "soup curry",
+      "target": "スープカレー",
+      "note": "Hokkaido specialty, common term"
+    },
+    {
+      "source": "soft cream",
+      "target": "ソフトクリーム",
+      "note": "Soft serve ice cream, common term"
+    },
+    {
+      "source": "Hokkaido Air System (HAC)",
+      "target": "北海道エアシステム（HAC）",
+      "note": "Airline name, use official Japanese name"
+    },
+    {
+      "source": "Goryokaku Park",
+      "target": "五稜郭公園",
+      "note": "Park name, use Japanese name"
+    }
+  ],
+  "properNouns": [
+    "Sam",
+    "Victor",
+    "Japan Airlines",
+    "Hokkaido",
+    "Sapporo",
+    "Hakodate",
+    "Haneda Airport",
+    "Okadama Airport",
+    "Suwa Shrine",
+    "Lucky Pierrot",
+    "Rokkatei",
+    "Kanemori Red Brick Warehouse"
+  ],
+  "styleGuide": [
+    "Use casual, friendly Japanese with だ/である体 for narration, but polite です/ます体 for direct speech or when addressing viewers.",
+    "Keep English brand names and proper nouns as is, but add Japanese readings if needed for clarity.",
+    "Translate food and place names to common Japanese terms (e.g., 'uni' → 'うに', 'matcha' → '抹茶').",
+    "Use natural contractions like ちゃった, てる for conversational flow.",
+    "Avoid overly literal translations; prioritize natural spoken Japanese.",
+    "For humor or emojis, convey tone with appropriate Japanese expressions (e.g., 😂 → 笑)."
+  ]
+}

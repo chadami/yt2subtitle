@@ -1,0 +1,81 @@
+{
+  "topic": "Korean fried chicken recipe and cooking science",
+  "summary": "A detailed guide to making Korean fried chicken, covering butchering, curing, dredging, double frying, and four sauces, with scientific explanations for each step.",
+  "tone": "casual, enthusiastic, humorous, educational",
+  "audience": "home cooks interested in Korean cuisine and cooking techniques",
+  "glossary": [
+    {
+      "source": "master curing blend",
+      "target": "マスターキュアブレンド",
+      "note": "塩と砂糖の混合調味料"
+    },
+    {
+      "source": "dredge",
+      "target": "衣",
+      "note": "揚げる前の粉のコーティング"
+    },
+    {
+      "source": "double frying",
+      "target": "二度揚げ",
+      "note": "2回に分けて揚げる技法"
+    },
+    {
+      "source": "yangnyeom sauce",
+      "target": "ヤンニョムソース",
+      "note": "韓国風甘辛ソース"
+    },
+    {
+      "source": "gochujang",
+      "target": "コチュジャン",
+      "note": "韓国唐辛子味噌"
+    },
+    {
+      "source": "gochugaru",
+      "target": "コチュカル",
+      "note": "韓国唐辛子粉"
+    },
+    {
+      "source": "confit garlic",
+      "target": "コンフィガーリック",
+      "note": "オイルで低温調理したニンニク"
+    },
+    {
+      "source": "crispy",
+      "target": "サクサク",
+      "note": "食感の表現"
+    },
+    {
+      "source": "crunchy",
+      "target": "バリバリ",
+      "note": "より硬い食感の表現"
+    },
+    {
+      "source": "oomph",
+      "target": "パンチ",
+      "note": "風味の強調"
+    },
+    {
+      "source": "wussies",
+      "target": "弱虫",
+      "note": "カジュアルな軽蔑表現"
+    }
+  ],
+  "properNouns": [
+    "Doobydobap",
+    "Korean fried chicken",
+    "Korea",
+    "Taiwan",
+    "American Southern fried chicken",
+    "Japanese karaage",
+    "Chinese sweet and sour pork"
+  ],
+  "styleGuide": [
+    "Use casual, friendly tone with occasional humor.",
+    "Keep sentence endings consistent with だ/である調 for explanatory parts, but use ます調 for direct instructions.",
+    "Translate 'you' as 君 or omit, depending on context.",
+    "For cooking terms, prefer common Japanese equivalents (e.g., 下味 for cure, 衣 for dredge).",
+    "Maintain the speaker's enthusiastic and slightly irreverent style.",
+    "Use onomatopoeia like サクサク, バリバリ for texture descriptions.",
+    "Keep measurements in metric (g, ml) as in original."
+  ]
+}

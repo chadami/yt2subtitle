@@ -1,0 +1,67 @@
+{
+  "topic": "Personal growth and identity in Paris",
+  "summary": "Grace Brosnan discusses her journey from a difficult arrival in Paris, including toxic roommates and a draining fashion design program, to finding her creative identity and balancing femininity and masculinity in her style and life.",
+  "tone": "casual, reflective, conversational",
+  "audience": "Young adults interested in Parisian lifestyle, personal development, and fashion",
+  "glossary": [
+    {
+      "source": "Parisian Vibe",
+      "target": "パリジャン・ヴァイブ",
+      "note": "Channel name, keep as is"
+    },
+    {
+      "source": "Parisian Conversations",
+      "target": "パリジャン・カンバセーションズ",
+      "note": "Series title"
+    },
+    {
+      "source": "Grace Brosnan",
+      "target": "グレース・ブロスナン",
+      "note": "Guest name"
+    },
+    {
+      "source": "hojicha",
+      "target": "ほうじ茶",
+      "note": "Japanese roasted green tea"
+    },
+    {
+      "source": "15 square meters",
+      "target": "15平方メートル",
+      "note": "Room size"
+    },
+    {
+      "source": "fashion design program",
+      "target": "ファッションデザインのプログラム",
+      "note": "Academic program"
+    },
+    {
+      "source": "fashion business",
+      "target": "ファッションビジネス",
+      "note": "Switched major"
+    },
+    {
+      "source": "masculinity and femininity",
+      "target": "男性性と女性性",
+      "note": "Key theme"
+    },
+    {
+      "source": "girls supporting girls",
+      "target": "ガールズ・サポーティング・ガールズ",
+      "note": "Club name"
+    }
+  ],
+  "properNouns": [
+    "Paris",
+    "Montauk",
+    "Le Progrès",
+    "Vogue",
+    "Triumph"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である style for narration and ね/よ for emphasis.",
+    "Keep French phrases like 'Voila' as is, but add Japanese explanation if needed.",
+    "Translate 'you know' as 'でしょ' or omit for natural flow.",
+    "For emotional moments, use 〜んだ/〜んです to convey feeling.",
+    "Avoid overly literal translations; prioritize natural spoken Japanese."
+  ]
+}

@@ -1,0 +1,1587 @@
+[
+  {
+    "start": 3.28,
+    "end": 7.759,
+    "text": "こんにちは、世界。世界卵機構によると、知ってる？",
+    "sourceText": "Hello world. Did you know that according to the World Egg Organization?",
+    "sourceIndexes": [
+      0,
+      1
+    ]
+  },
+  {
+    "start": 7.759,
+    "end": 10.693486486486487,
+    "text": "そう、それが正式名称なんだけど、",
+    "sourceText": "Yes, that's its actual name, Japan is the number two per",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 10.693486486486487,
+    "end": 15.254054054054055,
+    "text": "日本は一人当たりの卵消費量で世界第2位で、メキシコに次ぐんだ。",
+    "sourceText": "capita consumer of eggs in the world, right behind Mexico.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 15.254054054054055,
+    "end": 18.89779625779626,
+    "text": "この動画を作る前は私も知らなかったけど、",
+    "sourceText": "Well, before making this video, I didn't either, but it kind of makes sense",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 18.89779625779626,
+    "end": 22.54153846153846,
+    "text": "日本の多彩な卵料理を考えれば納得だよね。",
+    "sourceText": "when you consider all of the delicious varieties of egg dishes in Japan.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 22.54153846153846,
+    "end": 25.68,
+    "text": "私は特にラーメンの味玉が好きだ。",
+    "sourceText": "I'm a particular fan of the Ajitama in ramen.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 25.68,
+    "end": 29.599,
+    "text": "でも、特に面白いと思う日本料理が一つあって、",
+    "sourceText": "However, there's one Japanese dish that I think you'll find exceptionally [music]",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 29.599,
+    "end": 32.705411764705886,
+    "text": "それが卵かけご飯、",
+    "sourceText": "interesting, and that is tamago",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 32.705411764705886,
+    "end": 35.6,
+    "text": "略してTKGだ。",
+    "sourceText": "kakeake gohan or tkg for short.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 35.6,
+    "end": 38.076173913043476,
+    "text": "文字通り「ご飯に卵をかける」という意味だ。",
+    "sourceText": "It literally means eggs on rice.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 38.076173913043476,
+    "end": 39.46902173913043,
+    "text": "卵かけご飯。",
+    "sourceText": "Tamago kake Gohan.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 39.46902173913043,
+    "end": 44.8,
+    "text": "もう日本に長く住んでいるから、生卵をご飯にかけて食べるのが完全に普通に思えるよ。",
+    "sourceText": "I have lived in Japan long enough now that the idea of eating raw eggs on rice seems completely normal.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 44.8,
+    "end": 50.46197183098592,
+    "text": "神戸牛の動画で私がすき焼きで生卵を食べるのを見たかもしれないけど、最近、",
+    "sourceText": "You may have seen me eat raw eggs with sukiyaki in our coobe beef video, but I recently realized",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 50.46197183098592,
+    "end": 56,
+    "text": "こんなにそのまま生卵を食べるのは日本以外では珍しいんだと気づいたんだ。",
+    "sourceText": "that eating raw eggs in such an unadulterated manner really is uncommon outside of Japan.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 56,
+    "end": 63.98429113924051,
+    "text": "だから、このシンプルで人気のある日本料理の歴史とノウハウを少し深掘りしてみたくなった。",
+    "sourceText": "So, I wanted to do a bit of a deep dive and find out the history and knowhow of this simple yet popular Japanese dish.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 63.98429113924051,
+    "end": 69.92,
+    "text": "人気の理由の一つは、日本の卵の安全性が高いからだと思ったんだ。",
+    "sourceText": "I assumed that one of the reasons for the popularity is that the safety of eggs in Japan is high.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 69.92,
+    "end": 75.77806451612904,
+    "text": "そこで、養鶏場と数軒のTKG専門店を訪れ、食品安全の専門家にインタビューし、",
+    "sourceText": "And so we visited a chicken farm and a couple of TKG eeries, interviewed a food safety expert, and heard",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 75.77806451612904,
+    "end": 79.92,
+    "text": "世界中の視聴者から意見を聞いて、文化的・科学的な、",
+    "sourceText": "from some of our viewers from around the world to get a clearer picture of the cultural and scientific",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 79.92,
+    "end": 85.119,
+    "text": "TKGを食べる際に考慮すべき事実をより明確にしようとしたんだ。",
+    "sourceText": "facts you might want to consider when consuming TKG.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 85.119,
+    "end": 87.14309638554217,
+    "text": "例えば、生卵を食べるのは実際に安全なのか？",
+    "sourceText": "Like, is it actually safe to eat raw eggs?",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 87.14309638554217,
+    "end": 89.119,
+    "text": "日本にいるかどうかで違いはあるのか？",
+    "sourceText": "Does it matter if you're in Japan or not?",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 89.119,
+    "end": 92.88,
+    "text": "そして、なぜ日本人は他の国より生卵を食べるように見えるのか？",
+    "sourceText": "And why do Japanese people seem to eat raw eggs more than in other countries?",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 92.88,
+    "end": 98.72,
+    "text": "というわけで、最初の謎、TKGはどこから来たのかを解き明かそう。",
+    "sourceText": "So, with all that said, let's crack open our first mystery of where did TKG come from?",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 98.72,
+    "end": 102.83076923076922,
+    "text": "ここで放送を中断して、速報をお伝えします。",
+    "sourceText": "I interrupt this broadcast to [music] bring you some late breaking news.",
+    "sourceIndexes": [
+      19,
+      20
+    ]
+  },
+  {
+    "start": 102.83076923076922,
+    "end": 106.4325703564728,
+    "text": "日光にある築60年の家を改装し終えたんだ。",
+    "sourceText": "We've just finished renovating this 60-year-old home in Niko,",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 106.4325703564728,
+    "end": 109.92,
+    "text": "実はここでナレーションを録ってるんだよ。",
+    "sourceText": "and it's actually where I'm doing all the narration from.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 109.92,
+    "end": 114.26081666666667,
+    "text": "静かな住宅街にある伝統的な日本家屋に泊まりたいなら、クリック、",
+    "sourceText": "So, if you'd like to stay in a traditional Japanese home in a quiet",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 114.26081666666667,
+    "end": 118.399,
+    "text": "いやクリックじゃなくて、画面のQRコードをスキャンするか、",
+    "sourceText": "neighborhood, then click or I guess not click, but scan the QR code on",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 118.399,
+    "end": 122.02672036474165,
+    "text": "silverdaestay.comにアクセスするか、",
+    "sourceText": "screen or you can visit silverdaestay.com or",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 122.02672036474165,
+    "end": 125.18757142857143,
+    "text": "概要欄のリンクをチェックしてみてください。",
+    "sourceText": "you can check out the link in the description.",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 125.18757142857143,
+    "end": 128.959,
+    "text": "はい、通常の放送に戻ります。",
+    "sourceText": "Okay, back [music] to our regular broadcast.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 128.959,
+    "end": 132.56991304347827,
+    "text": "TKGの歴史は、少なくとも文献に残る形では、",
+    "sourceText": "The history of TKG, at least in any written form, dates back to",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 132.56991304347827,
+    "end": 136.4,
+    "text": "明治時代、1860年から1890年頃に遡ります。",
+    "sourceText": "the Maji period, roughly between the years of 1860 and 1890.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 136.4,
+    "end": 140.51525423728813,
+    "text": "当時、樫田銀子という有名な学者であり先駆者がいて、",
+    "sourceText": "During that time, there was a renowned scholar and pioneer named Ginko Kashida,",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 140.51525423728813,
+    "end": 145.68,
+    "text": "日本中を旅しながら、どこへ行っても朝食にTKGを食べていたそうです。",
+    "sourceText": "who apparently traveled across Japan eating TKG for breakfast wherever he went.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 145.68,
+    "end": 150.44848484848484,
+    "text": "樫田銀子が実際にTKGを広めたかどうかは議論の余地がありますが、",
+    "sourceText": "Whether Ginko Kashida actually popularized TKG is up for debate, but he was a successful,",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 150.44848484848484,
+    "end": 155.44,
+    "text": "彼は成功した人脈豊かなジャーナリストだったので、彼の変わった食習慣が、",
+    "sourceText": "well-connected journalist, so I'm sure that his peculiar culinary habits caught the",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 155.44,
+    "end": 160.56,
+    "text": "他の有力者や人々の注目を集めたことは間違いないでしょう。",
+    "sourceText": "attention of the other influential people and passers by.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 160.56,
+    "end": 163.04153846153847,
+    "text": "今日では、TKGはとても一般的な手軽な食事で、",
+    "sourceText": "These days, TKG is such a common quick meal, you'd struggle",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 163.04153846153847,
+    "end": 165.85739130434783,
+    "text": "一度も食べたことがない日本人を見つけるのは難しいでしょう。",
+    "sourceText": "to find a Japanese person who's never had it before.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 165.85739130434783,
+    "end": 169.45089855072465,
+    "text": "しかし、日本で最もシンプルな食事の一つでありながら、",
+    "sourceText": "But despite being one of the simplest meals in Japan, you could",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 169.45089855072465,
+    "end": 172.4,
+    "text": "必要な材料はすべてコンビニで買えます。",
+    "sourceText": "literally buy all the necessary ingredients at a convenience store.",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 172.4,
+    "end": 177.44,
+    "text": "実際、TKGをベースにメニューを構成しているお店全体があります。",
+    "sourceText": "There are actually entire businesses that build their menus off of TKG.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 177.44,
+    "end": 184.08,
+    "text": "つまり、人々はわざわざ家の外でこのシンプルな料理を食べに行くのです。",
+    "sourceText": "That means people will go out of their way to eat this simple dish outside of their home.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 184.08,
+    "end": 189.19593220338984,
+    "text": "そのような店の一つが、倉敷の有名な美観地区にあるTKG専門店「ゆりん庵」で、",
+    "sourceText": "One such establishment is Yurin An, a TKG itery in Kurashiki's famous",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 189.19593220338984,
+    "end": 192.56,
+    "text": "日本人と外国人客の両方を惹きつけています。",
+    "sourceText": "Bikan area that attracts both Japanese and international customers alike.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 192.56,
+    "end": 196.50320000000002,
+    "text": "そこで、プロデューサーのボビーと彼の友達のロージーに、",
+    "sourceText": "So, I had Bobby, our producer, and his friend",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 196.50320000000002,
+    "end": 200.04000000000002,
+    "text": "そのお店を訪れてスタッフに会ってもらいました。",
+    "sourceText": "Rosie check out their shop and meet their staff.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 220.4,
+    "end": 223.4,
+    "text": "のために。",
+    "sourceText": "for",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 229.28,
+    "end": 232.28,
+    "text": "よし。",
+    "sourceText": "Okay.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 232.959,
+    "end": 237.64000000000001,
+    "text": "醤油を入れすぎた気がする。",
+    "sourceText": "Feel like I put too much soy sauce.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 242.64,
+    "end": 244.48,
+    "text": "すごく美味しい。",
+    "sourceText": "Really good.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 244.48,
+    "end": 248.5675,
+    "text": "だって、黄身と醤油を混ぜると、",
+    "sourceText": "Cuz I think after you mix the yolk and",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 248.5675,
+    "end": 253.04,
+    "text": "そんなにぬるぬるしてないんだよね。",
+    "sourceText": "the soy sauce, it's not very like slimy.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 253.04,
+    "end": 255.23999999999998,
+    "text": "あまり気にならない。",
+    "sourceText": "You can't really tell.",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 255.23999999999998,
+    "end": 257.64,
+    "text": "少なくとも僕はね。",
+    "sourceText": "[music] At least for me.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 260.239,
+    "end": 263.7124705882353,
+    "text": "実際、うん、かなり美味しい。",
+    "sourceText": "It's actually Yeah, it's quite good.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 263.7124705882353,
+    "end": 266.8,
+    "text": "醤油と、ふりかけの醤油も。",
+    "sourceText": "The showyu and also the furikake showyu.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 266.8,
+    "end": 270.145,
+    "text": "ふりかけにも入ってると思うけど、",
+    "sourceText": "I think there's like in the furikake too, but like",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 270.145,
+    "end": 273.49,
+    "text": "すぐにすごくいい風味がするんだ。",
+    "sourceText": "immediately it's like this really nice flavor.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 273.49,
+    "end": 276.32,
+    "text": "さっぱりしてる。卵っぽくないね。",
+    "sourceText": "It's refreshing. It's not eggy.",
+    "sourceIndexes": [
+      45,
+      46
+    ]
+  },
+  {
+    "start": 276.32,
+    "end": 280.0471794871795,
+    "text": "家で食べるよりずっと美味しいよ。",
+    "sourceText": "It's like way better than what I would normally have at home cuz",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 280.0471794871795,
+    "end": 284.88,
+    "text": "だって家だとこういうの準備するのが面倒だから。",
+    "sourceText": "I would I would be too lazy to prepare all this other stuff.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 284.88,
+    "end": 289.22105263157897,
+    "text": "うん、だから、本当に来る価値があると思う。",
+    "sourceText": "M um so yeah, I think it's totally Yeah. worth coming here.",
+    "sourceIndexes": [
+      48,
+      49
+    ]
+  },
+  {
+    "start": 289.22105263157897,
+    "end": 292.56,
+    "text": "ご褒美みたいで楽しいよ。",
+    "sourceText": "It's a nice treat and it's kind of fun.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 292.56,
+    "end": 296.56,
+    "text": "だから、僕たちの反応はかなり本物だと思う。",
+    "sourceText": "So yeah, definitely I think our reactions are like pretty legitimate.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 296.56,
+    "end": 300.04,
+    "text": "本当に美味しい。",
+    "sourceText": "It's really good.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 324.479,
+    "end": 331.173,
+    "text": "おまけに、妻とその妹のアコに東京の別のTKG専門店「きさぶろう」に行ってもらったんだ、",
+    "sourceText": "And just for fun, I had my wife and her sister Ako visit another TKG ery in",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 331.173,
+    "end": 335.12,
+    "text": "。そこは全国の農場から卵を取り寄せている。",
+    "sourceText": "Tokyo called Kisaburo, which serves eggs from various farms across the country.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 335.12,
+    "end": 338.9265979381443,
+    "text": "残念ながら、行った日にアコのマイクが故障してて、",
+    "sourceText": "Unfortunately, on the day of their visit, Ako's",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 338.9265979381443,
+    "end": 342.08154639175257,
+    "text": "後でオンラインで振り返りをしたんだ。",
+    "sourceText": "mic didn't work, so we did a recap online.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 342.08154639175257,
+    "end": 346.76000000000005,
+    "text": "[音楽]うん。",
+    "sourceText": "[music] Yeah.",
+    "sourceIndexes": [
+      55,
+      56
+    ]
+  },
+  {
+    "start": 346.76000000000005,
+    "end": 349.08000000000004,
+    "text": "うん。うん。",
+    "sourceText": "Yeah.",
+    "sourceIndexes": [
+      57,
+      58
+    ]
+  },
+  {
+    "start": 358.289,
+    "end": 360.30899999999997,
+    "text": "（笑）。",
+    "sourceText": "[laughter]",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 365.494,
+    "end": 367.514,
+    "text": "（笑）。",
+    "sourceText": "[laughter]",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 381.869,
+    "end": 383.889,
+    "text": "（笑）。",
+    "sourceText": "[laughter]",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 395.44,
+    "end": 397.759,
+    "text": "それで。",
+    "sourceText": "So",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 401.519,
+    "end": 403.539,
+    "text": "（笑）。",
+    "sourceText": "[laughter]",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 412.654,
+    "end": 417.48490909090907,
+    "text": "（笑）アコのコメントを聞いて、興味が湧いたんだ。",
+    "sourceText": "[laughter] So, after hearing Ako's commentary, I was curious and wanted to hear from",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 417.48490909090907,
+    "end": 425.039,
+    "text": "アメリカやヨーロッパの視聴者がTKGや生卵全般についてどう思うか聞いてみたくなった。",
+    "sourceText": "our American and European viewers about their thoughts on TKG and raw eggs in general.",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 425.039,
+    "end": 426.9995,
+    "text": "もちろん。卵かけご飯は好きです。",
+    "sourceText": "Sure. I like tamago kakeake gohan.",
+    "sourceIndexes": [
+      65,
+      66
+    ]
+  },
+  {
+    "start": 426.9995,
+    "end": 428.96,
+    "text": "メニューにあれば食べます。",
+    "sourceText": "If it's on the menu, I'll eat it.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 428.96,
+    "end": 432.24,
+    "text": "うん、卵かけご飯は大好きです。",
+    "sourceText": "Yeah, I even love tamago kakeake gohan.",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 432.24,
+    "end": 437.44,
+    "text": "うん、よく食べます。手軽で健康的で満足感のある朝食です。",
+    "sourceText": "Yeah, regularly. I have a [music] quick, healthy, and like satisfying breakfast.",
+    "sourceIndexes": [
+      69,
+      70
+    ]
+  },
+  {
+    "start": 437.44,
+    "end": 440.43636363636364,
+    "text": "タンパク質も豊富。わざわざ食べに行くことはないけど、",
+    "sourceText": "A lot of protein. I wouldn't go out of my way to get it,",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 440.43636363636364,
+    "end": 442.88,
+    "text": "誰かが作ってくれたら喜んで食べます。",
+    "sourceText": "but if somebody made it for me, I would gladly eat it.",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 442.88,
+    "end": 445.405,
+    "text": "あれば食べるけど、自分では作らないかな。",
+    "sourceText": "I would eat it if it's there, but I probably wouldn't make it myself.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 445.405,
+    "end": 448.4,
+    "text": "生卵の食感がちょっとぬるぬるしすぎかな。",
+    "sourceText": "[music] I think that the raw egg texture is a little too slimy for me.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 448.4,
+    "end": 451.199,
+    "text": "TKGは面白がって食べたことはあります。",
+    "sourceText": "I have had the TKG for fun.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 451.199,
+    "end": 454.4,
+    "text": "まあまあだけど、卵は好きじゃないんです。",
+    "sourceText": "It's It's okay, but I do not like egg.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 454.4,
+    "end": 457.599,
+    "text": "（笑）家で作りました。",
+    "sourceText": "[laughter] I made at home.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 457.599,
+    "end": 461.28,
+    "text": "『ジュビリー・クックブック』という本のレシピを使いました。",
+    "sourceText": "I use a recipe that I found in a book called Jubilee Cookbook.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 461.28,
+    "end": 463.039,
+    "text": "うん、とても美味しかったです。",
+    "sourceText": "Yeah, it was very tasty. [music]",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 463.039,
+    "end": 467.18413888888887,
+    "text": "ちょっと怖さや心配を克服しないといけなかったけど、",
+    "sourceText": "I had to kind of get over my fears and worries a",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 467.18413888888887,
+    "end": 469.68,
+    "text": "素晴らしい体験でした。",
+    "sourceText": "little bit and then it was a great experience.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 469.68,
+    "end": 473.40735466666666,
+    "text": "とても美味しかったです。子供の頃の鮮明な記憶があります。",
+    "sourceText": "It tasted very delicious. I have this very vivid memory from my",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 473.40735466666666,
+    "end": 476.59313333333336,
+    "text": "イギリスで祖母とケーキの話をしていたんです。",
+    "sourceText": "childhood where I was speaking cake with my grandmother in England.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 476.59313333333336,
+    "end": 478.8672666666667,
+    "text": "ケーキの生地を味見しました。",
+    "sourceText": "I sampled the cake batter.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 478.8672666666667,
+    "end": 481.5402076923077,
+    "text": "祖母はまるで人を殺したかのような反応で、私には理解できませんでした。",
+    "sourceText": "She reacted as if I had killed someone and I",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 481.5402076923077,
+    "end": 483.52,
+    "text": "「ダメダメ、そんなことしちゃ」って。",
+    "sourceText": "didn't understand and she was no no do that.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 483.52,
+    "end": 485.44,
+    "text": "とても危険だって。サルモネラ菌に感染するって。",
+    "sourceText": "It's very dangerous. It's you can get salmonella.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 485.44,
+    "end": 492.2683743136787,
+    "text": "例えば私の祖父のような多くの人は、今でも生卵は安全だと思っていません。",
+    "sourceText": "Most people like my grandfather for example, they still don't consider [music] raw egg",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 492.2683743136787,
+    "end": 497.3278309859155,
+    "text": "アメリカでは生卵は絶対にやらないことですからね。",
+    "sourceText": "to be safe cuz I know like egg raw egg is not what you want to do in America for sure.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 497.3278309859155,
+    "end": 498.879,
+    "text": "特にサルモネラ菌が怖いんです。",
+    "sourceText": "Especially want salmonella.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 498.879,
+    "end": 503.28,
+    "text": "子供向けの教育テレビ番組もあるんです。",
+    "sourceText": "They also have this [music] informative TV shows for kids.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 503.28,
+    "end": 507.199,
+    "text": "幼い頃から、卵は危険だと言い聞かせられます。",
+    "sourceText": "From very young age, we get told the story of the egg being dangerous.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 507.199,
+    "end": 512.2041791044776,
+    "text": "これを聞いて、生卵を食べるのは実際危険なのか、疑問に思いました。",
+    "sourceText": "Now, after hearing all this, it made me wonder, is eating raw eggs actually dangerous?",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 512.2041791044776,
+    "end": 515.9486567164179,
+    "text": "そこで、食品微生物学者に聞くのが一番でしょう。",
+    "sourceText": "So, who better to ask than a food microbiologist.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 515.9486567164179,
+    "end": 518.5372941742899,
+    "text": "ご紹介します、アンドレア・アダー博士。",
+    "sourceText": "Meet Dr. Andrea Udder, an associate professor at the University of",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 518.5372941742899,
+    "end": 522.88,
+    "text": "バーモント大学の准教授で、サルモネラ菌を研究し、国際的な食品安全について教えています。",
+    "sourceText": "Vermont, who researches salmonella and teaches about global food safety.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 522.88,
+    "end": 527.7764102564103,
+    "text": "卵で心配される主なサルモネラ菌は、",
+    "sourceText": "The primary type of salmonella people worry about in eggs is salmonella and",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 527.7764102564103,
+    "end": 533.76,
+    "text": "卵巣に入り込むタイプで、それが問題なんです。",
+    "sourceText": "[music] a concern because it gets into the ovaries and in the ovaries, it's",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 533.76,
+    "end": 537.839,
+    "text": "卵の中に入り込む可能性があります。",
+    "sourceText": "going to be able to get inside the [music] eggs.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 537.839,
+    "end": 541.8915457175926,
+    "text": "だから、卵の外側を洗っても問題は解決しません。",
+    "sourceText": "So, washing the outside of the egg isn't necessarily going to solve the problem.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 541.8915457175926,
+    "end": 546.3161626157407,
+    "text": "外側にも付着している可能性はありますが、鶏の構造上、",
+    "sourceText": "though it it can be on the outside of the egg as well because the chicken",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 546.3161626157407,
+    "end": 550.3687083333333,
+    "text": "卵を産むのと同じ開口部から排泄もするからです。",
+    "sourceText": "anatomy which [music] the chickens lay eggs then poop through the same opening.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 550.3687083333333,
+    "end": 553.2305416666667,
+    "text": "多目的な設計なんです。",
+    "sourceText": "It's a multi-purpose design.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 553.2305416666667,
+    "end": 559.3510015432099,
+    "text": "卵の殺菌は外側には効果があります。外側から内側へサルモネラ菌が入ることもありますが、",
+    "sourceText": "Sanitizing the eggs is going to help with the outside and you can get salmonella going from the outside to",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 559.3510015432099,
+    "end": 565.12,
+    "text": "アメリカで義務付けられているように卵の外側を洗浄すれば、その問題は解決します。",
+    "sourceText": "the [music] inside, but cleaning the outside of the eggs as it's required in the US will solve that issue.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 565.12,
+    "end": 569.9506739130435,
+    "text": "そうすると、保護膜であるブルーム（卵殻膜）が除去されます。",
+    "sourceText": "And so once you do that, it removes the protective bloom, a membrane on the",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 569.9506739130435,
+    "end": 573.279,
+    "text": "これは外側からの侵入を防ぐ膜です。",
+    "sourceText": "outside of the egg that would prevent things from entering from the outside.",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 573.279,
+    "end": 578.084776119403,
+    "text": "だから冷蔵が必要になります。これは、殺菌を行わないヨーロッパとは異なります。",
+    "sourceText": "So then you have to refrigerate, which is different from Europe, which doesn't do that sanitization.",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 578.084776119403,
+    "end": 581.76,
+    "text": "ヨーロッパでは卵を室温で保存できるんです。",
+    "sourceText": "So then they can store their eggs at room temperature.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 581.76,
+    "end": 586.9167131327953,
+    "text": "重要なのは、内部にサルモネラ菌がいる可能性があり、",
+    "sourceText": "It is important to note that you still can have salmonella on the inside and that would",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 586.9167131327953,
+    "end": 593.3395744680851,
+    "text": "室温ではよく増殖するが、冷蔵温度ではあまり増えないということです。",
+    "sourceText": "grow really well at room temperature and not so well at at refrigeration temperature.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 593.3395744680851,
+    "end": 597.68,
+    "text": "しかし、家庭用冷蔵庫の多くには温度計が内蔵されていません。",
+    "sourceText": "But a lot of home refrigerators don't have thermometers inside them.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 597.68,
+    "end": 600.6013793103448,
+    "text": "冷蔵庫に付属の温度計は、",
+    "sourceText": "And the refrigerator thermometer that comes with the",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 600.6013793103448,
+    "end": 604.24,
+    "text": "冷蔵庫の一部の温度しか測れません。",
+    "sourceText": "refrigerator is only going to test one part of the refrigerator.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 604.24,
+    "end": 607.68,
+    "text": "だから、ドアの部分などは暖かくなることがあります。",
+    "sourceText": "So certain places like the door um could be warmer.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 607.68,
+    "end": 613.0945263157895,
+    "text": "アメリカではほとんどの養鶏場がサルモネラ菌のワクチンを接種していますが、",
+    "sourceText": "In the US, most farms do vaccinate against",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 613.0945263157895,
+    "end": 616.0505789473684,
+    "text": "それでも見逃すことはあります。",
+    "sourceText": "salmonella and you're still going to miss stuff.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 616.0505789473684,
+    "end": 620.079,
+    "text": "問題は、見逃した場合に安全策があるかどうかです。",
+    "sourceText": "And the question is, do you have safeguards if you miss something?",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 620.079,
+    "end": 628.0866363636363,
+    "text": "アメリカでは、家禽生産者はサルモネラ菌とトリジス菌に汚染されていない群れから購入するか、若鶏を購入することが義務付けられています。",
+    "sourceText": "For the US um poultry producers are required to buy from Salmonella and Turidus clean flocks or to buy their pullets.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 628.0866363636363,
+    "end": 631.04,
+    "text": "これらが将来の産卵鶏になります。",
+    "sourceText": "These are going to be their future layers.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 631.04,
+    "end": 636.2886956521739,
+    "text": "これは基本的に国家家禽改善計画で規制されており、",
+    "sourceText": "And basically this is regulated by the National Poultry Improvement Plan",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 636.2886956521739,
+    "end": 641.2,
+    "text": "対象は3000羽以上の商業用産卵鶏のみです。",
+    "sourceText": "and these are only for commercial egg layers above like 3,000 birds.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 641.2,
+    "end": 647.4867532467533,
+    "text": "実際の効果についてですが、2000年代初頭にFDAが推定したところ、",
+    "sourceText": "So, in terms of like actually how well this works, in the early 2000s, there was an estimate done by",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 647.4867532467533,
+    "end": 655.12,
+    "text": "購入時に2万個に1個の卵に消費者を病気にするのに十分なサルモネラ菌が含まれていました。",
+    "sourceText": "the FDA that one in every 20,000 eggs had enough salmonella at time of purchase to make a consumer sex.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 655.12,
+    "end": 658.8,
+    "text": "今はおそらくもっと低いでしょうが、それは商業用の話です。",
+    "sourceText": "So, presumably, it's lower now, but again, that's going to be commercial.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 658.8,
+    "end": 661.36,
+    "text": "3000羽以上の養鶏場の話です。",
+    "sourceText": "That's going to be above 3,000 hens.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 661.36,
+    "end": 667.1656489795919,
+    "text": "有機で小規模なら安全だと思う人もいるかもしれませんが、",
+    "sourceText": "People might assume if it's organic and if it's small scale, then it's going to be",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 667.1656489795919,
+    "end": 672.1184000000001,
+    "text": "規制が少なく未知の要素が多いということです。",
+    "sourceText": "safer. it it just means that there's fewer regulations and there's more unknowns.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 672.1184000000001,
+    "end": 674.7104,
+    "text": "私は特に有機分野で働いているわけではありません。",
+    "sourceText": "I [music] don't work particularly in organic.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 674.7104,
+    "end": 677.36,
+    "text": "でも、たくさん研究してきました。",
+    "sourceText": "Um, but I've done a lot of research on [music]",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 677.36,
+    "end": 680.6525714285715,
+    "text": "裏庭養鶏について、年によって異なりますが。",
+    "sourceText": "backyard poultry and depending on the year.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 680.6525714285715,
+    "end": 682.72,
+    "text": "最初の研究では19％、",
+    "sourceText": "Our first study it was 19%, [music]",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 682.72,
+    "end": 687.92,
+    "text": "2番目の研究では12％の群れがサルモネラ菌陽性でした。",
+    "sourceText": "our second study it was 12% of flocks tested positive [music] for salmonella.",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 687.92,
+    "end": 693.36,
+    "text": "アメリカで生卵を食べることについて、抵抗はありますか？",
+    "sourceText": "Would you ever feel comfortable like in America like having a raw egg for food?",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 693.36,
+    "end": 701.12,
+    "text": "ええ、実は今でも時々生のクッキー生地やバッターを食べます。",
+    "sourceText": "Yeah, I mean I I actually still eat raw cookie dough and batter from time to [music] time.",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 701.12,
+    "end": 707.0187435897436,
+    "text": "現実的には、卵を長時間放置するなど温度管理を誤らなければ、",
+    "sourceText": "Realistically, if you're not temperature abusing the eggs, like leaving",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 707.0187435897436,
+    "end": 709.839,
+    "text": "卵は比較的新鮮です。",
+    "sourceText": "them out for long periods of time, your eggs are relatively fresh.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 709.839,
+    "end": 713.92,
+    "text": "サルモネラ菌に感染する可能性は低いけど、絶対とは言えないよ。",
+    "sourceText": "They're probably not going to give you salmonola, but there are no guarantees.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 713.92,
+    "end": 717.267027027027,
+    "text": "昔は大きな問題だったと思う。",
+    "sourceText": "I think it was a really big problem.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 717.267027027027,
+    "end": 720.7803698630137,
+    "text": "今は問題は減ったけど、文化的な偏見は残ってるね。",
+    "sourceText": "I think it's less [music] of a problem now, but cultural biases linger.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 720.7803698630137,
+    "end": 724.7928617683687,
+    "text": "生牡蠣は最もリスクの高い食品の一つだけど、",
+    "sourceText": "Raw oysters are one of the riskiest foods out there,",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 724.7928617683687,
+    "end": 727.6,
+    "text": "海岸育ちの人は大好きだ。",
+    "sourceText": "but people who are raised on coast love raw oysters.",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 727.6,
+    "end": 730.88,
+    "text": "リスクを理解して、自分にとって価値があるか決めるんだ。",
+    "sourceText": "Know what the risks are and decide if the risks are worth it to you.",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 730.88,
+    "end": 736.6591999999999,
+    "text": "高リスクグループ、つまり高齢者、妊婦、免疫力が弱い人、",
+    "sourceText": "If you're in a high-risisk category for getting really, really sick, elderly,",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 736.6591999999999,
+    "end": 741.76,
+    "text": "小さな子供は、あまりリスクを取らない方がいい。",
+    "sourceText": "pregnant, imunompromised, [music] a small child, then don't take as many risks.",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 741.76,
+    "end": 746.4947368421052,
+    "text": "でも若くて健康なら、たまにリスクを取るのは合理的だよ。",
+    "sourceText": "But if you're young and healthy, yeah, it's probably reasonable to occasionally take some risks.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 746.4947368421052,
+    "end": 750.399,
+    "text": "リスクゼロの食事なんてないからね。",
+    "sourceText": "There's no such thing as a risk-free diet.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 750.399,
+    "end": 753.2,
+    "text": "でも生卵食べて病気になっても、訴えないでよ。",
+    "sourceText": "But don't sue me if you get if you eat raw eggs and get sick.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 753.2,
+    "end": 757.1573333333333,
+    "text": "大きな免責事項を付けとくよ。そうだね。",
+    "sourceText": "We'll put like a big disclaimer like disclaimer. Yeah.",
+    "sourceIndexes": [
+      132,
+      133
+    ]
+  },
+  {
+    "start": 757.1573333333333,
+    "end": 759.6142635658914,
+    "text": "上にね。で、これらの情報を聞いた後、",
+    "sourceText": "On top. So, after hearing all of this information, we",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 759.6142635658914,
+    "end": 762.56,
+    "text": "日本で鶏卵がどう生産されているか見たくなったんだ。",
+    "sourceText": "wanted to see how chicken eggs are produced in Japan.",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 762.56,
+    "end": 766.5973743589743,
+    "text": "残念ながら大規模な養鶏場には入れなかったけど、",
+    "sourceText": "And while we were unfortunately unable to gain access to a large-scale egg",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 766.5973743589743,
+    "end": 772.1151179487179,
+    "text": "ボビーの友達のハラさんが経営するケージフリーの養鶏場を訪ねられたんだ。",
+    "sourceText": "producer, we were able to visit a cage-free chicken farm operated by Bobby's",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 772.1151179487179,
+    "end": 775.7823999999999,
+    "text": "ハラさんは西粟倉の動画で出てきた人だよ。",
+    "sourceText": "friend Harasan, who you might remember from our video on Nishiawa Kura.",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 775.7823999999999,
+    "end": 780.4994782608695,
+    "text": "彼の事業「1010en」は、革新的なアイデアと持続可能なビジネスで、",
+    "sourceText": "His business 1010en has won awards in several startup pitch competitions over",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 780.4994782608695,
+    "end": 785.32,
+    "text": "この1年でいくつかのスタートアップピッチコンテストで賞を取ってるんだ。",
+    "sourceText": "the past year for its innovative ideas and sustainable business practices.",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 812.209,
+    "end": 814.2289999999999,
+    "text": "（悲鳴）。",
+    "sourceText": "[screaming]",
+    "sourceIndexes": [
+      138
+    ]
+  },
+  {
+    "start": 831.519,
+    "end": 836,
+    "text": "外国語の会話。",
+    "sourceText": "foreign speech.",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 864.079,
+    "end": 867.16,
+    "text": "あらら。",
+    "sourceText": "Oh no.",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 874.399,
+    "end": 877.399,
+    "text": "フォア！",
+    "sourceText": "Fore!",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 888.639,
+    "end": 891.639,
+    "text": "外国語！外国語！",
+    "sourceText": "Foreign!",
+    "sourceIndexes": [
+      142,
+      143
+    ]
+  }
+]

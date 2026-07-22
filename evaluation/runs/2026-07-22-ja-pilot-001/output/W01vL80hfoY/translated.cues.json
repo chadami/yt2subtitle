@@ -1,0 +1,1814 @@
+[
+  {
+    "start": 0,
+    "end": 3.3359999999999994,
+    "text": "アメリカで30代の女性として、",
+    "sourceText": "As a woman in her 30s in the United States, I'm super familiar with the",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 3.3359999999999994,
+    "end": 9.52,
+    "text": "出生率低下の原因についてのステレオタイプな思い込みはよく知っています。",
+    "sourceText": "stereotypical assumptions about the reasons for falling birth rates.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 9.52,
+    "end": 18.4,
+    "text": "フェミニストのせいだとか、子どもを望まないキャリアウーマンや手遅れになるまで待つ女性のせいだとか、いろいろあります。",
+    "sourceText": "It's the feminists, it's career women who don't want kids or who wait until it's too late, etc. etc.",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 18.4,
+    "end": 19.64,
+    "text": "でも、データが示しているのはそういうことではありません。",
+    "sourceText": "But that's not what the data suggests.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 19.64,
+    "end": 24.88,
+    "text": "キャリアウーマンや、いわゆる「ガールボス」のようなものが原因だという考えがあります。",
+    "sourceText": "The idea of this being about career women and some people talk about the girl boss and that kind of thing.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 24.88,
+    "end": 30.500869565217393,
+    "text": "もし主に高収入で高学歴の若い女性の間で出生が減っているのなら、",
+    "sourceText": "That would make sense if what we were seeing was primarily a decline",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 30.500869565217393,
+    "end": 33.84,
+    "text": "その説明は理にかなっています。",
+    "sourceText": "in births among high-earning and highly educated young women.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 33.84,
+    "end": 37.707459954233414,
+    "text": "しかし、実際に主に見られるのは、社会の下位半分、",
+    "sourceText": "Whereas what we're primarily looking at here is a decline among",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 37.707459954233414,
+    "end": 41.35263157894737,
+    "text": "あるいは下位3分の1の人々の間での減少です。",
+    "sourceText": "those in the bottom half or sort of bottom third [music] of society.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 41.35263157894737,
+    "end": 46.14153846153846,
+    "text": "つまり、一般的に学士号を持たず、収入が低い若い男性と女性です。",
+    "sourceText": "So it's young men and women who generally don't have a bachelor's degree, have lower incomes.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 46.14153846153846,
+    "end": 47.72,
+    "text": "このグループが、",
+    "sourceText": "These are the group [music]",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 47.72,
+    "end": 52.47636363636364,
+    "text": "子供を産む人が減っていて、さらに重要なのは、後で話しますが、",
+    "sourceText": "who are having fewer children and perhaps more importantly, as",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 52.47636363636364,
+    "end": 56.64,
+    "text": "カップルになること自体が少なくなっていることです。",
+    "sourceText": "we'll come on to, being less likely to get into a couple at all.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 60.915,
+    "end": 62.935,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 66.155,
+    "end": 68.175,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 73.32,
+    "end": 75.04727272727273,
+    "text": "The Gray Areaへようこそ。",
+    "sourceText": "Welcome to The Gray Area.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 75.04727272727273,
+    "end": 77.88,
+    "text": "クリスティーンです。ショーン・イリングの代わりに司会を務めます。",
+    "sourceText": "I'm Christian filling in for Sean Illing.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 77.88,
+    "end": 81.508302731751,
+    "text": "今日のゲストは、コラムニストでフィナンシャル・タイムズのチーフデータレポーター、",
+    "sourceText": "My guest today is John Burn-Murdoch, a columnist and",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 81.508302731751,
+    "end": 83.80103896103896,
+    "text": "ジョン・バーン＝マードックさんです。",
+    "sourceText": "the chief data reporter for the Financial Times.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 83.80103896103896,
+    "end": 90.0064,
+    "text": "彼は最近、「なぜ出生率が世界中で一斉に低下しているのか」という記事を発表しました。",
+    "sourceText": "He recently published an article entitled Why birth rates are falling everywhere all at once.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 90.0064,
+    "end": 93.67819395866455,
+    "text": "その記事は、多くの人が子どもを持たない選択をする理由とその影響について、",
+    "sourceText": "The piece really set off a big discussion on both the implications",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 93.67819395866455,
+    "end": 95.90810810810811,
+    "text": "大きな議論を巻き起こしました。",
+    "sourceText": "and the causes of why so many people are choosing to have kids.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 95.90810810810811,
+    "end": 100.16,
+    "text": "この傾向の原因について話し合うために、彼を番組に招きました。",
+    "sourceText": "I asked him to come on the show to discuss what's driving this trend.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 100.16,
+    "end": 103.41090909090909,
+    "text": "なぜ異なる社会で同時に出生率が低下しているのか、",
+    "sourceText": "Why birth rates are falling in different societies at the",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 103.41090909090909,
+    "end": 106.32,
+    "text": "そしてそれに対して何か対策が必要なのか。",
+    "sourceText": "same time and whether we need to do anything about it.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 106.32,
+    "end": 108.08,
+    "text": "ジョン、番組へようこそ。",
+    "sourceText": "Welcome to the show, John.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 108.08,
+    "end": 109.56,
+    "text": "お招きいただきありがとうございます。",
+    "sourceText": "Thank you so much for having me.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 109.56,
+    "end": 112.88,
+    "text": "では、まず少し前提を整理しましょう。",
+    "sourceText": "So I'm going to start with a little bit of table setting here.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 112.88,
+    "end": 117.0988679245283,
+    "text": "えっと、有名な trillionaire のイーロン・マスクは、",
+    "sourceText": "Um noted trillionaire Elon Musk has said that",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 117.0988679245283,
+    "end": 120.28,
+    "text": "低出生率が文明を終わらせると言っています。",
+    "sourceText": "low birth rates are going to end civilization.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 120.28,
+    "end": 125.04,
+    "text": "アメリカのメディケイドとメディケアの管理者である、",
+    "sourceText": "The US's Medicaid and Medicare administrator, Dr.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 125.04,
+    "end": 128.679,
+    "text": "オズ医師は、アメリカは「ベビー不足」だと宣言しました。",
+    "sourceText": "Oz, declared that the US is under baby.",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 128.679,
+    "end": 131.60916216216216,
+    "text": "もう皆さんご存知だと思いますが、",
+    "sourceText": "By now, I think we've all heard that the US and the rest",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 131.60916216216216,
+    "end": 135.08,
+    "text": "アメリカや世界中で人口減少が進んでいます。",
+    "sourceText": "of the world is going through a demographic decline.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 135.08,
+    "end": 139.48,
+    "text": "多くの国で出生率が人口置換水準を下回っています。",
+    "sourceText": "Many countries are under replacement level for fertility.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 139.48,
+    "end": 141.3892857142857,
+    "text": "でも、それは実際どういう意味ですか？",
+    "sourceText": "But what does that actually mean?",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 141.3892857142857,
+    "end": 142.72,
+    "text": "どう定義するんですか？",
+    "sourceText": "How do you define that?",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 142.72,
+    "end": 149.2,
+    "text": "そうですね、人口置換水準は女性一人あたり約2.1人の子どもです。",
+    "sourceText": "Yeah, so the replacement rate is the number is about 2.1 children per woman.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 149.2,
+    "end": 158.2,
+    "text": "つまり、すべてのカップルの女性が平均2.1人の子どもを持てば、",
+    "sourceText": "And what that is telling us is that if every woman in every couple had an average of 2.1 children per year, it would mean",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 158.2,
+    "end": 164.08,
+    "text": "他に人口変動がなければ、ほぼ現在の規模を維持できるということです。",
+    "sourceText": "that if nothing else happened to the population, it would pretty much stay at its current size.",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 164.08,
+    "end": 168.39843137254903,
+    "text": "ですから、その数字が2.1を下回り、特に大幅に下回ると、",
+    "sourceText": "So, when that number drops below 2.1 and especially significantly below, it means that",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 168.39843137254903,
+    "end": 172.16,
+    "text": "他の条件が同じなら人口は徐々に減少し始めます。",
+    "sourceText": "again, holding everything else constant, population will gradually start to fall.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 172.16,
+    "end": 176.16,
+    "text": "少なくとも私には、あまり良くなさそうに思えます。",
+    "sourceText": "That seems not ideal to me, at least.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 176.16,
+    "end": 180.25538461538463,
+    "text": "でも、人口減少を問題と見なす考え方は、",
+    "sourceText": "But the idea of demographic decline being a",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 180.25538461538463,
+    "end": 184.35076923076923,
+    "text": "実はかなり意見が分かれると思うんです。",
+    "sourceText": "problem is actually kind of polarizing, I think.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 184.35076923076923,
+    "end": 190.71634871794873,
+    "text": "アメリカでは、出生率を気にしすぎると右派とか出生奨励派と見なされるリスクがあって、",
+    "sourceText": "In the US, being too concerned about fertility risks being read as",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 190.71634871794873,
+    "end": 194.18416410256413,
+    "text": "左派からの解決策、例えば移民増加は、",
+    "sourceText": "sort of right-wing or pronatalist, um you know, solutions from the",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 194.18416410256413,
+    "end": 197.4,
+    "text": "まあ左派寄りと見なされがちです。",
+    "sourceText": "left, like increased immigration, are often seen as, well, leftist.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 197.4,
+    "end": 201.08,
+    "text": "この議論の分断性は、他の国でも同じですか？",
+    "sourceText": "Is that true elsewhere, this polarizing nature of the debate?",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 201.08,
+    "end": 204.4156756756757,
+    "text": "そういう側面はありますね。",
+    "sourceText": "There are certain elements of it.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 204.4156756756757,
+    "end": 208.0752895752896,
+    "text": "女性はこうすべきだというニュアンスが少しでもある会話は、",
+    "sourceText": "I think, you know, any conversation which has even a hint of women",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 208.0752895752896,
+    "end": 211.12,
+    "text": "かなり保守的なコードと見なされるでしょう？",
+    "sourceText": "should do X is going to be fairly like conservative coded, right?",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 211.12,
+    "end": 215.39525423728816,
+    "text": "それは妥当だと思います。ええと、だからここ数年、",
+    "sourceText": "And I think that's reasonable. Um and I think that's why a lot of people in this last couple",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 215.39525423728816,
+    "end": 221.08,
+    "text": "この話題が主流になるにつれて、かなり賢明な取り組みがあったと思います。",
+    "sourceText": "years, as this topic has become more mainstream, I think there have been quite sensible efforts",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 221.08,
+    "end": 226.3261971830986,
+    "text": "社会としてどうあるべきか、そして男性もこの方程式の一部として何か違うことをすべきかも、",
+    "sourceText": "to ensure that this is actually a much more inclusive conversation about what we as society is",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 226.3261971830986,
+    "end": 230.32,
+    "text": "しれない、というもっと包括的な議論にしようという努力です。",
+    "sourceText": "and certainly what men as part of this equation should be perhaps doing differently as well,",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 230.32,
+    "end": 235.72,
+    "text": "単に男性が女性の行動について語るだけではなく、ですね。",
+    "sourceText": "rather than and it just being a series of men talking about um what women do.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 235.72,
+    "end": 241.12491228070175,
+    "text": "このテーマの記事をたくさん読みましたが、ほとんどすべて、",
+    "sourceText": "I've read a number of pieces on this topic and almost everyone, and actually yours too,",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 241.12491228070175,
+    "end": 247.58105263157896,
+    "text": "そして実際あなたの記事も、韓国を少子化危機の典型例として挙げています。",
+    "sourceText": "singles out South Korea as a key country that's exemplary of this falling birth rates crisis.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 247.58105263157896,
+    "end": 253.6706542056075,
+    "text": "それはなぜですか？韓国は実際に解決策を実施しようとした国の一つだと知っています。",
+    "sourceText": "Why is that? I know that they're one of the countries that has actually tried to implement solutions.",
+    "sourceIndexes": [
+      43,
+      44
+    ]
+  },
+  {
+    "start": 253.6706542056075,
+    "end": 256.239,
+    "text": "それも理由の一つですか？面白いですよね。",
+    "sourceText": "Is that part of it? I think it's it's interesting, right?",
+    "sourceIndexes": [
+      45,
+      46
+    ]
+  },
+  {
+    "start": 256.239,
+    "end": 261.2409764957265,
+    "text": "ジェンダー関係に直接または間接的に関わる議論では、",
+    "sourceText": "So, I think any conversation involving either directly or",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 261.2409764957265,
+    "end": 264.11384615384617,
+    "text": "韓国が話題になります。",
+    "sourceText": "indirectly involving gender relations, South Korea will come up.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 264.11384615384617,
+    "end": 267.57686153846157,
+    "text": "韓国は極端な例で、",
+    "sourceText": "So, they are this extreme case where most measures of",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 267.57686153846157,
+    "end": 272.8,
+    "text": "ほとんどのジェンダー平等指標や、",
+    "sourceText": "gender equality and certainly measures of the different",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 272.8,
+    "end": 277.7694704049844,
+    "text": "平均的な若い男性と女性の役割の違いを見ても、",
+    "sourceText": "roles that on average young men and women perform",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 277.7694704049844,
+    "end": 280.34018691588784,
+    "text": "かなり特異です。",
+    "sourceText": "in South Korea, uh it is a bit of an outlier.",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 280.34018691588784,
+    "end": 284.64,
+    "text": "家事労働の分担が非常に不平等なんです。",
+    "sourceText": "Like, there is a very unequal division of household labor and that kind of thing.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 284.64,
+    "end": 290.32,
+    "text": "最近では、韓国の若い男性の間にかなり反動的な政治傾向が見られます。",
+    "sourceText": "Certainly, there's been evidence recently of a quite reactionary turn politically among young men in South Korea.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 290.32,
+    "end": 295.24,
+    "text": "出生率に関しては、韓国は大きく、",
+    "sourceText": "Um on birth rates, they have been you've got this large, reasonably large, and recently high-income country where",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 295.24,
+    "end": 303.88,
+    "text": "かなり豊かで、他の多くの国が自分たちの将来像を重ねられる国です。",
+    "sourceText": "a lot of other countries around the world can sort of see themselves, as it were, or at least in a few years, and",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 303.88,
+    "end": 306.36,
+    "text": "出生率が信じられないほど低くなっています。",
+    "sourceText": "birth rates have gone incredibly low.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 306.36,
+    "end": 310.584,
+    "text": "人口置換水準の2.1が安定を保つと話しましたが、",
+    "sourceText": "So, we talked about 2.1 being the replacement rate that holds everything stable.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 310.584,
+    "end": 313.176,
+    "text": "韓国では0.8を下回りました。",
+    "sourceText": "In South Korea, they went below 0.8.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 313.176,
+    "end": 320.6544,
+    "text": "ここ数年で少し上昇しましたが、",
+    "sourceText": "In the last couple of years, they've actually ticked up a tiny bit, which we might come on to, but it really is",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 320.6544,
+    "end": 326.04,
+    "text": "それでも高所得国で、",
+    "sourceText": "this shining example or flashing example, as it were, of how things in a high-income country that has a lot of",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 326.04,
+    "end": 331.84,
+    "text": "世界の他の地域と多くの共通点がある国で、出生率がここまで急激に低下する例です。",
+    "sourceText": "similarities to places elsewhere in the world, how things can suddenly get that low in terms of birth rates.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 331.84,
+    "end": 337.912,
+    "text": "韓国は西洋諸国が共感できる高所得国の例だと言いますが、",
+    "sourceText": "You say that this is an example of a high-income country that sort of Western countries can relate to.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 337.912,
+    "end": 343.94273015873017,
+    "text": "経済的にも文化的にも大きく異なる多くの地域が、",
+    "sourceText": "But, there are tons of different parts of the world that are really different from each",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 343.94273015873017,
+    "end": 349.1333333333333,
+    "text": "同じ傾向に直面しているように見えます。",
+    "sourceText": "other economically, culturally, and yet still also seem to be facing the same trend.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 349.1333333333333,
+    "end": 351.04,
+    "text": "それは何を意味するのでしょうか？",
+    "sourceText": "What does that say to you?",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 351.04,
+    "end": 354.2741176470588,
+    "text": "ええ、そこが私にとって非常に興味深く、",
+    "sourceText": "Yeah, I think that bit for me is what's super",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 354.2741176470588,
+    "end": 357.08,
+    "text": "このテーマに惹かれた理由です。",
+    "sourceText": "interesting here and what really drew me to this idea.",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 357.08,
+    "end": 361.0351724137931,
+    "text": "えっと、過去1～2世紀にわたって、",
+    "sourceText": "Um, which is that over the past century or two, we've had",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 361.0351724137931,
+    "end": 365.31448275862067,
+    "text": "かなり安定していてよく理解された変化、",
+    "sourceText": "these fairly steady and fairly well-understood changes, uh,",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 365.31448275862067,
+    "end": 370.08,
+    "text": "つまり人口動態の変化や人口転換がありました。",
+    "sourceText": "these demographic shifts, demographic transitions, which have",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 370.08,
+    "end": 374.46577777777776,
+    "text": "それは世界のさまざまな地域で異なる時期に起こりましたが、",
+    "sourceText": "played out at different periods of time in different parts",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 374.46577777777776,
+    "end": 377.6,
+    "text": "すべて似たような背景の中ででした。",
+    "sourceText": "of the world, but all against similar backdrops as it were.",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 377.6,
+    "end": 386.84,
+    "text": "まず、社会が乳児死亡率が大幅に低下する段階まで発展します。",
+    "sourceText": "So, first you have a society first a society develops to the point where infant mortality gets significantly lower.",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 386.84,
+    "end": 392.7770491803279,
+    "text": "つまり、乱暴に言えば、子どもが成人するまで生き残れないから多く産む必要があったのが、",
+    "sourceText": "That means, to put it crudely, instead of instead of needing to have a large number of",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 392.7770491803279,
+    "end": 396.12,
+    "text": "少なく産めるようになるということです。",
+    "sourceText": "children because some of them won't survive to adulthood, you can start having fewer children.",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 396.12,
+    "end": 401.56969696969696,
+    "text": "次に、都市化、女性の教育水準の向上、一般的な経済発展といった変化があり、",
+    "sourceText": "Then we have other shifts like urbanization, like rising female education, general economic",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 401.56969696969696,
+    "end": 406.31111111111113,
+    "text": "これらも人々が必要と感じる子どもの数を減らす方向に働きます。",
+    "sourceText": "development, which again puts downward pressure on the number of kids people feel they need.",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 406.31111111111113,
+    "end": 409.8278260869565,
+    "text": "こうした現象は以前にも見られましたが、",
+    "sourceText": "So, we've seen these things played out before, but they've played out at this at",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 409.8278260869565,
+    "end": 414.32,
+    "text": "それは国が特定の発展段階を経た時点で起こっていました。",
+    "sourceText": "this point in time when a country went through a certain stage of its development.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 414.32,
+    "end": 420.5,
+    "text": "今起きていることで非常に顕著で比較的新しいのは、",
+    "sourceText": "The thing that's, I think, quite striking and relatively new about what we're",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 420.5,
+    "end": 423.36,
+    "text": "過去15年間に、",
+    "sourceText": "seeing at the moment is that in the last 15 years, you see significantly",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 423.36,
+    "end": 428.1446265822785,
+    "text": "アメリカ、韓国だけでなく、インドネシア、えっと、トルコ、",
+    "sourceText": "declining birth rates in the US, in South Korea, but also",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 428.1446265822785,
+    "end": 432.92925316455694,
+    "text": "イラン、メキシコでも出生率が大幅に低下していることです。",
+    "sourceText": "in Indonesia, in, um, like [snorts] Turkey, Iran, Mexico.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 432.92925316455694,
+    "end": 437.59777107681634,
+    "text": "つまり、低下のタイミングと水準の両方が、",
+    "sourceText": "So, both the timing of the decline and the levels themselves are playing out in",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 437.59777107681634,
+    "end": 444.0005479452055,
+    "text": "これまでの歴史的パターンに当てはまらない形で進行しています。",
+    "sourceText": "ways that is actually, well, it doesn't fit the historical patterns we've seen.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 444.0005479452055,
+    "end": 448.72556468797563,
+    "text": "メキシコがアメリカを下回ることを、女性の教育や収入、",
+    "sourceText": "You can't explain Mexico falling below the US in terms of female",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 448.72556468797563,
+    "end": 452.5015384615385,
+    "text": "都市化などで説明することはできません。",
+    "sourceText": "education or income or urbanization or those kinds of things.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 452.5015384615385,
+    "end": 456.66527472527474,
+    "text": "だから、豊かな国も中所得国も低所得国も、",
+    "sourceText": "So, it's it's a new thing when we suddenly see rich countries, middle-income countries, even",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 456.66527472527474,
+    "end": 463.2,
+    "text": "ほぼ同時期に非常によく似た並行的な低下を経験しているのは新しい現象です。",
+    "sourceText": "lower-income countries undergoing a very similar parallel downward shift at roughly the same time.",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 463.2,
+    "end": 467.08,
+    "text": "私はアメリカにいます。",
+    "sourceText": "So, I'm in the US.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 467.08,
+    "end": 471.6,
+    "text": "世界の他の地域は、こちらの傾向について何を教えてくれるのでしょうか？",
+    "sourceText": "What do these other parts of the world teach us about what the trend looks like here?",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 471.6,
+    "end": 477.5529411764706,
+    "text": "最初に断っておきますが、大きな社会変動には多くの理論があり、",
+    "sourceText": "And I should caveat this straight out of the gate by saying that as with any big sweeping social change,",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 477.5529411764706,
+    "end": 482.08,
+    "text": "ほぼ間違いなく単一の原因ではないでしょう。",
+    "sourceText": "there are many theories as what's going on here and it almost certainly won't be a single cause.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 482.08,
+    "end": 488.21714285714285,
+    "text": "でも、この広い国際的な、発展段階を超えた視点で見ると、",
+    "sourceText": "But the one of one of the interesting theories that emerges when you you take",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 488.21714285714285,
+    "end": 492.16,
+    "text": "面白い理論の一つが出てきます。",
+    "sourceText": "this broader, more international, more sort of inter developmental approach.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 492.16,
+    "end": 497.995,
+    "text": "私もある程度支持している理論ですが、",
+    "sourceText": "And and I certainly think this is a theory that I put some",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 497.995,
+    "end": 502.8,
+    "text": "共通していることがあります。",
+    "sourceText": "weight behind is that one thing that is common to say",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 502.8,
+    "end": 507.5258823529412,
+    "text": "サハラ以南アフリカの一部では2020年から2021年、",
+    "sourceText": "parts of sub-Saharan Africa in 2020, 2021, uh Indonesia and",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 507.5258823529412,
+    "end": 514.08,
+    "text": "インドネシアやメキシコでは2015年頃、アメリカやイギリス、オーストラリアなどでは、",
+    "sourceText": "Mexico in say 2015 and countries like the US, UK, Australia",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 514.08,
+    "end": 520.479,
+    "text": "2008年頃にスマートフォンが普及し始めたんです。",
+    "sourceText": "in sort of 2008 is that's when we see the proliferation of smartphones.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 520.479,
+    "end": 523.0154287045667,
+    "text": "最初に言っておきますが、",
+    "sourceText": "And and I should say at the outset as well that it's not just about the",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 523.0154287045667,
+    "end": 526.9996551724138,
+    "text": "この理論は単に物理的な端末だけの話ではありません。",
+    "sourceText": "as the theory goes, it's not just about the actual physical device.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 526.9996551724138,
+    "end": 528.7937931034483,
+    "text": "それに付随するすべてのものが関係しています。",
+    "sourceText": "It's everything that comes along with that.",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 528.7937931034483,
+    "end": 530.88,
+    "text": "アプリや、そこで過ごす時間など、すべてです。",
+    "sourceText": "So, the the apps, the time you spend, all of that.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 530.88,
+    "end": 535.0341935483871,
+    "text": "しかし、高所得国では2000年代後半、",
+    "sourceText": "But that seems to be one of the few things that does line up",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 535.0341935483871,
+    "end": 539.6548387096774,
+    "text": "中所得国では2010年代半ばの出生率低下と、",
+    "sourceText": "reasonably well with a downward inflection in birth rates in",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 539.6548387096774,
+    "end": 544.12,
+    "text": "かなりよく一致する数少ない要因のようです。",
+    "sourceText": "high-income countries in the late 2000s, in middle-income countries",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 544.12,
+    "end": 549.76,
+    "text": "そして貧しい国々では2010年代後半にかけて、その傾向が見られます。なるほど。",
+    "sourceText": "in the sort of mid 2010s and then in poorer countries as we go into the late 2010s. Okay.",
+    "sourceIndexes": [
+      84,
+      85
+    ]
+  },
+  {
+    "start": 549.76,
+    "end": 553.223111111111,
+    "text": "スマホの話には後で詳しく戻りたいです。",
+    "sourceText": "I want to return to the phone part in detail uh because I think that theory",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 553.223111111111,
+    "end": 557.52,
+    "text": "その理論もとても興味深くて、私も記事にしているので。",
+    "sourceText": "is fascinating, too, and it's something I've been writing on as well.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 557.52,
+    "end": 560.4247058823529,
+    "text": "でも、少し戻って、",
+    "sourceText": "Um but let's back up for a little bit and hit one of the",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 560.4247058823529,
+    "end": 566.36,
+    "text": "よく聞く説明の一つであなたも触れた話をしましょう。",
+    "sourceText": "potential explanations that we hear a lot and that you mentioned.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 566.36,
+    "end": 570.1820677083334,
+    "text": "女性のエンパワーメントや教育レベルの向上が、",
+    "sourceText": "You talked about female empowerment and higher levels of education as",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 570.1820677083334,
+    "end": 574.4808750000001,
+    "text": "全般的な出生率低下の要因かもしれないと話しましたね。",
+    "sourceText": "being perhaps a contributing factor to fertility decline more generally.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 574.4808750000001,
+    "end": 578.4380425531915,
+    "text": "アメリカで30代の女性として、",
+    "sourceText": "And as a woman in her 30s in the United States, I'm super familiar with",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 578.4380425531915,
+    "end": 585.52,
+    "text": "出生率低下の理由に関するステレオタイプな仮定はよく知っています。",
+    "sourceText": "the stereotypical assumptions about the reasons for falling birth rates.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 585.52,
+    "end": 588.7510344827587,
+    "text": "フェミニストのせいだとか、子どもを望まないキャリアウーマンや、",
+    "sourceText": "It's the feminists, it's career women who don't want",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 588.7510344827587,
+    "end": 591.72,
+    "text": "手遅れになるまで待つ女性のせいだとか、そういう話です。",
+    "sourceText": "kids or who wait until it's too late, etc. etc.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 591.72,
+    "end": 595.08,
+    "text": "でも、データが示しているのはそうではありません。",
+    "sourceText": "But, that's not what the data suggests.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 595.08,
+    "end": 602.7166265060241,
+    "text": "あなたが言及した、キャリアウーマンや「ガールボス」のような考え方の部分ですがもし主に、",
+    "sourceText": "One of the parts that you mentioned there, the idea of this being about career women and some",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 602.7166265060241,
+    "end": 607.9012048192772,
+    "text": "高収入で高学歴の若い女性の間で出生が減っているなら、",
+    "sourceText": "people talk about the girl boss and that kind of thing. That would make sense if what we were",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 607.9012048192772,
+    "end": 611.4,
+    "text": "その説明は理にかなっています。",
+    "sourceText": "seeing was primarily a decline in births among high-earning and highly educated young women.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 611.4,
+    "end": 615.201094736842,
+    "text": "一方、主に減少しているのは、社会の下位半分、",
+    "sourceText": "Whereas, what we're primarily looking at here is a decline among",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 615.201094736842,
+    "end": 618.2927999999999,
+    "text": "あるいは下位3分の1の人々です。",
+    "sourceText": "those in the bottom half or sort of bottom third of society.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 618.2927999999999,
+    "end": 621.6671111111111,
+    "text": "つまり、学士号を持たず、",
+    "sourceText": "So, it's young men and women who generally don't",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 621.6671111111111,
+    "end": 625.585,
+    "text": "収入も低い若い男性と女性です。",
+    "sourceText": "have a bachelor's degree, have lower incomes.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 625.585,
+    "end": 629.482,
+    "text": "このグループは子どもを産む数が減っており、さらに重要なこととして、",
+    "sourceText": "These are the group who are having fewer children and, perhaps more importantly",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 629.482,
+    "end": 632.48,
+    "text": "カップルになること自体が少なくなっています。",
+    "sourceText": "as we'll come on to, being less likely to get into a couple at all.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 632.48,
+    "end": 637.928,
+    "text": "安定した関係を築き、落ち着いて一緒に住む人々は、",
+    "sourceText": "So, generally people who get into stable, secure relationships,",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 637.928,
+    "end": 641.96,
+    "text": "依然として子どもを持っています。",
+    "sourceText": "settle down, move in together are still having children.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 641.96,
+    "end": 645.72,
+    "text": "その前に立ちはだかる障壁が変わったようです。",
+    "sourceText": "It's some of the frictions that lead up to that point which seem to have changed.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 645.72,
+    "end": 648.4318644067797,
+    "text": "住宅や経済的不安定さが関係しているのでしょうか？",
+    "sourceText": "Does housing play into this or economic precarity?",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 648.4318644067797,
+    "end": 652.12,
+    "text": "それらはアメリカやイギリスでよく挙げられる理由だと思います。",
+    "sourceText": "I feel like those are reasons that are often cited in the US and UK.",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 652.12,
+    "end": 655.8,
+    "text": "子どもを預ける場所がないから家族を持ちたくない、と。",
+    "sourceText": "People don't want to have families because they don't have anywhere to put their kids.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 655.8,
+    "end": 658.8,
+    "text": "少なくとも今の経済では養えないと感じているんです。",
+    "sourceText": "They don't feel like they can provide for them in this economy at least.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 658.8,
+    "end": 660.0799999999999,
+    "text": "確かに。",
+    "sourceText": "For sure.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 660.0799999999999,
+    "end": 665.872252803262,
+    "text": "私の考えでは、住宅は、安定した住まいを得られれば、",
+    "sourceText": "I I think the way I've been thinking about this is housing is something that if",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 665.872252803262,
+    "end": 670.7460550458716,
+    "text": "長期的な視野を持てるようになるものです。",
+    "sourceText": "you get secure, stable housing, that allows you to have long-term time horizons.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 670.7460550458716,
+    "end": 676.92,
+    "text": "そうすれば、「ここに住むなら、子どもを持てるか、家族を築けるか」と考えられます。",
+    "sourceText": "You can then think about things like, we're going to be here, could we have kids here, could we build a family here?",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 676.92,
+    "end": 681.0886075949367,
+    "text": "家賃が1年後にどうなるか常に心配していたり、",
+    "sourceText": "When you are perpetually worried about what might happen to your rent in a year's time or perhaps you haven't",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 681.0886075949367,
+    "end": 686.606582278481,
+    "text": "実家から出られなかったりすると、そんなことは全く考えられません。",
+    "sourceText": "even been able to move out of your parents' home yet, you're just not going to be thinking about that at all.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 686.606582278481,
+    "end": 688.9230769230769,
+    "text": "他の条件が整っていなければ、意味がありません。",
+    "sourceText": "It doesn't make sense when you don't have the rest of that in place.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 688.9230769230769,
+    "end": 694.7949072841806,
+    "text": "住宅、特に持ち家の affordability、",
+    "sourceText": "And there is evidence here that housing, the worsening affordability for homes, um,",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 694.7949072841806,
+    "end": 701.6823529411764,
+    "text": "の悪化が出生率に大きな影響を与えたという証拠があります。",
+    "sourceText": "especially when it comes to home ownership, has had a significant impact on birth rates.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 701.6823529411764,
+    "end": 711.2452941176471,
+    "text": "イギリスやアメリカでは、2000年代以降の出生率低下の半分近くがそれに起因する可能性、",
+    "sourceText": "So, in countries like the UK and US, perhaps as much as half of the",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 711.2452941176471,
+    "end": 713.64,
+    "text": "があります。",
+    "sourceText": "decline in birth rates since the 2000s can be attributed to that.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 713.64,
+    "end": 716.6233333333333,
+    "text": "ただし、2つ注意点があります。",
+    "sourceText": "Um, but there are two caveats with that.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 716.6233333333333,
+    "end": 722.3741975308642,
+    "text": "一つは、住宅費が出生率を少し下げている説明にはなるけど、",
+    "sourceText": "One is that while they explain why birth rates are a bit lower than they would otherwise be, even in a",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 722.3741975308642,
+    "end": 727.8,
+    "text": "仮に全員が歴史的な水準で持ち家を買えていたとしても、",
+    "sourceText": "situation where everyone had managed to afford a home of their own in line with historical rates, you would",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 727.8,
+    "end": 732.4088495575221,
+    "text": "ここ15年ほどの最近の低下は依然として起きていただろうってこと。",
+    "sourceText": "still have seen this most recent decline over the last, say, 15 years.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 732.4088495575221,
+    "end": 735.24,
+    "text": "つまり、水準は変わったけど、方向性は変わってないんだ。",
+    "sourceText": "So, it's shifted the level, but they're not the right not the direction of travel.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 735.24,
+    "end": 740.84,
+    "text": "さらに、住宅危機がそれほど深刻でない国でも、",
+    "sourceText": "And then in addition, we see very similar declines in birth rates",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 740.84,
+    "end": 746.04,
+    "text": "非常に似たような出生率の低下が見られる。",
+    "sourceText": "in countries that have not had nearly as bad a housing crisis.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 746.04,
+    "end": 752.1132879818595,
+    "text": "例えば北欧のフィンランドでは、最も急速に増えている世帯タイプは、",
+    "sourceText": "So, in countries like Finland in northern Europe, the most rapidly growing",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 752.1132879818595,
+    "end": 755.9022222222222,
+    "text": "完全に一人暮らしをする若者なんだ。",
+    "sourceText": "type of household is actually young adults living completely on their own.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 755.9022222222222,
+    "end": 762.0033986928105,
+    "text": "つまり、若者が自分のライフステージに合った住まいを見つけられているのに、",
+    "sourceText": "So, that is a place where evidently young people are able to find housing that meets",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 762.0033986928105,
+    "end": 765.2455555555556,
+    "text": "それでも一人暮らしをしていて、",
+    "sourceText": "their requirement uh, for the for where they're at in life, and nonetheless, they're",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 765.2455555555556,
+    "end": 768.76,
+    "text": "カップルにならず、子供も持たない。",
+    "sourceText": "still living on their own, they're not coupling up, and not having children.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 768.76,
+    "end": 774.12,
+    "text": "では、各国政府がこの問題にどう対応してきたか話そう。",
+    "sourceText": "So, let's talk about how governments have tried to respond to this problem.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 774.12,
+    "end": 780,
+    "text": "経済的不安定さが脅威と見なされ、住宅も脅威と見なされている。",
+    "sourceText": "Um, economic precarity is seen as a threat, housing is seen as a threat.",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 780,
+    "end": 784.64,
+    "text": "中国はこの危機に対してかなり具体的な対応をした例だよね？",
+    "sourceText": "China is one example of a pretty specific response to the crisis, right?",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 784.64,
+    "end": 788.72,
+    "text": "一人っ子政策を撤回して、",
+    "sourceText": "They reversed their one-child policy, um, and this year, I",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 788.72,
+    "end": 795.44,
+    "text": "今年は避妊具に13%の消費税を導入したと思う。",
+    "sourceText": "think, also instituted a 13% sales tax on contraceptives.",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 795.44,
+    "end": 797.839,
+    "text": "それは効果があったの？",
+    "sourceText": "Has that worked?",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 797.839,
+    "end": 802.2766744186047,
+    "text": "一般的に、こうした政府の政策介入の話は、",
+    "sourceText": "Generally, the story on all of these government policy interventions is it's",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 802.2766744186047,
+    "end": 807.2,
+    "text": "まったく効果がないという単純な話ではないけど、",
+    "sourceText": "not necessarily a straight story of they don't work at all, but to the extent",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 807.2,
+    "end": 810.3815151515151,
+    "text": "効果があるとしても、",
+    "sourceText": "that they work, they tend to be sort of taking a steeply slope downward",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 810.3815151515151,
+    "end": 816.139,
+    "text": "急な下降線を少しだけ緩やかにする程度のものだ。",
+    "sourceText": "sloping line and making it slope slightly less steeply downwards.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 816.139,
+    "end": 821.72,
+    "text": "中国でも韓国でも、いろんな場所で見られる。",
+    "sourceText": "[snorts] Um, you see this in China, you see this in South Korea, you see this in various places.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 821.72,
+    "end": 826.3268965517242,
+    "text": "ある程度は効果があるかもしれないけど、考えてみると、",
+    "sourceText": "So, they are perhaps working on some level, but if you think about it, that",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 826.3268965517242,
+    "end": 831.72,
+    "text": "そういう政策は他の条件がすべて整っている場合にしか適用できない。",
+    "sourceText": "is a policy that can only really apply when everything else is already there.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 831.72,
+    "end": 834.9475272727273,
+    "text": "つまり、安定したパートナーがいて、自分の家があって、",
+    "sourceText": "When you're there, you've got a stable partner, you maybe got your own",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 834.9475272727273,
+    "end": 838.409,
+    "text": "あとは経済的にやっていけるかどうかだけを考えている状態だ。",
+    "sourceText": "home, and you're simply thinking now can we make this work financially?",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 838.409,
+    "end": 843.6,
+    "text": "だから、そういう状況にある人には、こうした政策が効果を上げることもあるようです。",
+    "sourceText": "[snorts] And so, for some people in that situation, it seems like some of these policies can work.",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 843.6,
+    "end": 849.055,
+    "text": "でも、子どもを持つかどうか、いつ持つかという決断は、非常に多因子な決断です。",
+    "sourceText": "But, when you think A, the decision of whether and when to have kids is a massively multifactorial decision.",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 849.055,
+    "end": 852.8,
+    "text": "おそらく、誰にとっても最も個人的な決断でしょう。",
+    "sourceText": "It's probably the most personal decision anyone will ever make.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 852.8,
+    "end": 855.7802436806692,
+    "text": "単に金銭的な計算を微調整しただけでは、",
+    "sourceText": "A simple tweaking of the financial calculus is not",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 855.7802436806692,
+    "end": 859.6037606837607,
+    "text": "多くの人にとって完全なゲームチェンジャーにはなりません。",
+    "sourceText": "going to be a complete game-changer for many people.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 859.6037606837607,
+    "end": 863.2809860027252,
+    "text": "さらに、ここで話していることの多くが、",
+    "sourceText": "And in addition, if a lot of what we're talking about here is people just not having got to the point where they even feel",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 863.2809860027252,
+    "end": 871,
+    "text": "安定した関係を築ける段階にすら達していない人たちのことなら、そうした政策はまったく届かないでしょう。",
+    "sourceText": "like they can settle into a stable relationship, those people are just not going to be touched by a policy like that at all.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 871,
+    "end": 873.246582278481,
+    "text": "ええ、それは納得できます。",
+    "sourceText": "Yeah, that makes sense to me.",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 873.246582278481,
+    "end": 877.9086406164007,
+    "text": "つまり、アメリカやヨーロッパのいくつかの国では、",
+    "sourceText": "I mean, in the US and also in a number of European countries, I think there's been, you know,",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 877.9086406164007,
+    "end": 885.6,
+    "text": "出産一時金とか、子どもを持つ人を支援する追加の金銭的給付についての議論があったと思います。",
+    "sourceText": "conversation about baby bonuses or sort of extra financial payments that would help people have children.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 885.6,
+    "end": 894.6861538461538,
+    "text": "でも、長い目で見れば、子どもを持つことは金銭的にも精神的にも感情的にも大きな負担です。",
+    "sourceText": "But, over time, having a child is an expensive proposition, you know, kind of mentally and emotionally as well as financially.",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 894.6861538461538,
+    "end": 900,
+    "text": "そして、5000ドルの出産一時金や、追加の1万ポンド程度では、おそらく。",
+    "sourceText": "And a $5,000 baby bonus or like an extra 10,000 pounds is probably",
+    "sourceIndexes": [
+      135
+    ]
+  }
+]

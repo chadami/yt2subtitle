@@ -1,0 +1,96 @@
+{
+  "topic": "Streaming services and TV watching experience",
+  "summary": "Sabrina explores how streaming services like Netflix, Disney+, HBO Max, and Amazon Prime Video have changed the way we watch TV and what shows get made, and tries to find a way to bring back the joy of watching TV.",
+  "tone": "casual, conversational, humorous, reflective",
+  "audience": "General internet users, streaming service subscribers, fans of TV shows and pop culture",
+  "glossary": [
+    {
+      "source": "streaming",
+      "target": "ストリーミング",
+      "note": "General term for streaming services"
+    },
+    {
+      "source": "cable",
+      "target": "ケーブルテレビ",
+      "note": "Traditional TV service"
+    },
+    {
+      "source": "DVR",
+      "target": "DVR",
+      "note": "Digital video recorder, keep as is or use 録画機器"
+    },
+    {
+      "source": "box set",
+      "target": "ボックスセット",
+      "note": "DVD box set"
+    },
+    {
+      "source": "piracy",
+      "target": "海賊版",
+      "note": "Piracy, illegal downloading"
+    },
+    {
+      "source": "bootlicker",
+      "target": "ゴマすり",
+      "note": "Sycophant, used humorously"
+    },
+    {
+      "source": "residuals",
+      "target": "再放送料",
+      "note": "Residual payments to actors/writers"
+    },
+    {
+      "source": "disposable income",
+      "target": "可処分所得",
+      "note": "Disposable income"
+    },
+    {
+      "source": "friction",
+      "target": "面倒さ",
+      "note": "Friction, hassle in user experience"
+    },
+    {
+      "source": "autoplay",
+      "target": "自動再生",
+      "note": "Auto-play feature"
+    },
+    {
+      "source": "trailer",
+      "target": "予告編",
+      "note": "Trailer"
+    },
+    {
+      "source": "catalogue",
+      "target": "カタログ",
+      "note": "Content library"
+    }
+  ],
+  "properNouns": [
+    "Netflix",
+    "Disney+",
+    "HBO Max",
+    "Amazon Prime Video",
+    "Hostinger",
+    "N8N",
+    "eBay",
+    "Pinterest",
+    "Tumblr",
+    "AO3",
+    "Sabrina Cruz",
+    "Amanda D. Lotz"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with sentence-ending particles like ね, よ, だよね, な, かな.",
+    "Keep brand names and platform names in English (e.g., Netflix, Disney+).",
+    "For TV show titles, use official Japanese titles if known (e.g., ザ・ホワイトハウス for The West Wing), otherwise keep English.",
+    "Translate idioms and jokes naturally, not literally. For example, 'love letter' can be ラブレター but consider 愛のこもった作品.",
+    "Use あなた or 君 sparingly; prefer context or implied subject.",
+    "For numbers, use Arabic numerals for prices and statistics.",
+    "Keep the humorous and self-deprecating tone; use 私 for self-reference.",
+    "For technical terms like 'streaming', 'DVR', 'VPN', use common Japanese loanwords (ストリーミング, DVR, VPN).",
+    "When the speaker says 'you', it often means the viewer; use みんな or あなた in moderation.",
+    "For 'fan girls', use ファンの女の子 or オタク女子 depending on context.",
+    "For 'cringe', use キモい or 恥ずかしい but in a playful way.",
+    "For 'bootlicker', use ゴマすり or イエスマン."
+  ]
+}

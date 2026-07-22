@@ -1,0 +1,1937 @@
+[
+  {
+    "text": "Most cloud design tutorials tell you to",
+    "start": 0,
+    "duration": 3.919
+  },
+  {
+    "text": "jump right in. Pick a template, give it",
+    "start": 1.92,
+    "duration": 4.24
+  },
+  {
+    "text": "a name, and just start prompting, which",
+    "start": 3.919,
+    "duration": 5.121
+  },
+  {
+    "text": "is not how cloud design is designed to",
+    "start": 6.16,
+    "duration": 5.12
+  },
+  {
+    "text": "work, pun intended, because you end up",
+    "start": 9.04,
+    "duration": 4.08
+  },
+  {
+    "text": "with something incredibly generic and",
+    "start": 11.28,
+    "duration": 4
+  },
+  {
+    "text": "you waste even more time in tokens",
+    "start": 13.12,
+    "duration": 5.04
+  },
+  {
+    "text": "trying to save those unusable slides.",
+    "start": 15.28,
+    "duration": 4.48
+  },
+  {
+    "text": "So, in this video, I'll show you how",
+    "start": 18.16,
+    "duration": 3.6
+  },
+  {
+    "text": "preparing three simple files ahead of",
+    "start": 19.76,
+    "duration": 4.24
+  },
+  {
+    "text": "time helps you go from disasters like",
+    "start": 21.76,
+    "duration": 5.12
+  },
+  {
+    "text": "this to polished visuals that look like",
+    "start": 24,
+    "duration": 4.8
+  },
+  {
+    "text": "this. And the best part is every",
+    "start": 26.88,
+    "duration": 4.559
+  },
+  {
+    "text": "improvement you make carries over to all",
+    "start": 28.8,
+    "duration": 5.12
+  },
+  {
+    "text": "future designs. Let's get started. To",
+    "start": 31.439,
+    "duration": 4.481
+  },
+  {
+    "text": "prove I'm not bullshitting you, this is",
+    "start": 33.92,
+    "duration": 4.799
+  },
+  {
+    "text": "the actual deck I recently used to run a",
+    "start": 35.92,
+    "duration": 5.28
+  },
+  {
+    "text": "paid workshop. And this is a",
+    "start": 38.719,
+    "duration": 4
+  },
+  {
+    "text": "presentation I'm working on right now,",
+    "start": 41.2,
+    "duration": 3.92
+  },
+  {
+    "text": "which arguably looks even better. And",
+    "start": 42.719,
+    "duration": 3.761
+  },
+  {
+    "text": "we're going to learn how to recreate",
+    "start": 45.12,
+    "duration": 3.36
+  },
+  {
+    "text": "this from scratch in [music] the next 10",
+    "start": 46.48,
+    "duration": 3.68
+  },
+  {
+    "text": "to 15 minutes. And to do this, we're",
+    "start": 48.48,
+    "duration": 3.599
+  },
+  {
+    "text": "going to follow three simple steps.",
+    "start": 50.16,
+    "duration": 3.2
+  },
+  {
+    "text": "First, we're going to create something",
+    "start": 52.079,
+    "duration": 4.16
+  },
+  {
+    "text": "called a design.md file in less than a",
+    "start": 53.36,
+    "duration": 4.96
+  },
+  {
+    "text": "minute from free and publicly available",
+    "start": 56.239,
+    "duration": 3.921
+  },
+  {
+    "text": "resources. Then, we'll use that",
+    "start": 58.32,
+    "duration": 3.6
+  },
+  {
+    "text": "design.mmd file to build something",
+    "start": 60.16,
+    "duration": 4.639
+  },
+  {
+    "text": "called a design system within claw",
+    "start": 61.92,
+    "duration": 5.199
+  },
+  {
+    "text": "design. And finally, we'll use that",
+    "start": 64.799,
+    "duration": 4.721
+  },
+  {
+    "text": "design system to create a reusable",
+    "start": 67.119,
+    "duration": 4.561
+  },
+  {
+    "text": "presentation template, one that matches",
+    "start": 69.52,
+    "duration": 3.919
+  },
+  {
+    "text": "your style and gets better every time",
+    "start": 71.68,
+    "duration": 3.84
+  },
+  {
+    "text": "you give it feedback. And even though",
+    "start": 73.439,
+    "duration": 4.161
+  },
+  {
+    "text": "we're focusing on slides today, this",
+    "start": 75.52,
+    "duration": 4.239
+  },
+  {
+    "text": "workflow applies to any design. For",
+    "start": 77.6,
+    "duration": 4.08
+  },
+  {
+    "text": "example, here are some carousel slides I",
+    "start": 79.759,
+    "duration": 5.201
+  },
+  {
+    "text": "made for social media. And here I have",
+    "start": 81.68,
+    "duration": 5.439
+  },
+  {
+    "text": "some onbrand visuals that I use in my",
+    "start": 84.96,
+    "duration": 4.24
+  },
+  {
+    "text": "newsletter and work email campaigns.",
+    "start": 87.119,
+    "duration": 3.521
+  },
+  {
+    "text": "Kicking things off with input number",
+    "start": 89.2,
+    "duration": 3.279
+  },
+  {
+    "text": "one. Let's quickly go over what a",
+    "start": 90.64,
+    "duration": 4.32
+  },
+  {
+    "text": "design.md file actually is. In plain",
+    "start": 92.479,
+    "duration": 4.481
+  },
+  {
+    "text": "English, it's just a text file that",
+    "start": 94.96,
+    "duration": 4.479
+  },
+  {
+    "text": "serves as a rulebook for how a design",
+    "start": 96.96,
+    "duration": 4.56
+  },
+  {
+    "text": "should look and feel. The exact colors,",
+    "start": 99.439,
+    "duration": 4.161
+  },
+  {
+    "text": "the fonts, the spacing, and how things",
+    "start": 101.52,
+    "duration": 4.959
+  },
+  {
+    "text": "like buttons and cards get styled. This",
+    "start": 103.6,
+    "duration": 4.96
+  },
+  {
+    "text": "file works in any AI tool. So Claw",
+    "start": 106.479,
+    "duration": 4.401
+  },
+  {
+    "text": "Design is able to transform it into a",
+    "start": 108.56,
+    "duration": 4.72
+  },
+  {
+    "text": "design system that's native to Claw",
+    "start": 110.88,
+    "duration": 4.64
+  },
+  {
+    "text": "Design specifically. Sort of like taking",
+    "start": 113.28,
+    "duration": 4.159
+  },
+  {
+    "text": "a piece of software and optimizing it to",
+    "start": 115.52,
+    "duration": 4.239
+  },
+  {
+    "text": "run on a Mac instead of a Windows PC.",
+    "start": 117.439,
+    "duration": 3.761
+  },
+  {
+    "text": "Now, we don't even need to write one",
+    "start": 119.759,
+    "duration": 2.96
+  },
+  {
+    "text": "from scratch because luckily for us,",
+    "start": 121.2,
+    "duration": 4.16
+  },
+  {
+    "text": "there's a public GitHub repository with",
+    "start": 122.719,
+    "duration": 5.361
+  },
+  {
+    "text": "the Design.mmd files from a bunch of",
+    "start": 125.36,
+    "duration": 4.56
+  },
+  {
+    "text": "major brands. And don't worry, I'll drop",
+    "start": 128.08,
+    "duration": 3.44
+  },
+  {
+    "text": "a link to this down below. For today's",
+    "start": 129.92,
+    "duration": 2.959
+  },
+  {
+    "text": "walkthrough, I'm just going to download",
+    "start": 131.52,
+    "duration": 4.4
+  },
+  {
+    "text": "Stripe's design.mmd file by clicking the",
+    "start": 132.879,
+    "duration": 5.201
+  },
+  {
+    "text": "download button right here. And then",
+    "start": 135.92,
+    "duration": 3.28
+  },
+  {
+    "text": "we're just going to head on over to",
+    "start": 138.08,
+    "duration": 3.6
+  },
+  {
+    "text": "chatgbt or any AI chatbot for that",
+    "start": 139.2,
+    "duration": 5.2
+  },
+  {
+    "text": "matter. Upload that design.mmd file. And",
+    "start": 141.68,
+    "duration": 4.48
+  },
+  {
+    "text": "then we're going to use this prompt,",
+    "start": 144.4,
+    "duration": 4.64
+  },
+  {
+    "text": "which I'll also link down below. Uh",
+    "start": 146.16,
+    "duration": 4.719
+  },
+  {
+    "text": "remove the proprietary content from this",
+    "start": 149.04,
+    "duration": 3.919
+  },
+  {
+    "text": "design file and replace them using your",
+    "start": 150.879,
+    "duration": 5.761
+  },
+  {
+    "text": "own judgment. Uh keep everything else",
+    "start": 152.959,
+    "duration": 5.521
+  },
+  {
+    "text": "exactly as is. And then we're just going",
+    "start": 156.64,
+    "duration": 3.52
+  },
+  {
+    "text": "to rename it to the subtle gradient",
+    "start": 158.48,
+    "duration": 2.96
+  },
+  {
+    "text": "design system. And we're just going to",
+    "start": 160.16,
+    "duration": 3.04
+  },
+  {
+    "text": "send this off. And while Chacht is",
+    "start": 161.44,
+    "duration": 3.439
+  },
+  {
+    "text": "processing, the reason we clean this",
+    "start": 163.2,
+    "duration": 4
+  },
+  {
+    "text": "file is because claw design won't",
+    "start": 164.879,
+    "duration": 4.961
+  },
+  {
+    "text": "directly copy a real brand's brand",
+    "start": 167.2,
+    "duration": 4.88
+  },
+  {
+    "text": "guidelines, right? Obviously, so we",
+    "start": 169.84,
+    "duration": 4.24
+  },
+  {
+    "text": "still need a file that's very detailed,",
+    "start": 172.08,
+    "duration": 5.28
+  },
+  {
+    "text": "but yet safe to use. Okay, trapt is done",
+    "start": 174.08,
+    "duration": 5.92
+  },
+  {
+    "text": "and it's given us a clean markdown copy",
+    "start": 177.36,
+    "duration": 4.72
+  },
+  {
+    "text": "renamed to the subtle gradient design",
+    "start": 180,
+    "duration": 3.92
+  },
+  {
+    "text": "system. And we'll just click here to",
+    "start": 182.08,
+    "duration": 3.519
+  },
+  {
+    "text": "download it for the next step. Moving on",
+    "start": 183.92,
+    "duration": 3.599
+  },
+  {
+    "text": "to input number two, let's first quickly",
+    "start": 185.599,
+    "duration": 4.401
+  },
+  {
+    "text": "cover what a design system actually is.",
+    "start": 187.519,
+    "duration": 4.561
+  },
+  {
+    "text": "Put simply, a design system is a style",
+    "start": 190,
+    "duration": 4.64
+  },
+  {
+    "text": "guide optimized for claw design where",
+    "start": 192.08,
+    "duration": 5.28
+  },
+  {
+    "text": "our raw design.mmd file is transformed",
+    "start": 194.64,
+    "duration": 4.319
+  },
+  {
+    "text": "into something clawed design can",
+    "start": 197.36,
+    "duration": 4
+  },
+  {
+    "text": "actually use. The colors, fonts, and",
+    "start": 198.959,
+    "duration": 4.801
+  },
+  {
+    "text": "logos all stay the same. It's now just",
+    "start": 201.36,
+    "duration": 5.2
+  },
+  {
+    "text": "formatted in a claw design friendly way.",
+    "start": 203.76,
+    "duration": 4.8
+  },
+  {
+    "text": "So once the design system is built,",
+    "start": 206.56,
+    "duration": 3.759
+  },
+  {
+    "text": "anything we ask Claude Design to make",
+    "start": 208.56,
+    "duration": 3.52
+  },
+  {
+    "text": "from slides to carousels to one-off",
+    "start": 210.319,
+    "duration": 4.321
+  },
+  {
+    "text": "graphics comes out consistent and on",
+    "start": 212.08,
+    "duration": 4.48
+  },
+  {
+    "text": "brand without us ever having to",
+    "start": 214.64,
+    "duration": 4.239
+  },
+  {
+    "text": "reexplain our look and feel. To kick",
+    "start": 216.56,
+    "duration": 4
+  },
+  {
+    "text": "this off, we start a new chat in Claw",
+    "start": 218.879,
+    "duration": 3.521
+  },
+  {
+    "text": "Design. I'll first pick the latest Opus",
+    "start": 220.56,
+    "duration": 3.2
+  },
+  {
+    "text": "model that already does a great job",
+    "start": 222.4,
+    "duration": 3.199
+  },
+  {
+    "text": "without the token consumption of Fable.",
+    "start": 223.76,
+    "duration": 4.16
+  },
+  {
+    "text": "Set the effort to max and go down here",
+    "start": 225.599,
+    "duration": 4.801
+  },
+  {
+    "text": "and click create design system. In the",
+    "start": 227.92,
+    "duration": 4
+  },
+  {
+    "text": "first field, I write something simple",
+    "start": 230.4,
+    "duration": 4.08
+  },
+  {
+    "text": "like gradient design system, subtle,",
+    "start": 231.92,
+    "duration": 5.12
+  },
+  {
+    "text": "beautiful, and minimalistic as an",
+    "start": 234.48,
+    "duration": 4.72
+  },
+  {
+    "text": "example. [music] Now, don't be",
+    "start": 237.04,
+    "duration": 4.08
+  },
+  {
+    "text": "intimidated by all these other options.",
+    "start": 239.2,
+    "duration": 3.28
+  },
+  {
+    "text": "We can just scroll straight to the",
+    "start": 241.12,
+    "duration": 4.479
+  },
+  {
+    "text": "bottom and upload the design file we",
+    "start": 242.48,
+    "duration": 4.959
+  },
+  {
+    "text": "made a minute ago. And that's it for",
+    "start": 245.599,
+    "duration": 3.441
+  },
+  {
+    "text": "now. This is going to take around 10 to",
+    "start": 247.439,
+    "duration": 3.44
+  },
+  {
+    "text": "20 minutes. But before I fast forward,",
+    "start": 249.04,
+    "duration": 4.16
+  },
+  {
+    "text": "let me quickly explain what Claw Design",
+    "start": 250.879,
+    "duration": 4
+  },
+  {
+    "text": "is actually doing. Basically, it's",
+    "start": 253.2,
+    "duration": 3.68
+  },
+  {
+    "text": "reading through the design. MD file we",
+    "start": 254.879,
+    "duration": 4.08
+  },
+  {
+    "text": "just uploaded and turning that into a",
+    "start": 256.88,
+    "duration": 4.8
+  },
+  {
+    "text": "real working rule book with mockups for",
+    "start": 258.959,
+    "duration": 4.641
+  },
+  {
+    "text": "us to review. It's pulling out every",
+    "start": 261.68,
+    "duration": 3.84
+  },
+  {
+    "text": "color, font, and spacing rule,",
+    "start": 263.6,
+    "duration": 4.08
+  },
+  {
+    "text": "generating actual sample slides, and",
+    "start": 265.52,
+    "duration": 4.239
+  },
+  {
+    "text": "components so we can see the style in",
+    "start": 267.68,
+    "duration": 4.239
+  },
+  {
+    "text": "action and give feedback. All right,",
+    "start": 269.759,
+    "duration": 3.521
+  },
+  {
+    "text": "cloud design is done, and that took",
+    "start": 271.919,
+    "duration": 4.161
+  },
+  {
+    "text": "around 15 minutes. First, we can ignore",
+    "start": 273.28,
+    "duration": 5.28
+  },
+  {
+    "text": "this checkbox up here since we're not",
+    "start": 276.08,
+    "duration": 4.96
+  },
+  {
+    "text": "working with a team. And if we just",
+    "start": 278.56,
+    "duration": 4.96
+  },
+  {
+    "text": "scroll down a bit, we can see claw",
+    "start": 281.04,
+    "duration": 6
+  },
+  {
+    "text": "design has generated a bunch of mockups",
+    "start": 283.52,
+    "duration": 6.48
+  },
+  {
+    "text": "for us to review. And the reason why",
+    "start": 287.04,
+    "duration": 5.2
+  },
+  {
+    "text": "these already look pretty good is",
+    "start": 290,
+    "duration": 5.28
+  },
+  {
+    "text": "because we started with a design.md",
+    "start": 292.24,
+    "duration": 4.32
+  },
+  {
+    "text": "file. If there's something I want to",
+    "start": 295.28,
+    "duration": 3.68
+  },
+  {
+    "text": "change, I can just click the feedback",
+    "start": 296.56,
+    "duration": 5.76
+  },
+  {
+    "text": "button and describe it in plain English.",
+    "start": 298.96,
+    "duration": 8.16
+  },
+  {
+    "text": "for example, replace the dark 900 color",
+    "start": 302.32,
+    "duration": 8.159
+  },
+  {
+    "text": "with this hex code from my own brand",
+    "start": 307.12,
+    "duration": 4.639
+  },
+  {
+    "text": "palette. Right? [music]",
+    "start": 310.479,
+    "duration": 3.28
+  },
+  {
+    "text": "And we're going to fast forward this to",
+    "start": 311.759,
+    "duration": 3.921
+  },
+  {
+    "text": "about after a minute. We can see that",
+    "start": 313.759,
+    "duration": 4.081
+  },
+  {
+    "text": "Claw Design has swapped the original",
+    "start": 315.68,
+    "duration": 5.2
+  },
+  {
+    "text": "color for my preferred shade. This next",
+    "start": 317.84,
+    "duration": 4.88
+  },
+  {
+    "text": "part is completely optional, but I'm",
+    "start": 320.88,
+    "duration": 3.599
+  },
+  {
+    "text": "just going to upload a few more things",
+    "start": 322.72,
+    "duration": 3.84
+  },
+  {
+    "text": "to customize our design system even",
+    "start": 324.479,
+    "duration": 4.481
+  },
+  {
+    "text": "further. For example, I can upload a",
+    "start": 326.56,
+    "duration": 4.72
+  },
+  {
+    "text": "voice principles file. So any",
+    "start": 328.96,
+    "duration": 4
+  },
+  {
+    "text": "copywriting down the road actually",
+    "start": 331.28,
+    "duration": 4.72
+  },
+  {
+    "text": "sounds like me. And I'll upload my",
+    "start": 332.96,
+    "duration": 6.4
+  },
+  {
+    "text": "actual business logo plus a few more",
+    "start": 336,
+    "duration": 5.52
+  },
+  {
+    "text": "icons I know I'll be using in my slide",
+    "start": 339.36,
+    "duration": 5.04
+  },
+  {
+    "text": "decks again and again. And after all",
+    "start": 341.52,
+    "duration": 5.36
+  },
+  {
+    "text": "this is uploaded, I'll just tell Cloud",
+    "start": 344.4,
+    "duration": 4.88
+  },
+  {
+    "text": "Design, hey, I've uploaded a voice",
+    "start": 346.88,
+    "duration": 3.759
+  },
+  {
+    "text": "principles file so the copyrightiting",
+    "start": 349.28,
+    "duration": 3.28
+  },
+  {
+    "text": "will sound like me, my business logo,",
+    "start": 350.639,
+    "duration": 5.361
+  },
+  {
+    "text": "and some commonly used icons. And I'm",
+    "start": 352.56,
+    "duration": 5.12
+  },
+  {
+    "text": "just going to send this part off and",
+    "start": 356,
+    "duration": 3.36
+  },
+  {
+    "text": "we'll fast forward. All right, claw",
+    "start": 357.68,
+    "duration": 4.079
+  },
+  {
+    "text": "design has finished working and first we",
+    "start": 359.36,
+    "duration": 5.36
+  },
+  {
+    "text": "can see that my voice principles have",
+    "start": 361.759,
+    "duration": 5.761
+  },
+  {
+    "text": "been baked in. No M dashes, no corporate",
+    "start": 364.72,
+    "duration": 5.52
+  },
+  {
+    "text": "jargon right for the ear. Okay. And",
+    "start": 367.52,
+    "duration": 4.799
+  },
+  {
+    "text": "scrolling down a bit, we can see our",
+    "start": 370.24,
+    "duration": 5.76
+  },
+  {
+    "text": "logo and tool icons are now built into",
+    "start": 372.319,
+    "duration": 6.241
+  },
+  {
+    "text": "the design system as well. So every",
+    "start": 376,
+    "duration": 5.36
+  },
+  {
+    "text": "future design can use all of these",
+    "start": 378.56,
+    "duration": 4.8
+  },
+  {
+    "text": "without me having ever to upload them",
+    "start": 381.36,
+    "duration": 3.6
+  },
+  {
+    "text": "again. Once we're happy with the design",
+    "start": 383.36,
+    "duration": 3.92
+  },
+  {
+    "text": "system, we'll say, \"Go ahead and build a",
+    "start": 384.96,
+    "duration": 4.239
+  },
+  {
+    "text": "slide deck template for workshops and",
+    "start": 387.28,
+    "duration": 4.16
+  },
+  {
+    "text": "trainings. You pick the number of slides",
+    "start": 389.199,
+    "duration": 4.401
+  },
+  {
+    "text": "and claw design will start building our",
+    "start": 391.44,
+    "duration": 3.84
+  },
+  {
+    "text": "slide deck [music] template.\" Which",
+    "start": 393.6,
+    "duration": 3.439
+  },
+  {
+    "text": "brings us neatly to input number three.",
+    "start": 395.28,
+    "duration": 3.44
+  },
+  {
+    "text": "And we'll start off by explaining what a",
+    "start": 397.039,
+    "duration": 3.921
+  },
+  {
+    "text": "template actually is. In plain English,",
+    "start": 398.72,
+    "duration": 4.08
+  },
+  {
+    "text": "it's a pre-built slide deck in your",
+    "start": 400.96,
+    "duration": 4.32
+  },
+  {
+    "text": "style that every new presentation starts",
+    "start": 402.8,
+    "duration": 4.399
+  },
+  {
+    "text": "from. Your title slide, your section",
+    "start": 405.28,
+    "duration": 4.96
+  },
+  {
+    "text": "dividers, a two column layout, etc. All",
+    "start": 407.199,
+    "duration": 5.681
+  },
+  {
+    "text": "designed and ready to use. So to be",
+    "start": 410.24,
+    "duration": 5.2
+  },
+  {
+    "text": "clear, the design system is responsible",
+    "start": 412.88,
+    "duration": 4.72
+  },
+  {
+    "text": "for how everything looks, your colors,",
+    "start": 415.44,
+    "duration": 4.96
+  },
+  {
+    "text": "fonts, and logos. The template, which is",
+    "start": 417.6,
+    "duration": 5.12
+  },
+  {
+    "text": "built from the design system, is",
+    "start": 420.4,
+    "duration": 4.48
+  },
+  {
+    "text": "responsible for how a deck is actually",
+    "start": 422.72,
+    "duration": 4.96
+  },
+  {
+    "text": "laid out, which slides you have, and how",
+    "start": 424.88,
+    "duration": 4.56
+  },
+  {
+    "text": "they're arranged. And when you use them",
+    "start": 427.68,
+    "duration": 4.56
+  },
+  {
+    "text": "together, every new deck starts on brand",
+    "start": 429.44,
+    "duration": 5.199
+  },
+  {
+    "text": "and pre-structured instead of from a",
+    "start": 432.24,
+    "duration": 4.399
+  },
+  {
+    "text": "blank canvas. All right, back in Claude",
+    "start": 434.639,
+    "duration": 3.521
+  },
+  {
+    "text": "Design, we can see that Claude has",
+    "start": 436.639,
+    "duration": 4.241
+  },
+  {
+    "text": "created the slide template for us. and",
+    "start": 438.16,
+    "duration": 5.68
+  },
+  {
+    "text": "scrolling through this.",
+    "start": 440.88,
+    "duration": 4.879
+  },
+  {
+    "text": "Although this already looks pretty good",
+    "start": 443.84,
+    "duration": 3.68
+  },
+  {
+    "text": "in my opinion, there's still definitely",
+    "start": 445.759,
+    "duration": 5.44
+  },
+  {
+    "text": "room for improvement since every single",
+    "start": 447.52,
+    "duration": 6.64
+  },
+  {
+    "text": "future slide presentation will reference",
+    "start": 451.199,
+    "duration": 4.241
+  },
+  {
+    "text": "this template. I'm not going to read",
+    "start": 454.16,
+    "duration": 2.72
+  },
+  {
+    "text": "this word for word, but here's what I'm",
+    "start": 455.44,
+    "duration": 3.599
+  },
+  {
+    "text": "going to tell Claude. Edit based on my",
+    "start": 456.88,
+    "duration": 5.2
+  },
+  {
+    "text": "feedback. Add the gradient mesh to every",
+    "start": 459.039,
+    "duration": 4.481
+  },
+  {
+    "text": "single slide with a white background.",
+    "start": 462.08,
+    "duration": 4.16
+  },
+  {
+    "text": "So, not just like the cover slides.",
+    "start": 463.52,
+    "duration": 4.48
+  },
+  {
+    "text": "Don't use orange backgrounds for slides.",
+    "start": 466.24,
+    "duration": 4.079
+  },
+  {
+    "text": "That was actually kind of ugly. scale up",
+    "start": 468,
+    "duration": 6.4
+  },
+  {
+    "text": "the text to fill up the empty space. And",
+    "start": 470.319,
+    "duration": 6.72
+  },
+  {
+    "text": "then let's add my logo to the bottom",
+    "start": 474.4,
+    "duration": 4.4
+  },
+  {
+    "text": "left footer. While Cloud Design is",
+    "start": 477.039,
+    "duration": 3.44
+  },
+  {
+    "text": "processing all that, let's quickly walk",
+    "start": 478.8,
+    "duration": 3.36
+  },
+  {
+    "text": "through the navigation since it's not",
+    "start": 480.479,
+    "duration": 3.761
+  },
+  {
+    "text": "very intuitive. You can click the design",
+    "start": 482.16,
+    "duration": 3.52
+  },
+  {
+    "text": "system button to go back to the",
+    "start": 484.24,
+    "duration": 3.28
+  },
+  {
+    "text": "homepage. And if you want to see all the",
+    "start": 485.68,
+    "duration": 3.84
+  },
+  {
+    "text": "files in this design system, we can",
+    "start": 487.52,
+    "duration": 4.16
+  },
+  {
+    "text": "actually click the drop-down all project",
+    "start": 489.52,
+    "duration": 5.04
+  },
+  {
+    "text": "files. And here we can see all the quote",
+    "start": 491.68,
+    "duration": 5.68
+  },
+  {
+    "text": "unquote like folders in this system. And",
+    "start": 494.56,
+    "duration": 5.44
+  },
+  {
+    "text": "we can doubleclick templates and double",
+    "start": 497.36,
+    "duration": 5.119
+  },
+  {
+    "text": "click the workshop deck. And opening up",
+    "start": 500,
+    "duration": 5.36
+  },
+  {
+    "text": "the HTML file brings us back to the",
+    "start": 502.479,
+    "duration": 5.601
+  },
+  {
+    "text": "slide templates. And now I'm just going",
+    "start": 505.36,
+    "duration": 4.32
+  },
+  {
+    "text": "to fast forward. All right, Claud's",
+    "start": 508.08,
+    "duration": 3.679
+  },
+  {
+    "text": "done. So let's review the template one",
+    "start": 509.68,
+    "duration": 4.159
+  },
+  {
+    "text": "more time. And yes, we can see all the",
+    "start": 511.759,
+    "duration": 4.08
+  },
+  {
+    "text": "changes have been implemented. The",
+    "start": 513.839,
+    "duration": 4.32
+  },
+  {
+    "text": "orange ugly slide has been removed, for",
+    "start": 515.839,
+    "duration": 5.281
+  },
+  {
+    "text": "example. And all right, looks good.",
+    "start": 518.159,
+    "duration": 5.521
+  },
+  {
+    "text": "We're finally ready to generate our",
+    "start": 521.12,
+    "duration": 4.399
+  },
+  {
+    "text": "first slide deck. Back on our quad",
+    "start": 523.68,
+    "duration": 3.839
+  },
+  {
+    "text": "design homepage, I'll first select the",
+    "start": 525.519,
+    "duration": 4.241
+  },
+  {
+    "text": "design system we just created. Then",
+    "start": 527.519,
+    "duration": 4.88
+  },
+  {
+    "text": "select the corresponding slides template",
+    "start": 529.76,
+    "duration": 6.24
+  },
+  {
+    "text": "and I'll attach my uh talking points for",
+    "start": 532.399,
+    "duration": 5.761
+  },
+  {
+    "text": "an upcoming workshop. And this is just",
+    "start": 536,
+    "duration": 5.04
+  },
+  {
+    "text": "in simple markdown format. And we'll",
+    "start": 538.16,
+    "duration": 5.6
+  },
+  {
+    "text": "send all this off by saying uh turn the",
+    "start": 541.04,
+    "duration": 5.12
+  },
+  {
+    "text": "attached talking points into a workshop",
+    "start": 543.76,
+    "duration": 6
+  },
+  {
+    "text": "deck and ask me anything you need before",
+    "start": 546.16,
+    "duration": 5.52
+  },
+  {
+    "text": "you build. Now, after just a few",
+    "start": 549.76,
+    "duration": 4
+  },
+  {
+    "text": "seconds, Claw Design is going to pause",
+    "start": 551.68,
+    "duration": 5.12
+  },
+  {
+    "text": "and ask us a few questions first. And",
+    "start": 553.76,
+    "duration": 6.16
+  },
+  {
+    "text": "it's very important you take the time to",
+    "start": 556.8,
+    "duration": 6.24
+  },
+  {
+    "text": "answer these carefully because a few",
+    "start": 559.92,
+    "duration": 6.08
+  },
+  {
+    "text": "extra minutes here saves you hours down",
+    "start": 563.04,
+    "duration": 5.2
+  },
+  {
+    "text": "the road. Believe me. And if you're",
+    "start": 566,
+    "duration": 4.56
+  },
+  {
+    "text": "genuinely unsure of how to answer a",
+    "start": 568.24,
+    "duration": 4.4
+  },
+  {
+    "text": "question, you can always just pick the",
+    "start": 570.56,
+    "duration": 4.8
+  },
+  {
+    "text": "decide for me option. And once we've",
+    "start": 572.64,
+    "duration": 4.48
+  },
+  {
+    "text": "answered all the questions, we'll just",
+    "start": 575.36,
+    "duration": 4.56
+  },
+  {
+    "text": "hit continue. and claw design will go",
+    "start": 577.12,
+    "duration": 5.12
+  },
+  {
+    "text": "ahead and generate the first version of",
+    "start": 579.92,
+    "duration": 4.479
+  },
+  {
+    "text": "the slide deck. Awesome. Now that our",
+    "start": 582.24,
+    "duration": 3.92
+  },
+  {
+    "text": "slides have been generated, I just want",
+    "start": 584.399,
+    "duration": 4.321
+  },
+  {
+    "text": "to reiterate the reason why this first",
+    "start": 586.16,
+    "duration": 4.4
+  },
+  {
+    "text": "version already looks pretty good in my",
+    "start": 588.72,
+    "duration": 4.48
+  },
+  {
+    "text": "opinion is because of all the prep work",
+    "start": 590.56,
+    "duration": 5.279
+  },
+  {
+    "text": "we did. But we're not done because there",
+    "start": 593.2,
+    "duration": 5.44
+  },
+  {
+    "text": "are two types of feedback we can give",
+    "start": 595.839,
+    "duration": 4.881
+  },
+  {
+    "text": "cloud design to make this even better.",
+    "start": 598.64,
+    "duration": 3.759
+  },
+  {
+    "text": "The first kind of feedback applies to",
+    "start": 600.72,
+    "duration": 4.32
+  },
+  {
+    "text": "this current deck and every future deck",
+    "start": 602.399,
+    "duration": 4.641
+  },
+  {
+    "text": "we create in this cloud design project.",
+    "start": 605.04,
+    "duration": 4
+  },
+  {
+    "text": "Oh, which reminds me, let's rename this",
+    "start": 607.04,
+    "duration": 3.52
+  },
+  {
+    "text": "project to something more descriptive,",
+    "start": 609.04,
+    "duration": 5.68
+  },
+  {
+    "text": "like active gradient slides project. And",
+    "start": 610.56,
+    "duration": 6.719
+  },
+  {
+    "text": "now for the actual feedback. I feel like",
+    "start": 614.72,
+    "duration": 5.359
+  },
+  {
+    "text": "uh the eyebrow labels on the content",
+    "start": 617.279,
+    "duration": 5.281
+  },
+  {
+    "text": "slides aren't prominent enough, and the",
+    "start": 620.079,
+    "duration": 4.641
+  },
+  {
+    "text": "icons will look much better with",
+    "start": 622.56,
+    "duration": 4.88
+  },
+  {
+    "text": "transparent backgrounds. So, here's what",
+    "start": 624.72,
+    "duration": 4.08
+  },
+  {
+    "text": "I'm going to say. Review my feedback",
+    "start": 627.44,
+    "duration": 2.959
+  },
+  {
+    "text": "below, and in addition to making the",
+    "start": 628.8,
+    "duration": 4.24
+  },
+  {
+    "text": "edits, create a clawed MD file you'll",
+    "start": 630.399,
+    "duration": 5.521
+  },
+  {
+    "text": "read for all future slide decks. As for",
+    "start": 633.04,
+    "duration": 4.799
+  },
+  {
+    "text": "the feedback, make the eyebrow labels",
+    "start": 635.92,
+    "duration": 3.599
+  },
+  {
+    "text": "more prominent. Wrap them in a",
+    "start": 637.839,
+    "duration": 4.401
+  },
+  {
+    "text": "rectangular container maybe. And the",
+    "start": 639.519,
+    "duration": 5.201
+  },
+  {
+    "text": "icons should all have transparent",
+    "start": 642.24,
+    "duration": 5.039
+  },
+  {
+    "text": "backgrounds. So, what did I just do? In",
+    "start": 644.72,
+    "duration": 5.44
+  },
+  {
+    "text": "plain English, a claw.md is a plain text",
+    "start": 647.279,
+    "duration": 5.361
+  },
+  {
+    "text": "file where claw design stores all your",
+    "start": 650.16,
+    "duration": 4.4
+  },
+  {
+    "text": "standing instructions for a project and",
+    "start": 652.64,
+    "duration": 3.439
+  },
+  {
+    "text": "it reads that file before every new",
+    "start": 654.56,
+    "duration": 4
+  },
+  {
+    "text": "design. Meaning, every time I give it",
+    "start": 656.079,
+    "duration": 4.88
+  },
+  {
+    "text": "feedback, claw design saves that",
+    "start": 658.56,
+    "duration": 4.48
+  },
+  {
+    "text": "feedback and applies it to all future",
+    "start": 660.959,
+    "duration": 4.481
+  },
+  {
+    "text": "decks. And that's how our corrections",
+    "start": 663.04,
+    "duration": 4.799
+  },
+  {
+    "text": "compound over time. By the way, if you",
+    "start": 665.44,
+    "duration": 4.399
+  },
+  {
+    "text": "like this idea of learnings that carry",
+    "start": 667.839,
+    "duration": 4.801
+  },
+  {
+    "text": "forward, my free co-work applies the",
+    "start": 669.839,
+    "duration": 5.041
+  },
+  {
+    "text": "exact same philosophy to Claude co-work.",
+    "start": 672.64,
+    "duration": 3.84
+  },
+  {
+    "text": "It includes all the templates you need",
+    "start": 674.88,
+    "duration": 4.079
+  },
+  {
+    "text": "to build a co-workspace in just one",
+    "start": 676.48,
+    "duration": 4.799
+  },
+  {
+    "text": "week. Link down below. All right, the",
+    "start": 678.959,
+    "duration": 3.601
+  },
+  {
+    "text": "first round of feedback has been",
+    "start": 681.279,
+    "duration": 3.041
+  },
+  {
+    "text": "implemented and we can see that all our",
+    "start": 682.56,
+    "duration": 4.399
+  },
+  {
+    "text": "changes have been applied. The labels",
+    "start": 684.32,
+    "duration": 4.72
+  },
+  {
+    "text": "have more contrast and the icons look",
+    "start": 686.959,
+    "duration": 4
+  },
+  {
+    "text": "much better. And if we go back to the",
+    "start": 689.04,
+    "duration": 5.12
+  },
+  {
+    "text": "root page of this project, we can also",
+    "start": 690.959,
+    "duration": 6.721
+  },
+  {
+    "text": "see that claw design created the claw.md",
+    "start": 694.16,
+    "duration": 6.96
+  },
+  {
+    "text": "file. And if we click in, we can see all",
+    "start": 697.68,
+    "duration": 5.68
+  },
+  {
+    "text": "the feedback has been captured. The",
+    "start": 701.12,
+    "duration": 3.68
+  },
+  {
+    "text": "implication for you is instead of",
+    "start": 703.36,
+    "duration": 3.28
+  },
+  {
+    "text": "creating an entirely new project for",
+    "start": 704.8,
+    "duration": 3.84
+  },
+  {
+    "text": "your next presentation, we can just stay",
+    "start": 706.64,
+    "duration": 4.48
+  },
+  {
+    "text": "in the existing gradient slides project",
+    "start": 708.64,
+    "duration": 5.12
+  },
+  {
+    "text": "and start a new chat because this new",
+    "start": 711.12,
+    "duration": 4.959
+  },
+  {
+    "text": "chat has access to everything in the",
+    "start": 713.76,
+    "duration": 4.96
+  },
+  {
+    "text": "cloud.MD file. So all your learnings",
+    "start": 716.079,
+    "duration": 4.801
+  },
+  {
+    "text": "carry forward. Moving on, the second",
+    "start": 718.72,
+    "duration": 4.799
+  },
+  {
+    "text": "kind of feedback is surgical slide level",
+    "start": 720.88,
+    "duration": 4
+  },
+  {
+    "text": "changes. And this is a perfect",
+    "start": 723.519,
+    "duration": 3.44
+  },
+  {
+    "text": "opportunity to show off these features",
+    "start": 724.88,
+    "duration": 3.84
+  },
+  {
+    "text": "up here. First, I can make changes",
+    "start": 726.959,
+    "duration": 4.641
+  },
+  {
+    "text": "myself by clicking the edit button,",
+    "start": 728.72,
+    "duration": 4.96
+  },
+  {
+    "text": "selecting an element like this agenda",
+    "start": 731.6,
+    "duration": 4.96
+  },
+  {
+    "text": "box, and then I can increase the font",
+    "start": 733.68,
+    "duration": 5.52
+  },
+  {
+    "text": "size, change the color. Eh, that doesn't",
+    "start": 736.56,
+    "duration": 4.8
+  },
+  {
+    "text": "look very good. Let's change that back.",
+    "start": 739.2,
+    "duration": 4.24
+  },
+  {
+    "text": "And make the text bold, for example.",
+    "start": 741.36,
+    "duration": 3.68
+  },
+  {
+    "text": "Second, on this slide, I can click",
+    "start": 743.44,
+    "duration": 4.639
+  },
+  {
+    "text": "annotate and literally draw a circle",
+    "start": 745.04,
+    "duration": 5.359
+  },
+  {
+    "text": "around these two elements. Then type",
+    "start": 748.079,
+    "duration": 4.721
+  },
+  {
+    "text": "something like add more visual contrast",
+    "start": 750.399,
+    "duration": 4.161
+  },
+  {
+    "text": "to differentiate what beginners versus",
+    "start": 752.8,
+    "duration": 3.599
+  },
+  {
+    "text": "power users will walk away with. And",
+    "start": 754.56,
+    "duration": 3.36
+  },
+  {
+    "text": "we're just going to hit send and see",
+    "start": 756.399,
+    "duration": 3.521
+  },
+  {
+    "text": "what happens. And after a few seconds,",
+    "start": 757.92,
+    "duration": 4.96
+  },
+  {
+    "text": "it made the change. This looks pretty",
+    "start": 759.92,
+    "duration": 5.76
+  },
+  {
+    "text": "great. Right now, moving on to the",
+    "start": 762.88,
+    "duration": 4.8
+  },
+  {
+    "text": "tweaks feature. And it's much easier to",
+    "start": 765.68,
+    "duration": 3.76
+  },
+  {
+    "text": "show you instead of tell you what it",
+    "start": 767.68,
+    "duration": 3.76
+  },
+  {
+    "text": "does. I'm just going to say, give me two",
+    "start": 769.44,
+    "duration": 5.199
+  },
+  {
+    "text": "toggles. one to toggle my logo and one",
+    "start": 771.44,
+    "duration": 4.72
+  },
+  {
+    "text": "to show slide numbers in the bottom",
+    "start": 774.639,
+    "duration": 3.361
+  },
+  {
+    "text": "right. And we're just going to fast",
+    "start": 776.16,
+    "duration": 3.44
+  },
+  {
+    "text": "forward this next part here. Now, at",
+    "start": 778,
+    "duration": 3.279
+  },
+  {
+    "text": "first you might be confused because",
+    "start": 779.6,
+    "duration": 4
+  },
+  {
+    "text": "nothing seemed to have happened. But if",
+    "start": 781.279,
+    "duration": 4.721
+  },
+  {
+    "text": "we click the tweaks icon again, we can",
+    "start": 783.6,
+    "duration": 5.28
+  },
+  {
+    "text": "see our two toggles have appeared. So if",
+    "start": 786,
+    "duration": 4.959
+  },
+  {
+    "text": "I toggle off show logo, the logo",
+    "start": 788.88,
+    "duration": 5.12
+  },
+  {
+    "text": "disappears from every slide at once. And",
+    "start": 790.959,
+    "duration": 6
+  },
+  {
+    "text": "if I turn on show slide numbers, they",
+    "start": 794,
+    "duration": 4.88
+  },
+  {
+    "text": "appear across every slide. And I can",
+    "start": 796.959,
+    "duration": 4.961
+  },
+  {
+    "text": "even save this as a default. As a quick",
+    "start": 798.88,
+    "duration": 5.199
+  },
+  {
+    "text": "recap, a tweak is just a switch for a",
+    "start": 801.92,
+    "duration": 3.599
+  },
+  {
+    "text": "decision that shows up all over your",
+    "start": 804.079,
+    "duration": 3.601
+  },
+  {
+    "text": "deck, like whether your logo appears on",
+    "start": 805.519,
+    "duration": 4.401
+  },
+  {
+    "text": "every slide. So, use edit and annotate",
+    "start": 807.68,
+    "duration": 4.399
+  },
+  {
+    "text": "to fix one thing in one place. And use",
+    "start": 809.92,
+    "duration": 4
+  },
+  {
+    "text": "tweaks when a single decision touches",
+    "start": 812.079,
+    "duration": 3.601
+  },
+  {
+    "text": "every slide at once and you want to flip",
+    "start": 813.92,
+    "duration": 3.44
+  },
+  {
+    "text": "between options before committing. Now",
+    "start": 815.68,
+    "duration": 3.599
+  },
+  {
+    "text": "that our slide deck is finalized, we can",
+    "start": 817.36,
+    "duration": 3.68
+  },
+  {
+    "text": "click the share button in the top right.",
+    "start": 819.279,
+    "duration": 4
+  },
+  {
+    "text": "And in addition to PowerPoint and PDF,",
+    "start": 821.04,
+    "duration": 4.479
+  },
+  {
+    "text": "we can click more formats and apps. And",
+    "start": 823.279,
+    "duration": 4.161
+  },
+  {
+    "text": "personally, I like to export to a",
+    "start": 825.519,
+    "duration": 4.32
+  },
+  {
+    "text": "standalone HTML file because of how",
+    "start": 827.44,
+    "duration": 4.24
+  },
+  {
+    "text": "versatile it is. To show you what I",
+    "start": 829.839,
+    "duration": 4.161
+  },
+  {
+    "text": "mean, once you download the standalone",
+    "start": 831.68,
+    "duration": 4.959
+  },
+  {
+    "text": "HTML file, you can double click to open",
+    "start": 834,
+    "duration": 6.88
+  },
+  {
+    "text": "that in any browser and it'll work like",
+    "start": 836.639,
+    "duration": 6.961
+  },
+  {
+    "text": "so. And anyone you send this file to can",
+    "start": 840.88,
+    "duration": 4.48
+  },
+  {
+    "text": "open up in their browser as well.",
+    "start": 843.6,
+    "duration": 3.919
+  },
+  {
+    "text": "Exporting to HTML also gives you some",
+    "start": 845.36,
+    "duration": 3.839
+  },
+  {
+    "text": "advanced options. I'm not going to spend",
+    "start": 847.519,
+    "duration": 3.601
+  },
+  {
+    "text": "too much time on this today, but to give",
+    "start": 849.199,
+    "duration": 4.32
+  },
+  {
+    "text": "you an idea, this is the real deck I",
+    "start": 851.12,
+    "duration": 4.24
+  },
+  {
+    "text": "used in a paid workshop recently. And",
+    "start": 853.519,
+    "duration": 4.241
+  },
+  {
+    "text": "you'll notice I asked Claw Design to add",
+    "start": 855.36,
+    "duration": 5.279
+  },
+  {
+    "text": "a presenter view button that I can click",
+    "start": 857.76,
+    "duration": 7.04
+  },
+  {
+    "text": "and it'll open up a speaker notes for me",
+    "start": 860.639,
+    "duration": 6.161
+  },
+  {
+    "text": "that I can interact with, which is",
+    "start": 864.8,
+    "duration": 3.36
+  },
+  {
+    "text": "pretty freaking awesome. If you found",
+    "start": 866.8,
+    "duration": 2.8
+  },
+  {
+    "text": "this tutorial helpful, I recommend",
+    "start": 868.16,
+    "duration": 3.119
+  },
+  {
+    "text": "checking out my Claude co-work playlist",
+    "start": 869.6,
+    "duration": 3.2
+  },
+  {
+    "text": "next. See you on the next video. In the",
+    "start": 871.279,
+    "duration": 5.92
+  },
+  {
+    "text": "meantime, have a great one.",
+    "start": 872.8,
+    "duration": 4.399
+  }
+]

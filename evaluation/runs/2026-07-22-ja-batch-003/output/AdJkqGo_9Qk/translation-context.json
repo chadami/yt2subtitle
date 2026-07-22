@@ -1,0 +1,94 @@
+{
+  "topic": "Beginner's guide to watches",
+  "summary": "A comprehensive introduction to watches covering vocabulary, mechanics, history, and buying tips, aimed at beginners.",
+  "tone": "Casual, enthusiastic, explanatory",
+  "audience": "English-speaking watch beginners, likely young adults interested in hobbies",
+  "glossary": [
+    {
+      "source": "bracelet",
+      "target": "ブレスレット",
+      "note": "金属製のバンド"
+    },
+    {
+      "source": "strap",
+      "target": "ストラップ",
+      "note": "革や布製のバンド"
+    },
+    {
+      "source": "band",
+      "target": "バンド",
+      "note": "避けるべき用語、ブレスレットかストラップを使う"
+    },
+    {
+      "source": "clasp",
+      "target": "クラスプ",
+      "note": "留め具全般"
+    },
+    {
+      "source": "deployment clasp",
+      "target": "フォールディングクラスプ",
+      "note": "展開式留め具"
+    },
+    {
+      "source": "case",
+      "target": "ケース",
+      "note": "時計本体の外枠"
+    },
+    {
+      "source": "lugs",
+      "target": "ラグ",
+      "note": "ケースとバンドを接続する部分"
+    },
+    {
+      "source": "crystal",
+      "target": "クリスタル",
+      "note": "風防（ガラスやレンズとは呼ばない）"
+    },
+    {
+      "source": "bezel",
+      "target": "ベゼル",
+      "note": "クリスタルを固定するリング"
+    },
+    {
+      "source": "crown",
+      "target": "リューズ",
+      "note": "時刻合わせのつまみ"
+    },
+    {
+      "source": "case back",
+      "target": "ケースバック",
+      "note": "裏蓋"
+    },
+    {
+      "source": "dial",
+      "target": "文字盤",
+      "note": "フェイスとは呼ばない"
+    }
+  ],
+  "properNouns": [
+    "Speeed",
+    "Tudor",
+    "Cole Pennington",
+    "James Stacey",
+    "Hodinkee",
+    "Rolex",
+    "GMT Master",
+    "Panama",
+    "Greenwich Observatory",
+    "John Harrison",
+    "H4",
+    "Legion of Speed"
+  ],
+  "styleGuide": [
+    "Use casual, friendly tone with だ/である体 for narration, but polite です/ます体 for direct address to viewer.",
+    "Keep sentence endings consistent: use んだ/のだ for explanatory tone, よ for emphasis.",
+    "Translate technical terms consistently using the glossary; avoid English loanwords where natural Japanese exists.",
+    "For humor, use colloquial expressions like やばい, マジで, すごい.",
+    "Keep subtitle length short; break long sentences into multiple subtitles.",
+    "Use ～てる/～てる form for progressive actions (e.g., やってる instead of やっている).",
+    "For emphasis, use 本当に, めっちゃ, 超.",
+    "When quoting someone, use って言う/言ってた.",
+    "Avoid overly literal translations; prefer natural phrasing like ～ってこと for explanatory clauses.",
+    "For numbers, use Arabic numerals in subtitles for readability."
+  ]
+}

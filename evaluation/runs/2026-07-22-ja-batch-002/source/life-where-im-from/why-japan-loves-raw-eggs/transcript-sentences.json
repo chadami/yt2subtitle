@@ -1,0 +1,917 @@
+[
+  {
+    "text": "Hello world.",
+    "start": "00:00:03",
+    "end": "00:00:04"
+  },
+  {
+    "text": "Did you know that according to the World Egg Organization?",
+    "start": "00:00:04",
+    "end": "00:00:09"
+  },
+  {
+    "text": "Yes, that's its actual name, Japan is the number two per capita consumer of eggs in the world, right behind Mexico.",
+    "start": "00:00:09",
+    "end": "00:00:16"
+  },
+  {
+    "text": "Well, before making this video, I didn't either, but it kind of makes sense when you consider all of the delicious varieties of egg dishes in Japan.",
+    "start": "00:00:16",
+    "end": "00:00:24"
+  },
+  {
+    "text": "I'm a particular fan of the Ajitama in ramen.",
+    "start": "00:00:24",
+    "end": "00:00:27"
+  },
+  {
+    "text": "However, there's one Japanese dish that I think you'll find exceptionally [music] interesting, and that is tamago kakeake gohan or tkg for short.",
+    "start": "00:00:25",
+    "end": "00:00:36"
+  },
+  {
+    "text": "It literally means eggs on rice.",
+    "start": "00:00:36",
+    "end": "00:00:38"
+  },
+  {
+    "text": "Tamago kake Gohan.",
+    "start": "00:00:38",
+    "end": "00:00:40"
+  },
+  {
+    "text": "I have lived in Japan long enough now that the idea of eating raw eggs on rice seems completely normal.",
+    "start": "00:00:40",
+    "end": "00:00:45"
+  },
+  {
+    "text": "You may have seen me eat raw eggs with sukiyaki in our coobe beef video, but I recently realized that eating raw eggs in such an unadulterated manner really is uncommon outside of Japan.",
+    "start": "00:00:45",
+    "end": "00:00:58"
+  },
+  {
+    "text": "So, I wanted to do a bit of a deep dive and find out the history and knowhow of this simple yet popular Japanese dish.",
+    "start": "00:00:56",
+    "end": "00:01:05"
+  },
+  {
+    "text": "I assumed that one of the reasons for the popularity is that the safety of eggs in Japan is high.",
+    "start": "00:01:05",
+    "end": "00:01:09"
+  },
+  {
+    "text": "And so we visited a chicken farm and a couple of TKG eeries, interviewed a food safety expert, and heard from some of our viewers from around the world to get a clearer picture of the cultural and scientific facts you might want to consider when consuming TKG.",
+    "start": "00:01:09",
+    "end": "00:01:23"
+  },
+  {
+    "text": "Like, is it actually safe to eat raw eggs?",
+    "start": "00:01:23",
+    "end": "00:01:27"
+  },
+  {
+    "text": "Does it matter if you're in Japan or not?",
+    "start": "00:01:27",
+    "end": "00:01:29"
+  },
+  {
+    "text": "And why do Japanese people seem to eat raw eggs more than in other countries?",
+    "start": "00:01:29",
+    "end": "00:01:33"
+  },
+  {
+    "text": "So, with all that said, let's crack open our first mystery of where did TKG come from?",
+    "start": "00:01:33",
+    "end": "00:01:40"
+  },
+  {
+    "text": "I interrupt this broadcast to [music] bring you some late breaking news.",
+    "start": "00:01:38",
+    "end": "00:01:43"
+  },
+  {
+    "text": "We've just finished renovating this 60-year-old home in Niko, and it's actually where I'm doing all the narration from.",
+    "start": "00:01:43",
+    "end": "00:01:49"
+  },
+  {
+    "text": "So, if you'd like to stay in a traditional Japanese home in a quiet neighborhood, then click or I guess not click, but scan the QR code on screen or you can visit silverdaestay.",
+    "start": "00:01:49",
+    "end": "00:02:03"
+  },
+  {
+    "text": "com or you can check out the link in the description.",
+    "start": "00:02:03",
+    "end": "00:02:05"
+  },
+  {
+    "text": "Okay, back [music] to our regular broadcast.",
+    "start": "00:02:05",
+    "end": "00:02:08"
+  },
+  {
+    "text": "The history of TKG, at least in any written form, dates back to the Maji period, roughly between the years of 1860 and 1890.",
+    "start": "00:02:08",
+    "end": "00:02:16"
+  },
+  {
+    "text": "During that time, there was a renowned scholar and pioneer named Ginko Kashida, who apparently traveled across Japan eating TKG for breakfast wherever he went.",
+    "start": "00:02:16",
+    "end": "00:02:27"
+  },
+  {
+    "text": "Whether Ginko Kashida actually popularized TKG is up for debate, but he was a successful, well-connected journalist, so I'm sure that his peculiar culinary habits caught the attention of the other influential people and passers by.",
+    "start": "00:02:25",
+    "end": "00:02:40"
+  },
+  {
+    "text": "These days, TKG is such a common quick meal, you'd struggle to find a Japanese person who's never had it before.",
+    "start": "00:02:40",
+    "end": "00:02:46"
+  },
+  {
+    "text": "But despite being one of the simplest meals in Japan, you could literally buy all the necessary ingredients at a convenience store.",
+    "start": "00:02:46",
+    "end": "00:02:54"
+  },
+  {
+    "text": "There are actually entire businesses that build their menus off of TKG.",
+    "start": "00:02:52",
+    "end": "00:02:58"
+  },
+  {
+    "text": "That means people will go out of their way to eat this simple dish outside of their home.",
+    "start": "00:02:58",
+    "end": "00:03:02"
+  },
+  {
+    "text": "One such establishment is Yurin An, a TKG itery in Kurashiki's famous Bikan area that attracts both Japanese and international customers alike.",
+    "start": "00:03:02",
+    "end": "00:03:13"
+  },
+  {
+    "text": "So, I had Bobby, our producer, and his friend Rosie check out their shop and meet their staff.",
+    "start": "00:03:13",
+    "end": "00:03:20"
+  },
+  {
+    "text": "for Okay.",
+    "start": "00:03:40",
+    "end": "00:03:52"
+  },
+  {
+    "text": "Feel like I put too much soy sauce.",
+    "start": "00:03:52",
+    "end": "00:03:57"
+  },
+  {
+    "text": "Really good.",
+    "start": "00:04:02",
+    "end": "00:04:08"
+  },
+  {
+    "text": "Cuz I think after you mix the yolk and the soy sauce, it's not very like slimy.",
+    "start": "00:04:04",
+    "end": "00:04:14"
+  },
+  {
+    "text": "You can't really tell.",
+    "start": "00:04:13",
+    "end": "00:04:15"
+  },
+  {
+    "text": "[music] At least for me.",
+    "start": "00:04:15",
+    "end": "00:04:17"
+  },
+  {
+    "text": "It's actually Yeah, it's quite good.",
+    "start": "00:04:20",
+    "end": "00:04:25"
+  },
+  {
+    "text": "The showyu and also the furikake >> showyu.",
+    "start": "00:04:25",
+    "end": "00:04:29"
+  },
+  {
+    "text": ">> I think there's like in the furikake too, but >> like immediately it's like this really nice flavor.",
+    "start": "00:04:26",
+    "end": "00:04:33"
+  },
+  {
+    "text": "It's refreshing.",
+    "start": "00:04:33",
+    "end": "00:04:36"
+  },
+  {
+    "text": ">> It's not eggy.",
+    "start": "00:04:34",
+    "end": "00:04:38"
+  },
+  {
+    "text": "It's like way better than what I would normally have at home cuz I would I would be too lazy to prepare all this other stuff.",
+    "start": "00:04:36",
+    "end": "00:04:47"
+  },
+  {
+    "text": "M >> um so yeah, I think it's totally Yeah.",
+    "start": "00:04:47",
+    "end": "00:04:51"
+  },
+  {
+    "text": "worth coming here.",
+    "start": "00:04:47",
+    "end": "00:04:49"
+  },
+  {
+    "text": "It's a nice treat and it's kind of fun.",
+    "start": "00:04:49",
+    "end": "00:04:54"
+  },
+  {
+    "text": ">> So yeah, definitely I think our reactions are like pretty legitimate.",
+    "start": "00:04:52",
+    "end": "00:05:00"
+  },
+  {
+    "text": ">> It's really good.",
+    "start": "00:04:56",
+    "end": "00:05:00"
+  },
+  {
+    "text": "And just for fun, I had my wife and her sister Ako visit another TKG ery in Tokyo called Kisaburo, which serves eggs from various farms across the country.",
+    "start": "00:05:24",
+    "end": "00:05:36"
+  },
+  {
+    "text": "Unfortunately, on the day of their visit, Ako's mic didn't work, so we did a recap online.",
+    "start": "00:05:35",
+    "end": "00:05:41"
+  },
+  {
+    "text": "[music] Yeah.",
+    "start": "00:05:41",
+    "end": "00:05:46"
+  },
+  {
+    "text": "Yeah.",
+    "start": "00:05:46",
+    "end": "00:05:47"
+  },
+  {
+    "text": "Yeah.",
+    "start": "00:05:47",
+    "end": "00:05:49"
+  },
+  {
+    "text": "[laughter] [laughter] >> [laughter] >> So >> [laughter] [laughter] >> So, after hearing Ako's commentary, I was curious and wanted to hear from our American and European viewers about their thoughts on TKG and raw eggs in general.",
+    "start": "00:05:58",
+    "end": "00:07:07"
+  },
+  {
+    "text": ">> Sure.",
+    "start": "00:07:05",
+    "end": "00:07:05"
+  },
+  {
+    "text": "I like tamago kakeake gohan.",
+    "start": "00:07:05",
+    "end": "00:07:08"
+  },
+  {
+    "text": "If it's on the menu, I'll eat it.",
+    "start": "00:07:08",
+    "end": "00:07:12"
+  },
+  {
+    "text": ">> Yeah, I even love tamago kakeake gohan.",
+    "start": "00:07:08",
+    "end": "00:07:14"
+  },
+  {
+    "text": ">> Yeah, regularly.",
+    "start": "00:07:12",
+    "end": "00:07:14"
+  },
+  {
+    "text": "I have a [music] quick, healthy, and like satisfying breakfast.",
+    "start": "00:07:14",
+    "end": "00:07:18"
+  },
+  {
+    "text": "A lot of protein.",
+    "start": "00:07:17",
+    "end": "00:07:19"
+  },
+  {
+    "text": ">> I wouldn't go out of my way to get it, but if somebody made it for me, I would gladly eat it.",
+    "start": "00:07:18",
+    "end": "00:07:24"
+  },
+  {
+    "text": ">> I would eat it if it's there, but I probably wouldn't make it myself.",
+    "start": "00:07:22",
+    "end": "00:07:26"
+  },
+  {
+    "text": "[music] I think that the raw egg texture is a little too slimy for me.",
+    "start": "00:07:25",
+    "end": "00:07:31"
+  },
+  {
+    "text": ">> I have had the TKG for fun.",
+    "start": "00:07:28",
+    "end": "00:07:32"
+  },
+  {
+    "text": "It's It's okay, but I do not like egg.",
+    "start": "00:07:32",
+    "end": "00:07:35"
+  },
+  {
+    "text": "[laughter] I made at home.",
+    "start": "00:07:35",
+    "end": "00:07:37"
+  },
+  {
+    "text": "I use a recipe that I found in a book called Jubilee Cookbook.",
+    "start": "00:07:37",
+    "end": "00:07:43"
+  },
+  {
+    "text": "Yeah, it was very tasty.",
+    "start": "00:07:41",
+    "end": "00:07:45"
+  },
+  {
+    "text": "[music] >> I had to kind of get over my fears and worries a little bit and then it was a great experience.",
+    "start": "00:07:45",
+    "end": "00:07:49"
+  },
+  {
+    "text": "It tasted very delicious.",
+    "start": "00:07:49",
+    "end": "00:07:52"
+  },
+  {
+    "text": ">> I have this very vivid memory from my childhood where I was speaking cake with my grandmother in England.",
+    "start": "00:07:50",
+    "end": "00:07:57"
+  },
+  {
+    "text": "I sampled the cake batter.",
+    "start": "00:07:57",
+    "end": "00:07:58"
+  },
+  {
+    "text": "She reacted as if I had killed someone and I didn't understand and she was no no do that.",
+    "start": "00:07:58",
+    "end": "00:08:04"
+  },
+  {
+    "text": "It's very dangerous.",
+    "start": "00:08:04",
+    "end": "00:08:04"
+  },
+  {
+    "text": "It's you can get salmonella.",
+    "start": "00:08:04",
+    "end": "00:08:07"
+  },
+  {
+    "text": ">> Most people like my grandfather for example, they still don't consider [music] raw egg to be safe >> cuz I know like egg raw egg is not what you want to do in America for sure.",
+    "start": "00:08:05",
+    "end": "00:08:17"
+  },
+  {
+    "text": "Especially want salmonella.",
+    "start": "00:08:17",
+    "end": "00:08:20"
+  },
+  {
+    "text": ">> They also have this [music] informative TV shows for kids.",
+    "start": "00:08:18",
+    "end": "00:08:23"
+  },
+  {
+    "text": "From very young age, we get told the story of the egg being dangerous.",
+    "start": "00:08:23",
+    "end": "00:08:29"
+  },
+  {
+    "text": ">> Now, after hearing all this, it made me wonder, is eating raw eggs actually dangerous?",
+    "start": "00:08:27",
+    "end": "00:08:32"
+  },
+  {
+    "text": "So, who better to ask than a food microbiologist.",
+    "start": "00:08:32",
+    "end": "00:08:36"
+  },
+  {
+    "text": "Meet Dr.",
+    "start": "00:08:36",
+    "end": "00:08:37"
+  },
+  {
+    "text": "Andrea Udder, an associate professor at the University of Vermont, who researches salmonella and teaches about global food safety.",
+    "start": "00:08:37",
+    "end": "00:08:45"
+  },
+  {
+    "text": ">> The primary type of salmonella people worry about in eggs is salmonella and [music] a concern because it gets into the ovaries and in the ovaries, it's going to be able to get inside the [music] eggs.",
+    "start": "00:08:42",
+    "end": "00:08:57"
+  },
+  {
+    "text": "So, washing the outside of the egg isn't necessarily going to solve the problem.",
+    "start": "00:08:57",
+    "end": "00:09:01"
+  },
+  {
+    "text": "though it it can be on the outside of the egg as well because the chicken anatomy which [music] the chickens lay eggs then poop through the same opening.",
+    "start": "00:09:01",
+    "end": "00:09:11"
+  },
+  {
+    "text": "It's a multi-purpose design.",
+    "start": "00:09:11",
+    "end": "00:09:12"
+  },
+  {
+    "text": "Sanitizing the eggs is going to help with the outside and you can get salmonella going from the outside to the [music] inside, but cleaning the outside of the eggs as it's required in the US will solve that issue.",
+    "start": "00:09:12",
+    "end": "00:09:25"
+  },
+  {
+    "text": "And so once you do that, it removes the protective bloom, a membrane on the outside of the egg that would prevent things from entering from the outside.",
+    "start": "00:09:25",
+    "end": "00:09:33"
+  },
+  {
+    "text": "So then you have to refrigerate, which is different from Europe, which doesn't do that sanitization.",
+    "start": "00:09:33",
+    "end": "00:09:38"
+  },
+  {
+    "text": "So then they can store their eggs at room temperature.",
+    "start": "00:09:38",
+    "end": "00:09:43"
+  },
+  {
+    "text": "It is important to note that you still can have salmonella on the inside and that would grow really well at room temperature and not so well at at refrigeration temperature.",
+    "start": "00:09:43",
+    "end": "00:09:54"
+  },
+  {
+    "text": "But a lot of home refrigerators don't have thermometers inside them.",
+    "start": "00:09:54",
+    "end": "00:09:58"
+  },
+  {
+    "text": "And the refrigerator thermometer that comes with the refrigerator is only going to test one part of the refrigerator.",
+    "start": "00:09:58",
+    "end": "00:10:05"
+  },
+  {
+    "text": "So certain places like the door um could be warmer.",
+    "start": "00:10:05",
+    "end": "00:10:10"
+  },
+  {
+    "text": "In the US, most farms do vaccinate against salmonella and you're still going to miss stuff.",
+    "start": "00:10:07",
+    "end": "00:10:16"
+  },
+  {
+    "text": "And the question is, do you have safeguards if you miss something?",
+    "start": "00:10:16",
+    "end": "00:10:20"
+  },
+  {
+    "text": "For the US um poultry producers are required to buy from Salmonella and Turidus clean flocks or to buy their pullets.",
+    "start": "00:10:20",
+    "end": "00:10:29"
+  },
+  {
+    "text": "These are going to be their future layers.",
+    "start": "00:10:29",
+    "end": "00:10:31"
+  },
+  {
+    "text": "And basically this is regulated by the National Poultry Improvement Plan and these are only for commercial egg layers above like 3,000 birds.",
+    "start": "00:10:31",
+    "end": "00:10:40"
+  },
+  {
+    "text": "So, in terms of like actually how well this works, in the early 2000s, there was an estimate done by the FDA that one in every 20,000 eggs had enough salmonella at time of purchase to make a consumer sex.",
+    "start": "00:10:40",
+    "end": "00:10:56"
+  },
+  {
+    "text": "So, presumably, it's lower now, but again, that's going to be commercial.",
+    "start": "00:10:56",
+    "end": "00:11:00"
+  },
+  {
+    "text": "That's going to be above 3,000 hens.",
+    "start": "00:11:00",
+    "end": "00:11:03"
+  },
+  {
+    "text": ">> People might assume if it's organic and if it's small scale, then it's going to be safer.",
+    "start": "00:11:01",
+    "end": "00:11:07"
+  },
+  {
+    "text": "it it just means that there's fewer regulations and there's more unknowns.",
+    "start": "00:11:07",
+    "end": "00:11:12"
+  },
+  {
+    "text": "I [music] don't work particularly in organic.",
+    "start": "00:11:12",
+    "end": "00:11:15"
+  },
+  {
+    "text": "Um, but I've done a lot of research on [music] backyard poultry and depending on the year.",
+    "start": "00:11:15",
+    "end": "00:11:19"
+  },
+  {
+    "text": "Our first study it was 19%, [music] our second study it was 12% of flocks tested positive [music] for salmonella.",
+    "start": "00:11:19",
+    "end": "00:11:30"
+  },
+  {
+    "text": ">> Would you ever feel comfortable like in America like having a raw egg for food?",
+    "start": "00:11:27",
+    "end": "00:11:37"
+  },
+  {
+    "text": "Yeah, I mean I I actually still eat raw cookie dough and batter from time to [music] time.",
+    "start": "00:11:33",
+    "end": "00:11:40"
+  },
+  {
+    "text": "Realistically, if you're not temperature abusing the eggs, like leaving them out for long periods of time, your eggs are relatively fresh.",
+    "start": "00:11:40",
+    "end": "00:11:51"
+  },
+  {
+    "text": "They're probably not going to give you salmonola, but there are no guarantees.",
+    "start": "00:11:49",
+    "end": "00:11:56"
+  },
+  {
+    "text": "I think it was a really big problem.",
+    "start": "00:11:53",
+    "end": "00:11:57"
+  },
+  {
+    "text": "I think it's less [music] of a problem now, but cultural biases linger.",
+    "start": "00:11:57",
+    "end": "00:12:02"
+  },
+  {
+    "text": "Raw oysters are one of the riskiest foods out there, but people who are raised on coast love raw oysters.",
+    "start": "00:12:02",
+    "end": "00:12:07"
+  },
+  {
+    "text": "Know what the risks are and decide if the risks are worth it to you.",
+    "start": "00:12:07",
+    "end": "00:12:10"
+  },
+  {
+    "text": "If you're in a high-risisk category for getting really, really sick, elderly, pregnant, imunompromised, [music] a small child, then don't take as many risks.",
+    "start": "00:12:10",
+    "end": "00:12:22"
+  },
+  {
+    "text": "But if you're young and healthy, yeah, it's probably reasonable to occasionally take some risks.",
+    "start": "00:12:22",
+    "end": "00:12:26"
+  },
+  {
+    "text": "There's no such thing as a risk-free diet.",
+    "start": "00:12:26",
+    "end": "00:12:29"
+  },
+  {
+    "text": "But don't sue me if you get if you eat raw eggs and get sick.",
+    "start": "00:12:29",
+    "end": "00:12:35"
+  },
+  {
+    "text": ">> We'll put like a big disclaimer like disclaimer.",
+    "start": "00:12:33",
+    "end": "00:12:37"
+  },
+  {
+    "text": "Yeah.",
+    "start": "00:12:37",
+    "end": "00:12:37"
+  },
+  {
+    "text": "On top.",
+    "start": "00:12:37",
+    "end": "00:12:38"
+  },
+  {
+    "text": ">> So, after hearing all of this information, we wanted to see how chicken eggs are produced in Japan.",
+    "start": "00:12:37",
+    "end": "00:12:44"
+  },
+  {
+    "text": "And while we were unfortunately unable to gain access to a large-scale egg producer, we were able to visit a cage-free chicken farm operated by Bobby's friend Harasan, who you might remember from our video on Nishiawa Kura.",
+    "start": "00:12:44",
+    "end": "00:12:54"
+  },
+  {
+    "text": "His business 1010en has won awards in several startup pitch competitions over the past year for its innovative ideas and sustainable business practices.",
+    "start": "00:12:54",
+    "end": "00:13:05"
+  },
+  {
+    "text": ">> [screaming] >> foreign speech.",
+    "start": "00:13:32",
+    "end": "00:13:56"
+  },
+  {
+    "text": "Oh no.",
+    "start": "00:14:24",
+    "end": "00:14:27"
+  },
+  {
+    "text": "Fore!",
+    "start": "00:14:34",
+    "end": "00:14:37"
+  },
+  {
+    "text": "Foreign!",
+    "start": "00:14:48",
+    "end": "00:14:50"
+  },
+  {
+    "text": "Foreign!",
+    "start": "00:14:50",
+    "end": "00:14:51"
+  },
+  {
+    "text": "Wow, have to win.",
+    "start": "00:15:00",
+    "end": "00:15:57"
+  },
+  {
+    "text": "Here you go.",
+    "start": "00:15:57",
+    "end": "00:16:26"
+  },
+  {
+    "text": "Fore!",
+    "start": "00:16:44",
+    "end": "00:16:47"
+  },
+  {
+    "text": "Foreign!",
+    "start": "00:16:57",
+    "end": "00:16:59"
+  },
+  {
+    "text": "Foreign!",
+    "start": "00:16:59",
+    "end": "00:17:00"
+  },
+  {
+    "text": "Fore speech.",
+    "start": "00:17:16",
+    "end": "00:17:40"
+  },
+  {
+    "text": "So once the eggs are washed, they're separated by weight, packaged, then sent off, usually reaching customers the next day.",
+    "start": "00:18:41",
+    "end": "00:18:48"
+  },
+  {
+    "text": "And for those of you who are curious about egg sizing, here's Shimoasan to help explain.",
+    "start": "00:18:48",
+    "end": "00:18:56"
+  },
+  {
+    "text": ">> [laughter] >> So, I don't want to contradict Harasan, but according to the small but well-sighted study done on the digestibility of proteins in cooked versus uncooked eggs in humans, around 90% of amino acids in cooked eggs can be absorbed by the small intestine whereas only about 50% is absorbed from raw eggs.",
+    "start": "00:19:20",
+    "end": "00:19:52"
+  },
+  {
+    "text": "So if you're like, your body might be utilizing more of those essential amino acids, not just for repairing your cells, but enzyme and hormone production and quite a few other functions in the body.",
+    "start": "00:19:52",
+    "end": "00:20:11"
+  },
+  {
+    "text": "And with that, let's go back to 1010.",
+    "start": "00:20:11",
+    "end": "00:20:13"
+  },
+  {
+    "text": "Quiz time.",
+    "start": "00:20:45",
+    "end": "00:20:47"
+  },
+  {
+    "text": "Can you tell which one of these eggs has a crack in it?",
+    "start": "00:20:47",
+    "end": "00:20:51"
+  },
+  {
+    "text": "If you guessed A, you'd be correct.",
+    "start": "00:20:58",
+    "end": "00:21:02"
+  },
+  {
+    "text": "And here's an ASMR bonus for you auditory tingle heads out there.",
+    "start": "00:21:02",
+    "end": "00:21:06"
+  },
+  {
+    "text": "But jokes aside, the chicken egg operation at 1010en is quite impressive.",
+    "start": "00:21:09",
+    "end": "00:21:14"
+  },
+  {
+    "text": "From the beautiful handcrafted chicken coops to the sustainable business practices that Harasan is trying to spread, it all really makes us appreciate the work that gets put into an often undervalued food source.",
+    "start": "00:21:13",
+    "end": "00:21:26"
+  },
+  {
+    "text": "But let's get back to the question of why is TKG and raw eggs popular in Japan and not so much in other countries.",
+    "start": "00:21:26",
+    "end": "00:21:33"
+  },
+  {
+    "text": "Well, from a risk standpoint, let's look at the numbers of reported Salmonella cases in the US, the EU, and Japan from 2023.",
+    "start": "00:21:33",
+    "end": "00:21:41"
+  },
+  {
+    "text": "I do want to point out that these data sets were collected by three completely different governments, and they don't measure egg specific salmonella cases.",
+    "start": "00:21:39",
+    "end": "00:21:49"
+  },
+  {
+    "text": "So, take it with a grain of salt.",
+    "start": "00:21:47",
+    "end": "00:21:50"
+  },
+  {
+    "text": "But the Salmonella numbers in Japan are strikingly low, even when considering population differences.",
+    "start": "00:21:50",
+    "end": "00:21:56"
+  },
+  {
+    "text": "But this wasn't always the case.",
+    "start": "00:21:56",
+    "end": "00:21:58"
+  },
+  {
+    "text": "Salmonella food poisoning was a problem in Japan like it was in the United States up until the late '90s.",
+    "start": "00:21:58",
+    "end": "00:22:03"
+  },
+  {
+    "text": "After which stricter government regulations helped improve food safety, namely Salmonella vaccinations, higher farm hygiene standards, and clearly labeled expiration dates on commercial eggs.",
+    "start": "00:22:03",
+    "end": "00:22:15"
+  },
+  {
+    "text": "But it's not as if Japan's eggs are always safe to eat raw.",
+    "start": "00:22:15",
+    "end": "00:22:18"
+  },
+  {
+    "text": "Just listen to Harasan.",
+    "start": "00:22:18",
+    "end": "00:22:21"
+  },
+  {
+    "text": "However, considering what we know about food safety in Japan and other parts of the world, I think it's relatively safe to say that one of the reasons why TKG and other raw egg dishes are so popular in Japan is because it's generally safe to eat them here.",
+    "start": "00:22:25",
+    "end": "00:22:38"
+  },
+  {
+    "text": "But just because something's safe to eat doesn't mean it's going to be popular, right?",
+    "start": "00:22:38",
+    "end": "00:22:44"
+  },
+  {
+    "text": "So perhaps then it's also a question of food culture.",
+    "start": "00:22:44",
+    "end": "00:22:46"
+  },
+  {
+    "text": "Japanese people, as you may know, love rice, but not just any rice.",
+    "start": "00:22:46",
+    "end": "00:22:50"
+  },
+  {
+    "text": "short grain rice.",
+    "start": "00:22:50",
+    "end": "00:22:52"
+  },
+  {
+    "text": "This type of rice is stickier than medium or long grain rice.",
+    "start": "00:22:52",
+    "end": "00:22:55"
+  },
+  {
+    "text": "And when you mix it with raw egg, it creates this nice risoto-like texture where the egg almost becomes like a sauce.",
+    "start": "00:22:55",
+    "end": "00:23:02"
+  },
+  {
+    "text": "Now imagine eating raw eggs with any other popular food staple like beans, bread, potatoes [music] or pasta.",
+    "start": "00:23:02",
+    "end": "00:23:08"
+  },
+  {
+    "text": "And I mean just raw egg and a condiment.",
+    "start": "00:23:08",
+    "end": "00:23:13"
+  },
+  {
+    "text": "Okay.",
+    "start": "00:23:26",
+    "end": "00:23:29"
+  },
+  {
+    "text": ">> [laughter] >> Also in terms of texture, the Japanese like a lot of neba are slimy foods like natto, okra, and yamimo.",
+    "start": "00:23:40",
+    "end": "00:23:52"
+  },
+  {
+    "text": "This gooey texture, which you can see in TKG, might just conveniently hit the spot for Japanese people.",
+    "start": "00:23:52",
+    "end": "00:23:58"
+  },
+  {
+    "text": "And finally, Japan's food culture is known for its raw protein dishes like fish, chicken, horse, and beef sashimi.",
+    "start": "00:23:58",
+    "end": "00:24:06"
+  },
+  {
+    "text": "So eating raw egg probably wasn't so wild to imagine.",
+    "start": "00:24:06",
+    "end": "00:24:10"
+  },
+  {
+    "text": "Though oddly enough, raw vegetables are shockingly missing in Japanese diets.",
+    "start": "00:24:08",
+    "end": "00:24:15"
+  },
+  {
+    "text": "So in conclusion, raw eggs and TKG in particular might have gotten popular due to a serendipitous collision of highquality food hygiene practices, a large domestic demand and supply of eggs, and having a food culture that just so happened to pair well with raw eggs.",
+    "start": "00:24:15",
+    "end": "00:24:28"
+  },
+  {
+    "text": "We learned a lot during the making of this video, and I hope you did, too.",
+    "start": "00:24:28",
+    "end": "00:24:34"
+  },
+  {
+    "text": "We'd like to give a big shout out to Harasan and everyone at Tenten, our friend Rosie, the staff at Urinan, Dr.",
+    "start": "00:24:32",
+    "end": "00:24:42"
+  },
+  {
+    "text": "Utter, our American friends, and of course, Yanushka, Liam, and Matier.",
+    "start": "00:24:40",
+    "end": "00:24:47"
+  },
+  {
+    "text": "Thanks for watching.",
+    "start": "00:24:45",
+    "end": "00:24:47"
+  },
+  {
+    "text": "See you next time.",
+    "start": "00:24:47",
+    "end": "00:24:49"
+  },
+  {
+    "text": "Peace.",
+    "start": "00:24:47",
+    "end": "00:24:48"
+  },
+  {
+    "text": "What are raw eggs like where you're [music] from?",
+    "start": "00:24:48",
+    "end": "00:24:53"
+  },
+  {
+    "text": ">> [music]",
+    "start": "00:24:58",
+    "end": "00:25:00"
+  }
+]

@@ -1,0 +1,2526 @@
+[
+  {
+    "start": 0.32,
+    "end": 2.32,
+    "text": "タクシー、調子はどう？",
+    "sourceText": "Taxi, how you doing?",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 2.4580821917808215,
+    "end": 5.68,
+    "text": "お元気ですか？あなたの好きな場所に連れて行って、メーターはそのままで。",
+    "sourceText": "How are you? Take me to your favorite place and keep the meter running.",
+    "sourceIndexes": [
+      1,
+      2
+    ]
+  },
+  {
+    "start": 5.68,
+    "end": 7.04,
+    "text": "あら、本当？わあ。はい、そうです。",
+    "sourceText": "Oh, really? Wow. Yes, sir.",
+    "sourceIndexes": [
+      3,
+      4
+    ]
+  },
+  {
+    "start": 7.04,
+    "end": 10,
+    "text": "じゃあ、ベアマウンテンにハイキングに行きましょう。",
+    "sourceText": "Okay, then let's go to hiking in Bare Mountain.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 10,
+    "end": 11.36,
+    "text": "ベアマウンテンでハイキング？",
+    "sourceText": "Hiking in Bare Mountain?",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 11.36,
+    "end": 13.09,
+    "text": "うん、いいね。",
+    "sourceText": "Yeah, sounds good.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 13.09,
+    "end": 17.24,
+    "text": "行こう。じゃあ、行こう。",
+    "sourceText": "Let's go. Let's go, then.",
+    "sourceIndexes": [
+      8,
+      9
+    ]
+  },
+  {
+    "start": 20.56,
+    "end": 22.32,
+    "text": "実は、だいぶ上達してるんだ。",
+    "sourceText": "I'm actually getting a lot better.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 22.32,
+    "end": 24.008444444444443,
+    "text": "わあ。",
+    "sourceText": "Wow.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 24.008444444444443,
+    "end": 26.119,
+    "text": "うん。",
+    "sourceText": "Yeah.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 26.56,
+    "end": 28.671999999999997,
+    "text": "どこも美しい。",
+    "sourceText": "Beautiful everywhere.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 28.671999999999997,
+    "end": 30.08,
+    "text": "とても静かだ。",
+    "sourceText": "It's so quiet.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 30.08,
+    "end": 34.86184782608696,
+    "text": "すべてを見ることが、自然を学ぶことなんだ。",
+    "sourceText": "Seeing everything is learning nature.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 34.86184782608696,
+    "end": 38.045,
+    "text": "愛してるよ。[音楽]。",
+    "sourceText": "Love you. [music]",
+    "sourceIndexes": [
+      16,
+      17
+    ]
+  },
+  {
+    "start": 46.505,
+    "end": 48.525000000000006,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 54.079,
+    "end": 56,
+    "text": "で、お名前は？ どちらから？",
+    "sourceText": "So, what's your name and where are you from?",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 56,
+    "end": 57.809,
+    "text": "私の名前はヨン・ハンです。",
+    "sourceText": "My name is Yong Han.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 57.809,
+    "end": 59.498945454545456,
+    "text": "韓国から来ました。わあ、すごいね。",
+    "sourceText": "I am from Korea. Wow, that's sick.",
+    "sourceIndexes": [
+      21,
+      22
+    ]
+  },
+  {
+    "start": 59.498945454545456,
+    "end": 62.079,
+    "text": "初めて会った韓国人のタクシー運転手だよ。本当ですか？",
+    "sourceText": "First Korean cab driver I've ever met. Really?",
+    "sourceIndexes": [
+      23,
+      24
+    ]
+  },
+  {
+    "start": 62.079,
+    "end": 65.92674193548388,
+    "text": "はい。昔はたくさんいたって聞いたけど、",
+    "sourceText": "Yes, sir. I heard it used to be a lot,",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 65.92674193548388,
+    "end": 68.799,
+    "text": "年を取って引退したんだ。",
+    "sourceText": "but they're old and they're retired.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 68.799,
+    "end": 70.13,
+    "text": "年を取って引退したんだろうね。",
+    "sourceText": "And they're old and retired, I guess.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 70.13,
+    "end": 72.04307692307692,
+    "text": "よくわからないけど。うん。（笑）オーケー。",
+    "sourceText": "I'm not sure. Yeah. [laughter] Okay.",
+    "sourceIndexes": [
+      28,
+      29,
+      30
+    ]
+  },
+  {
+    "start": 72.04307692307692,
+    "end": 75.2,
+    "text": "で、韓国出身ってことは、韓国だよね？",
+    "sourceText": "So, for you're from Korea, I'm assuming it's South Korea.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 75.2,
+    "end": 77.119,
+    "text": "はい、ソウル出身です。韓国。",
+    "sourceText": "Yes, I am from Soul. South Korea.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 77.119,
+    "end": 80.88,
+    "text": "ああ、ソウル。うん。そこは、ずっと行きたいと思ってた場所の一つなんだ。",
+    "sourceText": "Oh, Soul. Yeah. Well, that's one of the places that I've really wanted to go.",
+    "sourceIndexes": [
+      33,
+      34,
+      35
+    ]
+  },
+  {
+    "start": 80.88,
+    "end": 83.94666666666666,
+    "text": "韓国は小さな半島で、",
+    "sourceText": "Korea is a small peninsula and also",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 83.94666666666666,
+    "end": 87.2,
+    "text": "国土の70%が山です。",
+    "sourceText": "70% of land is mountain. [music]",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 87.2,
+    "end": 90.56,
+    "text": "ああ、山の国だけど、大きな都市もいくつかあるんだね。",
+    "sourceText": "Oh, so it's a mountain country but then there's a couple of big cities.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 90.56,
+    "end": 96.24,
+    "text": "ええ、それが理由の一つで、多くの人が同じ都市から来るんです。",
+    "sourceText": "Yeah, that's one of the reason to you know many people come from the same city.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 96.24,
+    "end": 98.079,
+    "text": "そうですね。",
+    "sourceText": "So yeah.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 98.079,
+    "end": 100.24,
+    "text": "で、いつアメリカに移住したの？",
+    "sourceText": "And when did you move to the United States?",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 100.24,
+    "end": 102,
+    "text": "2004年に来ました。",
+    "sourceText": "I came in 2004.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 102,
+    "end": 103.49,
+    "text": "なるほど。",
+    "sourceText": "Okay.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 103.49,
+    "end": 105.53391304347826,
+    "text": "約20年になるね。はい。まだ新米です。",
+    "sourceText": "So it's about 20 years. Yes. I'm still new.",
+    "sourceIndexes": [
+      43,
+      44,
+      45
+    ]
+  },
+  {
+    "start": 105.53391304347826,
+    "end": 109.2,
+    "text": "（笑）まだ新米だと思う？",
+    "sourceText": "[laughter] Is are you you think you feel still new?",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 109.2,
+    "end": 110.96,
+    "text": "ええ、まだここで学んでいます。",
+    "sourceText": "Oh yeah. I'm still learning here.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 110.96,
+    "end": 115.2,
+    "text": "はい。20年なんてまだまだです。",
+    "sourceText": "Yeah. 20 years nothing.",
+    "sourceIndexes": [
+      48,
+      49
+    ]
+  },
+  {
+    "start": 115.2,
+    "end": 117.68,
+    "text": "何を学んでるんですか？まだ学んでることは何ですか？",
+    "sourceText": "What are you learning? What do you feel like you're still learning?",
+    "sourceIndexes": [
+      50,
+      51
+    ]
+  },
+  {
+    "start": 117.68,
+    "end": 118.99938144329897,
+    "text": "全部です。",
+    "sourceText": "Learning everything.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 118.99938144329897,
+    "end": 124.079,
+    "text": "まったく違う国、文化、西洋と東洋ですから。",
+    "sourceText": "[music] It's a totally different nation, different culture, western, eastern.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 124.079,
+    "end": 129.383,
+    "text": "うん。タクシー運転手として、街から学んでいます。",
+    "sourceText": "Uh-huh. So, as I'm a taxi driver, I'm learning from",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 129.383,
+    "end": 133.31900000000002,
+    "text": "建物の作り方、形、ドアや窓まで、",
+    "sourceText": "the street like how they build the building, the shapes,",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 133.31900000000002,
+    "end": 136.4,
+    "text": "スタイルが違うんです。",
+    "sourceText": "even the doors, window, [music] different style.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 136.4,
+    "end": 137.95781818181817,
+    "text": "どこも美しい。",
+    "sourceText": "Beautiful everywhere.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 137.95781818181817,
+    "end": 140.48,
+    "text": "すべてを見ることが学びです。",
+    "sourceText": "I'm seeing everything is learning.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 140.48,
+    "end": 143.48,
+    "text": "うん。",
+    "sourceText": "Mhm.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 143.84,
+    "end": 147.17463235294116,
+    "text": "20年前、なぜ韓国からここへ？",
+    "sourceText": "Why did you move here 20 years ago in Korean?",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 147.17463235294116,
+    "end": 148.879,
+    "text": "私は1960年生まれです。うん。",
+    "sourceText": "I was born in 1960. Mhm.",
+    "sourceIndexes": [
+      60,
+      61
+    ]
+  },
+  {
+    "start": 148.879,
+    "end": 151.04,
+    "text": "70年代、80年代です。",
+    "sourceText": "7080s.",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 151.04,
+    "end": 154.93473684210525,
+    "text": "当時、テレビやラジオをつけると、",
+    "sourceText": "When you turn on the TV or radio, every music,",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 154.93473684210525,
+    "end": 159.84,
+    "text": "音楽もドラマも映画も全部アメリカからでした。",
+    "sourceText": "drama, movie come from America at that time.",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 159.84,
+    "end": 165.2,
+    "text": "それが理由の一つで、自分の目でアメリカを見たくて来ました。",
+    "sourceText": "That's the one of the reasons I come here to see the America by my own eyes.",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 165.2,
+    "end": 169.64210526315787,
+    "text": "映画やテレビ番組や音楽で見たアメリカと、",
+    "sourceText": "Do you think that the America that you saw in the movies and in the",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 169.64210526315787,
+    "end": 173.76,
+    "text": "今感じているアメリカは一致しますか？",
+    "sourceText": "TV shows and the music matches the America that you feel today?",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 173.76,
+    "end": 177.92,
+    "text": "今は…でも20年前に来た時は？",
+    "sourceText": "Today, but when I come in [music] like 20 years ago?",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 177.92,
+    "end": 183.44,
+    "text": "はい。来るきっかけになったメディアはありましたか？",
+    "sourceText": "Yeah. Was there a piece of media that you saw that really inspired you to come?",
+    "sourceIndexes": [
+      67,
+      68
+    ]
+  },
+  {
+    "start": 183.44,
+    "end": 185.519,
+    "text": "たくさんあります。そうなんですか？どれですか？",
+    "sourceText": "Many of them. Oh, yeah. Which ones? [music]",
+    "sourceIndexes": [
+      69,
+      70
+    ]
+  },
+  {
+    "start": 185.519,
+    "end": 190.239,
+    "text": "『600万ドルの男』とか『ワンダーウーマン』です。",
+    "sourceText": "Uh $6 million man or Wonder Woman.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 190.239,
+    "end": 194.319,
+    "text": "ワンダーウーマン。（笑）はい。",
+    "sourceText": "Wonder Woman. [laughter] Yeah.",
+    "sourceIndexes": [
+      72,
+      73
+    ]
+  },
+  {
+    "start": 194.319,
+    "end": 198.64,
+    "text": "当時の韓国はどんな感じでしたか？",
+    "sourceText": "What was Korea like back then?",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 198.64,
+    "end": 201.742,
+    "text": "当時、韓国は貧しかったんです。",
+    "sourceText": "Well, Korea was poor at that time.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 201.742,
+    "end": 205.599,
+    "text": "[音楽]今とは違います。",
+    "sourceText": "[music] It's not like this time.",
+    "sourceIndexes": [
+      76,
+      77
+    ]
+  },
+  {
+    "start": 205.599,
+    "end": 209.76,
+    "text": "20歳の頃は兵役に就いていました。",
+    "sourceText": "When I was like a 20, I was in the military service.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 209.76,
+    "end": 214.879,
+    "text": "その後、看板を作っていました。お店の表の看板です。",
+    "sourceText": "[music] And then after that, I used to make a signage, the commercial storefront sign.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 214.879,
+    "end": 216.76788888888888,
+    "text": "ああ、それはかっこいい仕事ですね。それがあなたの仕事だったんですね。",
+    "sourceText": "And Oh, that's a cool job. That's your job.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 216.76788888888888,
+    "end": 222.08,
+    "text": "はい、好きでした。それで、看板作りの仕事でここに来ました。",
+    "sourceText": "I like Yeah. So, I came here for that job, the making a sign.",
+    "sourceIndexes": [
+      81,
+      82
+    ]
+  },
+  {
+    "start": 222.08,
+    "end": 226.08,
+    "text": "当時、彼らはハングル文字の作り方を知らなかったんです。",
+    "sourceText": "Wo. because they don't know how to make Korean letter at that time.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 226.08,
+    "end": 228.03254237288135,
+    "text": "とても芸術的な仕事ですね。はい。",
+    "sourceText": "That's a very artistic job. Yeah.",
+    "sourceIndexes": [
+      84,
+      85
+    ]
+  },
+  {
+    "start": 228.03254237288135,
+    "end": 233.2242857142857,
+    "text": "それで、こっちに来て看板会社で働いてたんだパンデミックまではね、",
+    "sourceText": "So, I came here and I work at the sign company [music] until the pandemic.",
+    "sourceIndexes": [
+      86,
+      87
+    ]
+  },
+  {
+    "start": 233.2242857142857,
+    "end": 235.92,
+    "text": "パンデミックの後、タクシーの運転を始めたんだ、",
+    "sourceText": "After pandemic, I start driving taxi.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 235.92,
+    "end": 243.36,
+    "text": "なぜ手作りの韓国語看板からタクシー運転手に転職しようと思ったんですか？",
+    "sourceText": "Why did you decide to switch from making handmade signs, Korean handmade signs to taxi driver?",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 243.36,
+    "end": 249.12,
+    "text": "看板会社はもう俺を必要としてなかったんだ年齢のせいかなそれでタクシーの運転を始めたんだ、",
+    "sourceText": "The signing companies I didn't need me anymore. It's my age. So, I start driving taxi.",
+    "sourceIndexes": [
+      90,
+      91,
+      92
+    ]
+  },
+  {
+    "start": 249.12,
+    "end": 250.64727272727274,
+    "text": "タクシーの仕事は好きですか？",
+    "sourceText": "You like taxi?",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 250.64727272727274,
+    "end": 255.81174626865672,
+    "text": "何かやってるのは幸せだけど、やっぱり看板の仕事の方が好きだな、",
+    "sourceText": "I'm happy doing something, but I prefer the the sign business more.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 255.81174626865672,
+    "end": 259.04,
+    "text": "そうですね、看板作りはとても特別な仕事に聞こえます、",
+    "sourceText": "Yeah, the sign making sounds like a very special job.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 259.04,
+    "end": 264.67699999999996,
+    "text": "うん、手で何かを作るのが好きなんだ[笑い]。",
+    "sourceText": "Yeah, I like make something in my hand. [laughter]",
+    "sourceIndexes": [
+      96,
+      97
+    ]
+  },
+  {
+    "start": 265.932,
+    "end": 269.46851063829786,
+    "text": "[音楽]ベアマウンテンについて教えてくださいベアマウンテンは美しいようん、",
+    "sourceText": "[music] Tell me about Bear Mountain. Bear",
+    "sourceIndexes": [
+      98,
+      99
+    ]
+  },
+  {
+    "start": 269.46851063829786,
+    "end": 271.3,
+    "text": "あそこが大好きなんだ、",
+    "sourceText": "Mountain is beautiful. Yeah, I love there.",
+    "sourceIndexes": [
+      100,
+      101
+    ]
+  },
+  {
+    "start": 271.3,
+    "end": 277.12,
+    "text": "今は春だしねベアマウンテンはブルーベリーでいっぱいになるんだ本当ですか？",
+    "sourceText": "And now it's a springtime. Bear Mountain all covered with blueberry. Really?",
+    "sourceIndexes": [
+      102,
+      103,
+      104
+    ]
+  },
+  {
+    "start": 277.12,
+    "end": 281.52,
+    "text": "すごく美味しいんだ[笑い] 食べるんですか？",
+    "sourceText": "It's so tasty. [laughter] You eat them?",
+    "sourceIndexes": [
+      105,
+      106
+    ]
+  },
+  {
+    "start": 281.52,
+    "end": 286.88,
+    "text": "うん食べ物の話が出たけど、ちょっとお腹すきましたいい韓国料理屋さんがあるんだ、",
+    "sourceText": "Yeah. Speaking of food, I'm a little hungry. There's a a nice Korean restaurant.",
+    "sourceIndexes": [
+      107,
+      108,
+      109
+    ]
+  },
+  {
+    "start": 286.88,
+    "end": 290.16,
+    "text": "ベアマウンテンへの途中にねじゃあ、そこに行きませんか？",
+    "sourceText": "A Korean restaurant on the way to Bare Mountain. Do you want to go there then?",
+    "sourceIndexes": [
+      110,
+      111
+    ]
+  },
+  {
+    "start": 290.16,
+    "end": 291.759,
+    "text": "はい、お願いしますああ、いいね。もちろん、",
+    "sourceText": "Yes, please. Oh, yeah. Why not?",
+    "sourceIndexes": [
+      112,
+      113
+    ]
+  },
+  {
+    "start": 291.759,
+    "end": 296.96,
+    "text": "ハイキングに行く前に朝ごはんを食べないとね、",
+    "sourceText": "I need I need to have breakfast before we go on our hike.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 296.96,
+    "end": 298.72,
+    "text": "ベアマウンテンにはどのくらい行くんですか？",
+    "sourceText": "How often do you go to Bare Mountain?",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 298.72,
+    "end": 302.00695652173914,
+    "text": "昔は毎週末行ってたけど、",
+    "sourceText": "I used to go to every weekend,",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 302.00695652173914,
+    "end": 305.12,
+    "text": "今は年に2回くらいかな、",
+    "sourceText": "but now I go like twice a year.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 305.12,
+    "end": 308.227027027027,
+    "text": "前は妻と一緒に行ってたんだ。",
+    "sourceText": "I used to go with my wife but after my",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 308.227027027027,
+    "end": 312.56,
+    "text": "でも妻が亡くなってからは、あまり行かなくなった、",
+    "sourceText": "wife died and then I don't go that much.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 312.56,
+    "end": 317.199,
+    "text": "奥様が亡くなられたんですか？はいお悔やみ申し上げますいつ亡くなられたんですか？",
+    "sourceText": "Your wife passed away? Yes. I'm so sorry to hear. When did she [music] pass away?",
+    "sourceIndexes": [
+      118,
+      119,
+      120,
+      121
+    ]
+  },
+  {
+    "start": 317.199,
+    "end": 319.93233333333336,
+    "text": "数年前だよ、",
+    "sourceText": "Uh few years ago after the",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 319.93233333333336,
+    "end": 324.199,
+    "text": "パンデミックのすぐ後でね。",
+    "sourceText": "right after the pandemic.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 325.44,
+    "end": 329.32,
+    "text": "結婚してどのくらいでしたか？",
+    "sourceText": "How long were you married?",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 329.36,
+    "end": 335.1528481012658,
+    "text": "長い間だったようん27歳の時に結婚したんだ、",
+    "sourceText": "It's long time. Yeah. I was married when I was in 27.",
+    "sourceIndexes": [
+      124,
+      125,
+      126
+    ]
+  },
+  {
+    "start": 335.1528481012658,
+    "end": 339.293,
+    "text": "だから今日一緒に行けるのが嬉しいよ、",
+    "sourceText": "So yeah, I'm glad that we can go together today.",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 339.293,
+    "end": 344.039,
+    "text": "[笑い] うんありがとう。",
+    "sourceText": "[laughter] Yeah. Thank you.",
+    "sourceIndexes": [
+      128,
+      129
+    ]
+  },
+  {
+    "start": 347.44,
+    "end": 349.12,
+    "text": "どうもありがとうございます。",
+    "sourceText": "Thank you very much.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 349.12,
+    "end": 352.8,
+    "text": "待って、「ありがとう」ってどう言うの？",
+    "sourceText": "Wait, how do you say thank you?",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 352.8,
+    "end": 354.639,
+    "text": "合ってる？うん。",
+    "sourceText": "Is that right? Yeah.",
+    "sourceIndexes": [
+      132,
+      133
+    ]
+  },
+  {
+    "start": 354.639,
+    "end": 356.1914,
+    "text": "とても上手。",
+    "sourceText": "Very good.",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 356.1914,
+    "end": 357.74379999999996,
+    "text": "とてもいいね。",
+    "sourceText": "Very nice.",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 357.74379999999996,
+    "end": 361.039,
+    "text": "うん。どういたしまして。",
+    "sourceText": "Yeah. You're welcome.",
+    "sourceIndexes": [
+      136,
+      137
+    ]
+  },
+  {
+    "start": 361.039,
+    "end": 362.59268421052633,
+    "text": "ああ、そうか。",
+    "sourceText": "Oh, okay.",
+    "sourceIndexes": [
+      138
+    ]
+  },
+  {
+    "start": 362.59268421052633,
+    "end": 364.319,
+    "text": "はい。はい。",
+    "sourceText": "Okay.",
+    "sourceIndexes": [
+      139,
+      140
+    ]
+  },
+  {
+    "start": 364.319,
+    "end": 367.59172549019604,
+    "text": "じゃあ、チョップJを一つ頼めるね。二つ必要だと思う。",
+    "sourceText": "So, we can get one chop J. I I think we need two.",
+    "sourceIndexes": [
+      141,
+      142
+    ]
+  },
+  {
+    "start": 367.59172549019604,
+    "end": 370.639,
+    "text": "ああ、お腹すいてるんだね。",
+    "sourceText": "[laughter] Oh, you're hungry.",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 370.639,
+    "end": 374.3095652173913,
+    "text": "「ハングリーマン」ってレストランをやりたいんだ。君が看板を作ってよ。ああ、いいね。",
+    "sourceText": "I want to do a restaurant called Hungry Man and you can make the sign. Oh, yeah.",
+    "sourceIndexes": [
+      144,
+      145
+    ]
+  },
+  {
+    "start": 374.3095652173913,
+    "end": 376.24,
+    "text": "仕事をくれるなら、やりますよ。",
+    "sourceText": "If you give me a job, I I'll do that.",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 376.24,
+    "end": 379.63726027397263,
+    "text": "もちろん、仕事をあげるよ。",
+    "sourceText": "Of course, I'll give you a job.",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 379.63726027397263,
+    "end": 384.24,
+    "text": "聞こうと思ってたんだけど、どうやって看板作りを始めたの？",
+    "sourceText": "I was meaning to ask, how did you get into making signs?",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 384.24,
+    "end": 388.790243902439,
+    "text": "小さい頃から絵が描けたんです。",
+    "sourceText": "I know how to draw at uh when I was a little already.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 388.790243902439,
+    "end": 391.28,
+    "text": "じゃあ、今も絵を描いてるの？",
+    "sourceText": "So, do you do you still draw?",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 391.28,
+    "end": 393.009,
+    "text": "うん、描いてるよ。",
+    "sourceText": "Yeah, you do.",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 393.009,
+    "end": 395.2679523809524,
+    "text": "何を描くの？ちょっと待って。",
+    "sourceText": "What do you draw? Hold on.",
+    "sourceIndexes": [
+      152,
+      153
+    ]
+  },
+  {
+    "start": 395.2679523809524,
+    "end": 397.72,
+    "text": "見せますね。",
+    "sourceText": "I'll get you.",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 401.6,
+    "end": 403.12,
+    "text": "わあ、すごい。いいね、それ。",
+    "sourceText": "Oh, wow. That's a good one.",
+    "sourceIndexes": [
+      155,
+      156
+    ]
+  },
+  {
+    "start": 403.12,
+    "end": 404.4290909090909,
+    "text": "すごい。すごい。",
+    "sourceText": "Wow.",
+    "sourceIndexes": [
+      157,
+      158
+    ]
+  },
+  {
+    "start": 404.4290909090909,
+    "end": 408.52,
+    "text": "すごい。すごく上手だね。",
+    "sourceText": "Wow. Oh, you're very good.",
+    "sourceIndexes": [
+      159,
+      160
+    ]
+  },
+  {
+    "start": 411.28,
+    "end": 414.639,
+    "text": "今日はあそこの景色を描きたいんです。",
+    "sourceText": "So, today I like to draw the landscape over there.",
+    "sourceIndexes": [
+      161
+    ]
+  },
+  {
+    "start": 414.639,
+    "end": 416.08,
+    "text": "風景も描くの？",
+    "sourceText": "Oh, you do landscape, too?",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 416.08,
+    "end": 419.12,
+    "text": "まだやったことないけど、今日挑戦してみたいです。",
+    "sourceText": "I I didn't even try, but I like to try it today.",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 419.12,
+    "end": 422.88,
+    "text": "やってみよう。もう一つ見せたいものがあります。",
+    "sourceText": "Let's try it. I like to show one more thing.",
+    "sourceIndexes": [
+      164,
+      165
+    ]
+  },
+  {
+    "start": 422.88,
+    "end": 425.28,
+    "text": "わあ、これ大好き。",
+    "sourceText": "Oh man, I love this one.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 425.28,
+    "end": 430,
+    "text": "何これ、すごいね！",
+    "sourceText": "[laughter] Oh, dude, what is going on?",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 430,
+    "end": 431.759,
+    "text": "すごくいい。",
+    "sourceText": "It's so good.",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 431.759,
+    "end": 433.919,
+    "text": "これを漫画にするつもりなんです。",
+    "sourceText": "So, this is going to be like a comic.",
+    "sourceIndexes": [
+      169
+    ]
+  },
+  {
+    "start": 433.919,
+    "end": 435.4765853658536,
+    "text": "うん、すごくかっこいい。",
+    "sourceText": "Yeah, that's so cool.",
+    "sourceIndexes": [
+      170
+    ]
+  },
+  {
+    "start": 435.4765853658536,
+    "end": 439.919,
+    "text": "それで、何が漫画を始めるきっかけになったの？",
+    "sourceText": "And so, what [music] inspired you to just start doing comic books?",
+    "sourceIndexes": [
+      171,
+      172
+    ]
+  },
+  {
+    "start": 439.919,
+    "end": 441.919,
+    "text": "思い出のためです。",
+    "sourceText": "Because of memories.",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 441.919,
+    "end": 444.57925,
+    "text": "兵役中に、",
+    "sourceText": "It's my uh when I was in the military service, I just",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 444.57925,
+    "end": 450.16,
+    "text": "思い出を文章や絵にしたんです。",
+    "sourceText": "put some memory to like writing or drawing or something.",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 450.16,
+    "end": 452.0718787878788,
+    "text": "本当にいいアイデアだね。うん。",
+    "sourceText": "God, that's a really good idea. Yeah.",
+    "sourceIndexes": [
+      175,
+      176
+    ]
+  },
+  {
+    "start": 452.0718787878788,
+    "end": 454.72,
+    "text": "それと、お金を稼ぐためでもあります。",
+    "sourceText": "And also for the make money.",
+    "sourceIndexes": [
+      177
+    ]
+  },
+  {
+    "start": 454.72,
+    "end": 456.54,
+    "text": "ああ、そうか。いいアイデアだね。",
+    "sourceText": "Oh, yeah. Okay. Okay. Okay. Good idea.",
+    "sourceIndexes": [
+      178
+    ]
+  },
+  {
+    "start": 456.54,
+    "end": 458.56,
+    "text": "[笑い]。",
+    "sourceText": "[laughter]",
+    "sourceIndexes": [
+      179
+    ]
+  },
+  {
+    "start": 467.44,
+    "end": 472.639,
+    "text": "タクシーの仕事が、引退する前の最後の仕事になると思いますか？",
+    "sourceText": "Do you think that [music] to tribe taxi is going to be your final job before you retire?",
+    "sourceIndexes": [
+      180
+    ]
+  },
+  {
+    "start": 472.639,
+    "end": 474.16,
+    "text": "これが最後の仕事になるでしょう。",
+    "sourceText": "This is going to be my final job.",
+    "sourceIndexes": [
+      181
+    ]
+  },
+  {
+    "start": 474.16,
+    "end": 475.599,
+    "text": "そう言うと思ってたよ。",
+    "sourceText": "That's what I'm talking about. [music]",
+    "sourceIndexes": [
+      182
+    ]
+  },
+  {
+    "start": 475.599,
+    "end": 477.759,
+    "text": "それを聞いて嬉しいよ。ありがとう。",
+    "sourceText": "See, that makes me happy. Thank you.",
+    "sourceIndexes": [
+      183,
+      184
+    ]
+  },
+  {
+    "start": 477.759,
+    "end": 479.09,
+    "text": "私もそう思います。",
+    "sourceText": "I think it will be, too.",
+    "sourceIndexes": [
+      185
+    ]
+  },
+  {
+    "start": 479.09,
+    "end": 482.04499999999996,
+    "text": "本当にそう思います。あなたはとても才能があります。",
+    "sourceText": "I really do. You're very talented.",
+    "sourceIndexes": [
+      186,
+      187
+    ]
+  },
+  {
+    "start": 482.04499999999996,
+    "end": 490,
+    "text": "[音楽][音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      188,
+      189
+    ]
+  },
+  {
+    "start": 492.565,
+    "end": 494.585,
+    "text": "[音楽]、",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      190
+    ]
+  },
+  {
+    "start": 494.8,
+    "end": 498.8,
+    "text": "この地域は私たちの国ととても似ています。",
+    "sourceText": "This region very similar to our country.",
+    "sourceIndexes": [
+      191
+    ]
+  },
+  {
+    "start": 498.8,
+    "end": 502.2157142857143,
+    "text": "初めてアメリカに来た時、",
+    "sourceText": "When I come to the America at first time,",
+    "sourceIndexes": [
+      192
+    ]
+  },
+  {
+    "start": 502.2157142857143,
+    "end": 506.37,
+    "text": "最初の印象は変だなと思いました。",
+    "sourceText": "my first impression was like weird.",
+    "sourceIndexes": [
+      192
+    ]
+  },
+  {
+    "start": 506.37,
+    "end": 508.94,
+    "text": "山がないんです。",
+    "sourceText": "There's no mountain.",
+    "sourceIndexes": [
+      193
+    ]
+  },
+  {
+    "start": 508.94,
+    "end": 512.56,
+    "text": "ただ平らなだけでした。",
+    "sourceText": "It just [music] flat.",
+    "sourceIndexes": [
+      194
+    ]
+  },
+  {
+    "start": 512.56,
+    "end": 515.0089278350515,
+    "text": "しばらくして、人々が山のことを教えてくれました。",
+    "sourceText": "After like a while, people tell me about the mountain.",
+    "sourceIndexes": [
+      195
+    ]
+  },
+  {
+    "start": 515.0089278350515,
+    "end": 516.959,
+    "text": "それから毎週末、ここに来ました。はい。",
+    "sourceText": "After that, every weekend I came here. Yeah.",
+    "sourceIndexes": [
+      196,
+      197
+    ]
+  },
+  {
+    "start": 516.959,
+    "end": 519.9154601769911,
+    "text": "自然の中で過ごすことはとても大切だと思います。",
+    "sourceText": "I think it's very, very important to spend time in nature.",
+    "sourceIndexes": [
+      198
+    ]
+  },
+  {
+    "start": 519.9154601769911,
+    "end": 523.2,
+    "text": "私はミネソタで育ちました。ミネソタに行ったことはありますか？ああ、はい。",
+    "sourceText": "I grew up in Minnesota. Have you ever been to Minnesota? Oh, yeah.",
+    "sourceIndexes": [
+      199,
+      200,
+      201
+    ]
+  },
+  {
+    "start": 523.2,
+    "end": 524.7,
+    "text": "行ったことがあるんですか？行ったことがあります。はい。",
+    "sourceText": "You've been? I've been there. Yeah.",
+    "sourceIndexes": [
+      202,
+      203
+    ]
+  },
+  {
+    "start": 524.7,
+    "end": 526.626,
+    "text": "そこで何をしてたんですか？",
+    "sourceText": "What the heck were you doing there?",
+    "sourceIndexes": [
+      204
+    ]
+  },
+  {
+    "start": 526.626,
+    "end": 531.92,
+    "text": "[笑い] ただ見て回ってキャンプして…ああ、だから自然愛好家なんですね。",
+    "sourceText": "[laughter] I just look around and camp and Oh, so you're a nature enthusiast.",
+    "sourceIndexes": [
+      205
+    ]
+  },
+  {
+    "start": 531.92,
+    "end": 534.92,
+    "text": "はい。",
+    "sourceText": "Yeah.",
+    "sourceIndexes": [
+      206
+    ]
+  },
+  {
+    "start": 535.92,
+    "end": 537.92,
+    "text": "ヤングさん、質問があります。",
+    "sourceText": "Young, I have a question.",
+    "sourceIndexes": [
+      207
+    ]
+  },
+  {
+    "start": 537.92,
+    "end": 540.8,
+    "text": "アメリカン・ドリームを達成したと感じますか？",
+    "sourceText": "Do you feel like you've achieved the American dream?",
+    "sourceIndexes": [
+      208
+    ]
+  },
+  {
+    "start": 540.8,
+    "end": 544.4964102564102,
+    "text": "いいえ、まだ途中です。",
+    "sourceText": "No, I'm still in the middle of it.",
+    "sourceIndexes": [
+      209
+    ]
+  },
+  {
+    "start": 544.4964102564102,
+    "end": 548.3357542735042,
+    "text": "はい。漫画本を出版できたら、",
+    "sourceText": "Yeah. If I publish my cartoon",
+    "sourceIndexes": [
+      210
+    ]
+  },
+  {
+    "start": 548.3357542735042,
+    "end": 551.421,
+    "text": "そう言えるでしょう。",
+    "sourceText": "book, then I can say that.",
+    "sourceIndexes": [
+      211
+    ]
+  },
+  {
+    "start": 551.421,
+    "end": 553.92,
+    "text": "はい。[音楽]、",
+    "sourceText": "Yeah. [music]",
+    "sourceIndexes": [
+      212,
+      213
+    ]
+  },
+  {
+    "start": 553.92,
+    "end": 559.0726760563381,
+    "text": "最初の目標は、この世界に笑いを届けることです。",
+    "sourceText": "First goal is just I like to laugh something to this world.",
+    "sourceIndexes": [
+      214
+    ]
+  },
+  {
+    "start": 559.0726760563381,
+    "end": 560.7391549295775,
+    "text": "それが大事なんです。",
+    "sourceText": "That's the thing.",
+    "sourceIndexes": [
+      215
+    ]
+  },
+  {
+    "start": 560.7391549295775,
+    "end": 563.68,
+    "text": "二つ目は、漫画は楽しいものでなければならないと信じています。",
+    "sourceText": "And the second thing I believe cartoon must be fun.",
+    "sourceIndexes": [
+      216
+    ]
+  },
+  {
+    "start": 563.68,
+    "end": 565.76,
+    "text": "ああ、漫画は面白くなければならないと。",
+    "sourceText": "Oh, you believe cartoon must be funny.",
+    "sourceIndexes": [
+      217
+    ]
+  },
+  {
+    "start": 565.76,
+    "end": 568.48,
+    "text": "はい、そうです。それは良いルールですね。",
+    "sourceText": "Yeah. Yeah. Okay, that's a good rule.",
+    "sourceIndexes": [
+      218,
+      219
+    ]
+  },
+  {
+    "start": 568.48,
+    "end": 570.64,
+    "text": "父の面白い話をしましょう。",
+    "sourceText": "I'll tell you a funny story about my dad.",
+    "sourceIndexes": [
+      220
+    ]
+  },
+  {
+    "start": 570.64,
+    "end": 574.2761643835616,
+    "text": "どんな話ですか？父がアメリカに来た時、",
+    "sourceText": "What is it? So, [music] when my dad moved to America, he saw",
+    "sourceIndexes": [
+      221
+    ]
+  },
+  {
+    "start": 574.2761643835616,
+    "end": 580.9895890410959,
+    "text": "エジプトのテレビでいつもハンバーガーを見てて、「わあ、美味しそうだな」って思ってたんだ、",
+    "sourceText": "on TV in Egypt, he always saw hamburgers and [music] he's",
+    "sourceIndexes": [
+      221
+    ]
+  },
+  {
+    "start": 580.9895890410959,
+    "end": 583.6,
+    "text": "。それでアメリカに来て、",
+    "sourceText": "like, \"Wow, that looks delicious.\" So, when he came to America",
+    "sourceIndexes": [
+      222
+    ]
+  },
+  {
+    "start": 583.6,
+    "end": 586.971914893617,
+    "text": "初日、「ハンバーガーを食べるぞ」って言って、",
+    "sourceText": "first day, he was like, \"I'm going to get a hamburger.\"",
+    "sourceIndexes": [
+      223
+    ]
+  },
+  {
+    "start": 586.971914893617,
+    "end": 590.64,
+    "text": "ホワイトキャッスルっていうレストランに行ったんだ。",
+    "sourceText": "So, he went to a restaurant called White Castle.",
+    "sourceIndexes": [
+      223
+    ]
+  },
+  {
+    "start": 590.64,
+    "end": 592.72,
+    "text": "ホワイトキャッスル。ホワイトキャッスルに行ったことある？ はい。",
+    "sourceText": "White Castle. Have you ever been to White Castle? Yes.",
+    "sourceIndexes": [
+      224,
+      225
+    ]
+  },
+  {
+    "start": 592.72,
+    "end": 594.05,
+    "text": "はい。",
+    "sourceText": "Okay.",
+    "sourceIndexes": [
+      226
+    ]
+  },
+  {
+    "start": 594.05,
+    "end": 595.3689655172413,
+    "text": "バーガーがすごく小さいんだ。小さい。うん。",
+    "sourceText": "The burgers are very, very small. Yeah.",
+    "sourceIndexes": [
+      227,
+      228,
+      229
+    ]
+  },
+  {
+    "start": 595.3689655172413,
+    "end": 598.6076267748479,
+    "text": "それでカウンターに行って「ハンバーガーを一つください」って言ったんだ。",
+    "sourceText": "So he went and he went to the counter and he said, \"One hamburger, please.\"",
+    "sourceIndexes": [
+      230
+    ]
+  },
+  {
+    "start": 598.6076267748479,
+    "end": 601.6715456389452,
+    "text": "そしたら小さなハンバーガーが出てきて、「なんだこれ？」って思って、",
+    "sourceText": "And they gave him a hamburger and it was very small and he was like, \"What",
+    "sourceIndexes": [
+      230
+    ]
+  },
+  {
+    "start": 601.6715456389452,
+    "end": 603.92,
+    "text": "、またカウンターに戻って「あと5つか、",
+    "sourceText": "the hell?\" So he went back to the counter and he said, \"I'll take five or",
+    "sourceIndexes": [
+      230
+    ]
+  },
+  {
+    "start": 603.92,
+    "end": 608.3133944954128,
+    "text": "6つ追加で」って頼んだんだ。次の日には「わあ、ハンバーガー大好きだ」ってなって。",
+    "sourceText": "six more burgers.\" And the next day he was like, \"Wow, I love hamburgers.",
+    "sourceIndexes": [
+      231
+    ]
+  },
+  {
+    "start": 608.3133944954128,
+    "end": 610.88,
+    "text": "「別のハンバーガーも試してみよう」って、バーガーキングに行ったんだ。はい。",
+    "sourceText": "I'm going to try another hamburger.\" [laughter] So he went to Burger King. Yes.",
+    "sourceIndexes": [
+      232,
+      233
+    ]
+  },
+  {
+    "start": 610.88,
+    "end": 616.48,
+    "text": "そこでまたハンバーガーを5つ注文したんだけど、今度のはすごく大きかったんだ。",
+    "sourceText": "And he ordered and he ordered five hamburgers [laughter] and then they're really big.",
+    "sourceIndexes": [
+      234
+    ]
+  },
+  {
+    "start": 616.48,
+    "end": 618.0264054054054,
+    "text": "で、父は「わけがわからない」って。理解できない。",
+    "sourceText": "And he was like, \"This is so confusing. I don't understand.",
+    "sourceIndexes": [
+      235,
+      236
+    ]
+  },
+  {
+    "start": 618.0264054054054,
+    "end": 622.399,
+    "text": "「アメリカは本当に混乱する」ってね。でも、すごく移民らしい話だよね。",
+    "sourceText": "America's very confusing.\" [laughter] But that's a very immigrant story, you know.",
+    "sourceIndexes": [
+      237
+    ]
+  },
+  {
+    "start": 622.399,
+    "end": 624.16,
+    "text": "うん。わあ、いい話だね。ありがとう。",
+    "sourceText": "Yeah. Wow. That's good. Thank you.",
+    "sourceIndexes": [
+      238
+    ]
+  },
+  {
+    "start": 624.16,
+    "end": 626.48,
+    "text": "話してくれてありがとう。",
+    "sourceText": "Thanks for sharing me.",
+    "sourceIndexes": [
+      239
+    ]
+  },
+  {
+    "start": 626.48,
+    "end": 628.0986046511629,
+    "text": "わあ、きれいな湖だ。",
+    "sourceText": "Wow, beautiful lake.",
+    "sourceIndexes": [
+      240
+    ]
+  },
+  {
+    "start": 628.0986046511629,
+    "end": 633.44,
+    "text": "さっき父の思い出の話をしてたんだけど。",
+    "sourceText": "You know, when I was talking about like the memories of my father.",
+    "sourceIndexes": [
+      241
+    ]
+  },
+  {
+    "start": 633.44,
+    "end": 638.8357894736841,
+    "text": "はい。思い出の一つに、父とちょっとだけ釣りをしたことがあるんだ。",
+    "sourceText": "Yes. One of the memories I have is of me and him fishing a little bit.",
+    "sourceIndexes": [
+      242,
+      243
+    ]
+  },
+  {
+    "start": 638.8357894736841,
+    "end": 643.519,
+    "text": "それで、また釣りを覚えようかなと思ってるんだ。いつか娘と一緒にできるようにね。",
+    "sourceText": "So, I've been thinking about learning how to fish again so that I can share it with my daughter someday, maybe.",
+    "sourceIndexes": [
+      244
+    ]
+  },
+  {
+    "start": 643.519,
+    "end": 645.6,
+    "text": "私も釣りのことを考えてたんです。",
+    "sourceText": "I've been thinking about the fishing, too.",
+    "sourceIndexes": [
+      245
+    ]
+  },
+  {
+    "start": 645.6,
+    "end": 647.12,
+    "text": "本当？はい。",
+    "sourceText": "Really? Yeah.",
+    "sourceIndexes": [
+      246,
+      247
+    ]
+  },
+  {
+    "start": 647.12,
+    "end": 649.04,
+    "text": "ただリラックスできて、平和でね。",
+    "sourceText": "Just relaxing and peaceful, you know.",
+    "sourceIndexes": [
+      248
+    ]
+  },
+  {
+    "start": 649.04,
+    "end": 651.44,
+    "text": "うんうん。",
+    "sourceText": "Uh-huh.",
+    "sourceIndexes": [
+      249
+    ]
+  },
+  {
+    "start": 651.44,
+    "end": 654.407,
+    "text": "さあ。",
+    "sourceText": "Here [music]",
+    "sourceIndexes": [
+      250
+    ]
+  },
+  {
+    "start": 658.24,
+    "end": 661.839,
+    "text": "着いたよ。ニューヨークからたった1時間だなんて信じられない。",
+    "sourceText": "we are. I can't believe it's only an hour out of New York City.",
+    "sourceIndexes": [
+      251,
+      252
+    ]
+  },
+  {
+    "start": 661.839,
+    "end": 664.0280909090909,
+    "text": "すごいな。",
+    "sourceText": "Oh man.",
+    "sourceIndexes": [
+      253
+    ]
+  },
+  {
+    "start": 664.0280909090909,
+    "end": 665.279,
+    "text": "わあ。",
+    "sourceText": "Wow.",
+    "sourceIndexes": [
+      254
+    ]
+  },
+  {
+    "start": 665.279,
+    "end": 670.9200000000001,
+    "text": "まるで山の中の町にいるみたいだ。",
+    "sourceText": "It feels like we're literally in a mountain town.",
+    "sourceIndexes": [
+      255
+    ]
+  },
+  {
+    "start": 671.519,
+    "end": 675,
+    "text": "すごく静かだね。",
+    "sourceText": "It's so quiet.",
+    "sourceIndexes": [
+      256
+    ]
+  },
+  {
+    "start": 676.16,
+    "end": 677.649,
+    "text": "お、いいね。",
+    "sourceText": "Oh, cool.",
+    "sourceIndexes": [
+      257
+    ]
+  },
+  {
+    "start": 677.649,
+    "end": 679.519,
+    "text": "イーゼルだ。それは何？椅子？",
+    "sourceText": "Easel. What's that? A chair?",
+    "sourceIndexes": [
+      258,
+      259
+    ]
+  },
+  {
+    "start": 679.519,
+    "end": 682.399,
+    "text": "はい。すごい。",
+    "sourceText": "Yes. Sick.",
+    "sourceIndexes": [
+      260,
+      261
+    ]
+  },
+  {
+    "start": 682.399,
+    "end": 686.04,
+    "text": "あ、この岩見て。",
+    "sourceText": "Oh, look at this rock.",
+    "sourceIndexes": [
+      262
+    ]
+  },
+  {
+    "start": 697.36,
+    "end": 699.17,
+    "text": "最高だね。",
+    "sourceText": "This is great.",
+    "sourceIndexes": [
+      263
+    ]
+  },
+  {
+    "start": 699.17,
+    "end": 700.7116666666666,
+    "text": "うん。よし。",
+    "sourceText": "Yeah. Okay.",
+    "sourceIndexes": [
+      264,
+      265
+    ]
+  },
+  {
+    "start": 700.7116666666666,
+    "end": 703.7199999999999,
+    "text": "それ何？",
+    "sourceText": "What is that thing?",
+    "sourceIndexes": [
+      266
+    ]
+  },
+  {
+    "start": 704.72,
+    "end": 707.279,
+    "text": "これが教えてくれるんだ。描く範囲をね。",
+    "sourceText": "So, it's going to tell you [music] that's the area that you're going to do.",
+    "sourceIndexes": [
+      267,
+      268
+    ]
+  },
+  {
+    "start": 707.279,
+    "end": 711.76,
+    "text": "家と水と、それから山を少し。",
+    "sourceText": "A little bit of house and waters and then mountains.",
+    "sourceIndexes": [
+      269
+    ]
+  },
+  {
+    "start": 711.76,
+    "end": 714.76,
+    "text": "うん。",
+    "sourceText": "Yeah.",
+    "sourceIndexes": [
+      270
+    ]
+  },
+  {
+    "start": 716.72,
+    "end": 718.324255319149,
+    "text": "これにしようかな。",
+    "sourceText": "I think I'm going to do this.",
+    "sourceIndexes": [
+      271
+    ]
+  },
+  {
+    "start": 718.324255319149,
+    "end": 721.92,
+    "text": "枝を描いて、それから家を描くよ。",
+    "sourceText": "I'm going to do the branches, but then I'm going to do the house.",
+    "sourceIndexes": [
+      272
+    ]
+  },
+  {
+    "start": 721.92,
+    "end": 723.2533333333333,
+    "text": "難しいと思う？",
+    "sourceText": "Do you think that's hard?",
+    "sourceIndexes": [
+      273
+    ]
+  },
+  {
+    "start": 723.2533333333333,
+    "end": 725.6533333333333,
+    "text": "だって枝がすごく近くて。",
+    "sourceText": "You know, like cuz the branches are so close.",
+    "sourceIndexes": [
+      274
+    ]
+  },
+  {
+    "start": 725.6533333333333,
+    "end": 727.839,
+    "text": "家は遠いから。わかる？",
+    "sourceText": "The house is so far. Do you know what I'm saying?",
+    "sourceIndexes": [
+      275,
+      276
+    ]
+  },
+  {
+    "start": 727.839,
+    "end": 730.079,
+    "text": "わかるよ。それで何が問題なの？",
+    "sourceText": "I know. Yeah. Then what's the problem there?",
+    "sourceIndexes": [
+      277
+    ]
+  },
+  {
+    "start": 730.079,
+    "end": 731.3069344262295,
+    "text": "問題じゃないよ。はい。",
+    "sourceText": "It's not a problem. Okay.",
+    "sourceIndexes": [
+      278,
+      279
+    ]
+  },
+  {
+    "start": 731.3069344262295,
+    "end": 733.2,
+    "text": "枝はやめとく。",
+    "sourceText": "I'm I'm not going to do the branches.",
+    "sourceIndexes": [
+      280
+    ]
+  },
+  {
+    "start": 733.2,
+    "end": 735.839,
+    "text": "枝のほうがいいよ。",
+    "sourceText": "The branch is better.",
+    "sourceIndexes": [
+      281
+    ]
+  },
+  {
+    "start": 735.839,
+    "end": 737.8472075471698,
+    "text": "それはとても重要なポイントです、さん。",
+    "sourceText": "That's a very important point, sir.",
+    "sourceIndexes": [
+      282
+    ]
+  },
+  {
+    "start": 737.8472075471698,
+    "end": 741.089,
+    "text": "それを描かないと。難しそうだけど、やるよ。",
+    "sourceText": "Have to show that. That seems hard, but I'll do it.",
+    "sourceIndexes": [
+      283,
+      284
+    ]
+  },
+  {
+    "start": 741.089,
+    "end": 742.959,
+    "text": "ありがとう。ありがとう。ありがとう。",
+    "sourceText": "Thank you.",
+    "sourceIndexes": [
+      285,
+      286,
+      287
+    ]
+  },
+  {
+    "start": 742.959,
+    "end": 744.32,
+    "text": "ありがとう。ありがとう。",
+    "sourceText": "Thank you.",
+    "sourceIndexes": [
+      288,
+      289
+    ]
+  },
+  {
+    "start": 744.32,
+    "end": 747.0126315789474,
+    "text": "こっちこそありがとう。いや、私こそありがとう。",
+    "sourceText": "I thank you more. No, I thank you more.",
+    "sourceIndexes": [
+      290,
+      291
+    ]
+  },
+  {
+    "start": 747.0126315789474,
+    "end": 748.48,
+    "text": "私のほうが感謝してる。",
+    "sourceText": "I thank you more.",
+    "sourceIndexes": [
+      292
+    ]
+  },
+  {
+    "start": 748.48,
+    "end": 751.48,
+    "text": "はい。",
+    "sourceText": "Okay.",
+    "sourceIndexes": [
+      293
+    ]
+  },
+  {
+    "start": 763.083,
+    "end": 765.103,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      294
+    ]
+  },
+  {
+    "start": 773.563,
+    "end": 775.583,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      295
+    ]
+  },
+  {
+    "start": 780,
+    "end": 781.41,
+    "text": "ヤングさん、もうすぐ終わりそうです。",
+    "sourceText": "Young's almost done.",
+    "sourceIndexes": [
+      296
+    ]
+  },
+  {
+    "start": 781.41,
+    "end": 783.279,
+    "text": "[音楽]いいですね。",
+    "sourceText": "[music] I love it.",
+    "sourceIndexes": [
+      297,
+      298
+    ]
+  },
+  {
+    "start": 783.279,
+    "end": 785.76,
+    "text": "あんまり気に入らないけど…うん。",
+    "sourceText": "Uh I don't really like it, but Yeah.",
+    "sourceIndexes": [
+      299
+    ]
+  },
+  {
+    "start": 785.76,
+    "end": 787.12,
+    "text": "気に入らないの？",
+    "sourceText": "You don't like it?",
+    "sourceIndexes": [
+      300
+    ]
+  },
+  {
+    "start": 787.12,
+    "end": 788.56,
+    "text": "自分のがあんまり。",
+    "sourceText": "I don't really like mine.",
+    "sourceIndexes": [
+      301
+    ]
+  },
+  {
+    "start": 788.56,
+    "end": 791.2,
+    "text": "あなたのはいいよ。いや、僕のはダメ。あなたのはいい。",
+    "sourceText": "Yours good. No, mine's bad. Yours is good.",
+    "sourceIndexes": [
+      302,
+      303
+    ]
+  },
+  {
+    "start": 791.2,
+    "end": 793.415076923077,
+    "text": "でも、まだいい感じだよ。",
+    "sourceText": "But it still looks good.",
+    "sourceIndexes": [
+      304
+    ]
+  },
+  {
+    "start": 793.415076923077,
+    "end": 798.399,
+    "text": "うん、空や雲、木、山、建物。",
+    "sourceText": "Yeah, the skies and clouds and trees and mountains and buildings.",
+    "sourceIndexes": [
+      305
+    ]
+  },
+  {
+    "start": 798.399,
+    "end": 800.639,
+    "text": "で、風景画は初めて？",
+    "sourceText": "So, is this your first time doing a landscape?",
+    "sourceIndexes": [
+      306
+    ]
+  },
+  {
+    "start": 800.639,
+    "end": 802.1304109589041,
+    "text": "初めてです。難しいね。",
+    "sourceText": "This is first time. It's hard.",
+    "sourceIndexes": [
+      307,
+      308
+    ]
+  },
+  {
+    "start": 802.1304109589041,
+    "end": 806.48,
+    "text": "ちょっと、ヤング、僕の簡単なスケッチを描いてくれない？",
+    "sourceText": "Wait, Young, will you draw me just just like very basic sketch?",
+    "sourceIndexes": [
+      309
+    ]
+  },
+  {
+    "start": 806.48,
+    "end": 809.3447619047619,
+    "text": "あなたはとてもシンプル。",
+    "sourceText": "You very simple.",
+    "sourceIndexes": [
+      310
+    ]
+  },
+  {
+    "start": 809.3447619047619,
+    "end": 811.889,
+    "text": "うん。君をスケッチするよ。",
+    "sourceText": "Yeah. I'll sketch you.",
+    "sourceIndexes": [
+      311,
+      312
+    ]
+  },
+  {
+    "start": 811.889,
+    "end": 813.12,
+    "text": "僕をスケッチして。わあ。",
+    "sourceText": "You sketch me. Wow.",
+    "sourceIndexes": [
+      313,
+      314
+    ]
+  },
+  {
+    "start": 813.12,
+    "end": 814.639,
+    "text": "準備はいい？",
+    "sourceText": "Are you ready?",
+    "sourceIndexes": [
+      315
+    ]
+  },
+  {
+    "start": 814.639,
+    "end": 817.9590000000001,
+    "text": "準備できてるよ。",
+    "sourceText": "I'm ready.",
+    "sourceIndexes": [
+      316
+    ]
+  },
+  {
+    "start": 833.12,
+    "end": 834.959,
+    "text": "ヤング、これ見て。",
+    "sourceText": "Young, check this out.",
+    "sourceIndexes": [
+      317
+    ]
+  },
+  {
+    "start": 834.959,
+    "end": 837.76,
+    "text": "おお、いいね。わあ、そうだね。",
+    "sourceText": "Oh, yeah. Wow. Yeah.",
+    "sourceIndexes": [
+      318,
+      319
+    ]
+  },
+  {
+    "start": 837.76,
+    "end": 839.168,
+    "text": "そう。まさに。",
+    "sourceText": "Right. Exactly.",
+    "sourceIndexes": [
+      320,
+      321
+    ]
+  },
+  {
+    "start": 839.168,
+    "end": 842.56,
+    "text": "同じ僕だ。これでいい？",
+    "sourceText": "Same me. [laughter] Is this okay?",
+    "sourceIndexes": [
+      322,
+      323
+    ]
+  },
+  {
+    "start": 842.56,
+    "end": 844.9168,
+    "text": "すごくいいよ、すごい。",
+    "sourceText": "That's really good, man.",
+    "sourceIndexes": [
+      324
+    ]
+  },
+  {
+    "start": 844.9168,
+    "end": 846.2915999999999,
+    "text": "あ、ありがとう。",
+    "sourceText": "Oh, thank you.",
+    "sourceIndexes": [
+      325
+    ]
+  },
+  {
+    "start": 846.2915999999999,
+    "end": 847.4916,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      326
+    ]
+  },
+  {
+    "start": 849.544,
+    "end": 851.564,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      327
+    ]
+  },
+  {
+    "start": 852.32,
+    "end": 855.279,
+    "text": "奥さんと一番好きだったアクティビティは何ですか？",
+    "sourceText": "What was the favorite activity that you did with your wife?",
+    "sourceIndexes": [
+      328
+    ]
+  },
+  {
+    "start": 855.279,
+    "end": 859.8,
+    "text": "カヤックと自転車です。",
+    "sourceText": "Kayaking and the bicycle.",
+    "sourceIndexes": [
+      329
+    ]
+  },
+  {
+    "start": 859.839,
+    "end": 862.32,
+    "text": "これのどこが好きか分かる？何？",
+    "sourceText": "You know what I like about all of this? What?",
+    "sourceIndexes": [
+      330,
+      331
+    ]
+  },
+  {
+    "start": 862.32,
+    "end": 864.079,
+    "text": "静かなところ。",
+    "sourceText": "It's quiet.",
+    "sourceIndexes": [
+      332
+    ]
+  },
+  {
+    "start": 864.079,
+    "end": 867.7131666666667,
+    "text": "同感です。うん、間違いない。",
+    "sourceText": "I agree. Yeah, definitely.",
+    "sourceIndexes": [
+      333,
+      334
+    ]
+  },
+  {
+    "start": 867.7131666666667,
+    "end": 870.7270588235293,
+    "text": "うん。おお、この人見て。",
+    "sourceText": "Yeah. Oh, look at this guy.",
+    "sourceIndexes": [
+      335,
+      336
+    ]
+  },
+  {
+    "start": 870.7270588235293,
+    "end": 874.95125,
+    "text": "釣りをしてる。何か釣れるか見てみよう。",
+    "sourceText": "He's fishing. See if he catch anything.",
+    "sourceIndexes": [
+      337,
+      338
+    ]
+  },
+  {
+    "start": 874.95125,
+    "end": 876.15125,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      339
+    ]
+  },
+  {
+    "start": 877.04,
+    "end": 879.12,
+    "text": "食いついてる？",
+    "sourceText": "They biting?",
+    "sourceIndexes": [
+      340
+    ]
+  },
+  {
+    "start": 879.12,
+    "end": 883.12,
+    "text": "いや、さっきまでは食ってたけど、今は食ってない。",
+    "sourceText": "No, they were biting earlier, but they're not biting right now.",
+    "sourceIndexes": [
+      341
+    ]
+  },
+  {
+    "start": 883.12,
+    "end": 884.72,
+    "text": "何を釣ってるんですか？",
+    "sourceText": "What are you fishing for?",
+    "sourceIndexes": [
+      342
+    ]
+  },
+  {
+    "start": 884.72,
+    "end": 887.5326279069767,
+    "text": "実はクラッピーを狙ってるんだけど、",
+    "sourceText": "I'm actually fishing for crappie, but I put",
+    "sourceIndexes": [
+      343
+    ]
+  },
+  {
+    "start": 887.5326279069767,
+    "end": 891.199,
+    "text": "ブルーギルが釣れないかと思ってミミズをつけてるんだ。",
+    "sourceText": "some worms on hoping I could catch a bluegill.",
+    "sourceIndexes": [
+      343
+    ]
+  },
+  {
+    "start": 891.199,
+    "end": 893.279,
+    "text": "きっと一匹釣れると思うよ。",
+    "sourceText": "I bet I could catch one.",
+    "sourceIndexes": [
+      344
+    ]
+  },
+  {
+    "start": 893.279,
+    "end": 895.44,
+    "text": "釣れるかもしれないね。",
+    "sourceText": "You might be able to.",
+    "sourceIndexes": [
+      345
+    ]
+  },
+  {
+    "start": 895.44,
+    "end": 897.8541176470588,
+    "text": "じゃあ、竿を一本使ってもいい？うん。",
+    "sourceText": "Does that mean I can use one of your rods? Yep.",
+    "sourceIndexes": [
+      346,
+      347
+    ]
+  },
+  {
+    "start": 897.8541176470588,
+    "end": 900,
+    "text": "使い方を教えるよ。使い方は分かってる。",
+    "sourceText": "I'll show you how to use them. I know how to use it.",
+    "sourceIndexes": [
+      348,
+      349
+    ]
+  }
+]

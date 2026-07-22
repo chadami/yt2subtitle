@@ -1,0 +1,2139 @@
+[
+  {
+    "start": 0,
+    "end": 3.919,
+    "text": "ほとんどのClaude Designのチュートリアルは、すぐに始めろと言います。",
+    "sourceText": "Most cloud design tutorials tell you to jump right in.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 3.919,
+    "end": 6.7993,
+    "text": "テンプレートを選んで名前を付け、プロンプトを打ち始めるだけ。",
+    "sourceText": "Pick a template, give it a name, and just start prompting,",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 6.7993,
+    "end": 9.90364,
+    "text": "でも、それはClaude Designの本来の使い方ではありません。",
+    "sourceText": "which is not how cloud design is designed to work, pun intended,",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 9.90364,
+    "end": 13.12,
+    "text": "ダジャレです。なぜなら、そうすると非常にありきたりなものができてしまい、",
+    "sourceText": "because you end up with something incredibly generic and",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 13.12,
+    "end": 15.46782608695652,
+    "text": "使い物にならないスライドを救おうとして、",
+    "sourceText": "you waste even more time in tokens",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 15.46782608695652,
+    "end": 18.16,
+    "text": "さらにトークンと時間を無駄にすることになるからです。",
+    "sourceText": "trying to save those unusable slides.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 18.16,
+    "end": 22.47263492063492,
+    "text": "そこでこの動画では、事前に3つの簡単なファイルを準備することで、",
+    "sourceText": "So, in this video, I'll show you how preparing three simple files ahead of time",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 22.47263492063492,
+    "end": 27.36888888888889,
+    "text": "こんな悲惨な状態から、こんな洗練されたビジュアルに変える方法をお見せします。",
+    "sourceText": "helps you go from disasters like this to polished visuals that look like this.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 27.36888888888889,
+    "end": 32.895,
+    "text": "そして何より、行った改善がすべて将来のデザインにも引き継がれることです。",
+    "sourceText": "And the best part is every improvement you make carries over to all future designs.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 32.895,
+    "end": 34.6422,
+    "text": "さあ、始めましょう。",
+    "sourceText": "Let's get started.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 34.6422,
+    "end": 41.2,
+    "text": "嘘じゃない証拠に、これが最近有料ワークショップで使った実際のスライド資料です。",
+    "sourceText": "To prove I'm not bullshitting you, this is the actual deck I recently used to run a paid workshop.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 41.2,
+    "end": 45.12,
+    "text": "そしてこちらは今作業中のプレゼンで、間違いなくもっと良く見えます。",
+    "sourceText": "And this is a presentation I'm working on right now, which arguably looks even better.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 45.12,
+    "end": 50.16,
+    "text": "これから10〜15分で、これをゼロから再現する方法を学びます。",
+    "sourceText": "And we're going to learn how to recreate this from scratch in [music] the next 10 to 15 minutes.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 50.16,
+    "end": 52.079,
+    "text": "そのために、3つの簡単なステップを踏みます。",
+    "sourceText": "And to do this, we're going to follow three simple steps.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 52.079,
+    "end": 55.803888888888885,
+    "text": "まず、無料で公開されているリソースから、",
+    "sourceText": "First, we're going to create something called a design.md file in",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 55.803888888888885,
+    "end": 60.16,
+    "text": "1分以内でDESIGN.mdファイルを作成します。",
+    "sourceText": "less than a minute from free and publicly available resources.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 60.16,
+    "end": 62.504960451977404,
+    "text": "次に、そのDESIGN.mdファイルを使って、",
+    "sourceText": "Then, we'll use that design.mmd file to build",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 62.504960451977404,
+    "end": 65.49707246376812,
+    "text": "Claude Design内でデザインシステムと呼ばれるものを作ります。",
+    "sourceText": "something called a design system within claw design.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 65.49707246376812,
+    "end": 69.74084197643322,
+    "text": "そして最後に、そのデザインシステムを使って再利用可能なプレゼンテーションテンプレート、",
+    "sourceText": "And finally, we'll use that design system to create a",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 69.74084197643322,
+    "end": 72.31778532740076,
+    "text": "を作成します。あなたのスタイルに合い、",
+    "sourceText": "reusable presentation template, one that matches your",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 72.31778532740076,
+    "end": 75.25708219178081,
+    "text": "フィードバックを与えるたびに改善されていきます。",
+    "sourceText": "style and gets better every time you give it feedback.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 75.25708219178081,
+    "end": 77.74608154836031,
+    "text": "今日はスライドに焦点を当てていますが、",
+    "sourceText": "And even though we're focusing on slides",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 77.74608154836031,
+    "end": 80.64213333333333,
+    "text": "このワークフローはあらゆるデザインに適用できます。",
+    "sourceText": "today, this workflow applies to any design.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 80.64213333333333,
+    "end": 83.88586666666667,
+    "text": "例えば、こちらはソーシャルメディア用に作ったカルーセルスライドです。",
+    "sourceText": "For example, here are some carousel slides I made for social media.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 83.88586666666667,
+    "end": 89.2,
+    "text": "そしてこちらは、ニュースレターや仕事のメールキャンペーンで使っているブランドに合ったビジュアルです。",
+    "sourceText": "And here I have some onbrand visuals that I use in my newsletter and work email campaigns.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 89.2,
+    "end": 91.63463917525773,
+    "text": "最初のインプットから始めましょう。",
+    "sourceText": "Kicking things off with input number one.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 91.63463917525773,
+    "end": 94.96,
+    "text": "DESIGN.mdファイルが実際に何なのか、簡単に説明します。",
+    "sourceText": "Let's quickly go over what a design.md file actually is.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 94.96,
+    "end": 101.359,
+    "text": "簡単に言えば、デザインの見た目や雰囲気を決めるルールブックのようなテキストファイルです。",
+    "sourceText": "In plain English, it's just a text file that serves as a rulebook for how a design should look and feel.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 101.359,
+    "end": 106.19446153846154,
+    "text": "正確な色、フォント、間隔、そしてボタンやカードなどのスタイルが定義されています。",
+    "sourceText": "The exact colors, the fonts, the spacing, and how things like buttons and cards get styled.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 106.19446153846154,
+    "end": 108.56,
+    "text": "このファイルはどんなAIツールでも使えます。",
+    "sourceText": "This file works in any AI tool.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 108.56,
+    "end": 111.11435561240806,
+    "text": "そしてClaude Designはそれを、",
+    "sourceText": "So Claw Design is able to transform it into a design",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 111.11435561240806,
+    "end": 114.37813559322034,
+    "text": "Claude Design専用のデザインシステムに変換できます。",
+    "sourceText": "system that's native to Claw Design specifically.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 114.37813559322034,
+    "end": 119.759,
+    "text": "ちょうど、ソフトウェアをWindows PCではなくMacで動くように最適化するようなものです。",
+    "sourceText": "Sort of like taking a piece of software and optimizing it to run on a Mac instead of a Windows PC.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 119.759,
+    "end": 123.12460064412238,
+    "text": "幸いなことに、ゼロから書く必要はありません。",
+    "sourceText": "Now, we don't even need to write one from scratch because luckily for us, there's",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 123.12460064412238,
+    "end": 128.95111111111112,
+    "text": "主要ブランドのDESIGN.mdファイルが公開されているGitHubリポジトリがあるからです。",
+    "sourceText": "a public GitHub repository with the Design.mmd files from a bunch of major brands.",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 128.95111111111112,
+    "end": 132.50256410256412,
+    "text": "ご安心ください、リンクは下に貼っておきます。",
+    "sourceText": "And don't worry, I'll drop a link to this down below.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 132.50256410256412,
+    "end": 135.44022435897438,
+    "text": "今日のチュートリアルでは、StripeのDESIGN.mdファイルを、",
+    "sourceText": "For today's walkthrough, I'm just going to download Stripe's",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 135.44022435897438,
+    "end": 138.08,
+    "text": "ここのダウンロードボタンをクリックしてダウンロードします。",
+    "sourceText": "design.mmd file by clicking the download button right here.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 138.08,
+    "end": 140.7654581560284,
+    "text": "それからChatGPT、あるいはどんなAIチャットボットでも構いませんが、",
+    "sourceText": "And then we're just going to head on over to",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 140.7654581560284,
+    "end": 142.36693333333335,
+    "text": "そちらに移動します。",
+    "sourceText": "chatgbt or any AI chatbot for that matter.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 142.36693333333335,
+    "end": 145.11466666666666,
+    "text": "そのDESIGN.mdファイルをアップロードします。",
+    "sourceText": "Upload that design.mmd file.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 145.11466666666666,
+    "end": 149.06090666666665,
+    "text": "そしてこのプロンプトを使います。これも下にリンクを貼っておきます。",
+    "sourceText": "And then we're going to use this prompt, which I'll also link down below.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 149.06090666666665,
+    "end": 156.64,
+    "text": "「このデザインファイルから独自コンテンツを削除し、ご自身の判断で置き換えてください。」",
+    "sourceText": "Uh remove the proprietary content from this design file and replace them using your own judgment.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 156.64,
+    "end": 158.48242424242423,
+    "text": "「それ以外はすべてそのままにしてください。」",
+    "sourceText": "Uh keep everything else exactly as is.",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 158.48242424242423,
+    "end": 161.0725925925926,
+    "text": "そして名前を「Subtle Gradient Design System」に変更します。",
+    "sourceText": "And then we're just going to rename it to the subtle gradient design system.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 161.0725925925926,
+    "end": 163.54962962962964,
+    "text": "そしてこれを送信します。",
+    "sourceText": "And we're just going to send this off.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 163.54962962962964,
+    "end": 167.46990795673722,
+    "text": "ChatGPTが処理している間ですが、このファイルをクリーンアップする理由は、",
+    "sourceText": "And while Chacht is processing, the reason we clean this file is because",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 167.46990795673722,
+    "end": 171.66918918918918,
+    "text": "Claude Designが実際のブランドのガイドラインを直接コピーできないからです。",
+    "sourceText": "claw design won't directly copy a real brand's brand guidelines, right?",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 171.66918918918918,
+    "end": 176.10531645569623,
+    "text": "明らかに、詳細でありながら安全に使えるファイルが必要なのです。",
+    "sourceText": "Obviously, so we still need a file that's very detailed, but yet safe to use.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 176.10531645569623,
+    "end": 182.42264423076924,
+    "text": "ChatGPTが完了し、「Subtle Gradient Design System」と名前を変えたクリーンなMarkdownコピーができました。",
+    "sourceText": "Okay, trapt is done and it's given us a clean markdown copy renamed to the subtle gradient design system.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 182.42264423076924,
+    "end": 185.599,
+    "text": "ここをクリックしてダウンロードし、次のステップに進みます。",
+    "sourceText": "And we'll just click here to download it for the next step.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 185.599,
+    "end": 190,
+    "text": "次に、インプットその2です。まず、デザインシステムとは何かを簡単に説明します。",
+    "sourceText": "Moving on to input number two, let's first quickly cover what a design system actually is.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 190,
+    "end": 194.36520394265233,
+    "text": "簡単に言うと、デザインシステムはClaude Design用に最適化されたスタイルガイドで、",
+    "sourceText": "Put simply, a design system is a style guide optimized",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 194.36520394265233,
+    "end": 198.45517275985662,
+    "text": "生のDESIGN.mdファイルをClaude Designが実際に使える形に変換した、",
+    "sourceText": "for claw design where our raw design.mmd file is",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 198.45517275985662,
+    "end": 199.99921666666665,
+    "text": "ものです。",
+    "sourceText": "transformed into something clawed design can actually use.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 199.99921666666665,
+    "end": 203.76,
+    "text": "色、フォント、ロゴはすべて同じままです。",
+    "sourceText": "The colors, fonts, and logos all stay the same.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 203.76,
+    "end": 206.56,
+    "text": "ただ、Claude Design向けの形式に整えられているだけです。",
+    "sourceText": "It's now just formatted in a claw design friendly way.",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 206.56,
+    "end": 211.13297297297296,
+    "text": "つまり、デザインシステムができれば、スライドからカルーセル、単発のグラフィックまで、",
+    "sourceText": "So once the design system is built, anything we ask Claude Design to",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 211.13297297297296,
+    "end": 215.70594594594593,
+    "text": "Claude Designに頼むものはすべて一貫性がありブランドに合ったものになり、",
+    "sourceText": "make from slides to carousels to one-off graphics comes out consistent",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 215.70594594594593,
+    "end": 219.0742857142857,
+    "text": "見た目や雰囲気をいちいち説明し直す必要がなくなります。",
+    "sourceText": "and on brand without us ever having to reexplain our look and feel.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 219.0742857142857,
+    "end": 220.86941228070177,
+    "text": "これを始めるには、Claude Designで新しいチャットを開始します。",
+    "sourceText": "To kick this off, we start a new chat in Claw Design.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 220.86941228070177,
+    "end": 222.84594152046785,
+    "text": "まずは最新のOpusモデルを選びます。",
+    "sourceText": "I'll first pick the latest Opus model that already does",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 222.84594152046785,
+    "end": 225.599,
+    "text": "これはFableほどのトークン消費をせずに、すでに優れた仕事をしてくれます。",
+    "sourceText": "a great job without the token consumption of Fable.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 225.599,
+    "end": 227.50838636363636,
+    "text": "努力レベルを最大に設定し、",
+    "sourceText": "Set the effort to max and go down",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 227.50838636363636,
+    "end": 230.4,
+    "text": "下にスクロールして「デザインシステムを作成」をクリックします。",
+    "sourceText": "here and click create design system.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 230.4,
+    "end": 237.18757281553397,
+    "text": "最初のフィールドには、例として「グラデーションデザインシステム、繊細で美しくミニマル」といった簡単なものを書きます。",
+    "sourceText": "In the first field, I write something simple like gradient design system, subtle, beautiful, and minimalistic as an example.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 237.18757281553397,
+    "end": 241.12,
+    "text": "他のオプションがたくさんあっても怖がらないでください。",
+    "sourceText": "[music] Now, don't be intimidated by all these other options.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 241.12,
+    "end": 243.50481395348837,
+    "text": "一番下までスクロールして、",
+    "sourceText": "We can just scroll straight to the bottom and",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 243.50481395348837,
+    "end": 247.439,
+    "text": "さっき作ったデザインファイルをアップロードすればいいんです。",
+    "sourceText": "upload the design file we made a minute ago.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 247.439,
+    "end": 250.879,
+    "text": "今のところはこれで終わりです。これには約10〜20分かかります。",
+    "sourceText": "And that's it for now. This is going to take around 10 to 20 minutes.",
+    "sourceIndexes": [
+      48,
+      49
+    ]
+  },
+  {
+    "start": 250.879,
+    "end": 254.879,
+    "text": "でも早送りする前に、Claude Designが実際に何をしているのか簡単に説明します。",
+    "sourceText": "But before I fast forward, let me quickly explain what Claw Design is actually doing.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 254.879,
+    "end": 258.09265934065934,
+    "text": "基本的に、デザインファイルを読み込んでいます。",
+    "sourceText": "Basically, it's reading through the design.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 258.09265934065934,
+    "end": 261.08333022909295,
+    "text": "アップロードした.mdファイルを、実際に使えるルールブックに変換し、",
+    "sourceText": "MD file we just uploaded and turning that into a real",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 261.08333022909295,
+    "end": 263.6,
+    "text": "モックアップも生成して確認できるようにしています。",
+    "sourceText": "working rule book with mockups for us to review.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 263.6,
+    "end": 266.723675,
+    "text": "すべての色、フォント、スペーシングのルールを抽出し、",
+    "sourceText": "It's pulling out every color, font, and spacing rule, generating actual sample",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 266.723675,
+    "end": 271.919,
+    "text": "実際のサンプルスライドやコンポーネントを生成して、スタイルを実際に見てフィードバックできるようにしています。",
+    "sourceText": "slides, and components so we can see the style in action and give feedback.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 271.919,
+    "end": 276.08,
+    "text": "よし、Claude Designが完了しました。約15分かかりました。",
+    "sourceText": "All right, cloud design is done, and that took around 15 minutes.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 276.08,
+    "end": 278.73454545454547,
+    "text": "まず、ここのチェックボックスは無視して大丈夫です。",
+    "sourceText": "First, we can ignore this checkbox up",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 278.73454545454547,
+    "end": 281.04,
+    "text": "チームで作業しているわけではないので。",
+    "sourceText": "here since we're not working with a team.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 281.04,
+    "end": 290,
+    "text": "少しスクロールダウンすると、Claude Designが確認用のモックアップをたくさん生成してくれているのがわかります。",
+    "sourceText": "And if we just scroll down a bit, we can see claw design has generated a bunch of mockups for us to review.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 290,
+    "end": 292.76381013061484,
+    "text": "これらがすでにかなり見栄えが良い理由は、",
+    "sourceText": "And the reason why these already look pretty good",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 292.76381013061484,
+    "end": 295.76219178082187,
+    "text": "DESIGN.mdファイルから始めたからです。",
+    "sourceText": "is because we started with a design.md file.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 295.76219178082187,
+    "end": 299.7340639269406,
+    "text": "変更したいことがあれば、フィードバックボタンをクリックして、",
+    "sourceText": "If there's something I want to change, I can just click",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 299.7340639269406,
+    "end": 302.32,
+    "text": "簡単な英語で説明するだけです。",
+    "sourceText": "the feedback button and describe it in plain English.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 302.32,
+    "end": 310.71922413793106,
+    "text": "例えば、「dark 900の色を、自分のブランドパレットのこの16進コードに置き換えて」といった具合です。",
+    "sourceText": "for example, replace the dark 900 color with this hex code from my own brand palette.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 310.71922413793106,
+    "end": 315.68,
+    "text": "ですよね？[音楽]これを約1分後に早送りします。",
+    "sourceText": "Right? [music] And we're going to fast forward this to about after a minute.",
+    "sourceIndexes": [
+      60,
+      61,
+      62
+    ]
+  },
+  {
+    "start": 315.68,
+    "end": 320.88,
+    "text": "Claude Designが元の色を私の好みの色合いに置き換えてくれたのがわかります。",
+    "sourceText": "We can see that Claw Design has swapped the original color for my preferred shade.",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 320.88,
+    "end": 323.6667753763963,
+    "text": "次の部分は完全にオプションですが、",
+    "sourceText": "This next part is completely optional, but I'm just going to upload",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 323.6667753763963,
+    "end": 328.6937042253521,
+    "text": "デザインシステムをさらにカスタマイズするために、いくつか追加でアップロードします。",
+    "sourceText": "a few more things to customize our design system even further.",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 328.6937042253521,
+    "end": 331.4184126984127,
+    "text": "例えば、ボイスプリンシプル（話し方の指針）ファイルをアップロードできます。",
+    "sourceText": "For example, I can upload a voice principles file.",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 331.4184126984127,
+    "end": 336,
+    "text": "そうすれば、今後作成するコピーが実際に私らしい口調になります。",
+    "sourceText": "So any copywriting down the road actually sounds like me.",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 336,
+    "end": 339.04615384615386,
+    "text": "それから、実際のビジネスロゴと、",
+    "sourceText": "And I'll upload my actual business logo plus a few more icons",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 339.04615384615386,
+    "end": 344.4,
+    "text": "スライド資料で何度も使うことになるアイコンもいくつかアップロードします。",
+    "sourceText": "I know I'll be using in my slide decks again and again.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 344.4,
+    "end": 347.0677886497065,
+    "text": "これらをすべてアップロードしたら、",
+    "sourceText": "And after all this is uploaded, I'll just tell Cloud Design, hey, I've uploaded a voice principles",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 347.0677886497065,
+    "end": 355.2613698630137,
+    "text": "Claude Designに「ボイスプリンシプルファイルをアップロードしたのでコピーが私らしくなります。ビジネスロゴとよく使うアイコンも追加しました」と伝えます。",
+    "sourceText": "file so the copyrightiting will sound like me, my business logo, and some commonly used icons.",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 355.2613698630137,
+    "end": 359.4634666666667,
+    "text": "そしてこの部分を送信して、早送りします。",
+    "sourceText": "And I'm just going to send this part off and we'll fast forward.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 359.4634666666667,
+    "end": 362.5357187878788,
+    "text": "よし、Claude Designが処理を終えました。",
+    "sourceText": "All right, claw design has finished working and first",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 362.5357187878788,
+    "end": 365.824,
+    "text": "まず、ボイスプリンシプルが組み込まれているのがわかります。",
+    "sourceText": "we can see that my voice principles have been baked in.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 365.824,
+    "end": 370.24,
+    "text": "ダッシュ記号もなく、耳に優しいコーポレートジャーゴンもありません。はい。",
+    "sourceText": "No M dashes, no corporate jargon right for the ear. Okay.",
+    "sourceIndexes": [
+      71,
+      72
+    ]
+  },
+  {
+    "start": 370.24,
+    "end": 373.1573333333333,
+    "text": "少しスクロールダウンすると、",
+    "sourceText": "And scrolling down a bit, we can see our logo and tool",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 373.1573333333333,
+    "end": 378.7733333333333,
+    "text": "ロゴとツールアイコンもデザインシステムに組み込まれているのがわかります。",
+    "sourceText": "icons are now built into the design system as well.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 378.7733333333333,
+    "end": 381.94018300653596,
+    "text": "これで、今後作成するすべてのデザインでこれらを使えるようになり、",
+    "sourceText": "So every future design can use all of these",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 381.94018300653596,
+    "end": 384.308,
+    "text": "再度アップロードする必要はありません。",
+    "sourceText": "without me having ever to upload them again.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 384.308,
+    "end": 390.56205128205124,
+    "text": "デザインシステムに満足したら、「ワークショップやトレーニング用のスライドデッキテンプレートを作成してください」と伝えます。",
+    "sourceText": "Once we're happy with the design system, we'll say, \"Go ahead and build a slide deck template for workshops and trainings.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 390.56205128205124,
+    "end": 397.039,
+    "text": "スライド数を指定すると、Claude Designがスライドデッキテンプレートの作成を開始します。これで、3つ目のインプットに移ります。",
+    "sourceText": "You pick the number of slides and claw design will start building our slide deck [music] template.\" Which brings us neatly to input number three.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 397.039,
+    "end": 400.96,
+    "text": "まず、テンプレートとは何かを説明します。",
+    "sourceText": "And we'll start off by explaining what a template actually is.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 400.96,
+    "end": 403.4120252549781,
+    "text": "簡単に言うと、あなたのスタイルで事前に作られたスライドデッキで、",
+    "sourceText": "In plain English, it's a pre-built slide deck in",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 403.4120252549781,
+    "end": 405.62929577464786,
+    "text": "新しいプレゼンテーションはすべてここから始まります。",
+    "sourceText": "your style that every new presentation starts from.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 405.62929577464786,
+    "end": 410.24,
+    "text": "タイトルスライド、セクション区切り、2カラムレイアウトなどです。",
+    "sourceText": "Your title slide, your section dividers, a two column layout, etc.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 410.24,
+    "end": 413.07076923076926,
+    "text": "すべてデザイン済みですぐに使えます。",
+    "sourceText": "All designed and ready to use.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 413.07076923076926,
+    "end": 417.2283076923077,
+    "text": "明確にしておくと、デザインシステムは見た目全体、",
+    "sourceText": "So to be clear, the design system is responsible for",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 417.2283076923077,
+    "end": 420.4,
+    "text": "色、フォント、ロゴを担当します。",
+    "sourceText": "how everything looks, your colors, fonts, and logos.",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 420.4,
+    "end": 425.53898305084743,
+    "text": "テンプレートはデザインシステムから構築され、デッキの実際のレイアウト、",
+    "sourceText": "The template, which is built from the design system, is responsible for how a",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 425.53898305084743,
+    "end": 429.44,
+    "text": "どのスライドがあるか、それらの配置を担当します。",
+    "sourceText": "deck is actually laid out, which slides you have, and how they're arranged.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 429.44,
+    "end": 432.73004723665565,
+    "text": "これらを一緒に使うと、新しいデッキは毎回、白紙の状態ではなく、",
+    "sourceText": "And when you use them together, every new deck starts on",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 432.73004723665565,
+    "end": 435.7504109589041,
+    "text": "ブランドに沿って事前に構造化された状態から始まります。",
+    "sourceText": "brand and pre-structured instead of from a blank canvas.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 435.7504109589041,
+    "end": 438.70748992747787,
+    "text": "では、Claude Designに戻ると、",
+    "sourceText": "All right, back in Claude Design, we can see that Claude has",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 438.70748992747787,
+    "end": 443.84,
+    "text": "Claudeがスライドテンプレートを作成してくれたのがわかります。これをスクロールしてみると。",
+    "sourceText": "created the slide template for us. and scrolling through this.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 443.84,
+    "end": 447.9520626589905,
+    "text": "私の意見では、これはもうかなり良さそうに見えますが、",
+    "sourceText": "Although this already looks pretty good in my opinion, there's still definitely room for",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 447.9520626589905,
+    "end": 454.86418556701034,
+    "text": "将来のすべてのスライドプレゼンテーションがこのテンプレートを参照するので、改善の余地は確かにあります。",
+    "sourceText": "improvement since every single future slide presentation will reference this template.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 454.86418556701034,
+    "end": 459.039,
+    "text": "これを一字一句読むつもりはありませんが、Claudeに伝えることはこれです。",
+    "sourceText": "I'm not going to read this word for word, but here's what I'm going to tell Claude.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 459.039,
+    "end": 460.2784255319149,
+    "text": "私のフィードバックに基づいて編集してください。",
+    "sourceText": "Edit based on my feedback.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 460.2784255319149,
+    "end": 463.52,
+    "text": "白い背景のすべてのスライドにグラデーションメッシュを追加してください。",
+    "sourceText": "Add the gradient mesh to every single slide with a white background.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 463.52,
+    "end": 466.24,
+    "text": "カバースライドだけではなく。",
+    "sourceText": "So, not just like the cover slides.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 466.24,
+    "end": 468,
+    "text": "スライドにオレンジの背景は使わないでください。",
+    "sourceText": "Don't use orange backgrounds for slides.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 468,
+    "end": 470.319,
+    "text": "あれは実際ちょっとダサかったです。",
+    "sourceText": "That was actually kind of ugly.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 470.319,
+    "end": 474.4,
+    "text": "テキストを拡大して空白を埋めてください。",
+    "sourceText": "scale up the text to fill up the empty space.",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 474.4,
+    "end": 478.0077192982456,
+    "text": "それから、左下のフッターに私のロゴを追加しましょう。",
+    "sourceText": "And then let's add my logo to the bottom left footer.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 478.0077192982456,
+    "end": 480.8303450369042,
+    "text": "Claude Designがそれを処理している間に、",
+    "sourceText": "While Cloud Design is processing all that, let's quickly",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 480.8303450369042,
+    "end": 483.90260550458714,
+    "text": "ナビゲーションをざっと説明します。あまり直感的ではないので。",
+    "sourceText": "walk through the navigation since it's not very intuitive.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 483.90260550458714,
+    "end": 486.40000000000003,
+    "text": "デザインシステムボタンをクリックすると、ホームページに戻れます。",
+    "sourceText": "You can click the design system button to go back to the homepage.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 486.40000000000003,
+    "end": 490.0447213114754,
+    "text": "このデザインシステム内のすべてのファイルを見たい場合は、",
+    "sourceText": "And if you want to see all the files in this design system,",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 490.0447213114754,
+    "end": 494.126,
+    "text": "ドロップダウンの「すべてのプロジェクトファイル」をクリックします。",
+    "sourceText": "we can actually click the drop-down all project files.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 494.126,
+    "end": 498.16865822784814,
+    "text": "ここで、このシステム内のいわゆるフォルダをすべて見ることができます。",
+    "sourceText": "And here we can see all the quote unquote like folders in this system.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 498.16865822784814,
+    "end": 502.479,
+    "text": "テンプレートをダブルクリックし、ワークショップデッキをダブルクリックします。",
+    "sourceText": "And we can doubleclick templates and double click the workshop deck.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 502.479,
+    "end": 508.08,
+    "text": "HTMLファイルを開くと、スライドテンプレートに戻ります。",
+    "sourceText": "And opening up the HTML file brings us back to the slide templates.",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 508.08,
+    "end": 510.4442210526316,
+    "text": "では、早送りします。",
+    "sourceText": "And now I'm just going to fast forward.",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 510.4442210526316,
+    "end": 511.759,
+    "text": "よし、Claudeが完了しました。",
+    "sourceText": "All right, Claud's done.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 511.759,
+    "end": 513.7453829787235,
+    "text": "では、テンプレートをもう一度確認しましょう。",
+    "sourceText": "So let's review the template one more time. And yes,",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 513.7453829787235,
+    "end": 515.839,
+    "text": "はい、すべての変更が実装されているのがわかります。",
+    "sourceText": "we can see all the changes have been implemented.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 515.839,
+    "end": 519.3596666666667,
+    "text": "例えば、あのダサいオレンジのスライドは削除されました。",
+    "sourceText": "The orange ugly slide has been removed, for example.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 519.3596666666667,
+    "end": 521.12,
+    "text": "よし、良さそうです。",
+    "sourceText": "And all right, looks good.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 521.12,
+    "end": 525.519,
+    "text": "いよいよ最初のスライドデッキを生成する準備ができました。",
+    "sourceText": "We're finally ready to generate our first slide deck.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 525.519,
+    "end": 527.7008666666667,
+    "text": "Claude Designのホームページに戻り、",
+    "sourceText": "Back on our quad design homepage, I'll first",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 527.7008666666667,
+    "end": 529.76,
+    "text": "まず作成したデザインシステムを選択します。",
+    "sourceText": "select the design system we just created.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 529.76,
+    "end": 533.426581632653,
+    "text": "次に、対応するスライドテンプレートを選択し、",
+    "sourceText": "Then select the corresponding slides template and I'll",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 533.426581632653,
+    "end": 537.65375,
+    "text": "今度のワークショップのトーキングポイントを添付します。",
+    "sourceText": "attach my uh talking points for an upcoming workshop.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 537.65375,
+    "end": 541.04,
+    "text": "これは単純なマークダウン形式です。",
+    "sourceText": "And this is just in simple markdown format.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 541.04,
+    "end": 550.7657142857142,
+    "text": "そして、これをすべて送信して、「添付のトーキングポイントをワークショップデッキに変換して、作成前に必要なことは何でも聞いてください」と伝えます。",
+    "sourceText": "And we'll send all this off by saying uh turn the attached talking points into a workshop deck and ask me anything you need before you build.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 550.7657142857142,
+    "end": 554.2953846153846,
+    "text": "数秒後、Claude Designは一時停止して、",
+    "sourceText": "Now, after just a few seconds, Claw Design is",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 554.2953846153846,
+    "end": 556.8,
+    "text": "まずいくつか質問してきます。",
+    "sourceText": "going to pause and ask us a few questions first.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 556.8,
+    "end": 561.7545238095238,
+    "text": "ここで時間をかけて慎重に答えることが非常に重要です。",
+    "sourceText": "And it's very important you take the time to answer these carefully",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 561.7545238095238,
+    "end": 567.2866666666666,
+    "text": "なぜなら、ここでの数分が後で何時間も節約してくれるからです。",
+    "sourceText": "because a few extra minutes here saves you hours down the road.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 567.2866666666666,
+    "end": 571.3548262548262,
+    "text": "信じてください。質問にどう答えたらいいか本当にわからない場合は、",
+    "sourceText": "Believe me. And if you're genuinely unsure of how to answer a",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 571.3548262548262,
+    "end": 574.7059459459459,
+    "text": "いつでも「代わりに決めて」オプションを選べます。",
+    "sourceText": "question, you can always just pick the decide for me option.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 574.7059459459459,
+    "end": 578.1564648648649,
+    "text": "すべての質問に答えたら、続行を押すだけで、",
+    "sourceText": "And once we've answered all the questions, we'll just hit continue. and",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 578.1564648648649,
+    "end": 583.5360000000001,
+    "text": "Claude Designがスライド資料の最初のバージョンを生成してくれます。",
+    "sourceText": "claw design will go ahead and generate the first version of the slide deck.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 583.5360000000001,
+    "end": 589.3637376294591,
+    "text": "素晴らしい。スライドが生成されましたが、この最初のバージョンがすでにかなり良く見える理由は、",
+    "sourceText": "Awesome. Now that our slides have been generated, I just want to reiterate the reason why this",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 589.3637376294591,
+    "end": 593.8836363636364,
+    "text": "私たちが行った準備作業のおかげだということを強調したいと思います。",
+    "sourceText": "first version already looks pretty good in my opinion is because of all the prep work we did.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 593.8836363636364,
+    "end": 596.3313636363637,
+    "text": "しかし、これで終わりではありません。",
+    "sourceText": "But we're not done because there are two types of feedback",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 596.3313636363637,
+    "end": 600.72,
+    "text": "Claude Designにさらに良くするために与えられるフィードバックには2種類あります。",
+    "sourceText": "we can give cloud design to make this even better.",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 600.72,
+    "end": 603.3355555555555,
+    "text": "最初の種類のフィードバックは、現在のスライド資料と、",
+    "sourceText": "The first kind of feedback applies to this current deck and",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 603.3355555555555,
+    "end": 607.04,
+    "text": "このClaude Designプロジェクトで今後作成するすべてのスライド資料に適用されます。",
+    "sourceText": "every future deck we create in this cloud design project.",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 607.04,
+    "end": 611.0713043478261,
+    "text": "あ、そういえば、このプロジェクトをもっとわかりやすい名前に変更しましょう。",
+    "sourceText": "Oh, which reminds me, let's rename this project to something",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 611.0713043478261,
+    "end": 614.72,
+    "text": "例えば「アクティブグラデーションスライドプロジェクト」のように。",
+    "sourceText": "more descriptive, like active gradient slides project.",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 614.72,
+    "end": 617.856,
+    "text": "そして、実際のフィードバックです。",
+    "sourceText": "And now for the actual feedback.",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 617.856,
+    "end": 622.0365563909775,
+    "text": "コンテンツスライドのアイブロウラベルが十分に目立たず、",
+    "sourceText": "I feel like uh the eyebrow labels on the content slides aren't prominent",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 622.0365563909775,
+    "end": 626.437894736842,
+    "text": "アイコンは背景を透明にした方がずっと良く見えると思います。",
+    "sourceText": "enough, and the icons will look much better with transparent backgrounds.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 626.437894736842,
+    "end": 628.8,
+    "text": "そこで、こう言います。",
+    "sourceText": "So, here's what I'm going to say.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 628.8,
+    "end": 631.7726567164179,
+    "text": "以下のフィードバックを確認し、編集を行うだけでなく、",
+    "sourceText": "Review my feedback below, and in addition to making the edits,",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 631.7726567164179,
+    "end": 635.768,
+    "text": "今後のすべてのスライド資料で読み込むCLAUDE.mdファイルを作成してください。",
+    "sourceText": "create a clawed MD file you'll read for all future slide decks.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 635.768,
+    "end": 638.9771896551724,
+    "text": "フィードバックとしては、アイブロウラベルをもっと目立たせてください。",
+    "sourceText": "As for the feedback, make the eyebrow labels more prominent.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 638.9771896551724,
+    "end": 642.24,
+    "text": "おそらく、長方形のコンテナで囲んでください。",
+    "sourceText": "Wrap them in a rectangular container maybe.",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 642.24,
+    "end": 645.7738441558441,
+    "text": "そして、アイコンはすべて背景を透明にしてください。",
+    "sourceText": "And the icons should all have transparent backgrounds.",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 645.7738441558441,
+    "end": 647.279,
+    "text": "さて、今何をしたでしょうか？",
+    "sourceText": "So, what did I just do?",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 647.279,
+    "end": 650.513353784219,
+    "text": "簡単に言うと、CLAUDE.mdはプレーンテキストファイルで、",
+    "sourceText": "In plain English, a claw.md is a plain text file where",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 650.513353784219,
+    "end": 653.944580515298,
+    "text": "Claude Designがプロジェクトのすべての固定指示を保存し、",
+    "sourceText": "claw design stores all your standing instructions for a",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 653.944580515298,
+    "end": 656.785188405797,
+    "text": "新しいデザインのたびにそのファイルを読み込みます。",
+    "sourceText": "project and it reads that file before every new design.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 656.785188405797,
+    "end": 659.7589409474367,
+    "text": "つまり、フィードバックを与えるたびに、",
+    "sourceText": "Meaning, every time I give it feedback, claw design",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 659.7589409474367,
+    "end": 665.44,
+    "text": "Claude Designはそのフィードバックを保存し、将来のすべてのスライド資料に適用します。",
+    "sourceText": "saves that feedback and applies it to all future decks.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 665.44,
+    "end": 668.8044859813085,
+    "text": "そして、それが修正が時間とともに積み重なる仕組みです。",
+    "sourceText": "And that's how our corrections compound over time.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 668.8044859813085,
+    "end": 671.276779295471,
+    "text": "ちなみに、この学びを引き継ぐアイデアが気に入ったなら、",
+    "sourceText": "By the way, if you like this idea of learnings that carry forward,",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 671.276779295471,
+    "end": 674.88,
+    "text": "私の無料のCo-Work Toolkitはまったく同じ考え方をClaudeの共同作業に適用しています。",
+    "sourceText": "my free co-work applies the exact same philosophy to Claude co-work.",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 674.88,
+    "end": 680.2125,
+    "text": "これには、たった1週間で共同ワークスペースを構築するために必要なすべてのテンプレートが含まれています。",
+    "sourceText": "It includes all the templates you need to build a co-workspace in just one week.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 680.2125,
+    "end": 683.7890421303656,
+    "text": "リンクは下にあります。さて、最初のフィードバックが実装され、",
+    "sourceText": "Link down below. All right, the first round of feedback has been",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 683.7890421303656,
+    "end": 686.6526216216216,
+    "text": "すべての変更が適用されたことがわかります。",
+    "sourceText": "implemented and we can see that all our changes have been applied.",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 686.6526216216216,
+    "end": 690.7466666666667,
+    "text": "ラベルのコントラストが向上し、アイコンもずっと良く見えます。",
+    "sourceText": "The labels have more contrast and the icons look much better.",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 690.7466666666667,
+    "end": 693.538064516129,
+    "text": "このプロジェクトのルートページに戻ると、",
+    "sourceText": "And if we go back to the root page of this project, we",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 693.538064516129,
+    "end": 698.0799999999999,
+    "text": "Claude DesignがCLAUDE.mdファイルを作成したことも確認できます。",
+    "sourceText": "can also see that claw design created the claw.md file.",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 698.0799999999999,
+    "end": 703.36,
+    "text": "クリックして中を見ると、すべてのフィードバックが記録されているのがわかります。",
+    "sourceText": "And if we click in, we can see all the feedback has been captured.",
+    "sourceIndexes": [
+      138
+    ]
+  },
+  {
+    "start": 703.36,
+    "end": 707.9456488549619,
+    "text": "つまり、次のプレゼンテーションのためにまったく新しいプロジェクトを作成する代わりに、",
+    "sourceText": "The implication for you is instead of creating an entirely new",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 707.9456488549619,
+    "end": 711.1609160305344,
+    "text": "既存のグラデーションスライドプロジェクトに留まり、",
+    "sourceText": "project for your next presentation, we can just stay in the",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 711.1609160305344,
+    "end": 713.8925190839695,
+    "text": "新しいチャットを開始すればいいのです。",
+    "sourceText": "existing gradient slides project and start a new chat because",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 713.8925190839695,
+    "end": 718.72,
+    "text": "なぜなら、この新しいチャットはCLAUDE.mdファイルのすべてにアクセスできるからです。",
+    "sourceText": "this new chat has access to everything in the cloud.MD file.",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 718.72,
+    "end": 720.9828571428571,
+    "text": "つまり、すべての学びが引き継がれます。",
+    "sourceText": "So all your learnings carry forward.",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 720.9828571428571,
+    "end": 724.1308823529412,
+    "text": "次に、2番目の種類のフィードバックは、スライド単位でのピンポイントな変更です。",
+    "sourceText": "Moving on, the second kind of feedback is surgical slide level changes.",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 724.1308823529412,
+    "end": 727.7382463768115,
+    "text": "これは、こちらの機能を紹介する絶好の機会です。",
+    "sourceText": "And this is a perfect opportunity to show off these features up here.",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 727.7382463768115,
+    "end": 733.5199579624389,
+    "text": "まず、編集ボタンをクリックして、このアジェンダボックスのような要素を選択し、",
+    "sourceText": "First, I can make changes myself by clicking the edit button, selecting an element",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 733.5199579624389,
+    "end": 737.9753846153845,
+    "text": "フォントサイズを大きくしたり、色を変更したりできます。",
+    "sourceText": "like this agenda box, and then I can increase the font size, change the color.",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 737.9753846153845,
+    "end": 739.9446153846154,
+    "text": "うーん、それはあまり良くないですね。",
+    "sourceText": "Eh, that doesn't look very good.",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 739.9446153846154,
+    "end": 741.36,
+    "text": "元に戻しましょう。",
+    "sourceText": "Let's change that back.",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 741.36,
+    "end": 743.44,
+    "text": "そして、例えばテキストを太字にします。",
+    "sourceText": "And make the text bold, for example.",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 743.44,
+    "end": 746.5339819259259,
+    "text": "次に、このスライドで注釈をクリックし、",
+    "sourceText": "Second, on this slide, I can click annotate and",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 746.5339819259259,
+    "end": 750.3257466666666,
+    "text": "実際にこの2つの要素の周りに丸を描くことができます。",
+    "sourceText": "literally draw a circle around these two elements.",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 750.3257466666666,
+    "end": 757.3542342342342,
+    "text": "そして、「初心者とパワーユーザーが得られるものの違いを明確にするために、視覚的なコントラストを追加してください」と入力します。",
+    "sourceText": "Then type something like add more visual contrast to differentiate what beginners versus power users will walk away with.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 757.3542342342342,
+    "end": 759.0512280701754,
+    "text": "そして、送信を押して、何が起こるか見てみましょう。",
+    "sourceText": "And we're just going to hit send and see what happens.",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 759.0512280701754,
+    "end": 762.88,
+    "text": "数秒後、変更が適用されました。",
+    "sourceText": "And after a few seconds, it made the change.",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 762.88,
+    "end": 764.5994029850746,
+    "text": "これはかなり良いですね。",
+    "sourceText": "This looks pretty great.",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 764.5994029850746,
+    "end": 767.68,
+    "text": "さて、次は調整スイッチ機能です。",
+    "sourceText": "Right now, moving on to the tweaks feature.",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 767.68,
+    "end": 771.44,
+    "text": "何をするかを説明するよりも、実際に見せた方がずっと簡単です。",
+    "sourceText": "And it's much easier to show you instead of tell you what it does.",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 771.44,
+    "end": 776.5811320754717,
+    "text": "「トグルを2つ作って。1つはロゴの表示切り替え、もう1つは右下にスライド番号を表示するやつ」って言うだけです。",
+    "sourceText": "I'm just going to say, give me two toggles. one to toggle my logo and one to show slide numbers in the bottom right.",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 776.5811320754717,
+    "end": 780.5818867924528,
+    "text": "ここは少し早送りしますね。",
+    "sourceText": "And we're just going to fast forward this next part here.",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 780.5818867924528,
+    "end": 784.4378571428572,
+    "text": "最初は何も変わらなくて混乱するかもしれません。",
+    "sourceText": "Now, at first you might be confused because nothing seemed to have happened.",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 784.4378571428572,
+    "end": 789.7777777777778,
+    "text": "でももう一度調整スイッチのアイコンをクリックすると、2つのトグルが表示されています。",
+    "sourceText": "But if we click the tweaks icon again, we can see our two toggles have appeared.",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 789.7777777777778,
+    "end": 794.6623246753246,
+    "text": "「ロゴを表示」をオフにすると、すべてのスライドからロゴが一度に消えます。",
+    "sourceText": "So if I toggle off show logo, the logo disappears from every slide at once.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 794.6623246753246,
+    "end": 798.9744062499999,
+    "text": "「スライド番号を表示」をオンにすると、すべてのスライドに番号が表示されます。",
+    "sourceText": "And if I turn on show slide numbers, they appear across every slide.",
+    "sourceIndexes": [
+      160
+    ]
+  },
+  {
+    "start": 798.9744062499999,
+    "end": 801.92,
+    "text": "これをデフォルトとして保存することもできます。",
+    "sourceText": "And I can even save this as a default.",
+    "sourceIndexes": [
+      161
+    ]
+  },
+  {
+    "start": 801.92,
+    "end": 806.6666666666666,
+    "text": "簡単にまとめると、調整スイッチとは、ロゴを全スライドに表示するかどうかなど、",
+    "sourceText": "As a quick recap, a tweak is just a switch for a decision that shows",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 806.6666666666666,
+    "end": 809.92,
+    "text": "資料全体に影響する設定を切り替えるものです。",
+    "sourceText": "up all over your deck, like whether your logo appears on every slide.",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 809.92,
+    "end": 813.1136633663366,
+    "text": "つまり、編集と注釈は1か所の修正に使い、",
+    "sourceText": "So, use edit and annotate to fix one thing in one place.",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 813.1136633663366,
+    "end": 815.8234363706739,
+    "text": "調整スイッチは、1つの決定が全スライドに影響し、",
+    "sourceText": "And use tweaks when a single decision touches every slide at",
+    "sourceIndexes": [
+      164
+    ]
+  },
+  {
+    "start": 815.8234363706739,
+    "end": 818.4073949579831,
+    "text": "確定前に選択肢を切り替えたい場合に使います。",
+    "sourceText": "once and you want to flip between options before committing.",
+    "sourceIndexes": [
+      164
+    ]
+  },
+  {
+    "start": 818.4073949579831,
+    "end": 821.04,
+    "text": "スライド資料が完成したので、右上の共有ボタンをクリックします。",
+    "sourceText": "Now that our slide deck is finalized, we can click the share button in the top right.",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 821.04,
+    "end": 825.519,
+    "text": "PowerPointやPDFに加えて、「その他の形式とアプリ」をクリックすると、",
+    "sourceText": "And in addition to PowerPoint and PDF, we can click more formats and apps.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 825.519,
+    "end": 831.3294109589041,
+    "text": "個人的には、汎用性が高いのでスタンドアロンのHTMLファイルにエクスポートするのが好きです。",
+    "sourceText": "And personally, I like to export to a standalone HTML file because of how versatile it is.",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 831.3294109589041,
+    "end": 837.1348750870676,
+    "text": "どういうことかというと、スタンドアロンHTMLファイルをダウンロードしたら、",
+    "sourceText": "To show you what I mean, once you download the standalone HTML file,",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 837.1348750870676,
+    "end": 840.88,
+    "text": "ダブルクリックで任意のブラウザで開けます。",
+    "sourceText": "you can double click to open that in any browser and it'll work like",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 841.0641095890411,
+    "end": 845.36,
+    "text": "このファイルを送った相手も、自分のブラウザで開くことができます。",
+    "sourceText": "And anyone you send this file to can open up in their browser as well.",
+    "sourceIndexes": [
+      169
+    ]
+  },
+  {
+    "start": 845.36,
+    "end": 849.199,
+    "text": "HTMLへのエクスポートには、高度なオプションもあります。",
+    "sourceText": "Exporting to HTML also gives you some advanced options.",
+    "sourceIndexes": [
+      170
+    ]
+  },
+  {
+    "start": 849.199,
+    "end": 852.6858571428571,
+    "text": "今日はあまり詳しく説明しませんが、参考までに、",
+    "sourceText": "I'm not going to spend too much time on this today, but to give you",
+    "sourceIndexes": [
+      171
+    ]
+  },
+  {
+    "start": 852.6858571428571,
+    "end": 856.5704285714286,
+    "text": "これは最近の有料ワークショップで実際に使った資料です。",
+    "sourceText": "an idea, this is the real deck I used in a paid workshop recently.",
+    "sourceIndexes": [
+      171
+    ]
+  },
+  {
+    "start": 856.5704285714286,
+    "end": 862.6848963468963,
+    "text": "Claude Designにプレゼンタービューボタンを追加するよう依頼したんですが、",
+    "sourceText": "And you'll notice I asked Claw Design to add a presenter view button that I can click and it'll",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 862.6848963468963,
+    "end": 868.0972972972972,
+    "text": "クリックすると操作可能なスピーカーノートが開いて、めちゃくちゃ便利です。",
+    "sourceText": "open up a speaker notes for me that I can interact with, which is pretty freaking awesome.",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 868.0972972972972,
+    "end": 869.7426487318087,
+    "text": "このチュートリアルが役に立ったなら、",
+    "sourceText": "If you found this tutorial helpful, I recommend",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 869.7426487318087,
+    "end": 871.7343846153846,
+    "text": "次はClaude共同作業プレイリストをチェックしてみてください。",
+    "sourceText": "checking out my Claude co-work playlist next.",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 871.7343846153846,
+    "end": 874.1023846153846,
+    "text": "次の動画でお会いしましょう。",
+    "sourceText": "See you on the next video.",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 874.1023846153846,
+    "end": 877.199,
+    "text": "それでは、良い一日を。",
+    "sourceText": "In the meantime, have a great one.",
+    "sourceIndexes": [
+      175
+    ]
+  }
+]

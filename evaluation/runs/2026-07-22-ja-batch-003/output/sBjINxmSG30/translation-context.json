@@ -1,0 +1,91 @@
+{
+  "topic": "日本の生卵食文化",
+  "summary": "日本で生卵をご飯にかけるTKG（たまごかけごはん）の歴史、安全性、文化的背景を探る。養鶏場やTKG専門店を訪れ、食品微生物学者のインタビューや海外の視聴者の意見も交える。",
+  "tone": "カジュアルで親しみやすい、教育的かつ軽妙",
+  "audience": "日本文化や食に興味がある海外視聴者、および日本人視聴者",
+  "glossary": [
+    {
+      "source": "TKG",
+      "target": "TKG",
+      "note": "たまごかけごはんの略称。そのままTKGで通じる。"
+    },
+    {
+      "source": "tamago kake gohan",
+      "target": "たまごかけごはん",
+      "note": "正式名称。字幕では「たまごかけごはん」と表記。"
+    },
+    {
+      "source": "Ajitama",
+      "target": "味玉",
+      "note": "ラーメンの味付け卵。"
+    },
+    {
+      "source": "sukiyaki",
+      "target": "すき焼き",
+      "note": "鍋料理。"
+    },
+    {
+      "source": "Kobe beef",
+      "target": "神戸牛",
+      "note": "高級和牛。"
+    },
+    {
+      "source": "Yurin An",
+      "target": "ゆりん庵",
+      "note": "倉敷のTKG専門店。"
+    },
+    {
+      "source": "Kisaburo",
+      "target": "きさぶろう",
+      "note": "東京のTKG専門店。"
+    },
+    {
+      "source": "Ginko Kashida",
+      "target": "樫田銀子",
+      "note": "明治時代のジャーナリスト。"
+    },
+    {
+      "source": "salmonella",
+      "target": "サルモネラ菌",
+      "note": "食中毒原因菌。"
+    },
+    {
+      "source": "bloom",
+      "target": "ブルーム（保護膜）",
+      "note": "卵殻表面の天然保護膜。"
+    },
+    {
+      "source": "National Poultry Improvement Plan",
+      "target": "全国家禽改善計画",
+      "note": "米国の鶏群衛生プログラム。"
+    },
+    {
+      "source": "FDA",
+      "target": "FDA（米国食品医薬品局）",
+      "note": "規制機関。"
+    }
+  ],
+  "properNouns": [
+    "World Egg Organization",
+    "Mexico",
+    "Japan",
+    "Niko",
+    "Kurashiki",
+    "Bikan",
+    "Tokyo",
+    "University of Vermont",
+    "America",
+    "Europe",
+    "England"
+  ],
+  "styleGuide": [
+    "話し言葉調で自然な日本語に。です・ます調を基本とするが、専門家のコメントはやや丁寧に。",
+    "TKGはそのまま「TKG」と表記し、初出時に「たまごかけごはん（TKG）」と補足。",
+    "固有名詞（店名、人名）はカタカナ表記を基本とし、既存の日本語表記があればそれに従う。",
+    "専門用語（サルモネラ菌、ブルームなど）は適宜日本語に訳し、必要なら補足説明を入れる。",
+    "視聴者のコメント部分は、個人の意見として自然な話し言葉に。",
+    "笑い声や音楽の表記は最小限にし、字幕の流れを妨げない。",
+    "数字や統計はそのまま訳し、単位は日本で一般的なものに（例：20,000個→2万個）。",
+    "「I think」などの主観表現は「〜と思う」と訳し、断定を避ける。"
+  ]
+}

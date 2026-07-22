@@ -1,0 +1,81 @@
+{
+  "topic": "Old Land Rover Discovery 1 purchase and maintenance",
+  "summary": "The creator buys a 1996 Land Rover Discovery 1, shares the story of finding it, cleaning, basic maintenance (oil change, oxygen sensors), and goes camping. Tone is personal and enthusiastic.",
+  "tone": "casual, enthusiastic, personal",
+  "audience": "Car enthusiasts, DIY mechanics, camping/overlanding fans, fans of the creator",
+  "glossary": [
+    {
+      "source": "Land Rover Discovery 1",
+      "target": "ランドローバー・ディスカバリー1",
+      "note": "車種名。初代ディスカバリー。"
+    },
+    {
+      "source": "oxygen sensor",
+      "target": "O2センサー",
+      "note": "自動車部品。酸素センサー。"
+    },
+    {
+      "source": "OBD-II reader",
+      "target": "OBD2診断機",
+      "note": "車両診断ツール。"
+    },
+    {
+      "source": "Ultra-Gauge",
+      "target": "ウルトラゲージ",
+      "note": "ブランド名。カタカナ表記。"
+    },
+    {
+      "source": "Bissell Little Green Pet Pro",
+      "target": "ビッセル リトルグリーン ペットプロ",
+      "note": "カーペットクリーナーの製品名。"
+    },
+    {
+      "source": "Leather Honey",
+      "target": "レザーハニー",
+      "note": "レザークリーナーのブランド名。"
+    },
+    {
+      "source": "Chemical Guys",
+      "target": "ケミカルガイズ",
+      "note": "カーケア製品ブランド。"
+    },
+    {
+      "source": "anti-seize",
+      "target": "焼き付き防止剤",
+      "note": "ねじ山に塗る潤滑剤。"
+    },
+    {
+      "source": "jump seats",
+      "target": "ジャンプシート",
+      "note": "折りたたみ式補助席。"
+    },
+    {
+      "source": "engine light",
+      "target": "エンジンチェックランプ",
+      "note": "警告灯。"
+    }
+  ],
+  "properNouns": [
+    "Weylie Hoang",
+    "Wan",
+    "Orca",
+    "San Diego",
+    "Union Station",
+    "Amtrak",
+    "Craigslist",
+    "eBay",
+    "TJ",
+    "Jeep Wrangler Sahara",
+    "BMW i3",
+    "Land Cruiser"
+  ],
+  "styleGuide": [
+    "Use casual, friendly Japanese (だ/である調ではなく、ですます調またはくだけた調で統一)",
+    "Keep sentence endings consistent with speaker's enthusiastic tone (e.g., 〜んだよ、〜よね、〜ね)",
+    "Translate technical terms naturally (e.g., 'oxygen sensor' → 'O2センサー')",
+    "For brand names, use common Japanese katakana forms",
+    "Keep interjections and laughter (e.g., 'Oh my god!' → 'うわっ！' or 'まじか！')",
+    "Use short, conversational phrases suitable for subtitles",
+    "Avoid overly literal translations; prioritize natural flow"
+  ]
+}

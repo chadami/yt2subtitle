@@ -1,0 +1,81 @@
+{
+  "topic": "Family trip to China and Hong Kong",
+  "summary": "A personal vlog about traveling to Guangzhou and Hong Kong with grandparents, reflecting on family history, culture shock, and daily life.",
+  "tone": "casual, reflective, warm",
+  "audience": "Young adults interested in travel, family stories, and lifestyle content",
+  "glossary": [
+    {
+      "source": "clean girl look",
+      "target": "すっぴん風メイク",
+      "note": "Natural makeup trend"
+    },
+    {
+      "source": "cha chan teng",
+      "target": "茶餐廳",
+      "note": "Hong Kong-style cafe"
+    },
+    {
+      "source": "satay sauce",
+      "target": "サテソース",
+      "note": "Peanut-based sauce"
+    },
+    {
+      "source": "VPN",
+      "target": "VPN",
+      "note": "Virtual Private Network"
+    },
+    {
+      "source": "Surfshark",
+      "target": "Surfshark",
+      "note": "Brand name, keep as is"
+    },
+    {
+      "source": "Rhode peptide lip tint",
+      "target": "ロード ペプチド リップティント",
+      "note": "Product name"
+    },
+    {
+      "source": "Fenty Beauty contour stick",
+      "target": "フェンティ ビューティ コントゥアスティック",
+      "note": "Product name"
+    },
+    {
+      "source": "Saie",
+      "target": "サイ",
+      "note": "Brand name"
+    },
+    {
+      "source": "Colorgram",
+      "target": "カラーグラム",
+      "note": "Brand name"
+    },
+    {
+      "source": "TVB dramas",
+      "target": "TVBドラマ",
+      "note": "Hong Kong TV series"
+    }
+  ],
+  "properNouns": [
+    "Weylie Hoang",
+    "Guangzhou",
+    "Hong Kong",
+    "China",
+    "America",
+    "Surfshark",
+    "Rhode",
+    "Fenty Beauty",
+    "Saie",
+    "Colorgram",
+    "TVB",
+    "Wah So Bing Sut"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である体 for narration, but polite です/ます体 for direct address to viewers.",
+    "Keep brand names and product names in English or katakana as appropriate.",
+    "For 'clean girl look', use a descriptive phrase like 'すっぴん風メイク'.",
+    "Translate 'cha chan teng' as '茶餐廳' (Chinese loanword common in Japanese).",
+    "Maintain the speaker's reflective and warm tone; avoid overly formal expressions.",
+    "For time references like '2017', use '2017年'.",
+    "Use natural Japanese sentence endings like '〜なんだよね' or '〜って感じ' for casual narration."
+  ]
+}

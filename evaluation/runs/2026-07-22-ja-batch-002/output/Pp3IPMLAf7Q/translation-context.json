@@ -1,0 +1,68 @@
+{
+  "topic": "Sanzo Wada and his color dictionary",
+  "summary": "The story of Sanzo Wada, a Japanese painter who created a color dictionary that became a viral internet sensation, won an Oscar for costume design, and shaped modern color use in Japan.",
+  "tone": "casual, storytelling, slightly reverent",
+  "audience": "general internet users interested in design, color, or Japanese culture",
+  "glossary": [
+    {
+      "source": "color dictionary",
+      "target": "配色辞典",
+      "note": "Standard Japanese term for the book; use consistently."
+    },
+    {
+      "source": "Sanzo Wada",
+      "target": "和田三造",
+      "note": "Full name in kanji; use throughout."
+    },
+    {
+      "source": "Gate of Hell",
+      "target": "地獄門",
+      "note": "Title of the film; use in kanji."
+    },
+    {
+      "source": "Bunten exhibition",
+      "target": "文展",
+      "note": "Abbreviation for the government art exhibition; keep as is or explain briefly."
+    },
+    {
+      "source": "Japan Color Research Institute",
+      "target": "日本色彩研究所",
+      "note": "Official name; use in kanji."
+    },
+    {
+      "source": "Seigensha",
+      "target": "青幻舎",
+      "note": "Publisher name; use in kanji."
+    },
+    {
+      "source": "CMYK values",
+      "target": "CMYK値",
+      "note": "Technical term; keep as is."
+    },
+    {
+      "source": "Eastman color film",
+      "target": "イーストマンカラーフィルム",
+      "note": "Brand name; use katakana."
+    }
+  ],
+  "properNouns": [
+    "Sanzo Wada",
+    "Hyogo",
+    "Kuroda Seiki",
+    "Tokyo School of Fine Arts",
+    "South Wind",
+    "Museum of Modern Art, Tokyo",
+    "Daiei",
+    "Kodak",
+    "Cannes Film Festival",
+    "Academy Awards",
+    "Seigensha"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese (だ/である調) for narration, but polite forms (です/ます) for direct quotes or formal references.",
+    "Keep English proper nouns in katakana where no established Japanese term exists (e.g., アカデミー賞).",
+    "For color-related terms, prefer common Japanese color names (e.g., 赤, 青) over loanwords unless specified.",
+    "Avoid overly literal translations; prioritize natural flow and readability.",
+    "Use line breaks to match speech rhythm; keep subtitles concise (max 2 lines per subtitle)."
+  ]
+}

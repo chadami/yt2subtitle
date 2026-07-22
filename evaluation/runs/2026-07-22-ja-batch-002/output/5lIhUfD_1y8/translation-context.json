@@ -1,0 +1,79 @@
+{
+  "topic": "Taxi driver's personal journey and day trip to Bear Mountain",
+  "summary": "Kareem Rahma rides with Young, a Korean immigrant and former sign painter turned taxi driver, to Bear Mountain for hiking, sketching, and fishing, discussing grief, the American Dream, and finding beauty in nature.",
+  "tone": "warm, reflective, conversational, with moments of humor",
+  "audience": "General YouTube audience interested in human-interest stories, travel, and personal narratives",
+  "glossary": [
+    {
+      "source": "Keep the meter running",
+      "target": "メーターはそのまま",
+      "note": "Key phrase of the series; keep as is in subtitles"
+    },
+    {
+      "source": "Bear Mountain",
+      "target": "ベアマウンテン",
+      "note": "Proper noun; use katakana"
+    },
+    {
+      "source": "American Dream",
+      "target": "アメリカン・ドリーム",
+      "note": "Common phrase; use katakana"
+    },
+    {
+      "source": "sign painter",
+      "target": "看板職人",
+      "note": "Young's former job; use this term"
+    },
+    {
+      "source": "crappie",
+      "target": "クラッピー",
+      "note": "Fish name; use katakana"
+    },
+    {
+      "source": "bluegill",
+      "target": "ブルーギル",
+      "note": "Fish name; use katakana"
+    },
+    {
+      "source": "White Castle",
+      "target": "ホワイトキャッスル",
+      "note": "Restaurant name; use katakana"
+    },
+    {
+      "source": "Burger King",
+      "target": "バーガーキング",
+      "note": "Restaurant name; use katakana"
+    },
+    {
+      "source": "cartoon book",
+      "target": "漫画本",
+      "note": "Young's goal; use this term"
+    },
+    {
+      "source": "chasing the American Dream",
+      "target": "アメリカン・ドリームを追いかける",
+      "note": "Idiom; natural Japanese phrasing"
+    }
+  ],
+  "properNouns": [
+    "Kareem Rahma",
+    "Young Han",
+    "Bear Mountain",
+    "New York City",
+    "South Korea",
+    "Seoul",
+    "Minnesota",
+    "White Castle",
+    "Burger King"
+  ],
+  "styleGuide": [
+    "Use casual but respectful Japanese (です・ます体) for Young's speech; Kareem can be more casual (だ体) in some lines.",
+    "Keep Young's slightly broken English flavor by using simple, natural Japanese without over-correcting grammar.",
+    "Translate 'sir' as さん or omit; avoid 様.",
+    "For emotional moments (e.g., wife's death), use gentle phrasing like 亡くなりました.",
+    "For humor (e.g., White Castle story), keep light and conversational tone.",
+    "Use katakana for English loanwords that are common in Japanese (e.g., ハイキング, フィッシング).",
+    "Keep line breaks short (max 2 lines per subtitle) for readability.",
+    "Avoid literal translations of idioms; prefer natural Japanese equivalents."
+  ]
+}

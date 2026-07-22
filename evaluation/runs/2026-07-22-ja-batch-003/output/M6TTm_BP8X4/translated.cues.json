@@ -1,0 +1,1882 @@
+[
+  {
+    "start": 0,
+    "end": 3.52,
+    "text": "中判デジタルカメラは夢のカメラだ。",
+    "sourceText": "Medium format digital cameras are the cameras of dreams.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 3.52,
+    "end": 7.755714285714285,
+    "text": "メガピクセル数は驚くほど高く、写真用としては最大のデジタルセンサーを搭載し、",
+    "sourceText": "They have absurdly high megapixel count, the largest digital sensors",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 7.755714285714285,
+    "end": 10.393684210526315,
+    "text": "使ってる写真家はただただかっこいい。",
+    "sourceText": "for photography, and the photographers that use them just look cool.",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 10.393684210526315,
+    "end": 12.2,
+    "text": "ほら、あの人のひげを見てよ。",
+    "sourceText": "I mean, look at that guy's beard.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 12.2,
+    "end": 15.76,
+    "text": "でも、めちゃくちゃ高いから夢を打ち砕くんだ。",
+    "sourceText": "But, they will crush your dreams because they are incredibly expensive.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 15.76,
+    "end": 20.842702702702702,
+    "text": "通勤用の信頼できる車を買うか、ハッセルブラッドを買うか、選ばなきゃいけない。",
+    "sourceText": "You have to choose between buying a nice reliable vehicle to get to and from work or buy a Hasselblad.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 20.842702702702702,
+    "end": 25.28363003003003,
+    "text": "でも、デジタル中判カメラを実際に手に入れられる方法、",
+    "sourceText": "But, I think I found a way for you to actually afford a digital",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 25.28363003003003,
+    "end": 28.852,
+    "text": "一番安く撮影する方法を見つけたと思う。",
+    "sourceText": "medium format camera, [music] the cheapest way to actually shoot one.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 28.852,
+    "end": 32.684285714285714,
+    "text": "だから今日は、自分たちでデジタル中判カメラを組み立てて試してみるよ。",
+    "sourceText": "So, we're going to test that out today by building our own digital medium format camera.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 32.684285714285714,
+    "end": 35.72078431372549,
+    "text": "デジタル中判カメラには2種類あるんだ。",
+    "sourceText": "Thing about digital medium format cameras is that they come in two varieties.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 35.72078431372549,
+    "end": 39.116993464052285,
+    "text": "普通のDSLRやミラーレスカメラみたいな、",
+    "sourceText": "There's the standard all-in-one camera that you're",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 39.116993464052285,
+    "end": 41.885714285714286,
+    "text": "標準的なオールインワンカメラ。",
+    "sourceText": "used to with DSLRs and mirrorless cameras normally.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 41.885714285714286,
+    "end": 48.189795918367345,
+    "text": "例えば、出たばかりのハッセルブラッドX2D IIとか、富士フイルムGFXシリーズ、",
+    "sourceText": "These are like the Hasselblad X2D II or whatever that just came out, the Fujifilm",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 48.189795918367345,
+    "end": 53,
+    "text": "ペンタックス645Zみたいな、普通のカメラの形をしたやつ。",
+    "sourceText": "GFX series, the Pentax 645Z, cameras like that that all come in one normal camera.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 53,
+    "end": 55.82047153536516,
+    "text": "でも普通のカメラと違って、中判カメラにはもう一つ、",
+    "sourceText": "But, unlike normal cameras, medium format cameras also",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 55.82047153536516,
+    "end": 58.44648648648649,
+    "text": "モジュラーカメラシステムっていう種類がある。",
+    "sourceText": "have another variety, and that's modular camera systems.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 58.44648648648649,
+    "end": 61.40809266409267,
+    "text": "カメラの心臓部であるセンサーを、",
+    "sourceText": "[music] These are cameras where you could buy the sensor in the guts",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 61.40809266409267,
+    "end": 64.7,
+    "text": "ボディや操作部とは別に買えるカメラだ。",
+    "sourceText": "of the camera separate from the body and controls of the camera.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 64.7,
+    "end": 68.08612903225807,
+    "text": "つまり、好みに応じてセンサーとボディを組み合わせたり、",
+    "sourceText": "And this means you can mix and match sensors and bodies to your liking, or",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 68.08612903225807,
+    "end": 72.12,
+    "text": "センサーだけアップグレードしてボディはそのまま使って節約したりできる。",
+    "sourceText": "let's say upgrade just your sensor, but keep your existing body to save money.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 72.12,
+    "end": 75.42973451327434,
+    "text": "まあ、こんなのやってる時点でお金はあるんだろうけど。",
+    "sourceText": "Although, if you're in this thing, you have money.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 75.42973451327434,
+    "end": 77.84,
+    "text": "だから、それがどれほど節約になるかはわからないけどね。",
+    "sourceText": "So, I don't know if that's such a thing.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 77.84,
+    "end": 82.36827586206896,
+    "text": "初めて聞いたとしても、実は何社かが90年代後半から2000年代初頭にかけて、",
+    "sourceText": "And even if this is the first time you've heard of this, several companies have actually",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 82.36827586206896,
+    "end": 85.32,
+    "text": "こういうモジュラーカメラを作ってたんだ。",
+    "sourceText": "made modular cameras like this starting all the way back in the late '90s and early 2000s.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 85.32,
+    "end": 90.03181510015408,
+    "text": "そして、その時代にまで遡ってモジュラーデジタル中判カメラを探し、",
+    "sourceText": "And all the way back there is where we're going to start to look for a modular",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 90.03181510015408,
+    "end": 93.75593220338983,
+    "text": "可能な限り安いセットアップができるか試すんだ。",
+    "sourceText": "digital medium format camera to see if we can make the cheapest setup possible.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 93.75593220338983,
+    "end": 97.46126336197342,
+    "text": "さて、めちゃくちゃ古くて安いデジタルバックもあるけど、",
+    "sourceText": "Now, there are some absolutely ancient digital backs out there that are",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 97.46126336197342,
+    "end": 100.51706422018349,
+    "text": "いくつか理由があってそれはスキップする。",
+    "sourceText": "really cheap, but we're going to skip those for a couple of reasons.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 100.51706422018349,
+    "end": 105.52701754385966,
+    "text": "まず、多くはFireWireやシリアルポートで直接コンピューターに接続する必要があるんだ。",
+    "sourceText": "One, a lot of them require to be tethered directly [music] to a computer with FireWire or serial ports.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 105.52701754385966,
+    "end": 109.18782039845377,
+    "text": "多くは中判サイズですらなくて、ただのフルフレームデジタルセンサーなんだ。",
+    "sourceText": "A lot of them aren't even medium format size, they're just full-frame digital",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 109.18782039845377,
+    "end": 111.96,
+    "text": "90年代後半にはそれがすごいことだったからね。",
+    "sourceText": "sensors because back then in the late '90s, that was a big [music] deal.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 111.96,
+    "end": 114.36,
+    "text": "しかも多くはたった400万か600万画素だ。",
+    "sourceText": "And a lot of them are just 4 or 6 megapixels, which why go",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 114.36,
+    "end": 116.76,
+    "text": "それだけのためにこんな苦労する意味ないよね。",
+    "sourceText": "through all this effort if that's all we're going to get.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 116.76,
+    "end": 118.70285714285714,
+    "text": "だから、もっとマシなのを探そう。",
+    "sourceText": "So, we can do better. We want to find that sweet spot where it's",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 118.70285714285714,
+    "end": 121.76,
+    "text": "古くて安いけど、撮影に使えるだけの性能がある、その絶妙なポイントを探したいんだ。",
+    "sourceText": "old enough to be cheap, but new enough to be worthwhile shooting.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 121.76,
+    "end": 124.0525,
+    "text": "このカテゴリーには、リーフ、ハッセルブラッド、",
+    "sourceText": "And in this category, there are digital backs from",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 124.0525,
+    "end": 126.44,
+    "text": "フェーズワン、コダックなどのデジタルバックがある。",
+    "sourceText": "Leaf, [music] Hasselblad, Phase One, Kodak, and others.",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 126.44,
+    "end": 130.399,
+    "text": "どこから始めればいいんだ？この動画のために数ヶ月かけてデジタルバックを調べたんだ。",
+    "sourceText": "Where do we even start? I spent a couple months researching digital backs for this video, [music]",
+    "sourceIndexes": [
+      24,
+      25
+    ]
+  },
+  {
+    "start": 130.399,
+    "end": 135.586,
+    "text": "どのブランドを選ぶにしても、考慮すべき主なポイントが2つある。",
+    "sourceText": "and there are two main considerations you should think about before going with any of these brands.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 135.586,
+    "end": 138.34021176470588,
+    "text": "最初は電源だ。",
+    "sourceText": "And the first [music] one is power source.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 138.34021176470588,
+    "end": 141.76654724857687,
+    "text": "例えばハッセルブラッドのバックには、カメラ本体から電源を取るものや、",
+    "sourceText": "Some Hasselblad backs, for example, require power coming directly from the",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 141.76654724857687,
+    "end": 144.8,
+    "text": "外部バッテリーパックを工夫して使う必要があるものもある。",
+    "sourceText": "camera body, or you have to finagle some external [music] battery pack.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 144.8,
+    "end": 148.56,
+    "text": "中には壁のコンセントに直接つなぐ必要があるバックもある。",
+    "sourceText": "And some backs require a power supply directly into the wall.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 148.56,
+    "end": 153.54647887323944,
+    "text": "だからそういうのは避けて、バッテリー内蔵で単体で起動できるバックを選ぼう。",
+    "sourceText": "So, we want to avoid all those and make sure your back has a battery [music] and can power on by itself.",
+    "sourceIndexes": [
+      30,
+      31
+    ]
+  },
+  {
+    "start": 153.54647887323944,
+    "end": 158.2336,
+    "text": "2つ目の重要なポイントは、シンクロケーブルの入手性と価格を確認することだ。",
+    "sourceText": "And the second important consideration is to check the availability and the cost of the sync cable.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 158.2336,
+    "end": 159.6,
+    "text": "シンクロケーブルって何？",
+    "sourceText": "What is a sync cable?",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 159.6,
+    "end": 164.6,
+    "text": "これはデジタルバックをレンズのシャッターと同期させるケーブルだ。",
+    "sourceText": "This is a cable that allows the digital [music] back to sync up with the shutter of your lens.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 164.6,
+    "end": 167.8,
+    "text": "多くの中判カメラでは、シャッターはカメラ本体ではなく、",
+    "sourceText": "So, with many medium format cameras, the shutter is not in the body of the camera, but it's [music]",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 167.8,
+    "end": 171.61310344827587,
+    "text": "レンズ内にあるんだ。これはフィルム時代からずっと続いている仕組みだ。",
+    "sourceText": "in the lens, and this dates back long into the film days.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 171.61310344827587,
+    "end": 180.5842253521127,
+    "text": "シンクロケーブルを使って、これらの古いレンズのシャッターを切ると同時にデジタルバックを作動させる能力が、このDIYカメラを機能させる大きな要素なんだ。",
+    "sourceText": "The ability to fire these old lenses' shutters and for that to trigger our digital back at the same time using a sync cable is a big part of making this DIY camera work.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 180.5842253521127,
+    "end": 186.8,
+    "text": "でも、カメラによってはこれらのケーブルがすごく高くて見つけるのも難しい。",
+    "sourceText": "But, some of these cables for some of these cameras [music] are super expensive and hard to find.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 186.8,
+    "end": 191.2,
+    "text": "だから、デジタルバックに飛びつく前に、ケーブルが見つかるか確認しておこう。",
+    "sourceText": "So, make sure before you dive into [music] a camera back that you can find the cable.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 191.2,
+    "end": 195.51254237288134,
+    "text": "こういうプロジェクトの楽しみの一つは、リサーチをしてカメラの歴史を調べたり、",
+    "sourceText": "Part of the fun of these projects is doing all the research and diving",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 195.51254237288134,
+    "end": 198.43263157894737,
+    "text": "eBayをくまなく探したりすることだよね。",
+    "sourceText": "into the history of these cameras and scouring eBay and finding things.",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 198.43263157894737,
+    "end": 201.6644247094162,
+    "text": "だから、ウィッシュリストに入れたものを全部ネタバレはしないけど、",
+    "sourceText": "So, I'm not going to spill the beans of all the ones I put on my",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 201.6644247094162,
+    "end": 204.76923076923077,
+    "text": "まずはフェーズワン、リーフ、ハッセルブラッドから始めてみて。",
+    "sourceText": "wish list, but you can start with Phase One, Leaf, Hasselblad.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 204.76923076923077,
+    "end": 208.30666666666667,
+    "text": "それらを検索アラートに設定するか、あるいは僕が買ったこれを使ってもいいよ。",
+    "sourceText": "Start put those into your search alerts, and or you can just go with the one I bought here.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 208.30666666666667,
+    "end": 211.8,
+    "text": "結局、このフェーズワン P45+ デジタルバックを選んだんだ。",
+    "sourceText": "I ended up choosing this Phase One P45+ digital back [music]",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 211.8,
+    "end": 217.28,
+    "text": "理由は、内蔵バッテリーで動いて、カメラボディに接続しなくても単体で起動できるから。",
+    "sourceText": "because it's powered by its own battery, it can boot up by itself without a camera body connection.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 217.28,
+    "end": 220.40637873754153,
+    "text": "シンクロケーブルも見つかって、約80ドルだった。",
+    "sourceText": "I could find that sync cable, which ended up costing about 80",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 220.40637873754153,
+    "end": 223.1314285714286,
+    "text": "デジタルバック自体もお得に買えたんだ。",
+    "sourceText": "bucks, [music] and I got a good deal on the digital back itself.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 223.1314285714286,
+    "end": 226.2590476190476,
+    "text": "参考までに、この古いバックは今でも1000ドル以上することもある。",
+    "sourceText": "For reference, these old backs can still cost over",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 226.2590476190476,
+    "end": 228.16,
+    "text": "でも、辛抱強く待てばね、",
+    "sourceText": "$1,000, but please, if you're patient, [music]",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 228.16,
+    "end": 233.87157894736842,
+    "text": "勝てるよ。僕は動作するものを500ドルから800ドルでよく見つけてる。",
+    "sourceText": "you will win. I consistently find them for between $500 and $800 in working condition.",
+    "sourceIndexes": [
+      47,
+      48
+    ]
+  },
+  {
+    "start": 233.87157894736842,
+    "end": 239.0142372881356,
+    "text": "フェーズワン P45+ は2007年製の39メガピクセルCCD中判バックだ。",
+    "sourceText": "[music] And the Phase One P45+ is a 39-megapixel CCD medium format back from 2007.",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 239.0142372881356,
+    "end": 243.5072,
+    "text": "センサーサイズは49.1×36.8 mm。",
+    "sourceText": "It has a sensor size of 49.1 by 36.8 [music] mm.",
+    "sourceIndexes": [
+      50,
+      51
+    ]
+  },
+  {
+    "start": 243.5072,
+    "end": 248.01142857142858,
+    "text": "だから、最大のデジタルセンサーってわけじゃないけど、最小でもない。",
+    "sourceText": "So, it's not the largest digital sensor out there, but certainly not the smallest.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 248.01142857142858,
+    "end": 251.35833862433864,
+    "text": "それはフルフレームセンサーの2倍以上の面積で、",
+    "sourceText": "[music] That's over twice the area of a full-frame sensor, and still",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 251.35833862433864,
+    "end": 255.452,
+    "text": "富士フイルムのGFXミラーレス中判カメラよりも明らかに大きい。",
+    "sourceText": "noticeably larger than Fujifilm's GFX mirrorless medium format cameras.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 255.64,
+    "end": 260.692,
+    "text": "もっと早く言うべきだったけど、デジタルバックにはいろんなマウントがあるんだ。",
+    "sourceText": "And I guess I should have brought this up earlier, but digital backs come in different back mounts.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 260.76,
+    "end": 263.9634782608696,
+    "text": "で、このフェーズワン P45+ はハッセルブラッドHマウントだ。",
+    "sourceText": "So, this one, the Phase One P45+, is the Hasselblad",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 263.9634782608696,
+    "end": 266.04,
+    "text": "少なくとも僕が買ったのはね。",
+    "sourceText": "H mount, the one I bought it in at least.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 266.04,
+    "end": 267.36,
+    "text": "他のマウントのものもあるよ。",
+    "sourceText": "It comes in different mounts as well.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 267.36,
+    "end": 270.52893203883497,
+    "text": "それは僕のハッセルブラッドH2ボディの背面に合う。",
+    "sourceText": "And that fits on the back of my Hasselblad H2 body.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 270.52893203883497,
+    "end": 273.76,
+    "text": "このプロジェクトでは自分でカメラボディを作るから、バックのマウントはあまり関係ない。",
+    "sourceText": "Since I'm making my own camera body for [music] this project, the back doesn't really matter.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 273.76,
+    "end": 277.3621052631579,
+    "text": "どのバックでもアダプターは作れるはずだ。",
+    "sourceText": "You should be able to make an adapter for any of the backs.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 277.3621052631579,
+    "end": 279.42324786324787,
+    "text": "だから、一番お得に手に入るやつを探せばいい。",
+    "sourceText": "So, just find the one that you [music] can get the best deal on.",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 279.42324786324787,
+    "end": 282.18702054281,
+    "text": "で、今必要なのは、片側にデジタルバック、",
+    "sourceText": "So, what I need now is a custom camera body that fits the digital back on",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 282.18702054281,
+    "end": 286.28,
+    "text": "もう片側に内蔵シャッター付きレンズを取り付けられるカスタムカメラボディだ。",
+    "sourceText": "one side and a lens with a built-in shutter I can fire on the other [music]",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 286.28,
+    "end": 289.044,
+    "text": "そういうこと。このプロジェクトで使うレンズは、",
+    "sourceText": "side. And the lens I've decided to go with for this project",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 289.044,
+    "end": 292.08,
+    "text": "手持ちのマミヤプレスカメラのマミヤレンズに決めました。",
+    "sourceText": "is this Mamiya lens off of Mamiya Press camera I have.",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 292.08,
+    "end": 297.22088495575224,
+    "text": "高品質で手頃な価格、そして重要なのは内蔵シャッターで遠隔操作できることです。",
+    "sourceText": "These are high quality, they're affordable, and importantly, they [music] have that built-in shutter we can trigger remotely.",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 297.22088495575224,
+    "end": 301.18548672566374,
+    "text": "レンズ単体だと、だいたい50ドルくらいです。",
+    "sourceText": "I think by itself, you're looking at about $50 for one of these.",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 301.18548672566374,
+    "end": 303.29602359882006,
+    "text": "使えるレンズはたくさんあります。",
+    "sourceText": "There are a ton of different lenses we can use. I even have a couple of others",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 303.29602359882006,
+    "end": 307,
+    "text": "他にも大判カメラ用のレンズをいくつか持っていて、それらにもシャッターが内蔵されています。",
+    "sourceText": "from some large format cameras [music] that have shutters you can fire in them.",
+    "sourceIndexes": [
+      67,
+      68
+    ]
+  },
+  {
+    "start": 307,
+    "end": 312.16,
+    "text": "ここも、面白いヴィンテージレンズを選ぶ楽しみがあるところです。",
+    "sourceText": "So, this is another area where you could have a lot of fun picking out some really neat vintage lenses.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 312.16,
+    "end": 314.96630109670986,
+    "text": "カスタムカメラボディの3Dモデリングに取り掛かりました。",
+    "sourceText": "I got to work 3D modeling the custom camera body, and while",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 314.96630109670986,
+    "end": 317.94470588235293,
+    "text": "作るのに時間はかかりましたが、実際の組み立てはとても簡単です。",
+    "sourceText": "it took some time to make, the actual build is quite simple.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 317.94470588235293,
+    "end": 320.56,
+    "text": "基本的には穴の開いた箱です。",
+    "sourceText": "It's basically a box with a hole in it.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 320.56,
+    "end": 323.9805042016807,
+    "text": "片側に好きなデジタルバックを取り付けます。",
+    "sourceText": "On one side, we mount the digital back of our choice.",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 323.9805042016807,
+    "end": 326.6306723308336,
+    "text": "マミヤプレス用のアダプターの3Dプリントデータを、",
+    "sourceText": "I was able to find a Mamiya Press [music] adapter 3D print",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 326.6306723308336,
+    "end": 329.048813559322,
+    "text": "誰かが無料で公開しているのを見つけました。",
+    "sourceText": "already available and for free by a creator out there.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 329.048813559322,
+    "end": 333.65,
+    "text": "だから3Dプリントコミュニティが好きなんです。たくさんのものが無料で作られています。",
+    "sourceText": "That's [music] why I love the 3D printing community is a lot of stuff is made for free.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 333.65,
+    "end": 337.6,
+    "text": "その方に感謝します。もちろん、私のモデルもすべて無料です。",
+    "sourceText": "So, thank you to that person. And um of course, all of my models are free as well.",
+    "sourceIndexes": [
+      75,
+      76
+    ]
+  },
+  {
+    "start": 337.6,
+    "end": 340.2,
+    "text": "出来は良くないけど、いつかはね。",
+    "sourceText": "They're not good, but maybe one day.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 340.2,
+    "end": 341.8696428571428,
+    "text": "いつか良くなるかもしれません。",
+    "sourceText": "Maybe one day they'll be.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 341.8696428571428,
+    "end": 343.67285714285714,
+    "text": "バックの方はもっと厄介でした。",
+    "sourceText": "The back was much trickier.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 343.67285714285714,
+    "end": 346.6636217303823,
+    "text": "私が作ろうとしているものを300ドルで売っている人以外に、",
+    "sourceText": "I couldn't find anybody that was making a Hasselblad H mount back model that",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 346.6636217303823,
+    "end": 350.45714285714286,
+    "text": "使えるハッセルブラッドHマウントのバックモデルを作っている人は見つかりませんでした。",
+    "sourceText": "I could use other than this guy selling what I was trying to build for $300.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 350.45714285714286,
+    "end": 354.8,
+    "text": "その人の作品は見た目が素晴らしく、私の作っているものよりはるかに高品質です。",
+    "sourceText": "Now, their build looks great and much higher quality than [music] I'm doing.",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 354.8,
+    "end": 357.68,
+    "text": "なので、予算があればそれを買うのも手です。",
+    "sourceText": "So, actually, if you just have the funds, you could just buy that.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 357.68,
+    "end": 359.0267132867133,
+    "text": "でも私はそうしませんでした。",
+    "sourceText": "But, I didn't, and I wanted a cheaper option for",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 359.0267132867133,
+    "end": 361.1249350649351,
+    "text": "もっと安い選択肢を自分用に、そしていつか皆さんのためにも作りたかったんです。",
+    "sourceText": "myself and [music] then hopefully one day all of you.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 361.1249350649351,
+    "end": 362.68,
+    "text": "だから、自分でラッチを作らなければなりません。",
+    "sourceText": "So, I'm going to have to make my own latch.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 362.68,
+    "end": 368.6,
+    "text": "ハッセルブラッドHマウントは上部のバネ式ラッチでバックを固定するので、難しいんです。",
+    "sourceText": "It's tricky because the Hasselblad H mount uses the spring-loaded latch system at the top to lock in the back.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 368.6,
+    "end": 372.64444444444445,
+    "text": "何度か試行錯誤して、自分で再現することができました。",
+    "sourceText": "I was able to rebuild this myself after several [music] attempts.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 372.64444444444445,
+    "end": 375.6017391304348,
+    "text": "3Dプリントのパーツと、Amazonで5ドルで買える小さなバネを使っています。",
+    "sourceText": "It uses some 3D printed parts and a small spring you can buy on Amazon for five bucks.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 375.6017391304348,
+    "end": 380.4814046822743,
+    "text": "カメラボディを作る上でもう一つ注意すべきなのがフランジバックです。",
+    "sourceText": "The other consideration with building the camera [music] body that's going to be a little tricky is",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 380.4814046822743,
+    "end": 383.8,
+    "text": "レンズの後端とセンサーとの距離ですね。",
+    "sourceText": "the flange distance, and that's the distance between the back of the lens and the sensor, [music]",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 383.8,
+    "end": 389.32,
+    "text": "これでレンズのピントが決まり、使うレンズやマウントによって変わります。",
+    "sourceText": "and it controls how lenses focus, and it changes based on the lens you use, the [music] mount it was designed for.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 389.32,
+    "end": 393.44,
+    "text": "ネット上ではマミヤプレスのフランジバックについて意見が分かれています。",
+    "sourceText": "And people on the internet disagree about the flange distance for Mamiya Press.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 393.44,
+    "end": 397.26758620689657,
+    "text": "自分でも測ってみましたが、判断できませんでした。",
+    "sourceText": "I tried [music] to trying to measure it on mine, too, and couldn't decide.",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 397.26758620689657,
+    "end": 400.04151898734176,
+    "text": "ある人は自信満々に61.35 mmだと言っていました。",
+    "sourceText": "One person was very confident it was 61.35 [music] mm exactly.",
+    "sourceIndexes": [
+      93,
+      94
+    ]
+  },
+  {
+    "start": 400.04151898734176,
+    "end": 403.76,
+    "text": "なので、それに合わせてやってみて、結果を見てみます。",
+    "sourceText": "So, I'm going to try my best to do that, and we'll see what happens.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 403.76,
+    "end": 409.37128205128204,
+    "text": "このカメラが実際に動くか試すために、やったことのない写真技法を練習するのがいいと思いました。",
+    "sourceText": "To test out that this camera actually works, I thought it'd be cool to practice a type of photography",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 409.37128205128204,
+    "end": 413.64,
+    "text": "プロジェクターとコンピューターを使って照明や効果を出す方法です。",
+    "sourceText": "that I've never done before, and that is using a projector and a computer for lighting and effects.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 413.64,
+    "end": 417.36,
+    "text": "以前ネットで素晴らしい写真を見て、ぜひ試してみたいと思っていました。",
+    "sourceText": "I've seen some amazing photography online before that I really want to try this out.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 417.36,
+    "end": 421.3530434782609,
+    "text": "それに、寒くて家にこもる冬の間にできる写真技法としてもいいかなと。",
+    "sourceText": "And also, I think it'll be cool type of photography I can do over the winter months when I'm stuck inside in cold.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 421.3530434782609,
+    "end": 423.3714578005115,
+    "text": "このプロジェクトで使うプロジェクターは、",
+    "sourceText": "The projector I'm going to use for this project was",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 423.3714578005115,
+    "end": 425.84,
+    "text": "この動画のスポンサーであるValerianから提供されました。",
+    "sourceText": "provided by the sponsor of this video, Valerian.",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 425.84,
+    "end": 430.2278320874065,
+    "text": "学校では毎日古い業務用プロジェクターを使っていますが、",
+    "sourceText": "Now, I use old corporate-type projectors every day at",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 430.2278320874065,
+    "end": 432.60851063829784,
+    "text": "これは全然違います。",
+    "sourceText": "school, but this is nothing like those old projectors.",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 432.60851063829784,
+    "end": 434.25702127659576,
+    "text": "あらゆる面で優れています。",
+    "sourceText": "It is better in every way.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 434.25702127659576,
+    "end": 436.92,
+    "text": "これがValerian Vision Master Pro IIです。",
+    "sourceText": "This is the Valerian Vision Master Pro II.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 436.92,
+    "end": 441.62188679245287,
+    "text": "4Kプロジェクターで、オフィスで数フィートの距離からでも、",
+    "sourceText": "It's a 4K projector that looks good up close in my office at a couple",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 441.62188679245287,
+    "end": 445.72,
+    "text": "建物の壁に300インチまで投影しても美しいです。",
+    "sourceText": "of feet, or even up to 300 in projected to the side of a building.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 445.72,
+    "end": 449.7335593220339,
+    "text": "驚くべきは、このスケールでの細部の表現が信じられないほど素晴らしいことです。",
+    "sourceText": "And the amazing thing is the detail at this scale is incredible.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 449.7335593220339,
+    "end": 451.72363636363633,
+    "text": "見せた人はみんなその品質に驚いています。",
+    "sourceText": "Everyone I've shown this off to has been amazed by the quality.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 451.72363636363633,
+    "end": 454.6036363636363,
+    "text": "プロジェクター写真のためのセットアップはこんな感じです。",
+    "sourceText": "For projector photography, this is my setup.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 454.6036363636363,
+    "end": 459.6933333333333,
+    "text": "プロジェクターをコンピューターに接続して、好きな画像や動画を背景として投影できます。",
+    "sourceText": "I have the projector connected to my computer, where I can throw up any image or video to be my background.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 459.6933333333333,
+    "end": 463.67855855855856,
+    "text": "背景を変えるだけで、画像がどれだけ変わるかがわかります。",
+    "sourceText": "And you can see how much just changing the background around really changes the image.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 463.67855855855856,
+    "end": 467.5485645645646,
+    "text": "プロジェクターで被写体を直接照らして面白い効果を出すか、",
+    "sourceText": "And you can either have the projector directly lighting your subject for a really neat",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 467.5485645645646,
+    "end": 471.8,
+    "text": "別に照明を当ててプロジェクターは背景としてだけ使うこともできる。",
+    "sourceText": "effect, or light your subject separately and just use the projector as the background.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 471.8,
+    "end": 474.1176744186046,
+    "text": "いろいろ試してかっこいい写真を撮るのが本当に楽しくて、",
+    "sourceText": "And it's just been really fun to play around and get some",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 474.1176744186046,
+    "end": 475.97999999999996,
+    "text": "家で快適に写真の練習ができてる。",
+    "sourceText": "cool shots, practice photography from the comfort of my home.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 475.97999999999996,
+    "end": 480.16283185840706,
+    "text": "この安い中判カメラの自作を後でテストするのに、いい方法になると思う。",
+    "sourceText": "And I think this will be a great way to test this cheap medium format camera build later in the video.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 480.16283185840706,
+    "end": 485.0703890465854,
+    "text": "自分用のプロジェクターが欲しいなら、Valerionのブラックフライデーセールが早期、",
+    "sourceText": "If you're interested in picking up your own projector, then you can check out",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 485.0703890465854,
+    "end": 489.6248455501753,
+    "text": "に始まってて、2500ドル以上お得に、プロジェクター購入でスクリーンが無料、",
+    "sourceText": "Valerian's Black Friday deals coming early, where you can save over $2,500, get a free",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 489.62484555017534,
+    "end": 493.12,
+    "text": "新しいワイヤレスサウンドシステムが50%オフになる。",
+    "sourceText": "screen with projector purchase, and have 50% off their new wireless sound system.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 493.12,
+    "end": 496.96,
+    "text": "説明欄のリンクから限定の早期ブラックフライデーセールをチェックして。",
+    "sourceText": "Check the link in my description for exclusive early Black Friday deals.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 496.96,
+    "end": 499.94484210526315,
+    "text": "カメラが完成してテストできる状態みたいだ。",
+    "sourceText": "It looks like the camera is done and ready to test.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 499.94484210526315,
+    "end": 501.80102564102566,
+    "text": "いくつか試作を経て、かなりうまく動いてるみたい。",
+    "sourceText": "And after several prototypes, it seems to be working fairly well.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 501.80102564102566,
+    "end": 505.4,
+    "text": "部品をネジで固定するのに真鍮インサートを使ってる。",
+    "sourceText": "I am using brass inserts to screw the components together.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 505.4,
+    "end": 509.28,
+    "text": "こんな高そうな工具を持ってるけど、10ドルの半田ごてと安定した手があれば十分だよ。",
+    "sourceText": "I have this [music] fancy tool, but you can just use a $10 soldering iron and a steady hand.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 509.28,
+    "end": 513.986896551724,
+    "text": "底面にはネジ方式で三脚プレートも付けた。",
+    "sourceText": "I did add a tripod plate to the bottom as well using the screw method.",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 513.986896551724,
+    "end": 518.0533990147783,
+    "text": "前回のカメラ自作で使った三脚ネジインサートよりずっと頑丈で、",
+    "sourceText": "It's much sturdier than using the tripod screw insert that I did",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 518.0533990147783,
+    "end": 520.4,
+    "text": "結構うまくいったと思う。",
+    "sourceText": "on my last camera build, and I think it came out quite nicely.",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 520.4,
+    "end": 522.02,
+    "text": "でも、これが一番心配だった部分だ。",
+    "sourceText": "But, this was the part I was most worried about.",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 522.02,
+    "end": 527.8480519480519,
+    "text": "デジタルバックはかなり重いから、このラッチの接続部分はしっかり固定しないといけない。",
+    "sourceText": "The digital back is quite heavy, so this latch connection [music] needs to be really secure.",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 527.8480519480519,
+    "end": 531.9528205128205,
+    "text": "本物のカメラでは金属だけど、これは3Dプリントのちっちゃな部品だ。",
+    "sourceText": "On the real camera, it's metal, but this is a 3D printed teeny tiny component.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 531.9528205128205,
+    "end": 535.36,
+    "text": "今のところなんとか動いてるけど、もっと改良できるし、すごく慎重に、",
+    "sourceText": "Right now, it works sort of, but it could be improved a lot, and I'm being [music]",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 535.36,
+    "end": 541.28,
+    "text": "やってるのは、バックが落ちてセンサーが床にぶつかるのを絶対に避けたいからだ。",
+    "sourceText": "very cautious because what I don't want is the back to just fall off and my sensor to be smashed into the floor.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 541.28,
+    "end": 546.3744827586207,
+    "text": "あと、上部が1ミリだけズレることがあって、それだけで焦点面が狂うんだ。",
+    "sourceText": "Also, sometimes it slides out by just a millimeter [music] at the top, and that's enough to throw off the focus plane.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 546.3744827586207,
+    "end": 551.5662337662338,
+    "text": "だから今は、カメラに押し当てて位置が合ってるか確認してる。それも直さないとな。",
+    "sourceText": "So, right now, I I just kind of hold it against the camera to make sure that that's good. I need to fix that as well.",
+    "sourceIndexes": [
+      126,
+      127
+    ]
+  },
+  {
+    "start": 551.5662337662338,
+    "end": 557.2290023498393,
+    "text": "こんな小さな部品をもっと強く、もっと正確に3Dプリントする方法や、",
+    "sourceText": "If anyone has any idea how to get a really small part like this to print even stronger, [music] and but",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 557.2290023498393,
+    "end": 561.8098876404495,
+    "text": "金属で作る方法を知ってる人がいたら教えてください。",
+    "sourceText": "more importantly, more precisely, or to get something like this manufactured in metal, let me know.",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 561.8098876404495,
+    "end": 563.8417977528089,
+    "text": "そういう経験は全くないんです。",
+    "sourceText": "I have zero experience with that.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 563.8417977528089,
+    "end": 566.12,
+    "text": "でも、それが本当に必要なことなんです。",
+    "sourceText": "But, that's what we really need here.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 566.12,
+    "end": 567.96,
+    "text": "でも全体的に、このカメラはかなりかっこいいと思います。",
+    "sourceText": "But, overall, I think the camera looks pretty slick.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 567.96,
+    "end": 569.8237037037037,
+    "text": "少なくともバージョン1としては上出来です。",
+    "sourceText": "Pretty good for version one at least.",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 569.8237037037037,
+    "end": 573.4,
+    "text": "最初の被写体として、この古いThinkPadラップトップを撮るのが面白いと思いました。",
+    "sourceText": "I thought a fun first subject would be this old ThinkPad laptop I have.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 573.4,
+    "end": 577.4652631578948,
+    "text": "これは古いカメラ、例えばPolaroid PDC 2000をテザリングするのに使っているものです。",
+    "sourceText": "It's one that I use for all my old cameras, like tethering [music] my Polaroid PDC 2000 to it.",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 577.4652631578948,
+    "end": 580.08,
+    "text": "この四角い画面の見た目が大好きなんです。",
+    "sourceText": "And I just love the look of the square screen.",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 580.08,
+    "end": 582.7015384615385,
+    "text": "それにこのプロジェクターは本当に楽しいです。",
+    "sourceText": "And this projector thing is really fun because I can play with the background",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 582.7015384615385,
+    "end": 586.68,
+    "text": "コンピューターで背景を変えたり、いろいろ映して、画像にどう影響するか見られるからです。",
+    "sourceText": "on my computer, throw up different things, and see how they affect the image.",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 586.68,
+    "end": 590.3402197802197,
+    "text": "ラップトップ自体にも別のライトを当てて、背景から少し浮き上がらせています。",
+    "sourceText": "I'm also using a separate light onto the laptop itself to give it a little bit of a pop from the background.",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 590.3402197802197,
+    "end": 594.56,
+    "text": "それと、何をしているか説明したほうがいいですね。ちょっと変に見えるので。",
+    "sourceText": "Also, I probably should explain what I'm doing here cuz it looks a little funny.",
+    "sourceIndexes": [
+      138
+    ]
+  },
+  {
+    "start": 594.56,
+    "end": 597.6596710526316,
+    "text": "こんなマニュアルのダムカメラにデジタルバックを使うと、",
+    "sourceText": "When using a a back on a manual dumb camera like",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 597.6596710526316,
+    "end": 600.3371929824561,
+    "text": "バックはいつ写真を撮るべきかわかりません。",
+    "sourceText": "this, the back has no idea when to take the picture.",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 600.3371929824561,
+    "end": 605.24,
+    "text": "だから、常に露光しているわけではなく、いわゆる「2ショット方式」で動作します。",
+    "sourceText": "So, rather than just be on all the time exposing, it works using what's called a two-shot approach. [music]",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 605.24,
+    "end": 610.8,
+    "text": "仕組みはこうです。まずレンズのシャッターを巻いて、1回シャッターを切ります。",
+    "sourceText": "How this works is I wind the shutter on the lens first and then fire a shot.",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 610.8,
+    "end": 613.6446017699114,
+    "text": "最初の1回はカメラを起動するだけです。",
+    "sourceText": "That first shot just wakes the camera up.",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 613.6446017699114,
+    "end": 616.9840042356857,
+    "text": "それから、少なくともこのカメラ、このデジタルバックでは、",
+    "sourceText": "And then, at least with this camera, this digital back, I [music]",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 616.9840042356857,
+    "end": 620.0177777777778,
+    "text": "5秒以内にシャッターを巻いてもう1回撮影します。",
+    "sourceText": "have 5 seconds to then wind the shutter and take another shot.",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 620.0177777777778,
+    "end": 622.32,
+    "text": "その2回目が実際に露光されるショットです。",
+    "sourceText": "And that's the shot that's exposed.",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 622.32,
+    "end": 625.4258823529411,
+    "text": "リモートシャッターリリースを付ければもう少し楽になりますし、",
+    "sourceText": "You can make this a little bit easier by attaching a remote",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 625.4258823529411,
+    "end": 627.4517647058823,
+    "text": "カメラのブレも減らせます。",
+    "sourceText": "shutter release, which will also reduce the shake on the camera.",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 627.4517647058823,
+    "end": 631.3760899653979,
+    "text": "でも残念ながら、マミヤプレスのレンズがリモートシャッターリリースで詰まってしまうので、",
+    "sourceText": "But, unfortunately, my Mamiya Press lens keeps jamming with the remote",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 631.3760899653979,
+    "end": 634.16,
+    "text": "結局ほとんどの場合手でシャッターを切っていました。",
+    "sourceText": "shutter release, so I ended up just firing by hand [music] most of the time.",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 634.16,
+    "end": 638.4851612903226,
+    "text": "もうお気づきでコメントに書いている方もいると思いますが、",
+    "sourceText": "And as some of you probably already noticed and were writing in the comments,",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 638.4851612903226,
+    "end": 643.48,
+    "text": "このシステムではフレーミングやフォーカスを確認する方法がありません。",
+    "sourceText": "there is no way in this system to check my [music] framing or focus.",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 643.48,
+    "end": 647.368695652174,
+    "text": "それは、これらの古いデジタルバックにはライブビューがないからです。",
+    "sourceText": "And that's because these old digital backs do not have live view.",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 647.368695652174,
+    "end": 649.5394594594594,
+    "text": "新しいものにはあるけど、もちろんかなり高価だ。",
+    "sourceText": "Newer ones do, but they're, of course, quite a bit more expensive.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 649.5394594594594,
+    "end": 652.2514142049026,
+    "text": "だから、撮っては背面を確認し、また撮っては確認する、",
+    "sourceText": "So, it's more like a shot and then check the back, shot,",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 652.2514142049026,
+    "end": 654.44,
+    "text": "そんな感じでピントを合わせていた。",
+    "sourceText": "check the [music] back to get focus and everything good.",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 654.44,
+    "end": 658.5432000000001,
+    "text": "レンズの距離目盛りだけを使っていたけど、ありがたいことに、実際とても正確だった。",
+    "sourceText": "I was just using the focusing scale on the lens itself, but thankfully, it was actually really accurate.",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 658.5432000000001,
+    "end": 664.44,
+    "text": "古いセンサーが高感度でどれだけひどいか忘れてた。すごいノイズが見えるだろ。",
+    "sourceText": "I forgot how bad these older sensors are at high ISO, so you can see some crazy noise here.",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 664.44,
+    "end": 666.979090909091,
+    "text": "でも、この写真はかなりかっこいいと思う。",
+    "sourceText": "But, I think these shots look pretty cool.",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 666.979090909091,
+    "end": 668.9042201834862,
+    "text": "そして何より、実際に動いたことだ。それがすごく嬉しい。",
+    "sourceText": "And the best part is the thing actually works, which is exciting.",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 668.9042201834862,
+    "end": 671.4741284403669,
+    "text": "でも、今度は外に持って行って試してみたい。",
+    "sourceText": "But, now I want to take it outside and test it.",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 671.4741284403669,
+    "end": 675.08,
+    "text": "美しい秋の日で、素晴らしい写真が撮れるととても興奮していた。",
+    "sourceText": "It was a beautiful fall day and I was really excited about getting some [music] great pictures.",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 675.08,
+    "end": 677.36,
+    "text": "でも、外ではいくつか問題に直面した。",
+    "sourceText": "But, outside I encountered a few issues.",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 677.36,
+    "end": 680.5219672131147,
+    "text": "カメラは露出にかなり苦戦していて、",
+    "sourceText": "The camera is having a really tough time exposing [music] shots with some really",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 680.5219672131147,
+    "end": 686.8,
+    "text": "同じショット内で非常にコントラストの高い潰れた黒と、完全に飛んだ空が同時に発生していた。",
+    "sourceText": "high contrast crunchy blacks and super blown out skies, both in the same shot.",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 686.8,
+    "end": 691.032,
+    "text": "レンズのせいかもしれない。このビンテージレンズの何かコード的な問題で。",
+    "sourceText": "It could be because of the lens and some coding things with this vintage lens.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 691.08,
+    "end": 693.2995652173913,
+    "text": "どこかからの光漏れが原因か、",
+    "sourceText": "It could also be a light leak somewhere throwing things off or",
+    "sourceIndexes": [
+      160
+    ]
+  },
+  {
+    "start": 693.2995652173913,
+    "end": 696.83,
+    "text": "あるいはこの2ショット方式でのデータ記録方法の問題かもしれない。",
+    "sourceText": "just how the data is being recorded with this double shot mode.",
+    "sourceIndexes": [
+      160
+    ]
+  },
+  {
+    "start": 696.83,
+    "end": 702.6098322546559,
+    "text": "わからない。センサーは壊れていない。ハッセルブラッドH2ボディでは正常に動作するから。",
+    "sourceText": "And I don't know. My sensor's not broken because it works fine on my Hasselblad H2",
+    "sourceIndexes": [
+      161
+    ]
+  },
+  {
+    "start": 702.6098322546559,
+    "end": 706.366017699115,
+    "text": "だから、この奇妙な現象の原因が本当にわからない。",
+    "sourceText": "[music] body, so I really do not know what would be causing all this weird stuff.",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 706.366017699115,
+    "end": 709.8162264150943,
+    "text": "さらに残念なことに、現在のセットアップでは無限遠にピントが合わない。",
+    "sourceText": "Also, unfortunately, the camera does not focus to infinity with the current setup.",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 709.8162264150943,
+    "end": 712.7550943396226,
+    "text": "それがフランジバックの問題だ。",
+    "sourceText": "That's that flange [music] distance problem.",
+    "sourceIndexes": [
+      164
+    ]
+  },
+  {
+    "start": 712.7550943396226,
+    "end": 717.76,
+    "text": "だから、もう一度見直して、もう少し正確になるように何かしないといけない。",
+    "sourceText": "So, I'm going to have to revisit and do something to it to get it a little bit more precise.",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 717.76,
+    "end": 722.08,
+    "text": "でも、そうは言っても、これがデジタル中判カメラを撮影する最も安い方法だ。",
+    "sourceText": "But, all that said, this is the cheapest way to shoot digital medium format cameras.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 722.08,
+    "end": 724.7756384323641,
+    "text": "僕のモデルは明らかに完成していないけど、無料で公開している。",
+    "sourceText": "And while my model is not done, obviously, it is for free",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 724.7756384323641,
+    "end": 727.2718584070797,
+    "text": "説明欄にリンクがあるから、出発点として使ってほしい。",
+    "sourceText": "and linked in description if you want a starting point.",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 727.2718584070797,
+    "end": 733.6295575221238,
+    "text": "現在の問題を修正し、ピント合わせや構図用の光学ファインダーを追加したV2を見たいなら、",
+    "sourceText": "If you'd like to see a V2, which fixes the current issues and maybe [music] adds an optical",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 733.6295575221238,
+    "end": 737.04,
+    "text": "教えてくれ。すぐに取りかかるから。",
+    "sourceText": "viewfinder for focusing and composing your shots, then let me know and I will get to work on that.",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 737.04,
+    "end": 741.12,
+    "text": "ご視聴ありがとう。いつも通り、ハッピースナッピング！",
+    "sourceText": "Thanks for watching and as always, happy snapping.",
+    "sourceIndexes": [
+      169
+    ]
+  }
+]

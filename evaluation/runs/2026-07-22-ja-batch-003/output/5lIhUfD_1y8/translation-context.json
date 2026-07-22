@@ -1,0 +1,83 @@
+{
+  "topic": "Cab driver takes passenger to Bear Mountain for hiking, art, and reflection",
+  "summary": "Kareem Rahma rides with Young, a Korean immigrant cab driver, to Bear Mountain. They hike, sketch, fish, and discuss Young's past as a sign painter, his wife's death, and his pursuit of the American dream.",
+  "tone": "warm, reflective, conversational, with moments of humor",
+  "audience": "General YouTube audience interested in human-interest stories, travel, and immigrant experiences",
+  "glossary": [
+    {
+      "source": "Keep the meter running",
+      "target": "メーターはそのまま",
+      "note": "Key phrase of the series; keep as is in subtitles"
+    },
+    {
+      "source": "Bear Mountain",
+      "target": "ベアマウンテン",
+      "note": "Proper noun; use katakana"
+    },
+    {
+      "source": "American Dream",
+      "target": "アメリカン・ドリーム",
+      "note": "Common concept; use katakana"
+    },
+    {
+      "source": "sign painter",
+      "target": "看板職人",
+      "note": "Young's former profession"
+    },
+    {
+      "source": "crappie",
+      "target": "クラッピー",
+      "note": "Type of fish; use katakana"
+    },
+    {
+      "source": "bluegill",
+      "target": "ブルーギル",
+      "note": "Type of fish; use katakana"
+    },
+    {
+      "source": "White Castle",
+      "target": "ホワイトキャッスル",
+      "note": "Fast food chain; use katakana"
+    },
+    {
+      "source": "Burger King",
+      "target": "バーガーキング",
+      "note": "Fast food chain; use katakana"
+    },
+    {
+      "source": "chasing the American Dream",
+      "target": "アメリカン・ドリームを追いかけて",
+      "note": "Idiom; natural phrasing"
+    },
+    {
+      "source": "I'm still in the middle of it",
+      "target": "まだ途中だよ",
+      "note": "Casual, conversational tone"
+    }
+  ],
+  "properNouns": [
+    "Kareem Rahma",
+    "Young Han",
+    "Bear Mountain",
+    "South Korea",
+    "Seoul",
+    "New York City",
+    "Minnesota",
+    "White Castle",
+    "Burger King"
+  ],
+  "styleGuide": [
+    "Use casual, friendly Japanese sentence endings like だよ, ね, んだ, かな, よ, よね.",
+    "Keep Young's polite but warm tone; use です/ます for his speech but soften with ね/よ.",
+    "Translate 'sir' as さん or omit; avoid 様.",
+    "For laughter, use (笑) or keep as [笑].",
+    "Keep 'Wow' as わあ or すごい.",
+    "Translate 'sick' (cool) as すげえ or やばい.",
+    "For 'Oh man', use ああ or おいおい.",
+    "Keep 'dude' as おい or ねえ.",
+    "For 'What the heck', use なんで or 何だよ.",
+    "Translate 'I'm so sorry to hear' as それはお気の毒に or 大変でしたね.",
+    "For 'Thank you' exchange, use ありがとう / こちらこそ.",
+    "Keep 'You're welcome' as どういたしまして or いいえ."
+  ]
+}

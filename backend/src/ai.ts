@@ -2,7 +2,11 @@ import crypto from "node:crypto";
 import { env } from "./env.js";
 import type { CleanCue, TranslatedCue } from "./subtitles.js";
 import { normalizeText } from "./subtitles.js";
-import { getTranslationStrategy, type TranslationStrategy } from "./translationStrategies.js";
+import {
+  getTranslationStrategy,
+  hasJapaneseNumericCoverage,
+  type TranslationStrategy
+} from "./translationStrategies.js";
 
 export const aiProviders = ["gemini", "deepseek", "openai", "claude", "qwen", "mimo"] as const;
 export type AiProvider = typeof aiProviders[number];
@@ -589,6 +593,10 @@ Return:
 `.trim();
 }
 
+function isJapaneseTarget(targetLanguage: string) {
+  return targetLanguage.trim().toLowerCase().replace(/_/g, "-").split("-")[0] === "ja";
+}
+
 export async function translateChunk(input: {
   aiConfig: AiConfig;
   videoContext: VideoContext;
@@ -616,11 +624,11 @@ export async function translateChunk(input: {
   const expectedIndexes = input.rawCues.map((cue) => cue.index);
   const translatedByIndex = new Map<number, TranslatedCue>();
 
-  async function requestCues(rawCues: CleanCue[], repair = false) {
+  async function requestCues(rawCues: CleanCue[], repair = false, enforceNumericCoverage = true) {
     const requestedIndexes = new Set(rawCues.map((cue) => cue.index));
     const requestInput = { ...modelInput, rawCues };
     const repairInstruction = repair
-      ? `This is a small repair request. Return exactly ${rawCues.length} cues, one for each raw cue, in this exact index order: ${rawCues.map((cue) => cue.index).join(", ")}. Do not merge fragments or complete a fragment using neighboring context.`
+      ? `This is a small repair request. Return exactly ${rawCues.length} cues, one for each raw cue, in this exact index order: ${rawCues.map((cue) => cue.index).join(", ")}. Do not merge fragments or complete a fragment using neighboring context. Preserve every explicit number contained in each matching raw cue.`
       : "";
     const data = await chatJson(input.aiConfig, [
       { role: "system", content: systemPrompt(input.targetLanguage, strategy) },
@@ -640,6 +648,11 @@ export async function translateChunk(input: {
       sourceCues = realignSourceCues({ sourceText, sourceCues, rawCues: input.rawCues });
       const translation = normalizeText(String((item as { translation?: unknown }).translation || ""));
       if (sourceCues.length !== 1 || !requestedIndexes.has(sourceCues[0].index) || !translation) continue;
+      if (
+        enforceNumericCoverage
+        && isJapaneseTarget(input.targetLanguage)
+        && !hasJapaneseNumericCoverage(sourceCues[0].text, translation)
+      ) continue;
       output.set(sourceCues[0].index, {
         start: Math.min(...sourceCues.map((cue) => cue.start)),
         end: Math.max(...sourceCues.map((cue) => cue.end)),
@@ -670,7 +683,7 @@ export async function translateChunk(input: {
       .map((position) => input.rawCues[position]);
 
     for (let attempt = 0; attempt < 2; attempt += 1) {
-      const repaired = await requestCues(repairCues, true);
+      const repaired = await requestCues(repairCues, true, attempt === 0);
       if (repaired.size !== repairCues.length) continue;
       for (const [index, cue] of repaired) translatedByIndex.set(index, cue);
       break;

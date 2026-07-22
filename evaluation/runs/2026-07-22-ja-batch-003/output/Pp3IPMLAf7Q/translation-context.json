@@ -1,0 +1,73 @@
+{
+  "topic": "Sanzo Wada and his color dictionary",
+  "summary": "The story of Sanzo Wada, a Japanese painter who created a color dictionary that became a viral internet sensation, won an Oscar for costume design, and shaped color use in Japan.",
+  "tone": "narrative, explanatory, slightly reverent",
+  "audience": "general internet users interested in design, color, and Japanese culture",
+  "glossary": [
+    {
+      "source": "color dictionary",
+      "target": "配色辞典",
+      "note": "The book's title; use consistently."
+    },
+    {
+      "source": "Sanzo Wada",
+      "target": "和田三造",
+      "note": "Full name in Japanese order."
+    },
+    {
+      "source": "Gate of Hell",
+      "target": "地獄門",
+      "note": "Film title; use Japanese title."
+    },
+    {
+      "source": "Bunten exhibition",
+      "target": "文展",
+      "note": "Abbreviation for government art exhibition."
+    },
+    {
+      "source": "Japan Color Research Institute",
+      "target": "日本色彩研究所",
+      "note": "Official name of the institute he founded."
+    },
+    {
+      "source": "Seigensha",
+      "target": "青幻舎",
+      "note": "Publisher name; keep as is."
+    },
+    {
+      "source": "CMYK values",
+      "target": "CMYK値",
+      "note": "Technical term; keep as is."
+    },
+    {
+      "source": "Eastman color film",
+      "target": "イーストマンカラーフィルム",
+      "note": "Film stock name."
+    }
+  ],
+  "properNouns": [
+    "Sanzo Wada",
+    "Hyogo",
+    "Kuroda Seiki",
+    "Tokyo School of Fine Arts",
+    "South Wind",
+    "Bunten",
+    "Museum of Modern Art, Tokyo",
+    "India",
+    "Burma",
+    "Java",
+    "Japan Color Research Institute",
+    "Daiei"
+  ],
+  "styleGuide": [
+    "Use polite but natural Japanese (です・ます調) for narration.",
+    "Keep speaker's casual tone in quotes (e.g., 'you just trust it' → 信じるしかない).",
+    "Translate 'you' as あなた or omit when natural.",
+    "Use 配色辞典 for 'color dictionary' throughout.",
+    "For film titles, use Japanese titles (地獄門).",
+    "Keep proper nouns in original script (e.g., Sanzo Wada) but add Japanese reading in glossary.",
+    "Avoid overly literal translations; prefer conversational flow.",
+    "Use 〜たんだ/〜のだ for explanatory tone where appropriate.",
+    "For 'Academy Award', use アカデミー賞; for 'Oscar', use オスカー or アカデミー賞."
+  ]
+}

@@ -1,0 +1,2742 @@
+[
+  {
+    "text": "This is the most successful user",
+    "start": 0,
+    "duration": 4.64
+  },
+  {
+    "text": "interface in the world. Every single day",
+    "start": 2.12,
+    "duration": 5.6
+  },
+  {
+    "text": "we collectively watch not one or 10, but",
+    "start": 4.64,
+    "duration": 6.08
+  },
+  {
+    "text": "616,572",
+    "start": 7.72,
+    "duration": 3
+  },
+  {
+    "text": "years worth of content through this",
+    "start": 11.44,
+    "duration": 4.28
+  },
+  {
+    "text": "interface. And it's absolutely not by",
+    "start": 13.2,
+    "duration": 4.32
+  },
+  {
+    "text": "chance because this is one of the most",
+    "start": 15.72,
+    "duration": 4
+  },
+  {
+    "text": "hyper-optimized pieces of technology in",
+    "start": 17.52,
+    "duration": 3.76
+  },
+  {
+    "text": "the world. Every [music] button, every",
+    "start": 19.72,
+    "duration": 3.72
+  },
+  {
+    "text": "interaction, even the tiniest seemingly",
+    "start": 21.28,
+    "duration": 4.48
+  },
+  {
+    "text": "inconsequential decision is engineered",
+    "start": 23.44,
+    "duration": 4.48
+  },
+  {
+    "text": "to make you spend more time. Try to",
+    "start": 25.76,
+    "duration": 3.84
+  },
+  {
+    "text": "swipe through some Reels on your phone.",
+    "start": 27.92,
+    "duration": 3.32
+  },
+  {
+    "text": "You'll notice that even with just a tiny",
+    "start": 29.6,
+    "duration": 3.12
+  },
+  {
+    "text": "flick [music] of your finger, you move",
+    "start": 31.24,
+    "duration": 3.36
+  },
+  {
+    "text": "on to the next one. See, most apps are",
+    "start": 32.72,
+    "duration": 5.24
+  },
+  {
+    "text": "built using iOS or Android's own UI kit,",
+    "start": 34.6,
+    "duration": 5.12
+  },
+  {
+    "text": "so that they don't have to make complex",
+    "start": 37.96,
+    "duration": 3.4
+  },
+  {
+    "text": "physics calculations for speed and",
+    "start": 39.72,
+    "duration": 3.96
+  },
+  {
+    "text": "acceleration just to create a scrollable",
+    "start": 41.36,
+    "duration": 4.72
+  },
+  {
+    "text": "list. The OS just gives you one. But",
+    "start": 43.68,
+    "duration": 4.68
+  },
+  {
+    "text": "Instagram, for example, doesn't. They",
+    "start": 46.08,
+    "duration": 4.44
+  },
+  {
+    "text": "built their own UI kit simulating",
+    "start": 48.36,
+    "duration": 3.4
+  },
+  {
+    "text": "velocity and acceleration in the",
+    "start": 50.52,
+    "duration": 2.92
+  },
+  {
+    "text": "interface and how it reacts to your",
+    "start": 51.76,
+    "duration": 4.4
+  },
+  {
+    "text": "touch, but also so that in the Reels",
+    "start": 53.44,
+    "duration": 4.88
+  },
+  {
+    "text": "feed, you need to wave less force to",
+    "start": 56.16,
+    "duration": 3.88
+  },
+  {
+    "text": "move on to the next video, making it",
+    "start": 58.32,
+    "duration": 3.44
+  },
+  {
+    "text": "easier to scroll when you're in bed at",
+    "start": 60.04,
+    "duration": 3.96
+  },
+  {
+    "text": "3:00 a.m. I'm Ammar and on this series",
+    "start": 61.76,
+    "duration": 3.8
+  },
+  {
+    "text": "we go behind the scenes of the insane",
+    "start": 64,
+    "duration": 3.36
+  },
+  {
+    "text": "design, engineering, and psychology of",
+    "start": 65.56,
+    "duration": 3.6
+  },
+  {
+    "text": "the tech products you use every day.",
+    "start": 67.36,
+    "duration": 3.64
+  },
+  {
+    "text": "There are three layers that make this",
+    "start": 69.16,
+    "duration": 4.2
+  },
+  {
+    "text": "all work and only the first one is what",
+    "start": 71,
+    "duration": 4.24
+  },
+  {
+    "text": "you can actually see. But to understand",
+    "start": 73.36,
+    "duration": 3.48
+  },
+  {
+    "text": "that, let's start from something simple.",
+    "start": 75.24,
+    "duration": 3
+  },
+  {
+    "text": "Remember how short-form video feeds",
+    "start": 76.84,
+    "duration": 3.32
+  },
+  {
+    "text": "don't use iOS or Android's physics",
+    "start": 78.24,
+    "duration": 3.24
+  },
+  {
+    "text": "engine, but build their own to make it",
+    "start": 80.16,
+    "duration": 3.36
+  },
+  {
+    "text": "more responsive to swipes? Well, now try",
+    "start": 81.48,
+    "duration": 3.96
+  },
+  {
+    "text": "to swipe around the home screen on your",
+    "start": 83.52,
+    "duration": 4.96
+  },
+  {
+    "text": "phone. The animation is smooth, natural.",
+    "start": 85.44,
+    "duration": 4.56
+  },
+  {
+    "text": "It gradually comes to a halt when you",
+    "start": 88.48,
+    "duration": 3.12
+  },
+  {
+    "text": "reach the end of the page. Apple and",
+    "start": 90,
+    "duration": 3.6
+  },
+  {
+    "text": "Google designers spent hundreds of hours",
+    "start": 91.6,
+    "duration": 4.04
+  },
+  {
+    "text": "tweaking the animation curves to make",
+    "start": 93.6,
+    "duration": 4.2
+  },
+  {
+    "text": "this animation feel right because the",
+    "start": 95.64,
+    "duration": 3.56
+  },
+  {
+    "text": "goal to them [music] is to make your",
+    "start": 97.8,
+    "duration": 2.96
+  },
+  {
+    "text": "phone feel like something you can",
+    "start": 99.2,
+    "duration": 3.96
+  },
+  {
+    "text": "control with your fingers, emulating",
+    "start": 100.76,
+    "duration": 5.08
+  },
+  {
+    "text": "real-world physics. But now try to swipe",
+    "start": 103.16,
+    "duration": 4.6
+  },
+  {
+    "text": "through videos on TikTok or Shorts or",
+    "start": 105.84,
+    "duration": 4.24
+  },
+  {
+    "text": "Instagram. The animations are much, much",
+    "start": 107.76,
+    "duration": 2.936
+  },
+  {
+    "text": "faster.",
+    "start": 110.08,
+    "duration": 0.8
+  },
+  {
+    "text": ">> [music]",
+    "start": 110.696,
+    "duration": 1.864
+  },
+  {
+    "text": ">> They built their own system in order to",
+    "start": 110.88,
+    "duration": 3.6
+  },
+  {
+    "text": "optimize it not for making it feel",
+    "start": 112.56,
+    "duration": 4.52
+  },
+  {
+    "text": "smooth, but just for sheer speed to make",
+    "start": 114.48,
+    "duration": 4.76
+  },
+  {
+    "text": "the next video come at you faster. And",
+    "start": 117.08,
+    "duration": 4.04
+  },
+  {
+    "text": "this is just scratching the surface of",
+    "start": 119.24,
+    "duration": 3.36
+  },
+  {
+    "text": "what's going on in this video [music]",
+    "start": 121.12,
+    "duration": 3.32
+  },
+  {
+    "text": "feed. The video itself is full screen,",
+    "start": 122.6,
+    "duration": 3.16
+  },
+  {
+    "text": "and the interface doesn't have",
+    "start": 124.44,
+    "duration": 3.599
+  },
+  {
+    "text": "containers or bars. It's above the video",
+    "start": 125.76,
+    "duration": 3.96
+  },
+  {
+    "text": "with a slight shadow to create just",
+    "start": 128.039,
+    "duration": 3.721
+  },
+  {
+    "text": "enough contrast not to blend with it. In",
+    "start": 129.72,
+    "duration": 3.36
+  },
+  {
+    "text": "both Instagram, TikTok, and YouTube",
+    "start": 131.76,
+    "duration": 3.56
+  },
+  {
+    "text": "Shorts, the main action buttons might be",
+    "start": 133.08,
+    "duration": 3.96
+  },
+  {
+    "text": "slightly different, but they are always",
+    "start": 135.32,
+    "duration": 2.886
+  },
+  {
+    "text": "positioned right here,",
+    "start": 137.04,
+    "duration": 1.36
+  },
+  {
+    "text": ">> [music]",
+    "start": 138.206,
+    "duration": 2.274
+  },
+  {
+    "text": ">> so that they are in the thumb reach",
+    "start": 138.4,
+    "duration": 4.12
+  },
+  {
+    "text": "zone. These are the buttons related to",
+    "start": 140.48,
+    "duration": 3.6
+  },
+  {
+    "text": "engagement, liking, commenting, and",
+    "start": 142.52,
+    "duration": 4.28
+  },
+  {
+    "text": "sharing. They want you to press them.",
+    "start": 144.08,
+    "duration": 4.28
+  },
+  {
+    "text": "When you move from one video to another,",
+    "start": 146.8,
+    "duration": 2.88
+  },
+  {
+    "text": "instead of just the video moving",
+    "start": 148.36,
+    "duration": 3.2
+  },
+  {
+    "text": "underneath, the buttons move with the",
+    "start": 149.68,
+    "duration": 4.16
+  },
+  {
+    "text": "video and become slightly lower opacity",
+    "start": 151.56,
+    "duration": 3.92
+  },
+  {
+    "text": "as you scroll, because they need to",
+    "start": 153.84,
+    "duration": 3.76
+  },
+  {
+    "text": "convey the idea that the likes and",
+    "start": 155.48,
+    "duration": 4.04
+  },
+  {
+    "text": "comments are about that specific [music]",
+    "start": 157.6,
+    "duration": 3.48
+  },
+  {
+    "text": "video, not part of the overall",
+    "start": 159.52,
+    "duration": 2.92
+  },
+  {
+    "text": "interface. And take a look up here.",
+    "start": 161.08,
+    "duration": 2.76
+  },
+  {
+    "text": "These are the options that the interface",
+    "start": 162.44,
+    "duration": 3.04
+  },
+  {
+    "text": "gives you to give you the feeling of",
+    "start": 163.84,
+    "duration": 3.119
+  },
+  {
+    "text": "control. Like on Instagram, did you know",
+    "start": 165.48,
+    "duration": 3.4
+  },
+  {
+    "text": "you can tweak your algorithm or change",
+    "start": 166.959,
+    "duration": 3.721
+  },
+  {
+    "text": "the type of your feed you're in? No?",
+    "start": 168.88,
+    "duration": 3.48
+  },
+  {
+    "text": "Well, that's kind of the point. These",
+    "start": 170.68,
+    "duration": 4.08
+  },
+  {
+    "text": "are purposely placed up here, so that",
+    "start": 172.36,
+    "duration": 4.12
+  },
+  {
+    "text": "they are more cumbersome to reach.",
+    "start": 174.76,
+    "duration": 3.56
+  },
+  {
+    "text": "Seriously, you probably have spent hours",
+    "start": 176.48,
+    "duration": 3.44
+  },
+  {
+    "text": "scrolling through content, but how many",
+    "start": 178.32,
+    "duration": 3.08
+  },
+  {
+    "text": "times have you actually interacted with",
+    "start": 179.92,
+    "duration": 3.12
+  },
+  {
+    "text": "that stuff on top? Well, that's on",
+    "start": 181.4,
+    "duration": 3.52
+  },
+  {
+    "text": "purpose. There's no grid of thumbnails,",
+    "start": 183.04,
+    "duration": 3.76
+  },
+  {
+    "text": "no menu of options. There's only the",
+    "start": 184.92,
+    "duration": 4
+  },
+  {
+    "text": "next video that the algorithm chose for",
+    "start": 186.8,
+    "duration": 3.24
+  },
+  {
+    "text": "you. In psychology, there's something",
+    "start": 188.92,
+    "duration": 3.039
+  },
+  {
+    "text": "called unit [music] bias. One unit of",
+    "start": 190.04,
+    "duration": 4.4
+  },
+  {
+    "text": "something always feels like the optimal",
+    "start": 191.959,
+    "duration": 4.543
+  },
+  {
+    "text": "amount. One video at a time and just",
+    "start": 194.44,
+    "duration": 3.92
+  },
+  {
+    "text": "[music] one thing to focus on. When a",
+    "start": 196.502,
+    "duration": 4.258
+  },
+  {
+    "text": "video ends, it loops without any signal",
+    "start": 198.36,
+    "duration": 4.48
+  },
+  {
+    "text": "that the video has ended. For videos",
+    "start": 200.76,
+    "duration": 4.04
+  },
+  {
+    "text": "shorter than 15 seconds, there's not",
+    "start": 202.84,
+    "duration": 2.832
+  },
+  {
+    "text": "even a play bar",
+    "start": 204.8,
+    "duration": 0.88
+  },
+  {
+    "text": ">> [music]",
+    "start": 205.672,
+    "duration": 1.928
+  },
+  {
+    "text": ">> letting you seek through. And for ones",
+    "start": 205.68,
+    "duration": 3.76
+  },
+  {
+    "text": "that do have it, it's quite small and",
+    "start": 207.6,
+    "duration": 3.4
+  },
+  {
+    "text": "not visible, because that would be",
+    "start": 209.44,
+    "duration": 2.72
+  },
+  {
+    "text": "another point of friction, another",
+    "start": 211,
+    "duration": 3
+  },
+  {
+    "text": "decision to make. If you decide to skim",
+    "start": 212.16,
+    "duration": 3.6
+  },
+  {
+    "text": "through the video, it means that it's",
+    "start": 214,
+    "duration": 3.44
+  },
+  {
+    "text": "not engaging enough, and the main action",
+    "start": 215.76,
+    "duration": 3.52
+  },
+  {
+    "text": "you should take is just swipe to the",
+    "start": 217.44,
+    "duration": 3.96
+  },
+  {
+    "text": "next one. Casinos famously remove all",
+    "start": 219.28,
+    "duration": 4
+  },
+  {
+    "text": "clocks and windows and are purposely",
+    "start": 221.4,
+    "duration": 3.88
+  },
+  {
+    "text": "designed as a maze to make you lose",
+    "start": 223.28,
+    "duration": 3.48
+  },
+  {
+    "text": "track of time. This is the psychological",
+    "start": 225.28,
+    "duration": 3.48
+  },
+  {
+    "text": "principle called chronoception. Our",
+    "start": 226.76,
+    "duration": 3.56
+  },
+  {
+    "text": "perception of time is subjective, and",
+    "start": 228.76,
+    "duration": 4
+  },
+  {
+    "text": "short-form interface exploits this by",
+    "start": 230.32,
+    "duration": 4.12
+  },
+  {
+    "text": "removing every signal that tells you a",
+    "start": 232.76,
+    "duration": 3.68
+  },
+  {
+    "text": "piece of content is beginning or ending,",
+    "start": 234.44,
+    "duration": 2.56
+  },
+  {
+    "text": "everything [music]",
+    "start": 236.44,
+    "duration": 2.88
+  },
+  {
+    "text": "blurs into one. Just one session where",
+    "start": 237,
+    "duration": 3.88
+  },
+  {
+    "text": "you lose track of how long you've been",
+    "start": 239.32,
+    "duration": 3.68
+  },
+  {
+    "text": "scrolling for. Literally every detail is",
+    "start": 240.88,
+    "duration": 4.24
+  },
+  {
+    "text": "built for this. For example, on YouTube",
+    "start": 243,
+    "duration": 3.64
+  },
+  {
+    "text": "when the video's loading, you get the",
+    "start": 245.12,
+    "duration": 3.8
+  },
+  {
+    "text": "dreaded spinning wheel. On short form",
+    "start": 246.64,
+    "duration": 4.44
+  },
+  {
+    "text": "feeds, have you ever seen one? Well, on",
+    "start": 248.92,
+    "duration": 3.8
+  },
+  {
+    "text": "purpose. Instead of showing you a",
+    "start": 251.08,
+    "duration": 3.4
+  },
+  {
+    "text": "spinning wheel, making you get out of",
+    "start": 252.72,
+    "duration": 3.88
+  },
+  {
+    "text": "the flow of watching, they preload the",
+    "start": 254.48,
+    "duration": 3.92
+  },
+  {
+    "text": "first frame of the next video. [music]",
+    "start": 256.6,
+    "duration": 3.8
+  },
+  {
+    "text": "And that's what you see while things",
+    "start": 258.4,
+    "duration": 3.399
+  },
+  {
+    "text": "load, so that you get a preview of",
+    "start": 260.4,
+    "duration": 2.48
+  },
+  {
+    "text": "what's going to happen without making",
+    "start": 261.799,
+    "duration": 2.761
+  },
+  {
+    "text": "you realize that you're actually waiting",
+    "start": 262.88,
+    "duration": 3.2
+  },
+  {
+    "text": "for something to load. Once the video is",
+    "start": 264.56,
+    "duration": 3.96
+  },
+  {
+    "text": "loaded, it just starts. But this isn't",
+    "start": 266.08,
+    "duration": 4.32
+  },
+  {
+    "text": "just about what's inside the feed. It's",
+    "start": 268.52,
+    "duration": 3.308
+  },
+  {
+    "text": "also how you get there.",
+    "start": 270.4,
+    "duration": 1.6
+  },
+  {
+    "text": ">> [music]",
+    "start": 271.828,
+    "duration": 2.412
+  },
+  {
+    "text": ">> Try searching for a TikTok on Google.",
+    "start": 272,
+    "duration": 4.24
+  },
+  {
+    "text": "The videos are there. They are indexed",
+    "start": 274.24,
+    "duration": 3.8
+  },
+  {
+    "text": "and they show up in search results. But",
+    "start": 276.24,
+    "duration": 3.12
+  },
+  {
+    "text": "when you click, you can't [music] watch",
+    "start": 278.04,
+    "duration": 3.72
+  },
+  {
+    "text": "it. The video is behind a sign-in wall.",
+    "start": 279.36,
+    "duration": 3.96
+  },
+  {
+    "text": "And even after that, they push you",
+    "start": 281.76,
+    "duration": 4
+  },
+  {
+    "text": "really hard to download the app. This",
+    "start": 283.32,
+    "duration": 3.76
+  },
+  {
+    "text": "doesn't happen with a regular YouTube",
+    "start": 285.76,
+    "duration": 3.32
+  },
+  {
+    "text": "video. They still push you to sign in,",
+    "start": 287.08,
+    "duration": 4.12
+  },
+  {
+    "text": "but you can still watch the video. And",
+    "start": 289.08,
+    "duration": 3.52
+  },
+  {
+    "text": "that's because for short form, the",
+    "start": 291.2,
+    "duration": 3.48
+  },
+  {
+    "text": "individual video is not what's really",
+    "start": 292.6,
+    "duration": 3.4
+  },
+  {
+    "text": "valuable. Not only they don't get any",
+    "start": 294.68,
+    "duration": 3.32
+  },
+  {
+    "text": "advertising on a single video, but the",
+    "start": 296,
+    "duration": 4.36
+  },
+  {
+    "text": "real value is [music] not in the single",
+    "start": 298,
+    "duration": 4.64
+  },
+  {
+    "text": "piece of content, but in you getting",
+    "start": 300.36,
+    "duration": 4.04
+  },
+  {
+    "text": "addicted to the algorithm. And for that,",
+    "start": 302.64,
+    "duration": 2.96
+  },
+  {
+    "text": "they need [music] you to sign in. But",
+    "start": 304.4,
+    "duration": 3.519
+  },
+  {
+    "text": "this interface, the short form video",
+    "start": 305.6,
+    "duration": 4
+  },
+  {
+    "text": "feed, ended up becoming successful",
+    "start": 307.919,
+    "duration": 3.601
+  },
+  {
+    "text": "because it became something bigger than",
+    "start": 309.6,
+    "duration": 3.76
+  },
+  {
+    "text": "itself. For example, this is a concept I",
+    "start": 311.52,
+    "duration": 3.24
+  },
+  {
+    "text": "developed in an older video where",
+    "start": 313.36,
+    "duration": 3.24
+  },
+  {
+    "text": "swiping diagonally lets you make a",
+    "start": 314.76,
+    "duration": 3.8
+  },
+  {
+    "text": "choice on going deeper into a topic or",
+    "start": 316.6,
+    "duration": 3.72
+  },
+  {
+    "text": "explore different type of videos.",
+    "start": 318.56,
+    "duration": 2.64
+  },
+  {
+    "text": "There's a reason they haven't",
+    "start": 320.32,
+    "duration": 2.76
+  },
+  {
+    "text": "implemented this yet. [music] Because",
+    "start": 321.2,
+    "duration": 3.36
+  },
+  {
+    "text": "contrary to all the other video",
+    "start": 323.08,
+    "duration": 3.48
+  },
+  {
+    "text": "interfaces like YouTube or Netflix, the",
+    "start": 324.56,
+    "duration": 3.598
+  },
+  {
+    "text": "short form UI is built for extreme",
+    "start": 326.56,
+    "duration": 3.48
+  },
+  {
+    "text": "[music] simplicity. There are no",
+    "start": 328.158,
+    "duration": 3.842
+  },
+  {
+    "text": "carousels, no grids to choose from,",
+    "start": 330.04,
+    "duration": 4.013
+  },
+  {
+    "text": "nothing to understand, just one simple",
+    "start": 332,
+    "duration": 3.919
+  },
+  {
+    "text": "[music] gesture. This is called Hick's",
+    "start": 334.053,
+    "duration": 3.747
+  },
+  {
+    "text": "Law. The more options you have, the",
+    "start": 335.919,
+    "duration": 2.719
+  },
+  {
+    "text": "harder it is",
+    "start": 337.8,
+    "duration": 0.92
+  },
+  {
+    "text": ">> [music]",
+    "start": 338.638,
+    "duration": 1.962
+  },
+  {
+    "text": ">> to decide. YouTube gives you a grid,",
+    "start": 338.72,
+    "duration": 4.199
+  },
+  {
+    "text": "Netflix gives you rows, and short form",
+    "start": 340.6,
+    "duration": 4.2
+  },
+  {
+    "text": "gives you one video [music] and just one",
+    "start": 342.919,
+    "duration": 4.041
+  },
+  {
+    "text": "thing to do, swipe. Now, short form",
+    "start": 344.8,
+    "duration": 3.96
+  },
+  {
+    "text": "feeds have basically been invented by",
+    "start": 346.96,
+    "duration": 4.2
+  },
+  {
+    "text": "TikTok, but they ended up being copied",
+    "start": 348.76,
+    "duration": 4.36
+  },
+  {
+    "text": "discovered by Instagram and YouTube",
+    "start": 351.16,
+    "duration": 2.544
+  },
+  {
+    "text": "Shorts.",
+    "start": 353.12,
+    "duration": 0.76
+  },
+  {
+    "text": ">> [music]",
+    "start": 353.704,
+    "duration": 2.456
+  },
+  {
+    "text": ">> But, not only that, Spotify tried to",
+    "start": 353.88,
+    "duration": 4.44
+  },
+  {
+    "text": "copy them. Even Amazon launched an",
+    "start": 356.16,
+    "duration": 4.28
+  },
+  {
+    "text": "Inspire feed. Everyone seems to be",
+    "start": 358.32,
+    "duration": 4.04
+  },
+  {
+    "text": "copying the same user interface. This",
+    "start": 360.44,
+    "duration": 3.56
+  },
+  {
+    "text": "might be the most replicated user",
+    "start": 362.36,
+    "duration": 3.24
+  },
+  {
+    "text": "interface ever [music] created. And",
+    "start": 364,
+    "duration": 3.32
+  },
+  {
+    "text": "that's because the short-form feed went",
+    "start": 365.6,
+    "duration": 4.52
+  },
+  {
+    "text": "from being just how TikTok shows videos",
+    "start": 367.32,
+    "duration": 5.48
+  },
+  {
+    "text": "being a design pattern. If I show you",
+    "start": 370.12,
+    "duration": 4.76
+  },
+  {
+    "text": "this, you know exactly how this works. I",
+    "start": 372.8,
+    "duration": 3.64
+  },
+  {
+    "text": "don't need to show you any instructions",
+    "start": 374.88,
+    "duration": 2.96
+  },
+  {
+    "text": "for you to understand that [music] this",
+    "start": 376.44,
+    "duration": 2.68
+  },
+  {
+    "text": "is a menu and this is how it works.",
+    "start": 377.84,
+    "duration": 3.12
+  },
+  {
+    "text": "There are submenus. If I show you these,",
+    "start": 379.12,
+    "duration": 3.799
+  },
+  {
+    "text": "you already know more or less what these",
+    "start": 380.96,
+    "duration": 3.68
+  },
+  {
+    "text": "do. [music] Again, no instructions",
+    "start": 382.919,
+    "duration": 4.441
+  },
+  {
+    "text": "needed. If I say the Tinder of music,",
+    "start": 384.64,
+    "duration": 4.56
+  },
+  {
+    "text": "without me telling you anything, you",
+    "start": 387.36,
+    "duration": 3.44
+  },
+  {
+    "text": "already imagine you can swipe left and",
+    "start": 389.2,
+    "duration": 3.64
+  },
+  {
+    "text": "right to like or dislike something and",
+    "start": 390.8,
+    "duration": 4.04
+  },
+  {
+    "text": "you'll get songs pop up. These are all",
+    "start": 392.84,
+    "duration": 3.4
+  },
+  {
+    "text": "design patterns. [music]",
+    "start": 394.84,
+    "duration": 2.84
+  },
+  {
+    "text": "See, most interfaces are just that,",
+    "start": 396.24,
+    "duration": 3.64
+  },
+  {
+    "text": "interfaces. But, with a select few, they",
+    "start": 397.68,
+    "duration": 4.2
+  },
+  {
+    "text": "become so ubiquitous and they end up",
+    "start": 399.88,
+    "duration": 3.88
+  },
+  {
+    "text": "working so well that they turn into",
+    "start": 401.88,
+    "duration": 3.76
+  },
+  {
+    "text": "design patterns. They're designed so",
+    "start": 403.76,
+    "duration": 3.6
+  },
+  {
+    "text": "well that they instantly click with",
+    "start": 405.64,
+    "duration": 3.64
+  },
+  {
+    "text": "people. So much so that other products",
+    "start": 407.36,
+    "duration": 3.329
+  },
+  {
+    "text": "end up adopting them because",
+    "start": 409.28,
+    "duration": 1.48
+  },
+  {
+    "text": ">> [music]",
+    "start": 410.689,
+    "duration": 1.351
+  },
+  {
+    "text": ">> you don't need any instructions. People",
+    "start": 410.76,
+    "duration": 3.2
+  },
+  {
+    "text": "just already know how they work. And",
+    "start": 412.04,
+    "duration": 3.6
+  },
+  {
+    "text": "while all the three major short-form",
+    "start": 413.96,
+    "duration": 4
+  },
+  {
+    "text": "platforms use the same design patterns,",
+    "start": 415.64,
+    "duration": 4.219
+  },
+  {
+    "text": "they all give their little twist to",
+    "start": 417.96,
+    "duration": 3.64
+  },
+  {
+    "text": "[music] it. Instagram adds your friends'",
+    "start": 419.859,
+    "duration": 3.301
+  },
+  {
+    "text": "profile bubbles, showing who liked the",
+    "start": 421.6,
+    "duration": 3.56
+  },
+  {
+    "text": "video. They're wrapping a content feed",
+    "start": 423.16,
+    "duration": 4.08
+  },
+  {
+    "text": "in a social layer because that's where",
+    "start": 425.16,
+    "duration": 3.68
+  },
+  {
+    "text": "they came from. YouTube Shorts puts a",
+    "start": 427.24,
+    "duration": 3.28
+  },
+  {
+    "text": "related long-form video on the bottom,",
+    "start": 428.84,
+    "duration": 3.6
+  },
+  {
+    "text": "just as a reminder that you're still on",
+    "start": 430.52,
+    "duration": 3.6
+  },
+  {
+    "text": "YouTube and you can watch videos like",
+    "start": 432.44,
+    "duration": 3.28
+  },
+  {
+    "text": "this one. But, everything we've seen so",
+    "start": 434.12,
+    "duration": 4.2
+  },
+  {
+    "text": "far is just what's on the surface. Now,",
+    "start": 435.72,
+    "duration": 4.72
+  },
+  {
+    "text": "we start to actually go deeper. Imagine",
+    "start": 438.32,
+    "duration": 3.76
+  },
+  {
+    "text": "you're a product manager at Instagram.",
+    "start": 440.44,
+    "duration": 3
+  },
+  {
+    "text": "You're working on Reels and they ask you",
+    "start": 442.08,
+    "duration": 3.08
+  },
+  {
+    "text": "to make a decision. How many characters",
+    "start": 443.44,
+    "duration": 3.4
+  },
+  {
+    "text": "do you give creators [music] to write a",
+    "start": 445.16,
+    "duration": 3.36
+  },
+  {
+    "text": "caption underneath their video? On the",
+    "start": 446.84,
+    "duration": 3.48
+  },
+  {
+    "text": "surface, this is a completely",
+    "start": 448.52,
+    "duration": 4.04
+  },
+  {
+    "text": "inconsequential decision, or so you",
+    "start": 450.32,
+    "duration": 2.72
+  },
+  {
+    "text": "think.",
+    "start": 452.56,
+    "duration": 2.4
+  },
+  {
+    "text": ">> Definitely one decision that product",
+    "start": 453.04,
+    "duration": 3.96
+  },
+  {
+    "text": "managers at these platforms had to make",
+    "start": 454.96,
+    "duration": 4.56
+  },
+  {
+    "text": "was whether the video pauses or plays",
+    "start": 457,
+    "duration": 4.68
+  },
+  {
+    "text": "when you open the comment section. Cuz",
+    "start": 459.52,
+    "duration": 3.32
+  },
+  {
+    "text": "sometimes they did pause and sometimes",
+    "start": 461.68,
+    "duration": 2.84
+  },
+  {
+    "text": "they did play. This is Alistair. He's a",
+    "start": 462.84,
+    "duration": 2.96
+  },
+  {
+    "text": "friend of mine and he makes short-form",
+    "start": 464.52,
+    "duration": 2.6
+  },
+  {
+    "text": "videos that generated [music] hundreds",
+    "start": 465.8,
+    "duration": 2.6
+  },
+  {
+    "text": "of millions of views. And there's no",
+    "start": 467.12,
+    "duration": 3.12
+  },
+  {
+    "text": "better person than him to tell you",
+    "start": 468.4,
+    "duration": 3.48
+  },
+  {
+    "text": "everything that's going on in the second",
+    "start": 470.24,
+    "duration": 3.32
+  },
+  {
+    "text": "layer. Because this interface is not",
+    "start": 471.88,
+    "duration": 3.28
+  },
+  {
+    "text": "just an interface. It ends up",
+    "start": 473.56,
+    "duration": 3.36
+  },
+  {
+    "text": "influencing and shaping the [music]",
+    "start": 475.16,
+    "duration": 3.8
+  },
+  {
+    "text": "second layer, which is the content",
+    "start": 476.92,
+    "duration": 3.92
+  },
+  {
+    "text": "itself. See, when it comes to my videos,",
+    "start": 478.96,
+    "duration": 3.24
+  },
+  {
+    "text": "there's a lot of thought that goes into",
+    "start": 480.84,
+    "duration": 2.56
+  },
+  {
+    "text": "the storytelling and crafting an",
+    "start": 482.2,
+    "duration": 2.44
+  },
+  {
+    "text": "interesting story, [music]",
+    "start": 483.4,
+    "duration": 2.48
+  },
+  {
+    "text": "but that's pretty much it. YouTube's",
+    "start": 484.64,
+    "duration": 3.48
+  },
+  {
+    "text": "interface doesn't really affect the type",
+    "start": 485.88,
+    "duration": 4
+  },
+  {
+    "text": "of videos that I make. Sure, I should",
+    "start": 488.12,
+    "duration": 3.2
+  },
+  {
+    "text": "remember not to put stuff in the bottom",
+    "start": 489.88,
+    "duration": 2.72
+  },
+  {
+    "text": "right corner of a thumbnail because",
+    "start": 491.32,
+    "duration": 2.92
+  },
+  {
+    "text": "that's where the duration goes, but",
+    "start": 492.6,
+    "duration": 3.08
+  },
+  {
+    "text": "that's pretty much it. But on",
+    "start": 494.24,
+    "duration": 3.76
+  },
+  {
+    "text": "short-form, the interface and how the",
+    "start": 495.68,
+    "duration": 5.08
+  },
+  {
+    "text": "feed works is deeply tied with the",
+    "start": 498,
+    "duration": 4.76
+  },
+  {
+    "text": "content itself. So, people would",
+    "start": 500.76,
+    "duration": 4.6
+  },
+  {
+    "text": "specifically make videos where you would",
+    "start": 502.76,
+    "duration": 4.76
+  },
+  {
+    "text": "have to open the comment section to get",
+    "start": 505.36,
+    "duration": 3.88
+  },
+  {
+    "text": "the full value out of the video. In",
+    "start": 507.52,
+    "duration": 3.24
+  },
+  {
+    "text": "those cases, you would make also make",
+    "start": 509.24,
+    "duration": 3.239
+  },
+  {
+    "text": "the video really short so that people",
+    "start": 510.76,
+    "duration": 3.68
+  },
+  {
+    "text": "will loop the video and replay it a",
+    "start": 512.479,
+    "duration": 3.161
+  },
+  {
+    "text": "bunch of times while they're So, their",
+    "start": 514.44,
+    "duration": 3.92
+  },
+  {
+    "text": "retention is like 500% or something.",
+    "start": 515.64,
+    "duration": 3.92
+  },
+  {
+    "text": "Because you like to look at it on",
+    "start": 518.36,
+    "duration": 2.37
+  },
+  {
+    "text": "different platforms. They have different",
+    "start": 519.56,
+    "duration": 2.64
+  },
+  {
+    "text": "[music] solutions for this. Some of them",
+    "start": 520.73,
+    "duration": 3.59
+  },
+  {
+    "text": "will cover the video with the comments.",
+    "start": 522.2,
+    "duration": 3.68
+  },
+  {
+    "text": "Some of them will squeeze the video and",
+    "start": 524.32,
+    "duration": 2.88
+  },
+  {
+    "text": "make it smaller. Two very different",
+    "start": 525.88,
+    "duration": 2.84
+  },
+  {
+    "text": "approaches. Squeezing the video makes it",
+    "start": 527.2,
+    "duration": 3.72
+  },
+  {
+    "text": "easier to follow the video and not",
+    "start": 528.72,
+    "duration": 4.76
+  },
+  {
+    "text": "squeezing [music] it maybe focuses the",
+    "start": 530.92,
+    "duration": 4.32
+  },
+  {
+    "text": "user on the comment section. I'm",
+    "start": 533.48,
+    "duration": 4.12
+  },
+  {
+    "text": "thinking of like how the user interface",
+    "start": 535.24,
+    "duration": 4.2
+  },
+  {
+    "text": "impacts the content. And the example",
+    "start": 537.6,
+    "duration": 4.2
+  },
+  {
+    "text": "I'll give is that before when you were",
+    "start": 539.44,
+    "duration": 5.08
+  },
+  {
+    "text": "going swiping down on videos, the next",
+    "start": 541.8,
+    "duration": 4.84
+  },
+  {
+    "text": "video wouldn't actually start playing",
+    "start": 544.52,
+    "duration": 3.64
+  },
+  {
+    "text": "yet. So, you [music] would kind of try",
+    "start": 546.64,
+    "duration": 4.52
+  },
+  {
+    "text": "and optimize the top half of the first",
+    "start": 548.16,
+    "duration": 5.92
+  },
+  {
+    "text": "frame of your video because the viewer",
+    "start": 551.16,
+    "duration": 4.24
+  },
+  {
+    "text": "will already start to take that",
+    "start": 554.08,
+    "duration": 2.72
+  },
+  {
+    "text": "information into their brain [music]",
+    "start": 555.4,
+    "duration": 3.16
+  },
+  {
+    "text": "when they're swiping down. This is super",
+    "start": 556.8,
+    "duration": 3.44
+  },
+  {
+    "text": "cool. This is exactly the stuff that",
+    "start": 558.56,
+    "duration": 3.436
+  },
+  {
+    "text": "people will never realize.",
+    "start": 560.24,
+    "duration": 1.8
+  },
+  {
+    "text": ">> [music]",
+    "start": 561.996,
+    "duration": 2.764
+  },
+  {
+    "text": ">> So, basically in the past, you started",
+    "start": 562.04,
+    "duration": 3.68
+  },
+  {
+    "text": "swiping and the video was already",
+    "start": 564.76,
+    "duration": 3.36
+  },
+  {
+    "text": "playing. It wasn't playing yet. So, it",
+    "start": 565.72,
+    "duration": 3.92
+  },
+  {
+    "text": "was even more important. So, you would",
+    "start": 568.12,
+    "duration": 3.24
+  },
+  {
+    "text": "swipe down and like it would load the",
+    "start": 569.64,
+    "duration": 3.08
+  },
+  {
+    "text": "first frame, but it wouldn't start",
+    "start": 571.36,
+    "duration": 3.72
+  },
+  {
+    "text": "playing the video until the entire",
+    "start": 572.72,
+    "duration": 3.686
+  },
+  {
+    "text": "video's on your screen.",
+    "start": 575.08,
+    "duration": 1.44
+  },
+  {
+    "text": ">> [music]",
+    "start": 576.406,
+    "duration": 1.874
+  },
+  {
+    "text": ">> So, you would have to really think about",
+    "start": 576.52,
+    "duration": 3.8
+  },
+  {
+    "text": "what the first frame looks like, and",
+    "start": 578.28,
+    "duration": 3.88
+  },
+  {
+    "text": "also what the top half of the first",
+    "start": 580.32,
+    "duration": 3.08
+  },
+  {
+    "text": "frame looks like [music] as they're",
+    "start": 582.16,
+    "duration": 2.88
+  },
+  {
+    "text": "scrolling down. The decision of making",
+    "start": 583.4,
+    "duration": 3.56
+  },
+  {
+    "text": "the description box longer or shorter,",
+    "start": 585.04,
+    "duration": 3.64
+  },
+  {
+    "text": "auto playing or not the next video,",
+    "start": 586.96,
+    "duration": 3.72
+  },
+  {
+    "text": "making the comment box an overlay or so",
+    "start": 588.68,
+    "duration": 3.84
+  },
+  {
+    "text": "that it shrinks the video. Well, all",
+    "start": 590.68,
+    "duration": 4.066
+  },
+  {
+    "text": "these seemingly innocuous decisions end",
+    "start": 592.52,
+    "duration": 3.8
+  },
+  {
+    "text": "[music] up changing the way millions of",
+    "start": 594.746,
+    "duration": 4.014
+  },
+  {
+    "text": "people create content and the content",
+    "start": 596.32,
+    "duration": 3.96
+  },
+  {
+    "text": "itself. But, if you're the one that has",
+    "start": 598.76,
+    "duration": 3.32
+  },
+  {
+    "text": "to make these decisions as an engineer,",
+    "start": 600.28,
+    "duration": 3.52
+  },
+  {
+    "text": "designer, or product manager, let me",
+    "start": 602.08,
+    "duration": 2.92
+  },
+  {
+    "text": "show you what you can do with the",
+    "start": 603.8,
+    "duration": 2.736
+  },
+  {
+    "text": "sponsor of this video, UX Pilots.",
+    "start": 605,
+    "duration": 3.44
+  },
+  {
+    "text": "[music] UX Pilot is the fastest way to",
+    "start": 606.536,
+    "duration": 3.464
+  },
+  {
+    "text": "bring feature interactions and product",
+    "start": 608.44,
+    "duration": 3.337
+  },
+  {
+    "text": "ideas to life. Remember this? Well,",
+    "start": 610,
+    "duration": 3.52
+  },
+  {
+    "text": "[music] this free way scroll prototype",
+    "start": 611.777,
+    "duration": 3.743
+  },
+  {
+    "text": "is cool, but I made it at the beginning",
+    "start": 613.52,
+    "duration": 4.6
+  },
+  {
+    "text": "of this last year, and I spent an entire",
+    "start": 615.52,
+    "duration": 5.2
+  },
+  {
+    "text": "day recreating from scratch the",
+    "start": 618.12,
+    "duration": 4.8
+  },
+  {
+    "text": "Instagram UI. But, now look at this. I'm",
+    "start": 620.72,
+    "duration": 4.24
+  },
+  {
+    "text": "in UX Pilot and let's imagine I want to",
+    "start": 622.92,
+    "duration": 3.32
+  },
+  {
+    "text": "re-experiment with the flow that [music]",
+    "start": 624.96,
+    "duration": 2.64
+  },
+  {
+    "text": "let me scroll through. Well, I can just",
+    "start": 626.24,
+    "duration": 3.76
+  },
+  {
+    "text": "prompt and voila. Here's the screens",
+    "start": 627.6,
+    "duration": 3.88
+  },
+  {
+    "text": "with exactly what I had in mind,",
+    "start": 630,
+    "duration": 3.392
+  },
+  {
+    "text": "including not only in the interface, but",
+    "start": 631.48,
+    "duration": 3.88
+  },
+  {
+    "text": "[music] imagery here as well. And take a",
+    "start": 633.392,
+    "duration": 3.608
+  },
+  {
+    "text": "look at this. I'm in Figma and not only",
+    "start": 635.36,
+    "duration": 3.76
+  },
+  {
+    "text": "that, UX Pilot [music] also allows you",
+    "start": 637,
+    "duration": 4.68
+  },
+  {
+    "text": "to generate wireframes and designs",
+    "start": 639.12,
+    "duration": 6.719
+  },
+  {
+    "text": "directly in Figma. Take a look at this.",
+    "start": 641.68,
+    "duration": 4.159
+  },
+  {
+    "text": "And boom, there we go. These are two",
+    "start": 647.48,
+    "duration": 3.72
+  },
+  {
+    "text": "screens and they are not [music] images,",
+    "start": 649.04,
+    "duration": 4.56
+  },
+  {
+    "text": "they're entirely editable in Figma. And",
+    "start": 651.2,
+    "duration": 3.68
+  },
+  {
+    "text": "you could even do it the other way",
+    "start": 653.6,
+    "duration": 3.44
+  },
+  {
+    "text": "around and import your entire design",
+    "start": 654.88,
+    "duration": 4.92
+  },
+  {
+    "text": "system into UX Pilot from Figma. UX",
+    "start": 657.04,
+    "duration": 4.6
+  },
+  {
+    "text": "Pilot is not replacing designers. It's",
+    "start": 659.8,
+    "duration": 3.6
+  },
+  {
+    "text": "giving the language of design to",
+    "start": 661.64,
+    "duration": 3.16
+  },
+  {
+    "text": "founders, engineers, and product",
+    "start": 663.4,
+    "duration": 3.32
+  },
+  {
+    "text": "managers who need tools to communicate",
+    "start": 664.8,
+    "duration": 4.6
+  },
+  {
+    "text": "ideas visually and iterate over them.",
+    "start": 666.72,
+    "duration": 4.36
+  },
+  {
+    "text": "You can start using UX Pilot for free",
+    "start": 669.4,
+    "duration": 2.88
+  },
+  {
+    "text": "with the link in the description. Just",
+    "start": 671.08,
+    "duration": 3.36
+  },
+  {
+    "text": "type your idea and watch UX Pilot bring",
+    "start": 672.28,
+    "duration": 3.72
+  },
+  {
+    "text": "it back to life right now. But, now",
+    "start": 674.44,
+    "duration": 2.76
+  },
+  {
+    "text": "let's get back to the video because",
+    "start": 676,
+    "duration": 3.04
+  },
+  {
+    "text": "remember how the design of short-form",
+    "start": 677.2,
+    "duration": 3.92
+  },
+  {
+    "text": "feeds influences [music] the media?",
+    "start": 679.04,
+    "duration": 5.16
+  },
+  {
+    "text": "Well, this is nothing new, really. The",
+    "start": 681.12,
+    "duration": 4.6
+  },
+  {
+    "text": "medium [music] has always been",
+    "start": 684.2,
+    "duration": 4.08
+  },
+  {
+    "text": "influenced by the media. In 1949, 7-in",
+    "start": 685.72,
+    "duration": 4.52
+  },
+  {
+    "text": "records could only hold about 3 minutes",
+    "start": 688.28,
+    "duration": 4.2
+  },
+  {
+    "text": "per [music] side. AM radio wanted short",
+    "start": 690.24,
+    "duration": 4.92
+  },
+  {
+    "text": "songs, so throughout the 1950s and '60s,",
+    "start": 692.48,
+    "duration": 4.64
+  },
+  {
+    "text": "pop songs were like 2 and 1/2 minutes.",
+    "start": 695.16,
+    "duration": 3.52
+  },
+  {
+    "text": "They were written [music] to fit that",
+    "start": 697.12,
+    "duration": 4.4
+  },
+  {
+    "text": "limit. When LPs and CDs came along, the",
+    "start": 698.68,
+    "duration": 4.76
+  },
+  {
+    "text": "songs got longer. [music] In TV, writers",
+    "start": 701.52,
+    "duration": 4.08
+  },
+  {
+    "text": "structure stories around ad breaks,",
+    "start": 703.44,
+    "duration": 3.76
+  },
+  {
+    "text": "building tension and cutting with",
+    "start": 705.6,
+    "duration": 3.56
+  },
+  {
+    "text": "specific ad placements in mind. With",
+    "start": 707.2,
+    "duration": 3.64
+  },
+  {
+    "text": "streaming, there's no need for this.",
+    "start": 709.16,
+    "duration": 3.488
+  },
+  {
+    "text": "When you actually watch Friends,",
+    "start": 710.84,
+    "duration": 1.84
+  },
+  {
+    "text": ">> [music]",
+    "start": 712.648,
+    "duration": 2.112
+  },
+  {
+    "text": ">> that's why the pacing feels kind of",
+    "start": 712.68,
+    "duration": 4.24
+  },
+  {
+    "text": "weird. But the level to which this",
+    "start": 714.76,
+    "duration": 3.92
+  },
+  {
+    "text": "happens [music] with short-form feeds is",
+    "start": 716.92,
+    "duration": 3.68
+  },
+  {
+    "text": "just on another level. Also because,",
+    "start": 718.68,
+    "duration": 3.793
+  },
+  {
+    "text": "contrary to many other platforms,",
+    "start": 720.6,
+    "duration": 3.92
+  },
+  {
+    "text": "[music] here you have a second-by-second",
+    "start": 722.473,
+    "duration": 4.585
+  },
+  {
+    "text": "report on exactly what the audience is",
+    "start": 724.52,
+    "duration": 3.6
+  },
+  {
+    "text": "[music] doing. When you look at your",
+    "start": 727.058,
+    "duration": 2.382
+  },
+  {
+    "text": "analytics, you see like a retention",
+    "start": 728.12,
+    "duration": 3.04
+  },
+  {
+    "text": "graph, for example.",
+    "start": 729.44,
+    "duration": 3.32
+  },
+  {
+    "text": "What does it look like, and what are you",
+    "start": 731.16,
+    "duration": 2.72
+  },
+  {
+    "text": "looking for? Or is there something",
+    "start": 732.76,
+    "duration": 3.2
+  },
+  {
+    "text": "interesting that you can you can share",
+    "start": 733.88,
+    "duration": 2.44
+  },
+  {
+    "text": "there?",
+    "start": 735.96,
+    "duration": 2
+  },
+  {
+    "text": ">> On every platform, you're almost always",
+    "start": 736.32,
+    "duration": 3.64
+  },
+  {
+    "text": "looking for the same thing. You're",
+    "start": 737.96,
+    "duration": 3.96
+  },
+  {
+    "text": "looking for a high percentage of people",
+    "start": 739.96,
+    "duration": 3.72
+  },
+  {
+    "text": "choosing to watch the video, and then",
+    "start": 741.92,
+    "duration": 4
+  },
+  {
+    "text": "you want the rest of the chart as flat",
+    "start": 743.68,
+    "duration": 4.4
+  },
+  {
+    "text": "as possible. The thing that is not",
+    "start": 745.92,
+    "duration": 4.28
+  },
+  {
+    "text": "obvious until you actually start making",
+    "start": 748.08,
+    "duration": 3.68
+  },
+  {
+    "text": "a ton of videos, and you actually start",
+    "start": 750.2,
+    "duration": 4.08
+  },
+  {
+    "text": "getting viral videos, is how small the",
+    "start": 751.76,
+    "duration": 5.68
+  },
+  {
+    "text": "difference is between a viral video and",
+    "start": 754.28,
+    "duration": 5.32
+  },
+  {
+    "text": "a not viral video. Literally between",
+    "start": 757.44,
+    "duration": 6
+  },
+  {
+    "text": "100,000 views and 10 million views, the",
+    "start": 759.6,
+    "duration": 5.96
+  },
+  {
+    "text": "difference in",
+    "start": 763.44,
+    "duration": 4.399
+  },
+  {
+    "text": "average percentage of the video watched",
+    "start": 765.56,
+    "duration": 4.64
+  },
+  {
+    "text": "can be like 5%. It can literally be from",
+    "start": 767.839,
+    "duration": 5.801
+  },
+  {
+    "text": "like 75% average watch for video on",
+    "start": 770.2,
+    "duration": 5.2
+  },
+  {
+    "text": "YouTube Shorts to 80% can be the",
+    "start": 773.64,
+    "duration": 3.28
+  },
+  {
+    "text": "difference between 100,000 and 10",
+    "start": 775.4,
+    "duration": 3.6
+  },
+  {
+    "text": "million views. Wow, that's crazy. I",
+    "start": 776.92,
+    "duration": 4
+  },
+  {
+    "text": "didn't know that. Yeah, the the margin",
+    "start": 779,
+    "duration": 4
+  },
+  {
+    "text": "is like that thin sometimes. But the",
+    "start": 780.92,
+    "duration": 3.84
+  },
+  {
+    "text": "point is that like all of these like",
+    "start": 783,
+    "duration": 3.76
+  },
+  {
+    "text": "small things that you think are not",
+    "start": 784.76,
+    "duration": 4.32
+  },
+  {
+    "text": "important, like which words in the",
+    "start": 786.76,
+    "duration": 4.72
+  },
+  {
+    "text": "caption appear first, all of it adds up",
+    "start": 789.08,
+    "duration": 3.96
+  },
+  {
+    "text": "because the difference between 100,000",
+    "start": 791.48,
+    "duration": 3.72
+  },
+  {
+    "text": "and 10 million is",
+    "start": 793.04,
+    "duration": 5.48
+  },
+  {
+    "text": "literally it's like 100x, but it's only",
+    "start": 795.2,
+    "duration": 5.48
+  },
+  {
+    "text": "a few 1% improvements. Now, I know what",
+    "start": 798.52,
+    "duration": 4.24
+  },
+  {
+    "text": "you're thinking. These companies are so",
+    "start": 800.68,
+    "duration": 3.88
+  },
+  {
+    "text": "evil in designing products in this way",
+    "start": 802.76,
+    "duration": 4.04
+  },
+  {
+    "text": "in this predatory manner. But [snorts]",
+    "start": 804.56,
+    "duration": 4.64
+  },
+  {
+    "text": "that's not exactly what happens. No",
+    "start": 806.8,
+    "duration": 4
+  },
+  {
+    "text": "designer or product manager ever sat",
+    "start": 809.2,
+    "duration": 3.56
+  },
+  {
+    "text": "down and said, \"Let's design something",
+    "start": 810.8,
+    "duration": 3.36
+  },
+  {
+    "text": "manipulative.\" What they do is",
+    "start": 812.76,
+    "duration": 3.68
+  },
+  {
+    "text": "continuously run hundreds of experiments",
+    "start": 814.16,
+    "duration": 4.36
+  },
+  {
+    "text": "at a time. That's why your friends might",
+    "start": 816.44,
+    "duration": 3.56
+  },
+  {
+    "text": "have an app that's slightly different",
+    "start": 818.52,
+    "duration": 4.2
+  },
+  {
+    "text": "than yours. Everything we saw so far is",
+    "start": 820,
+    "duration": 4.16
+  },
+  {
+    "text": "the result of an insane amount of",
+    "start": 822.72,
+    "duration": 3.04
+  },
+  {
+    "text": "testing. They keep what increases",
+    "start": 824.16,
+    "duration": 3.52
+  },
+  {
+    "text": "engagement and kill what doesn't. And",
+    "start": 825.76,
+    "duration": 3.64
+  },
+  {
+    "text": "over time, what naturally happens is",
+    "start": 827.68,
+    "duration": 3.24
+  },
+  {
+    "text": "that the winning designs are the ones",
+    "start": 829.4,
+    "duration": 3.2
+  },
+  {
+    "text": "that exploit psychology. Not because",
+    "start": 830.92,
+    "duration": 4.12
+  },
+  {
+    "text": "they chose to, but because the math just",
+    "start": 832.6,
+    "duration": 4.04
+  },
+  {
+    "text": "converges there. And on the creator",
+    "start": 835.04,
+    "duration": 3.24
+  },
+  {
+    "text": "side, the same convergence happens.",
+    "start": 836.64,
+    "duration": 3.44
+  },
+  {
+    "text": "Every creator sees the same retention",
+    "start": 838.28,
+    "duration": 3
+  },
+  {
+    "text": "graphs, the same analytics, the same",
+    "start": 840.08,
+    "duration": 3.12
+  },
+  {
+    "text": "numbers, pushing them all towards the",
+    "start": 841.28,
+    "duration": 3.48
+  },
+  {
+    "text": "same hooks, the same editing style, and",
+    "start": 843.2,
+    "duration": 3.32
+  },
+  {
+    "text": "the same tricks. The platforms doesn't",
+    "start": 844.76,
+    "duration": 4.24
+  },
+  {
+    "text": "just host the content, it literally",
+    "start": 846.52,
+    "duration": 4.68
+  },
+  {
+    "text": "designs it. And now we come to the final",
+    "start": 849,
+    "duration": 4.72
+  },
+  {
+    "text": "and third layer, the one that makes this",
+    "start": 851.2,
+    "duration": 4.8
+  },
+  {
+    "text": "all work. This is Armand Conqueer, an",
+    "start": 853.72,
+    "duration": 4.8
+  },
+  {
+    "text": "ex-TikTok engineer, and he called it the",
+    "start": 856,
+    "duration": 4.52
+  },
+  {
+    "text": "most valuable piece [music] of software",
+    "start": 858.52,
+    "duration": 4.64
+  },
+  {
+    "text": "in existence. The secretive algorithm",
+    "start": 860.52,
+    "duration": 4.56
+  },
+  {
+    "text": "that decides what we watch among",
+    "start": 863.16,
+    "duration": 4.724
+  },
+  {
+    "text": "billions of videos. So secret that",
+    "start": 865.08,
+    "duration": 2.88
+  },
+  {
+    "text": ">> [snorts]",
+    "start": 867.884,
+    "duration": 0.956
+  },
+  {
+    "text": ">> well,",
+    "start": 867.96,
+    "duration": 3.28
+  },
+  {
+    "text": "here it is. In 2023, TikTok actually",
+    "start": 868.84,
+    "duration": 4.76
+  },
+  {
+    "text": "published a research paper detailing how",
+    "start": 871.24,
+    "duration": 3.599
+  },
+  {
+    "text": "it works. [music] And the biggest",
+    "start": 873.6,
+    "duration": 3.239
+  },
+  {
+    "text": "difference between all the other video",
+    "start": 874.839,
+    "duration": 3.641
+  },
+  {
+    "text": "recommendation systems like YouTube or",
+    "start": 876.839,
+    "duration": 2.881
+  },
+  {
+    "text": "Netflix",
+    "start": 878.48,
+    "duration": 3.32
+  },
+  {
+    "text": "is this. Traditional systems works in",
+    "start": 879.72,
+    "duration": 3.68
+  },
+  {
+    "text": "two steps. First, they train their",
+    "start": 881.8,
+    "duration": 3.88
+  },
+  {
+    "text": "algorithm on a bunch of historical data,",
+    "start": 883.4,
+    "duration": 4.08
+  },
+  {
+    "text": "the videos you liked, you watched, and",
+    "start": 885.68,
+    "duration": 3.4
+  },
+  {
+    "text": "then they serve you recommendations",
+    "start": 887.48,
+    "duration": 2.96
+  },
+  {
+    "text": "based on that. [music] The problem is",
+    "start": 889.08,
+    "duration": 3.36
+  },
+  {
+    "text": "that by the time they finished training,",
+    "start": 890.44,
+    "duration": 4.04
+  },
+  {
+    "text": "your interest has already moved on. The",
+    "start": 892.44,
+    "duration": 4.04
+  },
+  {
+    "text": "paper calls this concept [music] drift,",
+    "start": 894.48,
+    "duration": 3.84
+  },
+  {
+    "text": "and they put it beautifully. Visual and",
+    "start": 896.48,
+    "duration": 3.68
+  },
+  {
+    "text": "linguistic patterns barely develop in a",
+    "start": 898.32,
+    "duration": 3.4
+  },
+  {
+    "text": "scale of centuries, [music] while the",
+    "start": 900.16,
+    "duration": 3.8
+  },
+  {
+    "text": "same user interested in one topic could",
+    "start": 901.72,
+    "duration": 4.8
+  },
+  {
+    "text": "shift their zeal every next minute. So,",
+    "start": 903.96,
+    "duration": 4.72
+  },
+  {
+    "text": "on TikTok, every action you take, every",
+    "start": 906.52,
+    "duration": 3.76
+  },
+  {
+    "text": "like, every skip, every time you let a",
+    "start": 908.68,
+    "duration": 3.88
+  },
+  {
+    "text": "video loop, how you swipe, these are all",
+    "start": 910.28,
+    "duration": 4.36
+  },
+  {
+    "text": "actions that get logged and put into",
+    "start": 912.56,
+    "duration": 3.96
+  },
+  {
+    "text": "what's called a Kafka queue. Think of",
+    "start": 914.64,
+    "duration": 3.76
+  },
+  {
+    "text": "this as a pipeline, a stream of data",
+    "start": 916.52,
+    "duration": 3.52
+  },
+  {
+    "text": "constantly flowing from everyone's",
+    "start": 918.4,
+    "duration": 3.08
+  },
+  {
+    "text": "phones, everyone's app [music]",
+    "start": 920.04,
+    "duration": 3.6
+  },
+  {
+    "text": "to the overall model. Then, there's a",
+    "start": 921.48,
+    "duration": 3.96
+  },
+  {
+    "text": "system called the joiner. It takes your",
+    "start": 923.64,
+    "duration": 3.56
+  },
+  {
+    "text": "action and matches it with your profile,",
+    "start": 925.44,
+    "duration": 3.64
+  },
+  {
+    "text": "who you are and what you watched before,",
+    "start": 927.2,
+    "duration": 3.64
+  },
+  {
+    "text": "what time it is, everything. This",
+    "start": 929.08,
+    "duration": 3.52
+  },
+  {
+    "text": "creates a training example that gets fed",
+    "start": 930.84,
+    "duration": 3.28
+  },
+  {
+    "text": "directly into the model. The model",
+    "start": 932.6,
+    "duration": 2.84
+  },
+  {
+    "text": "learns from it, but here's the key",
+    "start": 934.12,
+    "duration": 3.56
+  },
+  {
+    "text": "difference. The model is not updated",
+    "start": 935.44,
+    "duration": 4.12
+  },
+  {
+    "text": "every week or every day, but [music]",
+    "start": 937.68,
+    "duration": 4.16
+  },
+  {
+    "text": "every minute. The one model that serves",
+    "start": 939.56,
+    "duration": 4.32
+  },
+  {
+    "text": "the next video to billions of people is",
+    "start": 941.84,
+    "duration": 4.36
+  },
+  {
+    "text": "constantly fed and updated faster than",
+    "start": 943.88,
+    "duration": 4.36
+  },
+  {
+    "text": "you can finish watching the TikTok",
+    "start": 946.2,
+    "duration": 3.56
+  },
+  {
+    "text": "you're watching in that moment. Take a",
+    "start": 948.24,
+    "duration": 3.08
+  },
+  {
+    "text": "look at this. This is a chart of how",
+    "start": 949.76,
+    "duration": 3.72
+  },
+  {
+    "text": "accurate the recommendations are over 50",
+    "start": 951.32,
+    "duration": 3.84
+  },
+  {
+    "text": "hours. The orange line is the old",
+    "start": 953.48,
+    "duration": 3.52
+  },
+  {
+    "text": "recommendation system, frozen in time at",
+    "start": 955.16,
+    "duration": 3.68
+  },
+  {
+    "text": "the beginning of the 50 hours. And the",
+    "start": 957,
+    "duration": 3.48
+  },
+  {
+    "text": "blue line is the recommendation system,",
+    "start": 958.84,
+    "duration": 4.08
+  },
+  {
+    "text": "but that gets updated every 30 minutes",
+    "start": 960.48,
+    "duration": 3.64
+  },
+  {
+    "text": "throughout.",
+    "start": 962.92,
+    "duration": 2.96
+  },
+  {
+    "text": "Now, this might seem like a small",
+    "start": 964.12,
+    "duration": 4.84
+  },
+  {
+    "text": "difference. It's around 13 to 14%. But,",
+    "start": 965.88,
+    "duration": 5.08
+  },
+  {
+    "text": "this [music] is the magic sauce that",
+    "start": 968.96,
+    "duration": 4.2
+  },
+  {
+    "text": "makes these short-form algorithms so",
+    "start": 970.96,
+    "duration": 4.04
+  },
+  {
+    "text": "addictive versus anything [music] that",
+    "start": 973.16,
+    "duration": 3.48
+  },
+  {
+    "text": "came before them. Now, you've already",
+    "start": 975,
+    "duration": 3.36
+  },
+  {
+    "text": "probably watched videos that talk about",
+    "start": 976.64,
+    "duration": 3.88
+  },
+  {
+    "text": "the effects that short-form videos have.",
+    "start": 978.36,
+    "duration": 3.72
+  },
+  {
+    "text": "I even make some of them myself on this",
+    "start": 980.52,
+    "duration": 3.301
+  },
+  {
+    "text": "channel. But, if there's one thing",
+    "start": 982.08,
+    "duration": 3.8
+  },
+  {
+    "text": "[music] that this video can teach you,",
+    "start": 983.821,
+    "duration": 4.139
+  },
+  {
+    "text": "is that whenever something becomes so",
+    "start": 985.88,
+    "duration": 4.36
+  },
+  {
+    "text": "ubiquitous, so popular, and so viral,",
+    "start": 987.96,
+    "duration": 4.04
+  },
+  {
+    "text": "and such an integral part of our",
+    "start": 990.24,
+    "duration": 4
+  },
+  {
+    "text": "everyday lives, it's usually because",
+    "start": 992,
+    "duration": 4.56
+  },
+  {
+    "text": "underneath there's so much design",
+    "start": 994.24,
+    "duration": 4.12
+  },
+  {
+    "text": "engineering, and psychology that we",
+    "start": 996.56,
+    "duration": 4
+  },
+  {
+    "text": "never get to see. For example, remember",
+    "start": 998.36,
+    "duration": 4.68
+  },
+  {
+    "text": "these?",
+    "start": 1000.56,
+    "duration": 2.48
+  },
+  {
+    "text": "Sound used to be an iconic [music] part",
+    "start": 1004.24,
+    "duration": 5.76
+  },
+  {
+    "text": "of our tech, but now it's kind of gone.",
+    "start": 1006.08,
+    "duration": 5
+  },
+  {
+    "text": "Sound design is one of the most",
+    "start": 1010,
+    "duration": 2.8
+  },
+  {
+    "text": "fascinating aspects of the tech products",
+    "start": 1011.08,
+    "duration": 4.28
+  },
+  {
+    "text": "we use, and [music] there's a reason why",
+    "start": 1012.8,
+    "duration": 4.32
+  },
+  {
+    "text": "it's gone today. And you can learn all",
+    "start": 1015.36,
+    "duration": 3.831
+  },
+  {
+    "text": "about it in this video, right here.",
+    "start": 1017.12,
+    "duration": 4.36
+  },
+  {
+    "text": "[music] I'm Mariko, and I'll see you in",
+    "start": 1019.191,
+    "duration": 4.809
+  },
+  {
+    "text": "the next one.",
+    "start": 1021.48,
+    "duration": 2.52
+  }
+]

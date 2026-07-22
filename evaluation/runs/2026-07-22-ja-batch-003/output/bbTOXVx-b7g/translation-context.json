@@ -1,0 +1,76 @@
+{
+  "topic": "FIFA World Cup experience",
+  "summary": "A first-time football attendee documents her 11-day journey across 4 cities, attending 6 matches, exploring stadiums and locker rooms, and becoming emotionally attached to football.",
+  "tone": "casual, excited, personal, vlog-style",
+  "audience": "Young, global, YouTube-savvy viewers interested in travel, lifestyle, and sports experiences",
+  "glossary": [
+    {
+      "source": "football",
+      "target": "サッカー",
+      "note": "Use 'サッカー' as standard Japanese term; avoid 'フットボール' unless context requires."
+    },
+    {
+      "source": "soccer",
+      "target": "サッカー",
+      "note": "Same as football; use 'サッカー' consistently."
+    },
+    {
+      "source": "FIFA World Cup",
+      "target": "FIFAワールドカップ",
+      "note": "Keep as is; common in Japanese."
+    },
+    {
+      "source": "credentials",
+      "target": "認証パス",
+      "note": "Refers to access passes; use '認証パス' or 'アクセスパス'."
+    },
+    {
+      "source": "offside rule",
+      "target": "オフサイドルール",
+      "note": "Standard soccer term in Japanese."
+    },
+    {
+      "source": "jersey",
+      "target": "ユニフォーム",
+      "note": "Use 'ユニフォーム' for soccer jersey; 'ジャージ' is for training wear."
+    },
+    {
+      "source": "Triion ball",
+      "target": "トリオン球",
+      "note": "Proper noun; keep as 'トリオン球' or 'Triionボール'."
+    },
+    {
+      "source": "red card",
+      "target": "レッドカード",
+      "note": "Standard term."
+    },
+    {
+      "source": "yellow card",
+      "target": "イエローカード",
+      "note": "Standard term."
+    }
+  ],
+  "properNouns": [
+    "Kika Kim",
+    "Rocky",
+    "Seattle",
+    "Los Angeles",
+    "YouTube",
+    "FIFA",
+    "Egypt",
+    "Iran",
+    "Canada"
+  ],
+  "styleGuide": [
+    "Use casual, friendly Japanese with sentence endings like '〜だよ', '〜ね', '〜んだ', '〜かな' to match vlog tone.",
+    "Keep first-person perspective; use '私' or omit subject as natural.",
+    "Translate 'guys' as 'みんな' or omit; avoid literal 'ガイズ'.",
+    "For exclamations like 'Oh my god', use 'やばい', 'すごい', 'マジで'.",
+    "Use present tense for ongoing actions; past tense for completed events.",
+    "Keep proper nouns in English or katakana as appropriate (e.g., 'YouTube', 'FIFA').",
+    "For 'I don't know' type phrases, use 'わかんない' or '知らない'.",
+    "Match the speaker's excitement with short, punchy lines; avoid long formal sentences.",
+    "Use '〜てみる' for 'try to' actions (e.g., '運試ししてみる').",
+    "For 'literally', use 'マジで' or '本当に' depending on context."
+  ]
+}

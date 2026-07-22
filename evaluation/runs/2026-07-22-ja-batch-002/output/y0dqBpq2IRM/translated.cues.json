@@ -1,0 +1,2202 @@
+[
+  {
+    "start": 0.4,
+    "end": 4.408510638297873,
+    "text": "毎月、お気に入りのパリジャンと一緒に座って、",
+    "sourceText": "Every month we'd sit down with our favorite Parisian",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 4.408510638297873,
+    "end": 8.8,
+    "text": "彼女のバッグの中身を恥ずかしげもなく覗いてたんだ。",
+    "sourceText": "shamelessly looking through the personal belongings of her bag.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 8.8,
+    "end": 12.010434782608696,
+    "text": "でも、カメラが回り始める前はどうなってるの？",
+    "sourceText": "But what happens before the camera starts sprawling?",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 12.010434782608696,
+    "end": 14.48,
+    "text": "話してる記事って何？",
+    "sourceText": "What's the article you're talking about?",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 14.48,
+    "end": 18.68,
+    "text": "「彼氏がいるのは恥ずかしい」みたいなタイトルだったと思う。",
+    "sourceText": "I think it's called something like having a boyfriend is embarrassing.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 18.68,
+    "end": 21.56,
+    "text": "髪は私にとって自然に女性らしい部分だったのに、もうない。",
+    "sourceText": "Hair was such a naturally feminine part of me and now it's gone.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 21.56,
+    "end": 26.1725,
+    "text": "まるで何度も人生を生きてきたみたいに聞こえるよ。",
+    "sourceText": "You sound like you've you've lived few lives.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 26.1725,
+    "end": 28.119999999999997,
+    "text": "そう感じるよ。",
+    "sourceText": "I feel like I have.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 38.16,
+    "end": 39.81999999999999,
+    "text": "こんにちは、パリジャン・ヴァイブ。",
+    "sourceText": "Hello Parisian Vibe.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 39.81999999999999,
+    "end": 41.48,
+    "text": "グレース・ブロスナンです。",
+    "sourceText": "I'm Grace Brasnahan.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 41.48,
+    "end": 43.12,
+    "text": "パリに住む若いクリエイターです。",
+    "sourceText": "I'm a young creative living in Paris.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 43.12,
+    "end": 46.74727272727272,
+    "text": "サングラス試してもいい？いいよ。",
+    "sourceText": "I can try your sunglasses. Yes.",
+    "sourceIndexes": [
+      10,
+      11
+    ]
+  },
+  {
+    "start": 46.74727272727272,
+    "end": 48.44,
+    "text": "ああ、すごくシック。",
+    "sourceText": "Oh, very chic.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 48.44,
+    "end": 50.64,
+    "text": "わあ、これ好き。",
+    "sourceText": "Wow, love those.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 50.64,
+    "end": 54.24,
+    "text": "うん。ああ、そう、それが利点だよね。",
+    "sourceText": "Yeah. Ah, yeah, that's an advantage,",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 54.24,
+    "end": 57.84,
+    "text": "ほら。こんにちは。うん。こんにちは。",
+    "sourceText": "you see. Voila. Hello. Mhm. Hello.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 57.84,
+    "end": 60.28,
+    "text": "わあ、サングラスなしだと、ダメだ。",
+    "sourceText": "Wow, without the sunglasses, no.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 60.28,
+    "end": 61.72347826086957,
+    "text": "おかえり、だよね？",
+    "sourceText": "Welcome home, right?",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 61.72347826086957,
+    "end": 63.6,
+    "text": "ありがとう。コーヒーどうぞ。",
+    "sourceText": "Thank you. Here's a coffee.",
+    "sourceIndexes": [
+      18,
+      19
+    ]
+  },
+  {
+    "start": 63.6,
+    "end": 65.35024390243902,
+    "text": "いや、ここは私の家じゃないよ。",
+    "sourceText": "Well, it's not my home.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 65.35024390243902,
+    "end": 67.17263157894736,
+    "text": "君の家だよね？私の。",
+    "sourceText": "It's yours, right? Mine.",
+    "sourceIndexes": [
+      21,
+      22
+    ]
+  },
+  {
+    "start": 67.17263157894736,
+    "end": 70.48507936507936,
+    "text": "うん、ここに来られてすごく嬉しい。うん。",
+    "sourceText": "Yes, and I'm so happy to be here. Mhm.",
+    "sourceIndexes": [
+      23,
+      24
+    ]
+  },
+  {
+    "start": 70.48507936507936,
+    "end": 75.28,
+    "text": "結局コーヒーを冷めたまま飲んじゃうんだよね。それが最悪。",
+    "sourceText": "I end up drinking all my coffee cold, but That's the worst.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 75.28,
+    "end": 76.64,
+    "text": "温かくできるよ。",
+    "sourceText": "be. It can be warm.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 76.64,
+    "end": 79.96467532467533,
+    "text": "泡立ってたのに今はもうないってのが最悪。",
+    "sourceText": "It's the worst when it was foamy and now it's not.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 79.96467532467533,
+    "end": 81.9963076923077,
+    "text": "それで悲しくなるんだ。うん。",
+    "sourceText": "And that just makes me sad. Mhm.",
+    "sourceIndexes": [
+      28,
+      29
+    ]
+  },
+  {
+    "start": 81.9963076923077,
+    "end": 85.6,
+    "text": "アパートでコーヒー切らしちゃって、ほうじ茶を持ってきたんだ。",
+    "sourceText": "I've run out of coffee at my apartment, so I have my hojicha.",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 85.6,
+    "end": 90.36,
+    "text": "うん、作るのがちょっと手間だけど、大丈夫。",
+    "sourceText": "Yes, which is a little bit of a task to make, but it's okay.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 90.36,
+    "end": 94.6509090909091,
+    "text": "だって、面白い飲み方してるね。",
+    "sourceText": "Because And you're drinking it in a very interesting",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 94.6509090909091,
+    "end": 99.56,
+    "text": "うん、後で飲み切れるかなって思って。",
+    "sourceText": "Yes, because I was like I can finish it later if I feel.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 99.56,
+    "end": 102.2,
+    "text": "でも全部飲んじゃうかも。",
+    "sourceText": "But maybe I'll drink the whole thing.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 102.2,
+    "end": 107.84,
+    "text": "じゃあ、本題に入る前にちょっとコーヒーチャットしよう。",
+    "sourceText": "So this is a little coffee chat before we actually get into everything.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 107.84,
+    "end": 109.16,
+    "text": "本題に。うん。",
+    "sourceText": "into everything. Yes.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 109.16,
+    "end": 114.4952380952381,
+    "text": "バッグの中、アパートの中、",
+    "sourceText": "into the bag into the bag, into the",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 114.4952380952381,
+    "end": 118.24,
+    "text": "記事の山の中へ。",
+    "sourceText": "apartment into the article half stack.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 118.24,
+    "end": 120.37942857142858,
+    "text": "うん、すごく楽しみ。",
+    "sourceText": "Yes, which I'm so excited about.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 120.37942857142858,
+    "end": 121.85028571428572,
+    "text": "パリに到着したときのこと。",
+    "sourceText": "Your arrival to Paris.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 121.85028571428572,
+    "end": 125.2,
+    "text": "ドラマがあったんだ。ドラマがたくさんありました。",
+    "sourceText": "There was drama. There was a lot of drama.",
+    "sourceIndexes": [
+      39,
+      40
+    ]
+  },
+  {
+    "start": 125.2,
+    "end": 127.5856,
+    "text": "本当にたくさんのドラマが。",
+    "sourceText": "There was so much drama.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 127.5856,
+    "end": 131.8101627906977,
+    "text": "まあ、そうですね。背景を話すと、もう4年ここにいます。",
+    "sourceText": "Well, okay. So, for background, I've been here for 4 years now.",
+    "sourceIndexes": [
+      42,
+      43
+    ]
+  },
+  {
+    "start": 131.8101627906977,
+    "end": 133.959,
+    "text": "今年が初めての一人暮らしです。",
+    "sourceText": "This is my first year living alone.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 133.959,
+    "end": 141.14523846153847,
+    "text": "はい。このアパートに住むのも初めてで、とても美しくて、ここにいられて本当に幸せです。",
+    "sourceText": "Yeah. And this is my first year being in this apartment, as well, which is beautiful.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 141.14523846153847,
+    "end": 144.91076923076923,
+    "text": "神に誓って、これを引き寄せたんです。",
+    "sourceText": "which is beautiful and I'm so happy to be here and I swear to God I manifested this.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 144.91076923076923,
+    "end": 147.68,
+    "text": "「長いワンルームが欲しい」って思ってました。",
+    "sourceText": "I was like, \"I want one long studio.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 147.68,
+    "end": 149.68,
+    "text": "床にベッドが欲しい。",
+    "sourceText": "I want a bed on the floor.",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 149.68,
+    "end": 152.69155555555557,
+    "text": "たくさんの光が欲しい。",
+    "sourceText": "I want a lot of light.",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 152.69155555555557,
+    "end": 155.84,
+    "text": "「たくさんの梁が欲しい」って。それがこの部屋のすべてです。",
+    "sourceText": "I want a lot of beams.\" And that is everything that this is.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 155.84,
+    "end": 159.24,
+    "text": "ロマンチックな雨さえも。雨も。",
+    "sourceText": "So, even the romantic rain Even the rain.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 159.24,
+    "end": 165.16,
+    "text": "雨が降ると、先日は雹が降ってすごくうるさかったけど、「すごく安全だ」って思いました。",
+    "sourceText": "And when it rains, the other night it was hailing and it was so loud and I was just like, \"I'm so safe.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 165.16,
+    "end": 170.32,
+    "text": "「すごく幸せ」って。でも、いつもこうだったわけじゃないんです。",
+    "sourceText": "I'm so happy.\" Um but it wasn't always this beautiful.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 170.32,
+    "end": 173.84,
+    "text": "本当に大変でした。",
+    "sourceText": "It was definitely really difficult.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 173.84,
+    "end": 176.12377358490568,
+    "text": "周りのことを知らなかった。",
+    "sourceText": "A lack of knowing my surroundings.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 176.12377358490568,
+    "end": 177.4,
+    "text": "新しい文化でした。",
+    "sourceText": "It was new culture.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 177.4,
+    "end": 179.768,
+    "text": "新しい人々でした。",
+    "sourceText": "It was new people.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 179.768,
+    "end": 182.45381818181818,
+    "text": "すごく小さな町で育って、誰も知らず、",
+    "sourceText": "I grew up in a really small town and then I moved",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 182.45381818181818,
+    "end": 185.8,
+    "text": "言葉もほとんど話せないままここに引っ越してきました。",
+    "sourceText": "here knowing nobody, barely speaking the language.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 185.8,
+    "end": 191.8,
+    "text": "はい。自分が何をしたいのか自信がなくて、自分自身にも自信がありませんでした。",
+    "sourceText": "Yeah. Not confident in what I wanted to do, not confident in myself.",
+    "sourceIndexes": [
+      59,
+      60
+    ]
+  },
+  {
+    "start": 191.8,
+    "end": 195.239,
+    "text": "最初のアパートは…学校には入学したんですよね。",
+    "sourceText": "So, the first apartment that I mean, you did enroll into the school.",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 195.239,
+    "end": 198.38432432432433,
+    "text": "はい。そうですよね？それは素晴らしかったです。いいえ。",
+    "sourceText": "Yeah. Right? And that was great. No.",
+    "sourceIndexes": [
+      62,
+      63
+    ]
+  },
+  {
+    "start": 198.38432432432433,
+    "end": 200.58702702702703,
+    "text": "学校は素晴らしかったですよね？",
+    "sourceText": "The school was great, no?",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 200.58702702702703,
+    "end": 202.43729729729728,
+    "text": "学校は素晴らしかったです。",
+    "sourceText": "The school was great.",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 202.43729729729728,
+    "end": 207.9956035734983,
+    "text": "専攻を変えることになりました。最初はファッションデザインを専攻して、",
+    "sourceText": "I did end up switching my major. I started in fashion design and I started",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 207.9956035734983,
+    "end": 212.91298245614036,
+    "text": "適当なアパートに住み始めました。多分、この半分の広さです。",
+    "sourceText": "in a random apartment, probably, you know, the size of half of this place.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 212.91298245614036,
+    "end": 214.44,
+    "text": "ここはその倍ですね。",
+    "sourceText": "Which is double.",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 214.44,
+    "end": 216.4,
+    "text": "メートル。15平方メートル？",
+    "sourceText": "meters. 15 square meters?",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 216.4,
+    "end": 219.8,
+    "text": "はい、ここは小さいです。",
+    "sourceText": "Yeah, this place is tiny.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 219.8,
+    "end": 225.729756097561,
+    "text": "だから、4人の女の子が…15平方メートルに4人？",
+    "sourceText": "So, imagine like four girls in And you were four girls in 15",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 225.729756097561,
+    "end": 230.28,
+    "text": "カビがあって、17区の遠いところ。",
+    "sourceText": "square meters? 15 square meters, mold, so far out in the 17th.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 230.28,
+    "end": 235.64,
+    "text": "毎日アルジャンティーヌからチュイルリーまで学校に行ってました。",
+    "sourceText": "I took Argentine to Tuileries chaque jour pour l'école.",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 235.64,
+    "end": 239.6167441860465,
+    "text": "わあ。どこにもいなかったんだ。",
+    "sourceText": "Wow. I I couldn't I was nowhere, you know, and I I didn't",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 239.6167441860465,
+    "end": 246,
+    "text": "そして、初めて3区を歩いたときのことを覚えてるんだけど、",
+    "sourceText": "know that the first time I remember walking in the third Mhm.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 246,
+    "end": 250.12566371681416,
+    "text": "その年で、パリの地理がまったくわからなかったんだ。",
+    "sourceText": "was that year and I had no idea of like the geography of Paris.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 250.12566371681416,
+    "end": 252.64230350704688,
+    "text": "だから、自分がどこにいるのかもわからなくて、",
+    "sourceText": "So, I had no idea where I was, you know, one of my roommates was like,",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 252.64230350704688,
+    "end": 256.8346666666667,
+    "text": "ルームメイトの一人が「このバーに行こう」って言って、それがル・プログレだったんだ。すごく面白いよね。",
+    "sourceText": "\"Let's go to this bar.\" And it was Le Progrès, which is so funny.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 256.8346666666667,
+    "end": 264.6704524562513,
+    "text": "でも、メインストリートを歩きながら、「ここはどこ？」って思ったのを覚えてる、",
+    "sourceText": "Um but I remember walking down the main street and just being",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 264.6704524562513,
+    "end": 268.38129032258064,
+    "text": "。まるで別世界みたいだった。",
+    "sourceText": "like, \"What is this place?\" Like, this is a one world lads.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 268.38129032258064,
+    "end": 272.72,
+    "text": "わあ。うん。でも、あの子たちとの生活は簡単じゃなかったんだよね？",
+    "sourceText": "Wow. Yeah. But I understood that it wasn't easy with the girls, right?",
+    "sourceIndexes": [
+      78,
+      79,
+      80
+    ]
+  },
+  {
+    "start": 272.72,
+    "end": 274.22243902439027,
+    "text": "で、まあ、そんな感じだったんだ。うん。",
+    "sourceText": "So, it was random. Yes.",
+    "sourceIndexes": [
+      81,
+      82
+    ]
+  },
+  {
+    "start": 274.22243902439027,
+    "end": 278.32,
+    "text": "そんな感じで、最初の年はまあまあ大丈夫だったんだ。",
+    "sourceText": "It was It was random and it was kind of okay the first year.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 278.32,
+    "end": 281.52,
+    "text": "掃除の人とかもいたしね。",
+    "sourceText": "We had, you know, cleaners and stuff and everything.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 281.52,
+    "end": 287.2951351351351,
+    "text": "でも、2年目にまた一緒に住んだら、全然違ったんだ。",
+    "sourceText": "But then I lived with them a second year and it was not the same.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 287.2951351351351,
+    "end": 290.8289374305813,
+    "text": "それが間違いなく一番大変な年だった。",
+    "sourceText": "That was definitely the hardest year for me because of",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 290.8289374305813,
+    "end": 296.1779192891522,
+    "text": "そのせいもあって、それにファッションデザインのプログラムにいて、",
+    "sourceText": "that and also because of being in fashion design and how",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 296.1779192891522,
+    "end": 300.36,
+    "text": "嫌いなことに必死に取り組んでいたから。正直ね。",
+    "sourceText": "hard I was working on something that I hated, frankly.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 300.36,
+    "end": 303.2317948717949,
+    "text": "ああ、そうか、その後変わったんだね。うん。",
+    "sourceText": "Ah, yeah, because you've changed after, yeah.",
+    "sourceIndexes": [
+      87,
+      88
+    ]
+  },
+  {
+    "start": 303.2317948717949,
+    "end": 304.84,
+    "text": "なんでそんなに嫌いだったの？",
+    "sourceText": "Why did you hate it so much?",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 304.84,
+    "end": 307.12,
+    "text": "えっと、逃げ出したわけじゃないんだけど。",
+    "sourceText": "Well, I didn't show I ran.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 307.12,
+    "end": 315.1142857142857,
+    "text": "あのプログラムは、デザイン全般に対する創造への愛情をすべて奪い去ったんだ。",
+    "sourceText": "That program took every ounce of love for creating away from me that I have for design in general.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 315.1142857142857,
+    "end": 317.0288,
+    "text": "もっとクリエイティブになるためのものじゃないの？",
+    "sourceText": "Is it not supposed to make you more creative?",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 317.0288,
+    "end": 321.57944444444445,
+    "text": "クリエイティブになる前に、技術的なことを教えるものなんだ。",
+    "sourceText": "It is supposed to teach you the technicalities before you can get creative.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 321.57944444444445,
+    "end": 328.8802845528455,
+    "text": "すごく自信を失ってて、「もし辞めたら、自分は失敗したんだ、何もできてない、何も終えられない」って思ってた、",
+    "sourceText": "I had so much confidence issues of like, \"Oh my god, if I'm leaving,",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 328.8802845528455,
+    "end": 331.0188753387534,
+    "text": "。それに加えて、",
+    "sourceText": "then I failed and then I am doing nothing and I can't finish anything.\"",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 331.0188753387534,
+    "end": 334.8,
+    "text": "パリでのルームメイトの問題もあったんだよね。",
+    "sourceText": "And And on top of that, you had your roommate situation in Paris.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 334.8,
+    "end": 339.56,
+    "text": "うん。それに加えて、パリでひどいルームメイトの問題があったんだ。",
+    "sourceText": "Yes. On top of that, I had my horrible roommate situation in Paris.",
+    "sourceIndexes": [
+      95,
+      96
+    ]
+  },
+  {
+    "start": 339.56,
+    "end": 344.48,
+    "text": "他のことをする時間がまったくなくて、それが一番大変だった。",
+    "sourceText": "I just had no other time for anything else and that was the hardest part.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 344.48,
+    "end": 350.8911111111111,
+    "text": "それで、週末に兄を訪ねたり、何かしてそのサイクルから抜け出せるように、",
+    "sourceText": "Then I would work super super hard so I could maybe go visit my brother on the",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 350.8911111111111,
+    "end": 354.92,
+    "text": "めちゃくちゃ頑張って働いてたんだけど、",
+    "sourceText": "weekends or you know, do something and get out of the cycle that I was in and",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 354.92,
+    "end": 360.4,
+    "text": "私がいない間に、彼女たちが私のベッドで寝てたんだ。",
+    "sourceText": "they would sleep in my bed when I would be gone.",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 360.4,
+    "end": 364.49285714285713,
+    "text": "それにベッドでいろんなことをされて、",
+    "sourceText": "And do many other things in my bed that I don't know if I",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 364.49285714285713,
+    "end": 369.87142857142857,
+    "text": "ここで話していいかわからないけど、察してくれるよね。",
+    "sourceText": "can speak about on here online, but you can understand",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 369.87142857142857,
+    "end": 373,
+    "text": "もう完全に無礼で、二度と、",
+    "sourceText": "and it was just I mean utter disrespect and I don't ever",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 373,
+    "end": 375.32,
+    "text": "あそこに戻る必要はないし、戻らないよ。",
+    "sourceText": "have to go back there again, so I won't.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 375.32,
+    "end": 377.68205128205125,
+    "text": "何があなたを支えたの？",
+    "sourceText": "What kept you going because I mean having that experience",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 377.68205128205125,
+    "end": 381.84,
+    "text": "だってそんな経験して、いろいろ考えて、大変だったでしょ。",
+    "sourceText": "and like having all of those thoughts and that's tough.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 381.84,
+    "end": 383.53,
+    "text": "その時フランス語は話せたの？",
+    "sourceText": "And did you speak French by then?",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 383.53,
+    "end": 387.92318181818183,
+    "text": "いいえ。いいえ、その時はフランス語を話せなかった。",
+    "sourceText": "No. No, I didn't speak French by then because I wasn't speaking French with them and",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 387.92318181818183,
+    "end": 394.36,
+    "text": "彼らとフランス語を話してなかったし、一緒にいる時間があったのは彼らだけだったから、",
+    "sourceText": "they were the only people that I had enough time to be around so I couldn't even",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 394.36,
+    "end": 397.45935483870966,
+    "text": "他のフランス人の友達を作ったり、",
+    "sourceText": "I didn't even have the time to make other",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 397.45935483870966,
+    "end": 400.44,
+    "text": "練習する時間さえなかったんだ。",
+    "sourceText": "French friends or practice if I wanted to.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 400.44,
+    "end": 408,
+    "text": "2ヶ月半、まるで悪夢のハムスターホイールだったよ。",
+    "sourceText": "Two and a half months of just like this hamster wheel of nightmares if you will.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 408,
+    "end": 409.95402298850576,
+    "text": "まあ、フランスの悪夢だね。",
+    "sourceText": "Well, a French nightmare.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 409.95402298850576,
+    "end": 411.43908045977014,
+    "text": "フランスの悪夢。",
+    "sourceText": "A French nightmare.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 411.43908045977014,
+    "end": 415.1729246487867,
+    "text": "フランス人の恋人を作ればよかったのにね。",
+    "sourceText": "You should have gotten a French lover",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 415.1729246487867,
+    "end": 418.4,
+    "text": "そうすれば…そうすればよかった。",
+    "sourceText": "so to make it I wish I wish I did.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 418.4,
+    "end": 420.2,
+    "text": "時間がないって感じだった。",
+    "sourceText": "I was like I have no time.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 420.2,
+    "end": 424.27151515151513,
+    "text": "でもその後ファッションビジネスに専攻を変えて、",
+    "sourceText": "Um, but then I switched into fashion business and I was still in that living situation for the",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 424.27151515151513,
+    "end": 430.84,
+    "text": "その年の残りはまだあの生活環境だったけど、家を出る時間ができて、それがすごく良かった。",
+    "sourceText": "rest of the year, but I had enough time to get out of the house and that was like phenomenal.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 430.84,
+    "end": 434.08,
+    "text": "それは私に起こり得る最高のことで、",
+    "sourceText": "That was the best thing that could have happened to me and then that",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 434.08,
+    "end": 438.64,
+    "text": "その学期にたくさんの友達ができて、他のことも始められた。",
+    "sourceText": "semester I made so many other friends and started to do other things.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 438.64,
+    "end": 440.58,
+    "text": "それからは上昇するだけだった。",
+    "sourceText": "From then on it was just up.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 440.58,
+    "end": 442.52,
+    "text": "別のアパートに引っ越した。",
+    "sourceText": "Changed to a different flat.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 442.52,
+    "end": 444.21,
+    "text": "別のルームメイト。",
+    "sourceText": "Different roommate.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 444.21,
+    "end": 445.6465753424657,
+    "text": "良くなった？良くなった。",
+    "sourceText": "Better? Better.",
+    "sourceIndexes": [
+      117,
+      118
+    ]
+  },
+  {
+    "start": 445.6465753424657,
+    "end": 447.8043835616438,
+    "text": "まだまだ？",
+    "sourceText": "Still still not there?",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 447.8043835616438,
+    "end": 449.27561643835617,
+    "text": "まだ…あ、そう。",
+    "sourceText": "Still Oops, so.",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 449.27561643835617,
+    "end": 451.76,
+    "text": "で、そういう人たちはどこで見つけたの？",
+    "sourceText": "And where did you find all of those people?",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 451.76,
+    "end": 454.54,
+    "text": "わからない…どうやって…どうやって…ただ優しくしようよ。",
+    "sourceText": "I don't How did you How did you Can we just be nice?",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 454.54,
+    "end": 459.04,
+    "text": "そう、いい子たちと…そう。",
+    "sourceText": "Yes, can we Can we have like nice girls Yeah.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 459.04,
+    "end": 460.4,
+    "text": "クラブ？",
+    "sourceText": "club?",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 460.4,
+    "end": 466.6271304347826,
+    "text": "実は面白い話で、中学生の時に親友と「ガールズ・サポーティング・ガールズ」っていうクラブを始めたんだ。",
+    "sourceText": "Well, I actually it's funny because in middle school my best friend and I started a club that was called girls supporting girls.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 466.6271304347826,
+    "end": 469.93356521739133,
+    "text": "年下の女の子たちに、お互いに競争しないで、",
+    "sourceText": "And it was teaching like younger girls how to not compete",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 469.93356521739133,
+    "end": 473.24,
+    "text": "代わりに支え合う方法を教えるクラブだった。",
+    "sourceText": "with each other and like lift each other up instead.",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 473.24,
+    "end": 477.36,
+    "text": "余談だけど。でも、一人暮らしが必要だと確信したの。",
+    "sourceText": "Side note. But I have definitely realized that I need to live alone.",
+    "sourceIndexes": [
+      127,
+      128
+    ]
+  },
+  {
+    "start": 477.36,
+    "end": 480.40153846153845,
+    "text": "物の配置とか、",
+    "sourceText": "I'm so particular about the way my things are",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 480.40153846153845,
+    "end": 486.6,
+    "text": "食器棚の整理の仕方にすごくこだわるの。",
+    "sourceText": "positioned and the way that my cupboard is laid out.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 486.6,
+    "end": 489.91774647887326,
+    "text": "小さなものは全部瓶に入れてる。",
+    "sourceText": "I have all my little things in my jars.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 489.91774647887326,
+    "end": 492.64,
+    "text": "それができないと、もうダメ。",
+    "sourceText": "And if I don't have that You go.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 492.64,
+    "end": 494.44,
+    "text": "問題になるの。",
+    "sourceText": "I'm going to have an issue.",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 494.44,
+    "end": 497.9683870967742,
+    "text": "そう、実はデンマーク人の男の子が泊まりに来てたんだ。",
+    "sourceText": "Yeah, I actually I had a Danish boy staying with me.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 497.9683870967742,
+    "end": 503.64,
+    "text": "ああ、そうだ、デートの相手が来てたんだね。友達か、デートか、何でもいいけど。",
+    "sourceText": "Oh, yes, you had your date My friend, my date, my whatever.",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 503.64,
+    "end": 505.68,
+    "text": "デートだったの？何なの？",
+    "sourceText": "Date, was it What is it?",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 505.68,
+    "end": 514.5462068965518,
+    "text": "だって、自分のエネルギーに合う男の子を待ってるって話してたじゃん。",
+    "sourceText": "Because we did talk about the fact that you know, you were waiting for the boy that could kind of match your energy.",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 514.5462068965518,
+    "end": 519.5437837837839,
+    "text": "うん。そう。今は確かにデートしてる段階なの。",
+    "sourceText": "Mhm. Yes. I'm definitely in a space right now where I'm dating.",
+    "sourceIndexes": [
+      137,
+      138,
+      139
+    ]
+  },
+  {
+    "start": 519.5437837837839,
+    "end": 522.6891379310345,
+    "text": "私に会いに来た彼はデンマーク人で。",
+    "sourceText": "This guy who came to visit me was Danish.",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 522.6891379310345,
+    "end": 524.8,
+    "text": "デンマーク人。二人とも21歳。",
+    "sourceText": "Danish. Both 21.",
+    "sourceIndexes": [
+      141,
+      142
+    ]
+  },
+  {
+    "start": 524.8,
+    "end": 527.08,
+    "text": "彼はこっちにいる間に22歳になったんだ。",
+    "sourceText": "He actually turned 22 when he was here.",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 527.08,
+    "end": 531.93,
+    "text": "お互いの存在を楽しんでる、それだけ。",
+    "sourceText": "We're enjoying each other's company and that's kind of it.",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 531.93,
+    "end": 535.16,
+    "text": "まるで何度も人生を生きてきたみたいだね。",
+    "sourceText": "You sound like you've lived few lives.",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 535.16,
+    "end": 537.36,
+    "text": "そう感じるよ。",
+    "sourceText": "I feel like I have.",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 537.36,
+    "end": 539.1428571428571,
+    "text": "本当にそう思う。",
+    "sourceText": "I really feel like I have.",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 539.1428571428571,
+    "end": 540.72,
+    "text": "たくさんセラピーを受けたんだ、みんな。",
+    "sourceText": "A lot of therapy, guys.",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 540.72,
+    "end": 542.53,
+    "text": "たくさんセラピーを受けたんだ、アーサー。",
+    "sourceText": "A lot of therapy, Arthur.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 542.53,
+    "end": 545.26,
+    "text": "うん、わかった。",
+    "sourceText": "Yeah, okay. And so did you kind of feel",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 545.26,
+    "end": 549.52,
+    "text": "で、彼と同じレベルだって感じた？",
+    "sourceText": "that you are on the same level with him?",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 549.52,
+    "end": 553.5240516385303,
+    "text": "同い年の人と一緒にいられて本当に良かったと思う。",
+    "sourceText": "I think it was really nice to be around somebody my age because",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 553.5240516385303,
+    "end": 558.5796226415094,
+    "text": "過去には、エゴがいつも「お前はすごく成熟してる」って言ってたから。",
+    "sourceText": "in the past I've my ego has always been like, \"You are so mature.",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 558.5796226415094,
+    "end": 562.4020125786163,
+    "text": "「年上の男と一緒にいるべきだ」って。で、「そうか」って。",
+    "sourceText": "You should be with an older man.\" And then it's like, \"Okay.\" There's a reason",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 562.4020125786163,
+    "end": 566.88,
+    "text": "年上の男が若い女の子を探すのには理由があって、それは良い理由じゃない。",
+    "sourceText": "that an older man is looking for a younger girl and that's not a good reason.",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 566.88,
+    "end": 572.44,
+    "text": "私の経験から言うと、もちろん人それぞれだけど。",
+    "sourceText": "And from my experience, obviously it's different for everybody.",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 572.44,
+    "end": 576.976,
+    "text": "でも、ここに住んで、経験したことで、",
+    "sourceText": "But I definitely feel like living here and having the",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 576.976,
+    "end": 580.4,
+    "text": "すごく成長できたと思う。",
+    "sourceText": "experience that I did made me grow up so much more.",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 580.4,
+    "end": 585.52,
+    "text": "18歳で引っ越してきたときは、すごく不安で小さな存在だった。",
+    "sourceText": "You know, I was 18 when I moved here and the most like insecure little thing.",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 585.52,
+    "end": 591.0989610389611,
+    "text": "他人の目をすごく気にしてたけど、今の私はまったく違う。",
+    "sourceText": "I cared so much about what people thought of me and",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 591.0989610389611,
+    "end": 594.7317171717173,
+    "text": "それが一番安心できて、確かで、",
+    "sourceText": "that girl now, it's like completely different, which",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 594.7317171717173,
+    "end": 597.8779220779221,
+    "text": "満たされる気持ちなんだ。",
+    "sourceText": "is the most relieving, reassuring, fulfilling feeling.",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 597.8779220779221,
+    "end": 600.3088768908993,
+    "text": "このアパートにいて、",
+    "sourceText": "Like it's the same feeling as like being in this",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 600.3088768908993,
+    "end": 603.9707865168539,
+    "text": "全部が自分のものだって感じと同じなんだ。",
+    "sourceText": "apartment and like having all of these things be mine.",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 603.9707865168539,
+    "end": 606.6,
+    "text": "本当に、自分は成功したんだって感じ。",
+    "sourceText": "It's like this is really like I have made it.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 606.6,
+    "end": 608.4514285714286,
+    "text": "それでいて、最高の気分なんだ。",
+    "sourceText": "And yet, it's just like the best thing ever.",
+    "sourceIndexes": [
+      160
+    ]
+  },
+  {
+    "start": 608.4514285714286,
+    "end": 609.84,
+    "text": "うん、だってそれが発見だからね。",
+    "sourceText": "Yeah, because that's discovering.",
+    "sourceIndexes": [
+      161
+    ]
+  },
+  {
+    "start": 609.84,
+    "end": 612.3251948051948,
+    "text": "それについて書くんだよね？",
+    "sourceText": "That's what we're going to write about, right?",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 612.3251948051948,
+    "end": 614,
+    "text": "スタイルを発見すること、うん。",
+    "sourceText": "This discovering a style, Yeah.",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 614,
+    "end": 618.0101265822785,
+    "text": "創造性とは何かを発見すること、うん。",
+    "sourceText": "discovering discovering what creativity is Yeah.",
+    "sourceIndexes": [
+      164
+    ]
+  },
+  {
+    "start": 618.0101265822785,
+    "end": 621.44,
+    "text": "で、君はそういう質問をかなり早い段階でしてるんだね。うん。",
+    "sourceText": "And you are asking all of those questions quite early because Mhm.",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 621.44,
+    "end": 623.84,
+    "text": "だって、一生かかることもあるからね。",
+    "sourceText": "I mean, it it can take a lifetime.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 623.84,
+    "end": 628.1450000000001,
+    "text": "うん。それでもまだ到達できないんだよね。",
+    "sourceText": "Yeah. And you still don't Yeah. get there.",
+    "sourceIndexes": [
+      167,
+      168
+    ]
+  },
+  {
+    "start": 628.1450000000001,
+    "end": 630.6111111111111,
+    "text": "試す段階、ロングヘアとか。",
+    "sourceText": "The phase where you try it out, long hair.",
+    "sourceIndexes": [
+      169
+    ]
+  },
+  {
+    "start": 630.6111111111111,
+    "end": 635.2835897435898,
+    "text": "実はずっとロングだったんだけど、すごく短く切ったの。",
+    "sourceText": "Well, I actually had long hair my whole life and then I cut my hair super short.",
+    "sourceIndexes": [
+      170
+    ]
+  },
+  {
+    "start": 635.2835897435898,
+    "end": 640.32,
+    "text": "で、今はまた伸びてるけど、ここまで短かったんだ。",
+    "sourceText": "And that was And now it's growing back, of course, but it was like to here.",
+    "sourceIndexes": [
+      171
+    ]
+  },
+  {
+    "start": 640.32,
+    "end": 645.12,
+    "text": "それが女性性との面白い関係だったんだ。",
+    "sourceText": "And that was such an interesting relationship with femininity.",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 645.12,
+    "end": 650.2052830188679,
+    "text": "女性として、ボッティチェリのヴィーナスとか、",
+    "sourceText": "As a woman and the way women are depicted in, you know, Botticelli's Venus, she has this long hair",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 650.2052830188679,
+    "end": 656.88,
+    "text": "女性の描かれ方を見ると、長い髪で、美しい長い髪の象徴で、多くの、",
+    "sourceText": "and all of these women have this beautiful long hair and it's such a symbol of beauty across so many",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 656.88,
+    "end": 660.12,
+    "text": "文化や時代を通じてそうなんだよね。",
+    "sourceText": "cultures and so many time periods.",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 660.12,
+    "end": 664.6236734693878,
+    "text": "だから髪を切った時、すごく悩んだんだ。",
+    "sourceText": "So, when I cut my hair, I really struggled with that because",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 664.6236734693878,
+    "end": 668.2579591836735,
+    "text": "だって安全毛布がなくなって、",
+    "sourceText": "it just I wanted I didn't have a safety blanket, you know,",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 668.2579591836735,
+    "end": 672.24,
+    "text": "隠れるものが何もなくなったから。",
+    "sourceText": "there was nothing that I could kind of like hide behind or",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 672.24,
+    "end": 676.88,
+    "text": "そういうことができなくなった。",
+    "sourceText": "do anything like that.",
+    "sourceIndexes": [
+      176
+    ]
+  },
+  {
+    "start": 676.88,
+    "end": 681.839,
+    "text": "それに、髪は自然に女性らしい部分だったのに、それがなくなった。",
+    "sourceText": "And two, it was like my hair was such a naturally feminine part of me and now it's gone.",
+    "sourceIndexes": [
+      177
+    ]
+  },
+  {
+    "start": 681.839,
+    "end": 683.8711590909091,
+    "text": "それなしでどうやって見つければいいの？",
+    "sourceText": "How do I find that without it?",
+    "sourceIndexes": [
+      178
+    ]
+  },
+  {
+    "start": 683.8711590909091,
+    "end": 688.0222318181818,
+    "text": "切った時にそれがなくなるなんて思ってもみなかったけど、確かにそうだった。",
+    "sourceText": "And I didn't even realize that it would go away when I cut my",
+    "sourceIndexes": [
+      179
+    ]
+  },
+  {
+    "start": 688.0222318181818,
+    "end": 689.96,
+    "text": "で、なぜ切ったの？",
+    "sourceText": "hair, but it it definitely is and Why did you cut the hair?",
+    "sourceIndexes": [
+      179
+    ]
+  },
+  {
+    "start": 689.96,
+    "end": 693.6335135135135,
+    "text": "毛先に悪いエネルギーがたくさんついてて、",
+    "sourceText": "I cut my hair because there was just so much bad energy",
+    "sourceIndexes": [
+      180
+    ]
+  },
+  {
+    "start": 693.6335135135135,
+    "end": 696.936,
+    "text": "もうそれを感じてたから切ったんだ。",
+    "sourceText": "attached to the bottom and I could feel it already.",
+    "sourceIndexes": [
+      180
+    ]
+  },
+  {
+    "start": 696.936,
+    "end": 704.32,
+    "text": "実際、あの最初のひどいアパートを出る一週間前に髪を切ったんだ。",
+    "sourceText": "And I actually cut my hair like a week before I moved out of that apartment, the first horrible apartment.",
+    "sourceIndexes": [
+      181
+    ]
+  },
+  {
+    "start": 704.32,
+    "end": 710.8460869565217,
+    "text": "で、切ったら本当に重荷が下りた感じがしたんだけど、",
+    "sourceText": "Um and then I cut it and it really did feel like a weight lifted,",
+    "sourceIndexes": [
+      182
+    ]
+  },
+  {
+    "start": 710.8460869565217,
+    "end": 716.52,
+    "text": "他の方法でより女性らしくなりたいと思った？",
+    "sourceText": "but Did you feel that you want to be more feminine in other ways?",
+    "sourceIndexes": [
+      182
+    ]
+  },
+  {
+    "start": 716.52,
+    "end": 719.68,
+    "text": "それとも、新しい自分を受け入れたの？うん。",
+    "sourceText": "Or you you just embrace the new you? Yeah.",
+    "sourceIndexes": [
+      183,
+      184
+    ]
+  },
+  {
+    "start": 719.68,
+    "end": 722.76,
+    "text": "あなたの中で、短い髪＝女性らしさが減るって意味だったんでしょ。",
+    "sourceText": "Which in your head meant like shorter hair, less feminine.",
+    "sourceIndexes": [
+      185
+    ]
+  },
+  {
+    "start": 722.76,
+    "end": 729.289411764706,
+    "text": "そう、スタイルはプロポーションの面で少し変わったと思うけど、",
+    "sourceText": "Yeah, I think my style definitely changed a little",
+    "sourceIndexes": [
+      186
+    ]
+  },
+  {
+    "start": 729.289411764706,
+    "end": 731.2,
+    "text": "必ずしも、",
+    "sourceText": "bit in relation to proportion, but not necessarily in",
+    "sourceIndexes": [
+      186
+    ]
+  },
+  {
+    "start": 731.2,
+    "end": 736.92,
+    "text": "男性性と女性性の間で遊ぶ方法に関しては変わらなかった。",
+    "sourceText": "relation to the way that I would play between like masculinity and femininity.",
+    "sourceIndexes": [
+      187
+    ]
+  },
+  {
+    "start": 736.92,
+    "end": 742.16,
+    "text": "だって、長い髪で美しく見えるものが、短い髪だとちょっと違って見えるから。",
+    "sourceText": "Because something that might look beautiful with long hair looks a little different with short hair.",
+    "sourceIndexes": [
+      188
+    ]
+  },
+  {
+    "start": 742.16,
+    "end": 746.1366292134832,
+    "text": "すべてがパズルのピースみたいに合うんだよね。",
+    "sourceText": "Like it's everything fits like a puzzle piece, you know?",
+    "sourceIndexes": [
+      189
+    ]
+  },
+  {
+    "start": 746.1366292134832,
+    "end": 748.3718352059925,
+    "text": "だから明らかに、それは大きなパズルのピースなんだ。",
+    "sourceText": "So obviously that's a huge puzzle piece. But I",
+    "sourceIndexes": [
+      190
+    ]
+  },
+  {
+    "start": 748.3718352059925,
+    "end": 750.4,
+    "text": "でも、違う服を着た記憶はあまりないんだ。",
+    "sourceText": "can't really remember wearing different things.",
+    "sourceIndexes": [
+      191
+    ]
+  },
+  {
+    "start": 750.4,
+    "end": 752.4495454545455,
+    "text": "そうしたとは思わない。",
+    "sourceText": "I don't really think I did.",
+    "sourceIndexes": [
+      192
+    ]
+  },
+  {
+    "start": 752.4495454545455,
+    "end": 756.0284210526315,
+    "text": "失われたと感じた女性らしさを過剰に補おうとしたりもしなかった。",
+    "sourceText": "Or like trying to like overcompensate for like the femininity that I felt was lost.",
+    "sourceIndexes": [
+      193
+    ]
+  },
+  {
+    "start": 756.0284210526315,
+    "end": 758.7966590389016,
+    "text": "ずっと髪を上げてたんだ。",
+    "sourceText": "I was putting my hair up all the time because I was just like, \"If it's",
+    "sourceIndexes": [
+      194
+    ]
+  },
+  {
+    "start": 758.7966590389016,
+    "end": 764.44,
+    "text": "「上げれば、短いか長いかわからない」って思って。でもそれが嫌だった。",
+    "sourceText": "up, you don't know if it's short or long.\" And I just didn't like it.",
+    "sourceIndexes": [
+      194
+    ]
+  },
+  {
+    "start": 764.44,
+    "end": 766.4217777777778,
+    "text": "だから、無視して伸ばすままにしたんだ。",
+    "sourceText": "So I kind of just ignored it and let it grow out.",
+    "sourceIndexes": [
+      195
+    ]
+  },
+  {
+    "start": 766.4217777777778,
+    "end": 768.08,
+    "text": "女性らしさは私にとってとても大事だと思う。",
+    "sourceText": "I think femininity is so important to me.",
+    "sourceIndexes": [
+      196
+    ]
+  },
+  {
+    "start": 768.08,
+    "end": 771.28,
+    "text": "男性らしさも同じくらい大事。",
+    "sourceText": "Masculinity is just as important.",
+    "sourceIndexes": [
+      197
+    ]
+  },
+  {
+    "start": 771.28,
+    "end": 775.44,
+    "text": "そして私にとって、うん。",
+    "sourceText": "And for me Yeah.",
+    "sourceIndexes": [
+      198
+    ]
+  },
+  {
+    "start": 775.44,
+    "end": 778.034800804829,
+    "text": "それは両親から来ていて、",
+    "sourceText": "that comes from my parents and they are the",
+    "sourceIndexes": [
+      199
+    ]
+  },
+  {
+    "start": 778.034800804829,
+    "end": 781.9081690140845,
+    "text": "彼らはその両方の言葉を体現している存在なんだ。",
+    "sourceText": "living breathing beings of both of those words.",
+    "sourceIndexes": [
+      199
+    ]
+  },
+  {
+    "start": 781.9081690140845,
+    "end": 787.0634544106746,
+    "text": "母は私にとって女性らしさの象徴で、父は男性らしさの象徴。",
+    "sourceText": "My mother is the epitome of femininity to me and my father's the epitome of",
+    "sourceIndexes": [
+      200
+    ]
+  },
+  {
+    "start": 787.0634544106746,
+    "end": 792.36,
+    "text": "それが私の創造的なアイデンティティに大きく反映されている。",
+    "sourceText": "masculinity to me and that translates so much into my creative identity.",
+    "sourceIndexes": [
+      200
+    ]
+  },
+  {
+    "start": 792.36,
+    "end": 795.752018018018,
+    "text": "私の人生は常に二つの極端だったと思う。",
+    "sourceText": "I feel that my life has always been two extremes, you know,",
+    "sourceIndexes": [
+      201
+    ]
+  },
+  {
+    "start": 795.752018018018,
+    "end": 799.0286666666667,
+    "text": "両親と、住んでいる場所を考えてみて。",
+    "sourceText": "take my parents and then take the places that I live.",
+    "sourceIndexes": [
+      201
+    ]
+  },
+  {
+    "start": 799.0286666666667,
+    "end": 801.52,
+    "text": "モントークはとても小さなビーチタウン。",
+    "sourceText": "Montauk is a really small beach town.",
+    "sourceIndexes": [
+      202
+    ]
+  },
+  {
+    "start": 801.52,
+    "end": 806.12,
+    "text": "パリは海を越えた大都市。",
+    "sourceText": "Paris is a huge city across an ocean.",
+    "sourceIndexes": [
+      203
+    ]
+  },
+  {
+    "start": 806.12,
+    "end": 812.35125,
+    "text": "スタイルや書き方、創作の仕方のすべては、その二つの極端について語るか、",
+    "sourceText": "Everything that I do with my style and the way that I write and the way that I create is",
+    "sourceIndexes": [
+      204
+    ]
+  },
+  {
+    "start": 812.35125,
+    "end": 817.72,
+    "text": "その間のバランスを見つけようとしているかのどちらかなんだ。",
+    "sourceText": "either speaking on those two extremes or trying to find a balance between both of them.",
+    "sourceIndexes": [
+      204
+    ]
+  },
+  {
+    "start": 817.72,
+    "end": 823.3694545454546,
+    "text": "そして、服やスタイル、着こなし方でいつも母と父のバランスを取ろうとしていて、",
+    "sourceText": "And I always try to find a balance between my mom and my dad in my clothing",
+    "sourceIndexes": [
+      205
+    ]
+  },
+  {
+    "start": 823.3694545454546,
+    "end": 826.56,
+    "text": "それがすごく気分を良くしてくれる。",
+    "sourceText": "and my style and the way that I wear things and it makes me feel incredible",
+    "sourceIndexes": [
+      205
+    ]
+  },
+  {
+    "start": 826.56,
+    "end": 831.1017391304348,
+    "text": "例えば、父のトライアンフのバイクベルトを、",
+    "sourceText": "when like I have like a my dad is this Triumph motorcycle belt and",
+    "sourceIndexes": [
+      206
+    ]
+  },
+  {
+    "start": 831.1017391304348,
+    "end": 836.28,
+    "text": "母の小さな白いドレスと合わせて着ているときとかね。",
+    "sourceText": "I'm like wearing that with like my mom's like little white dress.",
+    "sourceIndexes": [
+      206
+    ]
+  },
+  {
+    "start": 836.28,
+    "end": 843.0958415841584,
+    "text": "まるで、この男性的なレザーベルトと小さなプレーリードレスの対比みたいな。",
+    "sourceText": "Like it's like the juxtaposition between this like masculine leather belt and like this little prairie dress.",
+    "sourceIndexes": [
+      207
+    ]
+  },
+  {
+    "start": 843.0958415841584,
+    "end": 847.88,
+    "text": "バレエをやって育ったんだけど、物事をダンスとして考えたことはなかったんだ。",
+    "sourceText": "I grew up doing ballet and I was like didn't think about things as like a dance.",
+    "sourceIndexes": [
+      208
+    ]
+  },
+  {
+    "start": 847.88,
+    "end": 852,
+    "text": "絶え間ない押し引き、まるで二つの磁石みたいな。",
+    "sourceText": "It's this constant push and pull or like it's two magnets.",
+    "sourceIndexes": [
+      209
+    ]
+  },
+  {
+    "start": 852,
+    "end": 854.96,
+    "text": "誰でもそうだけど、常に自分のセンスを磨いてる感じ。",
+    "sourceText": "Like I'm constantly refining my taste as is anyone.",
+    "sourceIndexes": [
+      210
+    ]
+  },
+  {
+    "start": 854.96,
+    "end": 860.72,
+    "text": "男性性と女性性、そして両親の関係を理解すればするほど、",
+    "sourceText": "I feel like the more I come to understand that relationship of masculinity and femininity and",
+    "sourceIndexes": [
+      211
+    ]
+  },
+  {
+    "start": 860.72,
+    "end": 868,
+    "text": "母親の女性性は自分が表現する女性性とは同じじゃないってわかってくるんだ。",
+    "sourceText": "my mother and my father the closer I am to getting I guess the femininity of your mother is not",
+    "sourceIndexes": [
+      211
+    ]
+  },
+  {
+    "start": 868,
+    "end": 875.4,
+    "text": "同じ反復じゃないんだよね。",
+    "sourceText": "necessarily the same it's not the same iteration of the femininity that you represent.",
+    "sourceIndexes": [
+      212
+    ]
+  },
+  {
+    "start": 875.4,
+    "end": 879.6,
+    "text": "かな。考えたことある？",
+    "sourceText": "I guess. I don't know if you ever thought about it.",
+    "sourceIndexes": [
+      213,
+      214
+    ]
+  },
+  {
+    "start": 879.6,
+    "end": 882.3979487179487,
+    "text": "うん、すごく考えるよ。だってあの女性には下心がないから。",
+    "sourceText": "Yes, actually so much so because that woman has no agenda.",
+    "sourceIndexes": [
+      215
+    ]
+  },
+  {
+    "start": 882.3979487179487,
+    "end": 885.68,
+    "text": "彼女には悪いところが一つもない。",
+    "sourceText": "She has no bad bone in her body.",
+    "sourceIndexes": [
+      216
+    ]
+  },
+  {
+    "start": 885.68,
+    "end": 890.839,
+    "text": "すべてを与え、すべてを愛し、人の良いところしか見ない。",
+    "sourceText": "She is all giving and all loving and only seeing the good in people.",
+    "sourceIndexes": [
+      217
+    ]
+  },
+  {
+    "start": 890.839,
+    "end": 893.1244668649108,
+    "text": "彼女の方が魂が若い気がする。",
+    "sourceText": "I feel like she's almost a younger soul than I am because sometimes",
+    "sourceIndexes": [
+      218
+    ]
+  },
+  {
+    "start": 893.1244668649108,
+    "end": 896.6504672897196,
+    "text": "だって時々「あれはあなたの友達じゃないよ」って言うんだもん。",
+    "sourceText": "she'll be like oh da da da da like that's no friend of yours.",
+    "sourceIndexes": [
+      218
+    ]
+  },
+  {
+    "start": 896.6504672897196,
+    "end": 897.9065420560747,
+    "text": "「何やってるの？」って。",
+    "sourceText": "Like what are you doing?",
+    "sourceIndexes": [
+      219
+    ]
+  },
+  {
+    "start": 897.9065420560747,
+    "end": 900,
+    "text": "私は「あの人たちはあなたから何かを得ようとしてるよ」って思う。",
+    "sourceText": "I'm like They want something out of you.",
+    "sourceIndexes": [
+      220
+    ]
+  }
+]

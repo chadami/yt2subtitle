@@ -1,0 +1,94 @@
+{
+  "topic": "Claude Design tutorial for beginners",
+  "summary": "How to prepare three files (DESIGN.md, design system, reusable template) to create polished, on-brand slide decks in Claude Design, with feedback that carries forward.",
+  "tone": "casual, instructive, enthusiastic",
+  "audience": "Japanese-speaking beginners to intermediate users of Claude Design who want to create professional presentations efficiently",
+  "glossary": [
+    {
+      "source": "Claude Design",
+      "target": "Claude Design",
+      "note": "Proper noun; keep as is or use クロードデザイン if needed for clarity"
+    },
+    {
+      "source": "DESIGN.md",
+      "target": "DESIGN.mdファイル",
+      "note": "File name; keep original with ファイル suffix"
+    },
+    {
+      "source": "design system",
+      "target": "デザインシステム",
+      "note": "Standard term"
+    },
+    {
+      "source": "template",
+      "target": "テンプレート",
+      "note": "Standard term"
+    },
+    {
+      "source": "prompt",
+      "target": "プロンプト",
+      "note": "Standard term for AI input"
+    },
+    {
+      "source": "tokens",
+      "target": "トークン",
+      "note": "AI usage cost unit"
+    },
+    {
+      "source": "deck",
+      "target": "スライド資料",
+      "note": "Slide deck; use スライド or 資料 depending on context"
+    },
+    {
+      "source": "on-brand",
+      "target": "ブランドに合った",
+      "note": "Natural Japanese phrase"
+    },
+    {
+      "source": "carousel slides",
+      "target": "カルーセルスライド",
+      "note": "Social media carousel format"
+    },
+    {
+      "source": "tweak",
+      "target": "調整機能",
+      "note": "Feature name; use ツイーク if referring to the button"
+    },
+    {
+      "source": "annotate",
+      "target": "注釈機能",
+      "note": "Feature name; use アノテート if referring to the button"
+    },
+    {
+      "source": "standalone HTML file",
+      "target": "スタンドアロンHTMLファイル",
+      "note": "Export format"
+    }
+  ],
+  "properNouns": [
+    "Claude Design",
+    "Jeff Su",
+    "ChatGPT",
+    "GitHub",
+    "Stripe",
+    "Opus",
+    "Fable",
+    "Cowork Toolkit",
+    "Workspace Academy",
+    "Notion Command Center"
+  ],
+  "styleGuide": [
+    "Use casual, friendly tone with です・ます体 for politeness but keep conversational.",
+    "Translate 'you' as あなた or omit; use 皆さん for audience address.",
+    "Keep English product names (Claude Design, ChatGPT, GitHub) as is; add 日本語訳 only if needed for clarity.",
+    "For technical terms like 'design system', 'template', 'prompt', use common Japanese loanwords (デザインシステム, テンプレート, プロンプト).",
+    "For 'pun intended', use a natural phrase like ダジャレです or 言葉遊びです.",
+    "For 'bullshitting', use 嘘をついている or 冗談じゃなくて depending on context.",
+    "Keep timestamps in HH:MM format.",
+    "Use 〜ましょう for suggestions ('Let's get started' → 始めましょう).",
+    "For 'I'll show you', use ご紹介します or お見せします.",
+    "For 'you can', use できます or 可能です.",
+    "Use 〜てください for instructions ('click here' → ここをクリックしてください).",
+    "For 'pretty freaking awesome', use めっちゃすごい or 超すごい."
+  ]
+}

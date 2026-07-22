@@ -1,0 +1,51 @@
+{
+  "videoId": "VeWf0l4ci6Y",
+  "title": "Claude Design is Insanely Easy (even for beginners)",
+  "channel": "Jeff Su",
+  "channelId": "UCwAnu01qlnVg1Ai2AbtTMaA",
+  "description": "✅ Grab my free Cowork Toolkit - https://coworkacademy.ai/toolkit?utm_source=youtube&utm_medium=video&utm_campaign=v207\n\nMost #Claude Design tutorials tell you to pick a template and start prompting, which is exactly why your slides come out generic. In this walkthrough I show you the three files to prepare first: a DESIGN.md file, a design system inside #ClaudeDesign, and a reusable presentation template, so every deck comes out polished and on-brand.\n\nYou'll grab a free DESIGN.md file from a public GitHub repo, clean it up in ChatGPT, turn it into a design system, then build a template that gets better every time you give it feedback. And even though we focus on slides, the same workflow applies to social carousels, newsletters, and any other design.\n\n*TIMESTAMPS*\n00:00 How NOT to use Claude Design\n00:33 What You’ll Build, with Real Proof\n01:29 Input #1: Your DESIGN.md file\n03:05 Input #2: Your Design System\n06:34 Input #3: Your Reusable Template\n08:44 Generate Your First Design in Claude Design\n09:44 Feedback that Carries Forward\n13:36 Export Your Finished Deck\n\n*RESOURCES MENTIONED*\nWritten guide + prompts - https://www.jeffsu.org/claude-design-tutorial/?utm_source=youtube&utm_medium=video&utm_campaign=v207\nDESIGN.md files (GitHub) - https://github.com/VoltAgent/awesome-design-md\n\n*BUILD A POWERFUL WORKFLOW*\n📈 The Workspace Academy - https://academy.jeffsu.org/workspace-academy?utm_source=youtube&utm_medium=video&utm_campaign=v207\n✍️ My Notion Command Center - https://www.pressplay.cc/link/s/DE1C4C50\n\n*BE MY FRIEND:*\n📧 Subscribe to my newsletter - https://www.jeffsu.org/newsletter/?utm_source=youtube&utm_medium=video&utm_campaign=description\n📸 Instagram - https://instagram.com/j.sushie\n🤝 LinkedIn - https://www.linkedin.com/in/jsu05/\n\n*MY FAVORITE GEAR*\n🎬 My YouTube Gear - https://www.jeffsu.org/yt-gear/\n🎒 Everyday Carry - https://www.jeffsu.org/my-edc/\n\n#ai",
+  "duration": 876,
+  "publishDate": "",
+  "url": "https://www.youtube.com/watch?v=VeWf0l4ci6Y",
+  "coverImage": "imgs/cover.jpg",
+  "thumbnailUrl": "https://i.ytimg.com/vi/VeWf0l4ci6Y/maxresdefault.jpg",
+  "language": {
+    "code": "en",
+    "name": "English (auto-generated)",
+    "isGenerated": true
+  },
+  "chapters": [
+    {
+      "title": "How NOT to use Claude Design",
+      "start": 0
+    },
+    {
+      "title": "What You’ll Build, with Real Proof",
+      "start": 33
+    },
+    {
+      "title": "Input #1: Your DESIGN.md file",
+      "start": 89
+    },
+    {
+      "title": "Input #2: Your Design System",
+      "start": 185
+    },
+    {
+      "title": "Input #3: Your Reusable Template",
+      "start": 394
+    },
+    {
+      "title": "Generate Your First Design in Claude Design",
+      "start": 524
+    },
+    {
+      "title": "Feedback that Carries Forward",
+      "start": 584
+    },
+    {
+      "title": "Export Your Finished Deck",
+      "start": 816
+    }
+  ]
+}

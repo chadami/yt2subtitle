@@ -1,0 +1,1022 @@
+[
+  {
+    "start": 0,
+    "end": 3.52,
+    "text": "Medium format digital cameras are the cameras of dreams.",
+    "index": 0
+  },
+  {
+    "start": 3.52,
+    "end": 10.393684210526315,
+    "text": "They have absurdly high megapixel count, the largest digital sensors for photography, and the photographers that use them just look cool.",
+    "index": 1
+  },
+  {
+    "start": 10.393684210526315,
+    "end": 12.2,
+    "text": "I mean, look at that guy's beard.",
+    "index": 2
+  },
+  {
+    "start": 12.2,
+    "end": 15.76,
+    "text": "But, they will crush your dreams because they are incredibly expensive.",
+    "index": 3
+  },
+  {
+    "start": 15.76,
+    "end": 20.842702702702702,
+    "text": "You have to choose between buying a nice reliable vehicle to get to and from work or buy a Hasselblad.",
+    "index": 4
+  },
+  {
+    "start": 20.842702702702702,
+    "end": 28.852,
+    "text": "But, I think I found a way for you to actually afford a digital medium format camera, [music] the cheapest way to actually shoot one.",
+    "index": 5
+  },
+  {
+    "start": 28.852,
+    "end": 32.684285714285714,
+    "text": "So, we're going to test that out today by building our own digital medium format camera.",
+    "index": 6
+  },
+  {
+    "start": 32.684285714285714,
+    "end": 35.72078431372549,
+    "text": "Thing about digital medium format cameras is that they come in two varieties.",
+    "index": 7
+  },
+  {
+    "start": 35.72078431372549,
+    "end": 41.885714285714286,
+    "text": "There's the standard all-in-one camera that you're used to with DSLRs and mirrorless cameras normally.",
+    "index": 8
+  },
+  {
+    "start": 41.885714285714286,
+    "end": 53,
+    "text": "These are like the Hasselblad X2D II or whatever that just came out, the Fujifilm GFX series, the Pentax 645Z, cameras like that that all come in one normal camera.",
+    "index": 9
+  },
+  {
+    "start": 53,
+    "end": 58.44648648648649,
+    "text": "But, unlike normal cameras, medium format cameras also have another variety, and that's modular camera systems.",
+    "index": 10
+  },
+  {
+    "start": 58.44648648648649,
+    "end": 64.7,
+    "text": "[music] These are cameras where you could buy the sensor in the guts of the camera separate from the body and controls of the camera.",
+    "index": 11
+  },
+  {
+    "start": 64.7,
+    "end": 72.12,
+    "text": "And this means you can mix and match sensors and bodies to your liking, or let's say upgrade just your sensor, but keep your existing body to save money.",
+    "index": 12
+  },
+  {
+    "start": 72.12,
+    "end": 75.42973451327434,
+    "text": "Although, if you're in this thing, you have money.",
+    "index": 13
+  },
+  {
+    "start": 75.42973451327434,
+    "end": 77.84,
+    "text": "So, I don't know if that's such a thing.",
+    "index": 14
+  },
+  {
+    "start": 77.84,
+    "end": 85.32,
+    "text": "And even if this is the first time you've heard of this, several companies have actually made modular cameras like this starting all the way back in the late '90s and early 2000s.",
+    "index": 15
+  },
+  {
+    "start": 85.32,
+    "end": 93.75593220338983,
+    "text": "And all the way back there is where we're going to start to look for a modular digital medium format camera to see if we can make the cheapest setup possible.",
+    "index": 16
+  },
+  {
+    "start": 93.75593220338983,
+    "end": 100.51706422018349,
+    "text": "Now, there are some absolutely ancient digital backs out there that are really cheap, but we're going to skip those for a couple of reasons.",
+    "index": 17
+  },
+  {
+    "start": 100.51706422018349,
+    "end": 105.52701754385966,
+    "text": "One, a lot of them require to be tethered directly [music] to a computer with FireWire or serial ports.",
+    "index": 18
+  },
+  {
+    "start": 105.52701754385966,
+    "end": 111.96,
+    "text": "A lot of them aren't even medium format size, they're just full-frame digital sensors because back then in the late '90s, that was a big [music] deal.",
+    "index": 19
+  },
+  {
+    "start": 111.96,
+    "end": 116.76,
+    "text": "And a lot of them are just 4 or 6 megapixels, which why go through all this effort if that's all we're going to get.",
+    "index": 20
+  },
+  {
+    "start": 116.76,
+    "end": 117.91384615384617,
+    "text": "So, we can do better.",
+    "index": 21
+  },
+  {
+    "start": 117.91384615384617,
+    "end": 121.76,
+    "text": "We want to find that sweet spot where it's old enough to be cheap, but new enough to be worthwhile shooting.",
+    "index": 22
+  },
+  {
+    "start": 121.76,
+    "end": 126.44,
+    "text": "And in this category, there are digital backs from Leaf, [music] Hasselblad, Phase One, Kodak, and others.",
+    "index": 23
+  },
+  {
+    "start": 126.44,
+    "end": 127.38851041666666,
+    "text": "Where do we even start?",
+    "index": 24
+  },
+  {
+    "start": 127.38851041666666,
+    "end": 130.399,
+    "text": "I spent a couple months researching digital backs for this video, [music]",
+    "index": 25
+  },
+  {
+    "start": 130.399,
+    "end": 135.586,
+    "text": "and there are two main considerations you should think about before going with any of these brands.",
+    "index": 26
+  },
+  {
+    "start": 135.586,
+    "end": 138.34021176470588,
+    "text": "And the first [music] one is power source.",
+    "index": 27
+  },
+  {
+    "start": 138.34021176470588,
+    "end": 144.8,
+    "text": "Some Hasselblad backs, for example, require power coming directly from the camera body, or you have to finagle some external [music] battery pack.",
+    "index": 28
+  },
+  {
+    "start": 144.8,
+    "end": 148.56,
+    "text": "And some backs require a power supply directly into the wall.",
+    "index": 29
+  },
+  {
+    "start": 148.56,
+    "end": 151.28,
+    "text": "So, we want to avoid all those and make sure your back has a battery [music]",
+    "index": 30
+  },
+  {
+    "start": 151.28,
+    "end": 153.54647887323944,
+    "text": "and can power on by itself.",
+    "index": 31
+  },
+  {
+    "start": 153.54647887323944,
+    "end": 158.2336,
+    "text": "And the second important consideration is to check the availability and the cost of the sync cable.",
+    "index": 32
+  },
+  {
+    "start": 158.2336,
+    "end": 159.6,
+    "text": "What is a sync cable?",
+    "index": 33
+  },
+  {
+    "start": 159.6,
+    "end": 164.6,
+    "text": "This is a cable that allows the digital [music] back to sync up with the shutter of your lens.",
+    "index": 34
+  },
+  {
+    "start": 164.6,
+    "end": 167.8,
+    "text": "So, with many medium format cameras, the shutter is not in the body of the camera, but it's [music]",
+    "index": 35
+  },
+  {
+    "start": 167.8,
+    "end": 171.61310344827587,
+    "text": "in the lens, and this dates back long into the film days.",
+    "index": 36
+  },
+  {
+    "start": 171.61310344827587,
+    "end": 180.5842253521127,
+    "text": "The ability to fire these old lenses' shutters and for that to trigger our digital back at the same time using a sync cable is a big part of making this DIY camera work.",
+    "index": 37
+  },
+  {
+    "start": 180.5842253521127,
+    "end": 186.8,
+    "text": "But, some of these cables for some of these cameras [music] are super expensive and hard to find.",
+    "index": 38
+  },
+  {
+    "start": 186.8,
+    "end": 191.2,
+    "text": "So, make sure before you dive into [music] a camera back that you can find the cable.",
+    "index": 39
+  },
+  {
+    "start": 191.2,
+    "end": 198.43263157894737,
+    "text": "Part of the fun of these projects is doing all the research and diving into the history of these cameras and scouring eBay and finding things.",
+    "index": 40
+  },
+  {
+    "start": 198.43263157894737,
+    "end": 204.76923076923077,
+    "text": "So, I'm not going to spill the beans of all the ones I put on my wish list, but you can start with Phase One, Leaf, Hasselblad.",
+    "index": 41
+  },
+  {
+    "start": 204.76923076923077,
+    "end": 208.30666666666667,
+    "text": "Start put those into your search alerts, and or you can just go with the one I bought here.",
+    "index": 42
+  },
+  {
+    "start": 208.30666666666667,
+    "end": 211.8,
+    "text": "I ended up choosing this Phase One P45+ digital back [music]",
+    "index": 43
+  },
+  {
+    "start": 211.8,
+    "end": 217.28,
+    "text": "because it's powered by its own battery, it can boot up by itself without a camera body connection.",
+    "index": 44
+  },
+  {
+    "start": 217.28,
+    "end": 223.1314285714286,
+    "text": "I could find that sync cable, which ended up costing about 80 bucks, [music] and I got a good deal on the digital back itself.",
+    "index": 45
+  },
+  {
+    "start": 223.1314285714286,
+    "end": 228.16,
+    "text": "For reference, these old backs can still cost over $1,000, but please, if you're patient, [music]",
+    "index": 46
+  },
+  {
+    "start": 228.16,
+    "end": 229.21405405405406,
+    "text": "you will win.",
+    "index": 47
+  },
+  {
+    "start": 229.21405405405406,
+    "end": 233.87157894736842,
+    "text": "I consistently find them for between $500 and $800 in working condition.",
+    "index": 48
+  },
+  {
+    "start": 233.87157894736842,
+    "end": 239.0142372881356,
+    "text": "[music] And the Phase One P45+ is a 39-megapixel CCD medium format back from 2007.",
+    "index": 49
+  },
+  {
+    "start": 239.0142372881356,
+    "end": 243.28,
+    "text": "It has a sensor size of 49.1 by 36.8 [music]",
+    "index": 50
+  },
+  {
+    "start": 243.28,
+    "end": 243.5072,
+    "text": "mm.",
+    "index": 51
+  },
+  {
+    "start": 243.5072,
+    "end": 248.01142857142858,
+    "text": "So, it's not the largest digital sensor out there, but certainly not the smallest.",
+    "index": 52
+  },
+  {
+    "start": 248.01142857142858,
+    "end": 255.452,
+    "text": "[music] That's over twice the area of a full-frame sensor, and still noticeably larger than Fujifilm's GFX mirrorless medium format cameras.",
+    "index": 53
+  },
+  {
+    "start": 255.64,
+    "end": 260.692,
+    "text": "And I guess I should have brought this up earlier, but digital backs come in different back mounts.",
+    "index": 54
+  },
+  {
+    "start": 260.76,
+    "end": 266.04,
+    "text": "So, this one, the Phase One P45+, is the Hasselblad H mount, the one I bought it in at least.",
+    "index": 55
+  },
+  {
+    "start": 266.04,
+    "end": 267.36,
+    "text": "It comes in different mounts as well.",
+    "index": 56
+  },
+  {
+    "start": 267.36,
+    "end": 270.52893203883497,
+    "text": "And that fits on the back of my Hasselblad H2 body.",
+    "index": 57
+  },
+  {
+    "start": 270.52893203883497,
+    "end": 273.76,
+    "text": "Since I'm making my own camera body for [music] this project, the back doesn't really matter.",
+    "index": 58
+  },
+  {
+    "start": 273.76,
+    "end": 277.3621052631579,
+    "text": "You should be able to make an adapter for any of the backs.",
+    "index": 59
+  },
+  {
+    "start": 277.3621052631579,
+    "end": 279.42324786324787,
+    "text": "So, just find the one that you [music] can get the best deal on.",
+    "index": 60
+  },
+  {
+    "start": 279.42324786324787,
+    "end": 286.28,
+    "text": "So, what I need now is a custom camera body that fits the digital back on one side and a lens with a built-in shutter I can fire on the other [music]",
+    "index": 61
+  },
+  {
+    "start": 286.28,
+    "end": 286.53663716814157,
+    "text": "side.",
+    "index": 62
+  },
+  {
+    "start": 286.53663716814157,
+    "end": 292.08,
+    "text": "And the lens I've decided to go with for this project is this Mamiya lens off of Mamiya Press camera I have.",
+    "index": 63
+  },
+  {
+    "start": 292.08,
+    "end": 297.22088495575224,
+    "text": "These are high quality, they're affordable, and importantly, they [music] have that built-in shutter we can trigger remotely.",
+    "index": 64
+  },
+  {
+    "start": 297.22088495575224,
+    "end": 301.18548672566374,
+    "text": "I think by itself, you're looking at about $50 for one of these.",
+    "index": 65
+  },
+  {
+    "start": 301.18548672566374,
+    "end": 302.1379310344828,
+    "text": "There are a ton of different lenses we can use.",
+    "index": 66
+  },
+  {
+    "start": 302.1379310344828,
+    "end": 305.12,
+    "text": "I even have a couple of others from some large format cameras [music]",
+    "index": 67
+  },
+  {
+    "start": 305.12,
+    "end": 307,
+    "text": "that have shutters you can fire in them.",
+    "index": 68
+  },
+  {
+    "start": 307,
+    "end": 312.16,
+    "text": "So, this is another area where you could have a lot of fun picking out some really neat vintage lenses.",
+    "index": 69
+  },
+  {
+    "start": 312.16,
+    "end": 317.94470588235293,
+    "text": "I got to work 3D modeling the custom camera body, and while it took some time to make, the actual build is quite simple.",
+    "index": 70
+  },
+  {
+    "start": 317.94470588235293,
+    "end": 320.56,
+    "text": "It's basically a box with a hole in it.",
+    "index": 71
+  },
+  {
+    "start": 320.56,
+    "end": 323.9805042016807,
+    "text": "On one side, we mount the digital back of our choice.",
+    "index": 72
+  },
+  {
+    "start": 323.9805042016807,
+    "end": 329.048813559322,
+    "text": "I was able to find a Mamiya Press [music] adapter 3D print already available and for free by a creator out there.",
+    "index": 73
+  },
+  {
+    "start": 329.048813559322,
+    "end": 333.65,
+    "text": "That's [music] why I love the 3D printing community is a lot of stuff is made for free.",
+    "index": 74
+  },
+  {
+    "start": 333.65,
+    "end": 334.4,
+    "text": "So, thank you to that person.",
+    "index": 75
+  },
+  {
+    "start": 334.4,
+    "end": 337.6,
+    "text": "And um of course, all of my models are free as well.",
+    "index": 76
+  },
+  {
+    "start": 337.6,
+    "end": 340.2,
+    "text": "They're not good, but maybe one day.",
+    "index": 77
+  },
+  {
+    "start": 340.2,
+    "end": 341.8696428571428,
+    "text": "Maybe one day they'll be.",
+    "index": 78
+  },
+  {
+    "start": 341.8696428571428,
+    "end": 343.67285714285714,
+    "text": "The back was much trickier.",
+    "index": 79
+  },
+  {
+    "start": 343.67285714285714,
+    "end": 350.45714285714286,
+    "text": "I couldn't find anybody that was making a Hasselblad H mount back model that I could use other than this guy selling what I was trying to build for $300.",
+    "index": 80
+  },
+  {
+    "start": 350.45714285714286,
+    "end": 354.8,
+    "text": "Now, their build looks great and much higher quality than [music] I'm doing.",
+    "index": 81
+  },
+  {
+    "start": 354.8,
+    "end": 357.68,
+    "text": "So, actually, if you just have the funds, you could just buy that.",
+    "index": 82
+  },
+  {
+    "start": 357.68,
+    "end": 359,
+    "text": "But, I didn't, and I wanted a cheaper option for myself and [music]",
+    "index": 83
+  },
+  {
+    "start": 359,
+    "end": 360.6249350649351,
+    "text": "then hopefully one day all of you.",
+    "index": 84
+  },
+  {
+    "start": 360.6249350649351,
+    "end": 362.68,
+    "text": "So, I'm going to have to make my own latch.",
+    "index": 85
+  },
+  {
+    "start": 362.68,
+    "end": 368.6,
+    "text": "It's tricky because the Hasselblad H mount uses the spring-loaded latch system at the top to lock in the back.",
+    "index": 86
+  },
+  {
+    "start": 368.6,
+    "end": 372.64444444444445,
+    "text": "I was able to rebuild this myself after several [music] attempts.",
+    "index": 87
+  },
+  {
+    "start": 372.64444444444445,
+    "end": 375.6017391304348,
+    "text": "It uses some 3D printed parts and a small spring you can buy on Amazon for five bucks.",
+    "index": 88
+  },
+  {
+    "start": 375.6017391304348,
+    "end": 383.8,
+    "text": "The other consideration with building the camera [music] body that's going to be a little tricky is the flange distance, and that's the distance between the back of the lens and the sensor, [music]",
+    "index": 89
+  },
+  {
+    "start": 383.8,
+    "end": 389.32,
+    "text": "and it controls how lenses focus, and it changes based on the lens you use, the [music] mount it was designed for.",
+    "index": 90
+  },
+  {
+    "start": 389.32,
+    "end": 393.44,
+    "text": "And people on the internet disagree about the flange distance for Mamiya Press.",
+    "index": 91
+  },
+  {
+    "start": 393.44,
+    "end": 397.26758620689657,
+    "text": "I tried [music] to trying to measure it on mine, too, and couldn't decide.",
+    "index": 92
+  },
+  {
+    "start": 397.26758620689657,
+    "end": 399.44,
+    "text": "One person was very confident it was 61.35 [music]",
+    "index": 93
+  },
+  {
+    "start": 399.44,
+    "end": 400.04151898734176,
+    "text": "mm exactly.",
+    "index": 94
+  },
+  {
+    "start": 400.04151898734176,
+    "end": 403.76,
+    "text": "So, I'm going to try my best to do that, and we'll see what happens.",
+    "index": 95
+  },
+  {
+    "start": 403.76,
+    "end": 413.64,
+    "text": "To test out that this camera actually works, I thought it'd be cool to practice a type of photography that I've never done before, and that is using a projector and a computer for lighting and effects.",
+    "index": 96
+  },
+  {
+    "start": 413.64,
+    "end": 417.36,
+    "text": "I've seen some amazing photography online before that I really want to try this out.",
+    "index": 97
+  },
+  {
+    "start": 417.36,
+    "end": 421.3530434782609,
+    "text": "And also, I think it'll be cool type of photography I can do over the winter months when I'm stuck inside in cold.",
+    "index": 98
+  },
+  {
+    "start": 421.3530434782609,
+    "end": 425.84,
+    "text": "The projector I'm going to use for this project was provided by the sponsor of this video, Valerian.",
+    "index": 99
+  },
+  {
+    "start": 425.84,
+    "end": 432.60851063829784,
+    "text": "Now, I use old corporate-type projectors every day at school, but this is nothing like those old projectors.",
+    "index": 100
+  },
+  {
+    "start": 432.60851063829784,
+    "end": 434.25702127659576,
+    "text": "It is better in every way.",
+    "index": 101
+  },
+  {
+    "start": 434.25702127659576,
+    "end": 436.92,
+    "text": "This is the Valerian Vision Master Pro II.",
+    "index": 102
+  },
+  {
+    "start": 436.92,
+    "end": 445.72,
+    "text": "It's a 4K projector that looks good up close in my office at a couple of feet, or even up to 300 in projected to the side of a building.",
+    "index": 103
+  },
+  {
+    "start": 445.72,
+    "end": 449.7335593220339,
+    "text": "And the amazing thing is the detail at this scale is incredible.",
+    "index": 104
+  },
+  {
+    "start": 449.7335593220339,
+    "end": 451.72363636363633,
+    "text": "Everyone I've shown this off to has been amazed by the quality.",
+    "index": 105
+  },
+  {
+    "start": 451.72363636363633,
+    "end": 454.6036363636363,
+    "text": "For projector photography, this is my setup.",
+    "index": 106
+  },
+  {
+    "start": 454.6036363636363,
+    "end": 459.6933333333333,
+    "text": "I have the projector connected to my computer, where I can throw up any image or video to be my background.",
+    "index": 107
+  },
+  {
+    "start": 459.6933333333333,
+    "end": 463.67855855855856,
+    "text": "And you can see how much just changing the background around really changes the image.",
+    "index": 108
+  },
+  {
+    "start": 463.67855855855856,
+    "end": 471.8,
+    "text": "And you can either have the projector directly lighting your subject for a really neat effect, or light your subject separately and just use the projector as the background.",
+    "index": 109
+  },
+  {
+    "start": 471.8,
+    "end": 475.97999999999996,
+    "text": "And it's just been really fun to play around and get some cool shots, practice photography from the comfort of my home.",
+    "index": 110
+  },
+  {
+    "start": 475.97999999999996,
+    "end": 480.16283185840706,
+    "text": "And I think this will be a great way to test this cheap medium format camera build later in the video.",
+    "index": 111
+  },
+  {
+    "start": 480.16283185840706,
+    "end": 493.12,
+    "text": "If you're interested in picking up your own projector, then you can check out Valerian's Black Friday deals coming early, where you can save over $2,500, get a free screen with projector purchase, and have 50% off their new wireless sound system.",
+    "index": 112
+  },
+  {
+    "start": 493.12,
+    "end": 496.96,
+    "text": "Check the link in my description for exclusive early Black Friday deals.",
+    "index": 113
+  },
+  {
+    "start": 496.96,
+    "end": 499.94484210526315,
+    "text": "It looks like the camera is done and ready to test.",
+    "index": 114
+  },
+  {
+    "start": 499.94484210526315,
+    "end": 501.80102564102566,
+    "text": "And after several prototypes, it seems to be working fairly well.",
+    "index": 115
+  },
+  {
+    "start": 501.80102564102566,
+    "end": 505.4,
+    "text": "I am using brass inserts to screw the components together.",
+    "index": 116
+  },
+  {
+    "start": 505.4,
+    "end": 509.28,
+    "text": "I have this [music] fancy tool, but you can just use a $10 soldering iron and a steady hand.",
+    "index": 117
+  },
+  {
+    "start": 509.28,
+    "end": 513.986896551724,
+    "text": "I did add a tripod plate to the bottom as well using the screw method.",
+    "index": 118
+  },
+  {
+    "start": 513.986896551724,
+    "end": 520.4,
+    "text": "It's much sturdier than using the tripod screw insert that I did on my last camera build, and I think it came out quite nicely.",
+    "index": 119
+  },
+  {
+    "start": 520.4,
+    "end": 522.02,
+    "text": "But, this was the part I was most worried about.",
+    "index": 120
+  },
+  {
+    "start": 522.02,
+    "end": 527.8480519480519,
+    "text": "The digital back is quite heavy, so this latch connection [music] needs to be really secure.",
+    "index": 121
+  },
+  {
+    "start": 527.8480519480519,
+    "end": 531.9528205128205,
+    "text": "On the real camera, it's metal, but this is a 3D printed teeny tiny component.",
+    "index": 122
+  },
+  {
+    "start": 531.9528205128205,
+    "end": 535.36,
+    "text": "Right now, it works sort of, but it could be improved a lot, and I'm being [music]",
+    "index": 123
+  },
+  {
+    "start": 535.36,
+    "end": 541.28,
+    "text": "very cautious because what I don't want is the back to just fall off and my sensor to be smashed into the floor.",
+    "index": 124
+  },
+  {
+    "start": 541.28,
+    "end": 546.3744827586207,
+    "text": "Also, sometimes it slides out by just a millimeter [music] at the top, and that's enough to throw off the focus plane.",
+    "index": 125
+  },
+  {
+    "start": 546.3744827586207,
+    "end": 551.2,
+    "text": "So, right now, I I just kind of hold it against the camera to make sure that that's good.",
+    "index": 126
+  },
+  {
+    "start": 551.2,
+    "end": 551.5662337662338,
+    "text": "I need to fix that as well.",
+    "index": 127
+  },
+  {
+    "start": 551.5662337662338,
+    "end": 561.8098876404495,
+    "text": "If anyone has any idea how to get a really small part like this to print even stronger, [music] and but more importantly, more precisely, or to get something like this manufactured in metal, let me know.",
+    "index": 128
+  },
+  {
+    "start": 561.8098876404495,
+    "end": 563.8417977528089,
+    "text": "I have zero experience with that.",
+    "index": 129
+  },
+  {
+    "start": 563.8417977528089,
+    "end": 566.12,
+    "text": "But, that's what we really need here.",
+    "index": 130
+  },
+  {
+    "start": 566.12,
+    "end": 567.96,
+    "text": "But, overall, I think the camera looks pretty slick.",
+    "index": 131
+  },
+  {
+    "start": 567.96,
+    "end": 569.8237037037037,
+    "text": "Pretty good for version one at least.",
+    "index": 132
+  },
+  {
+    "start": 569.8237037037037,
+    "end": 573.4,
+    "text": "I thought a fun first subject would be this old ThinkPad laptop I have.",
+    "index": 133
+  },
+  {
+    "start": 573.4,
+    "end": 577.4652631578948,
+    "text": "It's one that I use for all my old cameras, like tethering [music] my Polaroid PDC 2000 to it.",
+    "index": 134
+  },
+  {
+    "start": 577.4652631578948,
+    "end": 580.08,
+    "text": "And I just love the look of the square screen.",
+    "index": 135
+  },
+  {
+    "start": 580.08,
+    "end": 586.68,
+    "text": "And this projector thing is really fun because I can play with the background on my computer, throw up different things, and see how they affect the image.",
+    "index": 136
+  },
+  {
+    "start": 586.68,
+    "end": 590.3402197802197,
+    "text": "I'm also using a separate light onto the laptop itself to give it a little bit of a pop from the background.",
+    "index": 137
+  },
+  {
+    "start": 590.3402197802197,
+    "end": 594.56,
+    "text": "Also, I probably should explain what I'm doing here cuz it looks a little funny.",
+    "index": 138
+  },
+  {
+    "start": 594.56,
+    "end": 600.3371929824561,
+    "text": "When using a a back on a manual dumb camera like this, the back has no idea when to take the picture.",
+    "index": 139
+  },
+  {
+    "start": 600.3371929824561,
+    "end": 605.24,
+    "text": "So, rather than just be on all the time exposing, it works using what's called a two-shot approach. [music]",
+    "index": 140
+  },
+  {
+    "start": 605.24,
+    "end": 610.8,
+    "text": "How this works is I wind the shutter on the lens first and then fire a shot.",
+    "index": 141
+  },
+  {
+    "start": 610.8,
+    "end": 613.6446017699114,
+    "text": "That first shot just wakes the camera up.",
+    "index": 142
+  },
+  {
+    "start": 613.6446017699114,
+    "end": 620.0177777777778,
+    "text": "And then, at least with this camera, this digital back, I [music] have 5 seconds to then wind the shutter and take another shot.",
+    "index": 143
+  },
+  {
+    "start": 620.0177777777778,
+    "end": 622.32,
+    "text": "And that's the shot that's exposed.",
+    "index": 144
+  },
+  {
+    "start": 622.32,
+    "end": 627.4517647058823,
+    "text": "You can make this a little bit easier by attaching a remote shutter release, which will also reduce the shake on the camera.",
+    "index": 145
+  },
+  {
+    "start": 627.4517647058823,
+    "end": 634.16,
+    "text": "But, unfortunately, my Mamiya Press lens keeps jamming with the remote shutter release, so I ended up just firing by hand [music] most of the time.",
+    "index": 146
+  },
+  {
+    "start": 634.16,
+    "end": 643.48,
+    "text": "And as some of you probably already noticed and were writing in the comments, there is no way in this system to check my [music] framing or focus.",
+    "index": 147
+  },
+  {
+    "start": 643.48,
+    "end": 647.368695652174,
+    "text": "And that's because these old digital backs do not have live view.",
+    "index": 148
+  },
+  {
+    "start": 647.368695652174,
+    "end": 649.5394594594594,
+    "text": "Newer ones do, but they're, of course, quite a bit more expensive.",
+    "index": 149
+  },
+  {
+    "start": 649.5394594594594,
+    "end": 654.44,
+    "text": "So, it's more like a shot and then check the back, shot, check the [music] back to get focus and everything good.",
+    "index": 150
+  },
+  {
+    "start": 654.44,
+    "end": 658.5432000000001,
+    "text": "I was just using the focusing scale on the lens itself, but thankfully, it was actually really accurate.",
+    "index": 151
+  },
+  {
+    "start": 658.5432000000001,
+    "end": 664.44,
+    "text": "I forgot how bad these older sensors are at high ISO, so you can see some crazy noise here.",
+    "index": 152
+  },
+  {
+    "start": 664.44,
+    "end": 666.979090909091,
+    "text": "But, I think these shots look pretty cool.",
+    "index": 153
+  },
+  {
+    "start": 666.979090909091,
+    "end": 668.9042201834862,
+    "text": "And the best part is the thing actually works, which is exciting.",
+    "index": 154
+  },
+  {
+    "start": 668.9042201834862,
+    "end": 671.4741284403669,
+    "text": "But, now I want to take it outside and test it.",
+    "index": 155
+  },
+  {
+    "start": 671.4741284403669,
+    "end": 675.08,
+    "text": "It was a beautiful fall day and I was really excited about getting some [music] great pictures.",
+    "index": 156
+  },
+  {
+    "start": 675.08,
+    "end": 677.36,
+    "text": "But, outside I encountered a few issues.",
+    "index": 157
+  },
+  {
+    "start": 677.36,
+    "end": 686.8,
+    "text": "The camera is having a really tough time exposing [music] shots with some really high contrast crunchy blacks and super blown out skies, both in the same shot.",
+    "index": 158
+  },
+  {
+    "start": 686.8,
+    "end": 691.032,
+    "text": "It could be because of the lens and some coding things with this vintage lens.",
+    "index": 159
+  },
+  {
+    "start": 691.08,
+    "end": 696.83,
+    "text": "It could also be a light leak somewhere throwing things off or just how the data is being recorded with this double shot mode.",
+    "index": 160
+  },
+  {
+    "start": 696.83,
+    "end": 698.02,
+    "text": "And I don't know.",
+    "index": 161
+  },
+  {
+    "start": 698.02,
+    "end": 706.366017699115,
+    "text": "My sensor's not broken because it works fine on my Hasselblad H2 [music] body, so I really do not know what would be causing all this weird stuff.",
+    "index": 162
+  },
+  {
+    "start": 706.366017699115,
+    "end": 709.8162264150943,
+    "text": "Also, unfortunately, the camera does not focus to infinity with the current setup.",
+    "index": 163
+  },
+  {
+    "start": 709.8162264150943,
+    "end": 712.7550943396226,
+    "text": "That's that flange [music] distance problem.",
+    "index": 164
+  },
+  {
+    "start": 712.7550943396226,
+    "end": 717.76,
+    "text": "So, I'm going to have to revisit and do something to it to get it a little bit more precise.",
+    "index": 165
+  },
+  {
+    "start": 717.76,
+    "end": 722.08,
+    "text": "But, all that said, this is the cheapest way to shoot digital medium format cameras.",
+    "index": 166
+  },
+  {
+    "start": 722.08,
+    "end": 727.2718584070797,
+    "text": "And while my model is not done, obviously, it is for free and linked in description if you want a starting point.",
+    "index": 167
+  },
+  {
+    "start": 727.2718584070797,
+    "end": 737.04,
+    "text": "If you'd like to see a V2, which fixes the current issues and maybe [music] adds an optical viewfinder for focusing and composing your shots, then let me know and I will get to work on that.",
+    "index": 168
+  },
+  {
+    "start": 737.04,
+    "end": 741.12,
+    "text": "Thanks for watching and as always, happy snapping.",
+    "index": 169
+  }
+]

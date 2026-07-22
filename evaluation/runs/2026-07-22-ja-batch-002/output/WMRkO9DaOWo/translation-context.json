@@ -1,0 +1,83 @@
+{
+  "topic": "Travel Photography Tips",
+  "summary": "A photographer shares tips for improving travel photos, including having a purpose, capturing variety, working with light, and slowing down.",
+  "tone": "casual, enthusiastic, explanatory",
+  "audience": "amateur photographers and travel enthusiasts",
+  "glossary": [
+    {
+      "source": "banger photos",
+      "target": "最高の写真",
+      "note": "スラングで「素晴らしい写真」の意"
+    },
+    {
+      "source": "vibes",
+      "target": "雰囲気",
+      "note": "場の雰囲気やムード"
+    },
+    {
+      "source": "hard light",
+      "target": "強い光",
+      "note": "直射日光などコントラストの強い光"
+    },
+    {
+      "source": "presets",
+      "target": "プリセット",
+      "note": "編集プリセット"
+    },
+    {
+      "source": "photo book",
+      "target": "フォトブック",
+      "note": "写真集"
+    },
+    {
+      "source": "zine",
+      "target": "ジン",
+      "note": "小冊子、個人出版の雑誌"
+    },
+    {
+      "source": "color grading",
+      "target": "カラーグレーディング",
+      "note": "映像の色調補正"
+    },
+    {
+      "source": "Sonilo",
+      "target": "Sonilo",
+      "note": "動画に合わせた音楽生成AIツール"
+    },
+    {
+      "source": "Porta 400",
+      "target": "Porta 400",
+      "note": "フィルム風プリセット名"
+    },
+    {
+      "source": "everyday negative",
+      "target": "Everyday Negative",
+      "note": "プリセット名"
+    },
+    {
+      "source": "classic negative",
+      "target": "Classic Negative",
+      "note": "プリセット名"
+    }
+  ],
+  "properNouns": [
+    "Sean Dalton",
+    "Paris",
+    "Seine",
+    "Canal Saint-Martin",
+    "New York City",
+    "Bali",
+    "Sonilo",
+    "Instagram",
+    "Adobe Lightroom"
+  ],
+  "styleGuide": [
+    "話し言葉調で、ですます調を基本とする",
+    "専門用語は必要に応じて簡潔に訳す",
+    "スラングは自然な日本語に置き換える",
+    "固有名詞はカタカナ表記を基本とする",
+    "長い文は適宜分割し、読みやすくする",
+    "感情表現は過度に誇張せず自然に",
+    "視聴者に語りかけるような表現を心がける"
+  ]
+}

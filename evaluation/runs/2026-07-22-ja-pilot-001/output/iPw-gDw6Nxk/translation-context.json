@@ -1,0 +1,94 @@
+{
+  "topic": "Streaming services and TV nostalgia",
+  "summary": "Sabrina explores how streaming services like Netflix changed TV viewing and show production, and tries to recapture the joy of watching TV from her childhood.",
+  "tone": "casual, conversational, nostalgic, humorous",
+  "audience": "General YouTube viewers interested in media, streaming, and pop culture",
+  "glossary": [
+    {
+      "source": "streaming",
+      "target": "ストリーミング",
+      "note": "General term for streaming services"
+    },
+    {
+      "source": "cable",
+      "target": "ケーブルテレビ",
+      "note": "Traditional TV service"
+    },
+    {
+      "source": "DVR",
+      "target": "DVR",
+      "note": "Digital video recorder, keep as is"
+    },
+    {
+      "source": "box set",
+      "target": "ボックスセット",
+      "note": "DVD box set of a TV series"
+    },
+    {
+      "source": "VPN",
+      "target": "VPN",
+      "note": "Virtual private network, keep as is"
+    },
+    {
+      "source": "piracy",
+      "target": "海賊版",
+      "note": "Pirated content"
+    },
+    {
+      "source": "residuals",
+      "target": "ロイヤリティ",
+      "note": "Residual payments to creators"
+    },
+    {
+      "source": "friction",
+      "target": "ストレス",
+      "note": "In context of user experience"
+    },
+    {
+      "source": "trailer",
+      "target": "予告編",
+      "note": "Movie/TV show trailer"
+    },
+    {
+      "source": "autoplay",
+      "target": "自動再生",
+      "note": "Auto-play feature"
+    },
+    {
+      "source": "catalogue",
+      "target": "カタログ",
+      "note": "Content library"
+    },
+    {
+      "source": "licencing",
+      "target": "ライセンス",
+      "note": "Licensing agreements"
+    }
+  ],
+  "properNouns": [
+    "Netflix",
+    "Disney+",
+    "HBO Max",
+    "Amazon Prime Video",
+    "Castle",
+    "30 Rock",
+    "Psych",
+    "Scrubs",
+    "The Mindy Project",
+    "Barry",
+    "Widow's Bay",
+    "The West Wing"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である style for narration, but polite です/ます for direct address to viewer.",
+    "Keep English proper nouns (service names, show titles) in English, but add Japanese gloss if needed for clarity.",
+    "Translate idioms and jokes naturally, not literally. For example, 'stuck in traffic' can be '渋滞にはまったみたい'.",
+    "Use ね/よ sentence endings to match the friendly, explanatory tone.",
+    "For technical terms like 'API', 'self-host', keep as English loanwords (API, セルフホスト) but explain briefly if needed.",
+    "Maintain the nostalgic and humorous tone; use 懐かしい for nostalgia, 笑える for funny moments.",
+    "When characters speak in quotes, use と or って to indicate speech.",
+    "Keep the rhythm of short, punchy lines; avoid long, complex sentences.",
+    "For the website name 'toomuchmedia.online', keep as is or write 'トゥーマッチメディア'.",
+    "Use おかげで for 'thanks to' and せいで for 'because of' appropriately."
+  ]
+}

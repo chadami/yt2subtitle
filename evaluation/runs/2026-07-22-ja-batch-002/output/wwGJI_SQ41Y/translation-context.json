@@ -1,0 +1,82 @@
+{
+  "topic": "Shopping in Korea",
+  "summary": "A vlogger explores Seoul's shopping scene, comparing prices of Nike, Adidas, and Korean brands to US/UK, highlighting tax refunds and weak won.",
+  "tone": "casual, enthusiastic, explanatory",
+  "audience": "sneaker enthusiasts, travelers interested in shopping deals",
+  "glossary": [
+    {
+      "source": "won",
+      "target": "ウォン",
+      "note": "Korean currency"
+    },
+    {
+      "source": "VAT refund",
+      "target": "VAT還付",
+      "note": "Tax refund for tourists"
+    },
+    {
+      "source": "Jordan flight store",
+      "target": "ジョーダンフライトストア",
+      "note": "Flagship Jordan store"
+    },
+    {
+      "source": "Sinsong",
+      "target": "シンソン",
+      "note": "Likely a mispronunciation of Seongsu or similar area"
+    },
+    {
+      "source": "Mayadong",
+      "target": "マヤドン",
+      "note": "Likely a mispronunciation of Myeongdong"
+    },
+    {
+      "source": "Musinsa Standard",
+      "target": "ムシンサスタンダード",
+      "note": "Korean fashion brand"
+    },
+    {
+      "source": "Gentle Monster",
+      "target": "ジェントルモンスター",
+      "note": "Korean eyewear brand"
+    },
+    {
+      "source": "Mason Margela",
+      "target": "メゾンマルジェラ",
+      "note": "Designer brand (Maison Margiela)"
+    },
+    {
+      "source": "Evo SL",
+      "target": "エヴォSL",
+      "note": "Adidas shoe model"
+    },
+    {
+      "source": "Brooks Adrenaline GTS10",
+      "target": "ブルックス アドレナリンGTS10",
+      "note": "Running shoe model"
+    }
+  ],
+  "properNouns": [
+    "Seoul",
+    "South Korea",
+    "Nike",
+    "Adidas",
+    "Jordan",
+    "Travis Scott",
+    "Levis",
+    "Lightning McQueen",
+    "Virgil Abloh",
+    "Samba",
+    "Pegasus Premium",
+    "Vomero 18"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with だ/である style for narration, ます/です for polite interactions.",
+    "Keep brand names in English or katakana as commonly used in Japan.",
+    "Convert currency amounts to yen equivalent in parentheses for clarity.",
+    "Use natural phrasing for exclamations like 'Holy' → 'すげえ' or 'マジか'.",
+    "For store names, use katakana transcription (e.g., ジョーダンフライトストア).",
+    "Keep technical terms like 'VAT refund' as 還付 or 免税 with brief explanation if needed.",
+    "Use 〜てる/〜てない for casual speech, 〜ている/〜ていない for neutral.",
+    "Avoid overly literal translations; prioritize natural flow."
+  ]
+}

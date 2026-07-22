@@ -1,0 +1,84 @@
+{
+  "topic": "New York travel vlog",
+  "summary": "A vlogger documents her spontaneous trip to New York City, visiting food spots, biking around, and using Insta360 camera gear.",
+  "tone": "casual, excited, humorous",
+  "audience": "Young adults interested in travel, food, and lifestyle content",
+  "glossary": [
+    {
+      "source": "bagel, egg, and cheese",
+      "target": "ベーグルエッグチーズ",
+      "note": "Typical NYC breakfast sandwich"
+    },
+    {
+      "source": "bodega",
+      "target": "ボデガ",
+      "note": "NYC convenience store"
+    },
+    {
+      "source": "City Bike",
+      "target": "シティバイク",
+      "note": "NYC bike share system"
+    },
+    {
+      "source": "soul food",
+      "target": "ソウルフード",
+      "note": "African American cuisine"
+    },
+    {
+      "source": "kawaii",
+      "target": "かわいい",
+      "note": "Japanese loanword used in English"
+    },
+    {
+      "source": "Insta360",
+      "target": "Insta360",
+      "note": "Camera brand, keep as is"
+    },
+    {
+      "source": "Hello Kitty",
+      "target": "ハローキティ",
+      "note": "Character name"
+    },
+    {
+      "source": "Crocs",
+      "target": "クロックス",
+      "note": "Shoe brand"
+    },
+    {
+      "source": "windbreaker",
+      "target": "ウインドブレーカー",
+      "note": "Jacket"
+    },
+    {
+      "source": "focaccia",
+      "target": "フォカッチャ",
+      "note": "Italian bread"
+    }
+  ],
+  "properNouns": [
+    "New York",
+    "Long Island City",
+    "Terminal 4",
+    "Rolling Bagels",
+    "Matsunori",
+    "Williams Bridge",
+    "Chinatown",
+    "Harlem",
+    "Sylvia's",
+    "Times Square",
+    "Radio Bakery",
+    "Calabasas"
+  ],
+  "styleGuide": [
+    "Use casual, friendly Japanese with だ/である体 for narration, but polite です/ます体 for direct address to viewers.",
+    "Keep English loanwords like 'bagel', 'bodega', 'soul food' in katakana where natural.",
+    "Translate 'bitches' as みんな or omit for tone; avoid literal translation.",
+    "Use めっちゃ or 超 for emphasis like 'so hyped'.",
+    "For 'Oh my god', use やばい or まじで.",
+    "Keep brand names (Insta360, Hello Kitty, Crocs) in original script.",
+    "Use 〜てる for progressive actions (e.g., やってる).",
+    "For 'I'm so done', use もう無理.",
+    "Translate 'daddy' as やばい or omit; not literal.",
+    "Use 〜なう for 'right now' if appropriate."
+  ]
+}

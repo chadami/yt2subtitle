@@ -1,0 +1,56 @@
+{
+  "topic": "Declining global birth rates and demographic trends",
+  "summary": "Discussion on falling birth rates worldwide, focusing on causes like smartphones, economic factors, and gender dynamics, with examples from South Korea, US, and other countries.",
+  "tone": "conversational, analytical, slightly informal",
+  "audience": "General public interested in social and demographic issues",
+  "glossary": [
+    {
+      "source": "replacement rate",
+      "target": "人口置換水準",
+      "note": "Standard demographic term for 2.1 children per woman"
+    },
+    {
+      "source": "baby bonus",
+      "target": "出産一時金",
+      "note": "Financial incentive for having children"
+    },
+    {
+      "source": "pronatalist",
+      "target": "出生促進派",
+      "note": "Policy or ideology promoting higher birth rates"
+    },
+    {
+      "source": "girl boss",
+      "target": "キャリアウーマン",
+      "note": "Informal term for ambitious career woman, used critically here"
+    },
+    {
+      "source": "reactionary turn",
+      "target": "保守化",
+      "note": "Political shift towards conservative views"
+    }
+  ],
+  "properNouns": [
+    "John Burn-Murdoch",
+    "Christine Emba",
+    "Financial Times",
+    "Elon Musk",
+    "Dr. Oz",
+    "South Korea",
+    "China",
+    "Finland",
+    "UK",
+    "US",
+    "Mexico",
+    "Indonesia"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with polite forms (です・ます) for host and guest.",
+    "Keep sentence endings consistent: use ですね/ますね for agreement or explanation.",
+    "Translate 'um', 'you know', 'like' as filler words like えっと, まあ, なんか sparingly.",
+    "For numbers and statistics, use Arabic numerals for clarity.",
+    "Avoid overly literal translations; prefer natural phrasing like 'つまり' for 'that means'.",
+    "For 'snorts' or laughter, use (笑) or omit if not essential.",
+    "Keep proper nouns in English or use common Japanese transliterations (e.g., サウスコリア)."
+  ]
+}

@@ -1,0 +1,1058 @@
+[
+  {
+    "start": 0,
+    "end": 3.919,
+    "text": "Most cloud design tutorials tell you to jump right in.",
+    "index": 0
+  },
+  {
+    "start": 3.919,
+    "end": 13.12,
+    "text": "Pick a template, give it a name, and just start prompting, which is not how cloud design is designed to work, pun intended, because you end up with something incredibly generic and",
+    "index": 1
+  },
+  {
+    "start": 13.12,
+    "end": 18.16,
+    "text": "you waste even more time in tokens trying to save those unusable slides.",
+    "index": 2
+  },
+  {
+    "start": 18.16,
+    "end": 27.36888888888889,
+    "text": "So, in this video, I'll show you how preparing three simple files ahead of time helps you go from disasters like this to polished visuals that look like this.",
+    "index": 3
+  },
+  {
+    "start": 27.36888888888889,
+    "end": 32.895,
+    "text": "And the best part is every improvement you make carries over to all future designs.",
+    "index": 4
+  },
+  {
+    "start": 32.895,
+    "end": 34.6422,
+    "text": "Let's get started.",
+    "index": 5
+  },
+  {
+    "start": 34.6422,
+    "end": 41.2,
+    "text": "To prove I'm not bullshitting you, this is the actual deck I recently used to run a paid workshop.",
+    "index": 6
+  },
+  {
+    "start": 41.2,
+    "end": 45.12,
+    "text": "And this is a presentation I'm working on right now, which arguably looks even better.",
+    "index": 7
+  },
+  {
+    "start": 45.12,
+    "end": 50.16,
+    "text": "And we're going to learn how to recreate this from scratch in [music] the next 10 to 15 minutes.",
+    "index": 8
+  },
+  {
+    "start": 50.16,
+    "end": 52.079,
+    "text": "And to do this, we're going to follow three simple steps.",
+    "index": 9
+  },
+  {
+    "start": 52.079,
+    "end": 60.16,
+    "text": "First, we're going to create something called a design.md file in less than a minute from free and publicly available resources.",
+    "index": 10
+  },
+  {
+    "start": 60.16,
+    "end": 65.49707246376812,
+    "text": "Then, we'll use that design.mmd file to build something called a design system within claw design.",
+    "index": 11
+  },
+  {
+    "start": 65.49707246376812,
+    "end": 75.25708219178081,
+    "text": "And finally, we'll use that design system to create a reusable presentation template, one that matches your style and gets better every time you give it feedback.",
+    "index": 12
+  },
+  {
+    "start": 75.25708219178081,
+    "end": 80.64213333333333,
+    "text": "And even though we're focusing on slides today, this workflow applies to any design.",
+    "index": 13
+  },
+  {
+    "start": 80.64213333333333,
+    "end": 83.88586666666667,
+    "text": "For example, here are some carousel slides I made for social media.",
+    "index": 14
+  },
+  {
+    "start": 83.88586666666667,
+    "end": 89.2,
+    "text": "And here I have some onbrand visuals that I use in my newsletter and work email campaigns.",
+    "index": 15
+  },
+  {
+    "start": 89.2,
+    "end": 91.63463917525773,
+    "text": "Kicking things off with input number one.",
+    "index": 16
+  },
+  {
+    "start": 91.63463917525773,
+    "end": 94.96,
+    "text": "Let's quickly go over what a design.md file actually is.",
+    "index": 17
+  },
+  {
+    "start": 94.96,
+    "end": 101.359,
+    "text": "In plain English, it's just a text file that serves as a rulebook for how a design should look and feel.",
+    "index": 18
+  },
+  {
+    "start": 101.359,
+    "end": 106.19446153846154,
+    "text": "The exact colors, the fonts, the spacing, and how things like buttons and cards get styled.",
+    "index": 19
+  },
+  {
+    "start": 106.19446153846154,
+    "end": 108.56,
+    "text": "This file works in any AI tool.",
+    "index": 20
+  },
+  {
+    "start": 108.56,
+    "end": 114.37813559322034,
+    "text": "So Claw Design is able to transform it into a design system that's native to Claw Design specifically.",
+    "index": 21
+  },
+  {
+    "start": 114.37813559322034,
+    "end": 119.759,
+    "text": "Sort of like taking a piece of software and optimizing it to run on a Mac instead of a Windows PC.",
+    "index": 22
+  },
+  {
+    "start": 119.759,
+    "end": 128.95111111111112,
+    "text": "Now, we don't even need to write one from scratch because luckily for us, there's a public GitHub repository with the Design.mmd files from a bunch of major brands.",
+    "index": 23
+  },
+  {
+    "start": 128.95111111111112,
+    "end": 132.50256410256412,
+    "text": "And don't worry, I'll drop a link to this down below.",
+    "index": 24
+  },
+  {
+    "start": 132.50256410256412,
+    "end": 138.08,
+    "text": "For today's walkthrough, I'm just going to download Stripe's design.mmd file by clicking the download button right here.",
+    "index": 25
+  },
+  {
+    "start": 138.08,
+    "end": 142.36693333333335,
+    "text": "And then we're just going to head on over to chatgbt or any AI chatbot for that matter.",
+    "index": 26
+  },
+  {
+    "start": 142.36693333333335,
+    "end": 145.11466666666666,
+    "text": "Upload that design.mmd file.",
+    "index": 27
+  },
+  {
+    "start": 145.11466666666666,
+    "end": 149.06090666666665,
+    "text": "And then we're going to use this prompt, which I'll also link down below.",
+    "index": 28
+  },
+  {
+    "start": 149.06090666666665,
+    "end": 156.64,
+    "text": "Uh remove the proprietary content from this design file and replace them using your own judgment.",
+    "index": 29
+  },
+  {
+    "start": 156.64,
+    "end": 158.48242424242423,
+    "text": "Uh keep everything else exactly as is.",
+    "index": 30
+  },
+  {
+    "start": 158.48242424242423,
+    "end": 161.0725925925926,
+    "text": "And then we're just going to rename it to the subtle gradient design system.",
+    "index": 31
+  },
+  {
+    "start": 161.0725925925926,
+    "end": 163.54962962962964,
+    "text": "And we're just going to send this off.",
+    "index": 32
+  },
+  {
+    "start": 163.54962962962964,
+    "end": 171.66918918918918,
+    "text": "And while Chacht is processing, the reason we clean this file is because claw design won't directly copy a real brand's brand guidelines, right?",
+    "index": 33
+  },
+  {
+    "start": 171.66918918918918,
+    "end": 176.10531645569623,
+    "text": "Obviously, so we still need a file that's very detailed, but yet safe to use.",
+    "index": 34
+  },
+  {
+    "start": 176.10531645569623,
+    "end": 182.42264423076924,
+    "text": "Okay, trapt is done and it's given us a clean markdown copy renamed to the subtle gradient design system.",
+    "index": 35
+  },
+  {
+    "start": 182.42264423076924,
+    "end": 185.599,
+    "text": "And we'll just click here to download it for the next step.",
+    "index": 36
+  },
+  {
+    "start": 185.599,
+    "end": 190,
+    "text": "Moving on to input number two, let's first quickly cover what a design system actually is.",
+    "index": 37
+  },
+  {
+    "start": 190,
+    "end": 199.99921666666665,
+    "text": "Put simply, a design system is a style guide optimized for claw design where our raw design.mmd file is transformed into something clawed design can actually use.",
+    "index": 38
+  },
+  {
+    "start": 199.99921666666665,
+    "end": 203.76,
+    "text": "The colors, fonts, and logos all stay the same.",
+    "index": 39
+  },
+  {
+    "start": 203.76,
+    "end": 206.56,
+    "text": "It's now just formatted in a claw design friendly way.",
+    "index": 40
+  },
+  {
+    "start": 206.56,
+    "end": 219.0742857142857,
+    "text": "So once the design system is built, anything we ask Claude Design to make from slides to carousels to one-off graphics comes out consistent and on brand without us ever having to reexplain our look and feel.",
+    "index": 41
+  },
+  {
+    "start": 219.0742857142857,
+    "end": 220.86941228070177,
+    "text": "To kick this off, we start a new chat in Claw Design.",
+    "index": 42
+  },
+  {
+    "start": 220.86941228070177,
+    "end": 225.599,
+    "text": "I'll first pick the latest Opus model that already does a great job without the token consumption of Fable.",
+    "index": 43
+  },
+  {
+    "start": 225.599,
+    "end": 230.4,
+    "text": "Set the effort to max and go down here and click create design system.",
+    "index": 44
+  },
+  {
+    "start": 230.4,
+    "end": 237.18757281553397,
+    "text": "In the first field, I write something simple like gradient design system, subtle, beautiful, and minimalistic as an example.",
+    "index": 45
+  },
+  {
+    "start": 237.18757281553397,
+    "end": 241.12,
+    "text": "[music] Now, don't be intimidated by all these other options.",
+    "index": 46
+  },
+  {
+    "start": 241.12,
+    "end": 247.439,
+    "text": "We can just scroll straight to the bottom and upload the design file we made a minute ago.",
+    "index": 47
+  },
+  {
+    "start": 247.439,
+    "end": 248.5519411764706,
+    "text": "And that's it for now.",
+    "index": 48
+  },
+  {
+    "start": 248.5519411764706,
+    "end": 250.879,
+    "text": "This is going to take around 10 to 20 minutes.",
+    "index": 49
+  },
+  {
+    "start": 250.879,
+    "end": 254.879,
+    "text": "But before I fast forward, let me quickly explain what Claw Design is actually doing.",
+    "index": 50
+  },
+  {
+    "start": 254.879,
+    "end": 258.09265934065934,
+    "text": "Basically, it's reading through the design.",
+    "index": 51
+  },
+  {
+    "start": 258.09265934065934,
+    "end": 263.6,
+    "text": "MD file we just uploaded and turning that into a real working rule book with mockups for us to review.",
+    "index": 52
+  },
+  {
+    "start": 263.6,
+    "end": 271.919,
+    "text": "It's pulling out every color, font, and spacing rule, generating actual sample slides, and components so we can see the style in action and give feedback.",
+    "index": 53
+  },
+  {
+    "start": 271.919,
+    "end": 276.08,
+    "text": "All right, cloud design is done, and that took around 15 minutes.",
+    "index": 54
+  },
+  {
+    "start": 276.08,
+    "end": 281.04,
+    "text": "First, we can ignore this checkbox up here since we're not working with a team.",
+    "index": 55
+  },
+  {
+    "start": 281.04,
+    "end": 290,
+    "text": "And if we just scroll down a bit, we can see claw design has generated a bunch of mockups for us to review.",
+    "index": 56
+  },
+  {
+    "start": 290,
+    "end": 295.76219178082187,
+    "text": "And the reason why these already look pretty good is because we started with a design.md file.",
+    "index": 57
+  },
+  {
+    "start": 295.76219178082187,
+    "end": 302.32,
+    "text": "If there's something I want to change, I can just click the feedback button and describe it in plain English.",
+    "index": 58
+  },
+  {
+    "start": 302.32,
+    "end": 310.71922413793106,
+    "text": "for example, replace the dark 900 color with this hex code from my own brand palette.",
+    "index": 59
+  },
+  {
+    "start": 310.71922413793106,
+    "end": 311.19912068965516,
+    "text": "Right?",
+    "index": 60
+  },
+  {
+    "start": 311.19912068965516,
+    "end": 311.759,
+    "text": "[music]",
+    "index": 61
+  },
+  {
+    "start": 311.759,
+    "end": 315.68,
+    "text": "And we're going to fast forward this to about after a minute.",
+    "index": 62
+  },
+  {
+    "start": 315.68,
+    "end": 320.88,
+    "text": "We can see that Claw Design has swapped the original color for my preferred shade.",
+    "index": 63
+  },
+  {
+    "start": 320.88,
+    "end": 328.6937042253521,
+    "text": "This next part is completely optional, but I'm just going to upload a few more things to customize our design system even further.",
+    "index": 64
+  },
+  {
+    "start": 328.6937042253521,
+    "end": 331.4184126984127,
+    "text": "For example, I can upload a voice principles file.",
+    "index": 65
+  },
+  {
+    "start": 331.4184126984127,
+    "end": 336,
+    "text": "So any copywriting down the road actually sounds like me.",
+    "index": 66
+  },
+  {
+    "start": 336,
+    "end": 344.4,
+    "text": "And I'll upload my actual business logo plus a few more icons I know I'll be using in my slide decks again and again.",
+    "index": 67
+  },
+  {
+    "start": 344.4,
+    "end": 355.2613698630137,
+    "text": "And after all this is uploaded, I'll just tell Cloud Design, hey, I've uploaded a voice principles file so the copyrightiting will sound like me, my business logo, and some commonly used icons.",
+    "index": 68
+  },
+  {
+    "start": 355.2613698630137,
+    "end": 359.4634666666667,
+    "text": "And I'm just going to send this part off and we'll fast forward.",
+    "index": 69
+  },
+  {
+    "start": 359.4634666666667,
+    "end": 365.824,
+    "text": "All right, claw design has finished working and first we can see that my voice principles have been baked in.",
+    "index": 70
+  },
+  {
+    "start": 365.824,
+    "end": 369.8457142857143,
+    "text": "No M dashes, no corporate jargon right for the ear.",
+    "index": 71
+  },
+  {
+    "start": 369.8457142857143,
+    "end": 370.24,
+    "text": "Okay.",
+    "index": 72
+  },
+  {
+    "start": 370.24,
+    "end": 378.7733333333333,
+    "text": "And scrolling down a bit, we can see our logo and tool icons are now built into the design system as well.",
+    "index": 73
+  },
+  {
+    "start": 378.7733333333333,
+    "end": 384.308,
+    "text": "So every future design can use all of these without me having ever to upload them again.",
+    "index": 74
+  },
+  {
+    "start": 384.308,
+    "end": 390.56205128205124,
+    "text": "Once we're happy with the design system, we'll say, \"Go ahead and build a slide deck template for workshops and trainings.",
+    "index": 75
+  },
+  {
+    "start": 390.56205128205124,
+    "end": 397.039,
+    "text": "You pick the number of slides and claw design will start building our slide deck [music] template.\" Which brings us neatly to input number three.",
+    "index": 76
+  },
+  {
+    "start": 397.039,
+    "end": 400.96,
+    "text": "And we'll start off by explaining what a template actually is.",
+    "index": 77
+  },
+  {
+    "start": 400.96,
+    "end": 405.62929577464786,
+    "text": "In plain English, it's a pre-built slide deck in your style that every new presentation starts from.",
+    "index": 78
+  },
+  {
+    "start": 405.62929577464786,
+    "end": 410.24,
+    "text": "Your title slide, your section dividers, a two column layout, etc.",
+    "index": 79
+  },
+  {
+    "start": 410.24,
+    "end": 413.07076923076926,
+    "text": "All designed and ready to use.",
+    "index": 80
+  },
+  {
+    "start": 413.07076923076926,
+    "end": 420.4,
+    "text": "So to be clear, the design system is responsible for how everything looks, your colors, fonts, and logos.",
+    "index": 81
+  },
+  {
+    "start": 420.4,
+    "end": 429.44,
+    "text": "The template, which is built from the design system, is responsible for how a deck is actually laid out, which slides you have, and how they're arranged.",
+    "index": 82
+  },
+  {
+    "start": 429.44,
+    "end": 435.7504109589041,
+    "text": "And when you use them together, every new deck starts on brand and pre-structured instead of from a blank canvas.",
+    "index": 83
+  },
+  {
+    "start": 435.7504109589041,
+    "end": 443.84,
+    "text": "All right, back in Claude Design, we can see that Claude has created the slide template for us. and scrolling through this.",
+    "index": 84
+  },
+  {
+    "start": 443.84,
+    "end": 454.86418556701034,
+    "text": "Although this already looks pretty good in my opinion, there's still definitely room for improvement since every single future slide presentation will reference this template.",
+    "index": 85
+  },
+  {
+    "start": 454.86418556701034,
+    "end": 459.039,
+    "text": "I'm not going to read this word for word, but here's what I'm going to tell Claude.",
+    "index": 86
+  },
+  {
+    "start": 459.039,
+    "end": 460.2784255319149,
+    "text": "Edit based on my feedback.",
+    "index": 87
+  },
+  {
+    "start": 460.2784255319149,
+    "end": 463.52,
+    "text": "Add the gradient mesh to every single slide with a white background.",
+    "index": 88
+  },
+  {
+    "start": 463.52,
+    "end": 466.24,
+    "text": "So, not just like the cover slides.",
+    "index": 89
+  },
+  {
+    "start": 466.24,
+    "end": 468,
+    "text": "Don't use orange backgrounds for slides.",
+    "index": 90
+  },
+  {
+    "start": 468,
+    "end": 470.319,
+    "text": "That was actually kind of ugly.",
+    "index": 91
+  },
+  {
+    "start": 470.319,
+    "end": 474.4,
+    "text": "scale up the text to fill up the empty space.",
+    "index": 92
+  },
+  {
+    "start": 474.4,
+    "end": 478.0077192982456,
+    "text": "And then let's add my logo to the bottom left footer.",
+    "index": 93
+  },
+  {
+    "start": 478.0077192982456,
+    "end": 483.90260550458714,
+    "text": "While Cloud Design is processing all that, let's quickly walk through the navigation since it's not very intuitive.",
+    "index": 94
+  },
+  {
+    "start": 483.90260550458714,
+    "end": 486.40000000000003,
+    "text": "You can click the design system button to go back to the homepage.",
+    "index": 95
+  },
+  {
+    "start": 486.40000000000003,
+    "end": 494.126,
+    "text": "And if you want to see all the files in this design system, we can actually click the drop-down all project files.",
+    "index": 96
+  },
+  {
+    "start": 494.126,
+    "end": 498.16865822784814,
+    "text": "And here we can see all the quote unquote like folders in this system.",
+    "index": 97
+  },
+  {
+    "start": 498.16865822784814,
+    "end": 502.479,
+    "text": "And we can doubleclick templates and double click the workshop deck.",
+    "index": 98
+  },
+  {
+    "start": 502.479,
+    "end": 508.08,
+    "text": "And opening up the HTML file brings us back to the slide templates.",
+    "index": 99
+  },
+  {
+    "start": 508.08,
+    "end": 510.4442210526316,
+    "text": "And now I'm just going to fast forward.",
+    "index": 100
+  },
+  {
+    "start": 510.4442210526316,
+    "end": 511.759,
+    "text": "All right, Claud's done.",
+    "index": 101
+  },
+  {
+    "start": 511.759,
+    "end": 512.359,
+    "text": "So let's review the template one more time.",
+    "index": 102
+  },
+  {
+    "start": 512.359,
+    "end": 515.839,
+    "text": "And yes, we can see all the changes have been implemented.",
+    "index": 103
+  },
+  {
+    "start": 515.839,
+    "end": 519.3596666666667,
+    "text": "The orange ugly slide has been removed, for example.",
+    "index": 104
+  },
+  {
+    "start": 519.3596666666667,
+    "end": 521.12,
+    "text": "And all right, looks good.",
+    "index": 105
+  },
+  {
+    "start": 521.12,
+    "end": 525.519,
+    "text": "We're finally ready to generate our first slide deck.",
+    "index": 106
+  },
+  {
+    "start": 525.519,
+    "end": 529.76,
+    "text": "Back on our quad design homepage, I'll first select the design system we just created.",
+    "index": 107
+  },
+  {
+    "start": 529.76,
+    "end": 537.65375,
+    "text": "Then select the corresponding slides template and I'll attach my uh talking points for an upcoming workshop.",
+    "index": 108
+  },
+  {
+    "start": 537.65375,
+    "end": 541.04,
+    "text": "And this is just in simple markdown format.",
+    "index": 109
+  },
+  {
+    "start": 541.04,
+    "end": 550.7657142857142,
+    "text": "And we'll send all this off by saying uh turn the attached talking points into a workshop deck and ask me anything you need before you build.",
+    "index": 110
+  },
+  {
+    "start": 550.7657142857142,
+    "end": 556.8,
+    "text": "Now, after just a few seconds, Claw Design is going to pause and ask us a few questions first.",
+    "index": 111
+  },
+  {
+    "start": 556.8,
+    "end": 567.2866666666666,
+    "text": "And it's very important you take the time to answer these carefully because a few extra minutes here saves you hours down the road.",
+    "index": 112
+  },
+  {
+    "start": 567.2866666666666,
+    "end": 568.24,
+    "text": "Believe me.",
+    "index": 113
+  },
+  {
+    "start": 568.24,
+    "end": 574.7059459459459,
+    "text": "And if you're genuinely unsure of how to answer a question, you can always just pick the decide for me option.",
+    "index": 114
+  },
+  {
+    "start": 574.7059459459459,
+    "end": 583.5360000000001,
+    "text": "And once we've answered all the questions, we'll just hit continue. and claw design will go ahead and generate the first version of the slide deck.",
+    "index": 115
+  },
+  {
+    "start": 583.5360000000001,
+    "end": 584.2272,
+    "text": "Awesome.",
+    "index": 116
+  },
+  {
+    "start": 584.2272,
+    "end": 593.8836363636364,
+    "text": "Now that our slides have been generated, I just want to reiterate the reason why this first version already looks pretty good in my opinion is because of all the prep work we did.",
+    "index": 117
+  },
+  {
+    "start": 593.8836363636364,
+    "end": 600.72,
+    "text": "But we're not done because there are two types of feedback we can give cloud design to make this even better.",
+    "index": 118
+  },
+  {
+    "start": 600.72,
+    "end": 607.04,
+    "text": "The first kind of feedback applies to this current deck and every future deck we create in this cloud design project.",
+    "index": 119
+  },
+  {
+    "start": 607.04,
+    "end": 614.72,
+    "text": "Oh, which reminds me, let's rename this project to something more descriptive, like active gradient slides project.",
+    "index": 120
+  },
+  {
+    "start": 614.72,
+    "end": 617.856,
+    "text": "And now for the actual feedback.",
+    "index": 121
+  },
+  {
+    "start": 617.856,
+    "end": 626.437894736842,
+    "text": "I feel like uh the eyebrow labels on the content slides aren't prominent enough, and the icons will look much better with transparent backgrounds.",
+    "index": 122
+  },
+  {
+    "start": 626.437894736842,
+    "end": 628.8,
+    "text": "So, here's what I'm going to say.",
+    "index": 123
+  },
+  {
+    "start": 628.8,
+    "end": 635.768,
+    "text": "Review my feedback below, and in addition to making the edits, create a clawed MD file you'll read for all future slide decks.",
+    "index": 124
+  },
+  {
+    "start": 635.768,
+    "end": 638.9771896551724,
+    "text": "As for the feedback, make the eyebrow labels more prominent.",
+    "index": 125
+  },
+  {
+    "start": 638.9771896551724,
+    "end": 642.24,
+    "text": "Wrap them in a rectangular container maybe.",
+    "index": 126
+  },
+  {
+    "start": 642.24,
+    "end": 645.7738441558441,
+    "text": "And the icons should all have transparent backgrounds.",
+    "index": 127
+  },
+  {
+    "start": 645.7738441558441,
+    "end": 647.279,
+    "text": "So, what did I just do?",
+    "index": 128
+  },
+  {
+    "start": 647.279,
+    "end": 656.785188405797,
+    "text": "In plain English, a claw.md is a plain text file where claw design stores all your standing instructions for a project and it reads that file before every new design.",
+    "index": 129
+  },
+  {
+    "start": 656.785188405797,
+    "end": 665.44,
+    "text": "Meaning, every time I give it feedback, claw design saves that feedback and applies it to all future decks.",
+    "index": 130
+  },
+  {
+    "start": 665.44,
+    "end": 668.8044859813085,
+    "text": "And that's how our corrections compound over time.",
+    "index": 131
+  },
+  {
+    "start": 668.8044859813085,
+    "end": 674.88,
+    "text": "By the way, if you like this idea of learnings that carry forward, my free co-work applies the exact same philosophy to Claude co-work.",
+    "index": 132
+  },
+  {
+    "start": 674.88,
+    "end": 680.2125,
+    "text": "It includes all the templates you need to build a co-workspace in just one week.",
+    "index": 133
+  },
+  {
+    "start": 680.2125,
+    "end": 681.279,
+    "text": "Link down below.",
+    "index": 134
+  },
+  {
+    "start": 681.279,
+    "end": 686.6526216216216,
+    "text": "All right, the first round of feedback has been implemented and we can see that all our changes have been applied.",
+    "index": 135
+  },
+  {
+    "start": 686.6526216216216,
+    "end": 690.7466666666667,
+    "text": "The labels have more contrast and the icons look much better.",
+    "index": 136
+  },
+  {
+    "start": 690.7466666666667,
+    "end": 698.0799999999999,
+    "text": "And if we go back to the root page of this project, we can also see that claw design created the claw.md file.",
+    "index": 137
+  },
+  {
+    "start": 698.0799999999999,
+    "end": 703.36,
+    "text": "And if we click in, we can see all the feedback has been captured.",
+    "index": 138
+  },
+  {
+    "start": 703.36,
+    "end": 713.76,
+    "text": "The implication for you is instead of creating an entirely new project for your next presentation, we can just stay in the existing gradient slides project and start a new chat because this new",
+    "index": 139
+  },
+  {
+    "start": 713.76,
+    "end": 718.72,
+    "text": "chat has access to everything in the cloud.MD file.",
+    "index": 140
+  },
+  {
+    "start": 718.72,
+    "end": 720.9828571428571,
+    "text": "So all your learnings carry forward.",
+    "index": 141
+  },
+  {
+    "start": 720.9828571428571,
+    "end": 724.1308823529412,
+    "text": "Moving on, the second kind of feedback is surgical slide level changes.",
+    "index": 142
+  },
+  {
+    "start": 724.1308823529412,
+    "end": 727.7382463768115,
+    "text": "And this is a perfect opportunity to show off these features up here.",
+    "index": 143
+  },
+  {
+    "start": 727.7382463768115,
+    "end": 737.9753846153845,
+    "text": "First, I can make changes myself by clicking the edit button, selecting an element like this agenda box, and then I can increase the font size, change the color.",
+    "index": 144
+  },
+  {
+    "start": 737.9753846153845,
+    "end": 739.9446153846154,
+    "text": "Eh, that doesn't look very good.",
+    "index": 145
+  },
+  {
+    "start": 739.9446153846154,
+    "end": 741.36,
+    "text": "Let's change that back.",
+    "index": 146
+  },
+  {
+    "start": 741.36,
+    "end": 743.44,
+    "text": "And make the text bold, for example.",
+    "index": 147
+  },
+  {
+    "start": 743.44,
+    "end": 750.3257466666666,
+    "text": "Second, on this slide, I can click annotate and literally draw a circle around these two elements.",
+    "index": 148
+  },
+  {
+    "start": 750.3257466666666,
+    "end": 757.3542342342342,
+    "text": "Then type something like add more visual contrast to differentiate what beginners versus power users will walk away with.",
+    "index": 149
+  },
+  {
+    "start": 757.3542342342342,
+    "end": 759.0512280701754,
+    "text": "And we're just going to hit send and see what happens.",
+    "index": 150
+  },
+  {
+    "start": 759.0512280701754,
+    "end": 762.88,
+    "text": "And after a few seconds, it made the change.",
+    "index": 151
+  },
+  {
+    "start": 762.88,
+    "end": 764.5994029850746,
+    "text": "This looks pretty great.",
+    "index": 152
+  },
+  {
+    "start": 764.5994029850746,
+    "end": 767.68,
+    "text": "Right now, moving on to the tweaks feature.",
+    "index": 153
+  },
+  {
+    "start": 767.68,
+    "end": 771.44,
+    "text": "And it's much easier to show you instead of tell you what it does.",
+    "index": 154
+  },
+  {
+    "start": 771.44,
+    "end": 776.5811320754717,
+    "text": "I'm just going to say, give me two toggles. one to toggle my logo and one to show slide numbers in the bottom right.",
+    "index": 155
+  },
+  {
+    "start": 776.5811320754717,
+    "end": 780.5818867924528,
+    "text": "And we're just going to fast forward this next part here.",
+    "index": 156
+  },
+  {
+    "start": 780.5818867924528,
+    "end": 784.4378571428572,
+    "text": "Now, at first you might be confused because nothing seemed to have happened.",
+    "index": 157
+  },
+  {
+    "start": 784.4378571428572,
+    "end": 789.7777777777778,
+    "text": "But if we click the tweaks icon again, we can see our two toggles have appeared.",
+    "index": 158
+  },
+  {
+    "start": 789.7777777777778,
+    "end": 794.6623246753246,
+    "text": "So if I toggle off show logo, the logo disappears from every slide at once.",
+    "index": 159
+  },
+  {
+    "start": 794.6623246753246,
+    "end": 798.9744062499999,
+    "text": "And if I turn on show slide numbers, they appear across every slide.",
+    "index": 160
+  },
+  {
+    "start": 798.9744062499999,
+    "end": 801.92,
+    "text": "And I can even save this as a default.",
+    "index": 161
+  },
+  {
+    "start": 801.92,
+    "end": 809.92,
+    "text": "As a quick recap, a tweak is just a switch for a decision that shows up all over your deck, like whether your logo appears on every slide.",
+    "index": 162
+  },
+  {
+    "start": 809.92,
+    "end": 813.1136633663366,
+    "text": "So, use edit and annotate to fix one thing in one place.",
+    "index": 163
+  },
+  {
+    "start": 813.1136633663366,
+    "end": 818.4073949579831,
+    "text": "And use tweaks when a single decision touches every slide at once and you want to flip between options before committing.",
+    "index": 164
+  },
+  {
+    "start": 818.4073949579831,
+    "end": 821.04,
+    "text": "Now that our slide deck is finalized, we can click the share button in the top right.",
+    "index": 165
+  },
+  {
+    "start": 821.04,
+    "end": 825.519,
+    "text": "And in addition to PowerPoint and PDF, we can click more formats and apps.",
+    "index": 166
+  },
+  {
+    "start": 825.519,
+    "end": 831.3294109589041,
+    "text": "And personally, I like to export to a standalone HTML file because of how versatile it is.",
+    "index": 167
+  },
+  {
+    "start": 831.3294109589041,
+    "end": 840.88,
+    "text": "To show you what I mean, once you download the standalone HTML file, you can double click to open that in any browser and it'll work like",
+    "index": 168
+  },
+  {
+    "start": 841.0641095890411,
+    "end": 845.36,
+    "text": "And anyone you send this file to can open up in their browser as well.",
+    "index": 169
+  },
+  {
+    "start": 845.36,
+    "end": 849.199,
+    "text": "Exporting to HTML also gives you some advanced options.",
+    "index": 170
+  },
+  {
+    "start": 849.199,
+    "end": 856.5704285714286,
+    "text": "I'm not going to spend too much time on this today, but to give you an idea, this is the real deck I used in a paid workshop recently.",
+    "index": 171
+  },
+  {
+    "start": 856.5704285714286,
+    "end": 868.0972972972972,
+    "text": "And you'll notice I asked Claw Design to add a presenter view button that I can click and it'll open up a speaker notes for me that I can interact with, which is pretty freaking awesome.",
+    "index": 172
+  },
+  {
+    "start": 868.0972972972972,
+    "end": 871.7343846153846,
+    "text": "If you found this tutorial helpful, I recommend checking out my Claude co-work playlist next.",
+    "index": 173
+  },
+  {
+    "start": 871.7343846153846,
+    "end": 874.1023846153846,
+    "text": "See you on the next video.",
+    "index": 174
+  },
+  {
+    "start": 874.1023846153846,
+    "end": 877.199,
+    "text": "In the meantime, have a great one.",
+    "index": 175
+  }
+]

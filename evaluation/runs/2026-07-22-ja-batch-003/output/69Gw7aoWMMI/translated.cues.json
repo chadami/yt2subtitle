@@ -1,0 +1,2428 @@
+[
+  {
+    "start": 0,
+    "end": 4.64,
+    "text": "これは世界で最も成功したユーザーインターフェースだ。",
+    "sourceText": "This is the most successful user interface in the world.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 4.64,
+    "end": 10.865263157894738,
+    "text": "毎日、私たちはこのインターフェースを通じて、1年や10年ではなく、",
+    "sourceText": "Every single day we collectively watch not one or 10, but",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 10.865263157894738,
+    "end": 15.72,
+    "text": "61万6572年分ものコンテンツを視聴している。",
+    "sourceText": "616,572 years worth of content through this interface.",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 15.72,
+    "end": 17.653666333666333,
+    "text": "そしてそれは決して偶然ではない。",
+    "sourceText": "And it's absolutely not by chance because this is one of",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 17.653666333666333,
+    "end": 20.504415584415582,
+    "text": "なぜなら、これは世界で最も高度に最適化されたテクノロジーの一つだからだ。",
+    "sourceText": "the most hyper-optimized pieces of technology in the world.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 20.504415584415582,
+    "end": 24.31431229793677,
+    "text": "すべてのボタン、すべてのインタラクション、取るに足らないように見える小さな決定でさえ、",
+    "sourceText": "Every [music] button, every interaction, even the tiniest seemingly",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 24.31431229793677,
+    "end": 27.092389380530975,
+    "text": "あなたがより多くの時間を費やすように設計されている。",
+    "sourceText": "inconsequential decision is engineered to make you spend more time.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 27.092389380530975,
+    "end": 29.6,
+    "text": "スマホでリールをいくつかスワイプしてみてほしい。",
+    "sourceText": "Try to swipe through some Reels on your phone.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 29.6,
+    "end": 34.4251282051282,
+    "text": "指をほんの少しフリックするだけで、次の動画に移動することに気づくはずだ。",
+    "sourceText": "You'll notice that even with just a tiny flick [music] of your finger, you move on to the next one.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 34.4251282051282,
+    "end": 39.074088846681434,
+    "text": "ほとんどのアプリはiOSやAndroidのUIキットを使って作られている。",
+    "sourceText": "See, most apps are built using iOS or Android's own UI kit, so that they don't have to make",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 39.074088846681434,
+    "end": 44.37555555555555,
+    "text": "スクロール可能なリストを作るために、速度や加速度の複雑な物理計算をする必要がないからだ。",
+    "sourceText": "complex physics calculations for speed and acceleration just to create a scrollable list.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 44.37555555555555,
+    "end": 46.08,
+    "text": "OSがそのまま提供してくれる。",
+    "sourceText": "The OS just gives you one.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 46.08,
+    "end": 48.55626168224299,
+    "text": "しかし、例えばInstagramはそうではない。",
+    "sourceText": "But Instagram, for example, doesn't.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 48.55626168224299,
+    "end": 52.9254953271028,
+    "text": "彼らは独自のUIキットを構築し、インターフェース内の速度や加速度、",
+    "sourceText": "They built their own UI kit simulating velocity and acceleration in the interface and",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 52.9254953271028,
+    "end": 55.95020560747663,
+    "text": "タッチへの反応をシミュレートしている。",
+    "sourceText": "how it reacts to your touch, but also so that in the Reels feed, you need to wave less",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 55.95020560747663,
+    "end": 61.76,
+    "text": "さらにリールフィードでは、次の動画に移動するのに必要な力が少なくて済むようになっており、ベッドで、",
+    "sourceText": "force to move on to the next video, making it easier to scroll when you're in bed at",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 61.76,
+    "end": 64.57971830985915,
+    "text": "午前3時に私はアンマーです。このシリーズでは、",
+    "sourceText": "3:00 a.m. I'm Ammar and on this series we go behind the scenes of the insane",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 64.57971830985915,
+    "end": 69.16,
+    "text": "皆さんが毎日使うテクノロジー製品の驚くべきデザイン、エンジニアリング、心理学の舞台裏に迫ります。",
+    "sourceText": "design, engineering, and psychology of the tech products you use every day.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 69.16,
+    "end": 72.25257142857143,
+    "text": "これを機能させているのは3つの層で、",
+    "sourceText": "There are three layers that make this all work and",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 72.25257142857143,
+    "end": 75.24,
+    "text": "最初の層だけが実際に見えるものだ。",
+    "sourceText": "only the first one is what you can actually see.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 75.24,
+    "end": 76.84,
+    "text": "しかしそれを理解するために、簡単なことから始めよう。",
+    "sourceText": "But to understand that, let's start from something simple.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 76.84,
+    "end": 80.2159030130148,
+    "text": "ショート動画フィードはiOSやAndroidの物理エンジンを使わず、",
+    "sourceText": "Remember how short-form video feeds don't use iOS or Android's physics",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 80.2159030130148,
+    "end": 83.78379746835444,
+    "text": "独自のものを構築してスワイプへの応答性を高めているのを覚えているだろうか？",
+    "sourceText": "engine, but build their own to make it more responsive to swipes?",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 83.78379746835444,
+    "end": 85.9076923076923,
+    "text": "では、スマホのホーム画面をスワイプしてみてほしい。",
+    "sourceText": "Well, now try to swipe around the home screen on your phone.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 85.9076923076923,
+    "end": 88.48,
+    "text": "アニメーションは滑らかで自然だ。",
+    "sourceText": "The animation is smooth, natural.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 88.48,
+    "end": 92.49964912280701,
+    "text": "ページの端に達すると、徐々に停止する。",
+    "sourceText": "It gradually comes to a halt when you reach the end of the page.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 92.49964912280701,
+    "end": 96.85128557038529,
+    "text": "AppleとGoogleのデザイナーは、このアニメーションを適切に感じさせるために、",
+    "sourceText": "Apple and Google designers spent hundreds of hours tweaking the animation curves to",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 96.85128557038529,
+    "end": 99.85222068328716,
+    "text": "何百時間もかけてアニメーションカーブを調整した。",
+    "sourceText": "make this animation feel right because the goal to them [music] is to make your phone",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 99.85222068328716,
+    "end": 104.65409090909091,
+    "text": "彼らの目標は、現実世界の物理を模倣し、スマホを指で操作できるもののように感じさせることだからだ。",
+    "sourceText": "feel like something you can control with your fingers, emulating real-world physics.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 104.65409090909091,
+    "end": 110.08,
+    "text": "でも今度はTikTokやショート、リールで動画をスワイプしてみて。",
+    "sourceText": "But now try to swipe through videos on TikTok or Shorts or Instagram.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 110.08,
+    "end": 113.08901408450704,
+    "text": "アニメーションはずっとずっと速いんだ。",
+    "sourceText": "The animations are much, much faster. They built their own system in order to optimize it not",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 113.08901408450704,
+    "end": 119.24,
+    "text": "彼らは独自のシステムを作って、滑らかさではなく、次の動画をより速く表示することだけに最適化しているんだ。",
+    "sourceText": "for making it feel smooth, but just for sheer speed to make the next video come at you faster.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 119.24,
+    "end": 122.90903409090909,
+    "text": "そしてこれは、この動画で起きていることのほんの表面に過ぎない。フィードのね。",
+    "sourceText": "And this is just scratching the surface of what's going on in this video [music] feed.",
+    "sourceIndexes": [
+      22,
+      23
+    ]
+  },
+  {
+    "start": 122.90903409090909,
+    "end": 128.039,
+    "text": "動画自体はフルスクリーンで、インターフェースにはコンテナやバーがない。",
+    "sourceText": "The video itself is full screen, and the interface doesn't have containers or bars.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 128.039,
+    "end": 131.76,
+    "text": "動画の上に少し影をつけて、動画と混ざらない程度のコントラストを生み出している。",
+    "sourceText": "It's above the video with a slight shadow to create just enough contrast not to blend with it.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 131.76,
+    "end": 135.01942857142856,
+    "text": "Instagram、TikTok、YouTubeショートのいずれも、",
+    "sourceText": "In both Instagram, TikTok, and YouTube Shorts, the main action buttons might",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 135.01942857142856,
+    "end": 138.4,
+    "text": "メインのアクションボタンは少し違うかもしれないけど、常にこの位置にある。",
+    "sourceText": "be slightly different, but they are always positioned right here, [music]",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 138.4,
+    "end": 141.59013698630136,
+    "text": "親指の届く範囲にあるようにね。",
+    "sourceText": "so that they are in the thumb reach zone.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 141.59013698630136,
+    "end": 145.13555555555556,
+    "text": "これらはエンゲージメント、いいね、コメント、シェアに関するボタンだ。",
+    "sourceText": "These are the buttons related to engagement, liking, commenting, and sharing.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 145.13555555555556,
+    "end": 146.8,
+    "text": "彼らはあなたにそれらを押してほしいんだ。",
+    "sourceText": "They want you to press them.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 146.8,
+    "end": 150.32,
+    "text": "動画から動画へ移動するとき、動画だけが下で動くのではなく、",
+    "sourceText": "When you move from one video to another, instead of just the video moving",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 150.32,
+    "end": 154.07999999999998,
+    "text": "ボタンも動画と一緒に動き、スクロールに応じて透明度が少し下がる。",
+    "sourceText": "underneath, the buttons move with the video and become slightly lower opacity",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 154.08,
+    "end": 157.6,
+    "text": "なぜなら、いいねやコメントはその動画に固有のものであって、",
+    "sourceText": "as you scroll, because they need to convey the idea that the likes and",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 157.6,
+    "end": 159.4701724137931,
+    "text": "コメントはその特定の動画に関するものであって、",
+    "sourceText": "comments are about that specific [music]",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 159.4701724137931,
+    "end": 161.69,
+    "text": "インターフェース全体の一部ではないということを伝える必要があるからだ。",
+    "sourceText": "video, not part of the overall interface.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 161.69,
+    "end": 163.66803389830508,
+    "text": "そして、こっちの上を見てみよう。",
+    "sourceText": "And take a look up here. These are the options that the",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 163.66803389830508,
+    "end": 166.959,
+    "text": "これらはインターフェースがあなたにコントロールしている感覚を与えるためのオプションだ。",
+    "sourceText": "interface gives you to give you the feeling of control.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 166.959,
+    "end": 168.84158671171173,
+    "text": "例えばInstagramでは、アルゴリズムを調整したり、",
+    "sourceText": "Like on Instagram, did you know you can tweak your",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 168.84158671171173,
+    "end": 170.52914864864866,
+    "text": "フィードの種類を変更できるって知ってた？",
+    "sourceText": "algorithm or change the type of your feed you're in?",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 170.68,
+    "end": 172.32954128440366,
+    "text": "まあ、それがポイントなんだよね。",
+    "sourceText": "Well, that's kind of the point.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 172.32954128440366,
+    "end": 176.48,
+    "text": "これらはわざとここに配置されていて、届きにくくなっている。",
+    "sourceText": "These are purposely placed up here, so that they are more cumbersome to reach.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 176.48,
+    "end": 179.79942028985508,
+    "text": "本当に、何時間もコンテンツをスクロールしてきたかもしれないけど、",
+    "sourceText": "Seriously, you probably have spent hours scrolling through content, but",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 179.79942028985508,
+    "end": 182.45652173913044,
+    "text": "実際に上のものとやりとりしたことは何回ある？",
+    "sourceText": "how many times have you actually interacted with that stuff on top?",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 182.45652173913044,
+    "end": 183.86521739130436,
+    "text": "それも意図的なんだ。",
+    "sourceText": "Well, that's on purpose.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 183.86521739130436,
+    "end": 186.8,
+    "text": "サムネイルのグリッドも、オプションメニューもない。",
+    "sourceText": "There's no grid of thumbnails, no menu of options.",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 186.8,
+    "end": 190.04,
+    "text": "あるのは、アルゴリズムがあなたのために選んだ次の動画だけ。",
+    "sourceText": "There's only the next video that the algorithm chose for you.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 190.04,
+    "end": 193.47849541284404,
+    "text": "心理学には「単位バイアス」と呼ばれるものがある。",
+    "sourceText": "In psychology, there's something called unit [music] bias.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 193.47849541284404,
+    "end": 194.85575757575756,
+    "text": "何かの1単位は常に最適な量に感じられる。",
+    "sourceText": "One unit of something always feels like the optimal amount.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 194.85575757575756,
+    "end": 198.36,
+    "text": "一度に1本の動画、集中するものは1つだけ。",
+    "sourceText": "One video at a time and just [music] one thing to focus on.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 198.36,
+    "end": 202.78406722689076,
+    "text": "動画が終わると、終わった合図もなくループする。",
+    "sourceText": "When a video ends, it loops without any signal that the video has ended.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 202.78406722689076,
+    "end": 205.68,
+    "text": "15秒未満の動画には再生バーすらない。",
+    "sourceText": "For videos shorter than 15 seconds, there's not even a play bar [music]",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 205.68,
+    "end": 207.15272727272728,
+    "text": "シークもできない。",
+    "sourceText": "letting you seek through.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 207.15272727272728,
+    "end": 210.4955479115479,
+    "text": "再生バーがある動画でも、とても小さくて見えない。",
+    "sourceText": "And for ones that do have it, it's quite small and not visible, because",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 210.4955479115479,
+    "end": 214.01693693693693,
+    "text": "それも摩擦のポイント、判断を増やすことになるからだ。",
+    "sourceText": "that would be another point of friction, another decision to make.",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 214.01693693693693,
+    "end": 218.2239577508543,
+    "text": "動画をスキップしようとするなら、それは十分に魅力的じゃないってことで、",
+    "sourceText": "If you decide to skim through the video, it means that it's not engaging",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 218.2239577508543,
+    "end": 221.4,
+    "text": "取るべき行動は次の動画にスワイプすることだけ。",
+    "sourceText": "enough, and the main action you should take is just swipe to the next one.",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 221.4,
+    "end": 223.55476744186046,
+    "text": "カジノは時計や窓をすべて取り払い、",
+    "sourceText": "Casinos famously remove all clocks and windows and are",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 223.55476744186046,
+    "end": 226.215,
+    "text": "迷路のように設計して時間感覚を失わせることで有名だ。",
+    "sourceText": "purposely designed as a maze to make you lose track of time.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 226.215,
+    "end": 230.0217857142857,
+    "text": "これが「時間知覚」と呼ばれる心理原理だ。",
+    "sourceText": "This is the psychological principle called chronoception.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 230.0217857142857,
+    "end": 233.69256802721088,
+    "text": "時間の知覚は主観的で、ショート動画のインターフェースはそれを利用し、",
+    "sourceText": "Our perception of time is subjective, and short-form interface exploits this by removing",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 233.69256802721088,
+    "end": 237,
+    "text": "コンテンツの開始や終了を知らせる合図をすべて排除している。",
+    "sourceText": "every signal that tells you a piece of content is beginning or ending, everything [music]",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 237,
+    "end": 238.92327272727272,
+    "text": "すべてがひとつに溶け合う。",
+    "sourceText": "blurs into one. Just one session where you lose",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 238.92327272727272,
+    "end": 241.95927272727272,
+    "text": "ただの1回のセッションで、どれだけスクロールしたかわからなくなる。",
+    "sourceText": "track of how long you've been scrolling for.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 241.95927272727272,
+    "end": 245.12,
+    "text": "文字通り、あらゆる細部がこのために作られている。",
+    "sourceText": "Literally every detail is built for this.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 245.12,
+    "end": 248.92,
+    "text": "例えばYouTubeでは、動画読み込み中にあの嫌なくるくるマークが出る。",
+    "sourceText": "For example, on YouTube when the video's loading, you get the dreaded spinning wheel.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 248.92,
+    "end": 251.66098360655738,
+    "text": "ショート動画のフィードで、あれを見たことがあるだろうか？",
+    "sourceText": "On short form feeds, have you ever seen one?",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 251.66098360655738,
+    "end": 255.47935556811757,
+    "text": "実は、意図的だ。くるくるマークを表示して視聴の流れを断ち切る代わりに、",
+    "sourceText": "Well, on purpose. Instead of showing you a spinning wheel, making you get out of",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 255.47935556811757,
+    "end": 258.4,
+    "text": "次の動画の最初のフレームをプリロードしている。",
+    "sourceText": "the flow of watching, they preload the first frame of the next video. [music]",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 258.4,
+    "end": 262.83903159340656,
+    "text": "読み込み中にそれが表示されるので、何かを待っていると気づかせずに、",
+    "sourceText": "And that's what you see while things load, so that you get a preview of what's going to",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 262.83903159340656,
+    "end": 266.29653846153843,
+    "text": "これから何が起こるかのプレビューを見せている。",
+    "sourceText": "happen without making you realize that you're actually waiting for something to load.",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 266.29653846153843,
+    "end": 268.52,
+    "text": "動画が読み込まれると、そのまま再生が始まる。",
+    "sourceText": "Once the video is loaded, it just starts.",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 268.52,
+    "end": 270.6250909090909,
+    "text": "でもこれはフィードの中身だけの話じゃない。",
+    "sourceText": "But this isn't just about what's inside the feed.",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 270.6250909090909,
+    "end": 271.8483131313131,
+    "text": "どうやってそこにたどり着くかも関係している。",
+    "sourceText": "It's also how you get there.",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 272,
+    "end": 274.24,
+    "text": "GoogleでTikTokを検索してみてほしい。",
+    "sourceText": "Try searching for a TikTok on Google.",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 274.24,
+    "end": 275.60137931034484,
+    "text": "動画は存在する。",
+    "sourceText": "The videos are there.",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 275.60137931034484,
+    "end": 278.9724137931035,
+    "text": "インデックスされ、検索結果に表示される。",
+    "sourceText": "They are indexed and they show up in search results.",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 278.9724137931035,
+    "end": 281.76,
+    "text": "でもクリックしても見られない。動画はログインの壁の向こうにある。",
+    "sourceText": "But when you click, you can't [music] watch The video is behind a sign-in wall.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 281.76,
+    "end": 286.25944954128437,
+    "text": "それでもアプリのダウンロードを強く促してくる。",
+    "sourceText": "And even after that, they push you really hard to download the app.",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 286.25944954128437,
+    "end": 287.5382273190622,
+    "text": "普通のYouTube動画ではこんなことはない。",
+    "sourceText": "This doesn't happen with a regular YouTube video.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 287.5382273190622,
+    "end": 292.05454545454546,
+    "text": "ログインは促されるけど、動画は見られる。",
+    "sourceText": "They still push you to sign in, but you can still watch the video.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 292.05454545454546,
+    "end": 295.82761061946906,
+    "text": "それはショート動画では、個々の動画自体に価値があるわけじゃないからだ。",
+    "sourceText": "And that's because for short form, the individual video is not what's really valuable.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 295.82761061946906,
+    "end": 300.92596180717277,
+    "text": "一本の動画では広告収入もないし、本当の価値はコンテンツそのものではなく、",
+    "sourceText": "Not only they don't get any advertising on a single video, but the real value is [music]",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 300.92596180717277,
+    "end": 304.4,
+    "text": "ユーザーがアルゴリズムにハマることにある。",
+    "sourceText": "not in the single piece of content, but in you getting addicted to the algorithm.",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 304.4,
+    "end": 307.20919540229886,
+    "text": "そのためにはログインが必要なんだ。",
+    "sourceText": "And for that, they need [music] you to sign in.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 307.20919540229886,
+    "end": 310.2263650937689,
+    "text": "でもこのショート動画フィードというインターフェースは、",
+    "sourceText": "But this interface, the short form video feed, ended up becoming",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 310.2263650937689,
+    "end": 312.8397192982456,
+    "text": "それ自体を超えたものになったから成功した。",
+    "sourceText": "successful because it became something bigger than itself.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 312.8397192982456,
+    "end": 316.9076196943973,
+    "text": "例えば、これは以前の動画で考案したコンセプトで、斜めにスワイプすると、",
+    "sourceText": "For example, this is a concept I developed in an older video where swiping diagonally",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 316.9076196943973,
+    "end": 320.32,
+    "text": "トピックを深掘りするか別の種類の動画を探すかを選べる。",
+    "sourceText": "lets you make a choice on going deeper into a topic or explore different type of videos.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 320.32,
+    "end": 323.56734693877553,
+    "text": "これがまだ実装されていないのには理由がある。",
+    "sourceText": "There's a reason they haven't implemented this yet.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 323.56734693877553,
+    "end": 327.0238168781026,
+    "text": "なぜなら、YouTubeやNetflixのような他の動画インターフェースとは違い、",
+    "sourceText": "[music] Because contrary to all the other video interfaces like YouTube",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 327.0238168781026,
+    "end": 330.04,
+    "text": "ショート動画のUIは極限のシンプルさを目指して作られているからだ。",
+    "sourceText": "or Netflix, the short form UI is built for extreme [music] simplicity.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 330.04,
+    "end": 332.6126845063539,
+    "text": "カルーセルもグリッドもなく、理解すべきものもなく、",
+    "sourceText": "There are no carousels, no grids to choose from,",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 332.6126845063539,
+    "end": 334.8559247311828,
+    "text": "ただ一つのシンプルなジェスチャーだけ。",
+    "sourceText": "nothing to understand, just one simple [music] gesture.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 334.8559247311828,
+    "end": 336.16067741935484,
+    "text": "これはヒックの法則と呼ばれる。",
+    "sourceText": "This is called Hick's Law.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 336.16067741935484,
+    "end": 338.72,
+    "text": "選択肢が多ければ多いほど、決断は難しくなる。",
+    "sourceText": "The more options you have, the harder it is [music]",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 338.72,
+    "end": 342.42285714285714,
+    "text": "決断が。YouTubeはグリッド、Netflixは行、",
+    "sourceText": "to decide. YouTube gives you a grid, Netflix gives you rows, and short",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 342.42285714285714,
+    "end": 346.96,
+    "text": "そしてショート動画は一つの動画と、たった一つのアクション、スワイプだけ。",
+    "sourceText": "form gives you one video [music] and just one thing to do, swipe.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 346.96,
+    "end": 350.15961904761906,
+    "text": "ショート動画フィードは基本的にTikTokが発明したけど、",
+    "sourceText": "Now, short form feeds have basically been invented by TikTok, but they",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 350.15961904761906,
+    "end": 353.704,
+    "text": "結局InstagramやYouTube Shortsにコピーされた。",
+    "sourceText": "ended up being copied discovered by Instagram and YouTube Shorts.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 353.88,
+    "end": 358.32,
+    "text": "それだけでなく、Spotifyも真似しようとした。",
+    "sourceText": "But, not only that, Spotify tried to copy them.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 358.32,
+    "end": 359.9808888888889,
+    "text": "AmazonでさえInspireフィードを開始した。",
+    "sourceText": "Even Amazon launched an Inspire feed.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 359.9808888888889,
+    "end": 362.36,
+    "text": "みんな同じユーザーインターフェースをコピーしているようだ。",
+    "sourceText": "Everyone seems to be copying the same user interface.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 362.36,
+    "end": 367.1670796460177,
+    "text": "これはこれまで作られた中で最も複製されたユーザーインターフェースかもしれない。",
+    "sourceText": "This might be the most replicated user interface ever [music] created.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 367.1670796460177,
+    "end": 370.48091218516,
+    "text": "それはショート動画フィードが、単なるTikTokの動画表示方法から、",
+    "sourceText": "And that's because the short-form feed went from being",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 370.48091218516,
+    "end": 372.8,
+    "text": "デザインパターンへと変わったからだ。",
+    "sourceText": "just how TikTok shows videos being a design pattern.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 372.8,
+    "end": 375.61806451612904,
+    "text": "これを見せれば、どう動くかすぐわかるでしょ。",
+    "sourceText": "If I show you this, you know exactly how this works.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 375.61806451612904,
+    "end": 379.12,
+    "text": "説明なんて要らない。これがメニューで、こう動くってわかるから。",
+    "sourceText": "I don't need to show you any instructions for you to understand that [music] this is a menu and this is how it works.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 379.12,
+    "end": 380.431,
+    "text": "サブメニューもある。",
+    "sourceText": "There are submenus.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 380.431,
+    "end": 383.1399626168224,
+    "text": "これらを見せれば、だいたい何をするかわかるよね。",
+    "sourceText": "If I show you these, you already know more or less what these do.",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 383.1399626168224,
+    "end": 385.9388224299065,
+    "text": "やっぱり説明不要。",
+    "sourceText": "[music] Again, no instructions needed.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 385.9388224299065,
+    "end": 389.8815067172897,
+    "text": "「音楽のTinder」って言えば、何も説明しなくても、",
+    "sourceText": "If I say the Tinder of music, without me telling you anything, you already imagine you",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 389.8815067172897,
+    "end": 394.84,
+    "text": "左右にスワイプしていいね・嫌いを選んで、曲が出てくるって想像できるでしょ。",
+    "sourceText": "can swipe left and right to like or dislike something and you'll get songs pop up.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 394.84,
+    "end": 396.24,
+    "text": "これらは全部デザインパターンなんだ。",
+    "sourceText": "These are all design patterns. [music]",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 396.24,
+    "end": 399.3957142857143,
+    "text": "ほとんどのインターフェースは、ただのインターフェースでしかない。",
+    "sourceText": "See, most interfaces are just that, interfaces.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 399.3957142857143,
+    "end": 401.98614330218066,
+    "text": "でも、ごく一部はあまりに普及して、",
+    "sourceText": "But, with a select few, they become so ubiquitous and they",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 401.98614330218066,
+    "end": 405.476261682243,
+    "text": "あまりにうまく機能するから、デザインパターンになるんだ。",
+    "sourceText": "end up working so well that they turn into design patterns.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 405.476261682243,
+    "end": 407.6816216216216,
+    "text": "あまりにうまくデザインされていて、人々にすぐにピンとくる。",
+    "sourceText": "They're designed so well that they instantly click with people.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 407.6816216216216,
+    "end": 412.83567567567565,
+    "text": "その結果、他の製品もそれを採用するようになる。なぜなら説明が一切いらないから。",
+    "sourceText": "So much so that other products end up adopting them because [music] you don't need any instructions.",
+    "sourceIndexes": [
+      99,
+      100
+    ]
+  },
+  {
+    "start": 412.83567567567565,
+    "end": 415.3654054054054,
+    "text": "人々はもう使い方を知っているんだ。",
+    "sourceText": "People just already know how they work.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 415.3654054054054,
+    "end": 419.14383970177073,
+    "text": "主要なショート動画プラットフォーム3つは同じデザインパターンを使っているけど、",
+    "sourceText": "And while all the three major short-form platforms use the same",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 419.14383970177073,
+    "end": 421.6,
+    "text": "それぞれ少しずつアレンジを加えている。",
+    "sourceText": "design patterns, they all give their little twist to [music] it.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 421.6,
+    "end": 425.16,
+    "text": "Instagramは友達のプロフィールバブルを追加して、誰がいいねしたかを表示する。",
+    "sourceText": "Instagram adds your friends' profile bubbles, showing who liked the video.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 425.16,
+    "end": 428.84,
+    "text": "コンテンツフィードをソーシャルレイヤーで包んでいるんだ。元々そういう場所だからね。",
+    "sourceText": "They're wrapping a content feed in a social layer because that's where they came from.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 428.84,
+    "end": 432.2121212121212,
+    "text": "YouTube Shortsは関連する長尺動画を下部に配置して、",
+    "sourceText": "YouTube Shorts puts a related long-form video on the bottom, just as a",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 432.2121212121212,
+    "end": 435.72,
+    "text": "まだYouTubeにいて、こういう動画も見られるよって思い出させる。",
+    "sourceText": "reminder that you're still on YouTube and you can watch videos like this one.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 435.72,
+    "end": 438.74080000000004,
+    "text": "でも、ここまで見てきたのは表面だけ。",
+    "sourceText": "But, everything we've seen so far is just what's on the surface.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 438.74080000000004,
+    "end": 440.44,
+    "text": "ここから本当に深掘りしていくよ。",
+    "sourceText": "Now, we start to actually go deeper.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 440.44,
+    "end": 442.2187777777778,
+    "text": "自分がInstagramのプロダクトマネージャーだと思ってみて。",
+    "sourceText": "Imagine you're a product manager at Instagram.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 442.2187777777778,
+    "end": 445.3270588235294,
+    "text": "リールを担当していて、ある決断を迫られる。",
+    "sourceText": "You're working on Reels and they ask you to make a decision.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 445.3270588235294,
+    "end": 448.7060194174757,
+    "text": "クリエイターが動画の下にキャプションを書ける文字数はいくつにする？",
+    "sourceText": "How many characters do you give creators [music] to write a caption underneath their video?",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 448.7060194174757,
+    "end": 453.04,
+    "text": "表面的には、まったく重要じゃない決断に思える。少なくともそう思うでしょ。",
+    "sourceText": "On the surface, this is a completely inconsequential decision, or so you think.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 453.04,
+    "end": 460.2626794258373,
+    "text": "確かに、これらのプラットフォームのプロダクトマネージャーが下さなければならなかった判断の一つは、コメントセクションを開いたときに動画が一時停止するか再生するかということ、",
+    "sourceText": "Definitely one decision that product managers at these platforms had to make",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 460.2626794258373,
+    "end": 461.7494736842105,
+    "text": "でした。",
+    "sourceText": "was whether the video pauses or plays when you open the comment section.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 461.7494736842105,
+    "end": 463.51686956521735,
+    "text": "なぜなら、時々は一時停止し、時々は再生していたからです。",
+    "sourceText": "Cuz sometimes they did pause and sometimes they did play.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 463.51686956521735,
+    "end": 465.3926394665646,
+    "text": "こちらはアリステアです。",
+    "sourceText": "This is Alistair. He's a friend of mine and he makes short-form",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 465.3926394665646,
+    "end": 468.33837837837837,
+    "text": "彼は私の友人で、何億回も再生されるショート動画を作っています。",
+    "sourceText": "videos that generated [music] hundreds of millions of views.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 468.33837837837837,
+    "end": 472.1824,
+    "text": "そして、第二層で何が起きているかを教えてくれるのに、彼以上に適した人はいません。",
+    "sourceText": "And there's no better person than him to tell you everything that's going on in the second layer.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 472.1824,
+    "end": 474.6016,
+    "text": "なぜなら、このインターフェースは単なるインターフェースではないからです。",
+    "sourceText": "Because this interface is not just an interface.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 474.6016,
+    "end": 476.92,
+    "text": "それは結局、影響を与え、形作ることになります。",
+    "sourceText": "It ends up influencing and shaping the [music]",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 476.92,
+    "end": 479.3073684210526,
+    "text": "第二層、つまりコンテンツそのものを。",
+    "sourceText": "second layer, which is the content itself.",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 479.3073684210526,
+    "end": 484.64,
+    "text": "ほら、私の動画に関しては、ストーリーテリングや面白いストーリーを練ることに多くの思考が注がれています。",
+    "sourceText": "See, when it comes to my videos, there's a lot of thought that goes into the storytelling and crafting an interesting story, [music]",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 484.64,
+    "end": 486.0161616161616,
+    "text": "でも、それくらいです。",
+    "sourceText": "but that's pretty much it.",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 486.0161616161616,
+    "end": 489.88,
+    "text": "YouTubeのインターフェースは、私が作る動画の種類にあまり影響を与えません。",
+    "sourceText": "YouTube's interface doesn't really affect the type of videos that I make.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 489.88,
+    "end": 492.8896774193548,
+    "text": "確かに、サムネイルの右下にものを置かないように覚えておくべきです。",
+    "sourceText": "Sure, I should remember not to put stuff in the bottom right corner of a",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 492.8896774193548,
+    "end": 495.68,
+    "text": "そこに再生時間が表示されるからです。でも、それくらいです。",
+    "sourceText": "thumbnail because that's where the duration goes, but that's pretty much it.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 495.68,
+    "end": 497.9646598639456,
+    "text": "しかし、ショート動画では、",
+    "sourceText": "But on short-form, the interface and how the feed",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 497.9646598639456,
+    "end": 502.1683333333333,
+    "text": "インターフェースとフィードの動作はコンテンツ自体と深く結びついています。",
+    "sourceText": "works is deeply tied with the content itself.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 502.1683333333333,
+    "end": 509.9365,
+    "text": "だから、人々は動画の価値を最大限に得るためにコメントセクションを開かなければならないような動画を意図的に作っていました。",
+    "sourceText": "So, people would specifically make videos where you would have to open the comment section to get the full value out of the video.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 509.9365,
+    "end": 515.0286076923077,
+    "text": "そのような場合、動画を非常に短くして、人々がループさせて何度も再生するようにします。",
+    "sourceText": "In those cases, you would make also make the video really short so that people will loop the",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 515.0286076923077,
+    "end": 518.36,
+    "text": "そうすると、維持率が500%とかになるんです。",
+    "sourceText": "video and replay it a bunch of times while they're So, their retention is like 500% or something.",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 518.36,
+    "end": 520.4130693069308,
+    "text": "なぜなら、異なるプラットフォームで見たいからです。",
+    "sourceText": "Because you like to look at it on different platforms.",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 520.4130693069308,
+    "end": 522.2,
+    "text": "これに対して、各プラットフォームは異なる解決策を持っています。",
+    "sourceText": "They have different [music] solutions for this.",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 522.2,
+    "end": 524.32,
+    "text": "一部はコメントで動画を覆います。",
+    "sourceText": "Some of them will cover the video with the comments.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 524.32,
+    "end": 527.1851162790698,
+    "text": "一部は動画を圧縮して小さくします。",
+    "sourceText": "Some of them will squeeze the video and make it smaller.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 527.1851162790698,
+    "end": 528.72,
+    "text": "二つの非常に異なるアプローチです。",
+    "sourceText": "Two very different approaches.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 528.72,
+    "end": 531.6086420409248,
+    "text": "動画を圧縮すると動画を追いやすくなり、",
+    "sourceText": "Squeezing the video makes it easier to follow the video and not",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 531.6086420409248,
+    "end": 535.8304225352113,
+    "text": "圧縮しないとユーザーの注意がコメントセクションに向くかもしれません。",
+    "sourceText": "squeezing [music] it maybe focuses the user on the comment section.",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 535.8304225352113,
+    "end": 539.4702702702704,
+    "text": "ユーザーインターフェースがコンテンツにどのような影響を与えるかについて考えています。",
+    "sourceText": "I'm thinking of like how the user interface impacts the content.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 539.4702702702704,
+    "end": 543.2509246088193,
+    "text": "例えば、以前は動画を下にスワイプしても、",
+    "sourceText": "And the example I'll give is that before when you were going swiping",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 543.2509246088193,
+    "end": 547.0315789473684,
+    "text": "次の動画はまだ再生されていなかったんだ。",
+    "sourceText": "down on videos, the next video wouldn't actually start playing yet.",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 547.0315789473684,
+    "end": 552.5414101290963,
+    "text": "だから、動画の最初のフレームの上半分を最適化しようとするんだ。",
+    "sourceText": "So, you [music] would kind of try and optimize the top half of the first frame of your video",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 552.5414101290963,
+    "end": 556.8,
+    "text": "視聴者がその情報を脳に取り込み始めるからね。",
+    "sourceText": "because the viewer will already start to take that information into their brain [music]",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 556.8,
+    "end": 558.1244705882352,
+    "text": "スワイプダウンしているときにね。",
+    "sourceText": "when they're swiping down.",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 558.1244705882352,
+    "end": 561.996,
+    "text": "これ、めっちゃ面白いんだ。まさに、人々が決して気づかないようなことだよ。",
+    "sourceText": "This is super cool. This is exactly the stuff that people will never realize.",
+    "sourceIndexes": [
+      137,
+      138
+    ]
+  },
+  {
+    "start": 562.04,
+    "end": 566.821359223301,
+    "text": "つまり、昔はスワイプを始めると動画がすでに再生されていたんだ。",
+    "sourceText": "So, basically in the past, you started swiping and the video was already playing.",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 566.821359223301,
+    "end": 568.12,
+    "text": "まだ再生されていなかったんだ。",
+    "sourceText": "It wasn't playing yet.",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 568.12,
+    "end": 569.9641025641026,
+    "text": "だから、さらに重要だったんだ。",
+    "sourceText": "So, it was even more important.",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 569.9641025641026,
+    "end": 573.2878113863537,
+    "text": "だから、スワイプダウンすると最初のフレームが読み込まれるけど、",
+    "sourceText": "So, you would swipe down and like it would load the first frame, but it",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 573.2878113863537,
+    "end": 576.406,
+    "text": "動画全体が画面に表示されるまで再生は始まらなかったんだ。",
+    "sourceText": "wouldn't start playing the video until the entire video's on your screen.",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 576.52,
+    "end": 579.3584672619047,
+    "text": "だから、最初のフレームがどう見えるか、",
+    "sourceText": "So, you would have to really think about what the first frame looks like, and also",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 579.3584672619047,
+    "end": 585.1289285714286,
+    "text": "そしてスクロールダウンしているときに最初のフレームの上半分がどう見えるかをよく考えないといけなかったんだ。",
+    "sourceText": "what the top half of the first frame looks like [music] as they're scrolling down.",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 585.1289285714286,
+    "end": 589.1309335839599,
+    "text": "説明欄を長くするか短くするか、次の動画を自動再生するかしないか、",
+    "sourceText": "The decision of making the description box longer or shorter, auto playing or not",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 589.1309335839599,
+    "end": 592.52,
+    "text": "コメント欄をオーバーレイにするか動画を縮小するか。",
+    "sourceText": "the next video, making the comment box an overlay or so that it shrinks the video.",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 592.52,
+    "end": 599.221724137931,
+    "text": "こうした一見無害な決断が、何百万人もの人々のコンテンツの作り方とコンテンツそのものを変えてしまうんだ。",
+    "sourceText": "Well, all these seemingly innocuous decisions end [music] up changing the way millions of people create content and the content itself.",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 599.221724137931,
+    "end": 601.3393687626774,
+    "text": "でも、もしあなたがエンジニア、デザイナー、",
+    "sourceText": "But, if you're the one that has to make these decisions as",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 601.3393687626774,
+    "end": 603.7628949290059,
+    "text": "プロダクトマネージャーとしてこれらの決断を下す立場なら、",
+    "sourceText": "an engineer, designer, or product manager, let me show you",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 603.762894929006,
+    "end": 606.536,
+    "text": "この動画のスポンサーであるUX Pilotで何ができるか見せてあげよう。",
+    "sourceText": "what you can do with the sponsor of this video, UX Pilots.",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 606.536,
+    "end": 611.0847924528302,
+    "text": "UX Pilotは、機能のインタラクションやプロダクトアイデアを最速で実現する方法だ。",
+    "sourceText": "[music] UX Pilot is the fastest way to bring feature interactions and product ideas to life.",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 611.0847924528302,
+    "end": 615.9740530098833,
+    "text": "これ、覚えてる？このフリーワイヤースクロールのプロトタイプはかっこいいけど、",
+    "sourceText": "Remember this? Well, [music] this free way scroll prototype is cool, but I made it at the",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 615.9740530098833,
+    "end": 621.64,
+    "text": "去年の初めに作ったもので、InstagramのUIをゼロから再現するのに丸一日かかったんだ。",
+    "sourceText": "beginning of this last year, and I spent an entire day recreating from scratch the Instagram UI.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 621.64,
+    "end": 623.1969230769231,
+    "text": "でも、今これを見て。",
+    "sourceText": "But, now look at this.",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 623.1969230769231,
+    "end": 626.24,
+    "text": "UX Pilotを使っている。あのフローをもう一度試したいとしよう。",
+    "sourceText": "I'm in UX Pilot and let's imagine I want to re-experiment with the flow that [music]",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 626.24,
+    "end": 627.7105046728972,
+    "text": "スクロールしてみよう。",
+    "sourceText": "let me scroll through.",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 627.7105046728972,
+    "end": 629.9831028037383,
+    "text": "プロンプトを入力するだけで、ほら。",
+    "sourceText": "Well, I can just prompt and voila.",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 629.9831028037383,
+    "end": 632.2598528534501,
+    "text": "これが思い描いていた通りの画面で、",
+    "sourceText": "Here's the screens with exactly what I had in mind, including",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 632.2598528534501,
+    "end": 635.36,
+    "text": "インターフェースだけでなく、画像もそのまま再現されてるんだ。",
+    "sourceText": "not only in the interface, but [music] imagery here as well.",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 635.36,
+    "end": 637.0836363636364,
+    "text": "そしてこれを見て。",
+    "sourceText": "And take a look at this.",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 637.0836363636364,
+    "end": 643.9981780821918,
+    "text": "Figma上で、UX Pilotはワイヤーフレームやデザインを直接生成できるんだ。",
+    "sourceText": "I'm in Figma and not only that, UX Pilot [music] also allows you to generate wireframes and designs directly in Figma.",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 643.9981780821918,
+    "end": 645.839,
+    "text": "これを見て。",
+    "sourceText": "Take a look at this.",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 647.48,
+    "end": 648.6821428571428,
+    "text": "そして、はい出来上がり。",
+    "sourceText": "And boom, there we go.",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 648.6821428571428,
+    "end": 653.6,
+    "text": "この2つの画面は画像じゃなくて、Figmaで完全に編集可能なんだ。",
+    "sourceText": "These are two screens and they are not [music] images, they're entirely editable in Figma.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 653.6,
+    "end": 656.4250909090908,
+    "text": "逆に、Figmaからデザインシステム全体を、",
+    "sourceText": "And you could even do it the other way around and import",
+    "sourceIndexes": [
+      160
+    ]
+  },
+  {
+    "start": 656.4250909090908,
+    "end": 659.4049523809523,
+    "text": "UX Pilotにインポートすることもできる。",
+    "sourceText": "your entire design system into UX Pilot from Figma.",
+    "sourceIndexes": [
+      160
+    ]
+  },
+  {
+    "start": 659.4049523809523,
+    "end": 662.0655238095237,
+    "text": "UX Pilotはデザイナーを置き換えるものじゃない。",
+    "sourceText": "UX Pilot is not replacing designers.",
+    "sourceIndexes": [
+      161
+    ]
+  },
+  {
+    "start": 662.0655238095237,
+    "end": 666.2691180124223,
+    "text": "デザインの言語を、アイデアを視覚的に伝えたり反復したりするツールを必要とする創業者、",
+    "sourceText": "It's giving the language of design to founders, engineers, and product",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 666.2691180124223,
+    "end": 669.4,
+    "text": "エンジニア、プロダクトマネージャーに提供しているんだ。",
+    "sourceText": "managers who need tools to communicate ideas visually and iterate over them.",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 669.4,
+    "end": 673.4747826086956,
+    "text": "説明欄のリンクからUX Pilotを無料で使い始められる。",
+    "sourceText": "You can start using UX Pilot for free with the link in the description.",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 673.4747826086956,
+    "end": 676.0481481481482,
+    "text": "アイデアを入力するだけで、UX Pilotがすぐに形にしてくれる。",
+    "sourceText": "Just type your idea and watch UX Pilot bring it back to life right now.",
+    "sourceIndexes": [
+      164
+    ]
+  },
+  {
+    "start": 676.0481481481482,
+    "end": 681.12,
+    "text": "でも、本題に戻ろう。ショート動画フィードのデザインがメディアにどう影響するか覚えてる？",
+    "sourceText": "But, now let's get back to the video because remember how the design of short-form feeds influences [music] the media?",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 681.12,
+    "end": 684.7,
+    "text": "実はこれ、新しい話じゃないんだ。",
+    "sourceText": "Well, this is nothing new, really.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 684.7,
+    "end": 687.8270129870131,
+    "text": "メディアは常にコンテンツに影響されてきた。",
+    "sourceText": "The medium [music] has always been influenced by the media.",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 687.8270129870131,
+    "end": 691.720506329114,
+    "text": "1949年、7インチレコードは片面約3分しか収録できませんでした。",
+    "sourceText": "In 1949, 7-in records could only hold about 3 minutes per [music] side.",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 691.720506329114,
+    "end": 694.8613551749814,
+    "text": "AMラジオは短い曲を求めたので、1950年代から60年代にかけて、",
+    "sourceText": "AM radio wanted short songs, so throughout the 1950s",
+    "sourceIndexes": [
+      169
+    ]
+  },
+  {
+    "start": 694.8613551749814,
+    "end": 697.12,
+    "text": "ポップソングはだいたい2分半でした。",
+    "sourceText": "and '60s, pop songs were like 2 and 1/2 minutes.",
+    "sourceIndexes": [
+      169
+    ]
+  },
+  {
+    "start": 697.12,
+    "end": 700.778947368421,
+    "text": "その制限に合わせて曲が作られていたんです。",
+    "sourceText": "They were written [music] to fit that limit.",
+    "sourceIndexes": [
+      170
+    ]
+  },
+  {
+    "start": 700.778947368421,
+    "end": 702.7115596330275,
+    "text": "LPやCDが登場すると、曲は長くなった。",
+    "sourceText": "When LPs and CDs came along, the songs got longer.",
+    "sourceIndexes": [
+      171
+    ]
+  },
+  {
+    "start": 702.7115596330275,
+    "end": 705.9118278422095,
+    "text": "テレビでは、作家はCMのタイミングに合わせて物語を構成し、",
+    "sourceText": "[music] In TV, writers structure stories around ad breaks,",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 705.9118278422095,
+    "end": 708.7672222222222,
+    "text": "緊張を高めて特定の広告配置を意識してカットする。",
+    "sourceText": "building tension and cutting with specific ad placements in mind.",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 708.7672222222222,
+    "end": 710.84,
+    "text": "ストリーミングではそんな必要はない。",
+    "sourceText": "With streaming, there's no need for this.",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 710.84,
+    "end": 715.704,
+    "text": "実際に『フレンズ』を見ると、だからテンポがちょっと変に感じるんだ。",
+    "sourceText": "When you actually watch Friends, [music] that's why the pacing feels kind of weird.",
+    "sourceIndexes": [
+      174,
+      175
+    ]
+  },
+  {
+    "start": 715.704,
+    "end": 720.5420289855072,
+    "text": "でも、ショート動画フィードでこれが起こる度合いは別次元だ。",
+    "sourceText": "But the level to which this happens [music] with short-form feeds is just on another level.",
+    "sourceIndexes": [
+      176
+    ]
+  },
+  {
+    "start": 720.5420289855072,
+    "end": 723.6060985507246,
+    "text": "他の多くのプラットフォームと違って、",
+    "sourceText": "Also because, contrary to many other platforms, [music] here you have a",
+    "sourceIndexes": [
+      177
+    ]
+  },
+  {
+    "start": 723.6060985507246,
+    "end": 728.12,
+    "text": "ここでは視聴者が何をしているかが秒単位で正確に報告されるからだ。",
+    "sourceText": "second-by-second report on exactly what the audience is [music] doing.",
+    "sourceIndexes": [
+      177
+    ]
+  },
+  {
+    "start": 728.12,
+    "end": 731.16,
+    "text": "例えば、分析を見ると維持率グラフが見えるんだ。",
+    "sourceText": "When you look at your analytics, you see like a retention graph, for example.",
+    "sourceIndexes": [
+      178
+    ]
+  },
+  {
+    "start": 731.16,
+    "end": 733.5801769911504,
+    "text": "それはどんな感じで、何を探すの？",
+    "sourceText": "What does it look like, and what are you looking for?",
+    "sourceIndexes": [
+      179
+    ]
+  },
+  {
+    "start": 733.5801769911504,
+    "end": 736.32,
+    "text": "それとも、何か面白いことを共有できる？",
+    "sourceText": "Or is there something interesting that you can you can share there?",
+    "sourceIndexes": [
+      180
+    ]
+  },
+  {
+    "start": 736.32,
+    "end": 740.6838938053098,
+    "text": "どのプラットフォームでも、ほぼ同じことを探しているんだ。",
+    "sourceText": "On every platform, you're almost always looking for the same thing.",
+    "sourceIndexes": [
+      181
+    ]
+  },
+  {
+    "start": 740.6838938053098,
+    "end": 743.1492625368733,
+    "text": "動画を見る人の割合が高くて、",
+    "sourceText": "You're looking for a high percentage of people choosing to watch the",
+    "sourceIndexes": [
+      182
+    ]
+  },
+  {
+    "start": 743.1492625368733,
+    "end": 746.88,
+    "text": "残りのグラフができるだけフラットであることを望んでいる。",
+    "sourceText": "video, and then you want the rest of the chart as flat as possible.",
+    "sourceIndexes": [
+      182
+    ]
+  },
+  {
+    "start": 746.88,
+    "end": 749.8171428571428,
+    "text": "大量の動画を作り始めて、",
+    "sourceText": "The thing that is not obvious until you actually start making a ton",
+    "sourceIndexes": [
+      183
+    ]
+  },
+  {
+    "start": 749.8171428571428,
+    "end": 754.0571428571428,
+    "text": "実際にバズる動画が出るまで気づかないのは、",
+    "sourceText": "of videos, and you actually start getting viral videos, is how small",
+    "sourceIndexes": [
+      183
+    ]
+  },
+  {
+    "start": 754.0571428571428,
+    "end": 759.6,
+    "text": "バズる動画とそうでない動画の差がどれだけ小さいかってことだ。",
+    "sourceText": "the difference is between a viral video and a not viral video.",
+    "sourceIndexes": [
+      183
+    ]
+  },
+  {
+    "start": 759.6,
+    "end": 764.5538042553192,
+    "text": "文字通り、10万回再生と1000万回再生の間で、",
+    "sourceText": "Literally between 100,000 views and 10 million views, the difference",
+    "sourceIndexes": [
+      184
+    ]
+  },
+  {
+    "start": 764.5538042553192,
+    "end": 769.3512000000001,
+    "text": "動画の平均視聴率の差は5%くらいしかないんだ。",
+    "sourceText": "in average percentage of the video watched can be like 5%.",
+    "sourceIndexes": [
+      184
+    ]
+  },
+  {
+    "start": 769.3512000000001,
+    "end": 774.5329384615385,
+    "text": "YouTubeショートで平均視聴率が75%から80%になるだけで、",
+    "sourceText": "It can literally be from like 75% average watch for video on YouTube",
+    "sourceIndexes": [
+      185
+    ]
+  },
+  {
+    "start": 774.5329384615385,
+    "end": 778.0254545454545,
+    "text": "10万回と1000万回の差になるんだ。",
+    "sourceText": "Shorts to 80% can be the difference between 100,000 and 10 million views.",
+    "sourceIndexes": [
+      185
+    ]
+  },
+  {
+    "start": 778.0254545454545,
+    "end": 780.3164285714286,
+    "text": "わあ、それはすごいね。知らなかったよ。",
+    "sourceText": "Wow, that's crazy. I didn't know that.",
+    "sourceIndexes": [
+      186,
+      187
+    ]
+  },
+  {
+    "start": 780.3164285714286,
+    "end": 783.7114285714285,
+    "text": "そう、その差は時々それくらい薄いんだ。",
+    "sourceText": "Yeah, the the margin is like that thin sometimes.",
+    "sourceIndexes": [
+      188
+    ]
+  },
+  {
+    "start": 783.7114285714285,
+    "end": 787.4013839285714,
+    "text": "でも重要なのは、キャプションの最初の言葉とか、",
+    "sourceText": "But the point is that like all of these like small things that you think are not important, like",
+    "sourceIndexes": [
+      189
+    ]
+  },
+  {
+    "start": 787.4013839285714,
+    "end": 793.04,
+    "text": "重要じゃないと思うような小さなことのすべてが積み重なるってこと。なぜなら10万回と、",
+    "sourceText": "which words in the caption appear first, all of it adds up because the difference between 100,000",
+    "sourceIndexes": [
+      189
+    ]
+  },
+  {
+    "start": 793.04,
+    "end": 796.4688,
+    "text": "1000万回の差は文字通り100倍だけど、",
+    "sourceText": "and 10 million is literally it's like",
+    "sourceIndexes": [
+      190
+    ]
+  },
+  {
+    "start": 796.4688,
+    "end": 800.216,
+    "text": "それはほんの数パーセントの改善でしかないからだ。",
+    "sourceText": "100x, but it's only a few 1% improvements.",
+    "sourceIndexes": [
+      190
+    ]
+  },
+  {
+    "start": 800.216,
+    "end": 802.76,
+    "text": "さて、あなたが何を考えているか分かってるよ。",
+    "sourceText": "Now, I know what you're thinking.",
+    "sourceIndexes": [
+      191
+    ]
+  },
+  {
+    "start": 802.76,
+    "end": 806.8,
+    "text": "これらの企業は、こんな略奪的な方法で製品をデザインするなんて、とても邪悪だってね。",
+    "sourceText": "These companies are so evil in designing products in this way in this predatory manner.",
+    "sourceIndexes": [
+      192
+    ]
+  },
+  {
+    "start": 806.8,
+    "end": 809.9928571428571,
+    "text": "でも、実際はそうじゃないんだ。",
+    "sourceText": "But [snorts] that's not exactly what happens.",
+    "sourceIndexes": [
+      193
+    ]
+  },
+  {
+    "start": 809.9928571428571,
+    "end": 814.1019065863894,
+    "text": "デザイナーやプロダクトマネージャーが「操作的なものをデザインしよう」と言って座ったことは一度もない。",
+    "sourceText": "No designer or product manager ever sat down and said, \"Let's design something",
+    "sourceIndexes": [
+      194
+    ]
+  },
+  {
+    "start": 814.1019065863894,
+    "end": 817.1055172413794,
+    "text": "彼らがやっているのは、常に何百もの実験を同時に実行することだ。",
+    "sourceText": "manipulative.\" What they do is continuously run hundreds of experiments at a time.",
+    "sourceIndexes": [
+      194
+    ]
+  },
+  {
+    "start": 817.1055172413794,
+    "end": 822.3631034482759,
+    "text": "だから友達のアプリがあなたのと少し違うことがあるんだ。",
+    "sourceText": "That's why your friends might have an app that's slightly different than yours.",
+    "sourceIndexes": [
+      195
+    ]
+  },
+  {
+    "start": 822.3631034482759,
+    "end": 824.8032,
+    "text": "ここまで見てきたすべては、途方もない量のテストの結果なんだ。",
+    "sourceText": "Everything we saw so far is the result of an insane amount of testing.",
+    "sourceIndexes": [
+      196
+    ]
+  },
+  {
+    "start": 824.8032,
+    "end": 827.68,
+    "text": "エンゲージメントを高めるものは残し、そうでないものは排除する。",
+    "sourceText": "They keep what increases engagement and kill what doesn't.",
+    "sourceIndexes": [
+      197
+    ]
+  },
+  {
+    "start": 827.68,
+    "end": 832.6,
+    "text": "そして時間が経つにつれて、自然と勝ち残るデザインは心理学を利用したものになる。",
+    "sourceText": "And over time, what naturally happens is that the winning designs are the ones that exploit psychology.",
+    "sourceIndexes": [
+      198
+    ]
+  },
+  {
+    "start": 832.6,
+    "end": 836.64,
+    "text": "意図したわけじゃなく、数学的にそう収束するからだ。",
+    "sourceText": "Not because they chose to, but because the math just converges there.",
+    "sourceIndexes": [
+      199
+    ]
+  },
+  {
+    "start": 836.64,
+    "end": 838.28,
+    "text": "クリエイター側でも同じ収束が起きている。",
+    "sourceText": "And on the creator side, the same convergence happens.",
+    "sourceIndexes": [
+      200
+    ]
+  },
+  {
+    "start": 838.28,
+    "end": 842.8766961651918,
+    "text": "すべてのクリエイターが同じ維持率グラフ、同じ分析、同じ数字を見て、",
+    "sourceText": "Every creator sees the same retention graphs, the same analytics, the same numbers,",
+    "sourceIndexes": [
+      201
+    ]
+  },
+  {
+    "start": 842.8766961651918,
+    "end": 847.1646017699115,
+    "text": "同じフック、同じ編集スタイル、同じトリックへと導かれている。",
+    "sourceText": "pushing them all towards the same hooks, the same editing style, and the same tricks.",
+    "sourceIndexes": [
+      201
+    ]
+  },
+  {
+    "start": 847.1646017699115,
+    "end": 849.9625,
+    "text": "プラットフォームはコンテンツをホストするだけでなく、文字通りデザインしている。",
+    "sourceText": "The platforms doesn't just host the content, it literally designs it.",
+    "sourceIndexes": [
+      202
+    ]
+  },
+  {
+    "start": 849.9625,
+    "end": 854.5148051948053,
+    "text": "そして最後の第3のレイヤー、これらすべてを機能させるものにたどり着く。",
+    "sourceText": "And now we come to the final and third layer, the one that makes this all work.",
+    "sourceIndexes": [
+      203
+    ]
+  },
+  {
+    "start": 854.5148051948053,
+    "end": 858.7862124760486,
+    "text": "元TikTokエンジニアのArmand Conqueerだ。",
+    "sourceText": "This is Armand Conqueer, an ex-TikTok engineer, and he called",
+    "sourceIndexes": [
+      204
+    ]
+  },
+  {
+    "start": 858.7862124760486,
+    "end": 863.16,
+    "text": "彼はこれを「存在する中で最も価値のあるソフトウェア」と呼んだ。",
+    "sourceText": "it the most valuable piece [music] of software in existence.",
+    "sourceIndexes": [
+      204
+    ]
+  },
+  {
+    "start": 863.16,
+    "end": 867.96,
+    "text": "数十億の動画から何を見るかを決める秘密のアルゴリズム。",
+    "sourceText": "The secretive algorithm that decides what we watch among billions of videos.",
+    "sourceIndexes": [
+      205
+    ]
+  },
+  {
+    "start": 867.96,
+    "end": 870.6207452830189,
+    "text": "あまりに秘密で…まあ、これがそれだ。",
+    "sourceText": "So secret that [snorts] well, here it is.",
+    "sourceIndexes": [
+      206
+    ]
+  },
+  {
+    "start": 870.6207452830189,
+    "end": 874.1007272727273,
+    "text": "2023年、TikTokは実際にその仕組みを詳述した研究論文を公開した。",
+    "sourceText": "In 2023, TikTok actually published a research paper detailing how it works.",
+    "sourceIndexes": [
+      207
+    ]
+  },
+  {
+    "start": 874.1007272727273,
+    "end": 879.9112727272727,
+    "text": "そして、YouTubeやNetflixのような他の動画レコメンデーションシステムとの最大の違いはこれだ。",
+    "sourceText": "[music] And the biggest difference between all the other video recommendation systems like YouTube or Netflix is this.",
+    "sourceIndexes": [
+      208
+    ]
+  },
+  {
+    "start": 879.9112727272727,
+    "end": 883.4,
+    "text": "従来のシステムは2段階で動作する。",
+    "sourceText": "Traditional systems works in two steps.",
+    "sourceIndexes": [
+      209
+    ]
+  },
+  {
+    "start": 883.4,
+    "end": 887.7603975493533,
+    "text": "まず、過去のデータ、つまりあなたがいいねした動画や視聴した動画でアルゴリズムを訓練し、",
+    "sourceText": "First, they train their algorithm on a bunch of historical data, the videos",
+    "sourceIndexes": [
+      210
+    ]
+  },
+  {
+    "start": 887.7603975493533,
+    "end": 890.5773451327434,
+    "text": "それに基づいてレコメンデーションを提供する。",
+    "sourceText": "you liked, you watched, and then they serve you recommendations based on that.",
+    "sourceIndexes": [
+      210
+    ]
+  },
+  {
+    "start": 890.5773451327434,
+    "end": 894.3633644859814,
+    "text": "問題は、訓練が終わる頃にはあなたの興味がすでに移っていることだ。",
+    "sourceText": "[music] The problem is that by the time they finished training, your interest has already moved on.",
+    "sourceIndexes": [
+      211
+    ]
+  },
+  {
+    "start": 894.3633644859814,
+    "end": 898.32,
+    "text": "論文ではこの概念を「ドリフト」と呼び、美しく表現している。",
+    "sourceText": "The paper calls this concept [music] drift, and they put it beautifully.",
+    "sourceIndexes": [
+      212
+    ]
+  },
+  {
+    "start": 898.32,
+    "end": 900,
+    "text": "視覚的・言語的パターンは、ほとんど発展しない。",
+    "sourceText": "Visual and linguistic patterns barely develop in a",
+    "sourceIndexes": [
+      213
+    ]
+  }
+]

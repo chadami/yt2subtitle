@@ -1,0 +1,81 @@
+{
+  "topic": "Hokkaido travel vlog (Hakodate + Sapporo)",
+  "summary": "A travel vlog following Sam and Victor as they explore Hokkaido, starting with a day in Tokyo, then flying to Sapporo and Hakodate, visiting attractions, restaurants, and hotels.",
+  "tone": "casual, enthusiastic, conversational",
+  "audience": "Travel enthusiasts, fans of Sam and Victor, people interested in Japan travel",
+  "glossary": [
+    {
+      "source": "JAL SKY SUITE III",
+      "target": "JAL SKY SUITE III",
+      "note": "Product name, keep as is"
+    },
+    {
+      "source": "Shaolin Soccer",
+      "target": "少林サッカー",
+      "note": "Movie title, use Japanese title"
+    },
+    {
+      "source": "Tokyu Stay Ginza",
+      "target": "東急ステイ銀座",
+      "note": "Hotel name, use Japanese name"
+    },
+    {
+      "source": "Potato Head",
+      "target": "ポテトヘッド",
+      "note": "Bar name, use katakana"
+    },
+    {
+      "source": "Nouilles",
+      "target": "ヌイユ",
+      "note": "Ramen shop name, use katakana"
+    },
+    {
+      "source": "Tabelog",
+      "target": "食べログ",
+      "note": "Restaurant review site, use Japanese name"
+    },
+    {
+      "source": "soup curry",
+      "target": "スープカレー",
+      "note": "Hokkaido specialty, use common term"
+    },
+    {
+      "source": "soft cream",
+      "target": "ソフトクリーム",
+      "note": "Soft serve ice cream, use common term"
+    },
+    {
+      "source": "Hokkaido Air System (HAC)",
+      "target": "北海道エアシステム（HAC）",
+      "note": "Airline name, use official Japanese name"
+    },
+    {
+      "source": "Goryokaku Park",
+      "target": "五稜郭公園",
+      "note": "Park name, use Japanese name"
+    }
+  ],
+  "properNouns": [
+    "Sam",
+    "Victor",
+    "Japan Airlines",
+    "Haneda Airport",
+    "Sapporo",
+    "Hakodate",
+    "Suwa Shrine",
+    "Lucky Pierrot",
+    "Rokkatei",
+    "Goryokaku Park",
+    "Mt Hakodate",
+    "Kanemori Red Brick Warehouse"
+  ],
+  "styleGuide": [
+    "Use casual, friendly tone with だ/である体 or ます体 depending on speaker's style; here use ます体 for politeness but keep conversational.",
+    "Keep English brand names and proper nouns in katakana or original as appropriate.",
+    "For food and shop names, use common Japanese terms or katakana.",
+    "Translate jokes and exclamations naturally, e.g., '😂' can be omitted or replaced with 笑 or ですね.",
+    "Use natural Japanese phrasing for time references like 'this time last year' → 去年の今頃.",
+    "For measurements, convert to metric (e.g., 38℃ → 38度).",
+    "Keep the sense of excitement and enthusiasm in the translation."
+  ]
+}

@@ -1,0 +1,1709 @@
+[
+  {
+    "start": 4.08,
+    "end": 7.800000000000001,
+    "text": "みんな、ニューヨークにいるよ。",
+    "sourceText": "Bitches, I'm in New York.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 8.515,
+    "end": 10.535,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 17.03,
+    "end": 19.05,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 40.12,
+    "end": 44.76,
+    "text": "わあ、ニューヨークにもアメリカにもしばらく来てなかった。",
+    "sourceText": "Wow, I haven't been in New York or US in a minute.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 44.76,
+    "end": 49.9075,
+    "text": "高校に通ってたとき、いつも降りてたターミナルだ。",
+    "sourceText": "This is the exact terminal I'd always get out on when I would go to high school.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 49.9075,
+    "end": 52.96,
+    "text": "第4ターミナル。久しぶりだね。",
+    "sourceText": "Terminal 4. It's been a long time.",
+    "sourceIndexes": [
+      5,
+      6
+    ]
+  },
+  {
+    "start": 64.4,
+    "end": 68.16000000000001,
+    "text": "よし、先に進もう。",
+    "sourceText": "All right, let's keep it moving.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 78.52,
+    "end": 82.56,
+    "text": "で、友達の家に泊まるんだ。ロングアイランドシティに。",
+    "sourceText": "So, I'm staying at my friend's in Long Island City.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 82.56,
+    "end": 87.22571428571429,
+    "text": "仕事でスペインに送る荷物があったんだけど、税関で止まっちゃって。",
+    "sourceText": "I was supposed to get a package to Spain for work, and it ended up just being stuck in customs.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 87.22571428571429,
+    "end": 88.7267142857143,
+    "text": "だから代わりにニューヨークに飛んで受け取ることにした。",
+    "sourceText": "So, instead I flew to New York to pick it up.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 88.7267142857143,
+    "end": 93.72,
+    "text": "今回の旅は本当に直前になったけど、ここに来れてすごく興奮してる。",
+    "sourceText": "So, this trip happened really last minute, but I'm so hyped to be here.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 93.72,
+    "end": 99.08,
+    "text": "今朝の朝食は、ベーグルエッグチーズを買おうかな。",
+    "sourceText": "I think for my breakfast this morning, I'm going to get uh bagel, egg, and cheese.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 99.08,
+    "end": 102.9127519379845,
+    "text": "ところで、このかわいいバッグの中身が気になるでしょ？",
+    "sourceText": "By the way, if you're wondering what's in this kawaii",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 102.9127519379845,
+    "end": 106.34046511627906,
+    "text": "Insta360とハローキティのコラボだよ。",
+    "sourceText": "bag, it is the Insta360 and Hello Kitty collaboration.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 106.34046511627906,
+    "end": 109.08,
+    "text": "見てこれ。すごくかわいい。",
+    "sourceText": "Look at this. So cute.",
+    "sourceIndexes": [
+      14,
+      15
+    ]
+  },
+  {
+    "start": 109.08,
+    "end": 111.28,
+    "text": "かわいすぎ。",
+    "sourceText": "Kawaii so.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 111.28,
+    "end": 113.45,
+    "text": "まだカバーも剥がしてないんだけど、見てよ。",
+    "sourceText": "I haven't actually even peeled the cover, but look at her.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 113.45,
+    "end": 117.08,
+    "text": "見て。見てよ。",
+    "sourceText": "Look at her.",
+    "sourceIndexes": [
+      18,
+      19
+    ]
+  },
+  {
+    "start": 117.24,
+    "end": 118.92,
+    "text": "これ見える？",
+    "sourceText": "Do you see this?",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 118.92,
+    "end": 122.08,
+    "text": "これでニューヨークでのブログを撮るんだ。",
+    "sourceText": "This is what I'm going to be vlogging with while I'm in New York.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 122.08,
+    "end": 123.88,
+    "text": "バッグの中身を見せよう。",
+    "sourceText": "Let me just show you what's in my bag.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 123.88,
+    "end": 127.56,
+    "text": "これはInsta360のフォンホルダー。",
+    "sourceText": "This one is the Insta360 phone holder.",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 127.56,
+    "end": 129.44914285714287,
+    "text": "ベビーピンクでかわいい。",
+    "sourceText": "It's also baby pink and cute.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 129.44914285714287,
+    "end": 132.12,
+    "text": "すぐにクロックスと合うよ。",
+    "sourceText": "It's going to match my Crocs in a second.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 132.12,
+    "end": 135.8729411764706,
+    "text": "それに、この2つのアクセサリーも付いてて、",
+    "sourceText": "And then it also comes with these two accessories and I like that the",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 135.8729411764706,
+    "end": 140.72,
+    "text": "背面に収納スペースがたくさんあるから、しまえるのがいいんだ。",
+    "sourceText": "back comes with all these compartments so that you can just put it in.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 140.72,
+    "end": 144.83733333333333,
+    "text": "これはもちろん、ハンズフリーのマグネットペンダント。",
+    "sourceText": "This one is their obviously hands-free magnetic pendant.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 144.83733333333333,
+    "end": 147.89505185185186,
+    "text": "シャツの下に付けると、Goの部分が浮いてる感じになるんだ。",
+    "sourceText": "You put it underneath your shirt and you can kind of have like",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 147.89505185185186,
+    "end": 150.12,
+    "text": "この部分ね、取り外しできるから。",
+    "sourceText": "the go part be floating, like this part, because it's detachable.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 150.12,
+    "end": 151.92,
+    "text": "こんな風に付けられるよ。",
+    "sourceText": "You can just put this on like this.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 151.92,
+    "end": 156.78545454545454,
+    "text": "超簡単。それからこれ、Goをここに置いて、",
+    "sourceText": "Super easy. And then this one, you can also just put the go here and",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 156.78545454545454,
+    "end": 162,
+    "text": "キャップとかいろんな場所にクリップできるんだ。",
+    "sourceText": "then you can clip it on to different places, like your cap or wherever.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 162,
+    "end": 165.6,
+    "text": "調整もできるから、こんな風にカメラを立てかけられる。",
+    "sourceText": "It's adjustable as well, so you can kind of like prop your camera like this.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 165.6,
+    "end": 168.1856,
+    "text": "めっちゃかわいいんだよね。",
+    "sourceText": "And it's just so like kawaii so.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 168.1856,
+    "end": 169.64,
+    "text": "今日のコーデはこれ。",
+    "sourceText": "This is my outfit.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 169.64,
+    "end": 171.87550877192982,
+    "text": "もちろんクロックス履いてて、",
+    "sourceText": "Obviously, I have my Crocs on and it matches",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 171.87550877192982,
+    "end": 175.3684210526316,
+    "text": "ハローキティのInsta360 Go Ultraとお揃いなの。",
+    "sourceText": "with the Hello Kitty Insta360 Go Ultra.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 175.3684210526316,
+    "end": 177.32631578947368,
+    "text": "ちょっと怖い。",
+    "sourceText": "I'm slightly afraid.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 177.32631578947368,
+    "end": 179.48000000000002,
+    "text": "今日は可愛すぎる気がする。",
+    "sourceText": "I feel too cute today.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 180.2,
+    "end": 183.428679245283,
+    "text": "今朝はローリングベーグルズに行こうと思う。",
+    "sourceText": "So I think this morning I'm going to go to Rolling Bagels because I'm in a",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 183.428679245283,
+    "end": 187.72,
+    "text": "ベーグルエッグチーズがどうしても食べたいんだ。うわっ、あれ見て。",
+    "sourceText": "desperate need of a bagel egg and cheese. Like, oh my god, look at that.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 187.72,
+    "end": 190.76,
+    "text": "めっちゃ美味しそう。",
+    "sourceText": "That looks so insanely good.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 190.76,
+    "end": 195.76,
+    "text": "徒歩7分くらいなんだけど、明らかに逆方向に歩いてる。50/50の確率だ。",
+    "sourceText": "Okay, it's like a 7-minute walk and obviously I'm walking the wrong way. 50/50 chance.",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 195.76,
+    "end": 198.98060526315788,
+    "text": "いつも残りの50%の方になっちゃうんだよね。",
+    "sourceText": "It's always going to be the other 50 chance for me.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 198.98060526315788,
+    "end": 205.32,
+    "text": "実はロングアイランドシティは初めてで、昨日友達に「アジア人がめっちゃ多い！」って言ってたんだ。",
+    "sourceText": "So this is actually my first time in Long Island City and I was literally telling my friends yesterday like how many freaking Asians there are.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 205.32,
+    "end": 210.9850166112957,
+    "text": "85%くらいアジア人で、みんな金融、テック、法律関係っぽい。",
+    "sourceText": "It's like 85% predominantly Asian and they're all like in bad",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 210.9850166112957,
+    "end": 214.11985714285714,
+    "text": "ミッドタウンに近いからね。",
+    "sourceText": "finance, tech, or law area-ish because it's so close to midtown.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 214.11985714285714,
+    "end": 217.239,
+    "text": "あ、ここ昨夜行ったお店だ。",
+    "sourceText": "Oh, this is the place we went to eat last night.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 217.239,
+    "end": 219.0717272727273,
+    "text": "マツノリって言うんだ。",
+    "sourceText": "It was called Matsunori.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 219.0717272727273,
+    "end": 220.52263636363637,
+    "text": "すごく美味しかった。",
+    "sourceText": "It was really good.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 220.52263636363637,
+    "end": 222.68968439108062,
+    "text": "新鮮な手巻き寿司だったよ。でも昨日はあんまり撮らなかった。",
+    "sourceText": "Like fresh hand rolls, but I didn't film much",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 222.68968439108062,
+    "end": 224.69,
+    "text": "だって、ニューヨークに着いたばかりだったからね。",
+    "sourceText": "yesterday because babe, I just arrived in New York.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 224.69,
+    "end": 227.1557894736842,
+    "text": "わかるでしょ？すごく綺麗。",
+    "sourceText": "You know what I mean? It's so beautiful.",
+    "sourceIndexes": [
+      48,
+      49
+    ]
+  },
+  {
+    "start": 227.1557894736842,
+    "end": 229.92,
+    "text": "子供と犬がたくさんいる。",
+    "sourceText": "There's so many children and dogs here.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 229.92,
+    "end": 234.64969696969695,
+    "text": "ニューヨークで恋しかったもう一つのことは、フードトラックの多さ。",
+    "sourceText": "Another thing I've really missed about New York is just how many food trucks there are and it's such",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 234.64969696969695,
+    "end": 239.6,
+    "text": "座りたくない時や一人旅の時に、さっと買って食べられるのが便利なんだ。",
+    "sourceText": "an easy way to grab and go especially like if you don't want to sit down and you're traveling alone.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 239.6,
+    "end": 243.41870967741934,
+    "text": "朝にさっと何か買って、一日を始められるのが大好き。",
+    "sourceText": "You can just grab something quick in the morning so that you can get on with your day and I love that.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 243.41870967741934,
+    "end": 246.81187986651835,
+    "text": "エブリシングベーグルにソーセージ、",
+    "sourceText": "Got my everything bagel with",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 246.81187986651835,
+    "end": 249.56,
+    "text": "エッグ、チーズをゲット。",
+    "sourceText": "the sausage, egg and cheese.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 256.762,
+    "end": 258.782,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 268.68,
+    "end": 273.33290322580643,
+    "text": "高校の時、毎日カフェテリアに食べ物はあったけど、",
+    "sourceText": "Everyday in school when I was in high school like even though there was food always at the cafeteria,",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 273.33290322580643,
+    "end": 280,
+    "text": "お金を払えばベーグルエッグチーズにソーセージが買えて、いつもそれを食べてた。",
+    "sourceText": "if you paid like you could get like bagel egg and cheese with sausage and I would always get that.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 280,
+    "end": 282.2075,
+    "text": "ソーセージはいつも1ドル追加だったけど、ソーセージは外せない。",
+    "sourceText": "Sausage was always like a dollar extra but you got",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 282.2075,
+    "end": 283.96,
+    "text": "8ドルのソーセージエッグチーズか。",
+    "sourceText": "to get the sausage. $8 sausage egg and cheese huh?",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 283.96,
+    "end": 288.08,
+    "text": "最後にソーセージエッグチーズを注文したのは10年前くらいかな。",
+    "sourceText": "I mean last time I ordered a sausage egg and cheese it was like 10 years ago.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 288.08,
+    "end": 290.32,
+    "text": "インフレを考えれば、悪くないかな。",
+    "sourceText": "So considering inflation it's like not bad.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 290.32,
+    "end": 294.4,
+    "text": "この一口で、ニューヨークにいるって実感するんだ。",
+    "sourceText": "That's always the bite that reminds me I'm in New York.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 294.4,
+    "end": 297.88,
+    "text": "今すごく幸せ。",
+    "sourceText": "I'm so happy right now.",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 298.683,
+    "end": 300.703,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 304.578,
+    "end": 306.59799999999996,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 311.783,
+    "end": 313.803,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 329,
+    "end": 334.64,
+    "text": "なんとかシティバイク付属のゴムひもでスマホを固定できた。",
+    "sourceText": "I've somehow managed to affix the phone with the elastic string that the City Bike comes in.",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 334.64,
+    "end": 337.2051282051282,
+    "text": "シティバイクに乗るのは初めて。",
+    "sourceText": "This is my first time riding a City Bike.",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 337.2051282051282,
+    "end": 339.52,
+    "text": "正直、ちょっと怖い。",
+    "sourceText": "Not going to lie, it's kind of scary.",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 352.36,
+    "end": 356.8,
+    "text": "ああ、ニューヨークで自転車に乗るのは最高だね。",
+    "sourceText": "Oh, it's so nice to bike in New York.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 359.96,
+    "end": 364.24,
+    "text": "カラバサスのリッチな女の子にできるなら、私にもできる。",
+    "sourceText": "If a rich girl from Calabasas can do it, so can I.",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 364.24,
+    "end": 366.9345054945055,
+    "text": "汗かいてるし、雨も降り出したけど、",
+    "sourceText": "I am sweaty and it just started raining, so",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 366.9345054945055,
+    "end": 370.3323076923077,
+    "text": "ウィンドブレーカー持ってきたから完璧なタイミング。",
+    "sourceText": "perfect timing because I brought my windbreaker.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 370.3323076923077,
+    "end": 375.68,
+    "text": "で、このルートを自転車で走ったんだけど、良かったよ。",
+    "sourceText": "So, I bike this route right here, as you can see, and it was nice.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 375.68,
+    "end": 377.8784,
+    "text": "正直、最初はちょっと怖かったし、",
+    "sourceText": "Honestly, a little bit scary in the beginning and the bike is pretty",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 377.8784,
+    "end": 381.2,
+    "text": "自転車が重くてウィリアムズ橋を上るのは大変だったけど、悪くなかった。",
+    "sourceText": "heavy, so going up Williams Bridge was a little tough, but not bad.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 381.2,
+    "end": 385.08,
+    "text": "自転車だとニューヨークのいろんなところが見える。",
+    "sourceText": "You see so much of New York by biking.",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 390.384,
+    "end": 392.404,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 396.4,
+    "end": 399.44,
+    "text": "やあ、元気？",
+    "sourceText": "Hi, how are you?",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 400.72,
+    "end": 405.5028571428572,
+    "text": "わあ、ボデガに入るのは久しぶりだ。",
+    "sourceText": "Wow, it's been a long time since I came into a bodega.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 405.5028571428572,
+    "end": 408.16,
+    "text": "冷たい飲み物を買おう。",
+    "sourceText": "I'm going to get a cold drink.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 413.52,
+    "end": 416.64,
+    "text": "チョコチップクッキーを買った。",
+    "sourceText": "Got a chocolate chip cookie.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 420.48,
+    "end": 423.789,
+    "text": "雨でもクッキーは諦めない。",
+    "sourceText": "No rain will deter me from a cookie.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 423.789,
+    "end": 425.80899999999997,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 430.339,
+    "end": 432.359,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 435.579,
+    "end": 437.599,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 446.06,
+    "end": 448.08,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 451.3,
+    "end": 453.32,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 461.125,
+    "end": 463.145,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 467.12,
+    "end": 470.18666666666667,
+    "text": "ただ言ってるだけ、もう来るよ。",
+    "sourceText": "I'm just saying like um It's coming.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 470.18666666666667,
+    "end": 471.72,
+    "text": "こんなふうに置いて。",
+    "sourceText": "You put like that.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 471.72,
+    "end": 473.32,
+    "text": "オッケー、それをここに置いて。",
+    "sourceText": "Okay, you put that one here.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 473.32,
+    "end": 475.84,
+    "text": "オッケー。最初にそれをここに置くって言ったよね。オッケー。",
+    "sourceText": "Okay. You said you first put that one here. Okay.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 475.84,
+    "end": 478.88,
+    "text": "オッケー。それから、ここで閉じる。",
+    "sourceText": "Okay. And then You make it close here.",
+    "sourceIndexes": [
+      89,
+      90
+    ]
+  },
+  {
+    "start": 478.88,
+    "end": 482.15999999999997,
+    "text": "オッケー。そして、2つにする。",
+    "sourceText": "Okay. And make it two.",
+    "sourceIndexes": [
+      91,
+      92
+    ]
+  },
+  {
+    "start": 483.68,
+    "end": 485.6575,
+    "text": "閉じないと。",
+    "sourceText": "You have to close it.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 485.6575,
+    "end": 487.35249999999996,
+    "text": "閉じて。閉じて。",
+    "sourceText": "Close it.",
+    "sourceIndexes": [
+      94,
+      95
+    ]
+  },
+  {
+    "start": 487.35249999999996,
+    "end": 488.72,
+    "text": "閉じて。オッケー。",
+    "sourceText": "Close it. Okay.",
+    "sourceIndexes": [
+      96,
+      97
+    ]
+  },
+  {
+    "start": 488.72,
+    "end": 490.2476712328767,
+    "text": "前はこうやってたって言ってたよね。",
+    "sourceText": "You said you used to do like that.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 490.2476712328767,
+    "end": 492,
+    "text": "ここで開けて。音量を調節できるよ。",
+    "sourceText": "Open it here. You can adjust the volume.",
+    "sourceIndexes": [
+      99,
+      100
+    ]
+  },
+  {
+    "start": 492,
+    "end": 494.6,
+    "text": "パーフェクト。オッケー。お大事に。",
+    "sourceText": "Perfecto. Okay. Bless you.",
+    "sourceIndexes": [
+      101,
+      102,
+      103
+    ]
+  },
+  {
+    "start": 494.6,
+    "end": 497.6425806451613,
+    "text": "安全のためにこれ買ったんだ。",
+    "sourceText": "I acquired this for my safety and because",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 497.6425806451613,
+    "end": 501.08,
+    "text": "さっきスマホ落として割れたからね。",
+    "sourceText": "I dropped my phone earlier and it cracked.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 501.08,
+    "end": 504.12,
+    "text": "だから、生きてりゃ学ぶんだよ。",
+    "sourceText": "So, you live and learn.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 506.975,
+    "end": 508.995,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 513.525,
+    "end": 515.545,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 518.4,
+    "end": 524.005,
+    "text": "スマホホルダー、シティバイク、この組み合わせは止められない。",
+    "sourceText": "Phone holder, city bike, the game is a unstoppable.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 524.005,
+    "end": 526.026,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 527.12,
+    "end": 530.72,
+    "text": "すごく気持ちいい。",
+    "sourceText": "It's so nice.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 531.211,
+    "end": 533.231,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 534.44,
+    "end": 536.5719480519481,
+    "text": "雨でずぶ濡れになった。",
+    "sourceText": "I got completely soaked in the rain.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 536.5719480519481,
+    "end": 539,
+    "text": "うわっ。めっちゃ降り出したんだ。",
+    "sourceText": "Oh my gosh. It started raining like crazy.",
+    "sourceIndexes": [
+      113,
+      114
+    ]
+  },
+  {
+    "start": 539,
+    "end": 542.2,
+    "text": "それでもすごく良かったけどね。",
+    "sourceText": "It was still super nice though.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 546.931,
+    "end": 548.951,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 554.791,
+    "end": 556.811,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 559.376,
+    "end": 561.396,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 563.961,
+    "end": 567.2909999999999,
+    "text": "[音楽][ベル]。",
+    "sourceText": "[music] [bell]",
+    "sourceIndexes": [
+      119,
+      120
+    ]
+  },
+  {
+    "start": 573.08,
+    "end": 576.52,
+    "text": "もう疲れた。足がもう疲れた。",
+    "sourceText": "I'm so done. My legs are so I'm tired.",
+    "sourceIndexes": [
+      121,
+      122
+    ]
+  },
+  {
+    "start": 576.52,
+    "end": 582.4,
+    "text": "LICからチャイナタウン、それからチャイナタウンからGoogle 9まで。",
+    "sourceText": "I like from LIC to Chinatown and from Chinatown to Google 9.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 582.4,
+    "end": 585.3199999999999,
+    "text": "シティバイクに乗って。",
+    "sourceText": "on a city bike.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 590.816,
+    "end": 593.491,
+    "text": "[ベル] [音楽]。",
+    "sourceText": "[bell] [music]",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 596.056,
+    "end": 598.076,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 604.571,
+    "end": 606.591,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 622.4,
+    "end": 626.3428571428572,
+    "text": "ハーレムに来てて、ソウルフードが無性に食べたくて、",
+    "sourceText": "We're in Harlem and I really was craving",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 626.3428571428572,
+    "end": 628.64,
+    "text": "シルビアズにいるよ。",
+    "sourceText": "some soul food so we're at Sylvia's.",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 628.64,
+    "end": 631.4399999999999,
+    "text": "おお、すごい。",
+    "sourceText": "Oh daddy.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 632.082,
+    "end": 634.102,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 641.907,
+    "end": 647.24,
+    "text": "[音楽]ハローキティ。",
+    "sourceText": "[music] Hello Kitty.",
+    "sourceIndexes": [
+      131,
+      132
+    ]
+  },
+  {
+    "start": 648.28,
+    "end": 652.78,
+    "text": "実はこのバッグ見せようと思って。",
+    "sourceText": "Actually I'll show you this bag that I'm carrying.",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 652.78,
+    "end": 657.7905128205128,
+    "text": "全部内蔵されてて、ハローキティとのコラボで、",
+    "sourceText": "It's like all like built in so they did like a",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 657.7905128205128,
+    "end": 661.0689743589744,
+    "text": "アバターみたいな感じで、",
+    "sourceText": "collaboration with Hello Kitty and then it's like the",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 661.0689743589744,
+    "end": 665.3866666666667,
+    "text": "もう全部入ってて、すごく興奮してる。",
+    "sourceText": "avatar I guess and then it has all the I'm so excited.",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 665.3866666666667,
+    "end": 669.5833452380953,
+    "text": "チキンレバー、フライドチキンにマカロニチーズのサイド、",
+    "sourceText": "We decided to go for chicken livers, fried chicken with a side",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 669.5833452380953,
+    "end": 674.002,
+    "text": "コラードグリーン、それとコーンブレッドを追加で一つ頼んだ。",
+    "sourceText": "of mac and cheese, uh collard greens, one extra cornbread.",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 674.002,
+    "end": 676.0219999999999,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 679.242,
+    "end": 681.262,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 692.342,
+    "end": 694.362,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      138
+    ]
+  },
+  {
+    "start": 697.582,
+    "end": 699.602,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 702.823,
+    "end": 704.843,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 710.683,
+    "end": 712.703,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 715.268,
+    "end": 717.288,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 721.818,
+    "end": 723.838,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 726.403,
+    "end": 728.423,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 737.64,
+    "end": 742.48,
+    "text": "今日のコーディネートはこれで、出かける準備はできた。",
+    "sourceText": "This is my outfit for the day and I'm ready to head out.",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 771.04,
+    "end": 775.135,
+    "text": "これでマンハッタンまで一緒に来るんだよ。",
+    "sourceText": "You're coming to Manhattan with me on this thing.",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 775.135,
+    "end": 780.04,
+    "text": "乗って。自転車を停めたんだけど、慣れてるシステムとは違うんだ。",
+    "sourceText": "Hop on. I parked my I parked my bike, but this isn't like a system that I'm used to.",
+    "sourceIndexes": [
+      147,
+      148
+    ]
+  },
+  {
+    "start": 780.04,
+    "end": 781.2594285714285,
+    "text": "どうやって…あ、くそ。",
+    "sourceText": "How did this Oh, fuck.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 781.2594285714285,
+    "end": 782.5342857142857,
+    "text": "スマホ落としそうになった。",
+    "sourceText": "I almost lost my phone.",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 782.5342857142857,
+    "end": 783.92,
+    "text": "やばかった。",
+    "sourceText": "That would have been bad.",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 783.92,
+    "end": 788.52,
+    "text": "ここではすごくマルチタスクしてる気がする。",
+    "sourceText": "I feel like I'm multitasking so much here.",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 797.68,
+    "end": 799.72,
+    "text": "さやいんげんって野菜に入る？",
+    "sourceText": "Do you consider string bean as a vegetable?",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 799.72,
+    "end": 801.32,
+    "text": "うん、さやいんげん大好き。",
+    "sourceText": "Yes, I love string beans.",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 801.32,
+    "end": 802.64,
+    "text": "そう、さやいんげん大好き。",
+    "sourceText": "Okay. I love string beans.",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 802.64,
+    "end": 809.4784210526316,
+    "text": "しかもチョコレートなんて予想しないような場所にあるんだ。",
+    "sourceText": "It's also located in such a area that I wouldn't expect like chocolate.",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 809.4784210526316,
+    "end": 810.6784210526316,
+    "text": "うん。",
+    "sourceText": "Yeah.",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 818.104,
+    "end": 820.124,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 823.32,
+    "end": 827.5664,
+    "text": "人生で一度もタイムズスクエアを自転車で通ったことがなかったけど、",
+    "sourceText": "Never in my life have I biked through Times Square,",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 827.5664,
+    "end": 830.48,
+    "text": "ニューヨークの見方が完全に変わった。",
+    "sourceText": "but it completely changes my view of New York.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 830.48,
+    "end": 832.5587027027027,
+    "text": "どこでも自転車で行ける。",
+    "sourceText": "Everywhere is bikeable.",
+    "sourceIndexes": [
+      160
+    ]
+  },
+  {
+    "start": 832.5587027027027,
+    "end": 833.824,
+    "text": "誰も安全じゃない。",
+    "sourceText": "Nobody's safe.",
+    "sourceIndexes": [
+      161
+    ]
+  },
+  {
+    "start": 833.824,
+    "end": 835.8439999999999,
+    "text": "[音楽]。",
+    "sourceText": "[music]",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 838.409,
+    "end": 843.8121518987342,
+    "text": "[音楽]ずっと来て試してみたかったんだ。",
+    "sourceText": "[music] I've wanted to come and try this for so long.",
+    "sourceIndexes": [
+      163,
+      164
+    ]
+  },
+  {
+    "start": 843.8121518987342,
+    "end": 846.36,
+    "text": "ブラウンバターコーンケーキとアールグレイモーニングバンをください。",
+    "sourceText": "The brown butter corn cake and the Earl Grey morning bun, please.",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 846.36,
+    "end": 850.74,
+    "text": "今ラジオベーカリーにいるんだけど、ヴェラに会ったよ。",
+    "sourceText": "Okay, so I'm at Radio Bakery and I just met Vera.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 850.74,
+    "end": 853.8448000000001,
+    "text": "やあ。やあ。で、いろいろ買ったんだ。",
+    "sourceText": "Hi. And we got a bunch of stuff.",
+    "sourceIndexes": [
+      167,
+      168,
+      169
+    ]
+  },
+  {
+    "start": 853.8448000000001,
+    "end": 859.88,
+    "text": "PB&Jクロワッサンとアールグレイモーニングバンを買ったんだね。",
+    "sourceText": "So you got the PB&amp;J croissant and then the Earl Grey morning bun.",
+    "sourceIndexes": [
+      170
+    ]
+  },
+  {
+    "start": 859.88,
+    "end": 862.3170093457944,
+    "text": "あ、アールグレイモーニングバン買ったんだ。",
+    "sourceText": "Oh, so you got the Earl Grey morning bun.",
+    "sourceIndexes": [
+      171
+    ]
+  },
+  {
+    "start": 862.3170093457944,
+    "end": 864.7702640186916,
+    "text": "あ、そうなんだ。私もアールグレイモーニングバン買ったんだけど、",
+    "sourceText": "Oh, okay. I got another Earl Grey morning bun, too,",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 864.7702640186916,
+    "end": 866.53625,
+    "text": "同じものだって知らなかった。",
+    "sourceText": "but another one I didn't know it was the same one.",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 866.53625,
+    "end": 868.28,
+    "text": "それでコーンブレッドも買った。",
+    "sourceText": "Um and then I got a cornbread.",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 868.28,
+    "end": 870.5785208333334,
+    "text": "バターコーンブレッドみたいなやつ。",
+    "sourceText": "It's like the butter cornbread.",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 870.5785208333334,
+    "end": 871.839,
+    "text": "コーンブレッド大好き。",
+    "sourceText": "I love cornbread.",
+    "sourceIndexes": [
+      176
+    ]
+  },
+  {
+    "start": 871.839,
+    "end": 873.04,
+    "text": "これがこんな感じ。",
+    "sourceText": "Okay, so this is what it looks like.",
+    "sourceIndexes": [
+      177
+    ]
+  },
+  {
+    "start": 873.04,
+    "end": 874.89,
+    "text": "これが私たちの盛り合わせ。",
+    "sourceText": "It's our spread.",
+    "sourceIndexes": [
+      178
+    ]
+  },
+  {
+    "start": 874.89,
+    "end": 879.5826262626263,
+    "text": "待って、これやばい。正直、ここのフォカッチャで知ったんだけど、もうお腹いっぱいでさ。",
+    "sourceText": "Wait, this is lit. Honestly, like I know this place because of their focaccia, but then I'm too full.",
+    "sourceIndexes": [
+      179,
+      180
+    ]
+  },
+  {
+    "start": 879.5826262626263,
+    "end": 881.24,
+    "text": "昼食食べたし。じゃあ、食べてみる？",
+    "sourceText": "Like I had lunch. Okay, should we try it?",
+    "sourceIndexes": [
+      181,
+      182
+    ]
+  },
+  {
+    "start": 881.24,
+    "end": 884.05,
+    "text": "うん、とりあえず食べてみよう。アールグレイモーニングバン。",
+    "sourceText": "Yeah, let's just try it. the Earl Grey morning bun.",
+    "sourceIndexes": [
+      183,
+      184
+    ]
+  },
+  {
+    "start": 884.05,
+    "end": 886.48,
+    "text": "すごくきれい。パイ生地みたいな感じ？",
+    "sourceText": "It's so pretty. So it's like a puff pastry, huh?",
+    "sourceIndexes": [
+      185,
+      186
+    ]
+  },
+  {
+    "start": 886.48,
+    "end": 888.44,
+    "text": "うん。",
+    "sourceText": "Mhm.",
+    "sourceIndexes": [
+      187
+    ]
+  },
+  {
+    "start": 888.44,
+    "end": 889.7607547169812,
+    "text": "大好き。",
+    "sourceText": "I love it.",
+    "sourceIndexes": [
+      188
+    ]
+  },
+  {
+    "start": 889.7607547169812,
+    "end": 894.9116981132076,
+    "text": "いい匂い…すごくいい匂い。",
+    "sourceText": "It smells like Oh, it smells that good.",
+    "sourceIndexes": [
+      189
+    ]
+  },
+  {
+    "start": 894.9116981132076,
+    "end": 899.36,
+    "text": "うん。閉まる前にここに行きたい。",
+    "sourceText": "Mhm. Want to hit here before it closes.",
+    "sourceIndexes": [
+      190,
+      191
+    ]
+  }
+]

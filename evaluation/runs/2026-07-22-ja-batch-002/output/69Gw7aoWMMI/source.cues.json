@@ -1,0 +1,1286 @@
+[
+  {
+    "start": 0,
+    "end": 4.64,
+    "text": "This is the most successful user interface in the world.",
+    "index": 0
+  },
+  {
+    "start": 4.64,
+    "end": 15.72,
+    "text": "Every single day we collectively watch not one or 10, but 616,572 years worth of content through this interface.",
+    "index": 1
+  },
+  {
+    "start": 15.72,
+    "end": 20.504415584415582,
+    "text": "And it's absolutely not by chance because this is one of the most hyper-optimized pieces of technology in the world.",
+    "index": 2
+  },
+  {
+    "start": 20.504415584415582,
+    "end": 27.092389380530975,
+    "text": "Every [music] button, every interaction, even the tiniest seemingly inconsequential decision is engineered to make you spend more time.",
+    "index": 3
+  },
+  {
+    "start": 27.092389380530975,
+    "end": 29.6,
+    "text": "Try to swipe through some Reels on your phone.",
+    "index": 4
+  },
+  {
+    "start": 29.6,
+    "end": 34.4251282051282,
+    "text": "You'll notice that even with just a tiny flick [music] of your finger, you move on to the next one.",
+    "index": 5
+  },
+  {
+    "start": 34.4251282051282,
+    "end": 44.37555555555555,
+    "text": "See, most apps are built using iOS or Android's own UI kit, so that they don't have to make complex physics calculations for speed and acceleration just to create a scrollable list.",
+    "index": 6
+  },
+  {
+    "start": 44.37555555555555,
+    "end": 46.08,
+    "text": "The OS just gives you one.",
+    "index": 7
+  },
+  {
+    "start": 46.08,
+    "end": 48.55626168224299,
+    "text": "But Instagram, for example, doesn't.",
+    "index": 8
+  },
+  {
+    "start": 48.55626168224299,
+    "end": 61.76,
+    "text": "They built their own UI kit simulating velocity and acceleration in the interface and how it reacts to your touch, but also so that in the Reels feed, you need to wave less force to move on to the next video, making it easier to scroll when you're in bed at",
+    "index": 9
+  },
+  {
+    "start": 61.76,
+    "end": 62.344210526315784,
+    "text": "3:00 a.m.",
+    "index": 10
+  },
+  {
+    "start": 62.344210526315784,
+    "end": 69.16,
+    "text": "I'm Ammar and on this series we go behind the scenes of the insane design, engineering, and psychology of the tech products you use every day.",
+    "index": 11
+  },
+  {
+    "start": 69.16,
+    "end": 75.24,
+    "text": "There are three layers that make this all work and only the first one is what you can actually see.",
+    "index": 12
+  },
+  {
+    "start": 75.24,
+    "end": 76.84,
+    "text": "But to understand that, let's start from something simple.",
+    "index": 13
+  },
+  {
+    "start": 76.84,
+    "end": 83.78379746835444,
+    "text": "Remember how short-form video feeds don't use iOS or Android's physics engine, but build their own to make it more responsive to swipes?",
+    "index": 14
+  },
+  {
+    "start": 83.78379746835444,
+    "end": 85.9076923076923,
+    "text": "Well, now try to swipe around the home screen on your phone.",
+    "index": 15
+  },
+  {
+    "start": 85.9076923076923,
+    "end": 88.48,
+    "text": "The animation is smooth, natural.",
+    "index": 16
+  },
+  {
+    "start": 88.48,
+    "end": 92.49964912280701,
+    "text": "It gradually comes to a halt when you reach the end of the page.",
+    "index": 17
+  },
+  {
+    "start": 92.49964912280701,
+    "end": 104.65409090909091,
+    "text": "Apple and Google designers spent hundreds of hours tweaking the animation curves to make this animation feel right because the goal to them [music] is to make your phone feel like something you can control with your fingers, emulating real-world physics.",
+    "index": 18
+  },
+  {
+    "start": 104.65409090909091,
+    "end": 110.08,
+    "text": "But now try to swipe through videos on TikTok or Shorts or Instagram.",
+    "index": 19
+  },
+  {
+    "start": 110.08,
+    "end": 110.696,
+    "text": "The animations are much, much faster.",
+    "index": 20
+  },
+  {
+    "start": 110.88,
+    "end": 119.24,
+    "text": "They built their own system in order to optimize it not for making it feel smooth, but just for sheer speed to make the next video come at you faster.",
+    "index": 21
+  },
+  {
+    "start": 119.24,
+    "end": 122.6,
+    "text": "And this is just scratching the surface of what's going on in this video [music]",
+    "index": 22
+  },
+  {
+    "start": 122.6,
+    "end": 122.90903409090909,
+    "text": "feed.",
+    "index": 23
+  },
+  {
+    "start": 122.90903409090909,
+    "end": 128.039,
+    "text": "The video itself is full screen, and the interface doesn't have containers or bars.",
+    "index": 24
+  },
+  {
+    "start": 128.039,
+    "end": 131.76,
+    "text": "It's above the video with a slight shadow to create just enough contrast not to blend with it.",
+    "index": 25
+  },
+  {
+    "start": 131.76,
+    "end": 138.4,
+    "text": "In both Instagram, TikTok, and YouTube Shorts, the main action buttons might be slightly different, but they are always positioned right here, [music]",
+    "index": 26
+  },
+  {
+    "start": 138.4,
+    "end": 141.59013698630136,
+    "text": "so that they are in the thumb reach zone.",
+    "index": 27
+  },
+  {
+    "start": 141.59013698630136,
+    "end": 145.13555555555556,
+    "text": "These are the buttons related to engagement, liking, commenting, and sharing.",
+    "index": 28
+  },
+  {
+    "start": 145.13555555555556,
+    "end": 146.8,
+    "text": "They want you to press them.",
+    "index": 29
+  },
+  {
+    "start": 146.8,
+    "end": 157.6,
+    "text": "When you move from one video to another, instead of just the video moving underneath, the buttons move with the video and become slightly lower opacity as you scroll, because they need to convey the idea that the likes and",
+    "index": 30
+  },
+  {
+    "start": 157.6,
+    "end": 159.52,
+    "text": "comments are about that specific [music]",
+    "index": 31
+  },
+  {
+    "start": 159.52,
+    "end": 161.69,
+    "text": "video, not part of the overall interface.",
+    "index": 32
+  },
+  {
+    "start": 161.69,
+    "end": 162.44,
+    "text": "And take a look up here.",
+    "index": 33
+  },
+  {
+    "start": 162.44,
+    "end": 166.959,
+    "text": "These are the options that the interface gives you to give you the feeling of control.",
+    "index": 34
+  },
+  {
+    "start": 166.959,
+    "end": 170.52914864864866,
+    "text": "Like on Instagram, did you know you can tweak your algorithm or change the type of your feed you're in?",
+    "index": 35
+  },
+  {
+    "start": 170.68,
+    "end": 172.32954128440366,
+    "text": "Well, that's kind of the point.",
+    "index": 36
+  },
+  {
+    "start": 172.32954128440366,
+    "end": 176.48,
+    "text": "These are purposely placed up here, so that they are more cumbersome to reach.",
+    "index": 37
+  },
+  {
+    "start": 176.48,
+    "end": 182.45652173913044,
+    "text": "Seriously, you probably have spent hours scrolling through content, but how many times have you actually interacted with that stuff on top?",
+    "index": 38
+  },
+  {
+    "start": 182.45652173913044,
+    "end": 183.86521739130436,
+    "text": "Well, that's on purpose.",
+    "index": 39
+  },
+  {
+    "start": 183.86521739130436,
+    "end": 186.8,
+    "text": "There's no grid of thumbnails, no menu of options.",
+    "index": 40
+  },
+  {
+    "start": 186.8,
+    "end": 190.04,
+    "text": "There's only the next video that the algorithm chose for you.",
+    "index": 41
+  },
+  {
+    "start": 190.04,
+    "end": 193.47849541284404,
+    "text": "In psychology, there's something called unit [music] bias.",
+    "index": 42
+  },
+  {
+    "start": 193.47849541284404,
+    "end": 194.85575757575756,
+    "text": "One unit of something always feels like the optimal amount.",
+    "index": 43
+  },
+  {
+    "start": 194.85575757575756,
+    "end": 198.36,
+    "text": "One video at a time and just [music] one thing to focus on.",
+    "index": 44
+  },
+  {
+    "start": 198.36,
+    "end": 202.78406722689076,
+    "text": "When a video ends, it loops without any signal that the video has ended.",
+    "index": 45
+  },
+  {
+    "start": 202.78406722689076,
+    "end": 205.68,
+    "text": "For videos shorter than 15 seconds, there's not even a play bar [music]",
+    "index": 46
+  },
+  {
+    "start": 205.68,
+    "end": 207.15272727272728,
+    "text": "letting you seek through.",
+    "index": 47
+  },
+  {
+    "start": 207.15272727272728,
+    "end": 214.01693693693693,
+    "text": "And for ones that do have it, it's quite small and not visible, because that would be another point of friction, another decision to make.",
+    "index": 48
+  },
+  {
+    "start": 214.01693693693693,
+    "end": 221.4,
+    "text": "If you decide to skim through the video, it means that it's not engaging enough, and the main action you should take is just swipe to the next one.",
+    "index": 49
+  },
+  {
+    "start": 221.4,
+    "end": 226.215,
+    "text": "Casinos famously remove all clocks and windows and are purposely designed as a maze to make you lose track of time.",
+    "index": 50
+  },
+  {
+    "start": 226.215,
+    "end": 230.0217857142857,
+    "text": "This is the psychological principle called chronoception.",
+    "index": 51
+  },
+  {
+    "start": 230.0217857142857,
+    "end": 237,
+    "text": "Our perception of time is subjective, and short-form interface exploits this by removing every signal that tells you a piece of content is beginning or ending, everything [music]",
+    "index": 52
+  },
+  {
+    "start": 237,
+    "end": 238.18421052631578,
+    "text": "blurs into one.",
+    "index": 53
+  },
+  {
+    "start": 238.18421052631578,
+    "end": 241.95927272727272,
+    "text": "Just one session where you lose track of how long you've been scrolling for.",
+    "index": 54
+  },
+  {
+    "start": 241.95927272727272,
+    "end": 245.12,
+    "text": "Literally every detail is built for this.",
+    "index": 55
+  },
+  {
+    "start": 245.12,
+    "end": 248.92,
+    "text": "For example, on YouTube when the video's loading, you get the dreaded spinning wheel.",
+    "index": 56
+  },
+  {
+    "start": 248.92,
+    "end": 251.66098360655738,
+    "text": "On short form feeds, have you ever seen one?",
+    "index": 57
+  },
+  {
+    "start": 251.66098360655738,
+    "end": 252.72,
+    "text": "Well, on purpose.",
+    "index": 58
+  },
+  {
+    "start": 252.72,
+    "end": 258.4,
+    "text": "Instead of showing you a spinning wheel, making you get out of the flow of watching, they preload the first frame of the next video. [music]",
+    "index": 59
+  },
+  {
+    "start": 258.4,
+    "end": 266.29653846153843,
+    "text": "And that's what you see while things load, so that you get a preview of what's going to happen without making you realize that you're actually waiting for something to load.",
+    "index": 60
+  },
+  {
+    "start": 266.29653846153843,
+    "end": 268.52,
+    "text": "Once the video is loaded, it just starts.",
+    "index": 61
+  },
+  {
+    "start": 268.52,
+    "end": 270.6250909090909,
+    "text": "But this isn't just about what's inside the feed.",
+    "index": 62
+  },
+  {
+    "start": 270.6250909090909,
+    "end": 271.828,
+    "text": "It's also how you get there.",
+    "index": 63
+  },
+  {
+    "start": 272,
+    "end": 274.24,
+    "text": "Try searching for a TikTok on Google.",
+    "index": 64
+  },
+  {
+    "start": 274.24,
+    "end": 275.60137931034484,
+    "text": "The videos are there.",
+    "index": 65
+  },
+  {
+    "start": 275.60137931034484,
+    "end": 278.9724137931035,
+    "text": "They are indexed and they show up in search results.",
+    "index": 66
+  },
+  {
+    "start": 278.9724137931035,
+    "end": 281.76,
+    "text": "But when you click, you can't [music] watch The video is behind a sign-in wall.",
+    "index": 67
+  },
+  {
+    "start": 281.76,
+    "end": 286.25944954128437,
+    "text": "And even after that, they push you really hard to download the app.",
+    "index": 68
+  },
+  {
+    "start": 286.25944954128437,
+    "end": 287.49454545454546,
+    "text": "This doesn't happen with a regular YouTube video.",
+    "index": 69
+  },
+  {
+    "start": 287.49454545454546,
+    "end": 292.05454545454546,
+    "text": "They still push you to sign in, but you can still watch the video.",
+    "index": 70
+  },
+  {
+    "start": 292.05454545454546,
+    "end": 295.82761061946906,
+    "text": "And that's because for short form, the individual video is not what's really valuable.",
+    "index": 71
+  },
+  {
+    "start": 295.82761061946906,
+    "end": 304.4,
+    "text": "Not only they don't get any advertising on a single video, but the real value is [music] not in the single piece of content, but in you getting addicted to the algorithm.",
+    "index": 72
+  },
+  {
+    "start": 304.4,
+    "end": 307.20919540229886,
+    "text": "And for that, they need [music] you to sign in.",
+    "index": 73
+  },
+  {
+    "start": 307.20919540229886,
+    "end": 312.8397192982456,
+    "text": "But this interface, the short form video feed, ended up becoming successful because it became something bigger than itself.",
+    "index": 74
+  },
+  {
+    "start": 312.8397192982456,
+    "end": 320.32,
+    "text": "For example, this is a concept I developed in an older video where swiping diagonally lets you make a choice on going deeper into a topic or explore different type of videos.",
+    "index": 75
+  },
+  {
+    "start": 320.32,
+    "end": 323.56734693877553,
+    "text": "There's a reason they haven't implemented this yet.",
+    "index": 76
+  },
+  {
+    "start": 323.56734693877553,
+    "end": 330.04,
+    "text": "[music] Because contrary to all the other video interfaces like YouTube or Netflix, the short form UI is built for extreme [music] simplicity.",
+    "index": 77
+  },
+  {
+    "start": 330.04,
+    "end": 334.8559247311828,
+    "text": "There are no carousels, no grids to choose from, nothing to understand, just one simple [music] gesture.",
+    "index": 78
+  },
+  {
+    "start": 334.8559247311828,
+    "end": 336.16067741935484,
+    "text": "This is called Hick's Law.",
+    "index": 79
+  },
+  {
+    "start": 336.16067741935484,
+    "end": 338.72,
+    "text": "The more options you have, the harder it is [music]",
+    "index": 80
+  },
+  {
+    "start": 338.72,
+    "end": 339.54162162162163,
+    "text": "to decide.",
+    "index": 81
+  },
+  {
+    "start": 339.54162162162163,
+    "end": 346.96,
+    "text": "YouTube gives you a grid, Netflix gives you rows, and short form gives you one video [music] and just one thing to do, swipe.",
+    "index": 82
+  },
+  {
+    "start": 346.96,
+    "end": 353.704,
+    "text": "Now, short form feeds have basically been invented by TikTok, but they ended up being copied discovered by Instagram and YouTube Shorts.",
+    "index": 83
+  },
+  {
+    "start": 353.88,
+    "end": 358.32,
+    "text": "But, not only that, Spotify tried to copy them.",
+    "index": 84
+  },
+  {
+    "start": 358.32,
+    "end": 359.9808888888889,
+    "text": "Even Amazon launched an Inspire feed.",
+    "index": 85
+  },
+  {
+    "start": 359.9808888888889,
+    "end": 362.36,
+    "text": "Everyone seems to be copying the same user interface.",
+    "index": 86
+  },
+  {
+    "start": 362.36,
+    "end": 367.1670796460177,
+    "text": "This might be the most replicated user interface ever [music] created.",
+    "index": 87
+  },
+  {
+    "start": 367.1670796460177,
+    "end": 372.8,
+    "text": "And that's because the short-form feed went from being just how TikTok shows videos being a design pattern.",
+    "index": 88
+  },
+  {
+    "start": 372.8,
+    "end": 375.61806451612904,
+    "text": "If I show you this, you know exactly how this works.",
+    "index": 89
+  },
+  {
+    "start": 375.61806451612904,
+    "end": 379.12,
+    "text": "I don't need to show you any instructions for you to understand that [music] this is a menu and this is how it works.",
+    "index": 90
+  },
+  {
+    "start": 379.12,
+    "end": 380.431,
+    "text": "There are submenus.",
+    "index": 91
+  },
+  {
+    "start": 380.431,
+    "end": 383.1399626168224,
+    "text": "If I show you these, you already know more or less what these do.",
+    "index": 92
+  },
+  {
+    "start": 383.1399626168224,
+    "end": 385.9388224299065,
+    "text": "[music] Again, no instructions needed.",
+    "index": 93
+  },
+  {
+    "start": 385.9388224299065,
+    "end": 394.84,
+    "text": "If I say the Tinder of music, without me telling you anything, you already imagine you can swipe left and right to like or dislike something and you'll get songs pop up.",
+    "index": 94
+  },
+  {
+    "start": 394.84,
+    "end": 396.24,
+    "text": "These are all design patterns. [music]",
+    "index": 95
+  },
+  {
+    "start": 396.24,
+    "end": 399.3957142857143,
+    "text": "See, most interfaces are just that, interfaces.",
+    "index": 96
+  },
+  {
+    "start": 399.3957142857143,
+    "end": 405.476261682243,
+    "text": "But, with a select few, they become so ubiquitous and they end up working so well that they turn into design patterns.",
+    "index": 97
+  },
+  {
+    "start": 405.476261682243,
+    "end": 407.6816216216216,
+    "text": "They're designed so well that they instantly click with people.",
+    "index": 98
+  },
+  {
+    "start": 407.6816216216216,
+    "end": 410.76,
+    "text": "So much so that other products end up adopting them because [music]",
+    "index": 99
+  },
+  {
+    "start": 410.76,
+    "end": 412.83567567567565,
+    "text": "you don't need any instructions.",
+    "index": 100
+  },
+  {
+    "start": 412.83567567567565,
+    "end": 415.3654054054054,
+    "text": "People just already know how they work.",
+    "index": 101
+  },
+  {
+    "start": 415.3654054054054,
+    "end": 421.6,
+    "text": "And while all the three major short-form platforms use the same design patterns, they all give their little twist to [music] it.",
+    "index": 102
+  },
+  {
+    "start": 421.6,
+    "end": 425.16,
+    "text": "Instagram adds your friends' profile bubbles, showing who liked the video.",
+    "index": 103
+  },
+  {
+    "start": 425.16,
+    "end": 428.84,
+    "text": "They're wrapping a content feed in a social layer because that's where they came from.",
+    "index": 104
+  },
+  {
+    "start": 428.84,
+    "end": 435.72,
+    "text": "YouTube Shorts puts a related long-form video on the bottom, just as a reminder that you're still on YouTube and you can watch videos like this one.",
+    "index": 105
+  },
+  {
+    "start": 435.72,
+    "end": 438.74080000000004,
+    "text": "But, everything we've seen so far is just what's on the surface.",
+    "index": 106
+  },
+  {
+    "start": 438.74080000000004,
+    "end": 440.44,
+    "text": "Now, we start to actually go deeper.",
+    "index": 107
+  },
+  {
+    "start": 440.44,
+    "end": 442.08,
+    "text": "Imagine you're a product manager at Instagram.",
+    "index": 108
+  },
+  {
+    "start": 442.08,
+    "end": 445.3270588235294,
+    "text": "You're working on Reels and they ask you to make a decision.",
+    "index": 109
+  },
+  {
+    "start": 445.3270588235294,
+    "end": 448.7060194174757,
+    "text": "How many characters do you give creators [music] to write a caption underneath their video?",
+    "index": 110
+  },
+  {
+    "start": 448.7060194174757,
+    "end": 453.04,
+    "text": "On the surface, this is a completely inconsequential decision, or so you think.",
+    "index": 111
+  },
+  {
+    "start": 453.04,
+    "end": 461.7494736842105,
+    "text": "Definitely one decision that product managers at these platforms had to make was whether the video pauses or plays when you open the comment section.",
+    "index": 112
+  },
+  {
+    "start": 461.7494736842105,
+    "end": 463.51686956521735,
+    "text": "Cuz sometimes they did pause and sometimes they did play.",
+    "index": 113
+  },
+  {
+    "start": 463.51686956521735,
+    "end": 464.3387826086956,
+    "text": "This is Alistair.",
+    "index": 114
+  },
+  {
+    "start": 464.3387826086956,
+    "end": 468.33837837837837,
+    "text": "He's a friend of mine and he makes short-form videos that generated [music] hundreds of millions of views.",
+    "index": 115
+  },
+  {
+    "start": 468.33837837837837,
+    "end": 472.1824,
+    "text": "And there's no better person than him to tell you everything that's going on in the second layer.",
+    "index": 116
+  },
+  {
+    "start": 472.1824,
+    "end": 474.6016,
+    "text": "Because this interface is not just an interface.",
+    "index": 117
+  },
+  {
+    "start": 474.6016,
+    "end": 476.92,
+    "text": "It ends up influencing and shaping the [music]",
+    "index": 118
+  },
+  {
+    "start": 476.92,
+    "end": 479.3073684210526,
+    "text": "second layer, which is the content itself.",
+    "index": 119
+  },
+  {
+    "start": 479.3073684210526,
+    "end": 484.64,
+    "text": "See, when it comes to my videos, there's a lot of thought that goes into the storytelling and crafting an interesting story, [music]",
+    "index": 120
+  },
+  {
+    "start": 484.64,
+    "end": 486.0161616161616,
+    "text": "but that's pretty much it.",
+    "index": 121
+  },
+  {
+    "start": 486.0161616161616,
+    "end": 489.88,
+    "text": "YouTube's interface doesn't really affect the type of videos that I make.",
+    "index": 122
+  },
+  {
+    "start": 489.88,
+    "end": 495.68,
+    "text": "Sure, I should remember not to put stuff in the bottom right corner of a thumbnail because that's where the duration goes, but that's pretty much it.",
+    "index": 123
+  },
+  {
+    "start": 495.68,
+    "end": 502.1683333333333,
+    "text": "But on short-form, the interface and how the feed works is deeply tied with the content itself.",
+    "index": 124
+  },
+  {
+    "start": 502.1683333333333,
+    "end": 509.9365,
+    "text": "So, people would specifically make videos where you would have to open the comment section to get the full value out of the video.",
+    "index": 125
+  },
+  {
+    "start": 509.9365,
+    "end": 518.36,
+    "text": "In those cases, you would make also make the video really short so that people will loop the video and replay it a bunch of times while they're So, their retention is like 500% or something.",
+    "index": 126
+  },
+  {
+    "start": 518.36,
+    "end": 520.4130693069308,
+    "text": "Because you like to look at it on different platforms.",
+    "index": 127
+  },
+  {
+    "start": 520.4130693069308,
+    "end": 522.2,
+    "text": "They have different [music] solutions for this.",
+    "index": 128
+  },
+  {
+    "start": 522.2,
+    "end": 524.32,
+    "text": "Some of them will cover the video with the comments.",
+    "index": 129
+  },
+  {
+    "start": 524.32,
+    "end": 527.1851162790698,
+    "text": "Some of them will squeeze the video and make it smaller.",
+    "index": 130
+  },
+  {
+    "start": 527.1851162790698,
+    "end": 528.72,
+    "text": "Two very different approaches.",
+    "index": 131
+  },
+  {
+    "start": 528.72,
+    "end": 535.8304225352113,
+    "text": "Squeezing the video makes it easier to follow the video and not squeezing [music] it maybe focuses the user on the comment section.",
+    "index": 132
+  },
+  {
+    "start": 535.8304225352113,
+    "end": 539.4702702702704,
+    "text": "I'm thinking of like how the user interface impacts the content.",
+    "index": 133
+  },
+  {
+    "start": 539.4702702702704,
+    "end": 547.0315789473684,
+    "text": "And the example I'll give is that before when you were going swiping down on videos, the next video wouldn't actually start playing yet.",
+    "index": 134
+  },
+  {
+    "start": 547.0315789473684,
+    "end": 556.8,
+    "text": "So, you [music] would kind of try and optimize the top half of the first frame of your video because the viewer will already start to take that information into their brain [music]",
+    "index": 135
+  },
+  {
+    "start": 556.8,
+    "end": 558.1244705882352,
+    "text": "when they're swiping down.",
+    "index": 136
+  },
+  {
+    "start": 558.1244705882352,
+    "end": 559.0923529411764,
+    "text": "This is super cool.",
+    "index": 137
+  },
+  {
+    "start": 559.0923529411764,
+    "end": 561.996,
+    "text": "This is exactly the stuff that people will never realize.",
+    "index": 138
+  },
+  {
+    "start": 562.04,
+    "end": 566.821359223301,
+    "text": "So, basically in the past, you started swiping and the video was already playing.",
+    "index": 139
+  },
+  {
+    "start": 566.821359223301,
+    "end": 568.12,
+    "text": "It wasn't playing yet.",
+    "index": 140
+  },
+  {
+    "start": 568.12,
+    "end": 569.9641025641026,
+    "text": "So, it was even more important.",
+    "index": 141
+  },
+  {
+    "start": 569.9641025641026,
+    "end": 576.406,
+    "text": "So, you would swipe down and like it would load the first frame, but it wouldn't start playing the video until the entire video's on your screen.",
+    "index": 142
+  },
+  {
+    "start": 576.52,
+    "end": 585.1289285714286,
+    "text": "So, you would have to really think about what the first frame looks like, and also what the top half of the first frame looks like [music] as they're scrolling down.",
+    "index": 143
+  },
+  {
+    "start": 585.1289285714286,
+    "end": 592.52,
+    "text": "The decision of making the description box longer or shorter, auto playing or not the next video, making the comment box an overlay or so that it shrinks the video.",
+    "index": 144
+  },
+  {
+    "start": 592.52,
+    "end": 599.221724137931,
+    "text": "Well, all these seemingly innocuous decisions end [music] up changing the way millions of people create content and the content itself.",
+    "index": 145
+  },
+  {
+    "start": 599.221724137931,
+    "end": 606.536,
+    "text": "But, if you're the one that has to make these decisions as an engineer, designer, or product manager, let me show you what you can do with the sponsor of this video, UX Pilots.",
+    "index": 146
+  },
+  {
+    "start": 606.536,
+    "end": 611.0847924528302,
+    "text": "[music] UX Pilot is the fastest way to bring feature interactions and product ideas to life.",
+    "index": 147
+  },
+  {
+    "start": 611.0847924528302,
+    "end": 611.777,
+    "text": "Remember this?",
+    "index": 148
+  },
+  {
+    "start": 611.777,
+    "end": 621.64,
+    "text": "Well, [music] this free way scroll prototype is cool, but I made it at the beginning of this last year, and I spent an entire day recreating from scratch the Instagram UI.",
+    "index": 149
+  },
+  {
+    "start": 621.64,
+    "end": 623.1969230769231,
+    "text": "But, now look at this.",
+    "index": 150
+  },
+  {
+    "start": 623.1969230769231,
+    "end": 626.24,
+    "text": "I'm in UX Pilot and let's imagine I want to re-experiment with the flow that [music]",
+    "index": 151
+  },
+  {
+    "start": 626.24,
+    "end": 627.7105046728972,
+    "text": "let me scroll through.",
+    "index": 152
+  },
+  {
+    "start": 627.7105046728972,
+    "end": 629.9831028037383,
+    "text": "Well, I can just prompt and voila.",
+    "index": 153
+  },
+  {
+    "start": 629.9831028037383,
+    "end": 635.36,
+    "text": "Here's the screens with exactly what I had in mind, including not only in the interface, but [music] imagery here as well.",
+    "index": 154
+  },
+  {
+    "start": 635.36,
+    "end": 637.0836363636364,
+    "text": "And take a look at this.",
+    "index": 155
+  },
+  {
+    "start": 637.0836363636364,
+    "end": 643.9981780821918,
+    "text": "I'm in Figma and not only that, UX Pilot [music] also allows you to generate wireframes and designs directly in Figma.",
+    "index": 156
+  },
+  {
+    "start": 643.9981780821918,
+    "end": 645.839,
+    "text": "Take a look at this.",
+    "index": 157
+  },
+  {
+    "start": 647.48,
+    "end": 648.6821428571428,
+    "text": "And boom, there we go.",
+    "index": 158
+  },
+  {
+    "start": 648.6821428571428,
+    "end": 653.6,
+    "text": "These are two screens and they are not [music] images, they're entirely editable in Figma.",
+    "index": 159
+  },
+  {
+    "start": 653.6,
+    "end": 659.4049523809523,
+    "text": "And you could even do it the other way around and import your entire design system into UX Pilot from Figma.",
+    "index": 160
+  },
+  {
+    "start": 659.4049523809523,
+    "end": 662.0655238095237,
+    "text": "UX Pilot is not replacing designers.",
+    "index": 161
+  },
+  {
+    "start": 662.0655238095237,
+    "end": 669.4,
+    "text": "It's giving the language of design to founders, engineers, and product managers who need tools to communicate ideas visually and iterate over them.",
+    "index": 162
+  },
+  {
+    "start": 669.4,
+    "end": 673.4747826086956,
+    "text": "You can start using UX Pilot for free with the link in the description.",
+    "index": 163
+  },
+  {
+    "start": 673.4747826086956,
+    "end": 676.0481481481482,
+    "text": "Just type your idea and watch UX Pilot bring it back to life right now.",
+    "index": 164
+  },
+  {
+    "start": 676.0481481481482,
+    "end": 681.12,
+    "text": "But, now let's get back to the video because remember how the design of short-form feeds influences [music] the media?",
+    "index": 165
+  },
+  {
+    "start": 681.12,
+    "end": 684.7,
+    "text": "Well, this is nothing new, really.",
+    "index": 166
+  },
+  {
+    "start": 684.7,
+    "end": 687.8270129870131,
+    "text": "The medium [music] has always been influenced by the media.",
+    "index": 167
+  },
+  {
+    "start": 687.8270129870131,
+    "end": 691.720506329114,
+    "text": "In 1949, 7-in records could only hold about 3 minutes per [music] side.",
+    "index": 168
+  },
+  {
+    "start": 691.720506329114,
+    "end": 697.12,
+    "text": "AM radio wanted short songs, so throughout the 1950s and '60s, pop songs were like 2 and 1/2 minutes.",
+    "index": 169
+  },
+  {
+    "start": 697.12,
+    "end": 700.778947368421,
+    "text": "They were written [music] to fit that limit.",
+    "index": 170
+  },
+  {
+    "start": 700.778947368421,
+    "end": 702.7115596330275,
+    "text": "When LPs and CDs came along, the songs got longer.",
+    "index": 171
+  },
+  {
+    "start": 702.7115596330275,
+    "end": 708.7672222222222,
+    "text": "[music] In TV, writers structure stories around ad breaks, building tension and cutting with specific ad placements in mind.",
+    "index": 172
+  },
+  {
+    "start": 708.7672222222222,
+    "end": 710.84,
+    "text": "With streaming, there's no need for this.",
+    "index": 173
+  },
+  {
+    "start": 710.84,
+    "end": 712.68,
+    "text": "When you actually watch Friends, [music]",
+    "index": 174
+  },
+  {
+    "start": 712.68,
+    "end": 715.704,
+    "text": "that's why the pacing feels kind of weird.",
+    "index": 175
+  },
+  {
+    "start": 715.704,
+    "end": 720.5420289855072,
+    "text": "But the level to which this happens [music] with short-form feeds is just on another level.",
+    "index": 176
+  },
+  {
+    "start": 720.5420289855072,
+    "end": 728.12,
+    "text": "Also because, contrary to many other platforms, [music] here you have a second-by-second report on exactly what the audience is [music] doing.",
+    "index": 177
+  },
+  {
+    "start": 728.12,
+    "end": 731.16,
+    "text": "When you look at your analytics, you see like a retention graph, for example.",
+    "index": 178
+  },
+  {
+    "start": 731.16,
+    "end": 733.5801769911504,
+    "text": "What does it look like, and what are you looking for?",
+    "index": 179
+  },
+  {
+    "start": 733.5801769911504,
+    "end": 736.32,
+    "text": "Or is there something interesting that you can you can share there?",
+    "index": 180
+  },
+  {
+    "start": 736.32,
+    "end": 740.6838938053098,
+    "text": "On every platform, you're almost always looking for the same thing.",
+    "index": 181
+  },
+  {
+    "start": 740.6838938053098,
+    "end": 746.88,
+    "text": "You're looking for a high percentage of people choosing to watch the video, and then you want the rest of the chart as flat as possible.",
+    "index": 182
+  },
+  {
+    "start": 746.88,
+    "end": 759.6,
+    "text": "The thing that is not obvious until you actually start making a ton of videos, and you actually start getting viral videos, is how small the difference is between a viral video and a not viral video.",
+    "index": 183
+  },
+  {
+    "start": 759.6,
+    "end": 769.3512000000001,
+    "text": "Literally between 100,000 views and 10 million views, the difference in average percentage of the video watched can be like 5%.",
+    "index": 184
+  },
+  {
+    "start": 769.3512000000001,
+    "end": 778.0254545454545,
+    "text": "It can literally be from like 75% average watch for video on YouTube Shorts to 80% can be the difference between 100,000 and 10 million views.",
+    "index": 185
+  },
+  {
+    "start": 778.0254545454545,
+    "end": 779,
+    "text": "Wow, that's crazy.",
+    "index": 186
+  },
+  {
+    "start": 779,
+    "end": 780.3164285714286,
+    "text": "I didn't know that.",
+    "index": 187
+  },
+  {
+    "start": 780.3164285714286,
+    "end": 783.7114285714285,
+    "text": "Yeah, the the margin is like that thin sometimes.",
+    "index": 188
+  },
+  {
+    "start": 783.7114285714285,
+    "end": 793.04,
+    "text": "But the point is that like all of these like small things that you think are not important, like which words in the caption appear first, all of it adds up because the difference between 100,000",
+    "index": 189
+  },
+  {
+    "start": 793.04,
+    "end": 800.216,
+    "text": "and 10 million is literally it's like 100x, but it's only a few 1% improvements.",
+    "index": 190
+  },
+  {
+    "start": 800.216,
+    "end": 802.76,
+    "text": "Now, I know what you're thinking.",
+    "index": 191
+  },
+  {
+    "start": 802.76,
+    "end": 806.8,
+    "text": "These companies are so evil in designing products in this way in this predatory manner.",
+    "index": 192
+  },
+  {
+    "start": 806.8,
+    "end": 809.9928571428571,
+    "text": "But [snorts] that's not exactly what happens.",
+    "index": 193
+  },
+  {
+    "start": 809.9928571428571,
+    "end": 817.1055172413794,
+    "text": "No designer or product manager ever sat down and said, \"Let's design something manipulative.\" What they do is continuously run hundreds of experiments at a time.",
+    "index": 194
+  },
+  {
+    "start": 817.1055172413794,
+    "end": 822.3631034482759,
+    "text": "That's why your friends might have an app that's slightly different than yours.",
+    "index": 195
+  },
+  {
+    "start": 822.3631034482759,
+    "end": 824.8032,
+    "text": "Everything we saw so far is the result of an insane amount of testing.",
+    "index": 196
+  },
+  {
+    "start": 824.8032,
+    "end": 827.68,
+    "text": "They keep what increases engagement and kill what doesn't.",
+    "index": 197
+  },
+  {
+    "start": 827.68,
+    "end": 832.6,
+    "text": "And over time, what naturally happens is that the winning designs are the ones that exploit psychology.",
+    "index": 198
+  },
+  {
+    "start": 832.6,
+    "end": 836.64,
+    "text": "Not because they chose to, but because the math just converges there.",
+    "index": 199
+  },
+  {
+    "start": 836.64,
+    "end": 838.28,
+    "text": "And on the creator side, the same convergence happens.",
+    "index": 200
+  },
+  {
+    "start": 838.28,
+    "end": 847.1646017699115,
+    "text": "Every creator sees the same retention graphs, the same analytics, the same numbers, pushing them all towards the same hooks, the same editing style, and the same tricks.",
+    "index": 201
+  },
+  {
+    "start": 847.1646017699115,
+    "end": 849.9625,
+    "text": "The platforms doesn't just host the content, it literally designs it.",
+    "index": 202
+  },
+  {
+    "start": 849.9625,
+    "end": 854.5148051948053,
+    "text": "And now we come to the final and third layer, the one that makes this all work.",
+    "index": 203
+  },
+  {
+    "start": 854.5148051948053,
+    "end": 863.16,
+    "text": "This is Armand Conqueer, an ex-TikTok engineer, and he called it the most valuable piece [music] of software in existence.",
+    "index": 204
+  },
+  {
+    "start": 863.16,
+    "end": 867.96,
+    "text": "The secretive algorithm that decides what we watch among billions of videos.",
+    "index": 205
+  },
+  {
+    "start": 867.96,
+    "end": 870.6207452830189,
+    "text": "So secret that [snorts] well, here it is.",
+    "index": 206
+  },
+  {
+    "start": 870.6207452830189,
+    "end": 874.1007272727273,
+    "text": "In 2023, TikTok actually published a research paper detailing how it works.",
+    "index": 207
+  },
+  {
+    "start": 874.1007272727273,
+    "end": 879.9112727272727,
+    "text": "[music] And the biggest difference between all the other video recommendation systems like YouTube or Netflix is this.",
+    "index": 208
+  },
+  {
+    "start": 879.9112727272727,
+    "end": 883.4,
+    "text": "Traditional systems works in two steps.",
+    "index": 209
+  },
+  {
+    "start": 883.4,
+    "end": 890.5773451327434,
+    "text": "First, they train their algorithm on a bunch of historical data, the videos you liked, you watched, and then they serve you recommendations based on that.",
+    "index": 210
+  },
+  {
+    "start": 890.5773451327434,
+    "end": 894.3633644859814,
+    "text": "[music] The problem is that by the time they finished training, your interest has already moved on.",
+    "index": 211
+  },
+  {
+    "start": 894.3633644859814,
+    "end": 898.32,
+    "text": "The paper calls this concept [music] drift, and they put it beautifully.",
+    "index": 212
+  },
+  {
+    "start": 898.32,
+    "end": 900,
+    "text": "Visual and linguistic patterns barely develop in a",
+    "index": 213
+  }
+]

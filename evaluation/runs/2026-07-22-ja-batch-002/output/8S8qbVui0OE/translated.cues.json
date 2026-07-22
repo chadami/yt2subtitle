@@ -1,0 +1,957 @@
+[
+  {
+    "start": 42.642,
+    "end": 44.277,
+    "text": "また日本ブログへようこそ！",
+    "sourceText": "Welcome to another Japan vlog!",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 44.677,
+    "end": 47.547,
+    "text": "このスーツケース、もう壊れそう。",
+    "sourceText": "This suitcase is about to fall apart",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 51.885,
+    "end": 54.921,
+    "text": "今日の最初の目的地は東京。",
+    "sourceText": "Today our first stop is Tokyo",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 55.822,
+    "end": 59.459,
+    "text": "飛行機で北海道南部を巡るよ。",
+    "sourceText": "We'll be exploring southern Hokkaido by air",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 76.976,
+    "end": 81.047,
+    "text": "日本航空さん、この旅に連れて行ってくれてありがとう！",
+    "sourceText": "Thank you to Japan Airlines for taking us on this journey!",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 82.182,
+    "end": 87.253,
+    "text": "これがビジネスクラスのJAL SKY SUITE III。",
+    "sourceText": "This is JAL SKY SUITE III in Business Class",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 91.357,
+    "end": 95.361,
+    "text": "シートにマッサージ機能が付いてるんだ😂。",
+    "sourceText": "The seats come with a massage function 😂",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 96.763,
+    "end": 103.05391428571428,
+    "text": "スリッパやアイマスクなどのアメニティ、",
+    "sourceText": "Nice amenities like slippers and eye",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 103.05391428571428,
+    "end": 108.541,
+    "text": "ビジネスクラスは無料Wi-Fiも。",
+    "sourceText": "masks Free Wi-Fi for Business Class",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 110.81,
+    "end": 116.85000000000001,
+    "text": "でも一番楽しみなのは和食の機内食。",
+    "sourceText": "But I'm most looking forward to the Japanese meal service",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 121.621,
+    "end": 127.46,
+    "text": "今まで見た中で一番美しい機内食。",
+    "sourceText": "The prettiest inflight meal I've ever seen",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 130.196,
+    "end": 135.53697297297296,
+    "text": "大好きな映画「少林サッカー」を見て、",
+    "sourceText": "Watching my favourite movie,",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 135.53697297297296,
+    "end": 139.49762162162162,
+    "text": "フライトの最後に日本酒の、",
+    "sourceText": "Shaolin Soccer Ending the",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 139.49762162162162,
+    "end": 142.308,
+    "text": "テイスティング。",
+    "sourceText": "flight with a sake tasting",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 143.743,
+    "end": 149.62912,
+    "text": "羽田空港を歩くこの幸福感をどう表現すればいいんだろう😂、",
+    "sourceText": "How do I describe the euphoric feeling of walking through",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 149.62912,
+    "end": 154.821,
+    "text": "去年の今頃は38℃（100.4°F）だったのに、",
+    "sourceText": "Haneda Airport 😂 This time last year it was 38℃ (100.4°F)",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 155.155,
+    "end": 158.892,
+    "text": "覚悟を決めて…",
+    "sourceText": "Bracing ourselves...",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 160.159,
+    "end": 164.59699999999998,
+    "text": "正直、7月上旬にしてはすごくいい天気！",
+    "sourceText": "Honestly it's really nice for early July!",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 183.449,
+    "end": 185.45100000000002,
+    "text": "ただいま！",
+    "sourceText": "we are home!",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 204.437,
+    "end": 211.99974576271188,
+    "text": "全てが始まった東急ステイ銀座に戻ってきたよ このホテルに泊まるのは感慨深い、",
+    "sourceText": "We're back where it all started at Tokyu Stay Ginza It feels like a full circle moment staying",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 211.99974576271188,
+    "end": 216.983,
+    "text": "2022年に最初の東京ブログを見てくれた人は、",
+    "sourceText": "at this hotel in Tokyo If you guys watched our very first Tokyo vlog back in like 2022,",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 217.183,
+    "end": 222.255225,
+    "text": "ここに1ヶ月以上泊まったんだ 1泊だけど戻ってこれて嬉しい、",
+    "sourceText": "We stayed here for like over a month And it's good to be back",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 222.255225,
+    "end": 224.924,
+    "text": "明日は札幌に向かうよ！",
+    "sourceText": "at this hotel for 1 night Tomorrow we'll be heading to Sapporo!",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 225.558,
+    "end": 231.531,
+    "text": "偶然友達も東京にいるから、一杯飲みに行くよ！",
+    "sourceText": "It just so happens our friends are also in town, so we're grabbing a drink!",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 231.831,
+    "end": 234.56699999999998,
+    "text": "（昨日ジムで会ったばかりなのに😂）。",
+    "sourceText": "(We just saw them yesterday at the gym 😂)",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 241.975,
+    "end": 247.38,
+    "text": "バリのポテトヘッドを思い出すバー😂。",
+    "sourceText": "A bar that reminds me of Potato Head in Bali 😂",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 248.181,
+    "end": 250.78300000000002,
+    "text": "3000枚以上のレコードがある。",
+    "sourceText": "With over 3,000 vinyl records",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 251.684,
+    "end": 254.32,
+    "text": "外国人にすごく優しい。",
+    "sourceText": "Very foreigner friendly",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 255.355,
+    "end": 258.825,
+    "text": "日本のシティポップのプレイリストが最高。",
+    "sourceText": "Love the Japanese city pop playlist",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 269.602,
+    "end": 274.84099999999995,
+    "text": "雰囲気は完璧、カクテルはまあまあ。",
+    "sourceText": "The vibes are immaculate, the cocktails are ok",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 280.813,
+    "end": 289.3936428571429,
+    "text": "早朝に空港へ 銀座から羽田空港まではタクシーで約25分、",
+    "sourceText": "An early start to the airport Ginza to Haneda Airport is around",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 289.3936428571429,
+    "end": 294.694,
+    "text": "今日は飛行機で北海道に向かうよ。",
+    "sourceText": "25 minutes by taxi Today we'll be heading to Hokkaido by airplane",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 295.828,
+    "end": 299.63199999999995,
+    "text": "日本航空の国内線ファーストクラス専用チェックインカウンター。",
+    "sourceText": "Japan Airlines' dedicated domestic First Class check-in counter",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 301.234,
+    "end": 304.43699999999995,
+    "text": "専用セキュリティレーンで5分以内にチェックイン完了。",
+    "sourceText": "Check-in within 5 minutes through a private security lane",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 305.238,
+    "end": 307.64,
+    "text": "ラウンジに寄って軽食を。",
+    "sourceText": "Popping into the lounge for a bite",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 310.109,
+    "end": 315.448,
+    "text": "ビールにはまだ早い？😅。",
+    "sourceText": "Is it too early for a beer? 😅",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 320.753,
+    "end": 327.86,
+    "text": "乗務員が旅行者に手を振って見送るのを見るのが大好きです。",
+    "sourceText": "We love watching the crew wave goodbye to travellers",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 334.934,
+    "end": 336.93600000000004,
+    "text": "日本航空の新しい国内線ファーストクラスの座席。",
+    "sourceText": "Japan Airlines' new domestic First Class cabin seats",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 344.711,
+    "end": 350.149,
+    "text": "フライトはたったの1.5時間。",
+    "sourceText": "The flight is only 1.5 hours long",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 357.69,
+    "end": 360.326,
+    "text": "無料の季節限定機内食サービス。",
+    "sourceText": "Complimentary seasonal meal service",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 362.829,
+    "end": 368,
+    "text": "スタッフが各ゲストの写真撮影を手伝ってくれた。",
+    "sourceText": "The staff offered to help each guest take a photo",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 372.472,
+    "end": 375.40799999999996,
+    "text": "地元の食材を使って日本を紹介するのが素晴らしい。",
+    "sourceText": "I love how they showcase Japan by using local ingredients",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 379.846,
+    "end": 381.848,
+    "text": "スタッフからの手書きのメモがかわいい！",
+    "sourceText": "A cute handwritten note from the staff!",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 383.049,
+    "end": 388.121,
+    "text": "3月にもここに来たばかり。",
+    "sourceText": "We were just here back in March",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 389.355,
+    "end": 393.24136363636364,
+    "text": "北海道に来るのは今回で3回目、",
+    "sourceText": "It's our third time in Hokkaido for the",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 393.24136363636364,
+    "end": 395.695,
+    "text": "夏は天気が最高。",
+    "sourceText": "summer where the weather is perfect",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 398.531,
+    "end": 404.337,
+    "text": "札幌駅に着いたばかりで、今からすぐ向かいに泊まるんだ！",
+    "sourceText": "We just arrived at Sapporo Station and now we're going to stay right across!",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 405.638,
+    "end": 408.775,
+    "text": "今日は新しいホテルに挑戦！",
+    "sourceText": "Trying a new hotel today!",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 414.08,
+    "end": 419.55199999999996,
+    "text": "冬に泊まる予定ならこのホテルは最高。",
+    "sourceText": "This hotel is great if you plan to stay in the winter",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 420.52,
+    "end": 422.522,
+    "text": "部屋の準備ができてないから、ランチに出かけるよ。",
+    "sourceText": "Our room isn't ready yet so we'll go out for lunch",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 423.823,
+    "end": 436.969,
+    "text": "ホテルは札幌駅に通じる地下道と直結している札幌の通りにはラベンダーが並んでいる。",
+    "sourceText": "The hotel is connected to the underground tunnel that leads to Sapporo Station Lavender lines all the streets of Sapporo",
+    "sourceIndexes": [
+      42,
+      43
+    ]
+  },
+  {
+    "start": 445.411,
+    "end": 448.714,
+    "text": "有名なラーメン屋にはとても面白い場所だ。",
+    "sourceText": "This is a very interesting location for a famous ramen shop",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 450.116,
+    "end": 453.38599999999997,
+    "text": "トロントの郊外みたいな感じ。",
+    "sourceText": "It feels like the Toronto suburbs",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 456.022,
+    "end": 462.461,
+    "text": "卸売り市場の中にあるラーメン屋。",
+    "sourceText": "A ramen shop located inside a wholesale seafood market",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 466.899,
+    "end": 469.735,
+    "text": "右がコーヒー、左がラーメン。",
+    "sourceText": "Coffee on the right, ramen on the left",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 473.406,
+    "end": 476.676,
+    "text": "隣はコーヒーショップ。",
+    "sourceText": "Next door is a coffee shop",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 478.711,
+    "end": 482.382875,
+    "text": "サムがラーメンに並んでるから、",
+    "sourceText": "Sam is queuing for ramen so I'll get a quick coffee Drinking",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 482.382875,
+    "end": 489.02099999999996,
+    "text": "さっとコーヒーを買うよ ラーメン屋に持ち込めないから急いで飲んでる。",
+    "sourceText": "this quickly because I can't bring it into the ramen shop",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 490.122,
+    "end": 494.22700000000003,
+    "text": "ヌイユは食べログの「ラーメンHOKKAIDO 百名店」に掲載されている。",
+    "sourceText": "Nouilles is listed on Tabelog's \"Ramen HOKKAIDO Top 100 Restaurants\"",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 495.328,
+    "end": 499.49899999999997,
+    "text": "このラーメンはフランスとイタリアの調理技術を取り入れている。",
+    "sourceText": "The ramen infuses French and Italian cooking techniques",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 500.533,
+    "end": 505.438,
+    "text": "空間はエレガントで洗練されている。",
+    "sourceText": "The space is elegant and refined",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 509.909,
+    "end": 512.9449999999999,
+    "text": "澄んだスープは地元の鶏と豚を使ったフレンチコンソメ風。",
+    "sourceText": "The clear broth is a French consommé style using local chicken and pork",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 517.783,
+    "end": 522.221,
+    "text": "スープは重くなく濃厚でもないけど、夏にぴったり。",
+    "sourceText": "The broth isn't heavy and rich but it's perfect for the summer",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 524.323,
+    "end": 527.994,
+    "text": "ラーメンには有名な昆布の泡がのっている。",
+    "sourceText": "The ramen is topped with its famous kelp foam",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 529.028,
+    "end": 533.566,
+    "text": "麺には低温調理の鴨と炭火焼きの鶏が合わせてある、",
+    "sourceText": "The noodles are paired with sous-vide duck and charcoal-grilled chicken",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 533.566,
+    "end": 538.104,
+    "text": "今まで食べた中で一番エレガントなラーメンかも！",
+    "sourceText": "Perhaps this is the most elegant bowl of ramen I've ever eaten!",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 549.015,
+    "end": 553.786,
+    "text": "カフェに向かう途中、地域の祭りに遭遇した。",
+    "sourceText": "On our way to a cafe, we stumbled upon a neighbourhood festival",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 557.323,
+    "end": 562.962,
+    "text": "カニの脚が気軽に焼かれているのを見たら、ここは北海道だなって思う。",
+    "sourceText": "You know you're in Hokkaido when you see crab legs casually being grilled",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 568.501,
+    "end": 570.5029999999999,
+    "text": "2階にあるカフェ。",
+    "sourceText": "A cafe located upstairs",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 571.537,
+    "end": 572.9050000000001,
+    "text": "本当にそう！",
+    "sourceText": "This is true!",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 574.573,
+    "end": 579.712,
+    "text": "個性的なレトロスタイルの内装。",
+    "sourceText": "Eccentric retro style interiors",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 602.468,
+    "end": 604.6690888888888,
+    "text": "これはソフトクリーム、コーンフレーク、",
+    "sourceText": "This one is layered with soft cream, cornflakes,",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 604.6690888888888,
+    "end": 607.2389999999999,
+    "text": "コーヒーゼリーが重ねられて、プリンが丸ごとのってる！",
+    "sourceText": "coffee jelly and topped with a whole pudding!",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 608.007,
+    "end": 611.6099999999999,
+    "text": "北海道に来たら夜パフェ文化を体験しないとね。",
+    "sourceText": "You can't go to Hokkaido without experiencing the night parfait culture",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 613.98,
+    "end": 618.4175,
+    "text": "冬はスキーで北海道に行く人が多いけど、",
+    "sourceText": "Many people go to Hokkaido for skiing in the winter But if",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 618.4175,
+    "end": 622.855,
+    "text": "涼しい夏を体験したいなら北海道が最高！",
+    "sourceText": "you want to experience a cool summer, Hokkaido is the best!",
+    "sourceIndexes": [
+      64
+    ]
+  },
+  {
+    "start": 629.362,
+    "end": 634.967,
+    "text": "季節ごとに飾りが変わる美しい小さな神社。",
+    "sourceText": "A beautiful little shrine with decorations that change with the season",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 636.502,
+    "end": 640.8399999999999,
+    "text": "夏のテーマはマリンブルーと白。",
+    "sourceText": "For summer, the theme is marine blue and white",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 642.308,
+    "end": 647.647,
+    "text": "かわいいガラスのクラゲ風鈴。",
+    "sourceText": "Cute glass jellyfish wind chimes",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 651.784,
+    "end": 658.257,
+    "text": "花手水も見事。",
+    "sourceText": "The flower washing basin is also stunning",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 666.365,
+    "end": 671.504,
+    "text": "神社は札幌駅から徒歩約15分。",
+    "sourceText": "The shrine is about a 15 minute walk from Sapporo Station",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 673.839,
+    "end": 679.0110000000001,
+    "text": "一旦ホテルに戻ってチェックインしよう。",
+    "sourceText": "We'll head back to the hotel to check-in first",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 688.854,
+    "end": 692.758,
+    "text": "こちらがエッセンシャルダブルルーム。",
+    "sourceText": "This is the Essential Double room",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 696.429,
+    "end": 701.8880476190476,
+    "text": "このホテルは2025年12月にオープンしたのでとても新しく、",
+    "sourceText": "This hotel opened in December 2025 so it feels very",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 701.8880476190476,
+    "end": 707.773,
+    "text": "オープンレイアウトのバスルーム、立ちシャワーとバスタブがあります。",
+    "sourceText": "new Open-layout bathroom Standing shower and bathtub",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 712.645,
+    "end": 716.615,
+    "text": "部屋からは札幌駅と大丸が見えます。",
+    "sourceText": "Our room faces Sapporo Station and Daimaru",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 719.385,
+    "end": 722.9879999999999,
+    "text": "残りの夜はショッピングモールをぶらぶらします。",
+    "sourceText": "We'll spend the rest of the evening walking around the malls",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 724.256,
+    "end": 729.595,
+    "text": "詳しいお店の紹介は過去の北海道ブログを見てね！",
+    "sourceText": "Please watch our previous Hokkaido vlogs if you want in-depth shop introductions!",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 729.595,
+    "end": 733.499,
+    "text": "お店の名前は右上に表示します。",
+    "sourceText": "We will leave all the names of the shops on the top right",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 734.6,
+    "end": 739.672,
+    "text": "夏用の新しいトップスを何着か試着しました。",
+    "sourceText": "Tried on a few new tops for the summer",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 740.506,
+    "end": 746.4119999999999,
+    "text": "札幌駅でよく行くホームウェアショップをいくつか紹介します。",
+    "sourceText": "These are a few of my go-to homeware shops in Sapporo Station:",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 750.282,
+    "end": 753.6260625000001,
+    "text": "普段はお土産を買いに来るけど、",
+    "sourceText": "I usually come here to buy souvenirs but",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 753.6260625000001,
+    "end": 757.2560000000001,
+    "text": "今回はソフトクリームだけにします。",
+    "sourceText": "we'll just get a soft cream this time",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 774.774,
+    "end": 778.174,
+    "text": "いつも行くスープカレー屋さん。",
+    "sourceText": "A soup curry joint we always go to While",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 778.174,
+    "end": 782.014,
+    "text": "食べながら札幌の写真を何枚かどうぞ！",
+    "sourceText": "we eat, here's a few photos from Sapporo!",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 791.29,
+    "end": 795.861,
+    "text": "朝便があるので寝る時間です！",
+    "sourceText": "Time for bed because we have a flight to catch in the morning!",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 803.068,
+    "end": 806.8389999999999,
+    "text": "また早朝に地元の空港へ。",
+    "sourceText": "Another early morning to the local airport",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 810.976,
+    "end": 812.978,
+    "text": "空港までは20分かかります。",
+    "sourceText": "It'll take 20 minutes to reach the airport",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 822.521,
+    "end": 825.925,
+    "text": "丘珠は札幌の国内線空港です。",
+    "sourceText": "Okadama is Sapporo's domestic airport",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 828.627,
+    "end": 831.8309999999999,
+    "text": "今日は北海道エアシステム（HAC）で飛びます！",
+    "sourceText": "We'll be flying with Hokkaido Air System (HAC) today!",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 832.831,
+    "end": 836.836,
+    "text": "プロペラ機で運航するJALグループの地域航空会社です。",
+    "sourceText": "It's the regional JAL group airline that flies with propeller-type airplanes",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 838.938,
+    "end": 843.275,
+    "text": "飛行機にはオリジナルグッズがあります。",
+    "sourceText": "The plane has its own merch",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 846.712,
+    "end": 852.451,
+    "text": "利尻や釧路、女満別など、北海道の他の地域にも飛んでるよ。",
+    "sourceText": "They also fly to other parts of Hokkaido like Rishiri, Kushiro and Memanbetsu",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 855.955,
+    "end": 859.625,
+    "text": "プライベートジェットに乗ってる気分😂。",
+    "sourceText": "It feels like I'm flying a private jet 😂",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 872.504,
+    "end": 879.245,
+    "text": "スタッフがキャンディと一緒にメモを配ってくれた。",
+    "sourceText": "The staff hand out candy with a sweet note",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 885.584,
+    "end": 890.356,
+    "text": "わあ、有名な星形の五稜郭公園が上から見える！",
+    "sourceText": "Wow you can see the famous star-shaped Goryokaku Park from above!",
+    "sourceIndexes": [
+      91
+    ]
+  }
+]

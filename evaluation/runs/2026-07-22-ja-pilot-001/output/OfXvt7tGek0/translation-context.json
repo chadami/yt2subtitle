@@ -1,0 +1,65 @@
+{
+  "topic": "Language regulation and standardization",
+  "summary": "This video explores various organizations and institutions that attempt to regulate language, including the Académie Française, Iceland's Personal Names Committee, the Ho-Chunk Nation's language division, and others. It discusses their goals, methods, and the challenges they face.",
+  "tone": "informative, conversational, slightly humorous",
+  "audience": "General audience interested in linguistics, language history, and cultural studies",
+  "glossary": [
+    {
+      "source": "Académie Française",
+      "target": "アカデミー・フランセーズ",
+      "note": "French language academy; keep as proper noun with katakana"
+    },
+    {
+      "source": "Ho-Chunk",
+      "target": "ホーチャンク",
+      "note": "Native American tribe and language; use katakana"
+    },
+    {
+      "source": "courriel",
+      "target": "クーリエル",
+      "note": "French equivalent for email; use katakana"
+    },
+    {
+      "source": "le wifi",
+      "target": "ル・ワイファイ",
+      "note": "French for Wi-Fi; use katakana"
+    },
+    {
+      "source": "gaffe",
+      "target": "失言",
+      "note": "Spelling mistake in context; use 失言 or ミス"
+    },
+    {
+      "source": "prescriptive",
+      "target": "規範的",
+      "note": "Linguistic term; use 規範的 in context"
+    },
+    {
+      "source": "descriptive",
+      "target": "記述的",
+      "note": "Linguistic term; use 記述的 in context"
+    }
+  ],
+  "properNouns": [
+    "Mark Carney",
+    "Dan Quayle",
+    "Rishi Sunak",
+    "Académie Française",
+    "Iceland's Personal Names Committee",
+    "Ho-Chunk Nation",
+    "Royal Spanish Academy",
+    "Māori Language Commission",
+    "Oxford English Dictionary",
+    "Associated Press Stylebook",
+    "Editors Canada"
+  ],
+  "styleGuide": [
+    "Use casual, conversational Japanese with polite forms (です・ます) for host narration.",
+    "Keep proper nouns in katakana as much as possible.",
+    "For humorous or ironic lines, use natural Japanese expressions rather than literal translations.",
+    "When translating 'you' or 'we', use inclusive forms like 私たち or みなさん as appropriate.",
+    "Avoid overly formal or academic phrasing; prefer everyday spoken Japanese.",
+    "For terms like 'loanword', use 外来語; for 'standardize', use 標準化する.",
+    "When the speaker uses a word in a foreign language (e.g., 'courriel'), keep it in katakana and add a brief explanation if needed."
+  ]
+}

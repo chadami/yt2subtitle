@@ -1,0 +1,86 @@
+{
+  "topic": "Old Land Rover Discovery 1 purchase and DIY maintenance",
+  "summary": "The creator buys a 1996 Land Rover Discovery 1, cleans it, gets it checked by a mechanic, changes oil and oxygen sensors, and goes camping, sharing the experience and challenges.",
+  "tone": "casual, enthusiastic, humorous, explanatory",
+  "audience": "Car enthusiasts, DIY learners, camping lovers, fans of the creator",
+  "glossary": [
+    {
+      "source": "Land Rover Discovery 1",
+      "target": "ランドローバー・ディスカバリー1",
+      "note": "車種名。初代ディスカバリー。"
+    },
+    {
+      "source": "oxygen sensor",
+      "target": "O2センサー",
+      "note": "酸素センサー。車の部品。"
+    },
+    {
+      "source": "OBD-II reader",
+      "target": "OBD2診断機",
+      "note": "車の故障診断ツール。"
+    },
+    {
+      "source": "anti-seize",
+      "target": "焼き付き防止剤",
+      "note": "ネジに塗る潤滑剤。"
+    },
+    {
+      "source": "jump seats",
+      "target": "補助席",
+      "note": "後部の跳ね上げ式座席。"
+    },
+    {
+      "source": "engine light",
+      "target": "エンジンチェックランプ",
+      "note": "警告灯。"
+    },
+    {
+      "source": "code",
+      "target": "故障コード",
+      "note": "診断コード。"
+    },
+    {
+      "source": "AC cleaning foam",
+      "target": "エアコン洗浄フォーム",
+      "note": "エアコン清掃用泡。"
+    },
+    {
+      "source": "carpet cleaning machine",
+      "target": "カーペットクリーナー",
+      "note": "掃除機。"
+    },
+    {
+      "source": "leather cleaner",
+      "target": "レザークリーナー",
+      "note": "革用洗剤。"
+    },
+    {
+      "source": "leather conditioner",
+      "target": "レザーコンディショナー",
+      "note": "革用保湿剤。"
+    },
+    {
+      "source": "Bissell Little Green Pet Pro",
+      "target": "ビッセル リトルグリーン ペットプロ",
+      "note": "製品名。"
+    }
+  ],
+  "properNouns": [
+    "Weylie Hoang",
+    "Wan",
+    "Walt",
+    "Olive",
+    "Nollie",
+    "Ollie"
+  ],
+  "styleGuide": [
+    "話し手はカジュアルで親しみやすい口調。日本語字幕も「だよね」「すごい」「やばい」など自然な話し言葉を使う。",
+    "「I」は「私」または省略。過度に丁寧な「ですます調」は避け、常体（だ・である調）を基本とする。",
+    "車の部品名やツール名はカタカナ表記を基本とし、必要に応じて補足説明を加える。",
+    "笑い声や感嘆詞（Oh my god! など）は「あっ」「わあ」「うわ」など日本語らしい表現に置き換える。",
+    "専門用語は視聴者が理解できるよう、簡潔な言い換えや説明を字幕内で補う。",
+    "会話の掛け合い部分は、日本語の自然な間や相槌（うん、そうそう）を入れる。",
+    "時間経過を示す表現（Then came 2020. など）は「そして2020年」のように簡潔に。",
+    "製品名やブランド名は原語のままカタカナ表記。"
+  ]
+}

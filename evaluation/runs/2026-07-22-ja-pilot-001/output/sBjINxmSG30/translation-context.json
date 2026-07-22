@@ -1,0 +1,90 @@
+{
+  "topic": "日本の生卵食文化",
+  "summary": "日本で生卵をご飯にかけるTKG（卵かけご飯）の歴史、安全性、文化的背景を探る。養鶏場やTKG専門店を訪れ、食品微生物学者の見解や海外の視聴者の意見も紹介。",
+  "tone": "カジュアルで親しみやすい、説明調",
+  "audience": "日本文化や食に興味がある海外の視聴者、および日本人視聴者",
+  "glossary": [
+    {
+      "source": "TKG",
+      "target": "TKG（卵かけご飯）",
+      "note": "略称はそのまま使い、初出のみカッコで補足"
+    },
+    {
+      "source": "tamago kake gohan",
+      "target": "卵かけご飯",
+      "note": "正式名称"
+    },
+    {
+      "source": "Ajitama",
+      "target": "味玉",
+      "note": "ラーメンの味付け卵"
+    },
+    {
+      "source": "sukiyaki",
+      "target": "すき焼き",
+      "note": "鍋料理"
+    },
+    {
+      "source": "salmonella",
+      "target": "サルモネラ菌",
+      "note": "食中毒菌"
+    },
+    {
+      "source": "World Egg Organization",
+      "target": "世界卵機構",
+      "note": "正式組織名"
+    },
+    {
+      "source": "Ginko Kashida",
+      "target": "樫田銀子",
+      "note": "人物名、歴史的文献に基づく"
+    },
+    {
+      "source": "Yurin An",
+      "target": "ゆりん庵",
+      "note": "TKG専門店"
+    },
+    {
+      "source": "Kisaburo",
+      "target": "きさぶろう",
+      "note": "TKG専門店"
+    },
+    {
+      "source": "furikake",
+      "target": "ふりかけ",
+      "note": "ご飯にかける調味料"
+    },
+    {
+      "source": "shoyu",
+      "target": "醤油",
+      "note": "一般的な調味料"
+    },
+    {
+      "source": "bloom",
+      "target": "ブルーム（卵殻膜）",
+      "note": "卵の保護膜、専門用語"
+    }
+  ],
+  "properNouns": [
+    "Life Where I'm From",
+    "Bobby",
+    "Rosie",
+    "Akko",
+    "Andrea Udder",
+    "University of Vermont",
+    "Harasan",
+    "1010en",
+    "Nishiawa Kura",
+    "Kurashiki",
+    "Bikan area",
+    "Niko"
+  ],
+  "styleGuide": [
+    "話し手の口調はカジュアルで親しみやすいため、日本語の文末は「〜だ」「〜ね」「〜よ」などを使い、丁寧すぎない自然な会話調にする。",
+    "専門用語（例：サルモネラ菌、ブルーム）は必要に応じて簡潔に説明を加える。",
+    "固有名詞（店名、人名、組織名）はカタカナ表記を基本とし、初出のみ英語を併記してもよい。",
+    "字幕の文字数制限を考慮し、長い説明は分割または簡略化する。",
+    "視聴者の反応（笑い声など）は「（笑）」などで表現する。",
+    "海外の視聴者向けの内容だが、日本語字幕では日本人にも自然に伝わる表現を優先する。"
+  ]
+}

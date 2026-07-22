@@ -1,0 +1,2345 @@
+[
+  {
+    "start": 0.14,
+    "end": 2.7310000000000003,
+    "text": "毎月ストリーミングにいくら使ってる？",
+    "sourceText": "How much do you spend on streaming every month?",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 2.7310000000000003,
+    "end": 4.89,
+    "text": "私がいくら使ってるかって？",
+    "sourceText": "How much do I spend?",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 4.89,
+    "end": 6.531,
+    "text": "そう、それが問題だ。",
+    "sourceText": "Yeah, this is the question.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 6.531,
+    "end": 9.92,
+    "text": "それとも、他の人が私の代わりにいくら使ってるか？",
+    "sourceText": "Or how much do other people spend on my behalf?",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 9.92,
+    "end": 11.817358490566038,
+    "text": "Hostingerさん、この動画のスポンサーありがとう。",
+    "sourceText": "Thank you to hosting her for sponsoring this video",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 11.817358490566038,
+    "end": 13.64,
+    "text": "そしてパトロンの皆さん、チャンネル支援ありがとう。",
+    "sourceText": "and to our patrons for supporting the channel.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 13.64,
+    "end": 16.86,
+    "text": "じゃあ、いくらかかるかググってみよう。値段がわからないから。",
+    "sourceText": "Okay, let me Google how much it costs because I don't know what these cost.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 18.26,
+    "end": 19.76,
+    "text": "よし、ちょっとググったよ。",
+    "sourceText": "Okay, I did some Googling.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 19.76,
+    "end": 21.900000000000002,
+    "text": "全部自分で払わなくてよかった。",
+    "sourceText": "Thank goodness I don't pay for all this myself.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 21.900000000000002,
+    "end": 23.959999999999997,
+    "text": "その言葉は聞きたくないな。理由を知りたい？",
+    "sourceText": "I don't like hearing that. You want to know why?",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 23.96,
+    "end": 27.18,
+    "text": "全部持ってるし、全部自分で払ってるんだ。",
+    "sourceText": "I have all of them and I'm paying for all of them.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 27.18,
+    "end": 29.5,
+    "text": "VPNと夢を持ってたら誰が損するの？",
+    "sourceText": "Who loses out if I have a VPN and a dream?",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 29.5,
+    "end": 32.04,
+    "text": "そう、なんでパスワード共有にそんなにうるさいの？",
+    "sourceText": "Yeah, like why are they also so pressed about sharing passwords?",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 32.04,
+    "end": 33.519999999999996,
+    "text": "本当にそんなに金欠なの？",
+    "sourceText": "Are they really that broke?",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 33.52,
+    "end": 38.28,
+    "text": "ストリーミング代を払ってない女性：あなた、本当にそんなに金欠なの？",
+    "sourceText": "Woman who doesn't pay for streaming services: Are you really that broke?",
+    "sourceIndexes": [
+      13,
+      14
+    ]
+  },
+  {
+    "start": 38.28,
+    "end": 40.7,
+    "text": "毎月これらのサービス全部使ってるの？",
+    "sourceText": "Do you use all of these services every month?",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 40.7,
+    "end": 42.934000000000005,
+    "text": "ああ、毎日開いてるよ。",
+    "sourceText": "Ah, I open it every day.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 42.934000000000005,
+    "end": 47.34180952380952,
+    "text": "それはすごいね。そうかもね。計算してみたら、",
+    "sourceText": "That's crazy. It might be. I ended up doing the math and it turns out I spend 97",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 47.34180952380952,
+    "end": 54.519999999999996,
+    "text": "インターネットで動画を見るのに毎月97カナダドル86セント使ってることがわかった。",
+    "sourceText": "Canadian dollars and 86 Canadian cents every month to watch videos on the internet.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 54.52,
+    "end": 56.24,
+    "text": "今あなたがやってることだよ。無料でね。",
+    "sourceText": "The thing you're doing right now. For free.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 56.24,
+    "end": 59.36000000000001,
+    "text": "でも面白いのは、お金はあまり気にしてないってこと。",
+    "sourceText": "But the funny thing is, is that I don't really care about the money.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 59.36000000000001,
+    "end": 61.68,
+    "text": "ストリーミングの問題はコストじゃない。",
+    "sourceText": "My problem with streaming isn't the cost.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 61.68,
+    "end": 65.64,
+    "text": "もう、なんか落ち着かないんだ。",
+    "sourceText": "It's that it just, it doesn't feel like home anymore.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 65.64,
+    "end": 67.4,
+    "text": "こう思ってるのは私だけかもしれない。",
+    "sourceText": "I might be the only person who feels this way.",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 67.4,
+    "end": 70.19310344827586,
+    "text": "今ネットでストリーミングの現状を検索すると、",
+    "sourceText": "If you search up the state of streaming on the internet right now, you're going",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 70.19310344827586,
+    "end": 74.43448275862069,
+    "text": "何百万回も再生された動画エッセイがいくつも出てきて、「海賊版に戻ろう」って言ってる。",
+    "sourceText": "to find a half dozen video essays with millions of views saying, \"We got to go",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 74.43448275862069,
+    "end": 77.3,
+    "text": "でも、ゴマすりと思われるかもしれないけど、私は、",
+    "sourceText": "back to piracy.\" But, at risk of sounding like a boootlicker, I don't really",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 77.3,
+    "end": 79.06,
+    "text": "もうそうしたいとは思わない。",
+    "sourceText": "want to do that. Anymore.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 79.06,
+    "end": 80.92,
+    "text": "このハードドライブに何が入ってるか聞かないで。",
+    "sourceText": "Don't ask me what's on this hard drive.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 80.92,
+    "end": 83.75764705882352,
+    "text": "でも、作品が消えないようにアーカイブするのは正当な理由だと思う。",
+    "sourceText": "Now I do think there's a valid case for archiving work so it doesn't vanish",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 83.75764705882352,
+    "end": 86.8,
+    "text": "スプレッドシートを持った奴がロイヤリティを払いたがらない場合に備えてね。",
+    "sourceText": "in case some loser with a spreadsheet doesn't want to pay residuals.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 86.8,
+    "end": 90.98529411764706,
+    "text": "でもそれ以外は、自分にとって大事なものに可処分所得を使うのは構わない。",
+    "sourceText": "But beyond that, I don't mind using my disposable income on things that",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 90.98529411764706,
+    "end": 95,
+    "text": "そしてストリーミングサービスは、なぜか私にとってすごく大事なんだ。",
+    "sourceText": "are important to me and streaming services are weirdly important to me.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 95,
+    "end": 97.66,
+    "text": "最初から使ってきたからかもしれない。",
+    "sourceText": "Maybe it's because I've been using them since the beginning.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 97.66,
+    "end": 99.002,
+    "text": "これ覚えてる？",
+    "sourceText": "Do you remember this?",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 99.002,
+    "end": 102.1,
+    "text": "うちの家族は2000年代後半にケーブルテレビをやめて、これにしたんだ。",
+    "sourceText": "My family cut the cable in the late 2000s in favour of this.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 102.1,
+    "end": 107.19999999999999,
+    "text": "任天堂Wii用のNetflixディスクで、ストリーミングサービスに接続するやつ。",
+    "sourceText": "A Netflix disc for the Nintendo Wii console that connected to their video streaming service.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 107.2,
+    "end": 110.92,
+    "text": "古すぎて、ディスクを返却しないように注意書きがあったんだ。",
+    "sourceText": "It's so old that they had to remind people not to return the disc.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 110.92,
+    "end": 115.34,
+    "text": "初めて、番組を録画したりDVRを管理したりする必要がなくなった。",
+    "sourceText": "For the first time, we didn't need to worry about recording programmes or managing our DVR.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 115.34,
+    "end": 118.83999999999999,
+    "text": "テレビ番組の全エピソードを見たいときに、ボックスセットを買う必要もなかった。",
+    "sourceText": "We didn't need to get a box set if we wanted to watch every episode of a TV show.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 118.84,
+    "end": 121.95698113207547,
+    "text": "これは特に私にとって大きな意味があった。",
+    "sourceText": "Now this meant a lot to me specifically because I'm a youngest child, which",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 121.95698113207547,
+    "end": 126.32000000000001,
+    "text": "なぜなら私は末っ子で、ゴールデンタイムのリモコン権がなかったから。",
+    "sourceText": "meant that I had no control over the remote during the best TV hours.",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 126.32000000000001,
+    "end": 130.12,
+    "text": "でもNetflixのおかげで、見たいものを好きな時に見られるようになった。",
+    "sourceText": "But Netflix meant that I could watch what I wanted when I wanted.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 130.12,
+    "end": 133.1,
+    "text": "そしてそれがいつもだったことがわかった。",
+    "sourceText": "And it turns out that was all of the time.",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 133.1,
+    "end": 136.82,
+    "text": "やっと、やっと『キャッスル』に完全に追いついたよ…",
+    "sourceText": "I am finally, finally 100% caught up with Castle and...",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 138.82,
+    "end": 140.48,
+    "text": "人生の目的がなくなった。",
+    "sourceText": "I have no more purpose in life.",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 140.48,
+    "end": 144.7,
+    "text": "それらは私の興味や性格を、漫画みたいにわかりやすく形作った。",
+    "sourceText": "They shaped my interests and personality in comically obvious ways.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 144.7,
+    "end": 148.39656470588235,
+    "text": "「私は誰？リック・キャッスルだ。キャッスル、キャッスル。」「俺って本当にワイルドでハンサムだよな、",
+    "sourceText": "\"Who am I? I'm Rick Castle. Castle. Castle.\" \"I really",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 148.39656470588235,
+    "end": 150.48076470588236,
+    "text": "？」いろんなキャラクターと一緒に、",
+    "sourceText": "am ruggedly handsome, aren't I?\" I spend my days",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 150.48076470588236,
+    "end": 152.721,
+    "text": "いろんな世界を探検する日々を過ごしてる。",
+    "sourceText": "exploring different worlds with different characters.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 152.721,
+    "end": 157.821,
+    "text": "ちなみにトップ3は『30 Rock』『Psych』『Scrubs』で、順不同。",
+    "sourceText": "Top three, by the way, are 30 Rock, Psych and now Scrubs in no particular order.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 157.821,
+    "end": 160.53951851851852,
+    "text": "どれも本当にいいんだ。こういう継続性は、",
+    "sourceText": "They're all just so good. This sort of constancy was only",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 160.53951851851852,
+    "end": 164.321,
+    "text": "ストリーミングが新しいテレビの見方を与えてくれたからこそ可能だった。",
+    "sourceText": "possible thanks to streaming giving me a new way to watch TV.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 164.321,
+    "end": 166.621,
+    "text": "番組はただ放送されてる時に見るものじゃなかった。",
+    "sourceText": "Shows weren't just something I caught when it was on.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 166.621,
+    "end": 169.20100000000002,
+    "text": "数シーズン住む場所だったんだ。",
+    "sourceText": "They were a place to live for a few seasons.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 169.20100000000002,
+    "end": 174.2337272727273,
+    "text": "「大人になって責任が増えたからだ」って言う前に言っておくけど、",
+    "sourceText": "And before you say that this is just what happens when you're an adult with responsibilities,",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 174.2337272727273,
+    "end": 178.401,
+    "text": "今の生活は10年前と笑っちゃうくらい同じなんだ。",
+    "sourceText": "I want to say that my life is, is comically similar to what it was 10 years ago.",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 178.401,
+    "end": 180.52100000000002,
+    "text": "ちょっとこのクリップを見せたい。",
+    "sourceText": "Let me just find this one clip.",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 180.52100000000002,
+    "end": 183.8533076923077,
+    "text": "だから、そのうち立ち上がって昨日のデイリーブログを編集して、",
+    "sourceText": "So I'm eventually going to get up and go edit yesterday's daily vlog",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 183.8533076923077,
+    "end": 187.541,
+    "text": "たぶんサブモニターで『The Mindy Project』を見るんだ。",
+    "sourceText": "and probably just watch the Mindy Project on my second monitor.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 187.541,
+    "end": 190.36205263157893,
+    "text": "今日はそんな感じかな。デイリーブログを続けて見たいなら、",
+    "sourceText": "But that's about all for today. If you want to see me keep making daily",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 190.36205263157893,
+    "end": 193.24099999999999,
+    "text": "いいね、シェア、チャンネル登録よろしくね。また明日会おう。",
+    "sourceText": "vlogs, make sure I like, share, and subscribe, and I will see you tomorrow.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 193.241,
+    "end": 194.82100000000003,
+    "text": "あれは10年前だ。",
+    "sourceText": "That was 10 years ago.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 194.82100000000003,
+    "end": 196.96099999999998,
+    "text": "変わったのはメガネだけ。",
+    "sourceText": "The only thing that's different is my glasses.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 196.961,
+    "end": 201.14385714285714,
+    "text": "人生ずっとYouTube動画を作ってテレビを見てきたけど、",
+    "sourceText": "My entire life has been making YouTube videos and",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 201.14385714285714,
+    "end": 203.681,
+    "text": "今はテレビを見てないんだ。",
+    "sourceText": "watching TV, except I'm not watching TV anymore.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 203.681,
+    "end": 206.36100000000002,
+    "text": "問題はストレスが多すぎることだと思う。",
+    "sourceText": "I think my problem is that there's just too much friction.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 206.36100000000002,
+    "end": 210.05365306122448,
+    "text": "テレビを見る代わりにスマホでInstagramを見ちゃうんだ。",
+    "sourceText": "I'm reaching for my phone to use Instagram instead of",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 210.05365306122448,
+    "end": 212.701,
+    "text": "今のテレビはすごく面倒に感じるから。",
+    "sourceText": "watching TV because TV just feels like so much work nowadays.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 212.701,
+    "end": 216.4997012987013,
+    "text": "頭おかしいってわかってるけど、想像してみてよ。",
+    "sourceText": "I know I sound cooked, but like I just picture it as browsing, clicking through different apps and titles and watching",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 216.4997012987013,
+    "end": 223.801,
+    "text": "アプリやタイトルをクリックして、今時の情けない予告編が自動再生されるのを見ながら番組説明を読もうとするんだ。",
+    "sourceText": "the sorry excuse for what counts as a trailer nowadays as it autoplays while I'm trying to read the show description.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 223.801,
+    "end": 229.89946153846154,
+    "text": "別の世界に逃げ込めないんだ。まるで渋滞に巻き込まれてるみたいで。",
+    "sourceText": "I can't escape into another world because it feels like I'm stuck in",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 229.89946153846154,
+    "end": 234.161,
+    "text": "でも行きたいんだ、テレビが大好きだから。",
+    "sourceText": "traffic trying to get there, but I want to go to there because I love TV.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 234.161,
+    "end": 238.2197755102041,
+    "text": "だから、子供の頃に大好きだったストリーミング体験の部分を取り戻して、",
+    "sourceText": "So I want to figure out how to bring back the parts of the streaming",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 238.2197755102041,
+    "end": 240.681,
+    "text": "家に帰る方法を見つけたいんだ。",
+    "sourceText": "experience that I loved as a kid to find my way back home.",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 240.681,
+    "end": 244.961,
+    "text": "まず、今のストリーミングがこんなに耐え難い原因を探した。",
+    "sourceText": "To start, I looked for what was making streaming feel so insufferable nowadays.",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 244.961,
+    "end": 249.60809677419354,
+    "text": "コスト上昇や経済についての記事はたくさんあったけど、",
+    "sourceText": "There were a bunch of articles explaining the rising cost and economics of it all, but when it came",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 249.60809677419354,
+    "end": 255.581,
+    "text": "実際の視聴体験に関しては、同じアイデアが違う言葉で繰り返し出てきたんだ。",
+    "sourceText": "down to the actual experience of watching stuff, this one idea kept popping up in different words.",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 255.581,
+    "end": 259.729,
+    "text": "選択肢の豊富さ、コンテンツ過多、選択疲れ。",
+    "sourceText": "Abundance of options. Content overload. Choice fatigue.",
+    "sourceIndexes": [
+      63
+    ]
+  },
+  {
+    "start": 259.729,
+    "end": 263.161,
+    "text": "要するに：ロブスターがバター臭すぎる。",
+    "sourceText": "Basically: My lobster too buttery.",
+    "sourceIndexes": [
+      64,
+      65
+    ]
+  },
+  {
+    "start": 263.161,
+    "end": 265.386,
+    "text": "ステーキが肉汁たっぷりすぎる。",
+    "sourceText": "My steak too juicy.",
+    "sourceIndexes": [
+      66
+    ]
+  },
+  {
+    "start": 265.386,
+    "end": 269.035,
+    "text": "コンテンツがありすぎる。",
+    "sourceText": "My content, Too abundant.",
+    "sourceIndexes": [
+      67
+    ]
+  },
+  {
+    "start": 269.035,
+    "end": 270.44100000000003,
+    "text": "そう聞こえるよね。でもね？",
+    "sourceText": "That's what I sound like. And you know what?",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 270.44100000000003,
+    "end": 272.72099999999995,
+    "text": "私の言う通り、これには二つの理由があるんだ。",
+    "sourceText": "I'm right because it is a problem for two reasons.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 272.721,
+    "end": 276.301,
+    "text": "まず、選択のパラドックス、または選択過多、選択肢過多。",
+    "sourceText": "First, we have the paradox of choice or over choice or choice overload.",
+    "sourceIndexes": [
+      70
+    ]
+  },
+  {
+    "start": 276.301,
+    "end": 279.981,
+    "text": "皮肉な名前だけど、選択肢が多すぎると決断の妨げになるってこと。",
+    "sourceText": "Bit of an ironic name. But it's when too many choices gets in the way of making a decision.",
+    "sourceIndexes": [
+      71
+    ]
+  },
+  {
+    "start": 279.981,
+    "end": 285.961,
+    "text": "それに加えて、決断疲れ。決断をしすぎると、さらに決断する能力が低下する。",
+    "sourceText": "Alongside that, we have decision fatigue where making too many decisions impairs your ability to make more decisions.",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 285.961,
+    "end": 289.681,
+    "text": "この二つは、社会で長い一日を過ごした後にぶつかり合うんだ。",
+    "sourceText": "Both of these things can collide after a long day of living in a society.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 290.801,
+    "end": 296.2015,
+    "text": "顧客や同僚、メールの感嘆符にイライラしてるかもしれないけど、何を食べるか、",
+    "sourceText": "Maybe we're fighting off a crash out over a customer or a coworker or an exclamation point in an email, but we also need",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 296.2015,
+    "end": 301.60200000000003,
+    "text": "洗濯をいつするか、使ってないジムの会員を解約すべきかも決めなきゃいけない。",
+    "sourceText": "to decide what to eat, when to do our laundry, whether or not we should cancel that gym membership that we never use.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 301.60200000000003,
+    "end": 303.42199999999997,
+    "text": "それともジムに行き始めるべき？",
+    "sourceText": "Or maybe we should just start going to the gym?",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 303.422,
+    "end": 307.022,
+    "text": "その間ずっと、スマホは決断すべきことを次々と送ってくる。",
+    "sourceText": "All the while our phone just sends us more things that we need to decide.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 307.022,
+    "end": 309.782,
+    "text": "返信すべき？ニュースはどうする？",
+    "sourceText": "Should I text them back? What do I do about the news?",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 309.782,
+    "end": 311.142,
+    "text": "もう黙ってくれないんだ。",
+    "sourceText": "It just won't shut up.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 311.142,
+    "end": 316.622,
+    "text": "こうした選択が積み重なって、疲れ果てる現実の大きな塊になる。",
+    "sourceText": "All of these choices can build up into this big lump of exhausting reality.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 316.622,
+    "end": 320.952,
+    "text": "だから、ちょっと別の世界に逃げ出したくなる。",
+    "sourceText": "So you might want to escape for a second to a different world.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 322.022,
+    "end": 327.28200000000004,
+    "text": "でもそのためには、さらに選択をしなきゃいけない。",
+    "sourceText": "But to do that, you have to make more choices.",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 330.002,
+    "end": 332.462,
+    "text": "確かに、何を見るか悩むのは新しいことじゃない。",
+    "sourceText": "Now I'll admit, struggling with what to watch isn't new.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 332.462,
+    "end": 336.802,
+    "text": "その前は、ブロックバスターでぶらついたり、テレビのチャンネルをザッピングしてた。",
+    "sourceText": "Before all of this, we were loitering in a Blockbuster or flipping through TV channels.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 336.802,
+    "end": 339.46200000000005,
+    "text": "でも今の違いは、選択肢がはるかに多いこと。",
+    "sourceText": "But the difference now is that there is so much more.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 339.46200000000005,
+    "end": 342.906705882353,
+    "text": "みんな選択過多で決断疲れしてるから、",
+    "sourceText": "We're all choice overloaded and decision fatigued,",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 342.906705882353,
+    "end": 346.10200000000003,
+    "text": "選ばないことを選びたくなるんだ。",
+    "sourceText": "so it can be tempting just to choose not to choose.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 346.10200000000003,
+    "end": 350.462,
+    "text": "お気に入りの番組に戻るか、全部を決めてくれるSNSをスクロールするか。",
+    "sourceText": "Just settle back into a comfort show or scroll on social media, which makes all the decisions for you.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 350.462,
+    "end": 353.722,
+    "text": "でもね。",
+    "sourceText": "But I don't know.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 353.722,
+    "end": 357.282,
+    "text": "好きなことに関しては、受動的になりたくないんだ。",
+    "sourceText": "I just don't want to be so passive with this thing that I care about.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 357.282,
+    "end": 361.65822641509436,
+    "text": "新しいものに触れる時間がないからって、",
+    "sourceText": "I don't want to be the kind of person who's convinced that all of the good TV shows were made when I was",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 361.65822641509436,
+    "end": 368.54200000000003,
+    "text": "いい番組は全部子供の頃に作られたんだって思い込む人にはなりたくない。",
+    "sourceText": "a kid during my formative years, just because I haven't had the time to really engage with anything new.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 368.54200000000003,
+    "end": 372.50199999999995,
+    "text": "じゃあどうやって直すか？いつも通りだよ。",
+    "sourceText": "So how do we fix this? Well, the same way we always do.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 372.502,
+    "end": 374.342,
+    "text": "Hostingerで作ったウェブサイトでね。",
+    "sourceText": "With a website made with Hostinger.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 374.342,
+    "end": 377.442,
+    "text": "このチャンネルをスポンサーしてくれるのももう5年近くになる。",
+    "sourceText": "They've been sponsoring videos on this channel for almost five years now.",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 377.442,
+    "end": 382.522,
+    "text": "だから、どうでもいい決断は全部捨てて、大事なことだけに集中したい。",
+    "sourceText": "So. I want to get rid of all the decisions that don't matter and focus on the only one that does.",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 382.522,
+    "end": 384.282,
+    "text": "何を見たいか？",
+    "sourceText": "What do I want to watch?",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 384.282,
+    "end": 387.92199999999997,
+    "text": "そこで、タイトルをブラウズしてウォッチリストに追加できるシンプルなツールを作った。",
+    "sourceText": "So I made a simple tool that lets you browse titles and add it to your watch list.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 387.922,
+    "end": 390.10200000000003,
+    "text": "わあ、なんて刺激が足りないんだ。",
+    "sourceText": "Wow. So understimulating.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 390.10200000000003,
+    "end": 394.7772380952381,
+    "text": "そしたら、実際に見たいものが一番多いストリーミングサービスを教えてくれる。（わあ！",
+    "sourceText": "Then it just tells you which streaming service has the most stuff that you actually want to watch. (Wow!) This should",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 394.7772380952381,
+    "end": 399.622,
+    "text": "）これでどのサービスを選ぶかの計算がシンプルになって、実際に使うときに集中できるはず。",
+    "sourceText": "simplify the math of which streaming service you should get and help you stay focused when you actually use it.",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 399.622,
+    "end": 404.762,
+    "text": "大事な選択はもう済んでるから、あとはカオスを無視するもよし、受け入れるもよし。",
+    "sourceText": "You've already made the one choice that matters, so you're free to ignore all the chaos or embrace it.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 404.762,
+    "end": 406.482,
+    "text": "あなたがアライメントチャートのどこにいるかは知らないけど。",
+    "sourceText": "I don't know where you sit on the alignment chart.",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 406.482,
+    "end": 408.7991428571429,
+    "text": "ストリーミングをもっと簡単にすべきだと思うし、",
+    "sourceText": "I think they should make streaming easier and I",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 408.7991428571429,
+    "end": 411.262,
+    "text": "Hostingerのおかげで簡単に作れたのは確かだ。",
+    "sourceText": "know that it was easy to make thanks to Hostinger.",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 411.262,
+    "end": 414.742,
+    "text": "プレミアムホスティングプランを手に入れた。月額たったの2.99ドル。ブープ。",
+    "sourceText": "I got my premium hosting plan, which is available for just $2.99 a month. Boop.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 414.742,
+    "end": 417.242,
+    "text": "ホスティングプランに付いてくる無料ドメインもゲット。ブープ。",
+    "sourceText": "I got my free domain that comes with a hosting plan. Boop.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 417.242,
+    "end": 418.802,
+    "text": "それに無料のビジネスメールボックスも。",
+    "sourceText": "And I got my free business mailbox.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 418.802,
+    "end": 422.60200000000003,
+    "text": "これでバグ報告がメインのメールアドレスを埋め尽くすことはない。",
+    "sourceText": "So all your bug reports don't clog up my main email address.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 422.60200000000003,
+    "end": 424.86199999999997,
+    "text": "ブープ。でもバグはないけどね。",
+    "sourceText": "Boop. But there won't be any bugs.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 424.862,
+    "end": 427.122,
+    "text": "なぜならバックエンドをコードしなかったから。",
+    "sourceText": "Because I didn't code the back end.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 427.122,
+    "end": 429.322,
+    "text": "代わりにN8Nでノーコードのワークフローを作った。",
+    "sourceText": "Instead, I made no code workflows with N8N.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 429.322,
+    "end": 433.142,
+    "text": "何百ものノードと統合機能があって、ドラッグ＆ドロップするだけ。",
+    "sourceText": "They have hundreds of nodes and integrations that you just drag and drop.",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 433.142,
+    "end": 435.582,
+    "text": "コードもいらないし、セミコロンの心配もない。",
+    "sourceText": "No need to code, no need to worry about semicolons.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 435.582,
+    "end": 439.25415189873416,
+    "text": "N8Nにはクラウドプラットフォームもあるけど、セルフホストの方がいい。",
+    "sourceText": "Now N8N does have a cloud platform, but I prefer to self-host because I don't want to have to",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 439.25415189873416,
+    "end": 443.562,
+    "text": "みんながこのサイトをSpellcheckみたいにバズらせた時のレート制限が心配だからね。",
+    "sourceText": "worry about rate limiting in case you guys make this website go viral like you did for Spellcheck.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 443.562,
+    "end": 446.203,
+    "text": "今でも毎日1000人以上がそのサイトにアクセスしてる。",
+    "sourceText": "More than a thousand people still go to this website every day.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 446.203,
+    "end": 448.53366666666665,
+    "text": "あのゲームは冗談で作ったんだ。セルフホストなら、自分のデータと、",
+    "sourceText": "I made this game as a joke. Self-hosting also keeps my",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 448.53366666666665,
+    "end": 450.723,
+    "text": "サイトを使うなら君のデータも、よりプライベートに保てる。",
+    "sourceText": "data and your data, if you use the site, more private.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 450.723,
+    "end": 453.083,
+    "text": "だからHostingerのセルフホストN8Nプランを使ってる。",
+    "sourceText": "So I use Hostinger's self-hosted N8N plan.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 453.083,
+    "end": 457.683,
+    "text": "ウェブサイト関連のすべてを一つのダッシュボードで管理できるのは本当に便利。",
+    "sourceText": "It's really convenient being able to manage all things related to my website in one dashboard.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 457.683,
+    "end": 461.7133448275862,
+    "text": "この2つのプランのおかげで、ほとんどコードを書かずに、",
+    "sourceText": "These two plans make it possible for me to make basically any",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 461.7133448275862,
+    "end": 466.163,
+    "text": "想像できるあらゆるウェブサイトやウェブアプリ、ツールを作れる。",
+    "sourceText": "website, web app, tool I can imagine while writing basically no code.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 466.163,
+    "end": 469.303,
+    "text": "すごいよね。奇跡って呼びたいけど、実際はただのHostingerだ。",
+    "sourceText": "It's awesome. I'd call it a miracle, but it's actually just Hostinger.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 469.303,
+    "end": 472.84299999999996,
+    "text": "最も包括的で手頃なウェブホスティングプラットフォームの一つだ。",
+    "sourceText": "One of the most comprehensive and affordable web hosting platforms out there.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 472.843,
+    "end": 477.283,
+    "text": "ポートフォリオ、オンラインストア、バイブスでコードしたアプリも全部一箇所で作れる。",
+    "sourceText": "You can make your portfolio, online store, vibe-coded app all in one place.",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 477.283,
+    "end": 479.283,
+    "text": "文字通り、一つのプランで複数のウェブサイトをホストできる。",
+    "sourceText": "Literally, you could host multiple websites with one plan.",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 479.283,
+    "end": 484.82300000000004,
+    "text": "始める準備ができたら、hostinger.com/answerinprogressにアクセスするか、概要欄の最初のリンクをクリックして。",
+    "sourceText": "If you're ready to get started, you could go to hostinger.com/answerinprogress or click the first link in the description.",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 484.82300000000004,
+    "end": 488.343,
+    "text": "コードANSWERINPROGRESSを使えば初回購入が10%オフになる。",
+    "sourceText": "And you can use our code ANSWERINPROGRESS for 10% off your first purchase.",
+    "sourceIndexes": [
+      121
+    ]
+  },
+  {
+    "start": 488.343,
+    "end": 489.64300000000003,
+    "text": "とにかく、ウェブサイトはできた。",
+    "sourceText": "Either way, we've got a website.",
+    "sourceIndexes": [
+      122
+    ]
+  },
+  {
+    "start": 489.64300000000003,
+    "end": 492.703,
+    "text": "さあ、使ってみて、ストリーミングを救えたか確かめよう。",
+    "sourceText": "Now let's use it and see if we saved streaming.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 493.843,
+    "end": 498.46999999999997,
+    "text": "大したことじゃない。ウェブサイトを作ったんだ。",
+    "sourceText": "No big deal. I made a website.",
+    "sourceIndexes": [
+      124,
+      125
+    ]
+  },
+  {
+    "start": 498.47,
+    "end": 501.91900000000004,
+    "text": "「やっぱりね」「あらまあ」私が全部のストリーミングサービスに入ってるの、覚えてる？",
+    "sourceText": "- Of course she did. - Oh no. Do you guys remember how I have all the streaming services?",
+    "sourceIndexes": [
+      126,
+      127
+    ]
+  },
+  {
+    "start": 501.91900000000004,
+    "end": 505.363,
+    "text": "「あ！」「全部お金払ってるって？」",
+    "sourceText": "- Oh! - That you pay for every single one of them?",
+    "sourceIndexes": [
+      128,
+      129
+    ]
+  },
+  {
+    "start": 505.363,
+    "end": 509.703,
+    "text": "正直なところ、問題はお金じゃないんだ。",
+    "sourceText": "To be honest, my problem isn't the money.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 509.703,
+    "end": 514.563,
+    "text": "問題は、ただストリーミングサービスを使いたいってことなんだ。",
+    "sourceText": "My problem is that I just want to be using the streaming services.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 515.463,
+    "end": 519.283,
+    "text": "まさに隠れ億万長者の発言だね。",
+    "sourceText": "Spoken like a true secret billionaire.",
+    "sourceIndexes": [
+      132
+    ]
+  },
+  {
+    "start": 519.283,
+    "end": 523.2230000000001,
+    "text": "「問題はお金じゃない。理念の問題だ」ってね。",
+    "sourceText": "\"My problem isn't the money. It's the principle of it all.\"",
+    "sourceIndexes": [
+      133
+    ]
+  },
+  {
+    "start": 524.643,
+    "end": 526.903,
+    "text": "わかった、説明して。問題は何？",
+    "sourceText": "Okay, explain, explain. The problem is?",
+    "sourceIndexes": [
+      134
+    ]
+  },
+  {
+    "start": 526.903,
+    "end": 532.183,
+    "text": "若い頃は、見てるものでアイデンティティを築いてたんだ。",
+    "sourceText": "When I was younger, I built my identity around what I watched.",
+    "sourceIndexes": [
+      135
+    ]
+  },
+  {
+    "start": 532.183,
+    "end": 533.983,
+    "text": "それが本当に大好きだった。",
+    "sourceText": "I loved it so, so much.",
+    "sourceIndexes": [
+      136
+    ]
+  },
+  {
+    "start": 533.983,
+    "end": 537.963,
+    "text": "でももうそういうことがなくなって、悲しくなったんだ。",
+    "sourceText": "And that just doesn't happen anymore. And it made me sad.",
+    "sourceIndexes": [
+      137
+    ]
+  },
+  {
+    "start": 537.963,
+    "end": 539.7629999999999,
+    "text": "でも、これだけストリーミングサービスがあるのに。",
+    "sourceText": "Well, you have all of these streaming services.",
+    "sourceIndexes": [
+      138
+    ]
+  },
+  {
+    "start": 539.763,
+    "end": 541.683,
+    "text": "どうしてポップカルチャーに夢中にならないの？",
+    "sourceText": "How are you not getting lost in pop culture?",
+    "sourceIndexes": [
+      139
+    ]
+  },
+  {
+    "start": 541.683,
+    "end": 543.203,
+    "text": "全部すぐに使えるのに。",
+    "sourceText": "You have them all at your fingertips.",
+    "sourceIndexes": [
+      140
+    ]
+  },
+  {
+    "start": 543.203,
+    "end": 544.583,
+    "text": "そう、まさにそこなんだ。",
+    "sourceText": "That, that's exactly it.",
+    "sourceIndexes": [
+      141
+    ]
+  },
+  {
+    "start": 544.583,
+    "end": 548.5815,
+    "text": "ストリーミングサービスが一つしかなかった頃にできたことが、",
+    "sourceText": "I should be able to do this thing that I was able to",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 548.5815,
+    "end": 550.8430000000001,
+    "text": "今もできるはずなのに。",
+    "sourceText": "do back when like there was one streaming service.",
+    "sourceIndexes": [
+      142
+    ]
+  },
+  {
+    "start": 550.8430000000001,
+    "end": 553.063,
+    "text": "なんでこんなに難しくなったように感じるんだろう？",
+    "sourceText": "Why does it seem harder than ever?",
+    "sourceIndexes": [
+      143
+    ]
+  },
+  {
+    "start": 553.063,
+    "end": 556.943,
+    "text": "理由は、ストリーミングサービスが多すぎるからだと思う。",
+    "sourceText": "And I think it's because there's just too much streaming services.",
+    "sourceIndexes": [
+      144
+    ]
+  },
+  {
+    "start": 556.943,
+    "end": 558.143,
+    "text": "俺は…",
+    "sourceText": "I'm having...",
+    "sourceIndexes": [
+      145
+    ]
+  },
+  {
+    "start": 559.703,
+    "end": 564.603,
+    "text": "これ、今までで一番面白い会話だよ。",
+    "sourceText": "This is actually the funniest conversation we've ever had.",
+    "sourceIndexes": [
+      146
+    ]
+  },
+  {
+    "start": 564.603,
+    "end": 567.803,
+    "text": "– なんで？ – 10個のストリーミングサービスにお金を払ってるんだ。",
+    "sourceText": "- Why? -I pay for 10 streaming services.",
+    "sourceIndexes": [
+      147
+    ]
+  },
+  {
+    "start": 567.803,
+    "end": 571.063,
+    "text": "問題はストリーミングサービスが多すぎること。",
+    "sourceText": "My problem is that there are too many streaming services.",
+    "sourceIndexes": [
+      148
+    ]
+  },
+  {
+    "start": 571.063,
+    "end": 573.683,
+    "text": "10個のサービスにお金を払ってるんだよね。",
+    "sourceText": "You pay for 10 streaming services.",
+    "sourceIndexes": [
+      149
+    ]
+  },
+  {
+    "start": 573.683,
+    "end": 575.463,
+    "text": "声に出して聞くと。",
+    "sourceText": "Hearing it out loud.",
+    "sourceIndexes": [
+      150
+    ]
+  },
+  {
+    "start": 575.463,
+    "end": 580.3829999999999,
+    "text": "この動画が何についてかは知らないけど、この会話の前提が面白すぎる。",
+    "sourceText": "I don't even know what this video is about but the premise of this conversation is so funny.",
+    "sourceIndexes": [
+      151
+    ]
+  },
+  {
+    "start": 580.383,
+    "end": 583.243,
+    "text": "「ロブスターがジューシーすぎる」「ステーキがバターっぽすぎる」って感じ。",
+    "sourceText": "My lobster too juicy. My steak too buttery.",
+    "sourceIndexes": [
+      152
+    ]
+  },
+  {
+    "start": 583.243,
+    "end": 585.6030000000001,
+    "text": "本当に、何の話をしてるんだろうね？",
+    "sourceText": "Like truly like what are we talking about?",
+    "sourceIndexes": [
+      153
+    ]
+  },
+  {
+    "start": 587.223,
+    "end": 592.209,
+    "text": "– お腹が痛いよ。 – ステーキがジューシーすぎるからだね。",
+    "sourceText": "- My tummy hurts. -Because your steak too juicy.",
+    "sourceIndexes": [
+      154
+    ]
+  },
+  {
+    "start": 593.064,
+    "end": 595.7852765957447,
+    "text": "とにかく、10個のストリーミングサービスがあって、",
+    "sourceText": "So anyway, you have 10 streaming services and that's",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 595.7852765957447,
+    "end": 598.324,
+    "text": "それが問題なのは、昔子供だったからってこと？",
+    "sourceText": "a problem for you because you were a child once.",
+    "sourceIndexes": [
+      155
+    ]
+  },
+  {
+    "start": 598.324,
+    "end": 601.3258867924528,
+    "text": "もっと早くこの話をしておけばよかったな。",
+    "sourceText": "I kind of wish we had this conversation a little earlier because it feels",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 601.3258867924528,
+    "end": 605.499,
+    "text": "答えは「ストリーミングサービスを一つだけ使う」だった気がするけど…",
+    "sourceText": "like the answer should have been only use one streaming service. But...",
+    "sourceIndexes": [
+      156
+    ]
+  },
+  {
+    "start": 605.499,
+    "end": 609.0445882352941,
+    "text": "何をしたんだ？– ウェブサイトを作ったんだ。",
+    "sourceText": "What have you done? - I made a",
+    "sourceIndexes": [
+      157
+    ]
+  },
+  {
+    "start": 609.0445882352941,
+    "end": 611.524,
+    "text": "– すごい。何をするの？",
+    "sourceText": "website. - Wow. What do I do?",
+    "sourceIndexes": [
+      158
+    ]
+  },
+  {
+    "start": 611.524,
+    "end": 615.3643448275861,
+    "text": "ウェブサイトでウォッチリストを作ると、",
+    "sourceText": "You make a watch list on the website and then it tells you which",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 615.3643448275861,
+    "end": 621.9839999999999,
+    "text": "そのリストの作品を最も多く持っているストリーミングサービスを教えてくれるんだ。",
+    "sourceText": "streaming service has the most of the stuff on your watch list.",
+    "sourceIndexes": [
+      159
+    ]
+  },
+  {
+    "start": 621.984,
+    "end": 626.9440000000001,
+    "text": "– 待って。 – おお。実は結構いいね。悪く言うつもりはないんだけど、サブリナ。",
+    "sourceText": "- Wait. - Oh. Actually kind of good. Like this might be no offence, Sabrina.",
+    "sourceIndexes": [
+      160,
+      161
+    ]
+  },
+  {
+    "start": 626.9440000000001,
+    "end": 632.784,
+    "text": "これは動画のために作った中で、初めて本当に役立つウェブサイトかもしれない。",
+    "sourceText": "This might be the first genuinely useful website that you have made for a video.",
+    "sourceIndexes": [
+      162
+    ]
+  },
+  {
+    "start": 632.784,
+    "end": 636.211843137255,
+    "text": "実際のストリーミングサービスに圧倒されずに、見たいもののリストを作れるんだ。",
+    "sourceText": "You can kind of create your list of things that you want to watch without being overwhelmed",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 636.211843137255,
+    "end": 638.9361568627452,
+    "text": "サービスは「これを見たいんでしょ？」と勧めてくるけど、",
+    "sourceText": "by an actual streaming service that's trying to tell you that you want to watch this",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 638.9361568627452,
+    "end": 642.364,
+    "text": "、それに対して「本当に見たいのかな？」って思うこともある。そういうのなしで、",
+    "sourceText": "thing and you're like, \"Do I actually want to watch those things?\" You can like",
+    "sourceIndexes": [
+      163
+    ]
+  },
+  {
+    "start": 642.364,
+    "end": 646.0440000000001,
+    "text": "ストリーミングサービスの邪魔が入らずにリストを作れる。",
+    "sourceText": "make your list without the distractions of streaming services.",
+    "sourceIndexes": [
+      164
+    ]
+  },
+  {
+    "start": 646.0440000000001,
+    "end": 651.1570434782609,
+    "text": "本当にそう。何を見ようか選ぶのが圧倒的に感じられなくなって、",
+    "sourceText": "So true. It made choosing what I want to watch stop feeling overwhelming",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 651.1570434782609,
+    "end": 654.4440000000001,
+    "text": "また発見の楽しさを味わえたんだ。",
+    "sourceText": "and I just got to experience like the fun of discovery again.",
+    "sourceIndexes": [
+      165
+    ]
+  },
+  {
+    "start": 654.4440000000001,
+    "end": 660.564,
+    "text": "あと、一つずつ作品を表示して「はい」「いいえ」で答えられるセクションがあるのも気に入った。すごくいい。",
+    "sourceText": "I also liked there's like a section where you, it'll show you one item and you can say yes or no. That's great.",
+    "sourceIndexes": [
+      166
+    ]
+  },
+  {
+    "start": 660.564,
+    "end": 664.384,
+    "text": "わかった。じゃあもう一度教えて、君の問題は何だっけ？",
+    "sourceText": "Okay. So remind me again, what is your problem?",
+    "sourceIndexes": [
+      167
+    ]
+  },
+  {
+    "start": 664.384,
+    "end": 668.744,
+    "text": "今契約しているサブスクリプションの数を減らそうとしているの？",
+    "sourceText": "Are you trying to reduce the number of subscriptions that you are currently subscribed to?",
+    "sourceIndexes": [
+      168
+    ]
+  },
+  {
+    "start": 668.744,
+    "end": 672.5840000000001,
+    "text": "うん、理論的にはそう。これでストリーミングサービスの契約を管理できるはずだったんだ。",
+    "sourceText": "Okay, so theoretically, yes. This should have helped me manage my streaming service subscriptions.",
+    "sourceIndexes": [
+      169,
+      170
+    ]
+  },
+  {
+    "start": 672.5840000000001,
+    "end": 676.2040000000001,
+    "text": "– おっと。 – どのプランも年額契約だから、解約できないんだ。",
+    "sourceText": "- Uh-oh. -I can't cancel any of my plans because they're all annual subscriptions.",
+    "sourceIndexes": [
+      171
+    ]
+  },
+  {
+    "start": 677.164,
+    "end": 680.284,
+    "text": "– なんてこった！ – でも理論的には役立つはずだよ。",
+    "sourceText": "- Oh no! - Theoretically it could help though.",
+    "sourceIndexes": [
+      172
+    ]
+  },
+  {
+    "start": 680.284,
+    "end": 681.924,
+    "text": "– わかった。 – わかった。",
+    "sourceText": "- Okay. -Okay.",
+    "sourceIndexes": [
+      173
+    ]
+  },
+  {
+    "start": 681.924,
+    "end": 684.5525714285714,
+    "text": "– 私のウェブサイトは役立つと思うけど、",
+    "sourceText": "- My website, while I think it's useful, it didn't",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 684.5525714285714,
+    "end": 687.824,
+    "text": "ストリーミングに関するすべての問題を解決したわけじゃない。",
+    "sourceText": "solve every problem people have with streaming.",
+    "sourceIndexes": [
+      174
+    ]
+  },
+  {
+    "start": 687.824,
+    "end": 691.98365,
+    "text": "ウェブサイトを視聴者と共有したら、33%の人が「いいえ、役に立ちませんでした」と答えたんだ、",
+    "sourceText": "I shared the website with our audience and 33% of people just",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 691.98365,
+    "end": 694.2359700000001,
+    "text": "。 – ああ！ – その多くは、",
+    "sourceText": "said, \"No, this was not useful to me.\" - Oh! -A lot of it boiled",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 694.2359700000001,
+    "end": 698.001,
+    "text": "大手ストリーマーをボイコットしたいという人たちがいるという事実に起因していた。",
+    "sourceText": "down to the fact that like there are people out there who want",
+    "sourceIndexes": [
+      175
+    ]
+  },
+  {
+    "start": 698.001,
+    "end": 702.184,
+    "text": "さまざまな理由で大手ストリーマーを完全にボイコットしたい人たちがいるんだ。",
+    "sourceText": "to boycott big streamers entirely for a lot of reasons.",
+    "sourceIndexes": [
+      176
+    ]
+  },
+  {
+    "start": 702.184,
+    "end": 706.044,
+    "text": "脚本家や俳優のストライキを引き起こした労働争議もある。",
+    "sourceText": "There are the labour disputes that drove the writer and actor strikes.",
+    "sourceIndexes": [
+      177
+    ]
+  },
+  {
+    "start": 706.044,
+    "end": 711.924,
+    "text": "ライセンスや税制優遇のための作品の抹消で、カタログが予測不能になっている。",
+    "sourceText": "There are these unpredictable catalogues due to licencing or memory holing work for a tax break.",
+    "sourceIndexes": [
+      178
+    ]
+  },
+  {
+    "start": 711.924,
+    "end": 717.7040000000001,
+    "text": "広告の導入もあり、それはストリーミングが始まった目的を台無しにしている。",
+    "sourceText": "There's the introduction of ads, which kind of defeats the entire purpose that streaming started with.",
+    "sourceIndexes": [
+      179
+    ]
+  },
+  {
+    "start": 717.7040000000001,
+    "end": 719.944,
+    "text": "で、そういうのから抜け出したい人もいるんだよね。",
+    "sourceText": "And like some people just want to opt out of that.",
+    "sourceIndexes": [
+      180
+    ]
+  },
+  {
+    "start": 719.944,
+    "end": 723.4544918032786,
+    "text": "僕はストリーミングサービスをいくつか契約してるだけだけど、",
+    "sourceText": "I only subscribe to a couple of streaming services, but when there's something that I",
+    "sourceIndexes": [
+      181
+    ]
+  },
+  {
+    "start": 723.4544918032786,
+    "end": 727.204,
+    "text": "見たいものがストリーミングにない時は、デジタルコピーを買うんだ。",
+    "sourceText": "want to watch that's just not on a streaming service, I will just buy the digital copy.",
+    "sourceIndexes": [
+      181
+    ]
+  },
+  {
+    "start": 727.204,
+    "end": 729.6239999999999,
+    "text": "本当？ それは子供の頃の名残だと思うな。",
+    "sourceText": "Really? I think this comes from me when I was a kid.",
+    "sourceIndexes": [
+      182
+    ]
+  },
+  {
+    "start": 729.624,
+    "end": 731.504,
+    "text": "DVDのボックスセットを買ってたんだ。",
+    "sourceText": "I would just buy the DVD box sets.",
+    "sourceIndexes": [
+      183
+    ]
+  },
+  {
+    "start": 731.504,
+    "end": 735.604,
+    "text": "ミニオンズの映画を3本、高解像度のBlu-ray 3Dで持ってるよ。",
+    "sourceText": "I have three Minion movies in high res Blu-ray 3D.",
+    "sourceIndexes": [
+      184
+    ]
+  },
+  {
+    "start": 735.604,
+    "end": 738.605,
+    "text": "ミニオンズはBlu-rayで見るべきだよ。",
+    "sourceText": "You really need to see the Minions in Blu-ray.",
+    "sourceIndexes": [
+      185
+    ]
+  },
+  {
+    "start": 738.605,
+    "end": 741.4540196078432,
+    "text": "多くの人がストリーミングに抱える問題はもっともだと思うし、",
+    "sourceText": "I think that a lot of people's problems with streaming is very",
+    "sourceIndexes": [
+      186
+    ]
+  },
+  {
+    "start": 741.4540196078432,
+    "end": 743.905,
+    "text": "物理メディアをもっと評価するようになったよ。",
+    "sourceText": "valid and it makes me appreciate physical media a lot more.",
+    "sourceIndexes": [
+      186
+    ]
+  },
+  {
+    "start": 743.905,
+    "end": 748.4019696969697,
+    "text": "サイトでやろうと思ってることの一つは、eBayのAPIを使って、",
+    "sourceText": "One thing I think I'm going to try and do with the website is also use like the eBay",
+    "sourceIndexes": [
+      187
+    ]
+  },
+  {
+    "start": 748.4019696969697,
+    "end": 753.105,
+    "text": "検索したものに対してストリーミング以外の選択肢も追加することなんだ。",
+    "sourceText": "API to add another option on top of streaming for like everything that you search for.",
+    "sourceIndexes": [
+      187
+    ]
+  },
+  {
+    "start": 753.985,
+    "end": 756.9250000000001,
+    "text": "DVDが入手可能かどうかチェックするんだ。",
+    "sourceText": "Check if there is a DVD available for it.",
+    "sourceIndexes": [
+      188
+    ]
+  },
+  {
+    "start": 756.9250000000001,
+    "end": 762.236875,
+    "text": "でも正直、最初のバージョンを作ってから、あまり時間をかけてなくてね。",
+    "sourceText": "But honestly, ever since I made this first version, I haven't spent that much",
+    "sourceIndexes": [
+      189
+    ]
+  },
+  {
+    "start": 762.236875,
+    "end": 767.065,
+    "text": "なぜなら、また作品を見るのに忙しくなったからなんだ、みんな。",
+    "sourceText": "more time working on it because I have been too busy watching things again, guys.",
+    "sourceIndexes": [
+      189
+    ]
+  },
+  {
+    "start": 767.105,
+    "end": 770.4555806451614,
+    "text": "先週このサイトを作ってから、",
+    "sourceText": "Since I made this site last week, I",
+    "sourceIndexes": [
+      190
+    ]
+  },
+  {
+    "start": 770.4555806451614,
+    "end": 774.267,
+    "text": "テレビシリーズを2本全部見たんだ。",
+    "sourceText": "have watched two entire TV series.",
+    "sourceIndexes": [
+      190
+    ]
+  },
+  {
+    "start": 774.267,
+    "end": 776.978,
+    "text": "「わあ」「なんてこった。映画2本かと思ったよ」「私も！」",
+    "sourceText": "- Whoa. -Oh my god. I thought two movies. - Me too!",
+    "sourceIndexes": [
+      191,
+      192
+    ]
+  },
+  {
+    "start": 776.978,
+    "end": 779.765,
+    "text": "「すごいな」シーズン？ それともシリーズ？",
+    "sourceText": "- That's crazy. Seasons or series?",
+    "sourceIndexes": [
+      193,
+      194
+    ]
+  },
+  {
+    "start": 779.765,
+    "end": 782.505,
+    "text": "シリーズ2本。合計5シーズン分の作品だ。",
+    "sourceText": "Two series. Five seasons total of media.",
+    "sourceIndexes": [
+      195
+    ]
+  },
+  {
+    "start": 782.505,
+    "end": 784.185,
+    "text": "2週間で？！",
+    "sourceText": "In two weeks?!",
+    "sourceIndexes": [
+      196
+    ]
+  },
+  {
+    "start": 784.185,
+    "end": 786.665,
+    "text": "1週間だ。1週間で？！",
+    "sourceText": "In one week. In one week?!",
+    "sourceIndexes": [
+      197,
+      198
+    ]
+  },
+  {
+    "start": 786.665,
+    "end": 790.2049999999999,
+    "text": "『バリー』を全部と『ウィドウズ・ベイ』のシーズン1を見たんだ。",
+    "sourceText": "I watched all of Barry and season one of Widow's Bay.",
+    "sourceIndexes": [
+      199
+    ]
+  },
+  {
+    "start": 790.205,
+    "end": 792.625,
+    "text": "それが、ああ、すごく良くて。",
+    "sourceText": "It, ah, so good.",
+    "sourceIndexes": [
+      200
+    ]
+  },
+  {
+    "start": 792.625,
+    "end": 795.645,
+    "text": "「Tumblrの女の子が帰ってきた」「えっと…」ギフトセットを作る準備はできてる。",
+    "sourceText": "- The Tumblr girl is back. - Well... Ready to make some gift sets.",
+    "sourceIndexes": [
+      201,
+      202
+    ]
+  },
+  {
+    "start": 795.645,
+    "end": 797.105,
+    "text": "「イエスでもありノーでもある」「どういう意味？」",
+    "sourceText": "- Yes and no. -What Do you mean?",
+    "sourceIndexes": [
+      203
+    ]
+  },
+  {
+    "start": 797.105,
+    "end": 799.645,
+    "text": "どちらも本当に良かったんだ。",
+    "sourceText": "They're both like really good.",
+    "sourceIndexes": [
+      204
+    ]
+  },
+  {
+    "start": 799.645,
+    "end": 803.525,
+    "text": "見てて、ああ、これは芸術だって思ったんだ。",
+    "sourceText": "Like I was watching them and I was like, oh, this is like art.",
+    "sourceIndexes": [
+      205
+    ]
+  },
+  {
+    "start": 803.525,
+    "end": 808.965,
+    "text": "本当に美しい職人技の作品を見ているような感じで。",
+    "sourceText": "Like I'm watching something that is like just truly beautiful craftsmanship.",
+    "sourceIndexes": [
+      206
+    ]
+  },
+  {
+    "start": 808.965,
+    "end": 814.125,
+    "text": "「おっと」「でも同じようには響かないんだ…」「それはもう子供じゃないからだよ」。",
+    "sourceText": "- Uh-oh. -But it doesn't hit the same as like- - That's because you're not a child.",
+    "sourceIndexes": [
+      207
+    ]
+  },
+  {
+    "start": 815.165,
+    "end": 816.8449999999999,
+    "text": "それはもう子供じゃないからだよ。",
+    "sourceText": "That's because you're not a child.",
+    "sourceIndexes": [
+      208
+    ]
+  },
+  {
+    "start": 816.845,
+    "end": 818.9250000000001,
+    "text": "違う違う違う。それは違う。",
+    "sourceText": "No, no, no. That's not true.",
+    "sourceIndexes": [
+      209
+    ]
+  },
+  {
+    "start": 818.9250000000001,
+    "end": 824.739,
+    "text": "この2作品を見ているのと同時に、『ザ・ホワイトハウス』も見進めてるんだ。",
+    "sourceText": "At the same time that I was watching these two shows, I have also been making my way through the West Wing.",
+    "sourceIndexes": [
+      210
+    ]
+  },
+  {
+    "start": 824.739,
+    "end": 826.205,
+    "text": "この番組、嫌いなんだ！",
+    "sourceText": "I hate this show!",
+    "sourceIndexes": [
+      211
+    ]
+  },
+  {
+    "start": 826.205,
+    "end": 829.865,
+    "text": "アーロン・ソーキンは罪を償うべきだ。",
+    "sourceText": "Aaron Sorkin needs to pay for his crimes.",
+    "sourceIndexes": [
+      212
+    ]
+  },
+  {
+    "start": 829.865,
+    "end": 833.7592857142857,
+    "text": "それなのに、PinterestやTumblr、",
+    "sourceText": "And yet here I am searching it up",
+    "sourceIndexes": [
+      213
+    ]
+  },
+  {
+    "start": 833.7592857142857,
+    "end": 836.365,
+    "text": "AO3で検索してるんだ。",
+    "sourceText": "on Pinterest and Tumblr and AO3.",
+    "sourceIndexes": [
+      213
+    ]
+  },
+  {
+    "start": 836.365,
+    "end": 840.205,
+    "text": "「『ザ・ホワイトハウス』のAO3？」「それって何？」",
+    "sourceText": "- AO3 of the West Wing? - What even is it?",
+    "sourceIndexes": [
+      214
+    ]
+  },
+  {
+    "start": 840.205,
+    "end": 843.9250000000001,
+    "text": "それはファンフィクションのサイトだ。キーボードから手を離して。",
+    "sourceText": "That is a fan fiction website. Hands off the keyboard.",
+    "sourceIndexes": [
+      215
+    ]
+  },
+  {
+    "start": 843.9250000000001,
+    "end": 849.1361111111111,
+    "text": "「わかった」「だから、大人になったからってわけじゃないんだ。",
+    "sourceText": "- Okay. - And so it's not because I'm an adult",
+    "sourceIndexes": [
+      216
+    ]
+  },
+  {
+    "start": 849.1361111111111,
+    "end": 853.545,
+    "text": "だってまだ気恥ずかしいことをする能力はあるから」、",
+    "sourceText": "now, because I'm still capable of being cringe.",
+    "sourceIndexes": [
+      216
+    ]
+  },
+  {
+    "start": 853.545,
+    "end": 856.2850000000001,
+    "text": "「ファンでいること？ そうだね」「ああ、確かに。そう言うこともできるね」、",
+    "sourceText": "- Of being a fan? Yeah. -Oh, sure. That's another way to put it.",
+    "sourceIndexes": [
+      217
+    ]
+  },
+  {
+    "start": 856.2850000000001,
+    "end": 859.625,
+    "text": "『ザ・ホワイトハウス』は20年以上前に作られた。",
+    "sourceText": "The West Wing was made 20-plus years ago.",
+    "sourceIndexes": [
+      218
+    ]
+  },
+  {
+    "start": 859.625,
+    "end": 865.005,
+    "text": "最近作られた番組と比べて、何か違う感じがするんだ。",
+    "sourceText": "There's something about it that feels different compared to shows that are made more recently.",
+    "sourceIndexes": [
+      219
+    ]
+  },
+  {
+    "start": 865.005,
+    "end": 869.1850000000001,
+    "text": "客観的に良いと分かっている番組でも、同じようには引き込まれない。",
+    "sourceText": "Shows that I know that are objectively good, but it just doesn't trap me in the same way.",
+    "sourceIndexes": [
+      220
+    ]
+  },
+  {
+    "start": 869.1850000000001,
+    "end": 871.5649999999999,
+    "text": "その理由が分からない。",
+    "sourceText": "And I don't know why.",
+    "sourceIndexes": [
+      221
+    ]
+  },
+  {
+    "start": 871.565,
+    "end": 874.8551960784314,
+    "text": "ストリーミングがテレビの作り方を変えたんだろうけど、",
+    "sourceText": "I think that streaming has probably changed the way TV is made,",
+    "sourceIndexes": [
+      222
+    ]
+  },
+  {
+    "start": 874.8551960784314,
+    "end": 878.065,
+    "text": "それが同じように響かない理由かどうかは分からない。",
+    "sourceText": "but I don't know if that means that it doesn't hit the same.",
+    "sourceIndexes": [
+      222
+    ]
+  },
+  {
+    "start": 878.065,
+    "end": 883.3050000000001,
+    "text": "もしかしたら、あの番組と同じように響く番組をただ見ていないだけかもしれないよ。",
+    "sourceText": "Maybe you are just not watching the shows that hit the same way as that show.",
+    "sourceIndexes": [
+      223
+    ]
+  },
+  {
+    "start": 883.3050000000001,
+    "end": 885.805,
+    "text": "だから、ファンの女の子たちが見ているものを見てみることにした。",
+    "sourceText": "So I decided to watch what the fan girls were watching.",
+    "sourceIndexes": [
+      224
+    ]
+  },
+  {
+    "start": 887.826,
+    "end": 891.0649999999999,
+    "text": "正直、すごく楽しかった。特に友達と一緒に見るのは。",
+    "sourceText": "To be honest, it was a blast, especially watching with friends.",
+    "sourceIndexes": [
+      225
+    ]
+  },
+  {
+    "start": 891.966,
+    "end": 894.546,
+    "text": "でも、やっぱり同じようには響かなかった。",
+    "sourceText": "However, it still wasn't hitting the same.",
+    "sourceIndexes": [
+      226
+    ]
+  },
+  {
+    "start": 894.546,
+    "end": 900,
+    "text": "何かがまだ違う感じがした。誤解しないでほしいんだけど、見るのはすごく楽しいんだ。",
+    "sourceText": "Something still felt off. Now, don't get me wrong. I am having a great time watching",
+    "sourceIndexes": [
+      227,
+      228
+    ]
+  }
+]

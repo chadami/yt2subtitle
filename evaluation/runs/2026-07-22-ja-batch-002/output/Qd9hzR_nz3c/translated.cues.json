@@ -1,0 +1,1464 @@
+[
+  {
+    "start": 0,
+    "end": 3.08,
+    "text": "最後に中国を訪れたのは2017年だった。",
+    "sourceText": "The last time I visited China was 2017.",
+    "sourceIndexes": [
+      0
+    ]
+  },
+  {
+    "start": 3.08,
+    "end": 8.028,
+    "text": "その時は、次に訪れるのが10年後になるとは思ってもみなかった。",
+    "sourceText": "At the time, I did not think the next time I would visit would be a whole decade later.",
+    "sourceIndexes": [
+      1
+    ]
+  },
+  {
+    "start": 8.028,
+    "end": 11.905263157894737,
+    "text": "また中国に行きたいと思っていたけど、",
+    "sourceText": "I've been meaning to visit China again, but year after year,",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 11.905263157894737,
+    "end": 16.08,
+    "text": "毎年何かが起きて、ずっと延期してたんだ。",
+    "sourceText": "things would come up and I would keep postponing this trip.",
+    "sourceIndexes": [
+      2
+    ]
+  },
+  {
+    "start": 16.08,
+    "end": 17.68,
+    "text": "でもついに、旅の予約をした。",
+    "sourceText": "But finally, I booked the trip.",
+    "sourceIndexes": [
+      3
+    ]
+  },
+  {
+    "start": 17.68,
+    "end": 21.73090909090909,
+    "text": "今回は祖父母と一緒に旅するから、",
+    "sourceText": "This time is extra special because I",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 21.73090909090909,
+    "end": 24,
+    "text": "特別なんだ。",
+    "sourceText": "will be traveling with my grandparents.",
+    "sourceIndexes": [
+      4
+    ]
+  },
+  {
+    "start": 24,
+    "end": 27.05263157894737,
+    "text": "旅はまず実家で始まり、",
+    "sourceText": "The trip first began at my family home where we spent a few",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 27.05263157894737,
+    "end": 32.800000000000004,
+    "text": "中国・広州への14時間の旅の前に数日を一緒に過ごした。",
+    "sourceText": "days together before our 14-hour journey to Guangzhou, China.",
+    "sourceIndexes": [
+      5
+    ]
+  },
+  {
+    "start": 53.71,
+    "end": 58.0882417083144,
+    "text": "（笑）実は祖父母の付き添いみたいな感じで、",
+    "sourceText": "[laughter] I'm actually sort of being my grandparents'",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 58.0882417083144,
+    "end": 60.80169014084507,
+    "text": "すごく感慨深いんだ。",
+    "sourceText": "chaperone, which is such a full-circle moment.",
+    "sourceIndexes": [
+      6
+    ]
+  },
+  {
+    "start": 60.80169014084507,
+    "end": 65.06310985915493,
+    "text": "子供の頃、空港で彼らの後をついて回ってたのを覚えてるけど、",
+    "sourceText": "I remember being a kid and following them around the airport,",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 65.06310985915493,
+    "end": 68.48,
+    "text": "今回は私が大人で、彼らが子供みたいなんだ。",
+    "sourceText": "but this time I am the adult and they are like the kids.",
+    "sourceIndexes": [
+      7
+    ]
+  },
+  {
+    "start": 68.48,
+    "end": 73.24888888888889,
+    "text": "トイレの場所を教えたり、フライト前におやつを買いに連れて行ったり、",
+    "sourceText": "I would show them where the bathroom is, take them to buy",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 73.24888888888889,
+    "end": 76.72,
+    "text": "彼らは私にiPadの時間を頼んできたんだ。",
+    "sourceText": "snacks before the flight, and they even asked me for iPad time.",
+    "sourceIndexes": [
+      8
+    ]
+  },
+  {
+    "start": 96.48,
+    "end": 100.6,
+    "text": "子供の頃、広州への家族旅行が大好きだった。",
+    "sourceText": "Growing up, I loved family trips to Guangzhou.",
+    "sourceIndexes": [
+      9
+    ]
+  },
+  {
+    "start": 100.6,
+    "end": 103.8,
+    "text": "いつも温かくて心地よい気持ちがあった。",
+    "sourceText": "There was always this feeling of warmth and comfort.",
+    "sourceIndexes": [
+      10
+    ]
+  },
+  {
+    "start": 103.8,
+    "end": 107.28,
+    "text": "故郷のように感じられる場所だけど、アメリカでの生活とは全く違っていた。",
+    "sourceText": "It was a place that felt like home, yet so different from my life in America.",
+    "sourceIndexes": [
+      11
+    ]
+  },
+  {
+    "start": 107.28,
+    "end": 110.32131147540984,
+    "text": "この旅では、広州を探索し、",
+    "sourceText": "During this trip, I will be exploring Guangzhou, going to Hong Kong",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 110.32131147540984,
+    "end": 114.92065573770492,
+    "text": "高速鉄道で香港へ日帰り旅行に行き、そして何より、",
+    "sourceText": "for a day trip by high-speed [music] train, and most importantly,",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 114.92065573770492,
+    "end": 119.52,
+    "text": "彼らがかつて故郷と呼んだ場所で家族と過ごすんだ。",
+    "sourceText": "spend time with with family in a place they used to call home.",
+    "sourceIndexes": [
+      12
+    ]
+  },
+  {
+    "start": 140.76,
+    "end": 144.70153846153846,
+    "text": "後部座席に座って、祖父母がかつて働いていた場所を思い出し、",
+    "sourceText": "Sitting in the backseat, watching both my grandparents recall places",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 144.70153846153846,
+    "end": 148.64307692307693,
+    "text": "昔の話をするのを見ているのは、本当に非現実的な気分だった。",
+    "sourceText": "they used to work and talk about old was a really surreal feeling.",
+    "sourceIndexes": [
+      13
+    ]
+  },
+  {
+    "start": 148.64307692307693,
+    "end": 151.923185840708,
+    "text": "私はずっと、アメリカにいる祖父母の姿しか知らなかった。",
+    "sourceText": "All of my life I've only known the version of my grandparents in America.",
+    "sourceIndexes": [
+      14
+    ]
+  },
+  {
+    "start": 151.923185840708,
+    "end": 156.79,
+    "text": "彼らには一緒に遊ぶ友達や同僚はほとんどいなかった、少なくとも私が見た限りでは。",
+    "sourceText": "They didn't really have friends or co-workers they would hang out with, at least not from what I've seen.",
+    "sourceIndexes": [
+      15
+    ]
+  },
+  {
+    "start": 156.79,
+    "end": 161.16,
+    "text": "彼らの生活は仕事と私と妹たちを育てることでとても忙しかった。",
+    "sourceText": "Their lives were so busy going to work and raising me and my sisters.",
+    "sourceIndexes": [
+      16
+    ]
+  },
+  {
+    "start": 161.16,
+    "end": 164.48,
+    "text": "今になって、彼らには友情を育む時間さえなかったんだと気づいている。",
+    "sourceText": "I'm realizing now they didn't even have time for themselves to have friendships.",
+    "sourceIndexes": [
+      17
+    ]
+  },
+  {
+    "start": 164.48,
+    "end": 168.959,
+    "text": "祖父母は強い人だとずっと思っていたけど、これを知ってさらに尊敬するようになった。",
+    "sourceText": "I've always known my grandparents to be strong, but realizing this made me admire them even more.",
+    "sourceIndexes": [
+      18
+    ]
+  },
+  {
+    "start": 168.959,
+    "end": 172.88,
+    "text": "彼らは周りにサポートシステムがない中で、どうにか人生を切り抜けてきたんだ。",
+    "sourceText": "They somehow navigated life without a support system around them.",
+    "sourceIndexes": [
+      19
+    ]
+  },
+  {
+    "start": 172.88,
+    "end": 178.04273972602738,
+    "text": "仕事から離れて旅行に行くことも、友達とランチをすることもなくて、",
+    "sourceText": "They didn't even go on trips to get a break from work or grab lunch with a friend over hearing about old",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 178.04273972602738,
+    "end": 184.32,
+    "text": "昔の同僚の話を聞いて、まだ生きているのかなって思うだけで、正直ちょっと胸が痛んだ。",
+    "sourceText": "friends they used to work with and wonder if they are still alive honestly broke my heart a little bit.",
+    "sourceIndexes": [
+      20
+    ]
+  },
+  {
+    "start": 194.28,
+    "end": 199.34666666666666,
+    "text": "祖父母は中国での生活を捨てて、40年ちょっと前にアメリカに移住したんだ。",
+    "sourceText": "My grandparents uprooted their life in China and immigrated to America",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 199.34666666666666,
+    "end": 202.48,
+    "text": "つまり、当時は40代だったってこと。",
+    "sourceText": "40 something years ago, which means they were in their 40s at the time.",
+    "sourceIndexes": [
+      21
+    ]
+  },
+  {
+    "start": 202.48,
+    "end": 206.56053571428572,
+    "text": "今の私は33歳で、彼らが今の私よりたった10歳くらい年上で、",
+    "sourceText": "I am currently 33, so to think they were only about 10 years older",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 206.56053571428572,
+    "end": 210.257,
+    "text": "あんな大きな移住をしたと思うと、今でも信じられない。",
+    "sourceText": "than me right now and did that big move is still wild to me.",
+    "sourceIndexes": [
+      22
+    ]
+  },
+  {
+    "start": 210.28,
+    "end": 213.4221768707483,
+    "text": "初日の夜、家族で夕食に出かけて、",
+    "sourceText": "On our first night we went out to dinner with my family and my grandma",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 213.4221768707483,
+    "end": 217.77821428571428,
+    "text": "祖母が妹と再会したんだけど、夕食前に何をしたと思う？",
+    "sourceText": "was reunited with her sister and guess what they did before dinner?",
+    "sourceIndexes": [
+      23
+    ]
+  },
+  {
+    "start": 217.77821428571428,
+    "end": 221.01464285714286,
+    "text": "美容院に行って髪をセットしたんだ。",
+    "sourceText": "They went to the salon to get their hair done.",
+    "sourceIndexes": [
+      24
+    ]
+  },
+  {
+    "start": 221.01464285714286,
+    "end": 226.04,
+    "text": "何歳になっても、女の子は姉妹と過ごす時間が必要なんだって確信したよ。",
+    "sourceText": "I am convinced that no matter your age, you are just a girl that needs time with her sister.",
+    "sourceIndexes": [
+      25
+    ]
+  },
+  {
+    "start": 226.04,
+    "end": 231.42285714285714,
+    "text": "夕食後、祖父母がアメリカに移住する前に家族を育てた近所を歩いて、",
+    "sourceText": "After dinner, we walked around the neighborhood my grandparents raised their family",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 231.42285714285714,
+    "end": 235.76,
+    "text": "私はただ後ろをついて行って、その瞬間に浸ってた。",
+    "sourceText": "in before moving to America and I just trailed behind them and soaked in the moment.",
+    "sourceIndexes": [
+      26
+    ]
+  },
+  {
+    "start": 253.28,
+    "end": 255.2,
+    "text": "あらまあ。",
+    "sourceText": "Oh my goodness.",
+    "sourceIndexes": [
+      27
+    ]
+  },
+  {
+    "start": 255.2,
+    "end": 257.519,
+    "text": "起きてるよ。",
+    "sourceText": "She's awake.",
+    "sourceIndexes": [
+      28
+    ]
+  },
+  {
+    "start": 257.519,
+    "end": 261,
+    "text": "こんにちは、坊や。",
+    "sourceText": "Hello my boy.",
+    "sourceIndexes": [
+      29
+    ]
+  },
+  {
+    "start": 261.64,
+    "end": 263.32,
+    "text": "ジョーサム。",
+    "sourceText": "Jawsome.",
+    "sourceIndexes": [
+      30
+    ]
+  },
+  {
+    "start": 263.32,
+    "end": 266.32,
+    "text": "ジョーサム。",
+    "sourceText": "Jawsome.",
+    "sourceIndexes": [
+      31
+    ]
+  },
+  {
+    "start": 287.84,
+    "end": 290.5973333333333,
+    "text": "今、このファンデーションが大好き。",
+    "sourceText": "Currently loving this foundation.",
+    "sourceIndexes": [
+      32
+    ]
+  },
+  {
+    "start": 290.5973333333333,
+    "end": 295.36,
+    "text": "MCHのファンデーションで、シェードはミディアム1300。",
+    "sourceText": "It's the MCH foundation and I have the shade medium 1300.",
+    "sourceIndexes": [
+      33
+    ]
+  },
+  {
+    "start": 298.16,
+    "end": 301.52,
+    "text": "今、おでこがすごくテカってる。",
+    "sourceText": "My forehead is looking so shiny right now.",
+    "sourceIndexes": [
+      34
+    ]
+  },
+  {
+    "start": 301.52,
+    "end": 303.52,
+    "text": "サイのこのブラシ、大好き。",
+    "sourceText": "Love this brush from say.",
+    "sourceIndexes": [
+      35
+    ]
+  },
+  {
+    "start": 303.52,
+    "end": 308.29770491803276,
+    "text": "このフォーミュラはすごく薄づきでカバー力はあまりないんだけど、",
+    "sourceText": "This formula is really thin so it doesn't have a lot of coverage, but recently",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 308.29770491803276,
+    "end": 312.96,
+    "text": "最近はメイクを薄くすることに慣れようとしてるんだ。なぜなら、",
+    "sourceText": "I am trying to get more used to wearing less makeup cuz sometimes in the",
+    "sourceIndexes": [
+      36
+    ]
+  },
+  {
+    "start": 312.96,
+    "end": 317.8,
+    "text": "昼間に自分の肌を見ると、どうしてもメイクしてるって感じがするから。",
+    "sourceText": "middle of the day I would look at my skin and it looks really it just looks like there's makeup on there.",
+    "sourceIndexes": [
+      37
+    ]
+  },
+  {
+    "start": 317.8,
+    "end": 319.17974683544304,
+    "text": "わかるでしょ？",
+    "sourceText": "You know what I'm saying?",
+    "sourceIndexes": [
+      38
+    ]
+  },
+  {
+    "start": 319.17974683544304,
+    "end": 322.16,
+    "text": "それで、究極のすっぴん風メイクを目指してるんだ。",
+    "sourceText": "And I'm trying to go for the ultimate clean girl look.",
+    "sourceIndexes": [
+      39
+    ]
+  },
+  {
+    "start": 322.16,
+    "end": 325.85111111111115,
+    "text": "だから、ちょっと慣れる必要があるんだ。",
+    "sourceText": "So there is a little adjusting to that because I've always gotten used to myself hiding every",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 325.85111111111115,
+    "end": 334,
+    "text": "今まではずっと、あらゆる欠点を隠すことに慣れてきたからね。でも今は、小さなシミやあごのニキビも受け入れて、",
+    "sourceText": "imperfection, but right now we're trying to embrace the little dark spots, the acne on my chin",
+    "sourceIndexes": [
+      40
+    ]
+  },
+  {
+    "start": 334,
+    "end": 337.2347587781901,
+    "text": "必死に隠そうとしないようにしてる。",
+    "sourceText": "and not try so hard to cover it because it does get a little cakey looking especially",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 337.2347587781901,
+    "end": 343.8208849557522,
+    "text": "特に今は広州にいて、湿度が高くてすごく脂っぽくなるから、どうしても厚塗り感が出ちゃうんだ。",
+    "sourceText": "right now being in Gyeongseong where the humidity is pretty high and I just get so oily.",
+    "sourceIndexes": [
+      41
+    ]
+  },
+  {
+    "start": 343.8208849557522,
+    "end": 345.57962264150945,
+    "text": "もうおでこがテカテカでしょ。",
+    "sourceText": "Look at how oily and shiny my forehead looks already.",
+    "sourceIndexes": [
+      42
+    ]
+  },
+  {
+    "start": 345.57962264150945,
+    "end": 350.0502177068215,
+    "text": "まるでボトックスしたばかりみたいにピンとしてテカってる。",
+    "sourceText": "It looks like I have fresh Botox on my forehead cuz it looks so tight and oily, but",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 350.0502177068215,
+    "end": 355.33846153846156,
+    "text": "でもボトックスはもう1年以上やってないと思う、たぶんもうすぐ1年かな。",
+    "sourceText": "I haven't even gotten Botox in over a year now, I think, or maybe almost a year.",
+    "sourceIndexes": [
+      43
+    ]
+  },
+  {
+    "start": 355.33846153846156,
+    "end": 358.44,
+    "text": "湿気は肌にいいんだよね。",
+    "sourceText": "The humidity is great for the skin.",
+    "sourceIndexes": [
+      44
+    ]
+  },
+  {
+    "start": 358.44,
+    "end": 360.44,
+    "text": "フェンティ ビューティ コントゥアスティック。",
+    "sourceText": "Fenty Beauty contour stick.",
+    "sourceIndexes": [
+      45
+    ]
+  },
+  {
+    "start": 360.44,
+    "end": 364,
+    "text": "いつも目と鼻にちょっとずつ塗るのが好き。",
+    "sourceText": "I always like to do little bits on my eyes, nose.",
+    "sourceIndexes": [
+      46
+    ]
+  },
+  {
+    "start": 364,
+    "end": 367.2,
+    "text": "また同じブラシ。",
+    "sourceText": "Same brush once again.",
+    "sourceIndexes": [
+      47
+    ]
+  },
+  {
+    "start": 373.84,
+    "end": 375.76,
+    "text": "フィニッシングパウダーも同じブラシで。",
+    "sourceText": "Finishing powder also on the same brush.",
+    "sourceIndexes": [
+      48
+    ]
+  },
+  {
+    "start": 375.76,
+    "end": 380.4819512195122,
+    "text": "テカってる部分をマットにしたいの。",
+    "sourceText": "I want to mattify the areas that are just really shiny.",
+    "sourceIndexes": [
+      49
+    ]
+  },
+  {
+    "start": 380.4819512195122,
+    "end": 382.8,
+    "text": "もうベタベタで大変。",
+    "sourceText": "It's just a oily oily mess.",
+    "sourceIndexes": [
+      50
+    ]
+  },
+  {
+    "start": 385.2,
+    "end": 388.28,
+    "text": "これはカラーグラムの。",
+    "sourceText": "This is from Colorgram.",
+    "sourceIndexes": [
+      51
+    ]
+  },
+  {
+    "start": 388.28,
+    "end": 389.7847191011236,
+    "text": "01番のウォームトーン。",
+    "sourceText": "It's 01 warm tone.",
+    "sourceIndexes": [
+      52
+    ]
+  },
+  {
+    "start": 389.7847191011236,
+    "end": 393.9711392405063,
+    "text": "こっちの面で、ここにちょっと線を引いて影を作るの。",
+    "sourceText": "This side and I just draw a little bit of a line right here to create a shadow.",
+    "sourceIndexes": [
+      53
+    ]
+  },
+  {
+    "start": 393.9711392405063,
+    "end": 399.56109589041097,
+    "text": "すごく薄くね。それで反対側を使って、そこにのせる。",
+    "sourceText": "Just a very subtle And then I take the other side and I'll place that in there.",
+    "sourceIndexes": [
+      54
+    ]
+  },
+  {
+    "start": 399.56109589041097,
+    "end": 402.56931506849315,
+    "text": "そうするとつけまつげとのバランスがちょっと良くなるの。",
+    "sourceText": "And it balances the eyelash extensions a bit.",
+    "sourceIndexes": [
+      55
+    ]
+  },
+  {
+    "start": 402.56931506849315,
+    "end": 404.04,
+    "text": "今日はアイシャドウをやる。",
+    "sourceText": "Do my eyeshadow today.",
+    "sourceIndexes": [
+      56
+    ]
+  },
+  {
+    "start": 404.04,
+    "end": 407.88,
+    "text": "ロード ペプチド リップティントのシェードはリボン。",
+    "sourceText": "Rhode peptide lip tint in the shade ribbon.",
+    "sourceIndexes": [
+      57
+    ]
+  },
+  {
+    "start": 407.88,
+    "end": 413.1737423910397,
+    "text": "最初ロードのことを聞いた時は、ただの過大評価されたセレブブランドだと思ってたんだけど、",
+    "sourceText": "When I first heard about Rhode, I thought it was just like an overly hyped celebrity brand,",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 413.1737423910397,
+    "end": 417.32504504504504,
+    "text": "実際使ってみたらすごく気に入って、今まで試した商品は全部好き。",
+    "sourceText": "but I've really come to enjoy it and I really like all the products that I've tried so far.",
+    "sourceIndexes": [
+      58
+    ]
+  },
+  {
+    "start": 417.32504504504504,
+    "end": 419.64,
+    "text": "これは今のお気に入りのひとつ。",
+    "sourceText": "This is one of my current favorite products.",
+    "sourceIndexes": [
+      59
+    ]
+  },
+  {
+    "start": 419.64,
+    "end": 423.87627906976746,
+    "text": "サイのスーパースウェディッシュ ラディアント ベイクド ブロンザー、",
+    "sourceText": "It's from Saie, it's the Super Swede",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 423.87627906976746,
+    "end": 425.88,
+    "text": "カラーはボーモル。",
+    "sourceText": "radiant baked bronzer in the color Beaumol.",
+    "sourceIndexes": [
+      60
+    ]
+  },
+  {
+    "start": 425.88,
+    "end": 429.12,
+    "text": "すごくいい感じ。",
+    "sourceText": "Just looks so good.",
+    "sourceIndexes": [
+      61
+    ]
+  },
+  {
+    "start": 429.12,
+    "end": 432.9944186046512,
+    "text": "この色味がすごくきれいな血色感を出してくれて、",
+    "sourceText": "The shade gives a really nice flush of color",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 432.9944186046512,
+    "end": 436.52,
+    "text": "テクスチャーもすごくなめらかに伸びるの。",
+    "sourceText": "and the formula blends really really smoothly.",
+    "sourceIndexes": [
+      62
+    ]
+  },
+  {
+    "start": 438.84,
+    "end": 443.8,
+    "text": "こんな感じ。普段はここにニキビ跡を隠そうとするんだけど。",
+    "sourceText": "That's it. I usually try to cover up the acne scars here.",
+    "sourceIndexes": [
+      63,
+      64
+    ]
+  },
+  {
+    "start": 443.8,
+    "end": 446.3184625078765,
+    "text": "コンシーラーでしっかり隠してたんだけど、",
+    "sourceText": "I would put concealer on those spots to really hide it, but",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 446.3184625078765,
+    "end": 449.23246376811596,
+    "text": "最近はもうそのままでいいかなって思うようになったの。",
+    "sourceText": "recently I thought, you know, maybe I should just let it be.",
+    "sourceIndexes": [
+      65
+    ]
+  },
+  {
+    "start": 449.23246376811596,
+    "end": 452.88,
+    "text": "いい感じ。やばい、すごくいい。",
+    "sourceText": "I like it. Oh my god, it looks so good.",
+    "sourceIndexes": [
+      66,
+      67
+    ]
+  },
+  {
+    "start": 452.88,
+    "end": 456.906301369863,
+    "text": "叔母が食料品を届けてもらったんだけど、生のエビが来たの。",
+    "sourceText": "So my aunt just got a grocery run and they delivered fresh shrimp.",
+    "sourceIndexes": [
+      68
+    ]
+  },
+  {
+    "start": 456.906301369863,
+    "end": 458.8718367346939,
+    "text": "新鮮って言うか、まだ生きてる。",
+    "sourceText": "And by fresh, I mean they are still alive.",
+    "sourceIndexes": [
+      69
+    ]
+  },
+  {
+    "start": 458.8718367346939,
+    "end": 463.04,
+    "text": "こんなの見たことない。わあ。",
+    "sourceText": "I've never seen anything like it. Wow.",
+    "sourceIndexes": [
+      70,
+      71
+    ]
+  },
+  {
+    "start": 545.621,
+    "end": 547.641,
+    "text": "[笑い]。",
+    "sourceText": "[laughter]",
+    "sourceIndexes": [
+      72
+    ]
+  },
+  {
+    "start": 552.826,
+    "end": 557,
+    "text": "[笑い] おばあちゃんといるとね。",
+    "sourceText": "[laughter] When you're with your grandma.",
+    "sourceIndexes": [
+      73
+    ]
+  },
+  {
+    "start": 578.44,
+    "end": 581.2800000000001,
+    "text": "おはよう。",
+    "sourceText": "Good morning.",
+    "sourceIndexes": [
+      74
+    ]
+  },
+  {
+    "start": 609.56,
+    "end": 615.4551898734177,
+    "text": "広州の駅に着いたんだけど、もうめっちゃ綺麗でびっくりした。",
+    "sourceText": "I just made it to the train station in Guangzhou and oh my god, it is insane how beautiful it is here.",
+    "sourceIndexes": [
+      75
+    ]
+  },
+  {
+    "start": 615.4551898734177,
+    "end": 619.2457142857144,
+    "text": "天井とか、日差しの入り方とか、本当に美しいの。",
+    "sourceText": "The ceilings, the way the sun is shining through, it's so so gorgeous.",
+    "sourceIndexes": [
+      76
+    ]
+  },
+  {
+    "start": 619.2457142857144,
+    "end": 624.08,
+    "text": "駅でこんなこと言うなんて信じられないけど、この駅は本当に美しい。",
+    "sourceText": "I can't believe I'm saying this about a train station, but this train station is gorgeous.",
+    "sourceIndexes": [
+      77
+    ]
+  },
+  {
+    "start": 624.08,
+    "end": 626.9346341463415,
+    "text": "今日は叔母と一緒に香港に行くんだ。",
+    "sourceText": "Today, my aunt and I are going to Hong Kong.",
+    "sourceIndexes": [
+      78
+    ]
+  },
+  {
+    "start": 626.9346341463415,
+    "end": 629.3998174317268,
+    "text": "今回の旅で香港に行く予定はなかったんだけど、",
+    "sourceText": "I was not expecting to go to Hong Kong this trip, but she's",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 629.3998174317268,
+    "end": 632.1525423728814,
+    "text": "叔母が日帰りで行くって言うから一緒に行くことにしたの。",
+    "sourceText": "heading there today for a day trip, so I'm going with her.",
+    "sourceIndexes": [
+      79
+    ]
+  },
+  {
+    "start": 632.1525423728814,
+    "end": 636.8852173913043,
+    "text": "特に予定はないんだけど、降ろしてもらってあとはぶらぶらしようかなって。",
+    "sourceText": "I don't really have any plans, but um I think I'm just going to get dropped off and then I'm just going to explore.",
+    "sourceIndexes": [
+      80
+    ]
+  },
+  {
+    "start": 636.8852173913043,
+    "end": 641.2266821722874,
+    "text": "今駅にいるんだけど、公共Wi-Fiに繋ぐこともあるから、",
+    "sourceText": "So, as you can see, I am a train station right now where sometimes I'll connect to the public Wi-Fi and",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 641.2266821722874,
+    "end": 646.1291228070176,
+    "text": "旅行する人ならVPNのSurfsharkを検討してみるといいかも。",
+    "sourceText": "if you're someone that travels, then it might be good for you to look into Surfshark, which is a VPN.",
+    "sourceIndexes": [
+      81
+    ]
+  },
+  {
+    "start": 646.1291228070176,
+    "end": 649.7139999999999,
+    "text": "Surfsharkはデータを監視して、データ漏洩があったら教えてくれるんだ。",
+    "sourceText": "Surfshark monitors your data and it will let you know if there has been a data leak.",
+    "sourceIndexes": [
+      82
+    ]
+  },
+  {
+    "start": 649.7139999999999,
+    "end": 652.5699545454545,
+    "text": "例えば、こんなことあったことある？",
+    "sourceText": "So, for example, I don't know if it's ever happened to",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 652.5699545454545,
+    "end": 656.4,
+    "text": "ある時、すごく本物っぽいメールを開いちゃったんだよね。",
+    "sourceText": "you, but one time I opened an email, it looked so legit.",
+    "sourceIndexes": [
+      83
+    ]
+  },
+  {
+    "start": 656.4,
+    "end": 659.8070103092783,
+    "text": "めっちゃ本物っぽくて、リンクをクリックしちゃったの。",
+    "sourceText": "Like it looked super legit and I clicked on a link.",
+    "sourceIndexes": [
+      84
+    ]
+  },
+  {
+    "start": 659.8070103092783,
+    "end": 665.12,
+    "text": "クリックした瞬間、やばいって思ったよ。怪しいリンクだったって気づいたから。",
+    "sourceText": "And the moment I clicked on the link, I knew I messed up because I realized then that it was probably a sketchy link.",
+    "sourceIndexes": [
+      85
+    ]
+  },
+  {
+    "start": 665.12,
+    "end": 668.5799211667323,
+    "text": "そういう時こそVPNが役立つんだ。",
+    "sourceText": "So, in situations like that, that is where a VPN would be really useful",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 668.5799211667323,
+    "end": 673.2362711864407,
+    "text": "データを監視して、漏洩があったら教えてくれるからね。",
+    "sourceText": "because it monitors your data and lets you know if there has been a data leak.",
+    "sourceIndexes": [
+      86
+    ]
+  },
+  {
+    "start": 673.2362711864407,
+    "end": 676.9054545454545,
+    "text": "それに、フィッシング攻撃から守ってくれるメール詐欺チェッカーもあるんだよ。",
+    "sourceText": "And there's also a email scam checker that protects you against fishing attacks.",
+    "sourceIndexes": [
+      87
+    ]
+  },
+  {
+    "start": 676.9054545454545,
+    "end": 679.187662176333,
+    "text": "ネットを見るとき、リンクをクリックするたび、",
+    "sourceText": "When you browse online, every single link click,",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 679.187662176333,
+    "end": 681.7158260869566,
+    "text": "検索履歴の一つ一つがデジタルフットプリントを残すんだ。",
+    "sourceText": "every search history, it leaves a digital footprint.",
+    "sourceIndexes": [
+      88
+    ]
+  },
+  {
+    "start": 681.7158260869566,
+    "end": 686.9652631578947,
+    "text": "VPNを使えばデータが暗号化されるから、オンライン活動を追跡されにくくなるんだ。",
+    "sourceText": "Having a VPN ensures that your data is encrypted, therefore making it harder to track your online activity.",
+    "sourceIndexes": [
+      89
+    ]
+  },
+  {
+    "start": 686.9652631578947,
+    "end": 697.64,
+    "text": "例えば、何かを検索したら数時間後には関連商品のターゲット広告が表示されるって経験ない？",
+    "sourceText": "So, for example, I don't know if you guys have ever gone online and then you looked up something and then within a few hours you will start getting all these targeted ads for a similar product.",
+    "sourceIndexes": [
+      90
+    ]
+  },
+  {
+    "start": 697.64,
+    "end": 699.8066666666666,
+    "text": "Surfsharkにはトラッカーや広告をブロックする広告ブロッカーもあるんだ。",
+    "sourceText": "Surfshark also has ad blockers to block trackers and ads.",
+    "sourceIndexes": [
+      91
+    ]
+  },
+  {
+    "start": 699.8066666666666,
+    "end": 704.7993162393162,
+    "text": "今中国にいるんだけど、YouTubeやInstagramとか一部のアプリがブロックされてるんだよね。",
+    "sourceText": "Since I'm in China right now, YouTube and Instagram and some apps are blocked here.",
+    "sourceIndexes": [
+      92
+    ]
+  },
+  {
+    "start": 704.7993162393162,
+    "end": 708.1352177452177,
+    "text": "実はそれが初めてVPNを知ったきっかけなんだ。",
+    "sourceText": "That's actually when I first heard of a VPN. It basically allows you to change your virtual location",
+    "sourceIndexes": [
+      93
+    ]
+  },
+  {
+    "start": 708.1352177452177,
+    "end": 715,
+    "text": "基本的には、仮想的な場所とIPアドレスを変更できるから、いつも使ってるウェブサイトやアプリを引き続き使えるようになるんだ。",
+    "sourceText": "and your IP address so that you can continue to use the websites and apps that you're used to using.",
+    "sourceIndexes": [
+      94
+    ]
+  },
+  {
+    "start": 715,
+    "end": 717.795,
+    "text": "だから、旅行の予定がある人や公共Wi-Fiをよく使う人は、",
+    "sourceText": "So, if you plan to travel or you're someone that uses public Wi-Fi",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 717.795,
+    "end": 720.48,
+    "text": "下の説明欄にSurfsharkのリンクを載せておくね。",
+    "sourceText": "often, then I will leave a link to Surfshark in the description below.",
+    "sourceIndexes": [
+      95
+    ]
+  },
+  {
+    "start": 720.48,
+    "end": 725.24,
+    "text": "さて、電車の時間だから、今から叔母に会いに行くよ。",
+    "sourceText": "Well, it's time for my train, so I'm going to go meet up with my aunt now.",
+    "sourceIndexes": [
+      96
+    ]
+  },
+  {
+    "start": 725.24,
+    "end": 727.72,
+    "text": "中国のすごいところって何だと思う？",
+    "sourceText": "You know what is so amazing about China?",
+    "sourceIndexes": [
+      97
+    ]
+  },
+  {
+    "start": 727.72,
+    "end": 729.5496296296296,
+    "text": "電車が時間通りに来ること。",
+    "sourceText": "Trains are on time.",
+    "sourceIndexes": [
+      98
+    ]
+  },
+  {
+    "start": 729.5496296296296,
+    "end": 732.92,
+    "text": "速くて、安全で、効率的なんだ。",
+    "sourceText": "They are fast, safe, and efficient.",
+    "sourceIndexes": [
+      99
+    ]
+  },
+  {
+    "start": 732.92,
+    "end": 735.6187951807228,
+    "text": "こんなに簡単に移動できるのはいいよね。",
+    "sourceText": "It's nice knowing you can travel around so easily.",
+    "sourceIndexes": [
+      100
+    ]
+  },
+  {
+    "start": 735.6187951807228,
+    "end": 737.4,
+    "text": "渋滞に巻き込まれなくていいし。",
+    "sourceText": "You don't have to sit in traffic.",
+    "sourceIndexes": [
+      101
+    ]
+  },
+  {
+    "start": 737.4,
+    "end": 741.28,
+    "text": "電車に飛び乗れば、その日行きたいところにどこでも行ける。",
+    "sourceText": "You can hop on the train and get to wherever you need to go for the day.",
+    "sourceIndexes": [
+      102
+    ]
+  },
+  {
+    "start": 741.28,
+    "end": 743.917037037037,
+    "text": "途中何駅か停まって、",
+    "sourceText": "It made a few stops along the way, and about 1 hour",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 743.917037037037,
+    "end": 747.56,
+    "text": "約1時間15分後に香港に着いたよ。",
+    "sourceText": "and 15 minutes later, we arrived in Hong Kong.",
+    "sourceIndexes": [
+      103
+    ]
+  },
+  {
+    "start": 748.36,
+    "end": 753.48,
+    "text": "香港に着いた瞬間、懐かしい気持ちになった。",
+    "sourceText": "Arriving in Hong Kong instantly gave me a feeling of nostalgia.",
+    "sourceIndexes": [
+      104
+    ]
+  },
+  {
+    "start": 753.48,
+    "end": 757.3063636363637,
+    "text": "子供の頃に見てたTVBドラマは全部ここで撮影されてて、",
+    "sourceText": "All the TVB dramas I grew up watching were",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 757.3063636363637,
+    "end": 760.1600000000001,
+    "text": "広東語が聞こえるのが大好きなんだ。",
+    "sourceText": "filmed here, and I love hearing Cantonese.",
+    "sourceIndexes": [
+      105
+    ]
+  },
+  {
+    "start": 763.2,
+    "end": 765.2140845070423,
+    "text": "香港に着いたよ。",
+    "sourceText": "Just landed in Hong Kong.",
+    "sourceIndexes": [
+      106
+    ]
+  },
+  {
+    "start": 765.2140845070423,
+    "end": 768.9200000000001,
+    "text": "華嫂冰室で朝ごはんを食べるんだ。",
+    "sourceText": "I'm going to get breakfast at Wah So Bing Sut.",
+    "sourceIndexes": [
+      107
+    ]
+  },
+  {
+    "start": 776.28,
+    "end": 781.6295081967213,
+    "text": "香港に来るたびに、まず最初にやることは茶餐廳に行くこと。",
+    "sourceText": "Whenever I visit Hong Kong, the first thing I have to do is go to a cha chan teng because no",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 781.6295081967213,
+    "end": 787.72,
+    "text": "アメリカの香港カフェがどんなに良くても、本場の味には敵わないから。",
+    "sourceText": "matter how good the Hong Kong cafes could be in America, nothing comes close to how authentic and",
+    "sourceIndexes": [
+      108
+    ]
+  },
+  {
+    "start": 787.72,
+    "end": 791.08,
+    "text": "香港の料理はとにかく美味しいんだ。",
+    "sourceText": "delicious the food is in Hong Kong.",
+    "sourceIndexes": [
+      109
+    ]
+  },
+  {
+    "start": 791.08,
+    "end": 794.08,
+    "text": "これで間違いなし。",
+    "sourceText": "Can't go wrong with this.",
+    "sourceIndexes": [
+      110
+    ]
+  },
+  {
+    "start": 807.44,
+    "end": 809.56,
+    "text": "生き返ったわ。",
+    "sourceText": "That gave me life.",
+    "sourceIndexes": [
+      111
+    ]
+  },
+  {
+    "start": 809.56,
+    "end": 810.896,
+    "text": "すごく甘い。",
+    "sourceText": "It's so sweet.",
+    "sourceIndexes": [
+      112
+    ]
+  },
+  {
+    "start": 810.896,
+    "end": 816.24,
+    "text": "普段より甘いけど、すごく美味しい。",
+    "sourceText": "Sweeter than I would normally have it, but it's so good.",
+    "sourceIndexes": [
+      113
+    ]
+  },
+  {
+    "start": 820.84,
+    "end": 825.24,
+    "text": "サテソースがこんなに濃いと、美味しいって分かるよね。",
+    "sourceText": "You know it's good when the satay sauce is so thick.",
+    "sourceIndexes": [
+      114
+    ]
+  },
+  {
+    "start": 825.24,
+    "end": 828.168,
+    "text": "すごく薄いお店も多いからね。",
+    "sourceText": "There are a lot of places where it's super watered down.",
+    "sourceIndexes": [
+      115
+    ]
+  },
+  {
+    "start": 828.168,
+    "end": 830.12,
+    "text": "それは嫌だよね。",
+    "sourceText": "You don't want that.",
+    "sourceIndexes": [
+      116
+    ]
+  },
+  {
+    "start": 833.72,
+    "end": 835.8,
+    "text": "わあ。",
+    "sourceText": "Oh my.",
+    "sourceIndexes": [
+      117
+    ]
+  },
+  {
+    "start": 835.8,
+    "end": 839.5642105263157,
+    "text": "昔はサテがあまり好きじゃなかったんだけど、",
+    "sourceText": "I used to not be a big fan of satay, but Wha always orders",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 839.5642105263157,
+    "end": 845.16,
+    "text": "Whaがいつもこれを注文してて、今ではすっかりハマって、定番になったよ。",
+    "sourceText": "this, and now that I've been converted, this is a go-to.",
+    "sourceIndexes": [
+      118
+    ]
+  },
+  {
+    "start": 845.16,
+    "end": 848.8399999999999,
+    "text": "ああ、牛肉もすごく柔らかい。",
+    "sourceText": "Oh, the beef is so tender, too.",
+    "sourceIndexes": [
+      119
+    ]
+  },
+  {
+    "start": 855.48,
+    "end": 856.81,
+    "text": "今すごく幸せ。",
+    "sourceText": "So happy right now.",
+    "sourceIndexes": [
+      120
+    ]
+  },
+  {
+    "start": 856.81,
+    "end": 859.4,
+    "text": "めっちゃ美味しい。この濃さを見て。見える？",
+    "sourceText": "This is so bomb. Look at how thick. Can you see that?",
+    "sourceIndexes": [
+      121,
+      122
+    ]
+  },
+  {
+    "start": 859.4,
+    "end": 864.6,
+    "text": "ちょうどいい太さで、理想的な感じだね。",
+    "sourceText": "That is nice and thick, just how you would want it.",
+    "sourceIndexes": [
+      123
+    ]
+  },
+  {
+    "start": 864.68,
+    "end": 868.28,
+    "text": "Whaがここにいたら、すごく喜んだだろうな。",
+    "sourceText": "Wha would be so happy if he was here right now.",
+    "sourceIndexes": [
+      124
+    ]
+  },
+  {
+    "start": 868.28,
+    "end": 869.88,
+    "text": "すごく柔らかい。",
+    "sourceText": "So tender.",
+    "sourceIndexes": [
+      125
+    ]
+  },
+  {
+    "start": 869.88,
+    "end": 871.48,
+    "text": "ああ、もう。",
+    "sourceText": "Oh my god.",
+    "sourceIndexes": [
+      126
+    ]
+  },
+  {
+    "start": 871.56,
+    "end": 877.16,
+    "text": "今朝、家を出る前に天気予報を見たら、雨が降るって言ってたんだ。",
+    "sourceText": "Before leaving the house this morning, I checked the weather report and saw that it will be raining.",
+    "sourceIndexes": [
+      127
+    ]
+  },
+  {
+    "start": 877.16,
+    "end": 881,
+    "text": "だから傘を持っていけば大丈夫だと思ったの。",
+    "sourceText": "And so I thought I will bring an umbrella, and all will be well.",
+    "sourceIndexes": [
+      128
+    ]
+  },
+  {
+    "start": 881,
+    "end": 885.1465454545455,
+    "text": "まあ、このカリフォルニア娘は本当に驚かされたってわけ。",
+    "sourceText": "Let's just say this California girl was in for a real surprise.",
+    "sourceIndexes": [
+      129
+    ]
+  },
+  {
+    "start": 885.1465454545455,
+    "end": 888.7532727272728,
+    "text": "最初は小雨が降ってきたから傘をさして、",
+    "sourceText": "I first felt a little sprinkle, and so I busted out my umbrella,",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 888.7532727272728,
+    "end": 892.36,
+    "text": "まだ何も考えずに普通に過ごしてたんだ。",
+    "sourceText": "and I was still naively just going about my day at this point.",
+    "sourceIndexes": [
+      130
+    ]
+  },
+  {
+    "start": 895.24,
+    "end": 898.4133333333333,
+    "text": "そしたら雨が本格的に激しくなってきて。",
+    "sourceText": "Then the rain really like really started to pick up.",
+    "sourceIndexes": [
+      131
+    ]
+  },
+  {
+    "start": 898.4133333333333,
+    "end": 900,
+    "text": "そして今、あの。",
+    "sourceText": "And now I understand those",
+    "sourceIndexes": [
+      132
+    ]
+  }
+]

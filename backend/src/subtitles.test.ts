@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { enforceSubtitleLimits, finalizeTranslatedCues, normalizeTranslatedText } from "./subtitles.js";
+import { hasJapaneseNumericCoverage } from "./translationStrategies.js";
 
 test("Japanese translation replaces full-width commas with Japanese commas", () => {
   assert.equal(normalizeTranslatedText("これは，日本語です", "ja-JP"), "これは、日本語です");
@@ -61,6 +62,66 @@ test("Japanese boundary repair reconnects particles, endings, and leading punctu
   assert.ok(text.includes("開始すればいいのです。"));
   assert.equal(text.includes("、、"), false);
   assert.equal(cues.some((cue) => cue.text.startsWith("、")), false);
+});
+
+test("Japanese boundary repair moves leading sentence punctuation to the previous cue", () => {
+  const cues = finalizeTranslatedCues([
+    { start: 0, end: 2, text: "当局はそう呼ぶよう主張しましたが、" },
+    { start: 2, end: 4, text: "、ほとんどの人は別の呼び方をします。" },
+    { start: 4, end: 6, text: "「本当にそうなの、" },
+    { start: 6, end: 8, text: "？」次の話題に移ります。" }
+  ], "ja-JP");
+  const text = cues.map((cue) => cue.text).join("");
+
+  assert.equal(cues.some((cue) => /^[、。！？]/u.test(cue.text)), false);
+  assert.equal(text.includes("が、、"), false);
+  assert.ok(text.includes('本当にそうなの？」'));
+});
+
+test("Japanese leading punctuation repair preserves an existing closing quote", () => {
+  const cues = finalizeTranslatedCues([
+    { start: 0, end: 2, text: "「前の発言、」" },
+    { start: 2, end: 4, text: "。次の説明です。" }
+  ], "ja");
+  const text = cues.map((cue) => cue.text).join("");
+
+  assert.ok(text.includes("「前の発言。」"));
+  assert.equal(cues.some((cue) => /^[、。！？]/u.test(cue.text)), false);
+});
+
+test("Japanese numeric coverage rejects translations that omit explicit numbers", () => {
+  assert.equal(hasJapaneseNumericCoverage("I spend 97 dollars", "計算してみたら、"), false);
+  assert.equal(hasJapaneseNumericCoverage("I spend 97 dollars", "97ドル使っています。"), true);
+  assert.equal(hasJapaneseNumericCoverage("spoken by 1.5 billion people", "15億人が話しています。"), true);
+  assert.equal(hasJapaneseNumericCoverage("in the late 2000s and mid-2010s", "2000年代後半と2010年代半ば"), true);
+});
+
+test("Japanese finalization locally rebalances fast cues without shifting the full range", () => {
+  const cues = finalizeTranslatedCues([
+    { start: 0, end: 5, text: "前の字幕です。" },
+    { start: 5, end: 6.24, text: "でも、データが示しているのはそういうことではありません。" },
+    { start: 6.24, end: 11, text: "次の字幕には十分な表示時間があります。" }
+  ], "ja");
+  const fastCue = cues.find((cue) => cue.text.includes("データが示している"));
+
+  assert.ok(fastCue);
+  assert.equal(cues[0].start, 0);
+  assert.equal(cues.at(-1)?.end, 11);
+  assert.ok(visibleTestLength(fastCue.text) / (fastCue.end - fastCue.start) <= 18.01);
+  assert.ok(cues.every((cue) => cue.end > cue.start));
+});
+
+test("Japanese final cleanup removes punctuation introduced at a final cue boundary", () => {
+  const onceFinalized = [
+    { start: 0, end: 3, text: "前の字幕はここまで続いて、" },
+    { start: 3, end: 5, text: "。次の字幕が始まります。" }
+  ];
+  const cues = finalizeTranslatedCues(onceFinalized, "ja-JP");
+  const text = cues.map((cue) => cue.text).join("");
+
+  assert.equal(cues.some((cue) => /^[、。！？]/u.test(cue.text)), false);
+  assert.ok(text.includes("ここまで続いて。"));
+  assert.ok(cues.every((cue) => visibleTestLength(cue.text) / (cue.end - cue.start) <= 18.05));
 });
 
 test("Japanese punctuation cleanup does not append punctuation after a quoted sentence", () => {

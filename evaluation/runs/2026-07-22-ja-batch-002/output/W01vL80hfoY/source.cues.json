@@ -1,0 +1,818 @@
+[
+  {
+    "start": 0,
+    "end": 9.52,
+    "text": "As a woman in her 30s in the United States, I'm super familiar with the stereotypical assumptions about the reasons for falling birth rates.",
+    "index": 0
+  },
+  {
+    "start": 9.52,
+    "end": 18.4,
+    "text": "It's the feminists, it's career women who don't want kids or who wait until it's too late, etc. etc.",
+    "index": 1
+  },
+  {
+    "start": 18.4,
+    "end": 19.64,
+    "text": "But that's not what the data suggests.",
+    "index": 2
+  },
+  {
+    "start": 19.64,
+    "end": 24.88,
+    "text": "The idea of this being about career women and some people talk about the girl boss and that kind of thing.",
+    "index": 3
+  },
+  {
+    "start": 24.88,
+    "end": 33.84,
+    "text": "That would make sense if what we were seeing was primarily a decline in births among high-earning and highly educated young women.",
+    "index": 4
+  },
+  {
+    "start": 33.84,
+    "end": 41.35263157894737,
+    "text": "Whereas what we're primarily looking at here is a decline among those in the bottom half or sort of bottom third [music] of society.",
+    "index": 5
+  },
+  {
+    "start": 41.35263157894737,
+    "end": 46.14153846153846,
+    "text": "So it's young men and women who generally don't have a bachelor's degree, have lower incomes.",
+    "index": 6
+  },
+  {
+    "start": 46.14153846153846,
+    "end": 47.72,
+    "text": "These are the group [music]",
+    "index": 7
+  },
+  {
+    "start": 47.72,
+    "end": 56.64,
+    "text": "who are having fewer children and perhaps more importantly, as we'll come on to, being less likely to get into a couple at all.",
+    "index": 8
+  },
+  {
+    "start": 60.915,
+    "end": 62.935,
+    "text": "[music]",
+    "index": 9
+  },
+  {
+    "start": 66.155,
+    "end": 68.175,
+    "text": "[music]",
+    "index": 10
+  },
+  {
+    "start": 73.32,
+    "end": 75.04727272727273,
+    "text": "Welcome to The Gray Area.",
+    "index": 11
+  },
+  {
+    "start": 75.04727272727273,
+    "end": 77.88,
+    "text": "I'm Christian filling in for Sean Illing.",
+    "index": 12
+  },
+  {
+    "start": 77.88,
+    "end": 83.80103896103896,
+    "text": "My guest today is John Burn-Murdoch, a columnist and the chief data reporter for the Financial Times.",
+    "index": 13
+  },
+  {
+    "start": 83.80103896103896,
+    "end": 90.0064,
+    "text": "He recently published an article entitled Why birth rates are falling everywhere all at once.",
+    "index": 14
+  },
+  {
+    "start": 90.0064,
+    "end": 95.90810810810811,
+    "text": "The piece really set off a big discussion on both the implications and the causes of why so many people are choosing to have kids.",
+    "index": 15
+  },
+  {
+    "start": 95.90810810810811,
+    "end": 100.16,
+    "text": "I asked him to come on the show to discuss what's driving this trend.",
+    "index": 16
+  },
+  {
+    "start": 100.16,
+    "end": 106.32,
+    "text": "Why birth rates are falling in different societies at the same time and whether we need to do anything about it.",
+    "index": 17
+  },
+  {
+    "start": 106.32,
+    "end": 108.08,
+    "text": "Welcome to the show, John.",
+    "index": 18
+  },
+  {
+    "start": 108.08,
+    "end": 109.56,
+    "text": "Thank you so much for having me.",
+    "index": 19
+  },
+  {
+    "start": 109.56,
+    "end": 112.88,
+    "text": "So I'm going to start with a little bit of table setting here.",
+    "index": 20
+  },
+  {
+    "start": 112.88,
+    "end": 120.28,
+    "text": "Um noted trillionaire Elon Musk has said that low birth rates are going to end civilization.",
+    "index": 21
+  },
+  {
+    "start": 120.28,
+    "end": 125.04,
+    "text": "The US's Medicaid and Medicare administrator, Dr.",
+    "index": 22
+  },
+  {
+    "start": 125.04,
+    "end": 128.679,
+    "text": "Oz, declared that the US is under baby.",
+    "index": 23
+  },
+  {
+    "start": 128.679,
+    "end": 135.08,
+    "text": "By now, I think we've all heard that the US and the rest of the world is going through a demographic decline.",
+    "index": 24
+  },
+  {
+    "start": 135.08,
+    "end": 139.48,
+    "text": "Many countries are under replacement level for fertility.",
+    "index": 25
+  },
+  {
+    "start": 139.48,
+    "end": 141.3892857142857,
+    "text": "But what does that actually mean?",
+    "index": 26
+  },
+  {
+    "start": 141.3892857142857,
+    "end": 142.72,
+    "text": "How do you define that?",
+    "index": 27
+  },
+  {
+    "start": 142.72,
+    "end": 149.2,
+    "text": "Yeah, so the replacement rate is the number is about 2.1 children per woman.",
+    "index": 28
+  },
+  {
+    "start": 149.2,
+    "end": 158.2,
+    "text": "And what that is telling us is that if every woman in every couple had an average of 2.1 children per year, it would mean",
+    "index": 29
+  },
+  {
+    "start": 158.2,
+    "end": 164.08,
+    "text": "that if nothing else happened to the population, it would pretty much stay at its current size.",
+    "index": 30
+  },
+  {
+    "start": 164.08,
+    "end": 172.16,
+    "text": "So, when that number drops below 2.1 and especially significantly below, it means that again, holding everything else constant, population will gradually start to fall.",
+    "index": 31
+  },
+  {
+    "start": 172.16,
+    "end": 176.16,
+    "text": "That seems not ideal to me, at least.",
+    "index": 32
+  },
+  {
+    "start": 176.16,
+    "end": 184.35076923076923,
+    "text": "But the idea of demographic decline being a problem is actually kind of polarizing, I think.",
+    "index": 33
+  },
+  {
+    "start": 184.35076923076923,
+    "end": 197.4,
+    "text": "In the US, being too concerned about fertility risks being read as sort of right-wing or pronatalist, um you know, solutions from the left, like increased immigration, are often seen as, well, leftist.",
+    "index": 34
+  },
+  {
+    "start": 197.4,
+    "end": 201.08,
+    "text": "Is that true elsewhere, this polarizing nature of the debate?",
+    "index": 35
+  },
+  {
+    "start": 201.08,
+    "end": 204.4156756756757,
+    "text": "There are certain elements of it.",
+    "index": 36
+  },
+  {
+    "start": 204.4156756756757,
+    "end": 211.12,
+    "text": "I think, you know, any conversation which has even a hint of women should do X is going to be fairly like conservative coded, right?",
+    "index": 37
+  },
+  {
+    "start": 211.12,
+    "end": 212.32,
+    "text": "And I think that's reasonable.",
+    "index": 38
+  },
+  {
+    "start": 212.32,
+    "end": 221.08,
+    "text": "Um and I think that's why a lot of people in this last couple years, as this topic has become more mainstream, I think there have been quite sensible efforts",
+    "index": 39
+  },
+  {
+    "start": 221.08,
+    "end": 230.32,
+    "text": "to ensure that this is actually a much more inclusive conversation about what we as society is and certainly what men as part of this equation should be perhaps doing differently as well,",
+    "index": 40
+  },
+  {
+    "start": 230.32,
+    "end": 235.72,
+    "text": "rather than and it just being a series of men talking about um what women do.",
+    "index": 41
+  },
+  {
+    "start": 235.72,
+    "end": 247.58105263157896,
+    "text": "I've read a number of pieces on this topic and almost everyone, and actually yours too, singles out South Korea as a key country that's exemplary of this falling birth rates crisis.",
+    "index": 42
+  },
+  {
+    "start": 247.58105263157896,
+    "end": 248.44,
+    "text": "Why is that?",
+    "index": 43
+  },
+  {
+    "start": 248.44,
+    "end": 253.6706542056075,
+    "text": "I know that they're one of the countries that has actually tried to implement solutions.",
+    "index": 44
+  },
+  {
+    "start": 253.6706542056075,
+    "end": 254.8,
+    "text": "Is that part of it?",
+    "index": 45
+  },
+  {
+    "start": 254.8,
+    "end": 256.239,
+    "text": "I think it's it's interesting, right?",
+    "index": 46
+  },
+  {
+    "start": 256.239,
+    "end": 264.11384615384617,
+    "text": "So, I think any conversation involving either directly or indirectly involving gender relations, South Korea will come up.",
+    "index": 47
+  },
+  {
+    "start": 264.11384615384617,
+    "end": 272.8,
+    "text": "So, they are this extreme case where most measures of gender equality and certainly measures of the different",
+    "index": 48
+  },
+  {
+    "start": 272.8,
+    "end": 280.34018691588784,
+    "text": "roles that on average young men and women perform in South Korea, uh it is a bit of an outlier.",
+    "index": 49
+  },
+  {
+    "start": 280.34018691588784,
+    "end": 284.64,
+    "text": "Like, there is a very unequal division of household labor and that kind of thing.",
+    "index": 50
+  },
+  {
+    "start": 284.64,
+    "end": 290.32,
+    "text": "Certainly, there's been evidence recently of a quite reactionary turn politically among young men in South Korea.",
+    "index": 51
+  },
+  {
+    "start": 290.32,
+    "end": 303.88,
+    "text": "Um on birth rates, they have been you've got this large, reasonably large, and recently high-income country where a lot of other countries around the world can sort of see themselves, as it were, or at least in a few years, and",
+    "index": 52
+  },
+  {
+    "start": 303.88,
+    "end": 306.36,
+    "text": "birth rates have gone incredibly low.",
+    "index": 53
+  },
+  {
+    "start": 306.36,
+    "end": 310.584,
+    "text": "So, we talked about 2.1 being the replacement rate that holds everything stable.",
+    "index": 54
+  },
+  {
+    "start": 310.584,
+    "end": 313.176,
+    "text": "In South Korea, they went below 0.8.",
+    "index": 55
+  },
+  {
+    "start": 313.176,
+    "end": 326.04,
+    "text": "In the last couple of years, they've actually ticked up a tiny bit, which we might come on to, but it really is this shining example or flashing example, as it were, of how things in a high-income country that has a lot of",
+    "index": 56
+  },
+  {
+    "start": 326.04,
+    "end": 331.84,
+    "text": "similarities to places elsewhere in the world, how things can suddenly get that low in terms of birth rates.",
+    "index": 57
+  },
+  {
+    "start": 331.84,
+    "end": 337.912,
+    "text": "You say that this is an example of a high-income country that sort of Western countries can relate to.",
+    "index": 58
+  },
+  {
+    "start": 337.912,
+    "end": 349.1333333333333,
+    "text": "But, there are tons of different parts of the world that are really different from each other economically, culturally, and yet still also seem to be facing the same trend.",
+    "index": 59
+  },
+  {
+    "start": 349.1333333333333,
+    "end": 351.04,
+    "text": "What does that say to you?",
+    "index": 60
+  },
+  {
+    "start": 351.04,
+    "end": 357.08,
+    "text": "Yeah, I think that bit for me is what's super interesting here and what really drew me to this idea.",
+    "index": 61
+  },
+  {
+    "start": 357.08,
+    "end": 370.08,
+    "text": "Um, which is that over the past century or two, we've had these fairly steady and fairly well-understood changes, uh, these demographic shifts, demographic transitions, which have",
+    "index": 62
+  },
+  {
+    "start": 370.08,
+    "end": 377.6,
+    "text": "played out at different periods of time in different parts of the world, but all against similar backdrops as it were.",
+    "index": 63
+  },
+  {
+    "start": 377.6,
+    "end": 386.84,
+    "text": "So, first you have a society first a society develops to the point where infant mortality gets significantly lower.",
+    "index": 64
+  },
+  {
+    "start": 386.84,
+    "end": 396.12,
+    "text": "That means, to put it crudely, instead of instead of needing to have a large number of children because some of them won't survive to adulthood, you can start having fewer children.",
+    "index": 65
+  },
+  {
+    "start": 396.12,
+    "end": 406.31111111111113,
+    "text": "Then we have other shifts like urbanization, like rising female education, general economic development, which again puts downward pressure on the number of kids people feel they need.",
+    "index": 66
+  },
+  {
+    "start": 406.31111111111113,
+    "end": 414.32,
+    "text": "So, we've seen these things played out before, but they've played out at this at this point in time when a country went through a certain stage of its development.",
+    "index": 67
+  },
+  {
+    "start": 414.32,
+    "end": 423.36,
+    "text": "The thing that's, I think, quite striking and relatively new about what we're seeing at the moment is that in the last 15 years, you see significantly",
+    "index": 68
+  },
+  {
+    "start": 423.36,
+    "end": 432.92925316455694,
+    "text": "declining birth rates in the US, in South Korea, but also in Indonesia, in, um, like [snorts] Turkey, Iran, Mexico.",
+    "index": 69
+  },
+  {
+    "start": 432.92925316455694,
+    "end": 444.0005479452055,
+    "text": "So, both the timing of the decline and the levels themselves are playing out in ways that is actually, well, it doesn't fit the historical patterns we've seen.",
+    "index": 70
+  },
+  {
+    "start": 444.0005479452055,
+    "end": 452.5015384615385,
+    "text": "You can't explain Mexico falling below the US in terms of female education or income or urbanization or those kinds of things.",
+    "index": 71
+  },
+  {
+    "start": 452.5015384615385,
+    "end": 463.2,
+    "text": "So, it's it's a new thing when we suddenly see rich countries, middle-income countries, even lower-income countries undergoing a very similar parallel downward shift at roughly the same time.",
+    "index": 72
+  },
+  {
+    "start": 463.2,
+    "end": 467.08,
+    "text": "So, I'm in the US.",
+    "index": 73
+  },
+  {
+    "start": 467.08,
+    "end": 471.6,
+    "text": "What do these other parts of the world teach us about what the trend looks like here?",
+    "index": 74
+  },
+  {
+    "start": 471.6,
+    "end": 482.08,
+    "text": "And I should caveat this straight out of the gate by saying that as with any big sweeping social change, there are many theories as what's going on here and it almost certainly won't be a single cause.",
+    "index": 75
+  },
+  {
+    "start": 482.08,
+    "end": 492.16,
+    "text": "But the one of one of the interesting theories that emerges when you you take this broader, more international, more sort of inter developmental approach.",
+    "index": 76
+  },
+  {
+    "start": 492.16,
+    "end": 502.8,
+    "text": "And and I certainly think this is a theory that I put some weight behind is that one thing that is common to say",
+    "index": 77
+  },
+  {
+    "start": 502.8,
+    "end": 514.08,
+    "text": "parts of sub-Saharan Africa in 2020, 2021, uh Indonesia and Mexico in say 2015 and countries like the US, UK, Australia",
+    "index": 78
+  },
+  {
+    "start": 514.08,
+    "end": 520.479,
+    "text": "in sort of 2008 is that's when we see the proliferation of smartphones.",
+    "index": 79
+  },
+  {
+    "start": 520.479,
+    "end": 526.9996551724138,
+    "text": "And and I should say at the outset as well that it's not just about the as the theory goes, it's not just about the actual physical device.",
+    "index": 80
+  },
+  {
+    "start": 526.9996551724138,
+    "end": 528.7937931034483,
+    "text": "It's everything that comes along with that.",
+    "index": 81
+  },
+  {
+    "start": 528.7937931034483,
+    "end": 530.88,
+    "text": "So, the the apps, the time you spend, all of that.",
+    "index": 82
+  },
+  {
+    "start": 530.88,
+    "end": 544.12,
+    "text": "But that seems to be one of the few things that does line up reasonably well with a downward inflection in birth rates in high-income countries in the late 2000s, in middle-income countries",
+    "index": 83
+  },
+  {
+    "start": 544.12,
+    "end": 549.36,
+    "text": "in the sort of mid 2010s and then in poorer countries as we go into the late 2010s.",
+    "index": 84
+  },
+  {
+    "start": 549.36,
+    "end": 549.76,
+    "text": "Okay.",
+    "index": 85
+  },
+  {
+    "start": 549.76,
+    "end": 557.52,
+    "text": "I want to return to the phone part in detail uh because I think that theory is fascinating, too, and it's something I've been writing on as well.",
+    "index": 86
+  },
+  {
+    "start": 557.52,
+    "end": 566.36,
+    "text": "Um but let's back up for a little bit and hit one of the potential explanations that we hear a lot and that you mentioned.",
+    "index": 87
+  },
+  {
+    "start": 566.36,
+    "end": 574.4808750000001,
+    "text": "You talked about female empowerment and higher levels of education as being perhaps a contributing factor to fertility decline more generally.",
+    "index": 88
+  },
+  {
+    "start": 574.4808750000001,
+    "end": 585.52,
+    "text": "And as a woman in her 30s in the United States, I'm super familiar with the stereotypical assumptions about the reasons for falling birth rates.",
+    "index": 89
+  },
+  {
+    "start": 585.52,
+    "end": 591.72,
+    "text": "It's the feminists, it's career women who don't want kids or who wait until it's too late, etc. etc.",
+    "index": 90
+  },
+  {
+    "start": 591.72,
+    "end": 595.08,
+    "text": "But, that's not what the data suggests.",
+    "index": 91
+  },
+  {
+    "start": 595.08,
+    "end": 602.36,
+    "text": "One of the parts that you mentioned there, the idea of this being about career women and some people talk about the girl boss and that kind of thing.",
+    "index": 92
+  },
+  {
+    "start": 602.36,
+    "end": 611.4,
+    "text": "That would make sense if what we were seeing was primarily a decline in births among high-earning and highly educated young women.",
+    "index": 93
+  },
+  {
+    "start": 611.4,
+    "end": 618.2927999999999,
+    "text": "Whereas, what we're primarily looking at here is a decline among those in the bottom half or sort of bottom third of society.",
+    "index": 94
+  },
+  {
+    "start": 618.2927999999999,
+    "end": 625.585,
+    "text": "So, it's young men and women who generally don't have a bachelor's degree, have lower incomes.",
+    "index": 95
+  },
+  {
+    "start": 625.585,
+    "end": 632.48,
+    "text": "These are the group who are having fewer children and, perhaps more importantly as we'll come on to, being less likely to get into a couple at all.",
+    "index": 96
+  },
+  {
+    "start": 632.48,
+    "end": 641.96,
+    "text": "So, generally people who get into stable, secure relationships, settle down, move in together are still having children.",
+    "index": 97
+  },
+  {
+    "start": 641.96,
+    "end": 645.72,
+    "text": "It's some of the frictions that lead up to that point which seem to have changed.",
+    "index": 98
+  },
+  {
+    "start": 645.72,
+    "end": 648.4318644067797,
+    "text": "Does housing play into this or economic precarity?",
+    "index": 99
+  },
+  {
+    "start": 648.4318644067797,
+    "end": 652.12,
+    "text": "I feel like those are reasons that are often cited in the US and UK.",
+    "index": 100
+  },
+  {
+    "start": 652.12,
+    "end": 655.8,
+    "text": "People don't want to have families because they don't have anywhere to put their kids.",
+    "index": 101
+  },
+  {
+    "start": 655.8,
+    "end": 658.8,
+    "text": "They don't feel like they can provide for them in this economy at least.",
+    "index": 102
+  },
+  {
+    "start": 658.8,
+    "end": 660.0799999999999,
+    "text": "For sure.",
+    "index": 103
+  },
+  {
+    "start": 660.0799999999999,
+    "end": 670.7460550458716,
+    "text": "I I think the way I've been thinking about this is housing is something that if you get secure, stable housing, that allows you to have long-term time horizons.",
+    "index": 104
+  },
+  {
+    "start": 670.7460550458716,
+    "end": 676.92,
+    "text": "You can then think about things like, we're going to be here, could we have kids here, could we build a family here?",
+    "index": 105
+  },
+  {
+    "start": 676.92,
+    "end": 686.606582278481,
+    "text": "When you are perpetually worried about what might happen to your rent in a year's time or perhaps you haven't even been able to move out of your parents' home yet, you're just not going to be thinking about that at all.",
+    "index": 106
+  },
+  {
+    "start": 686.606582278481,
+    "end": 688.9230769230769,
+    "text": "It doesn't make sense when you don't have the rest of that in place.",
+    "index": 107
+  },
+  {
+    "start": 688.9230769230769,
+    "end": 701.6823529411764,
+    "text": "And there is evidence here that housing, the worsening affordability for homes, um, especially when it comes to home ownership, has had a significant impact on birth rates.",
+    "index": 108
+  },
+  {
+    "start": 701.6823529411764,
+    "end": 713.64,
+    "text": "So, in countries like the UK and US, perhaps as much as half of the decline in birth rates since the 2000s can be attributed to that.",
+    "index": 109
+  },
+  {
+    "start": 713.64,
+    "end": 716.6233333333333,
+    "text": "Um, but there are two caveats with that.",
+    "index": 110
+  },
+  {
+    "start": 716.6233333333333,
+    "end": 727.8,
+    "text": "One is that while they explain why birth rates are a bit lower than they would otherwise be, even in a situation where everyone had managed to afford a home of their own in line with historical rates, you would",
+    "index": 111
+  },
+  {
+    "start": 727.8,
+    "end": 732.4088495575221,
+    "text": "still have seen this most recent decline over the last, say, 15 years.",
+    "index": 112
+  },
+  {
+    "start": 732.4088495575221,
+    "end": 735.24,
+    "text": "So, it's shifted the level, but they're not the right not the direction of travel.",
+    "index": 113
+  },
+  {
+    "start": 735.24,
+    "end": 746.04,
+    "text": "And then in addition, we see very similar declines in birth rates in countries that have not had nearly as bad a housing crisis.",
+    "index": 114
+  },
+  {
+    "start": 746.04,
+    "end": 755.9022222222222,
+    "text": "So, in countries like Finland in northern Europe, the most rapidly growing type of household is actually young adults living completely on their own.",
+    "index": 115
+  },
+  {
+    "start": 755.9022222222222,
+    "end": 768.76,
+    "text": "So, that is a place where evidently young people are able to find housing that meets their requirement uh, for the for where they're at in life, and nonetheless, they're still living on their own, they're not coupling up, and not having children.",
+    "index": 116
+  },
+  {
+    "start": 768.76,
+    "end": 774.12,
+    "text": "So, let's talk about how governments have tried to respond to this problem.",
+    "index": 117
+  },
+  {
+    "start": 774.12,
+    "end": 780,
+    "text": "Um, economic precarity is seen as a threat, housing is seen as a threat.",
+    "index": 118
+  },
+  {
+    "start": 780,
+    "end": 784.64,
+    "text": "China is one example of a pretty specific response to the crisis, right?",
+    "index": 119
+  },
+  {
+    "start": 784.64,
+    "end": 795.44,
+    "text": "They reversed their one-child policy, um, and this year, I think, also instituted a 13% sales tax on contraceptives.",
+    "index": 120
+  },
+  {
+    "start": 795.44,
+    "end": 797.839,
+    "text": "Has that worked?",
+    "index": 121
+  },
+  {
+    "start": 797.839,
+    "end": 807.2,
+    "text": "Generally, the story on all of these government policy interventions is it's not necessarily a straight story of they don't work at all, but to the extent",
+    "index": 122
+  },
+  {
+    "start": 807.2,
+    "end": 816.139,
+    "text": "that they work, they tend to be sort of taking a steeply slope downward sloping line and making it slope slightly less steeply downwards.",
+    "index": 123
+  },
+  {
+    "start": 816.139,
+    "end": 821.72,
+    "text": "[snorts] Um, you see this in China, you see this in South Korea, you see this in various places.",
+    "index": 124
+  },
+  {
+    "start": 821.72,
+    "end": 831.72,
+    "text": "So, they are perhaps working on some level, but if you think about it, that is a policy that can only really apply when everything else is already there.",
+    "index": 125
+  },
+  {
+    "start": 831.72,
+    "end": 838.409,
+    "text": "When you're there, you've got a stable partner, you maybe got your own home, and you're simply thinking now can we make this work financially?",
+    "index": 126
+  },
+  {
+    "start": 838.409,
+    "end": 843.6,
+    "text": "[snorts] And so, for some people in that situation, it seems like some of these policies can work.",
+    "index": 127
+  },
+  {
+    "start": 843.6,
+    "end": 849.055,
+    "text": "But, when you think A, the decision of whether and when to have kids is a massively multifactorial decision.",
+    "index": 128
+  },
+  {
+    "start": 849.055,
+    "end": 852.8,
+    "text": "It's probably the most personal decision anyone will ever make.",
+    "index": 129
+  },
+  {
+    "start": 852.8,
+    "end": 859.6037606837607,
+    "text": "A simple tweaking of the financial calculus is not going to be a complete game-changer for many people.",
+    "index": 130
+  },
+  {
+    "start": 859.6037606837607,
+    "end": 871,
+    "text": "And in addition, if a lot of what we're talking about here is people just not having got to the point where they even feel like they can settle into a stable relationship, those people are just not going to be touched by a policy like that at all.",
+    "index": 131
+  },
+  {
+    "start": 871,
+    "end": 873.246582278481,
+    "text": "Yeah, that makes sense to me.",
+    "index": 132
+  },
+  {
+    "start": 873.246582278481,
+    "end": 885.6,
+    "text": "I mean, in the US and also in a number of European countries, I think there's been, you know, conversation about baby bonuses or sort of extra financial payments that would help people have children.",
+    "index": 133
+  },
+  {
+    "start": 885.6,
+    "end": 894.6861538461538,
+    "text": "But, over time, having a child is an expensive proposition, you know, kind of mentally and emotionally as well as financially.",
+    "index": 134
+  },
+  {
+    "start": 894.6861538461538,
+    "end": 900,
+    "text": "And a $5,000 baby bonus or like an extra 10,000 pounds is probably",
+    "index": 135
+  }
+]

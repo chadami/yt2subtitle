@@ -1,0 +1,92 @@
+{
+  "topic": "Claude Design tutorial for beginners",
+  "summary": "How to prepare three files (DESIGN.md, design system, reusable template) to create polished, on-brand slide decks in Claude Design, with feedback that carries forward.",
+  "tone": "casual, instructive, enthusiastic",
+  "audience": "Japanese-speaking beginners interested in AI design tools, likely professionals or creators",
+  "glossary": [
+    {
+      "source": "Claude Design",
+      "target": "Claude Design",
+      "note": "Product name; keep as is or use クロードデザイン if needed for clarity"
+    },
+    {
+      "source": "DESIGN.md",
+      "target": "DESIGN.mdファイル",
+      "note": "File name; keep original with ファイル for clarity"
+    },
+    {
+      "source": "design system",
+      "target": "デザインシステム",
+      "note": "Standard term"
+    },
+    {
+      "source": "template",
+      "target": "テンプレート",
+      "note": "Standard term"
+    },
+    {
+      "source": "prompt",
+      "target": "プロンプト",
+      "note": "Standard term for AI input"
+    },
+    {
+      "source": "tokens",
+      "target": "トークン",
+      "note": "AI usage cost unit"
+    },
+    {
+      "source": "deck",
+      "target": "スライド資料",
+      "note": "Slide deck; use スライド資料 or デッキ"
+    },
+    {
+      "source": "carousel",
+      "target": "カルーセル",
+      "note": "Social media carousel slides"
+    },
+    {
+      "source": "on-brand",
+      "target": "ブランドに合った",
+      "note": "Consistent with brand identity"
+    },
+    {
+      "source": "feedback",
+      "target": "フィードバック",
+      "note": "Standard term"
+    },
+    {
+      "source": "tweak",
+      "target": "調整スイッチ",
+      "note": "Feature name; describe as 調整スイッチ or トゥイーク"
+    },
+    {
+      "source": "annotate",
+      "target": "注釈",
+      "note": "Feature name; use 注釈 or アノテート"
+    }
+  ],
+  "properNouns": [
+    "Claude Design",
+    "Jeff Su",
+    "ChatGPT",
+    "GitHub",
+    "Stripe",
+    "Opus",
+    "Fable",
+    "Cowork Toolkit",
+    "Workspace Academy",
+    "Notion Command Center"
+  ],
+  "styleGuide": [
+    "Use casual, friendly Japanese (だ/である調 is okay, but prefer ですます調 for politeness).",
+    "Keep product names (Claude Design, ChatGPT, GitHub) in English unless a common Japanese equivalent exists.",
+    "Translate technical terms like 'design system', 'template', 'prompt' into common Japanese loanwords (デザインシステム, テンプレート, プロンプト).",
+    "For 'deck', use スライド資料 or デッキ depending on context.",
+    "For 'tweak' and 'annotate', use the English terms with a brief explanation if needed, or use 調整スイッチ and 注釈.",
+    "Keep file extensions (.md, .html) as is.",
+    "Use natural sentence endings like 〜ます/〜です for instructional tone, but can use 〜だ/〜である for casual parts.",
+    "Avoid overly literal translations; prefer conversational phrasing.",
+    "For humor (e.g., 'pun intended'), add a note like ダジャレです in parentheses.",
+    "Ensure subtitle length fits reading speed; split long sentences if needed."
+  ]
+}

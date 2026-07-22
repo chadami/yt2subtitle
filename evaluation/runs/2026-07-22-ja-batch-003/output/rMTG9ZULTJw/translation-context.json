@@ -1,0 +1,96 @@
+{
+  "topic": "New York City travel vlog",
+  "summary": "Creator visits New York City for a last-minute trip to pick up a package, explores neighborhoods, eats bagels and soul food, bikes around, and uses Insta360 camera gear.",
+  "tone": "casual, excited, humorous",
+  "audience": "Young adults interested in travel, food, and lifestyle content",
+  "glossary": [
+    {
+      "source": "bagel, egg, and cheese",
+      "target": "ベーグルエッグチーズ",
+      "note": "Typical NYC breakfast sandwich"
+    },
+    {
+      "source": "bodega",
+      "target": "ボデガ",
+      "note": "NYC convenience store/deli"
+    },
+    {
+      "source": "City Bike",
+      "target": "シティバイク",
+      "note": "NYC bike share system"
+    },
+    {
+      "source": "soul food",
+      "target": "ソウルフード",
+      "note": "African American cuisine"
+    },
+    {
+      "source": "kawaii",
+      "target": "かわいい",
+      "note": "Japanese loanword used in English"
+    },
+    {
+      "source": "Insta360",
+      "target": "Insta360",
+      "note": "Brand name, keep as is"
+    },
+    {
+      "source": "Hello Kitty",
+      "target": "ハローキティ",
+      "note": "Character name"
+    },
+    {
+      "source": "Crocs",
+      "target": "クロックス",
+      "note": "Shoe brand"
+    },
+    {
+      "source": "Long Island City",
+      "target": "ロングアイランドシティ",
+      "note": "NYC neighborhood"
+    },
+    {
+      "source": "Terminal 4",
+      "target": "第4ターミナル",
+      "note": "JFK airport terminal"
+    },
+    {
+      "source": "Williams Bridge",
+      "target": "ウィリアムズ橋",
+      "note": "Bridge in NYC"
+    },
+    {
+      "source": "Times Square",
+      "target": "タイムズスクエア",
+      "note": "Famous NYC location"
+    }
+  ],
+  "properNouns": [
+    "New York",
+    "US",
+    "Long Island City",
+    "Terminal 4",
+    "Rolling Bagels",
+    "Matsunori",
+    "Williams Bridge",
+    "Chinatown",
+    "Google 9",
+    "Harlem",
+    "Sylvia's",
+    "Times Square"
+  ],
+  "styleGuide": [
+    "Use casual, friendly Japanese with だ/である体 for narration, but switch to です/ます体 when addressing viewers directly or in greetings.",
+    "Keep English loanwords like 'ベーグル', 'クロックス', 'インスタ360' as is, but add Japanese gloss if needed for clarity.",
+    "Translate 'bitches' as 'みんな' or omit to avoid rudeness; use 'やあ' or 'ねえ' for casual address.",
+    "For exclamations like 'oh my god', use 'うわっ' or 'まじで'.",
+    "For 'kawaii', use 'かわいい' but note it's a Japanese word used in English context.",
+    "For 'soul food', use 'ソウルフード' with explanation if needed.",
+    "For 'bodega', use 'ボデガ' as it's a known term.",
+    "For 'City Bike', use 'シティバイク' (NYC bike share).",
+    "For 'Insta360 Go Ultra', keep brand name as 'Insta360 Go Ultra'.",
+    "For 'Hello Kitty', use 'ハローキティ'.",
+    "For 'Crocs', use 'クロックス'.",
+    "For 'bagel, egg, and cheese', use 'ベーグルエッグチーズ'."
+  ]
+}
