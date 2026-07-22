@@ -7,7 +7,17 @@ import { BrandMark } from "./brand-mark";
 import { InstallLink } from "./install-link";
 import { LanguageSwitcher } from "./language-switcher";
 
-export function SiteHeader({ locale, copy, storeUrl }: { locale: Locale; copy: SiteCopy; storeUrl: string }) {
+export function SiteHeader({
+  locale,
+  copy,
+  storeUrl,
+  languageSuffix = "",
+}: {
+  locale: Locale;
+  copy: SiteCopy;
+  storeUrl: string;
+  languageSuffix?: string;
+}) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,12 +32,12 @@ export function SiteHeader({ locale, copy, storeUrl }: { locale: Locale; copy: S
       <div className="header-inner">
         <Link href={`/${locale}`} className="brand-link"><BrandMark /></Link>
         <nav aria-label={copy.nav.aria} className="desktop-nav">
-          <a href="#features">{copy.nav.features}</a>
-          <a href="#how">{copy.nav.how}</a>
-          <a href="#byok">{copy.nav.privacy}</a>
+          <Link href={`/${locale}#features`}>{copy.nav.features}</Link>
+          <Link href={`/${locale}#how`}>{copy.nav.how}</Link>
+          <Link href={`/${locale}#byok`}>{copy.nav.privacy}</Link>
         </nav>
         <div className="header-actions">
-          <LanguageSwitcher locale={locale} />
+          <LanguageSwitcher locale={locale} suffix={languageSuffix} />
           <InstallLink href={storeUrl} label={copy.nav.install} className="button button-small" />
         </div>
       </div>

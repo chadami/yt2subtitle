@@ -18,7 +18,7 @@ export function isLocale(value: string): value is Locale {
 }
 
 export type SiteCopy = {
-  meta: { title: string; description: string };
+  meta: { title: string; description: string; keywords: string[] };
   nav: { features: string; how: string; privacy: string; install: string; aria: string };
   hero: {
     eyebrow: string;
@@ -76,8 +76,9 @@ export type SiteCopy = {
 export const copy = {
   en: {
     meta: {
-      title: "VidLingo — Better AI subtitles for YouTube",
+      title: "VidLingo: AI YouTube Subtitle Translator for Chrome",
       description: "Translate YouTube subtitles with your own AI API key. Get more natural phrasing, readable timing, and a synced subtitle history.",
+      keywords: ["YouTube subtitle translator", "AI subtitles", "YouTube translation Chrome extension"],
     },
     nav: { features: "Why VidLingo", how: "How it works", privacy: "Your API key", install: "Add to Chrome", aria: "Primary navigation" },
     hero: {
@@ -168,7 +169,7 @@ export const copy = {
     },
   },
   zh: {
-    meta: { title: "VidLingo — 更自然的 YouTube AI 字幕", description: "使用你自己的 AI API Key 翻译 YouTube 字幕，获得更自然的表达、更易读的时间轴和可同步的字幕历史。" },
+    meta: { title: "VidLingo：YouTube AI 字幕翻译插件", description: "使用你自己的 AI API Key 翻译 YouTube 字幕，获得更自然的表达、更易读的时间轴和可同步的字幕历史。", keywords: ["YouTube 字幕翻译", "字幕翻译插件", "AI 字幕翻译"] },
     nav: { features: "为什么用 VidLingo", how: "使用方式", privacy: "你的 API Key", install: "添加到 Chrome", aria: "主导航" },
     hero: {
       eyebrow: "Beta 公测 · 需要自备 API Key",
@@ -250,7 +251,7 @@ export const copy = {
     },
   },
   ja: {
-    meta: { title: "VidLingo — YouTube に、より自然な AI 字幕を", description: "自分の AI API キーで YouTube 字幕を翻訳。自然な表現、読みやすいタイミング、同期された字幕履歴を提供します。" },
+    meta: { title: "VidLingo：YouTube AI字幕翻訳 Chrome拡張機能", description: "自分の AI API キーで YouTube 字幕を翻訳。自然な表現、読みやすいタイミング、同期された字幕履歴を提供します。", keywords: ["YouTube 字幕 翻訳", "AI 字幕翻訳", "YouTube 翻訳 拡張機能"] },
     nav: { features: "VidLingo の特徴", how: "使い方", privacy: "API キー", install: "Chrome に追加", aria: "メインナビゲーション" },
     hero: {
       eyebrow: "パブリックベータ · 個人の API キーが必要です",

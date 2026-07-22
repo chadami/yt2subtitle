@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { htmlLanguages, locales, type Locale } from "./i18n";
 
-export const siteUrl = "https://vidlingo.online";
+export const siteUrl = "https://www.vidlingo.online";
+export const siteName = "VidLingo";
+export const chromeWebStoreUrl =
+  "https://chromewebstore.google.com/detail/vidlingo/aknhnkdkeiojehikedcpkpingbfkfldk";
 
 export function getChromeWebStoreUrl() {
   const value = process.env.NEXT_PUBLIC_CHROME_WEB_STORE_URL;
@@ -9,7 +12,7 @@ export function getChromeWebStoreUrl() {
     if (process.env.NODE_ENV === "production") {
       throw new Error("NEXT_PUBLIC_CHROME_WEB_STORE_URL is required for production builds.");
     }
-    return "https://chromewebstore.google.com/";
+    return chromeWebStoreUrl;
   }
 
   const url = new URL(value);
@@ -21,9 +24,12 @@ export function getChromeWebStoreUrl() {
 }
 
 export function languageAlternates(path = "") {
-  return Object.fromEntries(
-    locales.map((locale) => [htmlLanguages[locale], `${siteUrl}/${locale}${path}`]),
-  );
+  return {
+    ...Object.fromEntries(
+      locales.map((locale) => [htmlLanguages[locale], `${siteUrl}/${locale}${path}`]),
+    ),
+    "x-default": `${siteUrl}/en${path}`,
+  };
 }
 
 export function pageMetadata(
@@ -31,16 +37,23 @@ export function pageMetadata(
   title: string,
   description: string,
   path = "",
+  keywords: string[] = [],
 ): Metadata {
   const canonical = `${siteUrl}/${locale}${path}`;
   return {
     metadataBase: new URL(siteUrl),
     title,
     description,
+    keywords,
+    category: "technology",
+    applicationName: siteName,
+    authors: [{ name: siteName, url: siteUrl }],
+    creator: siteName,
+    publisher: siteName,
     alternates: { canonical, languages: languageAlternates(path) },
     openGraph: {
       type: "website",
-      siteName: "VidLingo",
+      siteName,
       locale: htmlLanguages[locale].replace("-", "_"),
       url: canonical,
       title,

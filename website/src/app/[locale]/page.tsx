@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const content = copy[locale];
-  return pageMetadata(locale, content.meta.title, content.meta.description);
+  return pageMetadata(locale, content.meta.title, content.meta.description, "", content.meta.keywords);
 }
 
 export default async function HomePage({ params }: PageProps) {

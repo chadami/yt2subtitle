@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/json-ld";
 import { htmlLanguages, isLocale } from "@/lib/i18n";
+import { chromeWebStoreUrl, siteName, siteUrl } from "@/lib/site";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -13,7 +15,31 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 
   return (
     <html lang={htmlLanguages[locale]}>
-      <body>{children}</body>
+      <body>
+        <JsonLd
+          data={[
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": `${siteUrl}/#website`,
+              url: siteUrl,
+              name: siteName,
+              inLanguage: Object.values(htmlLanguages),
+              publisher: { "@id": `${siteUrl}/#organization` },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": `${siteUrl}/#organization`,
+              name: siteName,
+              url: siteUrl,
+              logo: `${siteUrl}/vidlingo-icon.png`,
+              sameAs: [chromeWebStoreUrl],
+            },
+          ]}
+        />
+        {children}
+      </body>
     </html>
   );
 }
