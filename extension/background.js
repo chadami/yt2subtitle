@@ -89,7 +89,8 @@ async function createSubtitleJob(payload) {
       captionType: payload.captionType,
       styleId: payload.styleId || "accurate",
       rawCues: payload.rawCues,
-      machineCues: Array.isArray(payload.machineCues) ? payload.machineCues : undefined
+      machineCues: Array.isArray(payload.machineCues) ? payload.machineCues : undefined,
+      machineRunId: payload.machineRunId
     })
   });
   const data = await response.json().catch(() => ({}));
@@ -137,6 +138,7 @@ async function translateMachinePreview(payload) {
       Authorization: `Bearer ${sessionToken}`
     },
     body: JSON.stringify({
+      machineRunId: payload.machineRunId,
       sourceLang: payload.sourceLang,
       targetLang: payload.targetLang,
       captionType: payload.captionType,

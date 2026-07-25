@@ -57,11 +57,12 @@ async function processSubtitleJob(jobId: string) {
     generation_key: string | null;
     contribution_eligible: boolean;
     consent_version: string | null;
+    machine_run_id: string | null;
     caption_type: "manual" | "auto";
   }>(
     `select j.video_id, j.source_lang, j.target_lang, j.caption_source_id, j.user_id,
      j.provider_mode, j.ai_provider, j.ai_model, j.strategy_id, j.strategy_version,
-     j.style_id, j.generation_key, j.contribution_eligible, j.consent_version,
+     j.style_id, j.generation_key, j.contribution_eligible, j.consent_version, j.machine_run_id,
      c.raw_cues_json, c.caption_type, v.title, v.channel, v.description, v.url
      from translation_jobs j
      join caption_sources c on c.id = j.caption_source_id
@@ -94,8 +95,21 @@ async function processSubtitleJob(jobId: string) {
     "select count(*)::text as count from translation_job_machine_chunks where job_id = $1",
     [jobId]
   );
+  const previewRun = record.machine_run_id
+    ? await query<{ status: string }>(
+      "select status from machine_translation_runs where id = $1 and user_id = $2",
+      [record.machine_run_id, record.user_id]
+    )
+    : null;
+  const previewIsHandlingMachineTranslation = previewRun?.rows[0]?.status === "active"
+    || previewRun?.rows[0]?.status === "completed"
+    || previewRun?.rows[0]?.status === "cancelled";
 
-  if (machineTranslationConfigured() && Number(existingMachineTranslation.rows[0]?.count || 0) === 0) {
+  if (
+    machineTranslationConfigured()
+    && Number(existingMachineTranslation.rows[0]?.count || 0) === 0
+    && !previewIsHandlingMachineTranslation
+  ) {
     translateMachineCues({
       cues: cleanCues,
       sourceLanguage: record.source_lang,
@@ -108,6 +122,13 @@ async function processSubtitleJob(jobId: string) {
            do update set cues_json = excluded.cues_json, updated_at = now()`,
           [jobId, batchIndex, JSON.stringify(cues)]
         );
+      },
+      shouldContinue: async () => {
+        const aiChunks = await query<{ count: string }>(
+          "select count(*)::text as count from translation_job_chunks where job_id = $1",
+          [jobId]
+        );
+        return Number(aiChunks.rows[0]?.count || 0) === 0;
       }
     }).catch((error) => console.error(`Quick machine translation failed for job ${jobId}`, error));
   }
@@ -158,6 +179,14 @@ async function processSubtitleJob(jobId: string) {
        do update set cues_json = excluded.cues_json, updated_at = now()`,
       [jobId, index, JSON.stringify(translatedChunk)]
     );
+    if (index === 0 && record.machine_run_id) {
+      await query(
+        `update machine_translation_runs
+         set status = 'cancelled', updated_at = now()
+         where id = $1 and user_id = $2 and status = 'active'`,
+        [record.machine_run_id, record.user_id]
+      );
+    }
     await query("update translation_jobs set progress = $1, updated_at = now() where id = $2", [
       25 + Math.round(((index + 1) / chunks.length) * 55),
       jobId

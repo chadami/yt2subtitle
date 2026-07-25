@@ -183,6 +183,7 @@ export async function promotePublicSubtitle(input: {
 export async function cleanupSubtitleArtifacts() {
   await query("delete from translation_job_chunks where updated_at < now() - interval '7 days'");
   await query("delete from translation_job_machine_chunks where updated_at < now() - interval '7 days'");
+  await query("delete from machine_translation_runs where updated_at < now() - interval '7 days'");
   await query(
     `delete from translated_subtitles
      where publication_status = 'candidate'

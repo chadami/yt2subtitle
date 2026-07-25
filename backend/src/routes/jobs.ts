@@ -95,19 +95,39 @@ jobsRouter.get("/history", async (req, res, next) => {
 });
 
 jobsRouter.post("/machine-preview", async (req, res, next) => {
+  let machineRunId: string | undefined;
+  let machineRunUserId: string | undefined;
   try {
-    await requireUserId(req.headers.authorization);
+    const userId = await requireUserId(req.headers.authorization);
+    machineRunUserId = userId;
     if (!machineTranslationConfigured()) {
       return res.status(503).json({ error: "Google machine translation is not configured." });
     }
     const input = z.object({
+      machineRunId: z.string().uuid().optional(),
       sourceLang: z.string().default("en"),
       targetLang: z.string().default("zh-Hans"),
       captionType: z.enum(["manual", "auto"]).default("manual"),
       rawCues: z.array(cueSchema).min(1)
     }).parse(req.body);
+    machineRunId = input.machineRunId;
     if (isSameLanguage(input.sourceLang, input.targetLang)) {
       throw new JobRequestError("Subtitle language already matches the target language.", 400, "SAME_LANGUAGE");
+    }
+    if (machineRunId) {
+      await query(
+        `insert into machine_translation_runs (id, user_id, status)
+         values ($1, $2, 'active')
+         on conflict (id) do nothing`,
+        [machineRunId, userId]
+      );
+      const run = await query<{ user_id: string }>(
+        "select user_id from machine_translation_runs where id = $1",
+        [machineRunId]
+      );
+      if (run.rows[0]?.user_id !== userId) {
+        throw new JobRequestError("Machine translation run not found", 404);
+      }
     }
     const cleanCues = prepareSourceCues(input.rawCues, input.captionType);
     const cues: TranslatedCue[] = [];
@@ -117,15 +137,42 @@ jobsRouter.post("/machine-preview", async (req, res, next) => {
       targetLanguage: input.targetLang,
       onBatch: async ({ cues: batch }) => {
         cues.push(...batch);
-      }
+      },
+      shouldContinue: machineRunId
+        ? async () => {
+          const run = await query<{ status: string }>(
+            "select status from machine_translation_runs where id = $1 and user_id = $2",
+            [machineRunId, userId]
+          );
+          return run.rows[0]?.status === "active";
+        }
+        : undefined
     });
-    res.json({ ok: true, cues });
+    if (machineRunId) {
+      await query(
+        `update machine_translation_runs
+         set status = 'completed', updated_at = now()
+         where id = $1 and user_id = $2 and status = 'active'`,
+        [machineRunId, userId]
+      );
+    }
+    res.json({ ok: true, machineRunId, cues });
   } catch (error) {
+    if (machineRunId && machineRunUserId) {
+      await query(
+        `update machine_translation_runs
+         set status = 'failed', updated_at = now()
+         where id = $1 and user_id = $2 and status = 'active'`,
+        [machineRunId, machineRunUserId]
+      ).catch(() => {});
+    }
     next(error);
   }
 });
 
 jobsRouter.post("/", async (req, res, next) => {
+  let requestedMachineRunId: string | undefined;
+  let requestedMachineRunUserId: string | undefined;
   try {
     const input = z.object({
       captionSourceId: z.string().uuid().optional(),
@@ -143,12 +190,15 @@ jobsRouter.post("/", async (req, res, next) => {
       captionType: z.enum(["manual", "auto"]).default("manual"),
       styleId: z.string().default(PUBLIC_STYLE_ID),
       rawCues: z.array(cueSchema).min(1).optional(),
-      machineCues: z.array(machineCueSchema).optional()
+      machineCues: z.array(machineCueSchema).optional(),
+      machineRunId: z.string().uuid().optional()
     }).parse(req.body);
+    requestedMachineRunId = input.machineRunId;
     if (input.translationMode !== "user") {
       throw new JobRequestError("System translation is not available. Configure a personal API key.", 400, "PERSONAL_API_REQUIRED");
     }
     const userId = await requireUserId(req.headers.authorization);
+    requestedMachineRunUserId = userId;
     const aiConfig = await loadUserAiConfig(userId);
     const strategy = getTranslationStrategy(input.targetLang);
     let captionSourceId = input.captionSourceId;
@@ -223,6 +273,14 @@ jobsRouter.post("/", async (req, res, next) => {
               [jobId, userId]
             );
           }
+          if (input.machineRunId) {
+            await client.query(
+              `update machine_translation_runs
+               set status = 'cancelled', updated_at = now()
+               where id = $1 and user_id = $2 and status = 'active'`,
+              [input.machineRunId, userId]
+            );
+          }
           await client.query("commit");
           return res.json({ jobId, status, shared: existing.rows[0].user_id !== userId });
         }
@@ -256,11 +314,11 @@ jobsRouter.post("/", async (req, res, next) => {
         `insert into translation_jobs (
            user_id, video_id, source_lang, target_lang, caption_source_id,
            provider_mode, ai_provider, ai_model, strategy_id, strategy_version,
-           style_id, generation_key, contribution_eligible, consent_version, status
-         ) values ($1, $2, $3, $4, $5, 'user', $6, $7, $8, $9, $10, $11, $12, $13, 'queued') returning id`,
+           style_id, generation_key, contribution_eligible, consent_version, machine_run_id, status
+         ) values ($1, $2, $3, $4, $5, 'user', $6, $7, $8, $9, $10, $11, $12, $13, $14, 'queued') returning id`,
         [userId, caption.rows[0].video_id, caption.rows[0].source_lang, input.targetLang, captionSourceId,
           aiConfig.provider, aiConfig.model, strategy.id, strategy.version, input.styleId, generationKey,
-          contributionEligible, contributionEligible ? entitlement.consentVersion : null]
+          contributionEligible, contributionEligible ? entitlement.consentVersion : null, input.machineRunId || null]
       );
       jobId = created.rows[0].id;
       if (input.machineCues?.length) {
@@ -305,6 +363,14 @@ jobsRouter.post("/", async (req, res, next) => {
     }
     res.json({ jobId, status });
   } catch (error) {
+    if (requestedMachineRunId && requestedMachineRunUserId) {
+      await query(
+        `update machine_translation_runs
+         set status = 'cancelled', updated_at = now()
+         where id = $1 and user_id = $2 and status = 'active'`,
+        [requestedMachineRunId, requestedMachineRunUserId]
+      ).catch(() => {});
+    }
     next(error);
   }
 });

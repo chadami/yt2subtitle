@@ -742,7 +742,7 @@ async function prepareAiSubtitlesForVideo(videoId) {
   };
 }
 
-async function generateAiSubtitles(forceRegenerate = false, preparedPayload = null, initialMachineCues = []) {
+async function generateAiSubtitles(forceRegenerate = false, preparedPayload = null, initialMachineCues = [], machineRunId = null) {
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
   clearOverlay();
@@ -771,6 +771,7 @@ async function generateAiSubtitles(forceRegenerate = false, preparedPayload = nu
       ...prepared,
       forceRegenerate,
       machineCues: initialMachineCues,
+      machineRunId,
     }
   });
   if (!data?.ok) throw new Error(data?.error || "Failed to create subtitle job.");
@@ -1391,7 +1392,7 @@ function syncPanelStyleControls(style) {
   }
 }
 
-async function startTranslationFromPlayer(forceRegenerate = false, automatic = false, preparedPayload = null) {
+async function startTranslationFromPlayer(forceRegenerate = false, automatic = false, preparedPayload = null, machineRunId = null) {
   const videoId = getVideoId();
   if (!videoId || panelActionInProgress) return;
   if (!automatic) cancelAutoAiDelay();
@@ -1428,7 +1429,7 @@ async function startTranslationFromPlayer(forceRegenerate = false, automatic = f
       }
     }
     const previewCues = machinePreviewVideoId === videoId ? machinePreviewCues : [];
-    const result = await generateAiSubtitles(forceRegenerate, preparation.payload, previewCues);
+    const result = await generateAiSubtitles(forceRegenerate, preparation.payload, previewCues, machineRunId);
     if (!result?.ok) throw new Error(result?.error || "创建翻译任务失败");
     if (result.nativeTrack) {
       setPanelState("native", nativeTrackMessage(result.sourceLang));
@@ -1492,10 +1493,10 @@ function cancelAutoAiDelay() {
   autoAiPauseHandler = null;
 }
 
-async function startMachinePreview(preparedPayload, videoId, runId) {
+async function startMachinePreview(preparedPayload, videoId, runId, machineRunId) {
   const result = await chrome.runtime.sendMessage({
     type: "TRANSLATE_MACHINE_PREVIEW",
-    payload: preparedPayload
+    payload: { ...preparedPayload, machineRunId }
   }).catch(() => null);
   if (runId !== autoTranslationRun || getVideoId() !== videoId || !result?.ok || !Array.isArray(result.cues)) return;
   machinePreviewVideoId = videoId;
@@ -1512,12 +1513,13 @@ function scheduleAiAfterPlayback(video, preparedPayload, videoId, runId) {
   cancelAutoAiDelay();
   autoAiDelayVideo = video;
   let machineStarted = false;
+  const machineRunId = crypto.randomUUID();
 
   autoAiPlayingHandler = () => {
     if (runId !== autoTranslationRun || getVideoId() !== videoId) return;
     if (!machineStarted) {
       machineStarted = true;
-      startMachinePreview(preparedPayload, videoId, runId).catch(() => {});
+      startMachinePreview(preparedPayload, videoId, runId, machineRunId).catch(() => {});
     }
     if (autoAiDelayTimer) clearTimeout(autoAiDelayTimer);
     setPanelState("idle", "谷歌翻译已启用 · 播放 5 秒后启用 AI");
@@ -1525,7 +1527,7 @@ function scheduleAiAfterPlayback(video, preparedPayload, videoId, runId) {
       autoAiDelayTimer = null;
       if (runId !== autoTranslationRun || getVideoId() !== videoId || video.paused || video.ended) return;
       cancelAutoAiDelay();
-      startTranslationFromPlayer(false, true, preparedPayload).catch(() => {});
+      startTranslationFromPlayer(false, true, preparedPayload, machineRunId).catch(() => {});
     }, AUTO_AI_PLAY_DELAY_MS);
   };
 

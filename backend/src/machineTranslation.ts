@@ -14,6 +14,7 @@ type TranslateMachineCuesInput = {
   sourceLanguage: string;
   targetLanguage: string;
   onBatch: (batch: MachineTranslationBatch) => Promise<void>;
+  shouldContinue?: () => Promise<boolean>;
 };
 
 function googleLanguageCode(language: string) {
@@ -74,6 +75,7 @@ export async function translateMachineCues(input: TranslateMachineCuesInput) {
 
   const batches = cueBatches(input.cues);
   for (let batchIndex = 0; batchIndex < batches.length; batchIndex += 1) {
+    if (input.shouldContinue && !(await input.shouldContinue())) break;
     const batch = batches[batchIndex];
     const response = await fetch(endpoint, {
       method: "POST",

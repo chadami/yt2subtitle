@@ -102,12 +102,22 @@ create table if not exists translation_jobs (
   generation_key text,
   contribution_eligible boolean not null default false,
   consent_version text,
+  machine_run_id uuid,
   status text not null,
   progress integer not null default 0,
   error text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   completed_at timestamptz
+);
+
+create table if not exists machine_translation_runs (
+  id uuid primary key,
+  user_id uuid not null references users(id) on delete cascade,
+  status text not null default 'active'
+    check (status in ('active', 'completed', 'cancelled', 'failed')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
 );
 
 create table if not exists translated_subtitles (
@@ -199,6 +209,7 @@ alter table translation_jobs add column if not exists style_id text not null def
 alter table translation_jobs add column if not exists generation_key text;
 alter table translation_jobs add column if not exists contribution_eligible boolean not null default false;
 alter table translation_jobs add column if not exists consent_version text;
+alter table translation_jobs add column if not exists machine_run_id uuid;
 alter table translated_subtitles add column if not exists caption_source_id uuid references caption_sources(id) on delete cascade;
 alter table translated_subtitles add column if not exists job_id uuid references translation_jobs(id) on delete set null;
 alter table translated_subtitles add column if not exists style_id text not null default 'accurate';
@@ -242,6 +253,7 @@ alter table translation_jobs add column if not exists style_id text not null def
 alter table translation_jobs add column if not exists generation_key text;
 alter table translation_jobs add column if not exists contribution_eligible boolean not null default false;
 alter table translation_jobs add column if not exists consent_version text;
+alter table translation_jobs add column if not exists machine_run_id uuid;
 alter table translated_subtitles add column if not exists provider_mode text not null default 'system';
 alter table translated_subtitles add column if not exists strategy_id text;
 alter table translated_subtitles add column if not exists strategy_version text;
