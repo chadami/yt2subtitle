@@ -99,7 +99,6 @@ export async function processSubtitleJob(jobId: string) {
       completedChunks.set(row.chunk_index, cues);
     }
   }
-  await ensureJobMachineTranslation(jobId);
 
   await query("update translation_jobs set progress = 20, updated_at = now() where id = $1", [jobId]);
   let translationContext: SubtitleTranslationContext | undefined;
@@ -258,6 +257,7 @@ export async function markJobAttemptFailed(jobId: string, error: unknown, finalA
     [finalAttempt ? "failed" : "queued", errorMessage(error), jobId]
   );
   if (finalAttempt) {
+    await ensureJobMachineTranslation(jobId).catch(error => console.error("Could not start machine fallback", error));
     await query(
       `delete from user_video_usage u
        using translation_jobs j

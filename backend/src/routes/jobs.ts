@@ -6,7 +6,7 @@ import { db, query } from "../db.js";
 import { getUserEntitlement } from "../entitlements.js";
 import { subtitleQueue } from "../queue.js";
 import { createGenerationKey, hashRawCues, PUBLIC_STYLE_ID } from "../subtitleLibrary.js";
-import { machineTranslationConfigured, machineTranslationProvider, MachineTranslationError, translateMachineCues } from "../machineTranslation.js";
+import { machineTranslationProvider } from "../machineTranslation.js";
 import { finalizeTranslatedCues, normalizeTranslatedText, prepareSourceCues, type TranslatedCue } from "../subtitles.js";
 import { getTranslationStrategy } from "../translationStrategies.js";
 import { loadUserAiConfig } from "./ai.js";
@@ -111,111 +111,9 @@ jobsRouter.get("/history", async (req, res, next) => {
   }
 });
 
-jobsRouter.post("/machine-preview", async (req, res, next) => {
-  let machineRunId: string | undefined;
-  let machineRunUserId: string | undefined;
-  try {
-    const userId = await requireUserId(req.headers.authorization);
-    machineRunUserId = userId;
-    if (!machineTranslationConfigured()) {
-      return res.status(503).json({ error: "机翻预览未启用，请在 VidLingo 应用中选择机器翻译方式。", code: "machine_translation_disabled" });
-    }
-    const input = z.object({
-      machineRunId: z.string().uuid().nullish().transform((value) => value || undefined),
-      sourceLang: z.string().default("en"),
-      targetLang: z.string().default("zh-Hans"),
-      captionType: z.enum(["manual", "auto"]).default("manual"),
-      rawCues: z.array(cueSchema).min(1)
-    }).parse(req.body);
-    machineRunId = input.machineRunId;
-    if (isSameLanguage(input.sourceLang, input.targetLang)) {
-      throw new JobRequestError("Subtitle language already matches the target language.", 400, "SAME_LANGUAGE");
-    }
-    if (machineRunId) {
-      await query(
-        `insert into machine_translation_runs (id, user_id, status)
-         values ($1, $2, 'active')
-         on conflict (id) do nothing`,
-        [machineRunId, userId]
-      );
-      const run = await query<{ user_id: string }>(
-        "select user_id from machine_translation_runs where id = $1",
-        [machineRunId]
-      );
-      if (run.rows[0]?.user_id !== userId) {
-        throw new JobRequestError("Machine translation run not found", 404);
-      }
-    }
-    const cleanCues = prepareSourceCues(input.rawCues, input.captionType);
-    const cues: TranslatedCue[] = [];
-    const batches: Array<{ batchIndex: number; cues: TranslatedCue[] }> = [];
-    const provider = machineTranslationProvider();
-    async function persistBatch(batch: { batchIndex: number; cues: TranslatedCue[] }) {
-      if (!machineRunId) return;
-      await query(`insert into translation_job_machine_chunks (job_id, chunk_index, provider, cues_json)
-        select id, $2, $3, $4::jsonb from translation_jobs where machine_run_id = $1 and user_id = $5
-        on conflict (job_id, chunk_index) do update set provider = excluded.provider,
-          cues_json = excluded.cues_json, updated_at = now()`,
-      [machineRunId, batch.batchIndex, provider, JSON.stringify(batch.cues), userId]);
-      await query("update machine_translation_runs set updated_at = now() where id = $1 and user_id = $2", [machineRunId, userId]);
-    }
-    await translateMachineCues({
-      cues: cleanCues,
-      sourceLanguage: input.sourceLang,
-      targetLanguage: input.targetLang,
-      onBatch: async (batch) => {
-        cues.push(...batch.cues);
-        batches.push(batch);
-        await persistBatch(batch);
-      },
-      shouldContinue: machineRunId
-        ? async () => {
-          const run = await query<{ status: string }>(
-            "select status from machine_translation_runs where id = $1 and user_id = $2",
-            [machineRunId, userId]
-          );
-          return run.rows[0]?.status === "active";
-        }
-        : undefined
-    });
-    if (machineRunId) {
-      // Backfill batches produced before the AI job was created.
-      for (const batch of batches) await persistBatch(batch);
-      await query(`update translation_jobs set machine_translation_state = 'completed',
-        machine_translation_provider = $3, machine_translation_error = null,
-        machine_translation_code = null, machine_translation_retry_at = null
-        where machine_run_id = $1 and user_id = $2`, [machineRunId, userId, provider]);
-      await query(
-        `update machine_translation_runs
-         set status = 'completed', updated_at = now()
-         where id = $1 and user_id = $2 and status = 'active'`,
-        [machineRunId, userId]
-      );
-    }
-    res.json({ ok: true, machineRunId, cues });
-  } catch (error) {
-    if (machineRunId && machineRunUserId) {
-      await query(
-        `update machine_translation_runs
-         set status = 'failed', updated_at = now()
-         where id = $1 and user_id = $2 and status = 'active'`,
-        [machineRunId, machineRunUserId]
-      ).catch(() => {});
-    }
-    if (machineRunId && machineRunUserId) {
-      await query(`update translation_jobs set machine_translation_state = 'waiting',
-        machine_translation_error = $3, machine_translation_code = $4,
-        machine_translation_provider = $5, machine_translation_retry_at = now() + interval '30 seconds'
-        where machine_run_id = $1 and user_id = $2`,
-      [machineRunId, machineRunUserId, error instanceof Error ? error.message : String(error),
-        error instanceof MachineTranslationError ? error.code : 'machine_translation_failed', machineTranslationProvider()]).catch(() => {});
-    }
-    if (error instanceof MachineTranslationError) {
-      res.status(error.status).json({ error: error.message, code: error.code });
-      return;
-    }
-    next(error);
-  }
+// Older extensions must not start proactive machine translation after this policy change.
+jobsRouter.post("/machine-preview", (_req, res) => {
+  res.status(409).json({ error: "机翻仅在 AI 翻译失败后启用，请更新并重新加载插件。", code: "MACHINE_FALLBACK_ONLY" });
 });
 
 jobsRouter.post("/", async (req, res, next) => {
@@ -504,6 +402,7 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
 jobsRouter.get("/:jobId", async (req, res, next) => {
   try {
     await requireJobAccess(req.params.jobId, req.headers.authorization);
+    await ensureJobMachineTranslation(req.params.jobId);
     const result = await query(
       "select id as \"jobId\", status, progress, error, json_build_object('state', machine_translation_state, 'error', machine_translation_error, 'code', machine_translation_code, 'retryAt', machine_translation_retry_at) as \"machineTranslation\" from translation_jobs where id = $1",
       [req.params.jobId]

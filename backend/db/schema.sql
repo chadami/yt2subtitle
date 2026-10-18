@@ -281,3 +281,5 @@ alter table translation_jobs add column if not exists machine_translation_error 
 alter table translation_jobs add column if not exists machine_translation_code text;
 alter table translation_jobs add column if not exists machine_translation_retry_at timestamptz;
 alter table translation_jobs add column if not exists machine_translation_provider text;
+
+alter table translation_jobs add column if not exists machine_translation_start_chunk integer;

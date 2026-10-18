@@ -156,8 +156,8 @@ struct AIView: View {
                 }
 
                 SectionCard(
-                    title: "机器翻译（可选）",
-                    subtitle: "AI 字幕生成过程中先给一版机翻预览，插件里能更快看到内容"
+                    title: "失败兜底（可选）",
+                    subtitle: "仅在 AI 翻译失败后启用，从失败批次接手后续字幕，平时不运行机翻"
                 ) {
                     VStack(alignment: .leading, spacing: 13) {
                         PillSegmented(
@@ -221,7 +221,7 @@ struct AIView: View {
                                 .font(.system(size: 11))
                                 .foregroundStyle(Theme.tertiary)
                         default:
-                            Text("关闭后不显示机翻预览，等 AI 翻译完成后直接出字幕。")
+                            Text("关闭后仅使用 AI 字幕，AI 翻译失败时不启用机翻兜底。")
                                 .font(.system(size: 11))
                                 .foregroundStyle(Theme.tertiary)
                         }

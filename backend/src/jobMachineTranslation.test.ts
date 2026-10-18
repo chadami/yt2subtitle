@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 
-test("language-pack retry resumes machine batches without modifying AI progress", { timeout: 30000 }, async () => {
+test("machine fallback starts only after AI failure and skips successful AI batches", { timeout: 30000 }, async () => {
   const dir = await mkdtemp(path.join(tmpdir(), "vidlingo-machine-retry-"));
   const helper = path.join(dir, 'helper');
   const ready = path.join(dir, 'ready');
@@ -31,8 +31,10 @@ else if (input.texts[0] === 'source 50.' && !fs.existsSync(${JSON.stringify(fail
     await initDatabase();
     const userId = await getLocalUserId();
     await query("insert into videos(video_id,url) values('retry-test','https://www.youtube.com/watch?v=retry-test')");
+    // A long successful first AI batch, followed by 120 cues in the failed batch.
+    const rawCues = [{start:0,end:2,text:'Intro. '.repeat(650)}, ...Array.from({length:120},(_,i)=>({start:(i+1)*3,end:(i+1)*3+2,text:`source ${i}.`}))];
     const source = await query<{id:string}>(`insert into caption_sources(video_id,source_lang,caption_type,raw_cues_json)
-      values('retry-test','en','manual',$1) returning id`, [JSON.stringify(Array.from({length:120},(_,i)=>({start:i*3,end:i*3+2,text:`source ${i}.`})))]);
+      values('retry-test','en','manual',$1) returning id`, [JSON.stringify(rawCues)]);
     const job = await query<{id:string}>(`insert into translation_jobs(user_id,video_id,source_lang,target_lang,caption_source_id,status,progress)
       values($1,'retry-test','en','zh-Hans',$2,'translating',47) returning id`, [userId, source.rows[0].id]);
     const id = job.rows[0].id;
@@ -46,6 +48,12 @@ else if (input.texts[0] === 'source 50.' && !fs.existsSync(${JSON.stringify(fail
       }
       assert.fail(`Did not reach ${state}`);
     }
+    await ensureJobMachineTranslation(id);
+    await assert.rejects(readFile(calls,'utf8'),{code:'ENOENT'},'normal AI translation must not invoke machine translation');
+    await query("update translation_jobs set status='queued' where id=$1",[id]);
+    await ensureJobMachineTranslation(id);
+    await assert.rejects(readFile(calls,'utf8'),{code:'ENOENT'},'AI retry must not invoke machine translation');
+    await query("update translation_jobs set status='failed' where id=$1",[id]);
     await Promise.all([ensureJobMachineTranslation(id),ensureJobMachineTranslation(id)]);
     assert.equal((await waitFor('waiting')).machine_translation_code,'macos_language_not_installed');
     await ensureJobMachineTranslation(id);
@@ -62,10 +70,11 @@ else if (input.texts[0] === 'source 50.' && !fs.existsSync(${JSON.stringify(fail
     assert.equal(batches.rows.length,3);
     assert.equal(batches.rows.reduce((n,r)=>n+r.cues_json.length,0),120);
     assert.ok(batches.rows.every(r=>r.provider==='macos'));
+    assert.ok(!JSON.stringify(batches.rows).includes('Intro.'),'successful AI batch must not be sent to machine translation');
     const invocations=(await readFile(calls,'utf8')).trim().split('\n');
     assert.deepEqual(invocations,['source 0.','source 0.','source 50.','source 50.','source 100.']);
     const ai=await query<{status:string;progress:number}>('select status,progress from translation_jobs where id=$1',[id]);
-    assert.equal(ai.rows[0].status,'translating');
+    assert.equal(ai.rows[0].status,'failed');
     assert.equal(ai.rows[0].progress,47);
     assert.equal((await query('select * from translation_job_chunks where job_id=$1',[id])).rows.length,1);
     await ensureJobMachineTranslation(id);
@@ -76,7 +85,6 @@ else if (input.texts[0] === 'source 50.' && !fs.existsSync(${JSON.stringify(fail
     // Updating the desktop app must also preserve already saved AI chunks.
     const { processSubtitleJob } = await import('./jobRunner.js');
     const { prepareSourceCues, chunkCues } = await import('./subtitles.js');
-    const rawCues = Array.from({length:120},(_,i)=>({start:i*3,end:i*3+2,text:`source ${i}.`}));
     const aiChunks = chunkCues(prepareSourceCues(rawCues,'manual'));
     for (let index=0;index<aiChunks.length;index++) {
       await query(`insert into translation_job_chunks(job_id,chunk_index,cues_json) values($1,$2,$3)
