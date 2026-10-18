@@ -1,6 +1,66 @@
 const DEFAULT_API_BASE = "https://api.vidlingo.online";
 const LEGACY_API_BASE = "https://subtitle.invisiblewind.cn";
 const SUBTITLE_CACHE_LIMIT = 8;
+const LOCAL_HOSTS = new Set(["127.0.0.1", "localhost", "::1", "[::1]"]);
+
+function isLocalApiBase(apiBase) {
+  try {
+    const url = new URL(apiBase);
+    return LOCAL_HOSTS.has(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
+async function ensureSessionToken(explicitApiBase) {
+  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
+  if (sessionToken) return sessionToken;
+  const apiBase = normalizeApiBase(explicitApiBase || settings.apiBase);
+  if (!isLocalApiBase(apiBase)) return "";
+  try {
+    const response = await fetch(`${apiBase}/api/local/session`, { headers: { "X-VidLingo-Client": "extension" }, signal: AbortSignal.timeout(2500) });
+    if (!response.ok) return "";
+    const data = await response.json().catch(() => ({}));
+    if (!data.token) return "";
+    await chrome.storage.local.set({
+      sessionToken: data.token,
+      accountEmail: "本机模式 · VidLingo",
+      localMode: true
+    });
+    return data.token;
+  } catch {
+    return "";
+  }
+}
+
+async function syncLocalPreferences() {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const apiBase = normalizeApiBase(settings.apiBase);
+  if (!isLocalApiBase(apiBase)) return { ok: false };
+  const token = await ensureSessionToken(apiBase);
+  if (!token) return { ok: false };
+  try {
+    const response = await fetch(`${apiBase}/api/local/preferences`, {
+      headers: { Authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(3000)
+    });
+    if (!response.ok) return { ok: false };
+    const prefs = await response.json();
+    const next = {
+      ...settings,
+      apiBase,
+      targetLang: prefs.targetLang || settings.targetLang || "zh-Hans",
+      subtitleStyle: {
+        ...(settings.subtitleStyle || {}),
+        showSourceText: prefs.showSourceText !== false
+      }
+    };
+    await chrome.storage.local.set({ settings: next });
+    return { ok: true, settings: next };
+  } catch {
+    return { ok: false };
+  }
+}
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name !== "check-subtitle-jobs") return;
@@ -64,16 +124,32 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     );
     return true;
   }
+  if (message?.type === "ENSURE_SESSION") {
+    ensureSessionToken().then(
+      (token) => sendResponse({ ok: Boolean(token), sessionToken: token || "" }),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
+  if (message?.type === "SYNC_PREFERENCES") {
+    syncLocalPreferences().then(
+      (result) => sendResponse(result),
+      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+    );
+    return true;
+  }
   return false;
 });
 
 async function createSubtitleJob(payload) {
-  const { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
-  if (!sessionToken || !payload?.sessionToken) {
-    throw new Error("Sign in from Settings before generating AI subtitles.");
-  }
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
+  const sessionToken = await ensureSessionToken(apiBase);
+  if (!sessionToken) {
+    throw new Error(isLocalApiBase(apiBase)
+      ? "无法连接本机 VidLingo App，请先启动应用里的服务。"
+      : "Sign in from Settings before generating AI subtitles.");
+  }
   const response = await safeFetch(`${apiBase}/api/jobs`, {
     method: "POST",
     headers: {
@@ -90,7 +166,7 @@ async function createSubtitleJob(payload) {
       styleId: payload.styleId || "accurate",
       rawCues: payload.rawCues,
       machineCues: Array.isArray(payload.machineCues) ? payload.machineCues : undefined,
-      machineRunId: payload.machineRunId
+      ...(typeof payload.machineRunId === "string" ? { machineRunId: payload.machineRunId } : {})
     })
   });
   const data = await response.json().catch(() => ({}));
@@ -128,9 +204,10 @@ async function createSubtitleJob(payload) {
 }
 
 async function translateMachinePreview(payload) {
-  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
-  if (!sessionToken) throw new Error("Sign in from Settings before translating subtitles.");
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
+  const sessionToken = await ensureSessionToken(apiBase);
+  if (!sessionToken) throw new Error("Sign in from Settings before translating subtitles.");
   const response = await safeFetch(`${apiBase}/api/jobs/machine-preview`, {
     method: "POST",
     headers: {
@@ -138,7 +215,7 @@ async function translateMachinePreview(payload) {
       Authorization: `Bearer ${sessionToken}`
     },
     body: JSON.stringify({
-      machineRunId: payload.machineRunId,
+      ...(typeof payload.machineRunId === "string" ? { machineRunId: payload.machineRunId } : {}),
       sourceLang: payload.sourceLang,
       targetLang: payload.targetLang,
       captionType: payload.captionType,
@@ -152,9 +229,10 @@ async function translateMachinePreview(payload) {
 }
 
 async function resolveSubtitle(payload) {
-  if (!payload.sessionToken) return { status: "missing", error: "Sign in to load subtitles." };
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   const apiBase = normalizeApiBase(settings.apiBase);
+  const sessionToken = payload.sessionToken || await ensureSessionToken(apiBase);
+  if (!sessionToken) return { status: "missing", error: "Sign in to load subtitles." };
   const cueHash = await hashRawCues(payload.rawCues || []);
   const cacheKey = subtitleCacheKey(
     payload.video.videoId,
@@ -169,7 +247,7 @@ async function resolveSubtitle(payload) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${payload.sessionToken}`
+        Authorization: `Bearer ${sessionToken}`
       },
       body: JSON.stringify({
         video: payload.video,
@@ -199,9 +277,11 @@ async function resolveSubtitle(payload) {
 }
 
 async function getEntitlements() {
-  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const apiBase = normalizeApiBase(settings.apiBase);
+  const sessionToken = await ensureSessionToken(apiBase);
   if (!sessionToken) throw new Error("Sign in required.");
-  const response = await safeFetch(`${normalizeApiBase(settings.apiBase)}/api/account/entitlements`, {
+  const response = await safeFetch(`${apiBase}/api/account/entitlements`, {
     headers: { Authorization: `Bearer ${sessionToken}` }
   });
   const data = await response.json().catch(() => ({}));
@@ -293,7 +373,7 @@ async function safeFetch(url, options) {
   try {
     return await fetch(url, options);
   } catch (error) {
-    throw new Error(`Cannot reach backend API. Check Backend API URL, extension host permissions, and Render service status. URL: ${url}`);
+    throw new Error(`Cannot reach backend API. Check the Backend API URL in Settings. URL: ${url}`);
   }
 }
 
@@ -314,10 +394,12 @@ chrome.runtime.onInstalled.addListener(async () => {
     await chrome.storage.local.set({ clientId: crypto.randomUUID() });
   }
   ensureJobAlarm();
+  ensureSessionToken().catch(() => {});
 });
 
 chrome.runtime.onStartup.addListener(() => {
   ensureJobAlarm();
+  ensureSessionToken().catch(() => {});
 });
 
 function ensureJobAlarm() {

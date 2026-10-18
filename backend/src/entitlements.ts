@@ -1,5 +1,4 @@
-import type { PoolClient } from "pg";
-import { db, query } from "./db.js";
+import { db, query, type DbClient } from "./db.js";
 
 export type EntitlementPlan = "free" | "standard" | "contributor";
 export type EntitlementStatus = "active" | "expired" | "canceled";
@@ -61,7 +60,7 @@ function normalize(row?: EntitlementRow): UserEntitlement {
   };
 }
 
-export async function getUserEntitlement(userId: string, client?: PoolClient) {
+export async function getUserEntitlement(userId: string, client?: DbClient) {
   const sql = `select plan, status, valid_until, generation_video_limit, contribution_consent_version,
     contribution_consented_at, contribution_withdrawn_at
     from user_entitlements where user_id = $1`;

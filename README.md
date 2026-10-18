@@ -4,6 +4,15 @@
 
 脚本会同时抓取视频标题、频道和描述，并把这些信息作为翻译上下文传给 AI，用于识别主题、人物、术语和缩写；这些上下文不会被输出到字幕里。
 
+## 两种运行方式
+
+| 方式 | 说明 |
+| --- | --- |
+| macOS 原生应用（推荐个人使用） | `npm run build:mac` 生成 `dist/VidLingo.app`。App 内嵌 Node 运行时、PGlite 数据库和任务队列，不需要 Docker / Postgres / Redis，也不需要邮箱登录。在 App 里填 API Key，Chrome 插件一键连到 `127.0.0.1:3000` 即可。详见 [macos/README.md](macos/README.md)。 |
+| 云端服务（SaaS） | 保留 `render.yaml` 和服务端启动入口，用 Postgres + Redis 跑多用户版本；本地 Docker 部署配置已移除，见 [DEPLOYMENT.md](DEPLOYMENT.md)。 |
+
+两种方式共用同一套翻译逻辑与数据库 schema，本机模式通过 `LOCAL_MODE=1` 切换。
+
 ## 使用
 
 先查看视频有哪些字幕：

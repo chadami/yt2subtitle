@@ -6,10 +6,12 @@ import { db, query } from "../db.js";
 import { getUserEntitlement } from "../entitlements.js";
 import { subtitleQueue } from "../queue.js";
 import { createGenerationKey, hashRawCues, PUBLIC_STYLE_ID } from "../subtitleLibrary.js";
-import { machineTranslationConfigured, translateMachineCues } from "../machineTranslation.js";
+import { machineTranslationConfigured, MachineTranslationError, translateMachineCues } from "../machineTranslation.js";
 import { finalizeTranslatedCues, normalizeTranslatedText, prepareSourceCues, type TranslatedCue } from "../subtitles.js";
 import { getTranslationStrategy } from "../translationStrategies.js";
 import { loadUserAiConfig } from "./ai.js";
+
+import { decodeHistoryCursor, encodeHistoryCursor } from "../historyPagination.js";
 
 export const jobsRouter = Router();
 
@@ -64,9 +66,11 @@ class JobRequestError extends Error {
 jobsRouter.get("/history", async (req, res, next) => {
   try {
     const userId = await requireUserId(req.headers.authorization);
-    const result = await query(
+    const cursor = decodeHistoryCursor(req.query.cursor);
+    const result = await query<{ jobId: string; _cursorTime: string } & Record<string, unknown>>(
       `select
          j.id as "jobId",
+         j.created_at::text as "_cursorTime",
          j.status,
          j.created_at as "createdAt",
          j.completed_at as "completedAt",
@@ -84,11 +88,22 @@ jobsRouter.get("/history", async (req, res, next) => {
        join videos v on v.video_id = j.video_id
        left join caption_sources c on c.id = j.caption_source_id
        where j.user_id = $1
-       order by j.created_at desc
-       limit 100`,
-      [userId]
+         and ($2::timestamptz is null or (j.created_at, j.id) < ($2::timestamptz, $3::uuid))
+       order by j.created_at desc, j.id desc
+       limit 101`,
+      [userId, cursor?.time ?? null, cursor?.id ?? null]
     );
-    res.json({ history: result.rows });
+    const rows = result.rows.slice(0, 100);
+    const last = rows[rows.length - 1];
+    const count = await query<{ count: string }>(
+      "select count(*)::text as count from translation_jobs where user_id = $1", [userId]
+    );
+    res.json({
+      history: rows.map(({ _cursorTime, ...row }) => row),
+      total: Number(count.rows[0]?.count ?? 0),
+      nextCursor: result.rows.length > 100 && last
+        ? encodeHistoryCursor(last._cursorTime, last.jobId) : null
+    });
   } catch (error) {
     next(error);
   }
@@ -104,7 +119,7 @@ jobsRouter.post("/machine-preview", async (req, res, next) => {
       return res.status(503).json({ error: "Google machine translation is not configured." });
     }
     const input = z.object({
-      machineRunId: z.string().uuid().optional(),
+      machineRunId: z.string().uuid().nullish().transform((value) => value || undefined),
       sourceLang: z.string().default("en"),
       targetLang: z.string().default("zh-Hans"),
       captionType: z.enum(["manual", "auto"]).default("manual"),
@@ -166,6 +181,10 @@ jobsRouter.post("/machine-preview", async (req, res, next) => {
         [machineRunId, machineRunUserId]
       ).catch(() => {});
     }
+    if (error instanceof MachineTranslationError) {
+      res.status(error.status).json({ error: error.message, code: error.code });
+      return;
+    }
     next(error);
   }
 });
@@ -191,7 +210,7 @@ jobsRouter.post("/", async (req, res, next) => {
       styleId: z.string().default(PUBLIC_STYLE_ID),
       rawCues: z.array(cueSchema).min(1).optional(),
       machineCues: z.array(machineCueSchema).optional(),
-      machineRunId: z.string().uuid().optional()
+      machineRunId: z.string().uuid().nullish().transform((value) => value || undefined)
     }).parse(req.body);
     requestedMachineRunId = input.machineRunId;
     if (input.translationMode !== "user") {

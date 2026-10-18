@@ -266,3 +266,11 @@ alter table translated_subtitles add column if not exists publication_status tex
 alter table translated_subtitles add column if not exists quality_score integer;
 alter table translated_subtitles add column if not exists quality_metrics_json jsonb;
 alter table translated_subtitles add column if not exists consent_version text;
+
+create table if not exists app_preferences (
+  user_id uuid not null references users(id) on delete cascade,
+  key text not null,
+  value jsonb not null,
+  updated_at timestamptz not null default now(),
+  primary key (user_id, key)
+);

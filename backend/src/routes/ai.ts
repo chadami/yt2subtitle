@@ -3,10 +3,25 @@ import { z } from "zod";
 import { aiProviders, decryptApiKey, encryptApiKey, fetchProviderModels, type AiProvider } from "../ai.js";
 import { requireUserId } from "../auth.js";
 import { query } from "../db.js";
+import { env } from "../env.js";
 
 export const aiRouter = Router();
 
 const providerSchema = z.enum(aiProviders);
+
+function localAiConfig() {
+  if (!env.LOCAL_MODE) return null;
+  const apiKey = env.LOCAL_AI_API_KEY.trim();
+  if (!apiKey) return null;
+  const baseUrl = env.LOCAL_AI_BASE_URL.trim().replace(/\/+$/, "");
+  return {
+    providerMode: "user" as const,
+    provider: env.LOCAL_AI_PROVIDER,
+    apiKey,
+    model: env.LOCAL_AI_MODEL.trim(),
+    ...(baseUrl ? { baseUrl } : {})
+  };
+}
 
 function requireLoggedInUser(authHeader: string | undefined) {
   return requireUserId(authHeader);
@@ -14,6 +29,18 @@ function requireLoggedInUser(authHeader: string | undefined) {
 
 aiRouter.get("/settings", async (req, res, next) => {
   try {
+    const local = localAiConfig();
+    if (local) {
+      return res.json({
+        configured: true,
+        provider: local.provider,
+        model: local.model,
+        baseUrl: local.baseUrl || "",
+        models: local.model ? [local.model] : [],
+        hasApiKey: true,
+        managedBy: "desktop-app"
+      });
+    }
     const userId = await requireLoggedInUser(req.headers.authorization);
     const found = await query<{
       provider: AiProvider;
@@ -46,9 +73,14 @@ aiRouter.post("/models", async (req, res, next) => {
     await requireLoggedInUser(req.headers.authorization);
     const input = z.object({
       provider: providerSchema,
-      apiKey: z.string().min(8)
+      apiKey: z.string().min(8),
+      baseUrl: z.string().optional()
     }).parse(req.body);
-    const models = await fetchProviderModels(input.provider, input.apiKey.trim());
+    const baseUrl = input.baseUrl?.trim().replace(/\/+$/, "") || "";
+    if (baseUrl && !/^https?:\/\//i.test(baseUrl)) {
+      return res.status(400).json({ error: "Base URL 需要以 http:// 或 https:// 开头" });
+    }
+    const models = await fetchProviderModels(input.provider, input.apiKey.trim(), baseUrl || undefined);
     res.json({ models });
   } catch (error) {
     next(error);
@@ -57,6 +89,12 @@ aiRouter.post("/models", async (req, res, next) => {
 
 aiRouter.post("/settings", async (req, res, next) => {
   try {
+    if (env.LOCAL_MODE) {
+      return res.status(400).json({
+        error: "本机模式请在 VidLingo 应用里配置 API Key。",
+        code: "LOCAL_MODE_MANAGED"
+      });
+    }
     const userId = await requireLoggedInUser(req.headers.authorization);
     const input = z.object({
       provider: providerSchema,
@@ -99,6 +137,9 @@ aiRouter.post("/settings", async (req, res, next) => {
 });
 
 export async function loadUserAiConfig(userId: string) {
+  const local = localAiConfig();
+  if (local) return local;
+
   const found = await query<{
     provider: AiProvider;
     api_key_ciphertext: string;

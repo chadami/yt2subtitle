@@ -6,11 +6,12 @@
 
 1. 将每个视频的 `meta.json` 与 `transcript-raw.json` 放入一次 run 的 `source/<video-id>/`。
 2. 构建后端，确保 `backend/dist` 与生产代码一致。
-3. 加载 `.env.docker` 后运行翻译、初审和验证脚本。
+3. 在项目根目录的 `.env` 中配置 `DEEPSEEK_API_KEY`（可参考 `.env.example`），加载后运行翻译、初审和验证脚本。评估使用 `LOCAL_MODE=1`，无需配置 Postgres 或 Redis。
 
 ```bash
 set -a
-source .env.docker
+source .env
+export LOCAL_MODE=1
 set +a
 
 node evaluation/scripts/run-ja-pilot.mjs <source目录> <output目录>

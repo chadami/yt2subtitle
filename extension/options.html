@@ -1,760 +1,154 @@
 <!doctype html>
-<html>
+<html lang="zh-Hans">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>VidLingo Settings</title>
+    <title>VidLingo</title>
     <style>
       :root {
-        color-scheme: light;
-        --bg: #ffffff;
-        --surface: #f7f7f5;
-        --surface-hover: #efefed;
-        --panel: #ffffff;
-        --ink: #2f2f2f;
-        --muted: #787774;
-        --line: #e6e4e1;
-        --line-strong: #d8d6d2;
-        --accent: #2f2f2f;
-        --accent-strong: #1f1f1f;
-        --accent-soft: #f1f1ef;
-        --danger: #a13d35;
-        --shadow: none;
+        color-scheme: light dark;
+        --ink: #17191f;
+        --muted: #7b8290;
+        --line: rgba(23, 25, 31, 0.09);
+        --card: rgba(255, 255, 255, 0.92);
+        --accent: #2f5cf6;
+        --ok: #1a9d5a;
+        --warn: #c07514;
+        --bg: #f7f8fb;
       }
-
-      * {
-        box-sizing: border-box;
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #f2f4f8;
+          --muted: #9aa1ad;
+          --line: rgba(255, 255, 255, 0.12);
+          --card: rgba(28, 30, 36, 0.9);
+          --bg: #121318;
+        }
       }
-
+      * { box-sizing: border-box; }
       body {
         margin: 0;
         min-height: 100vh;
         background: var(--bg);
         color: var(--ink);
-        font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      }
-
-      .shell {
-        width: min(1120px, calc(100vw - 40px));
-        margin: 32px auto 56px;
-      }
-
-      header {
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "PingFang SC", "Microsoft YaHei", sans-serif;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 28px;
+        justify-content: center;
+        padding: 48px 24px;
       }
-
-      h1,
-      h2 {
-        margin: 0;
-        letter-spacing: 0;
-      }
-
-      h1 {
-        font-size: 30px;
-        line-height: 1.15;
-        font-weight: 700;
-      }
-
-      .brand-title {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .brand-logo {
-        width: 38px;
-        height: 38px;
-        border-radius: 9px;
-        display: block;
-        flex: 0 0 38px;
-      }
-
-      h2 {
-        font-size: 16px;
-        font-weight: 650;
-      }
-
-      .subtitle {
-        margin: 7px 0 0;
-        color: var(--muted);
-      }
-
-      .status-pill {
-        border: 0;
-        border-radius: 6px;
-        background: var(--surface);
-        color: var(--muted);
-        padding: 5px 10px;
-        white-space: nowrap;
-      }
-
-      .language-switch {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--muted);
-        font-size: 13px;
-        font-weight: 500;
-      }
-
-      .language-switch select {
-        width: auto;
-        min-height: 32px;
-        background: var(--surface);
-        border-color: transparent;
-        padding: 5px 28px 5px 9px;
-      }
-
-      .language-switch select:hover {
-        background: var(--surface-hover);
-      }
-
-      .panel {
-        background: var(--panel);
+      main { width: 100%; max-width: 520px; }
+      header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+      .logo { width: 44px; height: 44px; border-radius: 10px; }
+      h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
+      .sub { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+      .card {
+        background: var(--card);
         border: 1px solid var(--line);
-        border-radius: 3px;
-        box-shadow: var(--shadow);
-        overflow: hidden;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(15, 20, 40, 0.06);
       }
-
-      .settings-layout {
-        display: grid;
-        grid-template-columns: 190px minmax(0, 1fr);
-        gap: 28px;
-        align-items: start;
+      .status { display: flex; align-items: flex-start; gap: 12px; }
+      .dot {
+        width: 9px; height: 9px; border-radius: 50%; margin-top: 6px;
+        background: var(--muted); flex: none;
       }
-
-      .side-nav {
-        display: grid;
-        gap: 2px;
-        position: sticky;
-        top: 20px;
-        border-right: 1px solid var(--line);
-        padding-right: 14px;
-      }
-
-      .nav-button {
-        width: 100%;
-        background: transparent;
-        border-color: transparent;
-        color: var(--muted);
-        text-align: left;
-        border-radius: 4px;
-        font-weight: 500;
-        min-height: 32px;
-        padding: 6px 8px;
-      }
-
-      .nav-button:hover,
-      .nav-button.active {
-        background: var(--surface-hover);
-        border-color: transparent;
-        color: var(--ink);
-      }
-
-      .view {
-        min-width: 0;
-      }
-
-      section {
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 28px;
-        padding: 24px 26px;
-        border-top: 1px solid var(--line);
-      }
-
-      section:first-child {
-        border-top: 0;
-      }
-
-      .section-copy {
-        color: var(--muted);
-        margin: 6px 0 0;
-        font-size: 13px;
-      }
-
-      .fields {
-        display: grid;
-        gap: 14px;
-      }
-
-      label {
-        display: grid;
-        gap: 6px;
-        color: var(--muted);
-        font-size: 13px;
-        font-weight: 500;
-      }
-
-      input,
-      select {
-        width: 100%;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: #ffffff;
-        color: var(--ink);
-        font: inherit;
-        min-height: 36px;
-        padding: 7px 9px;
-        outline: none;
-      }
-
-      input:focus,
-      select:focus {
-        border-color: #b8b6b2;
-        box-shadow: 0 0 0 2px rgba(15, 15, 15, 0.08);
-      }
-
-      .inline {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: #ffffff;
-        padding: 10px 12px;
-      }
-
-      .inline label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--ink);
-        font-size: 14px;
-        font-weight: 500;
-      }
-
-      .inline input {
-        width: 18px;
-        height: 18px;
-      }
-
-      .radio-group {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .radio-option {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--ink);
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        padding: 2px 0;
-      }
-
-      .radio-option input {
-        width: 16px;
-        height: 16px;
-        accent-color: var(--accent);
-      }
-
-      .radio-option:has(input:checked) {
-        color: var(--accent-strong);
-      }
-
-      .actions {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .email-action-row {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        align-items: end;
-        gap: 10px;
-      }
-
-      .email-action-row label {
-        min-width: 0;
-      }
-
-      button:disabled {
-        cursor: not-allowed;
-        opacity: 0.58;
-      }
-
-      button .spinner {
-        display: none;
-        width: 14px;
-        height: 14px;
-        margin-right: 8px;
-        border: 2px solid currentColor;
-        border-right-color: transparent;
-        border-radius: 50%;
-        vertical-align: -2px;
-        animation: spin 0.75s linear infinite;
-      }
-
-      button.loading .spinner {
-        display: inline-block;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .split {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
-      .model-row {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        align-items: end;
-        gap: 8px;
-      }
-
-      .hint {
-        margin: -4px 0 0;
-        color: var(--muted);
-        font-size: 12px;
-      }
-
-      button {
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: var(--surface);
-        color: var(--ink);
-        cursor: pointer;
-        font: inherit;
-        font-weight: 500;
-        min-height: 34px;
-        padding: 6px 12px;
-      }
-
-      button:hover {
-        background: var(--surface-hover);
-        border-color: var(--line-strong);
-      }
-
-      button.secondary {
-        background: #fff;
-        border-color: var(--line);
-        color: var(--ink);
-      }
-
-      button.secondary:hover {
-        border-color: var(--line-strong);
-        background: var(--surface);
-      }
-
-      button.danger {
-        background: #fff;
-        border-color: #ead6d3;
-        color: var(--danger);
-      }
-
-      button.danger:hover {
-        background: #fff6f6;
-      }
-
-      .account-card {
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        background: #ffffff;
-        padding: 12px;
-      }
-
-      .email-display {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-      }
-
-      .email-value {
-        min-width: 0;
-        font-size: 15px;
-        font-weight: 600;
-        overflow-wrap: anywhere;
-      }
-
-      .message {
-        position: fixed;
-        z-index: 1000;
-        top: 18px;
-        left: 50%;
-        max-width: min(460px, calc(100vw - 32px));
-        margin: 0;
-        padding: 10px 16px;
-        border: 1px solid var(--line-strong);
-        border-radius: 6px;
-        background: #ffffff;
-        color: var(--ink);
-        box-shadow: 0 8px 24px rgba(15, 15, 15, 0.12);
-        opacity: 0;
-        pointer-events: none;
-        transform: translate(-50%, -10px);
-        transition: opacity 160ms ease, transform 160ms ease;
-      }
-
-      .message.visible {
-        opacity: 1;
-        transform: translate(-50%, 0);
-      }
-
-      .history-toolbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 18px 22px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .history-table-wrap {
-        overflow-x: hidden;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed;
-      }
-
-      th,
-      td {
-        border-bottom: 1px solid var(--line);
-        padding: 11px 14px;
-        text-align: left;
-        vertical-align: top;
-      }
-
-      th {
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .history-video {
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .history-source {
-        white-space: nowrap;
-      }
-
-      .history-stack {
-        display: grid;
-        gap: 2px;
-        min-width: 0;
-      }
-
-      .history-stack strong,
-      .history-stack span {
-        display: block;
-      }
-
-      .history-stack strong {
-        color: var(--ink);
-        font-size: 13px;
-        font-weight: 600;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .history-stack span {
-        color: var(--muted);
-        font-size: 12px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      td a {
-        color: var(--ink);
-        text-decoration: none;
-      }
-
-      td a:hover {
-        text-decoration: underline;
-      }
-
-      .status-text {
-        font-weight: 600;
-        white-space: nowrap;
-      }
-
-      .hidden {
-        display: none !important;
-      }
-
-      footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
+      .card[data-state="connected"] .dot { background: var(--ok); box-shadow: 0 0 0 4px rgba(26, 157, 90, 0.14); }
+      .card[data-state="error"] .dot { background: var(--warn); box-shadow: 0 0 0 4px rgba(192, 117, 20, 0.14); }
+      .card[data-state="connecting"] .dot { background: var(--accent); animation: pulse 1s infinite ease-in-out; }
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+      .title { font-size: 15.5px; font-weight: 650; }
+      .detail { margin-top: 3px; color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+      .address {
         margin-top: 14px;
+        padding: 9px 11px;
+        border-radius: 9px;
+        background: rgba(47, 92, 246, 0.07);
+        color: var(--accent);
+        font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+        word-break: break-all;
       }
-
-      @media (max-width: 720px) {
-        header,
-        section,
-        footer {
-          display: grid;
-          grid-template-columns: 1fr;
-        }
-
-        .settings-layout {
-          grid-template-columns: 1fr;
-        }
-
-        .side-nav {
-          position: static;
-          grid-template-columns: 1fr 1fr;
-        }
-
-        section {
-          gap: 16px;
-          padding: 20px;
-        }
-
-        .email-display {
-          display: grid;
-        }
-
-        .split {
-          grid-template-columns: 1fr;
-        }
-
-        .model-row {
-          grid-template-columns: 1fr;
-        }
-
-        .email-action-row {
-          grid-template-columns: 1fr;
-        }
+      button {
+        margin-top: 16px;
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        border: 0;
+        font-size: 13.5px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
       }
+      button.primary { background: var(--accent); color: #fff; }
+      button.primary:hover { filter: brightness(1.06); }
+      button.secondary {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+      button:disabled { opacity: 0.6; cursor: default; }
+      .hint { margin-top: 22px; }
+      .hint h2 { margin: 0 0 6px; font-size: 13px; font-weight: 650; }
+      .hint p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.55; }
+      .advanced { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 16px; }
+      summary { color: var(--muted); font-size: 12.5px; cursor: pointer; }
+      .advanced input {
+        margin-top: 10px;
+        width: 100%;
+        height: 36px;
+        padding: 0 10px;
+        border-radius: 9px;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink);
+        font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      .advanced button { height: 34px; margin-top: 10px; }
+      #message { min-height: 16px; margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+      footer { margin-top: 28px; color: var(--muted); font-size: 11.5px; text-align: center; }
     </style>
   </head>
   <body>
-    <p id="message" class="message" role="status" aria-live="polite"></p>
-    <main class="shell">
+    <main>
       <header>
+        <img class="logo" src="icons/icon-128.png" alt="" />
         <div>
-          <div class="brand-title">
-            <img class="brand-logo" src="icons/icon-48.png" alt="" />
-            <h1>VidLingo</h1>
-          </div>
-          <p class="subtitle">Settings</p>
+          <h1>VidLingo</h1>
+          <p class="sub" data-i18n="subtitle">AI subtitles for YouTube</p>
         </div>
-        <label class="language-switch">
-          <span data-i18n="uiLanguage">Language</span>
-          <select id="uiLanguage">
-            <option value="en">English</option>
-            <option value="zh-Hans">中文</option>
-            <option value="ja">日本語</option>
-          </select>
-        </label>
       </header>
 
-      <div class="settings-layout">
-        <nav class="side-nav" aria-label="Settings navigation">
-          <button id="basicNav" class="nav-button active" type="button" data-i18n="settingsNav">Settings</button>
-          <button id="historyNav" class="nav-button" type="button" data-i18n="historyNav">History</button>
-        </nav>
-
-        <div id="basicView" class="view">
-          <div class="panel">
-            <section>
+      <section class="card" id="card" data-state="disconnected">
+        <div class="status">
+          <span class="dot"></span>
           <div>
-            <h2 data-i18n="accountTitle">Account</h2>
-            <p class="section-copy" data-i18n="accountCopy">Sign in to sync your API and history</p>
-          </div>
-          <div class="fields">
-            <div id="accountLoggedIn" class="account-card hidden">
-              <div class="email-display">
-                <div>
-                  <div class="section-copy" data-i18n="currentAccount">Current account</div>
-                  <div id="accountEmail" class="email-value"></div>
-                </div>
-                <button id="logout" class="danger" data-i18n="signOut">Sign out</button>
-              </div>
-            </div>
-
-            <div id="accountLoggedOut" class="fields">
-              <div class="email-action-row">
-                <label><span data-i18n="emailLabel">Email</span>
-                  <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
-                </label>
-                <button id="sendMagicLink"><span class="spinner"></span><span id="sendMagicLinkText" data-i18n="sendCode">Send sign-in code</span></button>
-              </div>
-              <label><span data-i18n="codeLabel">Sign-in code</span>
-                <input id="loginCode" placeholder="Code from email" autocomplete="one-time-code" />
-              </label>
-              <div class="actions">
-                <button id="exchangeLoginCode" class="secondary"><span class="spinner"></span><span id="exchangeLoginCodeText" data-i18n="signIn">Sign in</span></button>
-              </div>
-            </div>
-          </div>
-            </section>
-
-            <section class="hidden">
-          <div>
-            <h2>Service</h2>
-            <p class="section-copy">Backend connection</p>
-          </div>
-          <div class="fields">
-            <label>Backend API URL
-              <input id="apiBase" placeholder="https://api.vidlingo.online" />
-            </label>
-            <div class="actions">
-              <button id="testConnection" class="secondary">Test connection</button>
-            </div>
-          </div>
-            </section>
-
-            <section>
-          <div>
-            <h2 data-i18n="translationApiTitle">Translation API</h2>
-            <p class="section-copy" data-i18n="translationApiCopy">Choose which provider handles translation</p>
-          </div>
-          <div class="fields">
-            <input type="hidden" name="translationMode" value="user" checked />
-            <p id="translationModeHelp" class="hint" data-i18n="personalApiHelp">Personal API uses your own key and provider billing. You choose the provider and model.</p>
-            <div id="personalAiSection" class="fields">
-              <div class="split">
-                <label><span data-i18n="aiProvider">AI provider</span>
-                  <select id="aiProvider">
-                    <option value="gemini">Gemini</option>
-                    <option value="deepseek">DeepSeek</option>
-                    <option value="openai">OpenAI</option>
-                    <option value="claude">Claude</option>
-                    <option value="qwen">Qwen</option>
-                    <option value="mimo">Xiaomi MiMo</option>
-                  </select>
-                </label>
-                <div class="model-row">
-                  <label><span data-i18n="modelLabel">Model</span>
-                    <select id="aiModel"></select>
-                  </label>
-                  <button id="fetchModels" class="secondary" type="button" data-i18n="fetchModels">Fetch models</button>
-                </div>
-              </div>
-              <label><span data-i18n="apiKeyLabel">API key</span>
-                <input id="aiApiKey" type="password" placeholder="Stored for this account only" autocomplete="off" />
-              </label>
-              <p id="aiStatus" class="hint" data-i18n="aiStatusDefault">Sign in, enter an API key, then fetch models.</p>
-              <div class="actions">
-                <button id="saveAiSettings" class="secondary" data-i18n="saveApiSettings">Save API settings</button>
-              </div>
-            </div>
-          </div>
-            </section>
-
-            <section>
-          <div>
-            <h2 data-i18n="subtitleOutputTitle">Subtitle Output</h2>
-            <p class="section-copy" data-i18n="subtitleOutputCopy">Language and display behavior</p>
-          </div>
-          <div class="fields">
-            <label><span data-i18n="translationLanguage">Translation language</span>
-              <select id="targetLang">
-                <option value="zh-Hans">中文（简体）</option>
-                <option value="zh-Hant">中文（繁體）</option>
-                <option value="ja">日本語</option>
-                <option value="ko">한국어</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="it">Italiano</option>
-                <option value="pt">Português</option>
-                <option value="ru">Русский</option>
-                <option value="ar">العربية</option>
-                <option value="hi">हिन्दी</option>
-                <option value="id">Bahasa Indonesia</option>
-                <option value="vi">Tiếng Việt</option>
-                <option value="th">ไทย</option>
-              </select>
-            </label>
-            <div class="inline">
-              <label>
-                <input id="showSourceText" type="checkbox" />
-                <span data-i18n="showSourceText">Show original subtitle</span>
-              </label>
-            </div>
-          </div>
-            </section>
-
-            <section>
-          <div>
-            <h2 data-i18n="cacheTitle">Cache</h2>
-            <p class="section-copy" data-i18n="cacheCopy">Local subtitle task state</p>
-          </div>
-          <div class="actions">
-            <button id="clearCache" class="secondary" data-i18n="clearCache">Clear local cache</button>
-          </div>
-            </section>
-          </div>
-
-        </div>
-
-        <div id="historyView" class="view hidden">
-          <div class="panel">
-            <div class="history-toolbar">
-              <div>
-                <h2 data-i18n="historyTitle">Subtitle Library</h2>
-                <p class="section-copy" data-i18n="historyCopy">Generated subtitles for this account</p>
-              </div>
-              <button id="refreshHistory" class="secondary" type="button" data-i18n="refresh">Refresh</button>
-            </div>
-            <div class="history-table-wrap">
-              <table>
-                <colgroup>
-                  <col style="width: 15%" />
-                  <col style="width: 24%" />
-                  <col style="width: 12%" />
-                  <col style="width: 10%" />
-                  <col style="width: 18%" />
-                  <col style="width: 11%" />
-                  <col style="width: 10%" />
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th data-i18n="generatedAt">Generated at</th>
-                    <th data-i18n="video">Video</th>
-                    <th data-i18n="languagePair">Languages</th>
-                    <th data-i18n="captionSource">Source</th>
-                    <th data-i18n="apiMode">API</th>
-                    <th data-i18n="status">Status</th>
-                    <th data-i18n="actions">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="historyRows">
-                  <tr>
-                    <td colspan="7" data-i18n="historySignIn">Sign in to view history.</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="title" id="statusTitle">未连接</div>
+            <div class="detail" id="statusDetail">
+              打开 macOS 版 VidLingo，然后点下面的按钮。
             </div>
           </div>
         </div>
-      </div>
+        <div class="address" id="address" hidden></div>
+        <button class="primary" id="connect">连接本机应用</button>
+        <button class="secondary" id="reconnect" hidden>重新连接</button>
+      </section>
 
+      <section class="hint">
+        <h2 data-i18n="moreTitle">更多设置</h2>
+        <p data-i18n="moreBody">
+          字幕语言、原文字幕、翻译历史都在 macOS 应用的「字幕输出」和「历史记录」里。
+        </p>
+      </section>
+
+      <details class="advanced">
+        <summary data-i18n="advanced">手动设置地址</summary>
+        <input id="apiBase" placeholder="http://127.0.0.1:3000" spellcheck="false" />
+        <button class="secondary" id="saveBase" data-i18n="save">保存并连接</button>
+        <p id="message"></p>
+      </details>
+
+      <footer>VidLingo · <span id="version">—</span></footer>
     </main>
     <script src="options.js"></script>
   </body>

@@ -1,0 +1,41 @@
+{
+  "fill" : {
+    "automatic-gradient" : "display-p3:0.92092,0.42262,0.21255,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "automatic-gradient" : "display-p3:1.00000,0.97402,0.86905,1.00000"
+          },
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "Container 140.svg",
+          "name" : "Container 140",
+          "position" : {
+            "scale" : 1.8,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

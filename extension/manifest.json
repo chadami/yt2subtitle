@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
   "name": "VidLingo",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Create natural, readable YouTube subtitles with your own AI API key.",
   "permissions": ["storage", "alarms", "notifications", "scripting"],
   "host_permissions": [
     "https://www.youtube.com/*",
     "https://*.onrender.com/*",
     "https://api.vidlingo.online/*",
-    "http://localhost:3000/*",
-    "http://127.0.0.1:3000/*"
+    "http://localhost/*",
+    "http://127.0.0.1/*"
   ],
   "background": {
     "service_worker": "background.js",

@@ -688,20 +688,31 @@ function normalizeApiBase(value) {
   return apiBase === LEGACY_API_BASE ? DEFAULT_API_BASE : apiBase;
 }
 
+async function syncPreferencesFromApp() {
+  const result = await chrome.runtime.sendMessage({ type: "SYNC_PREFERENCES" }).catch(() => null);
+  return result?.ok ? result.settings : null;
+}
+
 async function prepareAiSubtitlesForVideo(videoId) {
-  const { settings = {}, clientId, sessionToken, pendingJobs = [] } = await chrome.storage.local.get([
+  await syncPreferencesFromApp().catch(() => null);
+  const { settings = {}, clientId, pendingJobs = [] } = await chrome.storage.local.get([
     "settings",
     "clientId",
-    "sessionToken",
     "pendingJobs"
   ]);
+  let { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
   const effectiveSettings = {
     ...settings,
     apiBase: normalizeApiBase(settings.apiBase)
   };
 
   if (!sessionToken) {
-    throw new Error("Sign in from Settings before generating AI subtitles.");
+    const session = await chrome.runtime.sendMessage({ type: "ENSURE_SESSION" }).catch(() => null);
+    sessionToken = session?.sessionToken || "";
+  }
+
+  if (!sessionToken) {
+    throw new Error("请先在 VidLingo 应用里启动本机服务，或在插件设置中登录。");
   }
 
   const video = await collectVideoPayload(videoId);
@@ -742,7 +753,7 @@ async function prepareAiSubtitlesForVideo(videoId) {
   };
 }
 
-async function generateAiSubtitles(forceRegenerate = false, preparedPayload = null, initialMachineCues = [], machineRunId = null) {
+async function generateAiSubtitles(forceRegenerate = false, preparedPayload = null, initialMachineCues = [], machineRunId) {
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
   clearOverlay();
@@ -771,7 +782,7 @@ async function generateAiSubtitles(forceRegenerate = false, preparedPayload = nu
       ...prepared,
       forceRegenerate,
       machineCues: initialMachineCues,
-      machineRunId,
+      ...(typeof machineRunId === "string" ? { machineRunId } : {}),
     }
   });
   if (!data?.ok) throw new Error(data?.error || "Failed to create subtitle job.");
@@ -939,7 +950,7 @@ function sameLanguageMessage(sourceLanguage, targetLanguage) {
 }
 
 function nativeTrackMessage(language) {
-  return `已使用视频内置的 ${language || "目标语言"} 字幕，未调用谷歌翻译或 AI 翻译`;
+  return `已使用视频内置的 ${language || "目标语言"} 字幕，未调用机器翻译或 AI 翻译`;
 }
 
 async function fetchCaptionCues(track) {
@@ -1245,7 +1256,12 @@ function showPanelPage(pageName) {
 async function refreshPlayerPanel() {
   const panel = document.getElementById(PLAYER_PANEL_ID);
   if (!panel) return;
-  const { settings = {}, sessionToken, pendingJobs = [] } = await chrome.storage.local.get(["settings", "sessionToken", "pendingJobs"]);
+  const { settings = {}, pendingJobs = [] } = await chrome.storage.local.get(["settings", "pendingJobs"]);
+  let { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
+  if (!sessionToken) {
+    const session = await chrome.runtime.sendMessage({ type: "ENSURE_SESSION" }).catch(() => null);
+    sessionToken = session?.sessionToken || "";
+  }
   const style = { ...DEFAULT_SUBTITLE_STYLE, ...(settings.subtitleStyle || {}) };
   panel.querySelector('[data-setting="autoTranslate"]').checked = settings.autoTranslate === true;
   panel.querySelector('[data-setting="showSourceText"]').checked = style.showSourceText !== false;
@@ -1392,7 +1408,7 @@ function syncPanelStyleControls(style) {
   }
 }
 
-async function startTranslationFromPlayer(forceRegenerate = false, automatic = false, preparedPayload = null, machineRunId = null) {
+async function startTranslationFromPlayer(forceRegenerate = false, automatic = false, preparedPayload = null, machineRunId) {
   const videoId = getVideoId();
   if (!videoId || panelActionInProgress) return;
   if (!automatic) cancelAutoAiDelay();
@@ -1522,7 +1538,7 @@ function scheduleAiAfterPlayback(video, preparedPayload, videoId, runId) {
       startMachinePreview(preparedPayload, videoId, runId, machineRunId).catch(() => {});
     }
     if (autoAiDelayTimer) clearTimeout(autoAiDelayTimer);
-    setPanelState("idle", "谷歌翻译已启用 · 播放 5 秒后启用 AI");
+    setPanelState("idle", "机翻预览已启用 · 播放 5 秒后启用 AI");
     autoAiDelayTimer = setTimeout(() => {
       autoAiDelayTimer = null;
       if (runId !== autoTranslationRun || getVideoId() !== videoId || video.paused || video.ended) return;
@@ -1536,8 +1552,8 @@ function scheduleAiAfterPlayback(video, preparedPayload, videoId, runId) {
     autoAiDelayTimer = null;
     if (runId === autoTranslationRun && getVideoId() === videoId) {
       setPanelState("idle", machineStarted
-        ? "谷歌翻译已启用 · 继续播放 5 秒后启用 AI"
-        : "播放后将启用谷歌翻译");
+        ? "机翻预览已启用 · 继续播放 5 秒后启用 AI"
+        : "播放后将启用机翻预览");
     }
   };
 
@@ -1611,7 +1627,7 @@ function handlePlayerPageChange() {
     console.warn("[YouTube AI Subtitle] Could not attach player control:", error);
   }
   if (videoId) {
-    refreshPlayerPanel().catch(() => {});
+    syncPreferencesFromApp().then(() => refreshPlayerPanel()).catch(() => {});
     maybeAutoTranslateCurrentVideo().catch(() => {});
   }
 }

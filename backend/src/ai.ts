@@ -42,7 +42,14 @@ export type AiConfig = {
   provider: AiProvider;
   apiKey: string;
   model: string;
+  /** Optional custom / proxy endpoint. Falls back to the provider default. */
+  baseUrl?: string;
 };
+
+export function normalizeBaseUrl(value: string | undefined) {
+  const trimmed = (value || "").trim().replace(/\/+$/, "");
+  return trimmed;
+}
 
 const MAX_SOURCE_REALIGN_SPAN = 10;
 const MIN_SOURCE_REALIGN_SCORE = 0.6;
@@ -115,14 +122,16 @@ export function decryptApiKey(value: string) {
   ]).toString("utf8");
 }
 
-export async function fetchProviderModels(provider: AiProvider, apiKey: string) {
-  if (provider === "gemini") return fetchGeminiModels(apiKey);
-  if (provider === "claude") return fetchClaudeModels(apiKey);
-  return fetchOpenAiCompatibleModels(provider, apiKey);
+export async function fetchProviderModels(provider: AiProvider, apiKey: string, baseUrl?: string) {
+  const base = normalizeBaseUrl(baseUrl);
+  if (provider === "gemini") return fetchGeminiModels(apiKey, base);
+  if (provider === "claude") return fetchClaudeModels(apiKey, base);
+  return fetchOpenAiCompatibleModels(provider, apiKey, base);
 }
 
-async function fetchOpenAiCompatibleModels(provider: AiProvider, apiKey: string) {
-  const response = await fetch(`${providerDefaults[provider].baseUrl.replace(/\/$/, "")}/models`, {
+async function fetchOpenAiCompatibleModels(provider: AiProvider, apiKey: string, baseUrl?: string) {
+  const endpoint = baseUrl || providerDefaults[provider].baseUrl;
+  const response = await fetch(`${endpoint.replace(/\/$/, "")}/models`, {
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json"
@@ -134,8 +143,9 @@ async function fetchOpenAiCompatibleModels(provider: AiProvider, apiKey: string)
   return models.length ? models : [providerDefaults[provider].fallbackModel];
 }
 
-async function fetchGeminiModels(apiKey: string) {
-  const response = await fetch(`${providerDefaults.gemini.baseUrl}/models?key=${encodeURIComponent(apiKey)}`);
+async function fetchGeminiModels(apiKey: string, baseUrl?: string) {
+  const endpoint = baseUrl || providerDefaults.gemini.baseUrl;
+  const response = await fetch(`${endpoint}/models?key=${encodeURIComponent(apiKey)}`);
   if (!response.ok) throw new Error(`Model fetch failed: ${response.status}`);
   const data = await response.json() as {
     models?: Array<{ name?: string; supportedGenerationMethods?: string[] }>;
@@ -147,8 +157,9 @@ async function fetchGeminiModels(apiKey: string) {
   return models.length ? models : [providerDefaults.gemini.fallbackModel];
 }
 
-async function fetchClaudeModels(apiKey: string) {
-  const response = await fetch(`${providerDefaults.claude.baseUrl}/models`, {
+async function fetchClaudeModels(apiKey: string, baseUrl?: string) {
+  const endpoint = baseUrl || providerDefaults.claude.baseUrl;
+  const response = await fetch(`${endpoint}/models`, {
     headers: {
       "x-api-key": apiKey,
       "anthropic-version": "2023-06-01"
@@ -204,9 +215,10 @@ async function fetchAi(url: string, init: RequestInit) {
 }
 
 async function openAiCompatibleChat(config: AiConfig, messages: ChatMessage[], temperature: number) {
-  const baseUrl = config.providerMode === "system"
+  const custom = normalizeBaseUrl(config.baseUrl);
+  const baseUrl = custom || (config.providerMode === "system"
     ? env.DEEPSEEK_API_BASE
-    : providerDefaults[config.provider].baseUrl;
+    : providerDefaults[config.provider].baseUrl);
   const body: Record<string, unknown> = {
     model: config.model || providerDefaults[config.provider].fallbackModel,
     messages,
@@ -232,7 +244,8 @@ async function geminiChat(config: AiConfig, messages: ChatMessage[], temperature
   const system = messages.find((message) => message.role === "system")?.content || "";
   const user = messages.filter((message) => message.role === "user").map((message) => message.content).join("\n\n");
   const model = config.model || providerDefaults.gemini.fallbackModel;
-  const response = await fetchAi(`${providerDefaults.gemini.baseUrl}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(config.apiKey)}`, {
+  const endpoint = normalizeBaseUrl(config.baseUrl) || providerDefaults.gemini.baseUrl;
+  const response = await fetchAi(`${endpoint}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(config.apiKey)}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -252,7 +265,8 @@ async function geminiChat(config: AiConfig, messages: ChatMessage[], temperature
 async function claudeChat(config: AiConfig, messages: ChatMessage[], temperature: number) {
   const system = messages.find((message) => message.role === "system")?.content || "";
   const userMessages = messages.filter((message) => message.role === "user");
-  const response = await fetchAi(`${providerDefaults.claude.baseUrl}/messages`, {
+  const endpoint = normalizeBaseUrl(config.baseUrl) || providerDefaults.claude.baseUrl;
+  const response = await fetchAi(`${endpoint}/messages`, {
     method: "POST",
     headers: {
       "x-api-key": config.apiKey,

@@ -9,9 +9,11 @@
     "build": "tsc -p tsconfig.json",
     "start:api": "node dist/server.js",
     "start:worker": "node dist/worker.js",
-    "start:all": "node dist/start-all.js"
+    "start:all": "node dist/start-all.js",
+    "start:local": "node dist/start-local.js"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.5.10",
     "bullmq": "^5.12.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
