@@ -7,6 +7,10 @@ __pycache__/
 node_modules/
 dist/
 build/
+# Local Swift compilation and macOS packaging caches
+/macos/.build/
+/macos/.build-app/
+/.local-data/
 coverage/
 *.log
 *.vtt
