@@ -28,6 +28,9 @@ struct RootView: View {
             .background(Theme.canvas)
         }
         .frame(minWidth: 940, minHeight: 640)
+        // The custom header already replaces the title bar. Extend into its
+        // safe area so macOS does not add a second empty strip above it.
+        .ignoresSafeArea(.container, edges: .top)
         .background(Theme.sidebar)
         .background(WindowConfigurator(onWindowAvailable: { appDelegate.mainWindow = $0 }))
         .modifier(TranslationInstallHost(installer: model.translationInstaller))
@@ -49,8 +52,8 @@ struct RootView: View {
                 Spacer()
             }
             .padding(.horizontal, 16)
-            .padding(.top, 40)
-            .padding(.bottom, 18)
+            .padding(.top, 36)
+            .padding(.bottom, 12)
 
             group("使用") {
                 navRow(.overview)
@@ -83,9 +86,6 @@ struct RootView: View {
                         .font(.system(size: 11.5))
                         .foregroundStyle(Theme.secondary)
                     Spacer()
-                    Text(":\(model.config.port)")
-                        .font(.system(size: 11, design: .monospaced))
-                        .foregroundStyle(Theme.tertiary)
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
@@ -162,7 +162,7 @@ struct RootView: View {
             Text(model.section.title)
                 .foregroundStyle(Theme.secondary)
             Spacer()
-            StatusPill(state: model.server.state, port: model.config.port)
+            StatusPill(state: model.server.state)
         }
         .font(.system(size: 11.5))
         .padding(.horizontal, 24)

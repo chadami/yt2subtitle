@@ -60,15 +60,6 @@
       @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
       .title { font-size: 15.5px; font-weight: 650; }
       .detail { margin-top: 3px; color: var(--muted); font-size: 12.5px; line-height: 1.45; }
-      .address {
-        margin-top: 14px;
-        padding: 9px 11px;
-        border-radius: 9px;
-        background: rgba(47, 92, 246, 0.07);
-        color: var(--accent);
-        font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
-        word-break: break-all;
-      }
       button {
         margin-top: 16px;
         width: 100%;
@@ -129,7 +120,6 @@
             </div>
           </div>
         </div>
-        <div class="address" id="address" hidden></div>
         <button class="primary" id="connect">连接本机应用</button>
         <button class="secondary" id="reconnect" hidden>重新连接</button>
       </section>
@@ -142,7 +132,7 @@
       </section>
 
       <details class="advanced">
-        <summary data-i18n="advanced">手动设置地址</summary>
+        <summary data-i18n="advanced">连接诊断（高级）</summary>
         <input id="apiBase" placeholder="http://127.0.0.1:3000" spellcheck="false" />
         <button class="secondary" id="saveBase" data-i18n="save">保存并连接</button>
         <p id="message"></p>

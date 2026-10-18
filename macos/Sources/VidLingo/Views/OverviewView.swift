@@ -28,10 +28,9 @@ struct OverviewView: View {
                 }
 
                 recentCard
-                addressCard
             }
             .padding(.horizontal, 24)
-            .padding(.top, 20)
+            .padding(.top, 16)
             .padding(.bottom, 28)
         }
     }
@@ -74,8 +73,6 @@ struct OverviewView: View {
                 Hairline()
 
                 HStack(spacing: 0) {
-                    miniStat(label: "端口", value: "\(model.config.port)", mono: true)
-                    Hairline(vertical: true).frame(height: 26)
                     miniStat(label: "队列", value: "\(model.status?.queue.running ?? 0) 运行 / \(model.status?.queue.pending ?? 0) 等待")
                     Hairline(vertical: true).frame(height: 26)
                     miniStat(label: "版本", value: model.status?.version ?? "—", mono: true)
@@ -114,11 +111,11 @@ struct OverviewView: View {
     private var statusDetail: String {
         switch model.server.state {
         case .running:
-            return "插件请求已可以访问 \(model.localBaseURL) · 数据保存在本机"
+            return "已准备好接收插件任务，数据保存在本机"
         case .starting:
-            return "正在初始化内嵌数据库与队列，通常需要 3–10 秒"
-        case let .failed(message):
-            return message
+            return "正在准备翻译服务，请稍候"
+        case .failed:
+            return "请重启服务；若仍无法连接，可在高级设置中查看连接诊断"
         case .stopped:
             return "点击启动后即可在插件里生成字幕"
         }
@@ -168,10 +165,10 @@ struct OverviewView: View {
                     .frame(minHeight: 96, alignment: .topLeading)
                     Hairline(vertical: true)
                     MetricCell(
-                        label: "插件连接",
-                        value: model.jobs.isEmpty ? "等待任务" : "已连通",
-                        detail: "127.0.0.1:\(model.config.port)",
-                        valueColor: model.jobs.isEmpty ? Theme.ink : Theme.green
+                        label: "Chrome 插件",
+                        value: model.server.isRunning ? "可连接" : "服务未运行",
+                        detail: "在 Chrome 插件中查看当前连接状态",
+                        valueColor: model.server.isRunning ? Theme.green : Theme.tertiary
                     )
                     .frame(minHeight: 96, alignment: .topLeading)
                 }
@@ -266,30 +263,4 @@ struct OverviewView: View {
         }
     }
 
-    // MARK: - Address
-
-    private var addressCard: some View {
-        Card(padding: 16) {
-            HStack(spacing: 10) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("本机地址")
-                        .font(.system(size: 11.5))
-                        .foregroundStyle(Theme.secondary)
-                    Text(model.localBaseURL)
-                        .font(.system(size: 12, design: .monospaced))
-                        .textSelection(.enabled)
-                        .foregroundStyle(Theme.ink)
-                }
-                Spacer()
-                Button("复制") {
-                    model.copyLocalBaseURL()
-                }
-                .flatButton()
-                Button("连接说明") {
-                    model.section = .extensionBridge
-                }
-                .flatButton()
-            }
-        }
-    }
 }

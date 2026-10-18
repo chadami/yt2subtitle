@@ -274,3 +274,10 @@ create table if not exists app_preferences (
   updated_at timestamptz not null default now(),
   primary key (user_id, key)
 );
+
+-- Machine preview has its own lifecycle; failures must not fail the AI job.
+alter table translation_jobs add column if not exists machine_translation_state text not null default 'idle';
+alter table translation_jobs add column if not exists machine_translation_error text;
+alter table translation_jobs add column if not exists machine_translation_code text;
+alter table translation_jobs add column if not exists machine_translation_retry_at timestamptz;
+alter table translation_jobs add column if not exists machine_translation_provider text;

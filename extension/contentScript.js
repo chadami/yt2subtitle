@@ -39,6 +39,7 @@ let autoAiPlayingHandler = null;
 let autoAiPauseHandler = null;
 let machinePreviewVideoId = "";
 let machinePreviewCues = [];
+let machinePreviewFeedback = null;
 let subtitleDragState = null;
 let overlayHoverTrackingReady = false;
 
@@ -559,6 +560,7 @@ async function pollPartialSubtitles(jobId, videoId) {
 
   const partial = await chrome.runtime.sendMessage({ type: "GET_PARTIAL_SUBTITLES", jobId });
   if (!partial?.ok) return;
+  updateMachinePreviewFeedback(partial.machineTranslation, videoId);
 
   if (partial.status === "completed") {
     stopPartialSubtitlePolling();
@@ -1316,6 +1318,23 @@ function engineDisplayName(provider, model) {
   return "未设置";
 }
 
+function updateMachinePreviewFeedback(preview, videoId) {
+  if (getVideoId() !== videoId || !preview) return;
+  let message = "";
+  if (preview.state === "waiting") {
+    message = preview.code === "macos_language_not_installed"
+      ? "系统机翻语言包未安装，请在 VidLingo 中下载；安装后自动重试，AI 翻译继续"
+      : "机翻暂不可用，将自动重试；AI 翻译继续";
+  } else if (preview.state === "failed") {
+    message = `${preview.error || "机翻不可用"}；AI 翻译继续`;
+  } else if (preview.state === "running") {
+    message = "机翻正在补全未覆盖的字幕";
+  }
+  machinePreviewFeedback = { videoId, message };
+  const status = document.getElementById(PLAYER_PANEL_ID)?.querySelector('[data-role="status"]');
+  if (status) status.textContent = [status.dataset.baseMessage, message].filter(Boolean).join(" · ");
+}
+
 function setPanelState(state, message) {
   const panel = document.getElementById(PLAYER_PANEL_ID);
   const button = document.getElementById(PLAYER_BUTTON_ID);
@@ -1326,7 +1345,10 @@ function setPanelState(state, message) {
   action.textContent = labels[state] || labels.idle;
   action.disabled = state === "working" || state === "native" || state === "same-language";
   action.dataset.state = state;
-  status.textContent = message || "";
+  status.dataset.baseMessage = message || "";
+  const previewMessage = ["idle", "working"].includes(state) && machinePreviewFeedback?.videoId === getVideoId()
+    ? machinePreviewFeedback.message : "";
+  status.textContent = [message, previewMessage].filter(Boolean).join(" · ");
   button?.setAttribute("data-state", state === "working" ? "working" : "idle");
 }
 
@@ -1430,6 +1452,7 @@ async function startTranslationFromPlayer(forceRegenerate = false, automatic = f
     const { pendingJobs = [] } = await chrome.storage.local.get(["pendingJobs"]);
     const pending = pendingJobs.find((job) => job.videoId === videoId);
     if (pending) {
+      startPartialSubtitlePolling(pending.jobId, videoId, preparation.payload.rawCues);
       startPanelJobPolling(pending.jobId, videoId);
       return;
     }
@@ -1481,6 +1504,7 @@ function startPanelJobPolling(jobId, videoId) {
       stopPanelJobPolling();
       setPanelState("error", job.error || "翻译失败，请重试");
     } else {
+      updateMachinePreviewFeedback(job.machineTranslation, videoId);
       setPanelState("working", `翻译中 · ${Number(job.progress || 0)}%`);
     }
   };
@@ -1514,7 +1538,16 @@ async function startMachinePreview(preparedPayload, videoId, runId, machineRunId
     type: "TRANSLATE_MACHINE_PREVIEW",
     payload: { ...preparedPayload, machineRunId }
   }).catch(() => null);
-  if (runId !== autoTranslationRun || getVideoId() !== videoId || !result?.ok || !Array.isArray(result.cues)) return;
+  if (runId !== autoTranslationRun || getVideoId() !== videoId) return;
+  if (!result?.ok || !Array.isArray(result.cues)) {
+    updateMachinePreviewFeedback({
+      state: ["machine_translation_disabled", "macos_language_unsupported", "macos_version_unsupported", "macos_helper_missing"].includes(result?.code) ? "failed" : "waiting",
+      error: result?.error,
+      code: result?.code || (/语言包.*未安装/.test(result?.error || "") ? "macos_language_not_installed" : "machine_translation_failed")
+    }, videoId);
+    return;
+  }
+  updateMachinePreviewFeedback({ state: "completed" }, videoId);
   machinePreviewVideoId = videoId;
   machinePreviewCues = result.cues;
   if (loadedPartialChunkCount === 0) {
@@ -1538,7 +1571,7 @@ function scheduleAiAfterPlayback(video, preparedPayload, videoId, runId) {
       startMachinePreview(preparedPayload, videoId, runId, machineRunId).catch(() => {});
     }
     if (autoAiDelayTimer) clearTimeout(autoAiDelayTimer);
-    setPanelState("idle", "机翻预览已启用 · 播放 5 秒后启用 AI");
+    setPanelState("idle", "正在准备机翻预览 · 播放 5 秒后启用 AI");
     autoAiDelayTimer = setTimeout(() => {
       autoAiDelayTimer = null;
       if (runId !== autoTranslationRun || getVideoId() !== videoId || video.paused || video.ended) return;
@@ -1552,7 +1585,7 @@ function scheduleAiAfterPlayback(video, preparedPayload, videoId, runId) {
     autoAiDelayTimer = null;
     if (runId === autoTranslationRun && getVideoId() === videoId) {
       setPanelState("idle", machineStarted
-        ? "机翻预览已启用 · 继续播放 5 秒后启用 AI"
+        ? "正在准备机翻预览 · 继续播放 5 秒后启用 AI"
         : "播放后将启用机翻预览");
     }
   };
@@ -1575,6 +1608,7 @@ async function maybeAutoTranslateCurrentVideo() {
   autoTranslationVideoId = videoId;
   machinePreviewVideoId = "";
   machinePreviewCues = [];
+  machinePreviewFeedback = null;
 
   const preparation = await prepareAiSubtitles().catch((error) => {
     setPanelState("error", error?.message || String(error));

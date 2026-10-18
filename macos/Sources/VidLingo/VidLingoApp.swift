@@ -25,7 +25,10 @@ struct VidLingoApp: App {
                     .keyboardShortcut("r", modifiers: [.command])
                 Button("停止本机服务") { model.stopServer() }
                 Divider()
-                Button("复制本机地址") { model.copyLocalBaseURL() }
+                Button("连接诊断") {
+                    model.section = .advanced
+                    appDelegate.openMainWindow?()
+                }
             }
         }
 
@@ -90,9 +93,6 @@ struct MenuBarContent: View {
 
     var body: some View {
         Text("VidLingo · \(model.server.state.label)")
-        if model.server.isRunning {
-            Text(model.localBaseURL)
-        }
         Divider()
         Button("打开主窗口") {
             NSApp.activate(ignoringOtherApps: true)

@@ -423,7 +423,25 @@ final class AppModel: ObservableObject {
     func copyLocalBaseURL() {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(localBaseURL, forType: .string)
-        banner = Banner(text: "已复制 \(localBaseURL)", kind: .success)
+        banner = Banner(text: "已复制本机连接地址", kind: .success)
+    }
+
+    func copyConnectionDiagnostics() {
+        var lines = [
+            "VidLingo 连接诊断",
+            "服务状态：\(server.state.label)",
+            "连接地址：\(localBaseURL)",
+            "服务版本：\(modelVersion)",
+            "系统版本：\(ProcessInfo.processInfo.operatingSystemVersionString)"
+        ]
+        if case let .failed(message) = server.state { lines.append("错误详情：\(message)") }
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(lines.joined(separator: "\n"), forType: .string)
+        banner = Banner(text: "已复制连接诊断信息", kind: .success)
+    }
+
+    private var modelVersion: String {
+        status?.version ?? Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "—"
     }
 
     func openChromeExtensions() {

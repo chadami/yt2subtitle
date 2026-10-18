@@ -12,7 +12,7 @@ function render(mode, title, subtitle) {
 }
 
 async function load() {
-  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
   const base = String(settings.apiBase || "").replace(/\/+$/, "");
   const isLocal = /^https?:\/\/(127\.0\.0\.1|localhost|\[::1\])/i.test(base);
 
@@ -22,7 +22,14 @@ async function load() {
   }
 
   try {
-    const response = await fetch(`${base}/api/local/status`, { signal: AbortSignal.timeout(2500) });
+    if (!sessionToken) {
+      render("offline", zh ? "未连接" : "Not connected", zh ? "请在设置中重新连接 VidLingo" : "Reconnect to VidLingo in settings");
+      return;
+    }
+    const response = await fetch(`${base}/api/local/status`, {
+      headers: { Authorization: `Bearer ${sessionToken}` }, signal: AbortSignal.timeout(2500)
+    });
+    if (!response.ok) throw new Error("Connection unavailable");
     const data = await response.json();
     if (data?.ai?.configured) {
       render("connected", zh ? "已连接" : "Connected", `${data.ai.provider} · ${data.ai.model}`);

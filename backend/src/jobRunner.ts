@@ -9,7 +9,7 @@ import {
 import { query } from "./db.js";
 import { sendSubtitleReadyEmail } from "./email.js";
 import { loadUserAiConfig } from "./routes/ai.js";
-import { machineTranslationConfigured, translateMachineCues } from "./machineTranslation.js";
+import { ensureJobMachineTranslation } from "./jobMachineTranslation.js";
 import { chunkCues, finalizeTranslatedCues, prepareSourceCues, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
 import { getTranslationStrategy } from "./translationStrategies.js";
 import {
@@ -87,48 +87,19 @@ export async function processSubtitleJob(jobId: string) {
     "update caption_sources set clean_cues_json = $1 where id = $2",
     [JSON.stringify(cleanCues), record.caption_source_id]
   );
-  await query("delete from translation_job_chunks where job_id = $1", [jobId]);
-  const existingMachineTranslation = await query<{ count: string }>(
-    "select count(*)::text as count from translation_job_machine_chunks where job_id = $1",
-    [jobId]
+  // A desktop restart must not discard AI batches already paid for and stored.
+  const savedChunks = await query<{ chunk_index: number; cues_json: TranslatedCue[] | string }>(
+    "select chunk_index, cues_json from translation_job_chunks where job_id = $1", [jobId]
   );
-  const previewRun = record.machine_run_id
-    ? await query<{ status: string }>(
-      "select status from machine_translation_runs where id = $1 and user_id = $2",
-      [record.machine_run_id, record.user_id]
-    )
-    : null;
-  const previewIsHandlingMachineTranslation = previewRun?.rows[0]?.status === "active"
-    || previewRun?.rows[0]?.status === "completed"
-    || previewRun?.rows[0]?.status === "cancelled";
-
-  if (
-    machineTranslationConfigured()
-    && Number(existingMachineTranslation.rows[0]?.count || 0) === 0
-    && !previewIsHandlingMachineTranslation
-  ) {
-    translateMachineCues({
-      cues: cleanCues,
-      sourceLanguage: record.source_lang,
-      targetLanguage: record.target_lang,
-      onBatch: async ({ batchIndex, cues }) => {
-        await query(
-          `insert into translation_job_machine_chunks (job_id, chunk_index, provider, cues_json)
-           values ($1, $2, 'google', $3)
-           on conflict (job_id, chunk_index)
-           do update set cues_json = excluded.cues_json, updated_at = now()`,
-          [jobId, batchIndex, JSON.stringify(cues)]
-        );
-      },
-      shouldContinue: async () => {
-        const aiChunks = await query<{ count: string }>(
-          "select count(*)::text as count from translation_job_chunks where job_id = $1",
-          [jobId]
-        );
-        return Number(aiChunks.rows[0]?.count || 0) === 0;
-      }
-    }).catch((error) => console.error(`Quick machine translation failed for job ${jobId}`, error));
+  const completedChunks = new Map<number, TranslatedCue[]>();
+  for (const row of savedChunks.rows) {
+    const cues = typeof row.cues_json === "string" ? JSON.parse(row.cues_json) : row.cues_json;
+    if (Array.isArray(cues) && cues.length && cues.every(cue =>
+      typeof cue.text === "string" && Number.isFinite(cue.start) && Number.isFinite(cue.end))) {
+      completedChunks.set(row.chunk_index, cues);
+    }
   }
+  await ensureJobMachineTranslation(jobId);
 
   await query("update translation_jobs set progress = 20, updated_at = now() where id = $1", [jobId]);
   let translationContext: SubtitleTranslationContext | undefined;
@@ -153,6 +124,14 @@ export async function processSubtitleJob(jobId: string) {
   const translated: TranslatedCue[] = [];
   for (let index = 0; index < chunks.length; index += 1) {
     const chunk = chunks[index];
+    const saved = completedChunks.get(index);
+    if (saved) {
+      translated.push(...saved);
+      await query("update translation_jobs set progress = $1, updated_at = now() where id = $2", [
+        25 + Math.round(((index + 1) / chunks.length) * 55), jobId
+      ]);
+      continue;
+    }
     const previousContext = index > 0 ? chunks[index - 1].slice(-8) : [];
     const nextContext = index < chunks.length - 1 ? chunks[index + 1].slice(0, 8) : [];
     const translatedChunk = attachSourceText(await translateChunk({
@@ -176,14 +155,6 @@ export async function processSubtitleJob(jobId: string) {
        do update set cues_json = excluded.cues_json, updated_at = now()`,
       [jobId, index, JSON.stringify(translatedChunk)]
     );
-    if (index === 0 && record.machine_run_id) {
-      await query(
-        `update machine_translation_runs
-         set status = 'cancelled', updated_at = now()
-         where id = $1 and user_id = $2 and status = 'active'`,
-        [record.machine_run_id, record.user_id]
-      );
-    }
     await query("update translation_jobs set progress = $1, updated_at = now() where id = $2", [
       25 + Math.round(((index + 1) / chunks.length) * 55),
       jobId

@@ -30,6 +30,7 @@ type TranslateMachineCuesInput = {
   targetLanguage: string;
   onBatch: (batch: MachineTranslationBatch) => Promise<void>;
   shouldContinue?: () => Promise<boolean>;
+  completedBatchIndexes?: Set<number>;
 };
 
 function googleLanguageCode(language: string) {
@@ -142,6 +143,7 @@ async function translateWithMacOS(input: TranslateMachineCuesInput) {
   const batches = cueBatches(input.cues);
   for (let batchIndex = 0; batchIndex < batches.length; batchIndex += 1) {
     if (input.shouldContinue && !(await input.shouldContinue())) break;
+    if (input.completedBatchIndexes?.has(batchIndex)) continue;
     const batch = batches[batchIndex];
     const raw = await runTranslateHelper(JSON.stringify({
       source: input.sourceLanguage,
@@ -178,7 +180,7 @@ async function translateWithMacOS(input: TranslateMachineCuesInput) {
     }
 
     const translations = Array.isArray(parsed.translations) ? parsed.translations as string[] : [];
-    if (translations.length !== batch.length) {
+    if (translations.length !== batch.length || translations.some(text => typeof text !== "string" || !text.trim())) {
       throw new MachineTranslationError("macos_bad_output", "系统翻译返回的条数不匹配", 502);
     }
 
@@ -213,6 +215,7 @@ export async function translateMachineCues(input: TranslateMachineCuesInput) {
   const batches = cueBatches(input.cues);
   for (let batchIndex = 0; batchIndex < batches.length; batchIndex += 1) {
     if (input.shouldContinue && !(await input.shouldContinue())) break;
+    if (input.completedBatchIndexes?.has(batchIndex)) continue;
     const batch = batches[batchIndex];
     const response = await fetch(endpoint, {
       method: "POST",

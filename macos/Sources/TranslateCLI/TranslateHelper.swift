@@ -74,7 +74,10 @@ struct TranslateHelper {
                     byIndex[position] = response.targetText
                 }
                 for offset in 0..<chunk.count {
-                    translated.append(byIndex[offset] ?? chunk[offset])
+                    guard let text = byIndex[offset], !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                        return HelperOutput(ok: false, status: statusText, error: "incomplete_response")
+                    }
+                    translated.append(text)
                 }
             } catch {
                 return HelperOutput(ok: false, status: statusText, error: describeError(error))

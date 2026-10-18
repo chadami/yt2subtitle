@@ -92,7 +92,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "TRANSLATE_MACHINE_PREVIEW") {
     translateMachinePreview(message.payload).then(
       (result) => sendResponse(result),
-      (error) => sendResponse({ ok: false, error: error.message || String(error) })
+      (error) => sendResponse({ ok: false, error: error.message || String(error), code: error.code })
     );
     return true;
   }
@@ -224,7 +224,7 @@ async function translateMachinePreview(payload) {
   });
   const data = await response.json().catch(() => ({}));
   if (response.status === 401) await clearAuthSession();
-  if (!response.ok) throw new Error(data.error || `Machine translation failed: ${response.status}`);
+  if (!response.ok) throw Object.assign(new Error(data.error || `Machine translation failed: ${response.status}`), { code: data.code });
   return { ok: true, cues: Array.isArray(data.cues) ? data.cues : [] };
 }
 
@@ -373,7 +373,9 @@ async function safeFetch(url, options) {
   try {
     return await fetch(url, options);
   } catch (error) {
-    throw new Error(`Cannot reach backend API. Check the Backend API URL in Settings. URL: ${url}`);
+    throw new Error(isLocalApiBase(url)
+      ? "无法连接 VidLingo，请打开本机应用并在插件设置中重新连接。"
+      : "无法连接翻译服务，请稍后重试。");
   }
 }
 

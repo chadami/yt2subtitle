@@ -197,14 +197,13 @@ struct MetricTile: View {
 
 struct StatusPill: View {
     let state: ServerController.State
-    let port: Int
 
     var body: some View {
         HStack(spacing: 6) {
             Circle()
                 .fill(color)
                 .frame(width: 6, height: 6)
-            Text("\(state.label) · :\(port)")
+            Text(state.label)
                 .font(.system(size: 11))
                 .foregroundStyle(Theme.secondary)
                 .monospacedDigit()

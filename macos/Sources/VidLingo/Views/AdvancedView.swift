@@ -6,10 +6,22 @@ struct AdvancedView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
-                PageHeader(title: "高级", subtitle: "端口、开机启动与运行日志")
+                PageHeader(title: "高级", subtitle: "连接诊断、开机启动与运行日志")
 
-                SectionCard(title: "服务", subtitle: nil) {
+                SectionCard(title: "连接诊断", subtitle: "仅在排查连接问题时使用") {
                     VStack(alignment: .leading, spacing: 14) {
+                        KeyValueRow(label: "服务状态", value: model.server.state.label)
+                        KeyValueRow(label: "本机地址", value: model.localBaseURL)
+                        if case let .failed(message) = model.server.state {
+                            DisclosureGroup("错误详情") {
+                                Text(message).font(.caption).textSelection(.enabled)
+                            }
+                        }
+                        HStack(spacing: 10) {
+                            Button("复制诊断信息") { model.copyConnectionDiagnostics() }.flatButton()
+                            Button("复制地址") { model.copyLocalBaseURL() }.flatButton()
+                            Button("重新启动服务") { model.restartServer() }.flatButton()
+                        }
                         HStack(spacing: 10) {
                             Text("端口")
                                 .font(.system(size: 12))
@@ -26,6 +38,11 @@ struct AdvancedView: View {
                                 .foregroundStyle(.tertiary)
                         }
 
+                    }
+                }
+
+                SectionCard(title: "服务", subtitle: nil) {
+                    VStack(alignment: .leading, spacing: 14) {
                         Toggle(isOn: Binding(
                             get: { model.config.launchAtLogin },
                             set: { model.setLaunchAtLogin($0) }

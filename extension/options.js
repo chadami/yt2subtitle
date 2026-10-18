@@ -17,7 +17,7 @@ const copy = {
     notFoundHint: "确认 VidLingo.app 已打开且状态是「运行中」，然后重试。",
     moreTitle: "更多设置",
     moreBody: "字幕语言、原文字幕、翻译历史都在 macOS 应用的「字幕输出」和「历史记录」里。",
-    advanced: "手动设置地址",
+    advanced: "连接诊断（高级）",
     save: "保存并连接",
     saved: "地址已保存，正在连接…",
     badAddress: "地址需要以 http:// 或 https:// 开头"
@@ -38,7 +38,7 @@ const copy = {
     notFoundHint: "Make sure VidLingo.app is running, then try again.",
     moreTitle: "More settings",
     moreBody: "Subtitle language, source text and history live in the app's Subtitles and History sections.",
-    advanced: "Manual address",
+    advanced: "Connection diagnostics (Advanced)",
     save: "Save and connect",
     saved: "Address saved, connecting…",
     badAddress: "Address must start with http:// or https://"
@@ -53,7 +53,6 @@ const nodes = {
   card: document.getElementById("card"),
   statusTitle: document.getElementById("statusTitle"),
   statusDetail: document.getElementById("statusDetail"),
-  address: document.getElementById("address"),
   connect: document.getElementById("connect"),
   reconnect: document.getElementById("reconnect"),
   apiBase: document.getElementById("apiBase"),
@@ -89,8 +88,6 @@ function renderConnected(base, ai) {
       ? t("connectedHint", { engine: `${ai.provider} · ${ai.model}` })
       : t("noEngine")
   );
-  nodes.address.textContent = base;
-  nodes.address.hidden = false;
   nodes.connect.hidden = true;
   nodes.reconnect.hidden = false;
   nodes.reconnect.textContent = t("reconnect");
@@ -99,7 +96,6 @@ function renderConnected(base, ai) {
 
 function renderDisconnected(title = t("notFound"), detail = t("notFoundHint")) {
   setState("error", title, detail);
-  nodes.address.hidden = true;
   nodes.connect.hidden = false;
   nodes.reconnect.hidden = true;
   nodes.connect.textContent = t("connect");
@@ -176,7 +172,7 @@ nodes.saveBase.addEventListener("click", async () => {
     await connectTo(base);
     nodes.message.textContent = "";
   } catch (error) {
-    renderDisconnected(t("notFound"), error.message || t("notFoundHint"));
+    renderDisconnected();
     nodes.message.textContent = error.message || "";
   }
 });

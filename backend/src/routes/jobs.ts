@@ -6,12 +6,14 @@ import { db, query } from "../db.js";
 import { getUserEntitlement } from "../entitlements.js";
 import { subtitleQueue } from "../queue.js";
 import { createGenerationKey, hashRawCues, PUBLIC_STYLE_ID } from "../subtitleLibrary.js";
-import { machineTranslationConfigured, MachineTranslationError, translateMachineCues } from "../machineTranslation.js";
+import { machineTranslationConfigured, machineTranslationProvider, MachineTranslationError, translateMachineCues } from "../machineTranslation.js";
 import { finalizeTranslatedCues, normalizeTranslatedText, prepareSourceCues, type TranslatedCue } from "../subtitles.js";
 import { getTranslationStrategy } from "../translationStrategies.js";
 import { loadUserAiConfig } from "./ai.js";
 
 import { decodeHistoryCursor, encodeHistoryCursor } from "../historyPagination.js";
+
+import { ensureJobMachineTranslation } from "../jobMachineTranslation.js";
 
 export const jobsRouter = Router();
 
@@ -116,7 +118,7 @@ jobsRouter.post("/machine-preview", async (req, res, next) => {
     const userId = await requireUserId(req.headers.authorization);
     machineRunUserId = userId;
     if (!machineTranslationConfigured()) {
-      return res.status(503).json({ error: "Google machine translation is not configured." });
+      return res.status(503).json({ error: "机翻预览未启用，请在 VidLingo 应用中选择机器翻译方式。", code: "machine_translation_disabled" });
     }
     const input = z.object({
       machineRunId: z.string().uuid().nullish().transform((value) => value || undefined),
@@ -146,12 +148,25 @@ jobsRouter.post("/machine-preview", async (req, res, next) => {
     }
     const cleanCues = prepareSourceCues(input.rawCues, input.captionType);
     const cues: TranslatedCue[] = [];
+    const batches: Array<{ batchIndex: number; cues: TranslatedCue[] }> = [];
+    const provider = machineTranslationProvider();
+    async function persistBatch(batch: { batchIndex: number; cues: TranslatedCue[] }) {
+      if (!machineRunId) return;
+      await query(`insert into translation_job_machine_chunks (job_id, chunk_index, provider, cues_json)
+        select id, $2, $3, $4::jsonb from translation_jobs where machine_run_id = $1 and user_id = $5
+        on conflict (job_id, chunk_index) do update set provider = excluded.provider,
+          cues_json = excluded.cues_json, updated_at = now()`,
+      [machineRunId, batch.batchIndex, provider, JSON.stringify(batch.cues), userId]);
+      await query("update machine_translation_runs set updated_at = now() where id = $1 and user_id = $2", [machineRunId, userId]);
+    }
     await translateMachineCues({
       cues: cleanCues,
       sourceLanguage: input.sourceLang,
       targetLanguage: input.targetLang,
-      onBatch: async ({ cues: batch }) => {
-        cues.push(...batch);
+      onBatch: async (batch) => {
+        cues.push(...batch.cues);
+        batches.push(batch);
+        await persistBatch(batch);
       },
       shouldContinue: machineRunId
         ? async () => {
@@ -164,6 +179,12 @@ jobsRouter.post("/machine-preview", async (req, res, next) => {
         : undefined
     });
     if (machineRunId) {
+      // Backfill batches produced before the AI job was created.
+      for (const batch of batches) await persistBatch(batch);
+      await query(`update translation_jobs set machine_translation_state = 'completed',
+        machine_translation_provider = $3, machine_translation_error = null,
+        machine_translation_code = null, machine_translation_retry_at = null
+        where machine_run_id = $1 and user_id = $2`, [machineRunId, userId, provider]);
       await query(
         `update machine_translation_runs
          set status = 'completed', updated_at = now()
@@ -180,6 +201,14 @@ jobsRouter.post("/machine-preview", async (req, res, next) => {
          where id = $1 and user_id = $2 and status = 'active'`,
         [machineRunId, machineRunUserId]
       ).catch(() => {});
+    }
+    if (machineRunId && machineRunUserId) {
+      await query(`update translation_jobs set machine_translation_state = 'waiting',
+        machine_translation_error = $3, machine_translation_code = $4,
+        machine_translation_provider = $5, machine_translation_retry_at = now() + interval '30 seconds'
+        where machine_run_id = $1 and user_id = $2`,
+      [machineRunId, machineRunUserId, error instanceof Error ? error.message : String(error),
+        error instanceof MachineTranslationError ? error.code : 'machine_translation_failed', machineTranslationProvider()]).catch(() => {});
     }
     if (error instanceof MachineTranslationError) {
       res.status(error.status).json({ error: error.message, code: error.code });
@@ -343,11 +372,13 @@ jobsRouter.post("/", async (req, res, next) => {
       if (input.machineCues?.length) {
         await client.query(
           `insert into translation_job_machine_chunks (job_id, chunk_index, provider, cues_json)
-           values ($1, 0, 'google', $2)
+           values ($1, 0, $3, $2)
            on conflict (job_id, chunk_index)
            do update set cues_json = excluded.cues_json, updated_at = now()`,
-          [jobId, JSON.stringify(input.machineCues)]
+          [jobId, JSON.stringify(input.machineCues), machineTranslationProvider()]
         );
+        await client.query(`update translation_jobs set machine_translation_state = 'completed',
+          machine_translation_provider = $2 where id = $1`, [jobId, machineTranslationProvider()]);
       }
       await client.query(
         `update user_video_usage set first_job_id = coalesce(first_job_id, $1)
@@ -423,8 +454,9 @@ async function requireJobAccess(jobId: string, authorization: string | undefined
 jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
   try {
     await requireJobAccess(req.params.jobId, req.headers.authorization);
+    await ensureJobMachineTranslation(req.params.jobId);
     const job = await query(
-      "select id as \"jobId\", status, progress, target_lang as \"targetLang\" from translation_jobs where id = $1",
+      "select id as \"jobId\", status, progress, target_lang as \"targetLang\", json_build_object('state', machine_translation_state, 'error', machine_translation_error, 'code', machine_translation_code, 'retryAt', machine_translation_retry_at) as \"machineTranslation\" from translation_jobs where id = $1",
       [req.params.jobId]
     );
     if (!job.rows[0]) return res.status(404).json({ error: "Job not found" });
@@ -473,7 +505,7 @@ jobsRouter.get("/:jobId", async (req, res, next) => {
   try {
     await requireJobAccess(req.params.jobId, req.headers.authorization);
     const result = await query(
-      "select id as \"jobId\", status, progress, error from translation_jobs where id = $1",
+      "select id as \"jobId\", status, progress, error, json_build_object('state', machine_translation_state, 'error', machine_translation_error, 'code', machine_translation_code, 'retryAt', machine_translation_retry_at) as \"machineTranslation\" from translation_jobs where id = $1",
       [req.params.jobId]
     );
     if (!result.rows[0]) return res.status(404).json({ error: "Job not found" });
