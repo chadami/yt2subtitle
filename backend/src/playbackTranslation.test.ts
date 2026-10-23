@@ -12,7 +12,7 @@ test('playback preview is bounded, follows latest seek, pauses, reuses cache and
 const fs=require('node:fs');const input=JSON.parse(fs.readFileSync(0,'utf8'));
 fs.appendFileSync(${JSON.stringify(log)},JSON.stringify(input.texts)+'\\n');
 (async()=>{for(let index=0;index<input.texts.length;index++){
- console.log(JSON.stringify({ok:true,index,translations:['预翻 '+input.texts[index]]}));
+ console.log(JSON.stringify({ok:true,index,translations:[input.texts[index]==='Line 70.'?'先打开文件。然后点击保存。最后关闭窗口。':'预翻 '+input.texts[index]]}));
  await new Promise(r=>setTimeout(r,70));
 }console.log(JSON.stringify({ok:true,done:true}));})();
 `,{mode:0o755});
@@ -42,13 +42,18 @@ fs.appendFileSync(${JSON.stringify(log)},JSON.stringify(input.texts)+'\\n');
   for(let i=0;i<500;i++){const count=(await query<{count:number}>("select count(*)::int as count from local_machine_cue_cache where source_index between 70 and 73")).rows[0].count;if(count===4)break;await delay(10);}
   assert.deepEqual((await calls())[1],['Line 70.','Line 71.','Line 72.','Line 73.']);
   const ready=await updatePlayback(owner,session,{position:700,paused:false,seeking:false,sequence:4});
-  assert.equal(ready.machineCues.length,4);assert.equal((await calls()).length,2,'cached window must not run again');
+  assert.equal(ready.machineCues.length,6,'machine preview must split one source cue into three short Chinese sentences');
+  assert.equal(ready.completedCues,4,'display splitting must not change source coverage');
+  assert.deepEqual(ready.machineCues.slice(0,3).map(cue=>cue.text),['先打开文件。','然后点击保存。','最后关闭窗口。']);
+  assert.equal((await calls()).length,2,'cached window must not run again');
   await updatePlayback(owner,session,{position:900,paused:true,seeking:false,sequence:5});await delay(100);
   assert.equal((await calls()).length,2,'paused video must not pretranslate another position');
   await assert.rejects(updatePlayback('wrong-owner',session,{position:0,paused:false,seeking:false,sequence:6}),/会话已过期/);
-  await query('insert into translation_job_chunks(job_id,chunk_index,cues_json) values($1,0,$2)',[job,JSON.stringify(raw.slice(90,94).map((cue,offset)=>({...cue,text:'AI 字幕',sourceIndexes:[90+offset]})))]);
+  await query('insert into translation_job_chunks(job_id,chunk_index,cues_json) values($1,0,$2)',[job,JSON.stringify(raw.slice(90,94).map((cue,offset)=>({...cue,text:offset===0?'先打开文件。然后点击保存。最后关闭窗口。':'AI 字幕',sourceIndexes:[90+offset]})))]);
   const ai=await updatePlayback(owner,session,{position:900,paused:false,seeking:false,sequence:6});
-  assert.equal(ai.aiCues.length,4);await delay(100);assert.equal((await calls()).length,2,'AI covered window must not be machine translated');
+  assert.equal(ai.aiCues.length,6,'AI playback must use the same short Chinese display policy');
+  assert.equal(ai.completedCues,4);
+  await delay(100);assert.equal((await calls()).length,2,'AI covered window must not be machine translated');
   closePlayback(owner,session);assert.equal(hasPlaybackWindow(owner,caption,'zh-Hans'),false);
   await ensureJobMachineTranslation(job);assert.equal((await calls()).length,2,'closing browser must not trigger whole-video fallback');
   const reopened=await openPlayback({...input,position:700,paused:true});assert.ok('sessionId' in reopened);session=(reopened as {sessionId:string}).sessionId;

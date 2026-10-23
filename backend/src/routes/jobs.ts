@@ -10,6 +10,7 @@ import { db, query } from "../db.js";
 import { subtitleQueue } from "../queue.js";
 import { createGenerationKey, hashRawCues, DEFAULT_STYLE_ID } from "../subtitleLibrary.js";
 import { finalizeTranslatedCues, normalizeTranslatedText, prepareSourceCues, type TranslatedCue } from "../subtitles.js";
+import { isChineseTarget } from "../chineseSubtitles.js";
 import { getTranslationStrategy } from "../translationStrategies.js";
 import { loadLocalAiConfig } from "./ai.js";
 
@@ -256,7 +257,8 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
     const translated = chunks.rows.flatMap((row) => parseChunkCues(row.cues));
     const targetLanguage = String(job.rows[0].targetLang || "");
     const cues = finalizeTranslatedCues(translated, targetLanguage).map(({ start, end, text, sourceText }) => ({ start, end, text, sourceText }));
-    const machineCues = machineChunks.rows.flatMap((row) => parseChunkCues(row.cues))
+    const rawMachineCues = machineChunks.rows.flatMap((row) => parseChunkCues(row.cues));
+    const machineCues = (isChineseTarget(targetLanguage) ? finalizeTranslatedCues(rawMachineCues, targetLanguage) : rawMachineCues)
       .map(({ start, end, text, sourceText }) => ({
         start,
         end,

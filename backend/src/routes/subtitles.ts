@@ -4,6 +4,8 @@ import { z } from "zod";
 import { requireUserId } from "../auth.js";
 import { query } from "../db.js";
 import { hashRawCues, DEFAULT_STYLE_ID } from "../subtitleLibrary.js";
+import { finalizeTranslatedCues, toVtt, type TranslatedCue } from "../subtitles.js";
+import { isChineseTarget } from "../chineseSubtitles.js";
 
 export const subtitlesRouter = Router();
 
@@ -14,7 +16,10 @@ const rawCueSchema = z.object({
 });
 
 function subtitleResponse(row: Record<string, unknown>) {
-  const cues = typeof row.cues === "string" ? JSON.parse(row.cues) : row.cues;
+  const savedCues = (typeof row.cues === "string" ? JSON.parse(row.cues) : row.cues) as TranslatedCue[];
+  // Apply the display policy to existing local subtitles without regenerating translations.
+  const chinese = isChineseTarget(String(row.targetLang || ""));
+  const cues = chinese ? finalizeTranslatedCues(savedCues, String(row.targetLang)) : savedCues;
   return {
     status: "completed",
     subtitleId: row.subtitleId,
@@ -26,7 +31,7 @@ function subtitleResponse(row: Record<string, unknown>) {
     strategyVersion: row.strategyVersion,
     accessSource: "local",
     cues,
-    vttText: row.vttText
+    vttText: chinese ? toVtt(cues) : row.vttText
   };
 }
 
@@ -103,12 +108,7 @@ subtitlesRouter.get("/by-video/:videoId", async (req, res, next) => {
       [req.params.videoId, sourceLang, targetLang, userId]
     );
     if (!result.rows[0]) return res.status(404).json({ status: "missing" });
-    const row = result.rows[0] as { cues?: unknown };
-    res.json({
-      status: "completed",
-      ...result.rows[0],
-      cues: typeof row.cues === "string" ? JSON.parse(row.cues) : row.cues
-    });
+    res.json(subtitleResponse(result.rows[0]));
   } catch (error) {
     next(error);
   }

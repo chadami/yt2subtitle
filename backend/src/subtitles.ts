@@ -1,3 +1,5 @@
+import { isChineseTarget, segmentChineseCues } from "./chineseSubtitles.js";
+
 export type RawCue = {
   start: number;
   end: number;
@@ -1049,6 +1051,7 @@ function distributeIndexes(indexes: number[] | undefined, partIndex: number, par
 }
 
 export function enforceSubtitleLimits(cues: TranslatedCue[], targetLanguage?: string) {
+  if (isChineseTarget(targetLanguage)) return segmentChineseCues(sanitizeTiming(cues));
   const output: TranslatedCue[] = [];
 
   for (const cue of sanitizeTiming(cues)) {
@@ -1192,6 +1195,8 @@ function balanceJapaneseReadingSpeed(cues: TranslatedCue[], targetLanguage?: str
 }
 
 export function finalizeTranslatedCues(cues: TranslatedCue[], targetLanguage?: string) {
+  // Preserve spoken short sentences instead of merging them back to the old 42-character target.
+  if (isChineseTarget(targetLanguage)) return enforceSubtitleLimits(cues, targetLanguage);
   const punctuated = addContinuationPunctuation(
     enforceSubtitleLimits(
       enforceReadableDurations(

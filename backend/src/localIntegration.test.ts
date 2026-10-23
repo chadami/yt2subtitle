@@ -54,12 +54,17 @@ test("local access, complete startup recovery and history pagination", { timeout
       caption_source_id,created_by_user_id,cues_json,vtt_text)
       values('legacy-cache-test','en','ja','user','openai','test-model',$1,$2,$3,'WEBVTT')`,
       [savedCaption.rows[0].id,userId,JSON.stringify([{start:0,end:2,text:'こんにちは',sourceText:'Hello.'}])]);
+    const chineseText = '先打开文件。然后点击保存。最后关闭窗口。';
+    await query(`insert into translated_subtitles(video_id,source_lang,target_lang,provider_mode,provider,model,
+      caption_source_id,created_by_user_id,cues_json,vtt_text)
+      values('legacy-cache-test','en','zh-Hans','user','openai','test-model',$1,$2,$3,'WEBVTT')`,
+      [savedCaption.rows[0].id,userId,JSON.stringify([{start:0,end:8,text:chineseText,sourceText:'First open the file. Then save and close it.'}])]);
     if (process.env.VIDLINGO_LEGACY_SCHEMA) {
       await query("insert into user_entitlements(user_id,plan,status,generation_video_limit) values($1,'standard','expired',0)",[userId]);
     }
     // Apply the new schema after saving data, and check it is idempotent.
     await initDatabase();
-    assert.equal((await query("select * from translated_subtitles where video_id='legacy-cache-test'")).rows.length,1);
+    assert.equal((await query("select * from translated_subtitles where video_id='legacy-cache-test'")).rows.length,2);
     assert.equal(await getLocalUserId(),userId);
     await closeDatabase();
     // No worker handler: recovered jobs remain pending for an exact count.
@@ -140,6 +145,20 @@ test("local access, complete startup recovery and history pagination", { timeout
     const cachedSubtitle = await resolve.json();
     assert.equal(cachedSubtitle.accessSource,'local');
     assert.equal(cachedSubtitle.cues[0].text,'こんにちは','saved subtitles must remain readable');
+    for (const response of [
+      await fetch(base+'/api/subtitles/resolve',{method:'POST',headers:auth,body:JSON.stringify({
+        video:{videoId:'legacy-cache-test',url:'https://www.youtube.com/watch?v=legacy-cache-test'},
+        sourceLang:'en',targetLang:'zh-Hans',captionType:'manual',rawCues:raw
+      })}),
+      await fetch(base+'/api/subtitles/by-video/legacy-cache-test?sourceLang=en&targetLang=zh-Hans',{headers:auth})
+    ]) {
+      assert.equal(response.status,200);
+      const chinese = await response.json();
+      assert.deepEqual(chinese.cues.map((cue:{text:string})=>cue.text),['先打开文件。','然后点击保存。','最后关闭窗口。']);
+      assert.equal(chinese.cues[0].start,0);
+      assert.equal(chinese.cues.at(-1).end,8);
+      assert.equal((chinese.vttText.match(/-->/g)||[]).length,3,'VTT and JSON must use identical estimated segments');
+    }
     for (const route of ['/api/auth/me', '/api/admin/dashboard', '/api/account/entitlements', '/admin']) {
       assert.equal((await fetch(base + route, { headers: auth })).status, 404, route + ' must be removed');
     }

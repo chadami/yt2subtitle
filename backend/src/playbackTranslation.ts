@@ -2,7 +2,8 @@ import crypto from 'node:crypto';
 import { query } from './db.js';
 import { abortJobOperations } from './jobControl.js';
 import { machineTranslationProvider, translateMachineCues } from './machineTranslation.js';
-import { prepareSourceCues, coveredSourceIndexes, type RawCue, type CleanCue, type TranslatedCue } from './subtitles.js';
+import { prepareSourceCues, coveredSourceIndexes, finalizeTranslatedCues, type RawCue, type CleanCue, type TranslatedCue } from './subtitles.js';
+import { isChineseTarget } from './chineseSubtitles.js';
 
 type Playback = {
   id:string; owner:string; clientId:string; captionId:string; source:string; target:string; jobId?:string;
@@ -78,9 +79,11 @@ function start(s:Playback) {
 }
 function response(s:Playback) {
   const around=s.cues.filter(c=>c.end>=s.position-10&&c.start<=s.position+40);
+  // Format only the response. Persistent caches and coverage still use original source cues.
+  const format=(cues:TranslatedCue[])=>isChineseTarget(s.target)?finalizeTranslatedCues(cues,s.target):cues;
   return {ok:true,sessionId:s.id,sequence:s.sequence,state:s.state,error:s.error||null,
-    aiCues:s.ai.filter(c=>c.end>=s.position-10&&c.start<=s.position+40),
-    machineCues:around.flatMap(c=>{const value=s.cached.get(c.index);return value?[value]:[];}),
+    aiCues:format(s.ai.filter(c=>c.end>=s.position-10&&c.start<=s.position+40)),
+    machineCues:format(around.flatMap(c=>{const value=s.cached.get(c.index);return value?[value]:[];})),
     completedCues:selectedCues(s).filter(c=>s.cached.has(c.index)||s.covered.has(c.index)).length,totalCues:selectedCues(s).length};
 }
 export async function openPlayback(input:{owner:string;clientId:string;captionId:string;source:string;target:string;raw:RawCue[];captionType:'auto'|'manual';position:number;paused:boolean}) {
