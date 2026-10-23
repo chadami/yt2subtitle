@@ -455,11 +455,16 @@ final class AppModel: ObservableObject {
 
     func openBundledExtensionFolder() {
         guard let url = Bundle.main.resourceURL?.appendingPathComponent("extension", isDirectory: true),
-              FileManager.default.fileExists(atPath: url.path) else {
+              FileManager.default.fileExists(atPath: url.appendingPathComponent("manifest.json").path) else {
             banner = Banner(text: "应用内没有找到插件目录", kind: .error)
             return
         }
-        NSWorkspace.shared.activateFileViewerSelecting([url])
+        // Open the folder itself: revealing a directory nested in an app bundle
+        // can leave Finder at the enclosing package instead of its contents.
+        guard NSWorkspace.shared.open(url) else {
+            banner = Banner(text: "无法打开插件目录，请在 Finder 中打开应用包内的 Contents/Resources/extension", kind: .error)
+            return
+        }
     }
 
     func openDataFolder() {
