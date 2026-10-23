@@ -1,6 +1,7 @@
 import type { TranslatedCue } from "./subtitles.js";
 
 export const CHINESE_SUBTITLE_TARGET_LENGTH = 20;
+const CHINESE_SUBTITLE_NATURAL_LENGTH = 24;
 const MIN_ESTIMATED_DURATION = 0.65;
 const words = new Intl.Segmenter("zh", { granularity: "word" });
 
@@ -56,11 +57,22 @@ function splitSentence(text: string) {
     let length = 0;
     let cut = 1;
     let bestScore = Infinity;
+    let punctuationCut = 0;
+    let punctuationScore = Infinity;
     for (let index = 0; index < pending.length - 1; index += 1) {
       length += readingLength(pending[index]);
-      if (length > CHINESE_SUBTITLE_TARGET_LENGTH) break;
+      if (length > CHINESE_SUBTITLE_NATURAL_LENGTH) break;
       if (!length) continue;
-      // Prefer a clause boundary; otherwise balance the pieces at whole-word boundaries.
+      // Search beyond the target before considering a guessed word boundary.
+      // A 21-character clause is preferable to cutting a word just to stay under 20.
+      if (weakBoundary(pending[index]) && length >= 4 && remaining - length >= 4) {
+        const score = Math.abs(length - CHINESE_SUBTITLE_TARGET_LENGTH);
+        if (score < punctuationScore) {
+          punctuationScore = score;
+          punctuationCut = index + 1;
+        }
+      }
+      if (length > CHINESE_SUBTITLE_TARGET_LENGTH) continue;
       const awkward = /[的地得把被和与及从对向让使将很更最]$/u.test(pending[index].trim())
         || /^[的地得了着过]/u.test(pending[index + 1].trim());
       const score = Math.abs(length - ideal) - (weakBoundary(pending[index]) && length >= 4 ? 12 : 0)
@@ -69,6 +81,16 @@ function splitSentence(text: string) {
         bestScore = score;
         cut = index + 1;
       }
+    }
+    if (punctuationCut) {
+      parts.push(pending.splice(0, punctuationCut).join("").trim());
+      continue;
+    }
+    // Keep a slightly longer complete phrase rather than trusting a potentially
+    // ambiguous dictionary segmentation to split it into two short fragments.
+    if (remaining <= CHINESE_SUBTITLE_NATURAL_LENGTH) {
+      parts.push(pending.join("").trim());
+      break;
     }
     parts.push(pending.splice(0, cut).join("").trim());
   }

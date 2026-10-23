@@ -93,3 +93,37 @@ test("Chinese formatting keeps an indivisible long Latin token and standalone mu
   assert.equal(result.at(-1)?.text, "[音乐]");
   verify(input, result);
 });
+
+test("Chinese keeps the 21-character clause in the reported Apple video intact", () => {
+  const input = [{ start: 173.4, end: 180.8,
+    text: "苹果希望用户会像对待其他钟爱的苹果产品一样，让这部手机融入日常。" }];
+  const result = finalizeTranslatedCues(input, "zh-Hans");
+  assert.deepEqual(result.map(cue => cue.text), [
+    "苹果希望用户会像对待其他钟爱的苹果产品一样，", "让这部手机融入日常。"
+  ]);
+  assert.equal(length(result[0].text), 21);
+  assert.equal(result[0].end, 173.4 + (180.8 - 173.4) * 21 / 30);
+  verify(input, result);
+});
+
+test("Chinese allows natural punctuation at 21 through 24 characters without a video-specific dictionary", () => {
+  for (let count = 21; count <= 24; count += 1) {
+    const clause = "这".repeat(count - 4) + "非常合理";
+    const input = [{ start: 0, end: 12, text: clause + "，接下来我们再看实际结果。" }];
+    const result = finalizeTranslatedCues(input, "zh");
+    assert.equal(result[0].text, clause + "，");
+    assert.ok(result.every(cue => length(cue.text) <= 24));
+    verify(input, result);
+  }
+});
+
+test("Chinese keeps an unpunctuated 21 to 24 character phrase intact but still splits longer text", () => {
+  for (let count = 21; count <= 24; count += 1) {
+    const input = [{ start: 0, end: 6, text: "这".repeat(count) }];
+    assert.equal(finalizeTranslatedCues(input, "zh").length, 1);
+  }
+  const input = [{ start: 0, end: 12, text: "这".repeat(25) + "，接下来继续。" }];
+  const result = finalizeTranslatedCues(input, "zh");
+  assert.ok(result.every(cue => length(cue.text) <= 24));
+  verify(input, result);
+});

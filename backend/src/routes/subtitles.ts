@@ -15,11 +15,21 @@ const rawCueSchema = z.object({
   text: z.string()
 });
 
-function subtitleResponse(row: Record<string, unknown>) {
+async function subtitleResponse(row: Record<string, unknown>) {
   const savedCues = (typeof row.cues === "string" ? JSON.parse(row.cues) : row.cues) as TranslatedCue[];
   // Apply the display policy to existing local subtitles without regenerating translations.
   const chinese = isChineseTarget(String(row.targetLang || ""));
-  const cues = chinese ? finalizeTranslatedCues(savedCues, String(row.targetLang)) : savedCues;
+  let formattingCues = savedCues;
+  if (chinese && row.jobId) {
+    // Saved display cues may already contain an obsolete break inside a word.
+    // Reflow from the original AI batches only when they reproduce all saved text.
+    const chunks = await query<{ cues: TranslatedCue[] | string }>(
+      'select cues_json as cues from translation_job_chunks where job_id=$1 order by chunk_index', [row.jobId]);
+    const originals = chunks.rows.flatMap(chunk => typeof chunk.cues === "string" ? JSON.parse(chunk.cues) : chunk.cues);
+    const content = (items: TranslatedCue[]) => items.map(cue => cue.text.replace(/\s/gu, "")).join("");
+    if (originals.length && content(originals) === content(savedCues)) formattingCues = originals;
+  }
+  const cues = chinese ? finalizeTranslatedCues(formattingCues, String(row.targetLang)) : savedCues;
   return {
     status: "completed",
     subtitleId: row.subtitleId,
@@ -73,7 +83,7 @@ subtitlesRouter.post("/resolve", async (req, res, next) => {
     const privateResult = await query(
       `select id as "subtitleId", video_id as "videoId", source_lang as "sourceLang",
        target_lang as "targetLang", style_id as "styleId", strategy_id as "strategyId",
-       strategy_version as "strategyVersion", cues_json as cues, vtt_text as "vttText"
+       strategy_version as "strategyVersion", job_id as "jobId", cues_json as cues, vtt_text as "vttText"
        from translated_subtitles
        where caption_source_id = $1 and target_lang = $2 and style_id = $3
          and created_by_user_id = $4
@@ -81,7 +91,7 @@ subtitlesRouter.post("/resolve", async (req, res, next) => {
       [captionSourceId, input.targetLang, input.styleId, userId]
     );
     if (privateResult.rows[0]) {
-      return res.json({ ...subtitleResponse(privateResult.rows[0]), captionSourceId, cueHash });
+      return res.json({ ...await subtitleResponse(privateResult.rows[0]), captionSourceId, cueHash });
     }
 
     return res.status(404).json({ status: "missing", captionSourceId, cueHash });
@@ -100,7 +110,7 @@ subtitlesRouter.get("/by-video/:videoId", async (req, res, next) => {
     const result = await query(
       `select id as "subtitleId", video_id as "videoId", source_lang as "sourceLang",
        target_lang as "targetLang", strategy_id as "strategyId", strategy_version as "strategyVersion",
-       cues_json as cues, vtt_text as "vttText"
+       job_id as "jobId", cues_json as cues, vtt_text as "vttText"
        from translated_subtitles
        where video_id = $1 and ($2::text is null or source_lang = $2) and target_lang = $3
        and provider_mode = 'user' and created_by_user_id = $4
@@ -108,7 +118,7 @@ subtitlesRouter.get("/by-video/:videoId", async (req, res, next) => {
       [req.params.videoId, sourceLang, targetLang, userId]
     );
     if (!result.rows[0]) return res.status(404).json({ status: "missing" });
-    res.json(subtitleResponse(result.rows[0]));
+    res.json(await subtitleResponse(result.rows[0]));
   } catch (error) {
     next(error);
   }

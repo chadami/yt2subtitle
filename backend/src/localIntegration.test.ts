@@ -55,10 +55,16 @@ test("local access, complete startup recovery and history pagination", { timeout
       values('legacy-cache-test','en','ja','user','openai','test-model',$1,$2,$3,'WEBVTT')`,
       [savedCaption.rows[0].id,userId,JSON.stringify([{start:0,end:2,text:'こんにちは',sourceText:'Hello.'}])]);
     const chineseText = '先打开文件。然后点击保存。最后关闭窗口。';
+    const chineseJob = (await query<{id:string}>('select id from translation_jobs where user_id=$1 limit 1',[userId])).rows[0].id;
     await query(`insert into translated_subtitles(video_id,source_lang,target_lang,provider_mode,provider,model,
-      caption_source_id,created_by_user_id,cues_json,vtt_text)
-      values('legacy-cache-test','en','zh-Hans','user','openai','test-model',$1,$2,$3,'WEBVTT')`,
-      [savedCaption.rows[0].id,userId,JSON.stringify([{start:0,end:8,text:chineseText,sourceText:'First open the file. Then save and close it.'}])]);
+      caption_source_id,created_by_user_id,cues_json,vtt_text,job_id)
+      values('legacy-cache-test','en','zh-Hans','user','openai','test-model',$1,$2,$3,'WEBVTT',$4)`,
+      [savedCaption.rows[0].id,userId,JSON.stringify([
+        {start:0,end:2,text:'先打开文'}, {start:2,end:8,text:'件。然后点击保存。最后关闭窗口。'}
+      ]),chineseJob]);
+    await query('insert into translation_job_chunks(job_id,chunk_index,cues_json) values($1,0,$2)',[
+      chineseJob,JSON.stringify([{start:0,end:8,text:chineseText,sourceText:'First open the file. Then save and close it.'}])
+    ]);
     if (process.env.VIDLINGO_LEGACY_SCHEMA) {
       await query("insert into user_entitlements(user_id,plan,status,generation_video_limit) values($1,'standard','expired',0)",[userId]);
     }

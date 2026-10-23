@@ -37,7 +37,7 @@ export const translationStrategies: TranslationStrategy[] = [
     ],
     translationGuidance: [
       "Use natural spoken Mandarin for Chinese targets.",
-      "Use natural sentence and clause punctuation so the backend can display one short spoken thought at a time, aiming for at most 20 Chinese characters per displayed subtitle. Do not merge independent short sentences with commas. Preserve all content; the backend will split longer translations and estimate their display times.",
+      "Use natural sentence and clause punctuation so the backend can display one short spoken thought at a time, aiming for 20 Chinese characters per displayed subtitle, with up to 24 when needed to preserve a natural phrase. Do not merge independent short sentences with commas. Preserve all content; the backend will split longer translations and estimate their display times.",
       "Prefer common expressions like \"所以\", \"但\", \"还有\", \"这个/它\" over stiff wording like \"因此\", \"然而\", \"此外\", or \"该/其\" when meaning is unchanged.",
       "Avoid translated-sounding sentence structure; rewrite lightly so the subtitle sounds like something a Chinese speaker would actually say.",
       "Keep names, technical terms, examples, caveats, and contrasts accurate."
