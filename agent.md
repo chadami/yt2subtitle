@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project is a Chrome extension plus server system for generating higher-quality AI-translated YouTube subtitles.
+This project is a macOS local application plus Chrome extension for generating higher-quality AI-translated YouTube subtitles. It has no cloud backend, accounts, memberships, or admin console.
 
 The product goal is not only "translate captions", but to improve the full subtitle experience:
 
@@ -15,21 +15,13 @@ The product goal is not only "translate captions", but to improve the full subti
 - Keep final subtitle timing stable by deriving timestamps from cleaned source cues, not free-form AI-generated times.
 - Load completed AI subtitles automatically when the user opens the same YouTube video again.
 
-## Current Prototype
+## Runtime
 
-The current local prototype is:
-
-- `ai_youtube_subtitle.py`
-
-It can:
-
-- List available YouTube caption tracks.
-- Download raw captions.
-- Clean overlapping subtitle cues.
-- Use DeepSeek/OpenAI-compatible APIs for translation.
-- Output VTT/SRT subtitles.
-- Use video metadata as translation context.
-- Optionally compress long translated subtitles.
+- SwiftUI application in `macos/Sources/VidLingo` manages the embedded Node service and Keychain.
+- `backend/src/start-local.ts` runs the API and in-process task runner.
+- PGlite persists local history and subtitle data. No external database or Redis is needed.
+- The Chrome extension connects only to the loopback service using a local token.
+- `ai_youtube_subtitle.py` and `evaluation/` are independent developer tools.
 
 ## Engineering Principles
 
@@ -57,60 +49,30 @@ Keep Chrome extension permissions minimal.
 - Do not collect passive browsing history.
 - Only process videos the user explicitly interacts with.
 
-Keep future account upgrades simple.
+Keep the local runtime simple.
 
-- Do not make `clientId` the permanent user model.
-- Resolve anonymous client IDs into internal `userId`.
-- Store jobs, subtitles, and usage against `userId`.
-- Add email/Google identities later without rewriting subtitle job logic.
-
-Keep provider support modular.
-
-- Do not hard-code a single AI provider into business logic.
-- Support provider config records such as DeepSeek, OpenAI, or future OpenAI-compatible APIs.
-- Treat platform-owned API keys as server-side secrets in production.
-- Future user-provided API keys should be encrypted server-side or stored only locally when explicitly designed that way.
-- Business logic should support both platform credits and user-owned AI API keys.
-
-Keep monetization extensible.
-
-- Estimate credits after captions are downloaded, before creating a paid translation job.
-- Show the estimated credit cost in the extension UI for the current video.
-- Do not charge credits until a job is accepted for processing.
-- Store credit ledger entries instead of mutating balances without an audit trail.
-- Keep international and China payment integrations behind a payment provider abstraction.
-
-## Suggested Runtime Architecture
-
-MVP production architecture:
-
-- Chrome MV3 extension
-- Backend API service
-- Background worker for subtitle jobs
-- Postgres for users, videos, jobs, and subtitle results
-- Redis/BullMQ or equivalent queue
-- DeepSeek as initial AI provider
-
-Recommended hosting for MVP:
-
-- Render Web Service for API
-- Render Background Worker for jobs
-- Postgres
-- Redis / Key Value
+- Preserve the existing internal user ID so updates can read saved tasks and subtitles.
+- Keep local token, Origin and Host checks; no JWT, email login, billing or public subtitle sharing.
+- Store API keys in Keychain, never in extension storage or database configuration records.
+- Keep support for the configured AI providers and custom compatible endpoints.
+- Run machine translation only after AI retries are exhausted, starting at the failed AI batch.
+- Reuse saved AI and machine translation batches when retrying or restarting.
+- Keep existing database rows and legacy tables during additive migrations.
 
 ## Do Not Do
 
-- Do not put shared production AI API keys inside the Chrome extension.
-- Do not rely on Chrome extension service workers for long-running translation jobs.
-- Do not make email registration mandatory for the first MVP.
-- Do not let AI directly control final subtitle timing unless there is a separate validation layer.
-- Do not create duplicate translation jobs for the same `videoId + sourceLang + targetLang` while an existing job is running.
-- Do not bind payment or credit records directly to anonymous `clientId`; resolve to `userId` first.
+- Do not expose the API beyond loopback.
+- Do not put AI API keys inside the Chrome extension.
+- Do not run long translation tasks in the extension service worker.
+- Do not reintroduce accounts, memberships, shared subtitles or a remote backend.
+- Do not let AI directly control final subtitle timing without validation.
+- Do not create duplicate jobs while the same local generation key is active.
+- Do not restart or replace a running application as part of routine source cleanup.
 
 ## Important Product Defaults
 
-- Start with anonymous users using a generated `clientId`.
-- Add email sign-in code / Google login later.
-- Use browser extension notifications before email notifications.
-- Cache completed subtitles server-side and locally.
-- Make subtitle generation explicit: user clicks to generate.
+- Connect the extension to the local app without signing in.
+- Cache completed subtitles locally.
+- Prefer browser notifications to external notification services.
+- Preserve user-controlled generation and automatic-translation settings.
+- For current setup and packaging, follow README.md and macos/README.md.

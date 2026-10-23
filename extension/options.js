@@ -20,7 +20,7 @@ const copy = {
     advanced: "连接诊断（高级）",
     save: "保存并连接",
     saved: "地址已保存，正在连接…",
-    badAddress: "地址需要以 http:// 或 https:// 开头"
+    badAddress: "请填写本机地址（localhost 或 127.0.0.1）"
   },
   en: {
     subtitle: "AI subtitles for YouTube",
@@ -41,7 +41,7 @@ const copy = {
     advanced: "Connection diagnostics (Advanced)",
     save: "Save and connect",
     saved: "Address saved, connecting…",
-    badAddress: "Address must start with http:// or https://"
+    badAddress: "Use a local address (localhost or 127.0.0.1)"
   }
 };
 
@@ -125,7 +125,7 @@ async function connectTo(base) {
 
   chrome.runtime.sendMessage({ type: "SYNC_PREFERENCES" }).catch(() => {});
   renderConnected(base, session.ai);
-  if (session.version) nodes.version.textContent = `v${session.version}`;
+  nodes.version.textContent = `插件 v${chrome.runtime.getManifest().version}`;
   return session;
 }
 
@@ -161,7 +161,7 @@ nodes.reconnect.addEventListener("click", autoConnect);
 
 nodes.saveBase.addEventListener("click", async () => {
   const base = normalizeBase(nodes.apiBase.value);
-  if (!/^https?:\/\//i.test(base)) {
+  if (!/^https?:\/\//i.test(base) || !isLocalBase(base)) {
     nodes.message.textContent = t("badAddress");
     return;
   }

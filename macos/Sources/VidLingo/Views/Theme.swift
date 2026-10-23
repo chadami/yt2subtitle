@@ -291,6 +291,7 @@ struct JobRow: View {
                     .foregroundStyle(Theme.secondary)
             }
             Spacer(minLength: 0)
+            StopJobButton(job: job)
             if let createdAt = job.createdAt, let date = ISO8601DateFormatter().date(from: createdAt) {
                 Text(relative(date))
                     .font(.system(size: 10.5))
@@ -302,6 +303,8 @@ struct JobRow: View {
     }
 
     private var color: Color {
+        if job.isCompleted { return .green }
+        if job.isSystemTranslating { return .orange }
         switch job.status {
         case "completed": return Theme.green
         case "failed": return .red

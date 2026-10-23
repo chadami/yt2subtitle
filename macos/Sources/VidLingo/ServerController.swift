@@ -22,7 +22,6 @@ final class ServerController: ObservableObject {
         var config: AppConfig
         var apiKey: String
         var googleKey: String
-        var jwtSecret: String
         var localToken: String
     }
 
@@ -74,12 +73,10 @@ final class ServerController: ObservableObject {
         process.currentDirectoryURL = appDir
 
         var environment = ProcessInfo.processInfo.environment
-        environment["LOCAL_MODE"] = "1"
         environment["HOST"] = "127.0.0.1"
         environment["PORT"] = String(options.config.port)
         environment["NODE_ENV"] = "production"
         environment["DATA_DIR"] = AppPaths.dataDir.path
-        environment["JWT_SECRET"] = options.jwtSecret
         environment["LOCAL_TOKEN"] = options.localToken
         environment["LOCAL_AI_PROVIDER"] = options.config.effectiveProvider
         environment["LOCAL_AI_API_KEY"] = options.apiKey

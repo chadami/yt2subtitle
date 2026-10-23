@@ -1,11 +1,11 @@
+import { evaluationAiConfig } from "./ai-config.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { systemAiConfig } from "../../backend/dist/ai.js";
 
 const outputRoot = path.resolve(process.argv[2] || "evaluation/runs/2026-07-22-ja-pilot-001/output");
 const force = process.argv.includes("--force");
 const outputPath = path.join(outputRoot, "verified-semantic-issues.json");
-const aiConfig = systemAiConfig();
+const aiConfig = evaluationAiConfig();
 const apiBase = String(process.env.DEEPSEEK_API_BASE || "https://api.deepseek.com").replace(/\/$/, "");
 
 function normalized(text) {

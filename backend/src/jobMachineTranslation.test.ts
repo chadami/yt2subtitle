@@ -18,11 +18,10 @@ fs.appendFileSync(${JSON.stringify(calls)}, input.texts[0] + '\\n');
 if (!fs.existsSync(${JSON.stringify(ready)})) console.log(JSON.stringify({ok:false,error:'not_installed'}));
 else if (input.texts[0] === 'source 50.' && !fs.existsSync(${JSON.stringify(failedOnce)})) {
  fs.writeFileSync(${JSON.stringify(failedOnce)},'');console.log(JSON.stringify({ok:false,error:'temporary_failure'}));
-} else console.log(JSON.stringify({ok:true,translations:input.texts.map(t=>'译文 '+t)}));
+} else { input.texts.forEach((t,index)=>console.log(JSON.stringify({ok:true,index,translations:['译文 '+t]}))); console.log(JSON.stringify({ok:true,done:true})); }
 `, { mode: 0o755 });
-  Object.assign(process.env, { LOCAL_MODE:'1', DATA_DIR:path.join(dir,'data'), LOCAL_MT_PROVIDER:'macos', LOCAL_TRANSLATE_HELPER:helper,
-    LOCAL_AI_PROVIDER:'openai', LOCAL_AI_API_KEY:'test-only-key', LOCAL_AI_MODEL:'test-model',
-    JWT_SECRET:'machine-retry-test-only-secret-24' });
+  Object.assign(process.env, { DATA_DIR:path.join(dir,'data'), LOCAL_MT_PROVIDER:'macos', LOCAL_TRANSLATE_HELPER:helper,
+    LOCAL_AI_PROVIDER:'openai', LOCAL_AI_API_KEY:'test-only-key', LOCAL_AI_MODEL:'test-model', });
   const { initDatabase } = await import('./migrate.js');
   const { query, closeDatabase } = await import('./db.js');
   const { getLocalUserId } = await import('./auth.js');
@@ -99,7 +98,7 @@ else if (input.texts[0] === 'source 50.' && !fs.existsSync(${JSON.stringify(fail
       return new Response(JSON.stringify({choices:[{message:{content:'{}'}}]}),{status:200,headers:{'Content-Type':'application/json'}});
     };
     try { await processSubtitleJob(id); } finally { globalThis.fetch = originalFetch; }
-    assert.equal(aiRequests,1,'only the context request is needed; saved AI chunks must not be regenerated');
+    assert.equal(aiRequests,0,'saved AI chunks must not be regenerated or trigger an optional context request');
     assert.equal((await query<{status:string}>('select status from translation_jobs where id=$1',[id])).rows[0].status,'completed');
     assert.equal((await query('select * from translation_job_chunks where job_id=$1',[id])).rows.length,aiChunks.length);
 

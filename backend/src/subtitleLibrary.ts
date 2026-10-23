@@ -1,10 +1,10 @@
 import crypto from "node:crypto";
-import { db, query } from "./db.js";
-import { getUserEntitlement } from "./entitlements.js";
+import { query } from "./db.js";
 import type { RawCue, TranslatedCue } from "./subtitles.js";
 
+// Preserve this opaque cache version so existing local generation keys stay valid.
 export const PIPELINE_VERSION = "public-library-v1";
-export const PUBLIC_STYLE_ID = "accurate";
+export const DEFAULT_STYLE_ID = "accurate";
 
 export function hashRawCues(rawCues: RawCue[]) {
   const stableCues = rawCues.map((cue) => ({
@@ -111,91 +111,11 @@ export function assessSubtitleQuality(
   };
 }
 
-export async function promotePublicSubtitle(input: {
-  subtitleId: string;
-  userId: string;
-  captionSourceId: string;
-  targetLang: string;
-  styleId: string;
-  qualityScore: number;
-}) {
-  const entitlement = await getUserEntitlement(input.userId);
-  if (!entitlement.canContribute || input.styleId !== PUBLIC_STYLE_ID || input.qualityScore < 90) {
-    await query(
-      "update translated_subtitles set publication_status = 'private' where id = $1",
-      [input.subtitleId]
-    );
-    return "private" as const;
-  }
-
-  const client = await db.connect();
-  try {
-    await client.query("begin");
-    await client.query("select pg_advisory_xact_lock(hashtext($1))", [
-      `${input.captionSourceId}:${input.targetLang}:${input.styleId}`
-    ]);
-    const current = await client.query<{ recommended_subtitle_id: string; quality_score: number | null }>(
-      `select s.recommended_subtitle_id, t.quality_score
-       from public_subtitle_selections s
-       join translated_subtitles t on t.id = s.recommended_subtitle_id
-       where s.caption_source_id = $1 and s.target_lang = $2 and s.style_id = $3`,
-      [input.captionSourceId, input.targetLang, input.styleId]
-    );
-    const existing = current.rows[0];
-    const shouldPromote = !existing || input.qualityScore >= Number(existing.quality_score || 0) + 5;
-    if (shouldPromote) {
-      if (existing) {
-        await client.query(
-          "update translated_subtitles set publication_status = 'archived', updated_at = now() where id = $1",
-          [existing.recommended_subtitle_id]
-        );
-      }
-      await client.query(
-        "update translated_subtitles set publication_status = 'recommended', updated_at = now() where id = $1",
-        [input.subtitleId]
-      );
-      await client.query(
-        `insert into public_subtitle_selections (
-           caption_source_id, target_lang, style_id, recommended_subtitle_id, previous_subtitle_id
-         ) values ($1, $2, $3, $4, $5)
-         on conflict (caption_source_id, target_lang, style_id)
-         do update set previous_subtitle_id = public_subtitle_selections.recommended_subtitle_id,
-           recommended_subtitle_id = excluded.recommended_subtitle_id, updated_at = now()`,
-        [input.captionSourceId, input.targetLang, input.styleId, input.subtitleId, existing?.recommended_subtitle_id || null]
-      );
-      await client.query(
-        `delete from translated_subtitles
-         where caption_source_id = $1 and target_lang = $2 and style_id = $3
-           and publication_status = 'archived' and id <> $4`,
-        [input.captionSourceId, input.targetLang, input.styleId, existing?.recommended_subtitle_id || input.subtitleId]
-      );
-    }
-    await client.query("commit");
-    return shouldPromote ? "recommended" as const : "candidate" as const;
-  } catch (error) {
-    await client.query("rollback");
-    throw error;
-  } finally {
-    client.release();
-  }
-}
-
+// Only discard temporary AI chunks of completed jobs. Keep failed-job chunks
+// (including machine fallback) so playback and resume do not lose progress.
 export async function cleanupSubtitleArtifacts() {
-  await query("delete from translation_job_chunks where updated_at < now() - interval '7 days'");
-  await query("delete from translation_job_machine_chunks where updated_at < now() - interval '7 days'");
-  await query("delete from machine_translation_runs where updated_at < now() - interval '7 days'");
-  await query(
-    `delete from translated_subtitles
-     where publication_status = 'candidate'
-       and created_at < now() - interval '30 days'
-       and id not in (
-         select id from (
-           select id, row_number() over (
-             partition by caption_source_id, target_lang, style_id
-             order by quality_score desc nulls last, created_at desc
-           ) as rank
-           from translated_subtitles where publication_status = 'candidate'
-         ) ranked where rank <= 2
-       )`
-  );
+  for (const table of ["translation_job_chunks", "translation_job_machine_chunks"]) {
+    await query(`delete from ${table} c using translation_jobs j
+      where c.job_id = j.id and j.status = 'completed' and c.updated_at < now() - interval '7 days'`);
+  }
 }

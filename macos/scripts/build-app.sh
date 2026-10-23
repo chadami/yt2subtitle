@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 MACOS="$ROOT/macos"
 WORK="$MACOS/.build-app"
-APP="$ROOT/dist/VidLingo.app"
+APP="${APP_OUTPUT:-$ROOT/dist/VidLingo.app}"
 NODE_BIN="${NODE_BIN:-$(command -v node)}"
 NPM_BIN="${NPM_BIN:-$(command -v npm)}"
 VERSION="${VERSION:-1.0.0}"
@@ -21,12 +21,13 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 
 echo "==> 1/6 构建后端"
+rm -rf "$ROOT/backend/dist"
 (cd "$ROOT" && "$NPM_BIN" --workspace backend run build)
 
 echo "==> 2/6 准备内嵌运行时"
 mkdir -p "$WORK/runtime/app"
 rm -rf "$WORK/runtime/app/dist" "$WORK/runtime/app/db"
-rsync -a "$ROOT/backend/dist" "$WORK/runtime/app/"
+rsync -a --exclude '*.test.js' "$ROOT/backend/dist" "$WORK/runtime/app/"
 rsync -a "$ROOT/backend/db" "$WORK/runtime/app/"
 cat > "$WORK/runtime/app/package.json" <<'JSON'
 {
@@ -37,14 +38,19 @@ cat > "$WORK/runtime/app/package.json" <<'JSON'
     "@electric-sql/pglite": "^0.5.10",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2",
     "zod": "^3.23.8"
   }
 }
 JSON
-if [ ! -d "$WORK/runtime/app/node_modules" ]; then
-  (cd "$WORK/runtime/app" && "$NPM_BIN" install --omit=dev --no-audit --no-fund --loglevel=error --workspaces=false)
+# Invalidate the runtime dependency cache when its manifest changes. This also
+# removes retired packages that npm may leave behind in an existing install.
+DEPENDENCY_HASH="$(shasum -a 256 "$WORK/runtime/app/package.json" | cut -d ' ' -f1)"
+DEPENDENCY_STAMP="$WORK/runtime-dependencies.sha256"
+if [ ! -f "$DEPENDENCY_STAMP" ] || [ "$(cat "$DEPENDENCY_STAMP")" != "$DEPENDENCY_HASH" ]; then
+  rm -rf "$WORK/runtime/app/node_modules"
 fi
+(cd "$WORK/runtime/app" && "$NPM_BIN" install --omit=dev --no-audit --no-fund --loglevel=error --workspaces=false)
+printf '%s\n' "$DEPENDENCY_HASH" > "$DEPENDENCY_STAMP"
 cp "$NODE_BIN" "$WORK/runtime/node"
 chmod +x "$WORK/runtime/node"
 

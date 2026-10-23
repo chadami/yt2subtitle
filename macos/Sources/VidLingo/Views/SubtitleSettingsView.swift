@@ -175,6 +175,7 @@ struct HistoryRow: View {
 
             Spacer(minLength: 8)
 
+            StopJobButton(job: job)
             if let urlString = job.url, let url = URL(string: urlString) {
                 Button {
                     NSWorkspace.shared.open(url)
@@ -190,6 +191,8 @@ struct HistoryRow: View {
     }
 
     private var statusColor: Color {
+        if job.isCompleted { return .green }
+        if job.isSystemTranslating { return .orange }
         switch job.status {
         case "completed": return .green
         case "failed": return .red

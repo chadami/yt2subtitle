@@ -50,7 +50,7 @@ struct AdvancedView: View {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("开机自动启动")
                                     .font(.system(size: 12))
-                                Text("登录后在后台启动本机服务，插件随时可用")
+                                Text("登录 macOS 后自动启动应用，插件随时可用")
                                     .font(.system(size: 11))
                                     .foregroundStyle(.secondary)
                             }

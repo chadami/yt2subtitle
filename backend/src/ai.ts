@@ -1,5 +1,4 @@
 import crypto from "node:crypto";
-import { env } from "./env.js";
 import type { CleanCue, TranslatedCue } from "./subtitles.js";
 import { normalizeText } from "./subtitles.js";
 import {
@@ -10,7 +9,6 @@ import {
 
 export const aiProviders = ["gemini", "deepseek", "openai", "claude", "qwen", "mimo"] as const;
 export type AiProvider = typeof aiProviders[number];
-export type ProviderMode = "system" | "user";
 
 type VideoContext = {
   title: string;
@@ -38,12 +36,13 @@ type ChatMessage = {
 };
 
 export type AiConfig = {
-  providerMode: ProviderMode;
   provider: AiProvider;
   apiKey: string;
   model: string;
   /** Optional custom / proxy endpoint. Falls back to the provider default. */
   baseUrl?: string;
+  /** Cancellation spans all requests and repair attempts in one stage. */
+  signal?: AbortSignal;
 };
 
 export function normalizeBaseUrl(value: string | undefined) {
@@ -88,39 +87,6 @@ const providerDefaults: Record<AiProvider, { baseUrl: string; fallbackModel: str
     fallbackModel: "mimo-v2-flash"
   }
 };
-
-export function systemAiConfig(): AiConfig {
-  if (!env.DEEPSEEK_API_KEY.trim()) {
-    throw new Error("DEEPSEEK_API_KEY is required for system translation mode");
-  }
-  return {
-    providerMode: "system",
-    provider: "deepseek",
-    apiKey: env.DEEPSEEK_API_KEY.trim(),
-    model: env.DEEPSEEK_MODEL
-  };
-}
-
-export function encryptApiKey(apiKey: string) {
-  const iv = crypto.randomBytes(12);
-  const key = crypto.createHash("sha256").update(env.JWT_SECRET).digest();
-  const cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
-  const encrypted = Buffer.concat([cipher.update(apiKey, "utf8"), cipher.final()]);
-  const tag = cipher.getAuthTag();
-  return [iv, tag, encrypted].map((part) => part.toString("base64url")).join(".");
-}
-
-export function decryptApiKey(value: string) {
-  const [ivText, tagText, encryptedText] = value.split(".");
-  if (!ivText || !tagText || !encryptedText) throw new Error("Invalid stored API key");
-  const key = crypto.createHash("sha256").update(env.JWT_SECRET).digest();
-  const decipher = crypto.createDecipheriv("aes-256-gcm", key, Buffer.from(ivText, "base64url"));
-  decipher.setAuthTag(Buffer.from(tagText, "base64url"));
-  return Buffer.concat([
-    decipher.update(Buffer.from(encryptedText, "base64url")),
-    decipher.final()
-  ]).toString("utf8");
-}
 
 export async function fetchProviderModels(provider: AiProvider, apiKey: string, baseUrl?: string) {
   const base = normalizeBaseUrl(baseUrl);
@@ -203,10 +169,14 @@ async function chatJson(config: AiConfig, messages: ChatMessage[], temperature: 
   throw new Error(`AI response was not valid JSON (${config.provider}/${config.model || providerDefaults[config.provider].fallbackModel})`);
 }
 
-async function fetchAi(url: string, init: RequestInit) {
+async function fetchAi(url: string, init: RequestInit, signal?: AbortSignal) {
+  signal?.throwIfAborted();
   try {
-    return await fetch(url, { ...init, signal: AbortSignal.timeout(AI_REQUEST_TIMEOUT_MS) });
+    return await fetch(url, { ...init, signal: signal
+      ? AbortSignal.any([signal, AbortSignal.timeout(AI_REQUEST_TIMEOUT_MS)])
+      : AbortSignal.timeout(AI_REQUEST_TIMEOUT_MS) });
   } catch (error) {
+    if (signal?.aborted) throw signal.reason;
     if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError")) {
       throw new Error(`AI request timed out after ${AI_REQUEST_TIMEOUT_MS / 1000}s`);
     }
@@ -216,9 +186,7 @@ async function fetchAi(url: string, init: RequestInit) {
 
 async function openAiCompatibleChat(config: AiConfig, messages: ChatMessage[], temperature: number) {
   const custom = normalizeBaseUrl(config.baseUrl);
-  const baseUrl = custom || (config.providerMode === "system"
-    ? env.DEEPSEEK_API_BASE
-    : providerDefaults[config.provider].baseUrl);
+  const baseUrl = custom || providerDefaults[config.provider].baseUrl;
   const body: Record<string, unknown> = {
     model: config.model || providerDefaults[config.provider].fallbackModel,
     messages,
@@ -234,7 +202,7 @@ async function openAiCompatibleChat(config: AiConfig, messages: ChatMessage[], t
       "Content-Type": "application/json"
     },
     body: JSON.stringify(body)
-  });
+  }, config.signal);
   if (!response.ok) throw new Error(`AI request failed: ${response.status}`);
   const data = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
   return data.choices?.[0]?.message?.content || "{}";
@@ -256,7 +224,7 @@ async function geminiChat(config: AiConfig, messages: ChatMessage[], temperature
         responseMimeType: "application/json"
       }
     })
-  });
+  }, config.signal);
   if (!response.ok) throw new Error(`AI request failed: ${response.status}`);
   const data = await response.json() as { candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }> };
   return data.candidates?.[0]?.content?.parts?.map((part) => part.text || "").join("") || "{}";
@@ -280,7 +248,7 @@ async function claudeChat(config: AiConfig, messages: ChatMessage[], temperature
       system,
       messages: userMessages
     })
-  });
+  }, config.signal);
   if (!response.ok) throw new Error(`AI request failed: ${response.status}`);
   const data = await response.json() as { content?: Array<{ type?: string; text?: string }> };
   return data.content?.map((part) => part.text || "").join("") || "{}";

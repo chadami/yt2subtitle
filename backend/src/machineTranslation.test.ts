@@ -1,9 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-process.env.DATABASE_URL ||= "postgres://test:test@localhost:5432/test";
-process.env.REDIS_URL ||= "redis://localhost:6379";
-process.env.JWT_SECRET ||= "placeholder-secret-at-least-24";
+process.env.LOCAL_MT_PROVIDER = "google";
 process.env.GOOGLE_CLOUD_TRANSLATION_API_KEY ||= "test-google-key";
 
 const { translateMachineCues } = await import("./machineTranslation.js");

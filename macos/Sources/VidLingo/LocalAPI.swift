@@ -42,7 +42,8 @@ struct LocalSession: Decodable {
 
 struct JobSummary: Decodable, Identifiable {
     let jobId: String
-    let status: String
+    var status: String
+    var machineTranslationState: String?
     let createdAt: String?
     let completedAt: String?
     let sourceLang: String?
@@ -55,7 +56,29 @@ struct JobSummary: Decodable, Identifiable {
 
     var id: String { jobId }
 
+    var canStop: Bool {
+        ["queued", "cleaning", "translating", "compressing", "finalizing"].contains(status)
+            || (status == "failed" && ["running", "waiting"].contains(machineTranslationState ?? ""))
+    }
+
+    var isCompleted: Bool {
+        status == "completed" || (status == "failed" && machineTranslationState == "completed")
+    }
+
+    var isSystemTranslating: Bool {
+        status == "failed" && ["running", "waiting"].contains(machineTranslationState ?? "")
+    }
+
     var statusLabel: String {
+        if status == "failed" {
+            switch machineTranslationState {
+            case "running": return "系统翻译中"
+            case "waiting": return "系统翻译等待重试"
+            case "completed": return "已完成（系统翻译）"
+            case "failed": return "系统翻译失败"
+            default: return "AI 翻译失败"
+            }
+        }
         switch status {
         case "completed": return "已完成"
         case "failed": return "失败"
@@ -64,7 +87,7 @@ struct JobSummary: Decodable, Identifiable {
         case "translating": return "翻译中"
         case "compressing": return "压缩中"
         case "finalizing": return "收尾中"
-        case "cancelled": return "已取消"
+        case "cancelled": return "已停止"
         default: return status
         }
     }
@@ -144,6 +167,15 @@ enum LocalAPI {
         let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse else { throw LocalAPIError.badURL }
         return try decode(LocalStatus.self, data: data, response: http)
+    }
+
+    static func stopJob(base: String, token: String, jobId: String) async throws {
+        guard let request = buildRequest(base: base, path: "/api/jobs/\(jobId)/cancel", method: "POST", token: token, body: nil) else {
+            throw LocalAPIError.badURL
+        }
+        let (data, response) = try await session.data(for: request)
+        guard let http = response as? HTTPURLResponse else { throw LocalAPIError.badURL }
+        _ = try decode(HealthResponse.self, data: data, response: http)
     }
 
     static func history(base: String, token: String, cursor: String? = nil) async throws -> JobHistory {

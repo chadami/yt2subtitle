@@ -1,13 +1,15 @@
 {
   "manifest_version": 3,
   "name": "VidLingo",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "Create natural, readable YouTube subtitles with your own AI API key.",
-  "permissions": ["storage", "alarms", "notifications", "scripting"],
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
   "host_permissions": [
     "https://www.youtube.com/*",
-    "https://*.onrender.com/*",
-    "https://api.vidlingo.online/*",
     "http://localhost/*",
     "http://127.0.0.1/*"
   ],
@@ -17,15 +19,27 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*"],
-      "js": ["contentScript.js"],
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ],
       "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["icons/player-icon.png", "icons/icon-24.png", "icons/icon-32.png", "icons/icon-48.png", "icons/ai-sparkle.png"],
-      "matches": ["https://www.youtube.com/*"]
+      "resources": [
+        "icons/player-icon.png",
+        "icons/icon-24.png",
+        "icons/icon-32.png",
+        "icons/icon-48.png",
+        "icons/ai-sparkle.png"
+      ],
+      "matches": [
+        "https://www.youtube.com/*"
+      ]
     }
   ],
   "action": {

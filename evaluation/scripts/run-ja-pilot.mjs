@@ -1,8 +1,8 @@
+import { evaluationAiConfig } from "./ai-config.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import {
   analyzeSubtitleContext,
-  systemAiConfig,
   translateChunk
 } from "../../backend/dist/ai.js";
 import {
@@ -170,7 +170,7 @@ const metaFiles = await findFiles(sourceRoot, "meta.json");
 if (!metaFiles.length) throw new Error(`No meta.json files found under ${sourceRoot}`);
 await fs.mkdir(outputRoot, { recursive: true });
 
-const aiConfig = systemAiConfig();
+const aiConfig = evaluationAiConfig();
 const strategy = getTranslationStrategy(targetLanguage);
 const results = [];
 

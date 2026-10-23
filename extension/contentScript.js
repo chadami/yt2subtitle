@@ -1,8 +1,7 @@
 const OVERLAY_ID = "yt-ai-subtitle-overlay";
 const OVERLAY_CONTENT_ID = "yt-ai-subtitle-content";
 const OVERLAY_AI_INDICATOR_ID = "yt-ai-subtitle-ai-indicator";
-const DEFAULT_API_BASE = "https://api.vidlingo.online";
-const LEGACY_API_BASE = "https://subtitle.invisiblewind.cn";
+const DEFAULT_API_BASE = "http://127.0.0.1:3000";
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
   backgroundOpacity: 25,
@@ -14,7 +13,6 @@ const DEFAULT_SUBTITLE_STYLE = {
 const PARTIAL_SUBTITLE_POLL_INTERVAL_MS = 2500;
 const PENDING_TRANSLATION_TEXT = "字幕正在准备中，即将完成";
 const SUBTITLE_PREPARATION_CACHE_MS = 30 * 1000;
-const AUTO_AI_PLAY_DELAY_MS = 5_000;
 const PLAYER_BUTTON_ID = "yt-ai-subtitle-control-button";
 const PLAYER_PANEL_ID = "yt-ai-subtitle-control-panel";
 const PLAYER_PANEL_STYLE_ID = "yt-ai-subtitle-control-style";
@@ -23,7 +21,9 @@ let partialSubtitlePollTimer = null;
 let partialSubtitleJobId = "";
 let partialSubtitleVideoId = "";
 let loadedPartialChunkCount = 0;
+let loadedPartialCueCount = 0;
 let loadedMachineChunkCount = 0;
+let loadedMachineCueCount = 0;
 let partialSourceCues = [];
 let activeRenderedCue = null;
 let currentSubtitleStyle = { ...DEFAULT_SUBTITLE_STYLE };
@@ -32,16 +32,17 @@ let panelJobPollTimer = null;
 let panelVideoId = "";
 let autoTranslationVideoId = "";
 let panelActionInProgress = false;
+let currentPanelJobId = "";
+let panelJobPollGeneration = 0;
 let autoTranslationRun = 0;
-let autoAiDelayTimer = null;
-let autoAiDelayVideo = null;
-let autoAiPlayingHandler = null;
-let autoAiPauseHandler = null;
 let machinePreviewVideoId = "";
 let machinePreviewCues = [];
 let machinePreviewFeedback = null;
 let subtitleDragState = null;
 let overlayHoverTrackingReady = false;
+let playbackPreview = null;
+let playbackPreviewEpoch = 0;
+let playbackAiCues = [];
 
 function getVideoId() {
   return parseVideoId(location.href);
@@ -50,9 +51,7 @@ function getVideoId() {
 function parseVideoId(url) {
   try {
     const parsed = new URL(url);
-    if (parsed.pathname.startsWith("/shorts/")) {
-      return parsed.pathname.split("/").filter(Boolean)[1] || "";
-    }
+    if (/^\/shorts(?:\/|$)/.test(parsed.pathname)) return "";
     return parsed.searchParams.get("v") || "";
   } catch {
     return "";
@@ -433,8 +432,64 @@ function normalizeSourceCues(cues = []) {
     .filter((cue) => Number.isFinite(cue.start) && Number.isFinite(cue.end) && cue.end > cue.start && cue.text);
 }
 
+function mergeSubtitleCues(...lists) {
+  const merged=new Map();
+  for(const cues of lists)for(const cue of cues||[])merged.set(`${cue.start}:${cue.end}`,cue);
+  return [...merged.values()].sort((a,b)=>a.start-b.start||a.end-b.end);
+}
+
+async function stopPlaybackPreview() {
+  const old=playbackPreview;playbackPreview=null;playbackPreviewEpoch++;
+  if(!old)return;
+  clearInterval(old.timer);clearTimeout(old.seekTimer);
+  for(const [event,handler] of old.listeners)old.video.removeEventListener(event,handler);
+  if(old.sessionId)await chrome.runtime.sendMessage({type:"CLOSE_PLAYBACK_PREVIEW",payload:{sessionId:old.sessionId}}).catch(()=>{});
+}
+
+async function startPlaybackPreview(payload) {
+  if(payload.usesNativeTargetTrack||isSameTranslationLanguage(payload.sourceLang,payload.targetLang))return;
+  if(playbackPreview?.videoId===payload.videoId&&playbackPreview.targetLang===payload.targetLang&&playbackPreview.sourceLang===payload.sourceLang)return;
+  await stopPlaybackPreview();
+  const epoch=playbackPreviewEpoch;
+  const video=await waitForVideoElement();
+  if(!video||getVideoId()!==payload.videoId||epoch!==playbackPreviewEpoch)return;
+  const state={video,videoId:payload.videoId,targetLang:payload.targetLang,sourceLang:payload.sourceLang,sessionId:"",sequence:0,seekTimer:null,timer:null,listeners:[],busy:false};
+  playbackPreview=state;playbackAiCues=[];
+  const accept=async data=>{
+    if(playbackPreview!==state||getVideoId()!==state.videoId||!data?.ok)return;
+    if(Number(data.sequence)<state.sequence)return;
+    machinePreviewVideoId=state.videoId;
+    machinePreviewCues=mergeSubtitleCues(machinePreviewCues,data.machineCues);
+    playbackAiCues=mergeSubtitleCues(playbackAiCues,data.aiCues);
+    await renderSubtitles(playbackAiCues,state.videoId,{machineCues:machinePreviewCues,sourceCues:payload.rawCues,pendingText:PENDING_TRANSLATION_TEXT});
+  };
+  const send=async(seeking=false,force=false)=>{
+    if(playbackPreview!==state||!state.sessionId||(!force&&(state.busy||video.seeking||state.seekTimer)))return;
+    state.busy=true;
+    const sequence=++state.sequence;
+    try{
+      const data=await chrome.runtime.sendMessage({type:"UPDATE_PLAYBACK_PREVIEW",payload:{sessionId:state.sessionId,
+        sequence,position:Math.max(0,video.currentTime||0),paused:video.paused||video.ended,seeking}});
+      if(data?.status===404&&playbackPreview===state){await stopPlaybackPreview();startPlaybackPreview(payload).catch(()=>{});return;}
+      await accept(data);
+    }finally{state.busy=false;}
+  };
+  const listen=(event,handler)=>{video.addEventListener(event,handler);state.listeners.push([event,handler]);};
+  listen("seeking",()=>{clearTimeout(state.seekTimer);state.seekTimer=null;send(true,true).catch(()=>{});});
+  listen("seeked",()=>{clearTimeout(state.seekTimer);state.seekTimer=setTimeout(()=>{state.seekTimer=null;send(false,true).catch(()=>{});},500);});
+  for(const event of ["playing","pause","ended"])listen(event,()=>send(false,true).catch(()=>{}));
+  const data=await chrome.runtime.sendMessage({type:"OPEN_PLAYBACK_PREVIEW",payload:{...payload,position:Math.max(0,video.currentTime||0),paused:video.paused||video.ended}}).catch(()=>null);
+  if(playbackPreview!==state){if(data?.sessionId)chrome.runtime.sendMessage({type:"CLOSE_PLAYBACK_PREVIEW",payload:{sessionId:data.sessionId}}).catch(()=>{});return;}
+  if(!data?.ok||data.disabled){await stopPlaybackPreview();return;}
+  state.sessionId=data.sessionId;
+  await accept(data);
+  state.timer=setInterval(()=>send().catch(()=>{}),1000);
+}
+
 async function renderSubtitles(cues, videoId, options = {}) {
+  if (!videoId || getVideoId() !== videoId) return { loaded: false, reason: "video-changed" };
   const video = await waitForVideoElement();
+  if (getVideoId() !== videoId) return { loaded: false, reason: "video-changed" };
   if (!video) {
     clearOverlay();
     return { loaded: false, reason: "video-not-ready", cueCount: cues.length };
@@ -443,8 +498,10 @@ async function renderSubtitles(cues, videoId, options = {}) {
   await applyStoredSubtitleStyle();
   if (options.replaceCurrentCue === true) activeRenderedCue = null;
   const generation = ++renderGeneration;
-  const translatedCues = Array.isArray(cues) ? cues : [];
-  const machineCues = Array.isArray(options.machineCues) ? options.machineCues : [];
+  const previewActive=playbackPreview?.videoId===videoId;
+  const translatedCues = mergeSubtitleCues(previewActive?playbackAiCues:[],Array.isArray(cues)?cues:[]);
+  const machineCues = mergeSubtitleCues(previewActive?machinePreviewCues:[],Array.isArray(options.machineCues)?options.machineCues:[]);
+  if(previewActive)playbackAiCues=translatedCues;
   const nativeTrack = options.nativeTrack === true;
   const sourceCues = normalizeSourceCues(options.sourceCues || []);
   const pendingText = options.pendingText || "";
@@ -488,6 +545,7 @@ async function tryLoadSubtitle(options = {}) {
   }
   const preparation = await prepareAiSubtitles();
   const prepared = preparation.payload;
+  if (getVideoId() !== videoId) return { ok: true, loaded: false, reason: "video-changed" };
   if (prepared.usesNativeTargetTrack) {
     const rendered = await renderSubtitles(prepared.rawCues, videoId, {
       nativeTrack: true,
@@ -498,7 +556,7 @@ async function tryLoadSubtitle(options = {}) {
       status: "completed",
       accessSource: "youtube-native",
       nativeTrack: true,
-      publicLabel: nativeTrackMessage(prepared.sourceLang)
+      nativeLabel: nativeTrackMessage(prepared.sourceLang)
     };
   }
   const data = await chrome.runtime.sendMessage({
@@ -509,9 +567,9 @@ async function tryLoadSubtitle(options = {}) {
     const rendered = await renderSubtitles(data.cues, videoId, {
       replaceCurrentCue: options.replaceCurrentCue === true
     });
-    return { ...rendered, status: "completed", accessSource: data.accessSource, publicLabel: data.publicLabel };
+    return { ...rendered, status: "completed", accessSource: data.accessSource };
   } else {
-    clearOverlay();
+    if(!playbackPreview)clearOverlay();
     return { loaded: false, reason: data.status || "missing", cueCount: 0 };
   }
 }
@@ -528,7 +586,9 @@ function startPartialSubtitlePolling(jobId, videoId = getVideoId(), sourceCues =
     machinePreviewCues = initialMachineCues;
   }
   loadedPartialChunkCount = 0;
+  loadedPartialCueCount = 0;
   loadedMachineChunkCount = 0;
+  loadedMachineCueCount = 0;
   partialSubtitlePollTimer = setInterval(() => {
     pollPartialSubtitles(jobId, videoId).catch(() => {});
   }, PARTIAL_SUBTITLE_POLL_INTERVAL_MS);
@@ -549,7 +609,9 @@ function stopPartialSubtitlePolling() {
   partialSubtitleVideoId = "";
   partialSourceCues = [];
   loadedPartialChunkCount = 0;
+  loadedPartialCueCount = 0;
   loadedMachineChunkCount = 0;
+  loadedMachineCueCount = 0;
 }
 
 async function pollPartialSubtitles(jobId, videoId) {
@@ -559,7 +621,7 @@ async function pollPartialSubtitles(jobId, videoId) {
   }
 
   const partial = await chrome.runtime.sendMessage({ type: "GET_PARTIAL_SUBTITLES", jobId });
-  if (!partial?.ok) return;
+  if (!partial?.ok || partialSubtitleJobId !== jobId || getVideoId() !== videoId) return;
   updateMachinePreviewFeedback(partial.machineTranslation, videoId);
 
   if (partial.status === "completed") {
@@ -567,18 +629,15 @@ async function pollPartialSubtitles(jobId, videoId) {
     await tryLoadSubtitle({ replaceCurrentCue: true });
     return;
   }
-  if (partial.status === "cancelled") {
-    stopPartialSubtitlePolling();
-    return;
-  }
+
   if (partial.status === "failed" && partial.machineTranslation?.state !== "idle") {
     const { fallbackJobs = [] } = await chrome.storage.local.get(["fallbackJobs"]);
     if (!fallbackJobs.some(job => job.jobId === jobId)) {
       await chrome.storage.local.set({ fallbackJobs: [{ jobId, videoId }, ...fallbackJobs.filter(job => job.videoId !== videoId)].slice(0, 8) });
     }
   }
-  const fallbackDone = partial.status === "failed"
-    && !["running", "waiting"].includes(partial.machineTranslation?.state);
+  const fallbackDone = partial.status === "cancelled" || (partial.status === "failed"
+    && !["running", "waiting"].includes(partial.machineTranslation?.state));
 
 
   const chunkCount = Number(partial.aiChunkCount ?? partial.chunkCount ?? 0);
@@ -588,9 +647,9 @@ async function pollPartialSubtitles(jobId, videoId) {
   const machineCues = serverMachineCues.length
     ? serverMachineCues
     : (machinePreviewVideoId === videoId ? machinePreviewCues : []);
-  const hasNewAiCues = aiCues.length > 0 && chunkCount > loadedPartialChunkCount;
-  const hasNewMachineCues = serverMachineCues.length > 0 && machineChunkCount > loadedMachineChunkCount;
-  if (!hasNewAiCues && !hasNewMachineCues) {
+  const hasNewAiCues = aiCues.length > 0 && (chunkCount > loadedPartialChunkCount || aiCues.length !== loadedPartialCueCount);
+  const hasNewMachineCues = serverMachineCues.length > 0 && (machineChunkCount > loadedMachineChunkCount || serverMachineCues.length !== loadedMachineCueCount);
+  if (!hasNewAiCues && !hasNewMachineCues && partial.status !== "cancelled") {
     if (fallbackDone) stopPartialSubtitlePolling();
     return;
   }
@@ -598,11 +657,13 @@ async function pollPartialSubtitles(jobId, videoId) {
   const result = await renderSubtitles(aiCues, videoId, {
     machineCues,
     sourceCues: partialSourceCues,
-    pendingText: PENDING_TRANSLATION_TEXT
+    pendingText: partial.status === "cancelled" ? "" : PENDING_TRANSLATION_TEXT
   });
   if (result.loaded) {
     loadedPartialChunkCount = chunkCount;
+    loadedPartialCueCount = aiCues.length;
     loadedMachineChunkCount = machineChunkCount;
+    loadedMachineCueCount = serverMachineCues.length;
   }
   if (fallbackDone) stopPartialSubtitlePolling();
 }
@@ -699,8 +760,12 @@ async function prepareAiSubtitles() {
 }
 
 function normalizeApiBase(value) {
-  const apiBase = (value || DEFAULT_API_BASE).replace(/\/$/, "");
-  return apiBase === LEGACY_API_BASE ? DEFAULT_API_BASE : apiBase;
+  try {
+    const url = new URL(value);
+    if (["127.0.0.1", "localhost", "[::1]"].includes(url.hostname)
+        && ["http:", "https:"].includes(url.protocol)) return String(value).replace(/\/$/, "");
+  } catch { /* Use the local application by default. */ }
+  return DEFAULT_API_BASE;
 }
 
 async function syncPreferencesFromApp() {
@@ -710,9 +775,8 @@ async function syncPreferencesFromApp() {
 
 async function prepareAiSubtitlesForVideo(videoId) {
   await syncPreferencesFromApp().catch(() => null);
-  const { settings = {}, clientId, pendingJobs = [] } = await chrome.storage.local.get([
+  const { settings = {}, pendingJobs = [] } = await chrome.storage.local.get([
     "settings",
-    "clientId",
     "pendingJobs"
   ]);
   let { sessionToken } = await chrome.storage.local.get(["sessionToken"]);
@@ -727,7 +791,7 @@ async function prepareAiSubtitlesForVideo(videoId) {
   }
 
   if (!sessionToken) {
-    throw new Error("请先在 VidLingo 应用里启动本机服务，或在插件设置中登录。");
+    throw new Error("请打开 VidLingo，并在插件设置中连接本机应用。");
   }
 
   const video = await collectVideoPayload(videoId);
@@ -742,7 +806,6 @@ async function prepareAiSubtitlesForVideo(videoId) {
   return {
     ok: true,
     payload: {
-      clientId,
       sessionToken,
       pendingJobs,
       videoId,
@@ -750,7 +813,6 @@ async function prepareAiSubtitlesForVideo(videoId) {
       sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
       targetLang,
       usesNativeTargetTrack: Boolean(nativeTargetTrack),
-      translationMode: "user",
       styleId: "accurate",
       captionType: track.isAuto ? "auto" : "manual",
       rawCues
@@ -763,20 +825,20 @@ async function prepareAiSubtitlesForVideo(videoId) {
       sourceLang: track.languageCode || effectiveSettings.sourceLang || "en",
       targetLang,
       usesNativeTargetTrack: Boolean(nativeTargetTrack),
-      translationMode: "user"
     }
   };
 }
 
-async function generateAiSubtitles(forceRegenerate = false, preparedPayload = null, initialMachineCues = [], machineRunId) {
+async function generateAiSubtitles(forceRegenerate = false, preparedPayload = null) {
   const videoId = getVideoId();
   if (!videoId) throw new Error("No YouTube video detected.");
-  clearOverlay();
+  if(!playbackPreview) clearOverlay();
 
   const preparation = preparedPayload
     ? { payload: preparedPayload, summary: summarizePreparedPayload(preparedPayload) }
     : await prepareAiSubtitles();
   const prepared = preparation.payload;
+  if (getVideoId() !== videoId) return { ok: true, loaded: false, reason: "video-changed" };
   if (prepared.usesNativeTargetTrack) {
     stopPartialSubtitlePolling();
     const rendered = await renderSubtitles(prepared.rawCues, videoId, { nativeTrack: true });
@@ -796,12 +858,10 @@ async function generateAiSubtitles(forceRegenerate = false, preparedPayload = nu
     payload: {
       ...prepared,
       forceRegenerate,
-      machineCues: initialMachineCues,
-      ...(typeof machineRunId === "string" ? { machineRunId } : {}),
     }
   });
   if (!data?.ok) throw new Error(data?.error || "Failed to create subtitle job.");
-  startPartialSubtitlePolling(data.jobId, videoId, prepared.rawCues, initialMachineCues);
+  startPartialSubtitlePolling(data.jobId, videoId, prepared.rawCues);
   return {
     ok: true,
     jobId: data.jobId,
@@ -822,7 +882,6 @@ function summarizePreparedPayload(prepared) {
     captionType: prepared.captionType,
     sourceLang: prepared.sourceLang,
     targetLang: prepared.targetLang,
-    translationMode: prepared.translationMode
   };
 }
 
@@ -1210,6 +1269,11 @@ function createPlayerPanel() {
 }
 
 function ensurePlayerControl() {
+  if (!getVideoId()) {
+    document.getElementById(PLAYER_BUTTON_ID)?.remove();
+    document.getElementById(PLAYER_PANEL_ID)?.remove();
+    return false;
+  }
   const player = document.querySelector(".html5-video-player");
   const controls = player?.querySelector(".ytp-right-controls");
   if (!player || !controls) return false;
@@ -1290,12 +1354,7 @@ async function refreshPlayerPanel() {
     return;
   }
   if (!sessionToken) {
-    setPanelState("login", "请先在更多设置中登录");
-    return;
-  }
-  const entitlement = await chrome.runtime.sendMessage({ type: "GET_ENTITLEMENTS" }).catch(() => null);
-  if (!entitlement?.ok) {
-    setPanelState("login", "登录已失效，请重新登录");
+    setPanelState("connect", "请在插件设置中连接本机应用");
     return;
   }
   const preparation = await prepareAiSubtitles().catch(() => null);
@@ -1332,6 +1391,15 @@ function engineDisplayName(provider, model) {
   return "未设置";
 }
 
+function machineTranslationStatus(preview) {
+  const done = Number(preview?.completedCues || 0);
+  const total = Number(preview?.totalCues || 0);
+  const progress = total ? `${done}/${total} 条` : `${done} 条`;
+  if (preview?.state === "completed") return `系统翻译已完成 · ${progress}`;
+  if (preview?.state === "waiting") return `系统翻译等待重试 · 已完成 ${progress}`;
+  return `系统翻译中 · 已完成 ${progress}`;
+}
+
 function updateMachinePreviewFeedback(preview, videoId) {
   if (getVideoId() !== videoId || !preview) return;
   let message = "";
@@ -1341,8 +1409,6 @@ function updateMachinePreviewFeedback(preview, videoId) {
       : "机翻兜底暂不可用，将自动重试";
   } else if (preview.state === "failed") {
     message = `${preview.error || "机翻不可用"}；已完成的 AI 字幕保留`;
-  } else if (preview.state === "running") {
-    message = "机翻正在接手 AI 失败后的字幕";
   }
   machinePreviewFeedback = { videoId, message };
   const status = document.getElementById(PLAYER_PANEL_ID)?.querySelector('[data-role="status"]');
@@ -1355,9 +1421,9 @@ function setPanelState(state, message) {
   if (!panel) return;
   const action = panel.querySelector('[data-action="generate"]');
   const status = panel.querySelector('[data-role="status"]');
-  const labels = { idle: "开始翻译", working: "翻译中", ready: "重新翻译", native: "原生字幕", login: "去登录", error: "重试", "same-language": "无需翻译" };
+  const labels = { idle: "开始翻译", working: "停止任务", ready: "重新翻译", native: "原生字幕", connect: "连接应用", error: "重试", "same-language": "无需翻译" };
   action.textContent = labels[state] || labels.idle;
-  action.disabled = state === "working" || state === "native" || state === "same-language";
+  action.disabled = state === "native" || state === "same-language";
   action.dataset.state = state;
   status.dataset.baseMessage = message || "";
   const previewMessage = ["idle", "working"].includes(state) && machinePreviewFeedback?.videoId === getVideoId()
@@ -1371,7 +1437,11 @@ async function handlePanelClick(event) {
   if (!action) return;
   event.stopPropagation();
   if (action === "generate") {
-    if (event.target.dataset.state === "login") {
+    if (event.target.dataset.state === "working") {
+      await stopTranslationFromPlayer();
+      return;
+    }
+    if (event.target.dataset.state === "connect") {
       openExtensionOptions();
       return;
     }
@@ -1397,10 +1467,10 @@ async function handlePanelChange(event) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
   if (setting === "autoTranslate") {
     await chrome.storage.local.set({ settings: { ...settings, autoTranslate: event.target.checked } });
-    cancelAutoAiDelay();
     autoTranslationRun += 1;
     autoTranslationVideoId = "";
     if (event.target.checked) maybeAutoTranslateCurrentVideo();
+    else stopPlaybackPreview().catch(()=>{});
     return;
   }
   if (setting === "showSourceText") {
@@ -1444,15 +1514,14 @@ function syncPanelStyleControls(style) {
   }
 }
 
-async function startTranslationFromPlayer(forceRegenerate = false, automatic = false, preparedPayload = null, machineRunId) {
+async function startTranslationFromPlayer(forceRegenerate = false, automatic = false, preparedPayload = null) {
   const videoId = getVideoId();
   if (!videoId || panelActionInProgress) return;
-  if (!automatic) cancelAutoAiDelay();
   panelActionInProgress = true;
   setPanelState("working", automatic ? "已开启自动翻译，正在检查字幕…" : "正在提取视频字幕…");
   try {
-    const entitlement = await chrome.runtime.sendMessage({ type: "GET_ENTITLEMENTS" });
-    if (!entitlement?.ok) throw new Error(entitlement?.error || "请先登录");
+    const connection = await chrome.runtime.sendMessage({ type: "ENSURE_SESSION" });
+    if (!connection?.ok) throw new Error("请在插件设置中连接 VidLingo 本机应用。");
     const preparation = preparedPayload
       ? { payload: preparedPayload }
       : await prepareAiSubtitles();
@@ -1463,6 +1532,7 @@ async function startTranslationFromPlayer(forceRegenerate = false, automatic = f
         : "已找到目标语言原生字幕，但播放器尚未就绪");
       return;
     }
+    await startPlaybackPreview(preparation.payload);
     const { pendingJobs = [] } = await chrome.storage.local.get(["pendingJobs"]);
     const pending = pendingJobs.find((job) => job.videoId === videoId);
     if (pending) {
@@ -1477,12 +1547,12 @@ async function startTranslationFromPlayer(forceRegenerate = false, automatic = f
     if (!forceRegenerate) {
       const existing = await tryLoadSubtitle().catch(() => null);
       if (existing?.loaded) {
+        await stopPlaybackPreview();
         setPanelState("ready", "已加载现有 AI 字幕");
         return;
       }
     }
-    const previewCues = machinePreviewVideoId === videoId ? machinePreviewCues : [];
-    const result = await generateAiSubtitles(forceRegenerate, preparation.payload, previewCues, machineRunId);
+    const result = await generateAiSubtitles(forceRegenerate, preparation.payload);
     if (!result?.ok) throw new Error(result?.error || "创建翻译任务失败");
     if (result.nativeTrack) {
       setPanelState("native", nativeTrackMessage(result.sourceLang));
@@ -1492,15 +1562,41 @@ async function startTranslationFromPlayer(forceRegenerate = false, automatic = f
     startPanelJobPolling(result.jobId, videoId);
   } catch (error) {
     const message = error?.message || String(error);
-    const needsLogin = /sign in|login|session|401|登录/i.test(message);
-    setPanelState(needsLogin ? "login" : "error", message);
+    const needsConnection = /session|401|连接|本机应用/i.test(message);
+    if(playbackPreview&&!needsConnection)setPanelState("working","系统翻译已启动，AI 暂不可用");
+    else setPanelState(needsConnection ? "connect" : "error", message);
   } finally {
     panelActionInProgress = false;
   }
 }
 
+async function stopTranslationFromPlayer() {
+  const jobId = currentPanelJobId || partialSubtitleJobId;
+  if ((!jobId&&!playbackPreview) || panelActionInProgress) return;
+  panelActionInProgress = true;
+  const videoId = getVideoId();
+  try {
+    await stopPlaybackPreview();
+    const result = jobId ? await chrome.runtime.sendMessage({ type: "STOP_SUBTITLE_JOB", jobId }) : {ok:true};
+    if (!result?.ok) throw new Error(result?.error || "停止任务失败");
+    // Load the final stored batches once before stopping polling.
+    if(jobId)await pollPartialSubtitles(jobId, videoId).catch(() => {});
+    await renderSubtitles(playbackAiCues,videoId,{machineCues:machinePreviewCues}).catch(()=>{});
+    stopPartialSubtitlePolling();
+    stopPanelJobPolling();
+    currentPanelJobId = "";
+    autoTranslationRun++;
+    machinePreviewFeedback = null;
+    setPanelState("idle", "任务已停止，已生成的字幕保留");
+  } catch (error) {
+    setPanelState("working", error.message || "停止失败，请重试");
+  } finally { panelActionInProgress = false; }
+}
+
 function startPanelJobPolling(jobId, videoId) {
   stopPanelJobPolling();
+  currentPanelJobId = jobId;
+  const pollGeneration = panelJobPollGeneration;
   const poll = async () => {
     if (getVideoId() !== videoId) {
       stopPanelJobPolling();
@@ -1508,25 +1604,35 @@ function startPanelJobPolling(jobId, videoId) {
     }
     const result = await chrome.runtime.sendMessage({ type: "GET_JOB_STATUS", jobId }).catch(() => null);
     const job = result?.job;
-    if (!result?.ok || !job) return;
+    if (!result?.ok || !job || pollGeneration !== panelJobPollGeneration || getVideoId() !== videoId) return;
     if (job.status === "completed") {
+      await stopPlaybackPreview();
       stopPanelJobPolling();
       await chrome.runtime.sendMessage({ type: "CHECK_SUBTITLE_JOBS" }).catch(() => {});
       const loaded = await tryLoadSubtitle({ replaceCurrentCue: true }).catch(() => null);
       setPanelState("ready", loaded?.loaded ? "AI 字幕已生成并加载" : "AI 字幕已生成");
     } else if (job.status === "failed") {
+      if(playbackPreview?.videoId===videoId){setPanelState("working","系统翻译正在补全当前播放位置");return;}
       updateMachinePreviewFeedback(job.machineTranslation, videoId);
       if (["running", "waiting"].includes(job.machineTranslation?.state)) {
-        setPanelState("working", "AI 翻译失败，已完成部分保留；机翻接手后续字幕");
+        setPanelState("working", machineTranslationStatus(job.machineTranslation));
       } else {
         stopPanelJobPolling();
-        setPanelState("error", job.machineTranslation?.state === "completed"
-          ? "AI 翻译失败，后续已使用机翻；已完成的 AI 字幕保留"
-          : job.machineTranslation?.error || job.error || "翻译失败，请重试");
+        if (job.machineTranslation?.state === "completed") {
+          await pollPartialSubtitles(jobId, videoId).catch(() => {});
+          setPanelState("ready", machineTranslationStatus(job.machineTranslation));
+        } else {
+          setPanelState("error", job.machineTranslation?.error || job.error || "翻译失败，请重试");
+        }
       }
     } else if (job.status === "cancelled") {
+      await stopPlaybackPreview();
       stopPanelJobPolling();
-      setPanelState("error", job.error || "翻译已取消");
+      await pollPartialSubtitles(jobId, videoId).catch(() => {});
+      stopPartialSubtitlePolling();
+      await chrome.runtime.sendMessage({ type: "CHECK_SUBTITLE_JOBS" }).catch(() => {});
+      currentPanelJobId = "";
+      setPanelState("idle", "任务已停止，已生成的字幕保留");
     } else {
       updateMachinePreviewFeedback(job.machineTranslation, videoId);
       setPanelState("working", `翻译中 · ${Number(job.progress || 0)}%`);
@@ -1537,64 +1643,18 @@ function startPanelJobPolling(jobId, videoId) {
 }
 
 function stopPanelJobPolling() {
+  panelJobPollGeneration++;
+  currentPanelJobId = "";
   if (panelJobPollTimer) clearInterval(panelJobPollTimer);
   panelJobPollTimer = null;
-}
-
-function cancelAutoAiDelay() {
-  if (autoAiDelayTimer) clearTimeout(autoAiDelayTimer);
-  autoAiDelayTimer = null;
-  if (autoAiDelayVideo && autoAiPlayingHandler) {
-    autoAiDelayVideo.removeEventListener("playing", autoAiPlayingHandler);
-  }
-  if (autoAiDelayVideo && autoAiPauseHandler) {
-    autoAiDelayVideo.removeEventListener("pause", autoAiPauseHandler);
-    autoAiDelayVideo.removeEventListener("waiting", autoAiPauseHandler);
-    autoAiDelayVideo.removeEventListener("ended", autoAiPauseHandler);
-  }
-  autoAiDelayVideo = null;
-  autoAiPlayingHandler = null;
-  autoAiPauseHandler = null;
-}
-
-function scheduleAiAfterPlayback(video, preparedPayload, videoId, runId) {
-  cancelAutoAiDelay();
-  autoAiDelayVideo = video;
-
-  autoAiPlayingHandler = () => {
-    if (runId !== autoTranslationRun || getVideoId() !== videoId) return;
-    if (autoAiDelayTimer) clearTimeout(autoAiDelayTimer);
-    setPanelState("idle", "播放 5 秒后启用 AI 翻译");
-    autoAiDelayTimer = setTimeout(() => {
-      autoAiDelayTimer = null;
-      if (runId !== autoTranslationRun || getVideoId() !== videoId || video.paused || video.ended) return;
-      cancelAutoAiDelay();
-      startTranslationFromPlayer(false, true, preparedPayload).catch(() => {});
-    }, AUTO_AI_PLAY_DELAY_MS);
-  };
-
-  autoAiPauseHandler = () => {
-    if (autoAiDelayTimer) clearTimeout(autoAiDelayTimer);
-    autoAiDelayTimer = null;
-    if (runId === autoTranslationRun && getVideoId() === videoId) {
-      setPanelState("idle", "继续播放 5 秒后启用 AI 翻译");
-    }
-  };
-
-  video.addEventListener("playing", autoAiPlayingHandler);
-  video.addEventListener("pause", autoAiPauseHandler);
-  video.addEventListener("waiting", autoAiPauseHandler);
-  video.addEventListener("ended", autoAiPauseHandler);
-  if (!video.paused && !video.ended) autoAiPlayingHandler();
-  else autoAiPauseHandler();
 }
 
 async function maybeAutoTranslateCurrentVideo() {
   const videoId = getVideoId();
   if (!videoId || autoTranslationVideoId === videoId) return;
   const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  if (getVideoId() !== videoId) return;
   if (settings.autoTranslate !== true) return;
-  cancelAutoAiDelay();
   const runId = ++autoTranslationRun;
   autoTranslationVideoId = videoId;
   machinePreviewVideoId = "";
@@ -1613,6 +1673,7 @@ async function maybeAutoTranslateCurrentVideo() {
       : "已找到目标语言原生字幕，但播放器尚未就绪");
     return;
   }
+  await startPlaybackPreview(preparation.payload);
   const { pendingJobs = [] } = await chrome.storage.local.get(["pendingJobs"]);
   if (runId !== autoTranslationRun || getVideoId() !== videoId) return;
   const { fallbackJobs = [] } = await chrome.storage.local.get(["fallbackJobs"]);
@@ -1625,6 +1686,7 @@ async function maybeAutoTranslateCurrentVideo() {
   const existing = await tryLoadSubtitle().catch(() => null);
   if (runId !== autoTranslationRun || getVideoId() !== videoId) return;
   if (existing?.loaded) {
+    await stopPlaybackPreview();
     setPanelState("ready", "已加载现有 AI 字幕");
     return;
   }
@@ -1634,15 +1696,21 @@ async function maybeAutoTranslateCurrentVideo() {
   }
   const video = await waitForVideoElement();
   if (!video || runId !== autoTranslationRun || getVideoId() !== videoId) return;
-  scheduleAiAfterPlayback(video, preparation.payload, videoId, runId);
+  await startTranslationFromPlayer(false, true, preparation.payload);
 }
 
 function handlePlayerPageChange() {
   const videoId = getVideoId();
-  if (panelVideoId && panelVideoId !== videoId) {
+  if (!videoId || (panelVideoId && panelVideoId !== videoId)) {
     stopPanelJobPolling();
-    cancelAutoAiDelay();
+    stopPartialSubtitlePolling();
+    stopPlaybackPreview().catch(()=>{});
+    clearOverlay();
+    playbackAiCues=[];
     autoTranslationRun += 1;
+    autoTranslationVideoId = "";
+    panelVideoId = "";
+    subtitlePreparationCache = null;
     machinePreviewVideoId = "";
     machinePreviewCues = [];
     panelActionInProgress = false;

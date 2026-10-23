@@ -35,3 +35,9 @@ function pump() {
       });
   }
 }
+
+export function removePendingJob(jobId: string) {
+  for (let index = pending.length - 1; index >= 0; index--) {
+    if (pending[index].jobId === jobId) pending.splice(index, 1);
+  }
+}

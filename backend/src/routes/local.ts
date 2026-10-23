@@ -1,3 +1,4 @@
+import { activePlaybackJobIds } from "../playbackTranslation.js";
 import { Router } from "express";
 import { z } from "zod";
 import { env } from "../env.js";
@@ -39,14 +40,6 @@ async function readPreferences(userId: string): Promise<Preferences> {
     showSourceText: typeof stored.showSourceText === "boolean" ? stored.showSourceText : preferenceDefaults.showSourceText
   };
 }
-
-localRouter.use((_req, res, next) => {
-  if (!env.LOCAL_MODE) {
-    res.status(404).json({ error: "Local mode is not enabled" });
-    return;
-  }
-  next();
-});
 
 localRouter.get("/session", async (_req, res, next) => {
   try {
@@ -107,19 +100,17 @@ localRouter.put("/preferences", async (req, res, next) => {
 localRouter.get("/status", async (_req, res, next) => {
   try {
     let queue = { running: 0, pending: 0 };
-    if (env.LOCAL_MODE) {
-      const { localQueueSnapshot } = await import("../localQueue.js");
-      queue = localQueueSnapshot();
-    }
+    const { localQueueSnapshot } = await import("../localQueue.js");
+    queue = localQueueSnapshot();
     const active = await query<{ count: string }>(
-      "select count(*)::text as count from translation_jobs where status in ('queued','cleaning','translating','compressing','finalizing')"
+      "select count(*)::text as count from translation_jobs where status in ('queued','cleaning','translating','compressing','finalizing') or (status='failed' and (machine_translation_state in ('running','waiting') or id=any($1::uuid[])))", [activePlaybackJobIds()]
     );
     const completed = await query<{ count: string }>(
-      "select count(*)::text as count from translation_jobs where status = 'completed'"
+      "select count(*)::text as count from translation_jobs where status = 'completed' or (status='failed' and machine_translation_state='completed')"
     );
     res.json({
       ok: true,
-      mode: env.LOCAL_MODE ? "local" : "server",
+      mode: "local",
       port: env.PORT,
       version: process.env.APP_VERSION || "dev",
       dataDir: env.DATA_DIR,

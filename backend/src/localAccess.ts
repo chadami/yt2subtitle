@@ -10,7 +10,6 @@ export function isExtensionOrigin(origin: string) {
 // Check Host before processing requests to prevent DNS rebinding. A browser page
 // cannot forge Origin or send our custom session header without a preflight.
 export const restrictLocalAccess: RequestHandler = (req, res, next) => {
-  if (!env.LOCAL_MODE) return next();
   const host = req.headers.host;
   if (!host || ![`127.0.0.1:${env.PORT}`, `localhost:${env.PORT}`].includes(host.toLowerCase())) {
     res.status(403).json({ error: "Invalid local host" });

@@ -1227,3 +1227,8 @@ function formatTime(seconds: number, sep: "." | ",") {
   const ms = totalMs % 1000;
   return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}${sep}${String(ms).padStart(3, "0")}`;
 }
+
+/** Coverage is based on source identities, including a partially saved AI batch. */
+export function coveredSourceIndexes(cues: TranslatedCue[]) {
+  return new Set(cues.flatMap(cue => cue.sourceIndexes || []).map(Number).filter(Number.isFinite));
+}

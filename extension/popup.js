@@ -12,32 +12,16 @@ function render(mode, title, subtitle) {
 }
 
 async function load() {
-  const { settings = {}, sessionToken } = await chrome.storage.local.get(["settings", "sessionToken"]);
-  const base = String(settings.apiBase || "").replace(/\/+$/, "");
-  const isLocal = /^https?:\/\/(127\.0\.0\.1|localhost|\[::1\])/i.test(base);
-
-  if (!isLocal) {
-    render("offline", zh ? "未连接" : "Not connected", zh ? "打开设置连接本机应用" : "Connect from settings");
-    return;
-  }
-
   try {
-    if (!sessionToken) {
-      render("offline", zh ? "未连接" : "Not connected", zh ? "请在设置中重新连接 VidLingo" : "Reconnect to VidLingo in settings");
-      return;
-    }
-    const response = await fetch(`${base}/api/local/status`, {
-      headers: { Authorization: `Bearer ${sessionToken}` }, signal: AbortSignal.timeout(2500)
-    });
-    if (!response.ok) throw new Error("Connection unavailable");
-    const data = await response.json();
+    const data = await chrome.runtime.sendMessage({ type: "GET_LOCAL_STATUS" });
+    if (!data?.ok) throw new Error(data?.error || "Connection unavailable");
     if (data?.ai?.configured) {
       render("connected", zh ? "已连接" : "Connected", `${data.ai.provider} · ${data.ai.model}`);
     } else {
       render("connected", zh ? "已连接" : "Connected", zh ? "尚未配置 AI 模型" : "No AI model configured");
     }
-  } catch {
-    render("offline", zh ? "未连接" : "Not connected", zh ? "VidLingo 应用没有运行" : "VidLingo app is not running");
+  } catch (error) {
+    render("offline", zh ? "未连接" : "Not connected", zh ? (error.message || "请打开 VidLingo 本机应用") : "Open VidLingo and try again");
   }
 }
 

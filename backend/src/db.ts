@@ -40,7 +40,6 @@ class Mutex {
 
 const mutex = new Mutex();
 let localEnginePromise: Promise<LocalEngine> | null = null;
-let poolPromise: Promise<import("pg").Pool> | null = null;
 
 async function getLocalEngine(): Promise<LocalEngine> {
   if (!localEnginePromise) {
@@ -59,89 +58,32 @@ async function getLocalEngine(): Promise<LocalEngine> {
   return localEnginePromise;
 }
 
-async function getPool(): Promise<import("pg").Pool> {
-  if (!poolPromise) {
-    poolPromise = (async () => {
-      const pg = (await import("pg")).default;
-      return new pg.Pool({
-        connectionString: env.DATABASE_URL,
-        ssl: env.NODE_ENV === "production" ? { rejectUnauthorized: false } : undefined
-      });
-    })();
-  }
-  return poolPromise;
-}
-
 async function localQuery<T>(text: string, values: unknown[]): Promise<QueryResult<T>> {
   const engine = await getLocalEngine();
   const result = await engine.query<T>(text, values);
   return {
     rows: result.rows ?? [],
-    rowCount: result.affectedRows ?? result.rows?.length ?? 0
+    rowCount: result.rows?.length || result.affectedRows || 0
   };
 }
 
 export async function query<T = Record<string, unknown>>(text: string, values: unknown[] = []): Promise<QueryResult<T>> {
-  if (env.LOCAL_MODE) {
-    const release = await mutex.acquire();
-    try {
-      return await localQuery<T>(text, values);
-    } finally {
-      release();
-    }
-  }
-
-  const pool = await getPool();
-  const result = await pool.query(text, values);
-  return { rows: result.rows as T[], rowCount: result.rowCount ?? 0 };
+  const release = await mutex.acquire();
+  try { return await localQuery<T>(text, values); } finally { release(); }
 }
 
 export const db = {
   async connect(): Promise<DbClient> {
-    if (env.LOCAL_MODE) {
-      const release = await mutex.acquire();
-      return {
-        query: <T>(text: string, values: unknown[] = []) => localQuery<T>(text, values),
-        release
-      };
-    }
-
-    const pool = await getPool();
-    const client = await pool.connect();
-    return {
-      query: async <T>(text: string, values: unknown[] = []) => {
-        const result = await client.query(text, values);
-        return { rows: result.rows as T[], rowCount: result.rowCount ?? 0 };
-      },
-      release: () => client.release()
-    };
+    const release = await mutex.acquire();
+    return { query: <T>(text: string, values: unknown[] = []) => localQuery<T>(text, values), release };
   }
 };
 
-/** Runs a multi-statement SQL script (schema migrations). */
 export async function execScript(sql: string): Promise<void> {
-  if (env.LOCAL_MODE) {
-    const release = await mutex.acquire();
-    try {
-      const engine = await getLocalEngine();
-      await engine.exec(sql);
-    } finally {
-      release();
-    }
-    return;
-  }
-
-  const pool = await getPool();
-  await pool.query(sql);
+  const release = await mutex.acquire();
+  try { await (await getLocalEngine()).exec(sql); } finally { release(); }
 }
 
 export async function closeDatabase(): Promise<void> {
-  if (localEnginePromise) {
-    const engine = await localEnginePromise;
-    await engine.close();
-  }
-  if (poolPromise) {
-    const pool = await poolPromise;
-    await pool.end();
-  }
+  if (localEnginePromise) await (await localEnginePromise).close();
 }

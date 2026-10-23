@@ -182,7 +182,7 @@ struct OverviewView: View {
 
     private var successRow: some View {
         let total = model.jobs.filter { $0.status != "cancelled" }.count
-        let completed = model.jobs.filter { $0.status == "completed" }.count
+        let completed = model.jobs.filter { $0.isCompleted }.count
         let ratio = total > 0 ? Double(completed) / Double(total) : 0
         let percent = total > 0 ? "\(Int((ratio * 100).rounded()))%" : "—"
 

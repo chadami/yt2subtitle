@@ -5,6 +5,7 @@ struct HelperInput: Decodable {
     let source: String
     let target: String
     let texts: [String]?
+    let stream: Bool?
 }
 
 struct HelperOutput: Encodable {
@@ -12,19 +13,22 @@ struct HelperOutput: Encodable {
     var status: String?
     var translations: [String]?
     var error: String?
+    var index: Int?
+    var done: Bool?
 }
 
 @main
 struct TranslateHelper {
     static func main() async {
         let output = await run()
+        emit(output)
+    }
+
+    static func emit(_ output: HelperOutput) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.withoutEscapingSlashes]
-        if let data = try? encoder.encode(output), let text = String(data: data, encoding: .utf8) {
-            print(text)
-        } else {
-            print(#"{"ok":false,"error":"encode_failed"}"#)
-        }
+        let data = (try? encoder.encode(output)) ?? Data(#"{"ok":false,"error":"encode_failed"}"#.utf8)
+        FileHandle.standardOutput.write(data + Data([10]))
     }
 
     static func run() async -> HelperOutput {
@@ -54,6 +58,24 @@ struct TranslateHelper {
         }
 
         let session = TranslationSession(installedSource: source, target: target)
+        if input.stream == true {
+            for (index, text) in texts.enumerated() {
+                do {
+                    // One system request at a time; reuse the session rather
+                    // than repeatedly launching/loading it for every cue.
+                    let response = try await session.translate(text)
+                    guard !response.targetText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                        return HelperOutput(ok: false, status: statusText, error: "incomplete_response")
+                    }
+                    emit(HelperOutput(ok: true, status: statusText, translations: [response.targetText], index: index))
+                    // Keep an idle period even at helper batch boundaries.
+                    try await Task.sleep(nanoseconds: 1_000_000_000)
+                } catch {
+                    return HelperOutput(ok: false, status: statusText, error: describeError(error))
+                }
+            }
+            return HelperOutput(ok: true, status: statusText, done: true)
+        }
         var translated: [String] = []
         translated.reserveCapacity(texts.count)
 

@@ -6,9 +6,7 @@
     "extension"
   ],
   "scripts": {
-    "dev:api": "npm --workspace backend run dev:api",
-    "dev:worker": "npm --workspace backend run dev:worker",
-    "dev:local": "npm --workspace backend run build && LOCAL_MODE=1 PORT=3000 DATA_DIR=$PWD/.local-data node backend/dist/start-local.js",
+    "dev:local": "npm --workspace backend run build && node backend/dist/start-local.js",
     "build": "npm --workspaces run build",
     "build:mac": "bash macos/scripts/build-app.sh"
   }

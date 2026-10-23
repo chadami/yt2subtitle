@@ -1,15 +1,17 @@
+import { closePlaybackForJob, hasPlaybackWindow, playbackProgressForJob, attachPlaybackJob } from "../playbackTranslation.js";
+import { machineProgress } from "../jobProgress.js";
+import { abortJobOperations } from "../jobControl.js";
+import { removePendingJob } from "../localQueue.js";
 import crypto from "node:crypto";
 import { Router } from "express";
 import { z } from "zod";
 import { requireUserId } from "../auth.js";
 import { db, query } from "../db.js";
-import { getUserEntitlement } from "../entitlements.js";
 import { subtitleQueue } from "../queue.js";
-import { createGenerationKey, hashRawCues, PUBLIC_STYLE_ID } from "../subtitleLibrary.js";
-import { machineTranslationProvider } from "../machineTranslation.js";
+import { createGenerationKey, hashRawCues, DEFAULT_STYLE_ID } from "../subtitleLibrary.js";
 import { finalizeTranslatedCues, normalizeTranslatedText, prepareSourceCues, type TranslatedCue } from "../subtitles.js";
 import { getTranslationStrategy } from "../translationStrategies.js";
-import { loadUserAiConfig } from "./ai.js";
+import { loadLocalAiConfig } from "./ai.js";
 
 import { decodeHistoryCursor, encodeHistoryCursor } from "../historyPagination.js";
 
@@ -21,11 +23,6 @@ const cueSchema = z.object({
   start: z.number(),
   end: z.number(),
   text: z.string()
-});
-
-const machineCueSchema = cueSchema.extend({
-  sourceText: z.string().optional(),
-  sourceIndexes: z.array(z.number().int()).optional()
 });
 
 function primaryLanguageCode(language: string) {
@@ -74,11 +71,11 @@ jobsRouter.get("/history", async (req, res, next) => {
          j.id as "jobId",
          j.created_at::text as "_cursorTime",
          j.status,
+         j.machine_translation_state as "machineTranslationState",
          j.created_at as "createdAt",
          j.completed_at as "completedAt",
          j.source_lang as "sourceLang",
          j.target_lang as "targetLang",
-         j.provider_mode as "providerMode",
          j.ai_provider as "provider",
          j.ai_model as "model",
          j.strategy_id as "strategyId",
@@ -101,7 +98,7 @@ jobsRouter.get("/history", async (req, res, next) => {
       "select count(*)::text as count from translation_jobs where user_id = $1", [userId]
     );
     res.json({
-      history: rows.map(({ _cursorTime, ...row }) => row),
+      history: rows.map(({ _cursorTime, ...row }) => ({...row,machineTranslationState:playbackProgressForJob(String(row.jobId))?.state||row.machineTranslationState})),
       total: Number(count.rows[0]?.count ?? 0),
       nextCursor: result.rows.length > 100 && last
         ? encodeHistoryCursor(last._cursorTime, last.jobId) : null
@@ -111,41 +108,18 @@ jobsRouter.get("/history", async (req, res, next) => {
   }
 });
 
-// Older extensions must not start proactive machine translation after this policy change.
-jobsRouter.post("/machine-preview", (_req, res) => {
-  res.status(409).json({ error: "机翻仅在 AI 翻译失败后启用，请更新并重新加载插件。", code: "MACHINE_FALLBACK_ONLY" });
-});
-
 jobsRouter.post("/", async (req, res, next) => {
-  let requestedMachineRunId: string | undefined;
-  let requestedMachineRunUserId: string | undefined;
   try {
     const input = z.object({
       captionSourceId: z.string().uuid().optional(),
-      video: z.object({
-        videoId: z.string().min(6),
-        url: z.string().url(),
-        title: z.string().default(""),
-        channel: z.string().default(""),
-        description: z.string().default("")
-      }).optional(),
-      sourceLang: z.string().default("en"),
-      targetLang: z.string().default("zh-Hans"),
-      translationMode: z.enum(["system", "user"]).default("user"),
-      forceRegenerate: z.boolean().default(false),
-      captionType: z.enum(["manual", "auto"]).default("manual"),
-      styleId: z.string().default(PUBLIC_STYLE_ID),
-      rawCues: z.array(cueSchema).min(1).optional(),
-      machineCues: z.array(machineCueSchema).optional(),
-      machineRunId: z.string().uuid().nullish().transform((value) => value || undefined)
+      video: z.object({ videoId: z.string().min(6), url: z.string().url(), title: z.string().default(""),
+        channel: z.string().default(""), description: z.string().default("") }).optional(),
+      sourceLang: z.string().default("en"), targetLang: z.string().default("zh-Hans"),
+      forceRegenerate: z.boolean().default(false), captionType: z.enum(["manual", "auto"]).default("manual"),
+      styleId: z.string().default(DEFAULT_STYLE_ID), rawCues: z.array(cueSchema).min(1).optional()
     }).parse(req.body);
-    requestedMachineRunId = input.machineRunId;
-    if (input.translationMode !== "user") {
-      throw new JobRequestError("System translation is not available. Configure a personal API key.", 400, "PERSONAL_API_REQUIRED");
-    }
     const userId = await requireUserId(req.headers.authorization);
-    requestedMachineRunUserId = userId;
-    const aiConfig = await loadUserAiConfig(userId);
+    const aiConfig = loadLocalAiConfig();
     const strategy = getTranslationStrategy(input.targetLang);
     let captionSourceId = input.captionSourceId;
     if (!captionSourceId) {
@@ -175,152 +149,45 @@ jobsRouter.post("/", async (req, res, next) => {
     if (isSameLanguage(caption.rows[0].source_lang, input.targetLang)) {
       throw new JobRequestError("Subtitle language already matches the target language.", 400, "SAME_LANGUAGE");
     }
-    const baseGenerationKey = createGenerationKey({
-      captionSourceId,
-      targetLang: input.targetLang,
-      styleId: input.styleId,
-      strategyId: strategy.id,
-      strategyVersion: strategy.version,
-      provider: aiConfig.provider,
-      model: aiConfig.model
-    });
-    const generationKey = input.forceRegenerate ? `${baseGenerationKey}:${crypto.randomUUID()}` : baseGenerationKey;
+    const baseKey = createGenerationKey({ captionSourceId, targetLang: input.targetLang, styleId: input.styleId,
+      strategyId: strategy.id, strategyVersion: strategy.version, provider: aiConfig.provider, model: aiConfig.model });
+    const generationKey = input.forceRegenerate ? `${baseKey}:${crypto.randomUUID()}` : baseKey;
     const client = await db.connect();
     let jobId = "";
-    let status = "queued";
     try {
       await client.query("begin");
-      const entitlement = await getUserEntitlement(userId, client);
-      if (entitlement.plan !== "free" && entitlement.status !== "active") {
-        throw new JobRequestError("Your membership has expired. Existing private subtitles remain available.", 403, "MEMBERSHIP_EXPIRED");
-      }
-      const contributionEligible = entitlement.canContribute && input.styleId === PUBLIC_STYLE_ID;
-      await client.query("select pg_advisory_xact_lock(hashtext($1))", [
-        `${contributionEligible ? "public" : userId}:${generationKey}`
-      ]);
       if (!input.forceRegenerate) {
-        const existing = await client.query<{ id: string; status: string; user_id: string; contribution_eligible: boolean }>(
-          `select j.id, j.status, j.user_id, j.contribution_eligible from translation_jobs j
-           where j.generation_key = $1
-             and ((j.contribution_eligible = true and $2 = true) or j.user_id = $3)
-             and j.status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
-             and (j.status <> 'completed' or exists (
-               select 1 from translated_subtitles t where t.job_id = j.id
-             ))
-           order by j.created_at desc limit 1`,
-          [generationKey, contributionEligible, userId]
-        );
+        const existing = await client.query<{id: string; status: string}>(
+          `select j.id, j.status from translation_jobs j where j.generation_key = $1 and j.user_id = $2
+           and j.status in ('queued','cleaning','translating','compressing','finalizing','completed')
+           and (j.status <> 'completed' or exists(select 1 from translated_subtitles t where t.job_id = j.id))
+           order by j.created_at desc limit 1`, [generationKey, userId]);
         if (existing.rows[0]) {
-          jobId = existing.rows[0].id;
-          status = existing.rows[0].status;
-          if (existing.rows[0].user_id !== userId) {
-            await client.query(
-              "insert into translation_job_watchers (job_id, user_id) values ($1, $2) on conflict do nothing",
-              [jobId, userId]
-            );
-          }
-          if (input.machineRunId) {
-            await client.query(
-              `update machine_translation_runs
-               set status = 'cancelled', updated_at = now()
-               where id = $1 and user_id = $2 and status = 'active'`,
-              [input.machineRunId, userId]
-            );
-          }
           await client.query("commit");
-          return res.json({ jobId, status, shared: existing.rows[0].user_id !== userId });
+          attachPlaybackJob(userId,captionSourceId,input.targetLang,existing.rows[0].id);
+          return res.json({ jobId: existing.rows[0].id, status: existing.rows[0].status });
         }
       }
-      if (entitlement.generationVideoLimit !== null) {
-        await client.query("select pg_advisory_xact_lock(hashtext($1))", [userId]);
-        const usage = await client.query<{ status: string }>(
-          "select status from user_video_usage where user_id = $1 and video_id = $2",
-          [userId, caption.rows[0].video_id]
-        );
-        if (!usage.rows[0]) {
-          const count = await client.query<{ count: string }>(
-            "select count(*)::text as count from user_video_usage where user_id = $1",
-            [userId]
-          );
-          if (Number(count.rows[0]?.count || 0) >= entitlement.generationVideoLimit) {
-            throw new JobRequestError(
-              `This account supports up to ${entitlement.generationVideoLimit} different videos.`,
-              403,
-              "VIDEO_LIMIT_REACHED"
-            );
-          }
-          await client.query(
-            `insert into user_video_usage (user_id, video_id, status)
-             values ($1, $2, 'reserved')`,
-            [userId, caption.rows[0].video_id]
-          );
-        }
-      }
-      const created = await client.query<{ id: string }>(
-        `insert into translation_jobs (
-           user_id, video_id, source_lang, target_lang, caption_source_id,
-           provider_mode, ai_provider, ai_model, strategy_id, strategy_version,
-           style_id, generation_key, contribution_eligible, consent_version, machine_run_id, status
-         ) values ($1, $2, $3, $4, $5, 'user', $6, $7, $8, $9, $10, $11, $12, $13, $14, 'queued') returning id`,
-        [userId, caption.rows[0].video_id, caption.rows[0].source_lang, input.targetLang, captionSourceId,
-          aiConfig.provider, aiConfig.model, strategy.id, strategy.version, input.styleId, generationKey,
-          contributionEligible, contributionEligible ? entitlement.consentVersion : null, input.machineRunId || null]
-      );
+      const created = await client.query<{id: string}>(
+        `insert into translation_jobs (user_id,video_id,source_lang,target_lang,caption_source_id,
+          provider_mode,ai_provider,ai_model,strategy_id,strategy_version,style_id,generation_key,status)
+         values ($1,$2,$3,$4,$5,'user',$6,$7,$8,$9,$10,$11,'queued') returning id`,
+        [userId,caption.rows[0].video_id,caption.rows[0].source_lang,input.targetLang,captionSourceId,
+          aiConfig.provider,aiConfig.model,strategy.id,strategy.version,input.styleId,generationKey]);
       jobId = created.rows[0].id;
-      if (input.machineCues?.length) {
-        await client.query(
-          `insert into translation_job_machine_chunks (job_id, chunk_index, provider, cues_json)
-           values ($1, 0, $3, $2)
-           on conflict (job_id, chunk_index)
-           do update set cues_json = excluded.cues_json, updated_at = now()`,
-          [jobId, JSON.stringify(input.machineCues), machineTranslationProvider()]
-        );
-        await client.query(`update translation_jobs set machine_translation_state = 'completed',
-          machine_translation_provider = $2 where id = $1`, [jobId, machineTranslationProvider()]);
-      }
-      await client.query(
-        `update user_video_usage set first_job_id = coalesce(first_job_id, $1)
-         where user_id = $2 and video_id = $3`,
-        [jobId, userId, caption.rows[0].video_id]
-      );
       await client.query("commit");
-    } catch (error) {
-      await client.query("rollback");
-      throw error;
-    } finally {
-      client.release();
-    }
-    try {
-      await subtitleQueue.add("translate", { jobId }, { attempts: 2 });
-    } catch (error) {
-      await query("update translation_jobs set status = 'failed', error = $1, updated_at = now() where id = $2", [
-        error instanceof Error ? error.message : String(error),
-        jobId
-      ]);
-      await query(
-        `delete from user_video_usage u using translation_jobs j
-         where j.id = $1 and u.user_id = j.user_id and u.video_id = j.video_id and u.status = 'reserved'
-           and not exists (
-             select 1 from translation_jobs other
-             where other.id <> j.id and other.user_id = j.user_id and other.video_id = j.video_id
-               and other.status in ('queued', 'cleaning', 'translating', 'compressing', 'finalizing', 'completed')
-           )`,
-        [jobId]
-      );
+    } catch (error) { await client.query("rollback"); throw error; }
+    finally { client.release(); }
+    attachPlaybackJob(userId,captionSourceId,input.targetLang,jobId);
+    if(hasPlaybackWindow(userId,captionSourceId,input.targetLang))await query("update translation_jobs set machine_translation_mode='playback' where id=$1",[jobId]);
+    try { await subtitleQueue.add("translate", { jobId }, { attempts: 2 }); }
+    catch (error) {
+      await query("update translation_jobs set status='failed',error=$1,updated_at=now() where id=$2",
+        [error instanceof Error ? error.message : String(error),jobId]);
       throw error;
     }
-    res.json({ jobId, status });
-  } catch (error) {
-    if (requestedMachineRunId && requestedMachineRunUserId) {
-      await query(
-        `update machine_translation_runs
-         set status = 'cancelled', updated_at = now()
-         where id = $1 and user_id = $2 and status = 'active'`,
-        [requestedMachineRunId, requestedMachineRunUserId]
-      ).catch(() => {});
-    }
-    next(error);
-  }
+    res.json({ jobId, status: "queued" });
+  } catch (error) { next(error); }
 });
 
 function parseChunkCues(value: unknown): TranslatedCue[] {
@@ -338,16 +205,29 @@ function parseChunkCues(value: unknown): TranslatedCue[] {
 async function requireJobAccess(jobId: string, authorization: string | undefined) {
   const userId = await requireUserId(authorization);
   const access = await query(
-    `select j.id from translation_jobs j
-     where j.id = $1 and (
-       j.user_id = $2 or exists (
-         select 1 from translation_job_watchers w where w.job_id = j.id and w.user_id = $2
-       )
-     )`,
+    `select j.id from translation_jobs j where j.id = $1 and j.user_id = $2`,
     [jobId, userId]
   );
   if (!access.rows[0]) throw new JobRequestError("Job not found", 404);
 }
+
+jobsRouter.post("/:jobId/cancel", async (req, res, next) => {
+  try {
+    await requireJobAccess(req.params.jobId, req.headers.authorization);
+    const updated = await query(
+      `update translation_jobs set status='cancelled', error=null,
+       machine_translation_state='cancelled', machine_translation_error=null,
+       machine_translation_code=null, machine_translation_retry_at=null, updated_at=now()
+       where id=$1 and (status in ('queued','cleaning','translating','compressing','finalizing','cancelled','failed')
+         or (status='failed' and machine_translation_state in ('running','waiting')))
+       returning id`, [req.params.jobId]);
+    if (!updated.rows.length) return res.status(409).json({error:'任务已结束，无需停止'});
+    removePendingJob(req.params.jobId);
+    abortJobOperations(req.params.jobId);
+    await closePlaybackForJob(req.params.jobId);
+    res.json({ok:true, status:'cancelled'});
+  } catch (error) { next(error); }
+});
 
 jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
   try {
@@ -389,6 +269,7 @@ jobsRouter.get("/:jobId/partial-subtitles", async (req, res, next) => {
       cues,
       aiCues: cues,
       machineCues,
+      machineTranslation: { ...(job.rows[0].machineTranslation as object), ...await machineProgress(req.params.jobId), ...await playbackProgressForJob(req.params.jobId) },
       cueCount: cues.length,
       chunkCount: chunks.rows.length,
       aiChunkCount: chunks.rows.length,
@@ -408,7 +289,8 @@ jobsRouter.get("/:jobId", async (req, res, next) => {
       [req.params.jobId]
     );
     if (!result.rows[0]) return res.status(404).json({ error: "Job not found" });
-    res.json(result.rows[0]);
+    const row = result.rows[0];
+    res.json({ ...row, machineTranslation: { ...(row.machineTranslation as object), ...await machineProgress(req.params.jobId), ...await playbackProgressForJob(req.params.jobId) } });
   } catch (error) {
     next(error);
   }

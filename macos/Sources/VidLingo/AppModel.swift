@@ -49,6 +49,7 @@ final class AppModel: ObservableObject {
     @Published var section: AppSection = .overview
     @Published var status: LocalStatus?
     @Published var jobs: [JobSummary] = []
+    @Published private(set) var stoppingJobIDs: Set<String> = []
     @Published private(set) var historyTotal = 0
     @Published private(set) var historyCursor: String?
     @Published private(set) var isLoadingHistory = false
@@ -84,7 +85,6 @@ final class AppModel: ObservableObject {
     let server = ServerController()
     let translationInstaller = LocalTranslationInstaller()
     private(set) var localToken = ""
-    private var jwtSecret = ""
     private var cachedAPIKey = ""
     private var cachedGoogleKey = ""
     private var credentialsError: String?
@@ -127,11 +127,9 @@ final class AppModel: ObservableObject {
         let apiKey = try Keychain.read("ai-api-key") ?? ""
         let googleKey = try Keychain.read("google-api-key") ?? ""
         let token = try Keychain.ensureSecret(account: "local-token")
-        let secret = try Keychain.ensureSecret(account: "jwt-secret")
         cachedAPIKey = apiKey
         cachedGoogleKey = googleKey
         localToken = token
-        jwtSecret = secret
         hasAPIKey = !apiKey.isEmpty
         hasGoogleKey = !googleKey.isEmpty
         credentialsError = nil
@@ -208,7 +206,6 @@ final class AppModel: ObservableObject {
             config: config,
             apiKey: savedAPIKey,
             googleKey: savedGoogleKey,
-            jwtSecret: jwtSecret,
             localToken: localToken
         )
     }
@@ -525,6 +522,24 @@ final class AppModel: ObservableObject {
                 banner = Banner(text: "字幕设置已保存，插件下次打开视频时同步", kind: .success)
             } catch {
                 banner = Banner(text: "保存失败：\(error.localizedDescription)", kind: .error)
+            }
+        }
+    }
+
+    func stopJob(_ job: JobSummary) {
+        guard job.canStop, server.isRunning, !stoppingJobIDs.contains(job.id) else { return }
+        stoppingJobIDs.insert(job.id)
+        Task {
+            defer { stoppingJobIDs.remove(job.id) }
+            do {
+                try await LocalAPI.stopJob(base: server.baseURL, token: localToken, jobId: job.id)
+                if let index = jobs.firstIndex(where: { $0.id == job.id }) {
+                    jobs[index].status = "cancelled"
+                    jobs[index].machineTranslationState = "cancelled"
+                }
+                banner = Banner(text: "任务已停止，已生成的字幕已保留", kind: .success)
+            } catch {
+                banner = Banner(text: "停止失败：\(error.localizedDescription)", kind: .error)
             }
         }
     }

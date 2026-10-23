@@ -4,14 +4,15 @@
 
 脚本会同时抓取视频标题、频道和描述，并把这些信息作为翻译上下文传给 AI，用于识别主题、人物、术语和缩写；这些上下文不会被输出到字幕里。
 
-## 两种运行方式
+## macOS 本地应用
 
-| 方式 | 说明 |
-| --- | --- |
-| macOS 原生应用（推荐个人使用） | `npm run build:mac` 生成 `dist/VidLingo.app`。App 内嵌 Node 运行时、PGlite 数据库和任务队列，不需要 Docker / Postgres / Redis，也不需要邮箱登录。在 App 里填 API Key，Chrome 插件一键连到 `127.0.0.1:3000` 即可。详见 [macos/README.md](macos/README.md)。 |
-| 云端服务（SaaS） | 保留 `render.yaml` 和服务端启动入口，用 Postgres + Redis 跑多用户版本；本地 Docker 部署配置已移除，见 [DEPLOYMENT.md](DEPLOYMENT.md)。 |
+`npm run build:mac` 生成 `dist/VidLingo.app`。应用内嵌 Node、PGlite 数据库和任务队列，不需要部署服务器、Docker、Postgres 或 Redis，也不需要邮箱登录。
 
-两种方式共用同一套翻译逻辑与数据库 schema，本机模式通过 `LOCAL_MODE=1` 切换。
+在应用中配置 AI 服务商与 API Key，再使用 Chrome 插件的「连接本机应用」。详细说明见 [macos/README.md](macos/README.md)。
+
+所有任务、历史和字幕缓存在本机。翻译内容会发送给你配置的 AI 服务商；macOS 系统翻译在本机执行：开启翻译即准备当前字幕，并跟随播放位置预翻后约 30 秒，填补等待 AI 的空白；AI 译文优先显示。
+
+以下 Python 原型和 `evaluation/` 是独立的开发与评估工具，不参与应用运行。
 
 ## 使用
 

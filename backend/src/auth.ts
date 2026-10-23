@@ -1,34 +1,21 @@
 import crypto from "node:crypto";
-import jwt from "jsonwebtoken";
 import { env } from "./env.js";
 import { query } from "./db.js";
 
 export class AuthError extends Error {
   status = 401;
-
-  constructor(message = "Session expired. Please sign in again.") {
-    super(message);
-  }
+  constructor(message = "请在插件设置中重新连接 VidLingo 本机应用。") { super(message); }
 }
 
 const LOCAL_IDENTITY = "local-device";
 let localUserId: string | null = null;
 let localUserPromise: Promise<string> | null = null;
 
-export function hashToken(token: string) {
-  return crypto.createHash("sha256").update(token).digest("hex");
-}
-
-export function createRandomToken() {
-  return crypto.randomBytes(32).toString("base64url");
-}
-
-export function signSession(userId: string) {
-  return jwt.sign({ sub: userId }, env.JWT_SECRET, { expiresIn: "90d" });
-}
-
 export function isLocalToken(token: string | undefined) {
-  return Boolean(env.LOCAL_MODE && env.LOCAL_TOKEN && token === env.LOCAL_TOKEN);
+  if (!token) return false;
+  const supplied = Buffer.from(token);
+  const expected = Buffer.from(env.LOCAL_TOKEN);
+  return supplied.length === expected.length && crypto.timingSafeEqual(supplied, expected);
 }
 
 /** The single local user used by the desktop app (no email sign-in). */
@@ -45,8 +32,8 @@ export async function getLocalUserId(): Promise<string> {
       const created = await query<{ id: string }>("insert into users default values returning id");
       const userId = created.rows[0].id;
       await query(
-        `insert into identities (user_id, type, identifier, verified_at)
-         values ($1, 'anonymous', $2, now())
+        `insert into identities (user_id, type, identifier)
+         values ($1, 'anonymous', $2)
          on conflict (type, identifier) do nothing`,
         [userId, LOCAL_IDENTITY]
       );
@@ -59,35 +46,8 @@ export async function getLocalUserId(): Promise<string> {
   return localUserPromise;
 }
 
-export async function resolveAnonymousUser(clientId: string) {
-  const existing = await query<{ user_id: string }>(
-    "select user_id from identities where type = 'anonymous' and identifier = $1",
-    [clientId]
-  );
-  if (existing.rows[0]) return existing.rows[0].user_id;
 
-  const created = await query<{ id: string }>(
-    "insert into users default values returning id"
-  );
-  const userId = created.rows[0].id;
-  await query(
-    "insert into identities (user_id, type, identifier) values ($1, 'anonymous', $2)",
-    [userId, clientId]
-  );
-  return userId;
-}
-
-export async function requireUserId(authHeader: string | undefined, clientId?: string) {
-  if (authHeader?.startsWith("Bearer ")) {
-    const token = authHeader.slice("Bearer ".length);
-    if (isLocalToken(token)) return getLocalUserId();
-    try {
-      const payload = jwt.verify(token, env.JWT_SECRET) as { sub: string };
-      return payload.sub;
-    } catch {
-      throw new AuthError();
-    }
-  }
-  if (clientId) return resolveAnonymousUser(clientId);
-  throw new AuthError("Missing auth token or clientId");
+export async function requireUserId(authHeader: string | undefined) {
+  if (!authHeader?.startsWith("Bearer ") || !isLocalToken(authHeader.slice(7))) throw new AuthError();
+  return getLocalUserId();
 }

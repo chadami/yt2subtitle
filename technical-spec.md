@@ -1,5 +1,8 @@
 # Frontend and Backend Technical Specification
 
+> 历史原型文档：其中的账号、会员、云端部署方案已停用。当前本地应用架构与使用说明以 README.md 和 macos/README.md 为准。
+
+
 ## System Architecture
 
 ```text
