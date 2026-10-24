@@ -11,6 +11,8 @@ test('AI semantic fragments survive parsing, storage and display without mechani
   globalThis.fetch = async (_url, init) => {
     const request = JSON.parse(String(init?.body));
     assert.match(request.messages[0].content, /Chinese display segmentation/);
+    assert.match(request.messages[0].content, /Reorder clauses freely/);
+    assert.match(request.messages[0].content, /First compose the full idiomatic Chinese sentence/);
     return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify({ cues: [{
       source_indexes: [7], source: 'Welcome to a new episode of Audio Confidential.', translation, segments,
       start: 999, end: 1000

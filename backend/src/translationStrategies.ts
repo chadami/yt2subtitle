@@ -28,7 +28,7 @@ const defaultStrategy: TranslationStrategy = {
 export const translationStrategies: TranslationStrategy[] = [
   {
     id: "zh",
-    version: "2026-10-24.1",
+    version: "2026-10-24.2",
     languageCodes: ["zh", "zh-Hans", "zh-Hant", "zh-CN", "zh-TW", "zh-HK"],
     displayName: "Natural Chinese subtitle strategy",
     analysisGuidance: [
@@ -37,6 +37,8 @@ export const translationStrategies: TranslationStrategy[] = [
     ],
     translationGuidance: [
       "Use natural spoken Mandarin for Chinese targets.",
+      "Compose the whole Chinese sentence before dividing it for display. Freely restructure clause order within the matching source cue instead of translating each English clause in sequence. Put purpose or condition clauses before the action when this makes the Chinese clearer; do not leave them at the end merely because English does.",
+      "Preserve rhetorical questions, irony, doubt and emotional emphasis. For a critical rhetorical question about doing something merely for a small benefit, consider the natural Chinese pattern 难道我们为了……就要……吗 rather than a neutral 我们是不是……就为了…… question. Choose the order from the intended meaning, not a rigid template.",
       "Use natural sentence and clause punctuation so the backend can display one short spoken thought at a time, aiming for 20 Chinese characters per displayed subtitle, with up to 24 when needed to preserve a natural phrase. Do not merge independent short sentences with commas. Preserve all content; the backend will split longer translations and estimate their display times.",
       "Prefer common expressions like \"所以\", \"但\", \"还有\", \"这个/它\" over stiff wording like \"因此\", \"然而\", \"此外\", or \"该/其\" when meaning is unchanged.",
       "Avoid translated-sounding sentence structure; rewrite lightly so the subtitle sounds like something a Chinese speaker would actually say.",

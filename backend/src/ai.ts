@@ -562,7 +562,9 @@ Rules:
 - Follow the translation brief for terminology and style when it matches the raw subtitle text.
 - Treat the raw_cue text as the source of truth. Do not add information from the brief or neighboring context that is not present in the current raw_cue.
 - Do not summarize, compress, or drop meaning-bearing details for readability.
-- You may lightly reorder words within the current raw_cue so the subtitle sounds natural in ${targetLanguage}, but keep every meaning-bearing detail.
+${isChineseTarget(targetLanguage)
+  ? '- Reorder clauses freely within the current raw_cue when natural Chinese requires it. First compose the full idiomatic Chinese sentence, then choose display segments. Source clause order and source timing within this cue must not dictate Chinese clause order. Preserve every meaning-bearing detail and never borrow content from other cues.'
+  : '- You may lightly reorder words within the current raw_cue so the subtitle sounds natural in the target language, but keep every meaning-bearing detail.'}
 - Remove only clear ASR disfluencies like "um" or immediate accidental repetitions that carry no meaning.
 - Preserve the full translation; never shorten content to meet a length target.
 - Restore natural punctuation after correcting the ASR transcript, even when raw_cues contains no punctuation.
