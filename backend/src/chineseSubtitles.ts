@@ -22,10 +22,10 @@ function weakBoundary(text: string) {
   return /[，,、：:][”’」』）】》〉]*$/u.test(text.trim());
 }
 
-function tokens(text: string) {
+function tokens(text: string, protectEnglish = true) {
   const output: string[] = [];
   // Protect decimals, percentages, filenames and Latin names from word segmentation.
-  const blocks = text.match(/[A-Za-z0-9]+(?:[.,:/_\-][A-Za-z0-9]+)*[%％]?|[^A-Za-z0-9]+/gu) || [];
+  const blocks = text.match(/[A-Za-z0-9]+(?:[.,:/_'’\-][A-Za-z0-9]+)*[%％]?|[^A-Za-z0-9]+/gu) || [];
   for (const block of blocks) {
     for (const token of /^[A-Za-z0-9]/u.test(block) ? [block] : Array.from(words.segment(block), item => item.segment)) {
       if (/^[\s\p{P}\p{S}]+$/u.test(token) && !/^[“‘「『（【《〈]$/u.test(token) && output.length) {
@@ -41,7 +41,36 @@ function tokens(text: string) {
       output.splice(index, 2, output[index] + output[index + 1]);
     }
   }
-  return output;
+  if (!protectEnglish) return output;
+  const grouped: string[] = [];
+  for (const token of output) {
+    const previous = grouped.at(-1);
+    // Keep ordinary multiword Latin names together, but cap a run so an entire
+    // English paragraph cannot become one indivisible Chinese subtitle token.
+    if (previous && !/\p{Script=Han}/u.test(previous)
+      && /[A-Za-z0-9]\s+$/u.test(previous) && /^[A-Za-z0-9]/u.test(token)
+      && readingLength(previous + token) <= 64 && previous.trim().split(/\s+/u).length < 8) {
+      grouped[grouped.length - 1] += token;
+    } else {
+      grouped.push(token);
+    }
+  }
+  for (let index = 0; index < grouped.length - 1; index += 1) {
+    const token = grouped[index];
+    if (!/[A-Za-z]/u.test(token) || /\p{Script=Han}/u.test(token)
+      || strongBoundary(token) || weakBoundary(token)
+      || !/^\p{Script=Han}/u.test(grouped[index + 1].trim())) continue;
+    // Without punctuation, keep the name and its following Chinese word together.
+    // If that word is a linking particle, include its following word as well.
+    const following = grouped[index + 1];
+    let count = /^(?:的|地|得|和|与|及)$/u.test(following.trim())
+      && grouped[index + 2] && /^\p{Script=Han}/u.test(grouped[index + 2].trim()) ? 3 : 2;
+    // ICU may split a noun into its stem and a one-character nominal suffix,
+    // e.g. 办公/室 or 创始/人. Keep that suffix with the protected phrase too.
+    if (/^[人者员师商室厅馆店厂部所社局院站组队机器型版款类级]$/u.test(grouped[index + count]?.trim() || "")) count += 1;
+    grouped.splice(index, count, grouped.slice(index, index + count).join(""));
+  }
+  return grouped;
 }
 
 function splitSentence(text: string) {
@@ -128,7 +157,7 @@ function avoidFlashes(parts: string[], duration: number) {
 function estimatedSourceParts(source: string | undefined, weights: number[]) {
   if (!source) return weights.map(() => source);
   // Bilingual source divisions are estimates too; retain complete source words.
-  const sourceTokens = tokens(source);
+  const sourceTokens = tokens(source, false);
   const total = weights.reduce((sum, value) => sum + value, 0);
   const sourceLength = source.length;
   let tokenIndex = 0;

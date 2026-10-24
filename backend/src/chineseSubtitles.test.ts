@@ -127,3 +127,50 @@ test("Chinese keeps an unpunctuated 21 to 24 character phrase intact but still s
   assert.ok(result.every(cue => length(cue.text) <= 24));
   verify(input, result);
 });
+
+test("Chinese keeps multiword English names with the following Chinese word", () => {
+  for (const name of ["teenage engineering", "Teenage Engineering", "teenager engineering", "Subtle Gradient Design System"]) {
+    const input = [{ start: 0, end: 16, text: `今天我们来到斯德哥尔摩参观${name}总部看看他们如何设计这些有趣的产品。` }];
+    const result = finalizeTranslatedCues(input, "zh-Hans");
+    assert.ok(result.some(cue => cue.text.includes(`${name}总部`)), name);
+    verify(input, result);
+  }
+});
+
+test("Chinese keeps English names and their linking particle plus noun together", () => {
+  for (const tail of ["的办公室", "的总部"]) {
+    const input = [{ start: 0, end: 16, text: `从那以后我就明白Teenage Engineering ${tail}里一定在发生着了不起的事情。` }];
+    const result = finalizeTranslatedCues(input, "zh");
+    assert.ok(result.some(cue => cue.text.includes(`Teenage Engineering ${tail}`)));
+    verify(input, result);
+  }
+});
+
+test("Chinese protects the actual guest and office examples from the Stockholm video", () => {
+  for (const [text, protectedPhrase] of [
+    ["本期我们会坐下来聊聊，嘉宾是 Teenage Engineering 创始人之一 David Eriksson，还有其他设计师。", "Teenage Engineering 创始人"],
+    ["这张桌子是你走进 Teenage Engineering 办公室看到的第一样东西，上面摆着 TE 创立以来推出的全部产品。", "Teenage Engineering 办公室"]
+  ]) {
+    const input = [{ start: 129, end: 145, text, sourceIndexes: [22] }];
+    const result = finalizeTranslatedCues(input, "zh");
+    assert.ok(result.some(cue => cue.text.includes(protectedPhrase)));
+    verify(input, result);
+  }
+});
+
+test("Chinese punctuation after an English name remains a valid boundary", () => {
+  const input = [{ start: 0, end: 12, text: "我们特别喜欢teenage engineering，这家公司的产品总是充满有趣的想法。" }];
+  const result = finalizeTranslatedCues(input, "zh");
+  assert.deepEqual(result.map(cue => cue.text), [
+    "我们特别喜欢teenage engineering，", "这家公司的产品总是充满有趣的想法。"
+  ]);
+  verify(input, result);
+});
+
+test("English names preserve contractions and do not consume the following complete Chinese sentence", () => {
+  const input = [{ start: 0, end: 12, text: "今天我们参观don't panic design工作室看看他们最新的产品。随后离开。" }];
+  const result = finalizeTranslatedCues(input, "zh");
+  assert.ok(result.some(cue => cue.text.includes("don't panic design工作室")));
+  assert.equal(result.at(-1)?.text, "随后离开。");
+  verify(input, result);
+});
