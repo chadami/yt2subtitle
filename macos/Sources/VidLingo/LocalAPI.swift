@@ -95,7 +95,6 @@ struct JobSummary: Decodable, Identifiable {
 
 struct Preferences: Codable, Equatable {
     var targetLang: String
-    var showSourceText: Bool
 }
 
 struct JobHistory: Decodable {
@@ -212,13 +211,13 @@ enum LocalAPI {
         return try decode(Preferences.self, data: data, response: http)
     }
 
-    static func updatePreferences(base: String, token: String, targetLang: String, showSourceText: Bool) async throws -> Preferences {
+    static func updatePreferences(base: String, token: String, targetLang: String) async throws -> Preferences {
         guard let request = buildRequest(
             base: base,
             path: "/api/local/preferences",
             method: "PUT",
             token: token,
-            body: ["targetLang": targetLang, "showSourceText": showSourceText]
+            body: ["targetLang": targetLang]
         ) else { throw LocalAPIError.badURL }
         let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse else { throw LocalAPIError.badURL }

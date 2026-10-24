@@ -117,3 +117,15 @@ test('machine fallback keeps a task pending until its subtitles are complete', a
   await h.run('checkSubtitleJobs()');
   assert.equal(h.storage.pendingJobs.length,0);
 });
+
+test('syncing Mac language preserves the extension source toggle and font sizes', async () => {
+  for (const showSourceText of [false, true]) {
+    const subtitleStyle = { showSourceText, fontSize: 30, sourceFontSize: 18 };
+    const h = harness({ ...saved, settings: { ...saved.settings, subtitleStyle } },
+      () => reply(200, { targetLang: 'zh-Hans', showSourceText: !showSourceText }));
+    const result = await h.run('syncLocalPreferences()');
+    assert.equal(result.ok, true);
+    assert.equal(h.storage.settings.targetLang, 'zh-Hans');
+    assert.deepEqual(h.storage.settings.subtitleStyle, subtitleStyle);
+  }
+});

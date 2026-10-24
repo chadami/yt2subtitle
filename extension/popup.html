@@ -3,61 +3,51 @@
   <head>
     <meta charset="utf-8" />
     <style>
-      :root {
-        color-scheme: light dark;
-        --ink: #17191f;
-        --muted: #8a90a0;
-        --line: rgba(23, 25, 31, 0.1);
-        --bg: #fff;
-        --ok: #1a9d5a;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root { --ink: #f2f4f8; --muted: #9aa1ad; --line: rgba(255,255,255,.12); --bg: #16181d; }
-      }
+      :root { color-scheme: light; --ink: #202024; --muted: #626269; --line: #e4e4e7; --bg: #fff; }
       * { box-sizing: border-box; }
-      body {
-        width: 300px;
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
-          "Microsoft YaHei", sans-serif;
-      }
-      main { padding: 20px; }
-      .brand { display: flex; align-items: center; gap: 9px; }
-      .brand img { width: 28px; height: 28px; border-radius: 7px; }
-      h1 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
-      .status { display: flex; gap: 9px; align-items: flex-start; margin-top: 22px; }
-      .dot { width: 8px; height: 8px; border-radius: 50%; background: #b6bac4; margin-top: 5px; flex: none; }
-      .dot.ok { background: var(--ok); box-shadow: 0 0 0 3px rgba(26,157,90,.15); }
-      .state { font-size: 13.5px; font-weight: 650; }
-      .detail { margin-top: 2px; color: var(--muted); font-size: 11.5px; line-height: 1.45; }
-      button {
-        width: 100%; height: 38px; margin-top: 20px;
-        border: 0; border-radius: 9px;
-        background: var(--ink); color: var(--bg);
-        font: 600 13px/1 inherit; cursor: pointer;
-      }
-      button:hover { opacity: 0.9; }
-      .hint { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; text-align: center; }
+      [hidden] { display: none !important; }
+      body { width: 360px; margin: 0; background: var(--bg); color: var(--ink); font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; }
+      main { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
+      .status { display: flex; gap: 12px; align-items: center; }
+      .status-icon { display: grid; place-items: center; width: 36px; height: 36px; flex: none; border-radius: 50%; background: #fff0e8; }
+      .status-icon.ok { background: #edf7f0; }
+      .status-icon img { width: 19px; height: 19px; }
+      .status-copy { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+      .state { font-size: 14px; font-weight: 600; line-height: 1.4; }
+      .detail { color: var(--muted); font-size: 13px; line-height: 1.5; }
+      .engine { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 10px; background: #f6f6f7; }
+      .engine-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      .engine-label { color: var(--muted); font-size: 12px; font-weight: 500; line-height: 1.5; }
+      .provider { max-width: 150px; overflow-wrap: anywhere; padding: 3px 8px; border-radius: 5px; background: #fff0e8; color: #a3411b; font-size: 12px; font-weight: 500; line-height: 1.4; }
+      .model { overflow-wrap: anywhere; font-size: 13px; font-weight: 500; line-height: 1.6; }
+      .connection { display: flex; flex-direction: column; gap: 14px; }
+      .connection p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+      button { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 44px; padding: 10px 16px; border: 0; border-radius: 10px; background: linear-gradient(180deg, #ff925f 0%, #ff7f49 48%, #f16d35 100%); box-shadow: inset 0 1px 1px #ffffff40, inset 0 -1px 1px #a13d1826, 0 2px 5px #a4472026; color: #fff; font: 600 13px/1.4 "PingFang SC", -apple-system, sans-serif; cursor: pointer; }
+      button img { width: 16px; height: 16px; }
+      button:hover { filter: brightness(1.04); }
+      button:focus-visible { outline: 2px solid #a3411b; outline-offset: 3px; }
+      button:disabled { cursor: wait; opacity: .7; }
+      footer { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-top: 1px solid var(--line); }
+      footer img { width: 18px; height: 18px; flex: none; }
+      footer p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
     </style>
   </head>
   <body>
     <main>
-      <div class="brand">
-        <img src="icons/icon-32.png" alt="" />
-        <h1>VidLingo</h1>
-      </div>
-      <section class="status">
-        <span class="dot" id="dot"></span>
-        <div>
-          <div class="state" id="state">检查中…</div>
-          <div class="detail" id="detail"></div>
-        </div>
+      <section class="status" role="status" aria-live="polite">
+        <span class="status-icon" id="dot"><img id="statusIcon" src="icons/popup-plugs.svg" alt="" /></span>
+        <div class="status-copy"><div class="state" id="state">检查中…</div><div class="detail" id="detail">正在连接本机应用</div></div>
       </section>
-      <button id="openOptions" type="button">打开设置</button>
-      <p class="hint">字幕显示与样式在 YouTube 播放器里调整</p>
+      <section class="engine" id="engine" hidden>
+        <div class="engine-head"><span class="engine-label" id="engineLabel">当前 AI 引擎</span><span class="provider" id="provider"></span></div>
+        <div class="model" id="model"></div>
+      </section>
+      <section class="connection" id="connection" hidden>
+        <p id="connectionHint">打开 Mac 上的 VidLingo，并保持应用运行。</p>
+        <button id="connect" type="button"><img src="icons/popup-link.svg" alt="" /><span id="connectLabel">连接本机应用</span></button>
+      </section>
     </main>
+    <footer><img src="icons/popup-captions.svg" alt="" /><p id="hint">字幕显示与样式，<br />请在 YouTube 播放器里调整。</p></footer>
     <script src="popup.js"></script>
   </body>
 </html>

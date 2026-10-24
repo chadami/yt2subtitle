@@ -4,6 +4,7 @@ const OVERLAY_AI_INDICATOR_ID = "yt-ai-subtitle-ai-indicator";
 const DEFAULT_API_BASE = "http://127.0.0.1:3000";
 const DEFAULT_SUBTITLE_STYLE = {
   fontSize: 24,
+  sourceFontSize: 24,
   backgroundOpacity: 25,
   fontWeight: "normal",
   positionPercent: 21,
@@ -185,6 +186,7 @@ function applySubtitleStyle(style = {}) {
   const position = clampNumber(Number(nextStyle.positionPercent), 2, 92);
   const positionX = clampNumber(Number(nextStyle.positionXPercent ?? 50), 0, 100);
   overlay.style.fontSize = `${fontSize}px`;
+  overlay.style.setProperty("--yt-ai-source-font-size", `${clampNumber(Number(nextStyle.sourceFontSize), 16, 36)}px`);
   overlay.style.fontWeight = "500";
   overlay.style.background = `rgba(18,28,25,${opacity})`;
   overlay.style.bottom = `${position}%`;
@@ -393,7 +395,7 @@ function renderOverlayCue(overlay, sourceText, translationText, isAiGenerated = 
     const sourceLine = document.createElement("div");
     sourceLine.textContent = normalizedSource;
     sourceLine.style.cssText = [
-      "font-size:1em",
+      "font-size:var(--yt-ai-source-font-size, 1em)",
       "font-weight:500",
       "line-height:1.38",
       "color:rgba(246,255,249,.82)",
@@ -1190,7 +1192,7 @@ function ensurePlayerControlStyles() {
     .yt-ai-style-head { min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 0 10px; font-weight: 600; }
     .yt-ai-back { width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: #fff; cursor: pointer; font-size: 27px; line-height: 1; }
     .yt-ai-back:hover { background: rgba(255,255,255,.1); }
-    .yt-ai-slider-row { display: grid; grid-template-columns: 58px 1fr 48px; align-items: center; gap: 10px; min-height: 62px; padding: 6px 12px; }
+    .yt-ai-slider-row { display: grid; grid-template-columns: 72px 1fr 48px; align-items: center; gap: 10px; min-height: 62px; padding: 6px 12px; }
     .yt-ai-slider-row input { width: 100%; accent-color: #fff; }
     .yt-ai-slider-value { text-align: right; color: rgba(255,255,255,.9); font-variant-numeric: tabular-nums; }
     .yt-ai-reset-position { width:calc(100% - 24px); min-height:36px; margin:6px 12px 10px; border:1px solid rgba(255,255,255,.16); border-radius:8px; background:rgba(255,255,255,.06); color:#fff; cursor:pointer; font:500 13px/1 "YouTube Sans",Roboto,Arial,sans-serif; }
@@ -1249,14 +1251,11 @@ function createPlayerPanel() {
         <span class="yt-ai-row-label">字幕样式</span>
         <span class="yt-ai-row-chevron">›</span>
       </button>
-      <button class="yt-ai-panel-row" data-action="settings">
-        <span class="yt-ai-panel-icon">${panelIcon("settings")}</span>
-        <span class="yt-ai-row-label">更多设置</span>
-      </button>
     </div>
     <div class="yt-ai-panel-page" data-page="style" hidden>
       <div class="yt-ai-style-head"><button class="yt-ai-back" data-action="back" aria-label="返回">‹</button><span>字幕样式</span></div>
-      <label class="yt-ai-slider-row"><span>字号</span><input type="range" min="16" max="36" step="1" data-style="fontSize"><span class="yt-ai-slider-value" data-value="fontSize">24px</span></label>
+      <label class="yt-ai-slider-row"><span>译文字号</span><input type="range" min="16" max="36" step="1" data-style="fontSize"><span class="yt-ai-slider-value" data-value="fontSize">24px</span></label>
+      <label class="yt-ai-slider-row"><span>原文字号</span><input type="range" min="16" max="36" step="1" data-style="sourceFontSize"><span class="yt-ai-slider-value" data-value="sourceFontSize">24px</span></label>
       <label class="yt-ai-slider-row"><span>位置</span><input type="range" min="2" max="92" step="1" data-style="positionPercent"><span class="yt-ai-slider-value" data-value="positionPercent">21%</span></label>
       <label class="yt-ai-slider-row"><span>透明度</span><input type="range" min="15" max="95" step="1" data-style="backgroundOpacity"><span class="yt-ai-slider-value" data-value="backgroundOpacity">25%</span></label>
       <button class="yt-ai-reset-position" data-action="reset-position" type="button">恢复默认位置</button>
@@ -1346,6 +1345,12 @@ async function refreshPlayerPanel() {
   panel.querySelector('[data-setting="showSourceText"]').checked = style.showSourceText !== false;
   panel.querySelector('[data-role="engine"]').textContent = engineDisplayName(settings.aiProvider, settings.aiModel);
   syncPanelStyleControls(style);
+  const localStatus = await chrome.runtime.sendMessage({ type: "GET_LOCAL_STATUS" }).catch(() => null);
+  if (localStatus?.ok && localStatus.ai) {
+    panel.querySelector('[data-role="engine"]').textContent = localStatus.ai.configured
+      ? engineDisplayName(localStatus.ai.provider, localStatus.ai.model)
+      : "未设置";
+  }
 
   const videoId = getVideoId();
   panelVideoId = videoId;
@@ -1383,12 +1388,10 @@ async function refreshPlayerPanel() {
 }
 
 function engineDisplayName(provider, model) {
-  const normalized = String(provider || "").toLowerCase();
-  const names = { deepseek: "DeepSeek", openai: "OpenAI", anthropic: "Claude", google: "Gemini", moonshot: "Kimi", xiaomi: "MiMo" };
-  if (names[normalized]) return names[normalized];
-  if (provider) return String(provider);
-  if (model) return String(model).split("/").pop();
-  return "未设置";
+  const providerName = String(provider || "").trim();
+  const modelName = String(model || "").trim();
+  const names = { deepseek: "DeepSeek", openai: "OpenAI", claude: "Claude", anthropic: "Claude", gemini: "Gemini", google: "Gemini", qwen: "Qwen", moonshot: "Kimi", mimo: "MiMo", xiaomi: "MiMo" };
+  return [names[providerName.toLowerCase()] || providerName, modelName].filter(Boolean).join(" · ") || "未设置";
 }
 
 function machineTranslationStatus(preview) {
@@ -1494,6 +1497,7 @@ async function savePanelSubtitleStyle() {
     ...DEFAULT_SUBTITLE_STYLE,
     ...(settings.subtitleStyle || {}),
     fontSize: Number(panel.querySelector('[data-style="fontSize"]').value),
+    sourceFontSize: Number(panel.querySelector('[data-style="sourceFontSize"]').value),
     positionPercent: Number(panel.querySelector('[data-style="positionPercent"]').value),
     backgroundOpacity: Number(panel.querySelector('[data-style="backgroundOpacity"]').value)
   };
@@ -1505,7 +1509,7 @@ async function savePanelSubtitleStyle() {
 function syncPanelStyleControls(style) {
   const panel = document.getElementById(PLAYER_PANEL_ID);
   if (!panel) return;
-  const suffixes = { fontSize: "px", positionPercent: "%", backgroundOpacity: "%" };
+  const suffixes = { fontSize: "px", sourceFontSize: "px", positionPercent: "%", backgroundOpacity: "%" };
   for (const key of Object.keys(suffixes)) {
     const input = panel.querySelector(`[data-style="${key}"]`);
     const value = panel.querySelector(`[data-value="${key}"]`);

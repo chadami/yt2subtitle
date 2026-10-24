@@ -16,7 +16,7 @@ const copy = {
     notFound: "没检测到本机应用",
     notFoundHint: "确认 VidLingo.app 已打开且状态是「运行中」，然后重试。",
     moreTitle: "更多设置",
-    moreBody: "字幕语言、原文字幕、翻译历史都在 macOS 应用的「字幕输出」和「历史记录」里。",
+    moreBody: "翻译语言和翻译历史在 macOS 应用中设置与查看；原文显示和字幕样式在 YouTube 播放器面板里调整。",
     advanced: "连接诊断（高级）",
     save: "保存并连接",
     saved: "地址已保存，正在连接…",

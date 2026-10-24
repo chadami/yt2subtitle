@@ -26,20 +26,6 @@ struct SubtitleSettingsView: View {
                     }
                 }
 
-                SectionCard(title: "显示方式", subtitle: nil) {
-                    Toggle(isOn: $model.showSourceTextDraft) {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("显示原文字幕")
-                                .font(.system(size: 12.5))
-                            Text("开启后在译文字幕上方同时显示原文，方便对照")
-                                .font(.system(size: 11))
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    .toggleStyle(.switch)
-                    .controlSize(.small)
-                }
-
                 HStack(spacing: 10) {
                     Button {
                         model.savePreferences()
@@ -66,9 +52,9 @@ struct SubtitleSettingsView: View {
 
                 SectionCard(title: "说明", subtitle: nil) {
                     VStack(alignment: .leading, spacing: 6) {
-                        bullet("字号、位置、透明度仍然在 YouTube 播放器面板里调，那是每块屏幕各自合适的。")
+                        bullet("原文显示、原文和译文字号、位置、透明度在 YouTube 播放器面板里调整。")
                         bullet("自动翻译开关也在播放器面板里，属于单个视频的操作。")
-                        bullet("这里的两项会被插件读取并覆盖它自己的旧设置。")
+                        bullet("翻译语言会被插件读取并同步。")
                     }
                 }
             }

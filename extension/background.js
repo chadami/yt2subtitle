@@ -83,11 +83,7 @@ async function syncLocalPreferences() {
     const next = {
       ...settings,
       apiBase,
-      targetLang: prefs.targetLang || settings.targetLang || "zh-Hans",
-      subtitleStyle: {
-        ...(settings.subtitleStyle || {}),
-        showSourceText: prefs.showSourceText !== false
-      }
+      targetLang: prefs.targetLang || settings.targetLang || "zh-Hans"
     };
     await chrome.storage.local.set({ settings: next });
     return { ok: true, settings: next };

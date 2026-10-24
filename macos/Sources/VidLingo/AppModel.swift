@@ -59,9 +59,8 @@ final class AppModel: ObservableObject {
     }
     private var bannerDismissTask: Task<Void, Never>?
 
-    @Published var preferences = Preferences(targetLang: "zh-Hans", showSourceText: true)
+    @Published var preferences = Preferences(targetLang: "zh-Hans")
     @Published var targetLangDraft = "zh-Hans"
-    @Published var showSourceTextDraft = true
     @Published var isSavingPreferences = false
     private var preferencesLoaded = false
     private var isLoadingPreferences = false
@@ -502,7 +501,6 @@ final class AppModel: ObservableObject {
             guard let prefs = try? await LocalAPI.preferences(base: server.baseURL, token: localToken) else { return }
             preferences = prefs
             targetLangDraft = prefs.targetLang
-            showSourceTextDraft = prefs.showSourceText
             preferencesLoaded = true
         }
     }
@@ -519,8 +517,7 @@ final class AppModel: ObservableObject {
                 let updated = try await LocalAPI.updatePreferences(
                     base: server.baseURL,
                     token: localToken,
-                    targetLang: targetLangDraft,
-                    showSourceText: showSourceTextDraft
+                    targetLang: targetLangDraft
                 )
                 preferences = updated
                 preferencesLoaded = true
