@@ -28,7 +28,7 @@ const defaultStrategy: TranslationStrategy = {
 export const translationStrategies: TranslationStrategy[] = [
   {
     id: "zh",
-    version: "2026-07-08.1",
+    version: "2026-10-24.1",
     languageCodes: ["zh", "zh-Hans", "zh-Hant", "zh-CN", "zh-TW", "zh-HK"],
     displayName: "Natural Chinese subtitle strategy",
     analysisGuidance: [

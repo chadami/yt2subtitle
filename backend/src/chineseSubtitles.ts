@@ -9,6 +9,19 @@ export function isChineseTarget(language?: string) {
   return language?.trim().toLowerCase().replace(/_/g, "-").split("-")[0] === "zh";
 }
 
+export function validatedSemanticSegments(value: unknown, text: string): string[] | undefined {
+  if (!Array.isArray(value) || !value.length || value.length > 64
+    || value.some(part => typeof part !== "string" || !part.trim())) return;
+  const parts = value.map(part => part.replace(/\s+/gu, " ").trim());
+  const compact = (text: string) => text.replace(/\s/gu, "");
+  if (compact(parts.join("")) !== compact(text)) return;
+  if (parts.some(part => !readingLength(part) || readingLength(part) > 64)) return;
+  if (parts.some((part, index) => index > 0
+    && (/[A-Za-z0-9]$/u.test(parts[index - 1]) && /^[A-Za-z0-9]/u.test(part)
+      || /^[，。！？；：、,.!?;:]/u.test(part)))) return;
+  return parts;
+}
+
 // Count letters and numbers, excluding spaces and punctuation. Latin tokens stay intact.
 function readingLength(text: string) {
   return (text.match(/[\p{L}\p{N}]/gu) || []).length;
@@ -181,7 +194,8 @@ export function segmentChineseCues(cues: TranslatedCue[]) {
     const text = cue.text.replace(/\s+/gu, " ").trim();
     if (!text) return [];
     const duration = cue.end - cue.start;
-    const parts = avoidFlashes(splitChineseText(text), duration);
+    const semantic = validatedSemanticSegments(cue.semanticSegments, text);
+    const parts = avoidFlashes(semantic || splitChineseText(text), duration);
     if (parts.length <= 1) return [{ ...cue, text }];
     const weights = parts.map(part => Math.max(1, readingLength(part)));
     const total = weights.reduce((sum, value) => sum + value, 0);
@@ -195,7 +209,8 @@ export function segmentChineseCues(cues: TranslatedCue[]) {
         start,
         end: index === parts.length - 1 ? cue.end : cue.start + duration * elapsed / total,
         text: part,
-        sourceText: sourceParts[index]
+        sourceText: sourceParts[index],
+        ...(semantic ? { semanticSegments: [part] } : {})
       };
     });
   });

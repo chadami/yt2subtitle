@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
 import type { CleanCue, TranslatedCue } from "./subtitles.js";
 import { normalizeText } from "./subtitles.js";
+import { isChineseTarget, validatedSemanticSegments } from "./chineseSubtitles.js";
 import {
   getTranslationStrategy,
   hasJapaneseNumericCoverage,
@@ -565,13 +566,26 @@ Rules:
 - Remove only clear ASR disfluencies like "um" or immediate accidental repetitions that carry no meaning.
 - Preserve the full translation; never shorten content to meet a length target.
 - Restore natural punctuation after correcting the ASR transcript, even when raw_cues contains no punctuation.
-- It is okay if one output cue is a fragment; backend timing/readability cleanup will merge fragments.
+- If a source cue is unfinished, preserve its unfinished meaning without borrowing later content.
+
+${isChineseTarget(targetLanguage) ? `Chinese display segmentation:
+- For every cue, also return segments: an array of Chinese display fragments, in reading order.
+- translation is the full translation. Concatenating segments must reproduce it exactly, apart from whitespace. Do not add, omit, or repeat content.
+- Choose boundaries by complete spoken thoughts and grammatical phrases, NOT by equal character counts. Aim for about 20 Chinese characters; allow longer phrases when needed for meaning and names.
+- Keep 新一期, 更广的领域, 一个技术支持, and other complete words, modifiers and noun phrases intact. These are examples, not a restricted glossary.
+- Keep a person's introductory description with their name where practical. Never leave 的, 一个, 这段, or an incomplete modifier as an isolated fragment.
+- Keep multiword English names intact. Keep directly attached Chinese nouns with them when natural. Do not end a fragment with a stranded conjunction or preposition.
+- Separate independent short sentences. Do not force every comma into a new fragment; avoid tiny fragments and avoid combining several independent thoughts into one long fragment.
+- Return one outer cue per source index, with several segments inside it when needed. Never return timestamps. The backend estimates times within the original cue.
+` : ""}
 
 Language-specific translation guidance:
 ${guidanceBullets(strategy.translationGuidance)}
 
 Return:
-{"cues":[{"source_indexes":[1],"source":"source text","translation":"translated subtitle"}]}
+${isChineseTarget(targetLanguage)
+  ? '{"cues":[{"source_indexes":[1],"source":"source text","translation":"先打开文件，然后保存。","segments":["先打开文件，","然后保存。"]}]}'
+  : '{"cues":[{"source_indexes":[1],"source":"source text","translation":"translated subtitle"}]}'}
 `.trim();
 }
 
@@ -639,6 +653,9 @@ export async function translateChunk(input: {
         start: Math.min(...sourceCues.map((cue) => cue.start)),
         end: Math.max(...sourceCues.map((cue) => cue.end)),
         text: translation,
+        ...(isChineseTarget(input.targetLanguage) ? {
+          semanticSegments: validatedSemanticSegments((item as { segments?: unknown }).segments, translation)
+        } : {}),
         sourceIndexes: sourceCues.map((cue) => cue.index)
       });
     }

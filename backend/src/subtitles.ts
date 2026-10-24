@@ -16,6 +16,7 @@ export type TranslatedCue = {
   text: string;
   sourceText?: string;
   sourceIndexes?: number[];
+  semanticSegments?: string[];
 };
 
 const BOUNDARY_PUNCTUATION = ["...", "……", "，", ",", "。", ".", "！", "!", "？", "?", "；", ";", "：", ":"];
