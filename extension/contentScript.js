@@ -1686,7 +1686,7 @@ async function refreshPlayerPanel() {
 
   if (!canUpdateStatus()) return;
   // Opening the panel must not reset an active attempt, retry, or error.
-  if (["preparing", "waiting", "working", "fallback", "error"].includes(panel.querySelector('[data-action="generate"]').dataset.state)) return;
+  if (["preparing", "waiting", "working", "fallback", "error", "reload"].includes(panel.querySelector('[data-action="generate"]').dataset.state)) return;
   panelVideoId = videoId;
   if (!videoId) {
     setPanelState("idle", "请先打开 YouTube 视频");
@@ -1770,13 +1770,19 @@ function updateMachinePreviewFeedback(preview, videoId) {
 }
 
 function setPanelState(state, message) {
+  // After the extension is reloaded or updated, this page still runs the old script and
+  // every chrome.* call fails until the page is refreshed. Retrying cannot help.
+  if (/Extension context invalidated/i.test(message || "")) {
+    state = "reload";
+    message = "VidLingo 已更新，请刷新页面后继续";
+  }
   panelStateRevision++;
   const panel = document.getElementById(PLAYER_PANEL_ID);
   const button = document.getElementById(PLAYER_BUTTON_ID);
   if (!panel) return;
   const action = panel.querySelector('[data-action="generate"]');
   const status = panel.querySelector('[data-role="status"]');
-  const labels = { idle: "开始翻译", preparing: "获取字幕中", waiting: "重试", working: "停止任务", fallback: "重试 AI", ready: "重新翻译", native: "原生字幕", connect: "连接应用", error: "重试", "same-language": "无需翻译" };
+  const labels = { idle: "开始翻译", preparing: "获取字幕中", waiting: "重试", working: "停止任务", fallback: "重试 AI", ready: "重新翻译", native: "原生字幕", connect: "连接应用", reload: "刷新页面", error: "重试", "same-language": "无需翻译" };
   action.textContent = labels[state] || labels.idle;
   action.disabled = state === "preparing" || state === "native" || state === "same-language";
   action.dataset.state = state;
@@ -1802,6 +1808,10 @@ async function handlePanelClick(event) {
     }
     if (event.target.dataset.state === "connect") {
       openExtensionOptions();
+      return;
+    }
+    if (event.target.dataset.state === "reload") {
+      location.reload();
       return;
     }
     await startTranslationFromPlayer(event.target.dataset.state === "ready");

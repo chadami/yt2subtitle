@@ -94,3 +94,19 @@ test('completed machine fallback is a ready task, not a failed task', async () =
   assert.equal(states[0].state,'ready');
   assert.doesNotMatch(states[0].message,/失败/);
 });
+
+test('an invalidated extension context asks for a page refresh instead of a retry', () => {
+  const action = { dataset: {} };
+  const status = { dataset: {} };
+  const panel = { querySelector: selector => selector.includes('generate') ? action : status };
+  const context = vm.createContext({
+    document: { getElementById: id => id === 'panel' ? panel : {setAttribute(){}} },
+    PLAYER_PANEL_ID:'panel',PLAYER_BUTTON_ID:'button',machinePreviewFeedback:null,getVideoId:()=> 'v',panelStateRevision:0
+  });
+  vm.runInContext(extract('function setPanelState(', 'async function handlePanelClick('), context);
+  vm.runInContext('setPanelState("error", "Extension context invalidated.")', context);
+  assert.equal(action.dataset.state,'reload');
+  assert.equal(action.textContent,'刷新页面');
+  assert.equal(action.disabled,false);
+  assert.match(status.textContent,/请刷新页面/);
+});
