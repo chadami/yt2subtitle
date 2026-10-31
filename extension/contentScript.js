@@ -575,7 +575,14 @@ async function tryLoadSubtitle(options = {}) {
     clearOverlay();
     return { loaded: false, reason: "no-video-id" };
   }
-  const preparation = await prepareAiSubtitles();
+  let preparation;
+  try {
+    preparation = await prepareAiSubtitles();
+  } catch (error) {
+    const saved = await loadSavedSubtitle(videoId, options);
+    if (saved.loaded) return saved;
+    throw error;
+  }
   const prepared = preparation.payload;
   if (getVideoId() !== videoId) return { ok: true, loaded: false, reason: "video-changed" };
   if (prepared.usesNativeTargetTrack) {
@@ -604,6 +611,20 @@ async function tryLoadSubtitle(options = {}) {
     if(!playbackPreview)clearOverlay();
     return { loaded: false, reason: data.status || "missing", cueCount: 0 };
   }
+}
+
+// When YouTube captions cannot be fetched, still show this video's latest saved translation.
+// Its cues carry their own source text, so bilingual display keeps working.
+async function loadSavedSubtitle(videoId, options = {}) {
+  const data = await chrome.runtime.sendMessage({ type: "GET_SAVED_SUBTITLE", videoId }).catch(() => null);
+  if (getVideoId() !== videoId) return { loaded: false, reason: "video-changed" };
+  if (data?.status !== "completed" || !Array.isArray(data.cues) || !data.cues.length) {
+    return { loaded: false, reason: "missing" };
+  }
+  const rendered = await renderSubtitles(data.cues, videoId, {
+    replaceCurrentCue: options.replaceCurrentCue === true
+  });
+  return { ...rendered, status: "completed", accessSource: data.accessSource };
 }
 
 function startPartialSubtitlePolling(jobId, videoId = getVideoId(), sourceCues = [], initialMachineCues = []) {
@@ -1784,7 +1805,14 @@ async function startTranslationFromPlayer(forceRegenerate = false, automatic = f
     if (!connection?.ok) throw new Error("请在插件设置中连接 VidLingo 本机应用。");
     const preparation = preparedPayload
       ? { payload: preparedPayload }
-      : await prepareAiSubtitles();
+      : await prepareAiSubtitles().catch(async (error) => {
+        if (!forceRegenerate && (await loadSavedSubtitle(videoId)).loaded) return null;
+        throw error;
+      });
+    if (!preparation) {
+      setPanelState("ready", "已加载现有 AI 字幕");
+      return;
+    }
     if (preparation.payload.usesNativeTargetTrack) {
       const rendered = await renderSubtitles(preparation.payload.rawCues, videoId, { nativeTrack: true });
       setPanelState("native", rendered.loaded
@@ -1976,6 +2004,13 @@ async function maybeAutoTranslateCurrentVideo() {
   try {
     preparation = await prepareAiSubtitles();
   } catch (error) {
+    const saved = await loadSavedSubtitle(videoId).catch(() => null);
+    if (runId !== autoTranslationRun || getVideoId() !== videoId) return;
+    if (saved?.loaded) {
+      cancelAutoTranslationRetry();
+      setPanelState("ready", "已加载现有 AI 字幕");
+      return;
+    }
     scheduleAutoTranslationRetry(error, videoId, runId);
     return;
   }

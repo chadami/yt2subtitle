@@ -28,6 +28,7 @@ function setup() {
     },
     startPlaybackPreview: async () => {}, stopPlaybackPreview: async () => {},
     tryLoadSubtitle: async () => ({loaded: false}),
+    loadSavedSubtitle: async () => ({loaded: false}),
     isSameTranslationLanguage: () => false, waitForVideoElement: async () => ({}),
     startTranslationFromPlayer: async () => { starts++; }, syncPanelStyleControls() {}, engineDisplayName: () => '',
   });
@@ -50,6 +51,16 @@ test('auto translation retries empty captions and starts once when captions beco
   assert.equal(h.starts(), 1);
   assert.equal(h.timers.size, 0);
   assert.equal(h.ctx.subtitlePreparationCache, null, 'retry must fetch fresh caption session data');
+});
+
+test('a saved translation is shown instead of retrying when YouTube captions fail', async () => {
+  const h = setup(); const loaded = [];
+  h.ctx.loadSavedSubtitle = async videoId => { loaded.push(videoId); return { loaded: true }; };
+  await h.ctx.maybeAutoTranslateCurrentVideo();
+  assert.deepEqual(loaded, ['v']);
+  assert.equal(h.timers.size, 0, 'no caption retry is scheduled');
+  assert.equal(h.starts(), 0, 'no new translation starts');
+  assert.deepEqual(h.states.at(-1), { state: 'ready', message: '已加载现有 AI 字幕' });
 });
 
 test('repeated caption failures stop after three retries and retain the error', async () => {

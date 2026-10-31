@@ -129,3 +129,14 @@ test('syncing Mac language preserves the extension source toggle and font sizes'
     assert.deepEqual(h.storage.settings.subtitleStyle, subtitleStyle);
   }
 });
+
+test('saved subtitle lookup uses the video and target language without caption data', async () => {
+  const cues = [{ start: 0, end: 2, text: '已保存译文', sourceText: 'Saved' }];
+  const h = harness({ ...saved, sessionToken: 'current' }, (url) => url.includes('/by-video/found')
+    ? reply(200, { status: 'completed', cues })
+    : reply(404, { status: 'missing' }));
+  assert.deepEqual(await h.message({ type: 'GET_SAVED_SUBTITLE', videoId: 'found' }), { status: 'completed', cues });
+  assert.equal(new URL(h.calls[0].url).pathname, '/api/subtitles/by-video/found');
+  assert.equal(new URL(h.calls[0].url).searchParams.get('targetLang'), 'ja');
+  assert.deepEqual({ ...await h.message({ type: 'GET_SAVED_SUBTITLE', videoId: 'none' }) }, { status: 'missing' });
+});

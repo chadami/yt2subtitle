@@ -126,6 +126,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     );
     return true;
   }
+  if (message?.type === "GET_SAVED_SUBTITLE") {
+    getSavedSubtitle(message.videoId).then(
+      (result) => sendResponse(result),
+      (error) => sendResponse({ status: "missing", error: error.message || String(error) })
+    );
+    return true;
+  }
   if (message?.type === "GET_JOB_STATUS") {
     getJobStatus(message.jobId).then(
       (result) => sendResponse(result),
@@ -316,6 +323,19 @@ async function getJobStatus(jobId) {
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || `Job status failed: ${response.status}`);
   return { ok: true, job: data };
+}
+
+// Saved translations need no YouTube caption request, which can be blocked or return empty bodies.
+async function getSavedSubtitle(videoId) {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const apiBase = normalizeApiBase(settings.apiBase);
+  const targetLang = settings.targetLang || "zh-Hans";
+  const response = await localFetch(apiBase,
+    `/api/subtitles/by-video/${encodeURIComponent(videoId)}?targetLang=${encodeURIComponent(targetLang)}`);
+  const data = await response.json().catch(() => ({}));
+  if (response.status === 404) return { status: "missing" };
+  if (!response.ok) throw new Error(data.error || `Saved subtitle lookup failed: ${response.status}`);
+  return data;
 }
 
 async function getPartialSubtitles(jobId) {
