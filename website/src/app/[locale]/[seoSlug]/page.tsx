@@ -9,7 +9,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { copy, isLocale, locales, type Locale } from "@/lib/i18n";
 import { isSeoPageSlug, seoPages, seoPageSlugs } from "@/lib/seo-pages";
-import { getChromeWebStoreUrl, pageMetadata, siteUrl } from "@/lib/site";
+import { getDownloadUrl, pageMetadata, siteUrl } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: string; seoSlug: string }> };
 
@@ -39,7 +39,7 @@ export default async function SeoLandingPage({ params }: PageProps) {
   const siteCopy = copy[locale];
   const page = seoPages[seoSlug];
   const content = page.copy[locale];
-  const storeUrl = getChromeWebStoreUrl();
+  const downloadUrl = getDownloadUrl(locale);
   const canonical = `${siteUrl}/${locale}/${seoSlug}`;
   const related = seoPageSlugs.filter((slug) => slug !== seoSlug);
 
@@ -55,7 +55,7 @@ export default async function SeoLandingPage({ params }: PageProps) {
           ],
         }}
       />
-      <SiteHeader locale={locale} copy={siteCopy} storeUrl={storeUrl} languageSuffix={`/${seoSlug}`} />
+      <SiteHeader locale={locale} copy={siteCopy} downloadUrl={downloadUrl} languageSuffix={`/${seoSlug}`} />
 
       <article>
         <header className="seo-hero section-shell">
@@ -65,7 +65,7 @@ export default async function SeoLandingPage({ params }: PageProps) {
           <p className="eyebrow">{content.eyebrow}</p>
           <h1>{content.title}</h1>
           <p className="seo-lead">{content.introduction}</p>
-          <InstallLink href={storeUrl} label={siteCopy.hero.cta} />
+          <InstallLink href={downloadUrl} label={siteCopy.hero.cta} />
         </header>
 
         <section className="seo-highlight-shell section-shell" aria-label={content.eyebrow}>
@@ -124,7 +124,7 @@ export default async function SeoLandingPage({ params }: PageProps) {
             <p className="eyebrow light">{siteCopy.finalCta.eyebrow}</p>
             <h2>{content.ctaTitle}</h2>
             <p>{content.ctaDescription}</p>
-            <InstallLink href={storeUrl} label={siteCopy.finalCta.button} className="button button-light" />
+            <InstallLink href={downloadUrl} label={siteCopy.finalCta.button} className="button button-light" />
           </div>
         </section>
       </article>

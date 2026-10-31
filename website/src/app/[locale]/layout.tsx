@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Analytics } from "@vercel/analytics/next";
 import { JsonLd } from "@/components/json-ld";
 import { htmlLanguages, isLocale } from "@/lib/i18n";
-import { chromeWebStoreUrl, siteName, siteUrl } from "@/lib/site";
+import { siteName, siteUrl } from "@/lib/site";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -35,7 +35,6 @@ export default async function LocaleLayout({ children, params }: { children: Rea
               name: siteName,
               url: siteUrl,
               logo: `${siteUrl}/vidlingo-icon.png`,
-              sameAs: [chromeWebStoreUrl],
             },
           ]}
         />

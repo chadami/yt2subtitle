@@ -10,12 +10,12 @@ import { LanguageSwitcher } from "./language-switcher";
 export function SiteHeader({
   locale,
   copy,
-  storeUrl,
+  downloadUrl,
   languageSuffix = "",
 }: {
   locale: Locale;
   copy: SiteCopy;
-  storeUrl: string;
+  downloadUrl: string;
   languageSuffix?: string;
 }) {
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +38,7 @@ export function SiteHeader({
         </nav>
         <div className="header-actions">
           <LanguageSwitcher locale={locale} suffix={languageSuffix} />
-          <InstallLink href={storeUrl} label={copy.nav.install} className="button button-small" />
+          <InstallLink href={downloadUrl} label={copy.nav.install} className="button button-small" />
         </div>
       </div>
     </header>

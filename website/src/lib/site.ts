@@ -3,22 +3,14 @@ import { htmlLanguages, locales, type Locale } from "./i18n";
 
 export const siteUrl = "https://www.vidlingo.online";
 export const siteName = "VidLingo";
-export const chromeWebStoreUrl =
-  "https://chromewebstore.google.com/detail/vidlingo/aknhnkdkeiojehikedcpkpingbfkfldk";
-
-export function getChromeWebStoreUrl() {
-  const value = process.env.NEXT_PUBLIC_CHROME_WEB_STORE_URL;
-  if (!value) {
-    if (process.env.NODE_ENV === "production") {
-      throw new Error("NEXT_PUBLIC_CHROME_WEB_STORE_URL is required for production builds.");
-    }
-    return chromeWebStoreUrl;
-  }
+// Mac 版安装包地址。未配置时下载按钮跳到首页的安装步骤，避免出现失效链接。
+export function getDownloadUrl(locale: Locale) {
+  const value = process.env.NEXT_PUBLIC_MAC_DOWNLOAD_URL;
+  if (!value) return `/${locale}#how`;
 
   const url = new URL(value);
-  const allowedHosts = new Set(["chromewebstore.google.com", "chrome.google.com"]);
-  if (url.protocol !== "https:" || !allowedHosts.has(url.hostname)) {
-    throw new Error("NEXT_PUBLIC_CHROME_WEB_STORE_URL must be an HTTPS Chrome Web Store URL.");
+  if (url.protocol !== "https:") {
+    throw new Error("NEXT_PUBLIC_MAC_DOWNLOAD_URL must be an HTTPS URL.");
   }
   return url.toString();
 }

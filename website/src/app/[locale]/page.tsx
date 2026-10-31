@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { InstallLink } from "@/components/install-link";
-import { ProductDemo } from "@/components/product-demo";
 import { ProviderLogos, ProviderMarquee } from "@/components/provider-marquee";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SpeedRace } from "@/components/speed-race";
+import { SubtitleCompare } from "@/components/subtitle-compare";
+import { demoClips } from "@/lib/demo-clips";
 import { copy, isLocale } from "@/lib/i18n";
-import { getChromeWebStoreUrl, pageMetadata } from "@/lib/site";
+import { getDownloadUrl, pageMetadata } from "@/lib/site";
+import "../comparison.css";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -22,12 +25,12 @@ export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const content = copy[locale];
-  const storeUrl = getChromeWebStoreUrl();
+  const downloadUrl = getDownloadUrl(locale);
 
   return (
     <main className="home-page glass-peach-theme">
       <ScrollReveal />
-      <SiteHeader locale={locale} copy={content} storeUrl={storeUrl} />
+      <SiteHeader locale={locale} copy={content} downloadUrl={downloadUrl} />
 
       <section className="hero section-shell">
         <div className="hero-copy reveal reveal-one">
@@ -35,27 +38,56 @@ export default async function HomePage({ params }: PageProps) {
           <h1><span className="hero-title-line">{content.hero.title}</span><br /><em>{content.hero.accent}</em></h1>
           <p className="hero-description">{content.hero.description}</p>
           <div className="hero-actions">
-            <InstallLink href={storeUrl} label={content.hero.cta} />
+            <InstallLink href={downloadUrl} label={content.hero.cta} />
             <span className="button-note">{content.hero.note}</span>
           </div>
           <ProviderMarquee label={content.byok.providersLabel} />
         </div>
-        <div className="demo-wrap reveal reveal-two"><ProductDemo copy={content.demo} /></div>
+        <div className="demo-wrap compare-wrap reveal reveal-two">
+          <SubtitleCompare clips={demoClips} copy={content.compare} locale={locale} />
+          <p className="compare-hint">{content.compare.hint}</p>
+        </div>
       </section>
 
-      <section className="section-shell feature-section" id="features">
+      <section className="section-shell quality-section" id="features">
         <div className="section-intro" data-reveal>
-          <p className="eyebrow">{content.intro.eyebrow}</p>
-          <h2>{content.intro.title}</h2>
-          <p>{content.intro.description}</p>
+          <p className="eyebrow">{content.quality.eyebrow}</p>
+          <h2>{content.quality.title}</h2>
+          <p>{content.quality.description}</p>
         </div>
-        <div className="feature-grid">
-          {content.features.map((feature) => (
-            <article className="feature-card" data-reveal key={feature.number}>
-              <span>{feature.number}</span><h3>{feature.title}</h3><p>{feature.description}</p>
-            </article>
+        <div className="quality-grid">
+          {content.quality.points.map((point, index) => {
+            const example = demoClips[index]?.highlight;
+            return (
+              <article className="quality-card" data-reveal key={point.title}>
+                <span className="quality-index">0{index + 1}</span>
+                <h3>{point.title}</h3>
+                <p>{point.description}</p>
+                {example && (
+                  <dl className="quality-example">
+                    <div className="example-original"><dt>{content.quality.originalLabel}</dt><dd lang="en">{example.original}</dd></div>
+                    <div className="example-youtube"><dt>{content.compare.youtubeLabel}</dt><dd>{example.youtube}</dd></div>
+                    <div className="example-vidlingo"><dt>{content.compare.vidlingoLabel}</dt><dd>{example.vidlingo}</dd></div>
+                  </dl>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="section-shell speed-section" id="speed">
+        <div className="section-intro" data-reveal>
+          <p className="eyebrow">{content.speed.eyebrow}</p>
+          <h2>{content.speed.title}</h2>
+          <p>{content.speed.description}</p>
+        </div>
+        <div data-reveal><SpeedRace copy={content.speed} /></div>
+        <ul className="speed-facts">
+          {content.speed.facts.map((fact) => (
+            <li data-reveal key={fact.title}><h3>{fact.title}</h3><p>{fact.description}</p></li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <section className="how-section" id="how">
@@ -96,7 +128,7 @@ export default async function HomePage({ params }: PageProps) {
           <p className="eyebrow light">{content.finalCta.eyebrow}</p>
           <h2>{content.finalCta.title}</h2>
           <p>{content.finalCta.description}</p>
-          <InstallLink href={storeUrl} label={content.finalCta.button} className="button button-light" />
+          <InstallLink href={downloadUrl} label={content.finalCta.button} className="button button-light" />
           <span className="final-orbit orbit-a" /><span className="final-orbit orbit-b" />
         </div>
       </section>
