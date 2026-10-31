@@ -1,4 +1,4 @@
-import { hasPlaybackWindow } from "./playbackTranslation.js";
+import { hasPlaybackWindow, playbackPosition } from "./playbackTranslation.js";
 import { withJobOperation, JobCancelled } from "./jobControl.js";
 import { AiDeadlineExceeded, withAiDeadline } from "./aiDeadline.js";
 import { machineTranslationProvider } from "./machineTranslation.js";
@@ -9,13 +9,46 @@ import {
 import { query } from "./db.js";
 import { loadLocalAiConfig } from "./routes/ai.js";
 import { ensureJobMachineTranslation } from "./jobMachineTranslation.js";
-import { coveredSourceIndexes, chunkCues, finalizeTranslatedCues, prepareSourceCues, toVtt, type RawCue, type TranslatedCue } from "./subtitles.js";
+import { coveredSourceIndexes, chunkCues, finalizeTranslatedCues, prepareSourceCues, toVtt, type CleanCue, type RawCue, type TranslatedCue } from "./subtitles.js";
 import { getTranslationStrategy } from "./translationStrategies.js";
 import {
   assessSubtitleQuality,
   cleanupSubtitleArtifacts,
   hashTranslatedCues
 } from "./subtitleLibrary.js";
+
+const FIRST_REQUEST_CUES = 3;
+const REQUEST_CUES = 12;
+const REQUEST_CHARACTERS = 1400;
+const CONTEXT_CUES = 8;
+// Requests in flight per job after the first result; the queue may run several jobs at once.
+const AI_REQUEST_CONCURRENCY = 3;
+
+type RequestUnit = { chunkIndex: number; cues: CleanCue[] };
+
+function requestUnits(chunkIndex: number, cues: CleanCue[]) {
+  const units: RequestUnit[] = [];
+  let current: CleanCue[] = [];
+  let characters = 0;
+  for (const cue of cues) {
+    if (current.length >= REQUEST_CUES || (current.length && characters + cue.text.length > REQUEST_CHARACTERS)) {
+      units.push({ chunkIndex, cues: current });
+      current = [];
+      characters = 0;
+    }
+    current.push(cue);
+    characters += cue.text.length;
+  }
+  if (current.length) units.push({ chunkIndex, cues: current });
+  return units;
+}
+
+/** While the video plays, translate from the playback position onward before earlier gaps. */
+export function nextUnitIndex(units: RequestUnit[], position: number | undefined) {
+  if (position === undefined) return 0;
+  const ahead = units.findIndex(unit => unit.cues[unit.cues.length - 1].end > position);
+  return ahead < 0 ? 0 : ahead;
+}
 
 function sourceTextForCue(cue: TranslatedCue, cleanCues: Array<RawCue & { index: number }>) {
   const indexes = new Set(cue.sourceIndexes || []);
@@ -100,62 +133,84 @@ async function processSubtitleJobWithSignal(jobId: string, jobSignal: AbortSigna
   // Metadata and adjacent cues already provide context. Start translating now,
   // rather than spending the short first-result budget on a separate AI brief.
   await query("update translation_jobs set status = 'translating', progress = 25, updated_at = now() where id = $1 and status <> 'cancelled'", [jobId]);
+  // Keep the persisted chunk layout stable for old jobs; requests are cut inside each chunk.
   const chunks = chunkCues(cleanCues);
-  const translated: TranslatedCue[] = [];
-  let hasAIResult = [...completedChunks.values()].some(cues => cues.length > 0);
+  const chunkResults = chunks.map((_, index) => [...(completedChunks.get(index) || [])]);
   const completedSources = new Set<number>();
-  for (let index = 0; index < chunks.length; index += 1) {
-    jobSignal.throwIfAborted();
-    const chunk = chunks[index];
-    const saved = completedChunks.get(index) || [];
-    const covered = coveredSourceIndexes(saved);
-    const chunkResult = [...saved];
+  const units: RequestUnit[] = [];
+  let firstUnit: RequestUnit | undefined;
+  const needsFirstResult = ![...completedChunks.values()].some(cues => cues.length > 0);
+  chunks.forEach((chunk, chunkIndex) => {
+    const covered = coveredSourceIndexes(chunkResults[chunkIndex]);
     for (const sourceIndex of covered) completedSources.add(sourceIndex);
     let pending = chunk.filter(cue => !covered.has(cue.index));
-    while (pending.length) {
-      jobSignal.throwIfAborted();
-      const firstBatch = !hasAIResult;
-      // Keep the persisted batch layout stable for old jobs. Only the first
-      // network request is small; store its result immediately in that batch.
-      const requestCues: typeof pending = [];
-      let requestCharacters = 0;
-      for (const cue of pending) {
-        if (requestCues.length >= (firstBatch ? 3 : 8)
-          || (requestCues.length && requestCharacters + cue.text.length > 900)) break;
-        requestCues.push(cue);
-        requestCharacters += cue.text.length;
-      }
-      const playbackActive = hasPlaybackWindow(record.user_id, record.caption_source_id, record.target_lang);
-      // Playback preview supplies machine cues independently. A missing/expired
-      // preview session must not shorten the first AI request to five seconds.
-      const budgetMs = playbackActive || hasMachineFallback ? 60_000 : 120_000;
-      const batchStartedAt = Date.now();
-      console.info(`Subtitle job ${jobId}: AI batch ${index + 1}/${chunks.length}, ${requestCues.length} cues started (budget ${budgetMs}ms)`);
-      const firstIndex = requestCues[0].index;
-      const previousContext = [...(index > 0 ? chunks[index - 1] : []), ...chunk.filter(cue => cue.index < firstIndex)].slice(-8);
-      const afterRequest = pending.slice(requestCues.length);
-      const nextContext = [...afterRequest, ...(index < chunks.length - 1 ? chunks[index + 1] : [])].slice(0, 8);
-      const result = attachSourceText(await withAiDeadline(
-        firstBatch ? "首批 AI 字幕" : "AI 字幕批次", budgetMs, signal => translateChunk({
-          aiConfig: { ...aiConfig, signal: AbortSignal.any([jobSignal, signal]) },
-          videoContext: { title:record.title, channel:record.channel, description:record.description },
-          previousContext, rawCues:requestCues, nextContext, targetLanguage:record.target_lang
-        })), cleanCues);
-      jobSignal.throwIfAborted();
-      console.info(`Subtitle job ${jobId}: ${requestCues.length} AI cues completed in ${Date.now() - batchStartedAt}ms`);
-      chunkResult.push(...result);
-      for (const sourceIndex of coveredSourceIndexes(result)) completedSources.add(sourceIndex);
-      await query(
-        `insert into translation_job_chunks (job_id, chunk_index, cues_json) values ($1,$2,$3)
-         on conflict (job_id, chunk_index) do update set cues_json=excluded.cues_json, updated_at=now()`,
-        [jobId,index,JSON.stringify(chunkResult)]);
-      hasAIResult = true;
-      pending = afterRequest;
-      await query("update translation_jobs set progress=$1,updated_at=now() where id=$2 and status<>'cancelled'",
-        [25 + Math.round(completedSources.size / Math.max(1,cleanCues.length) * 55), jobId]);
+    // Only the very first network request is small, so the first subtitles appear quickly.
+    if (needsFirstResult && !firstUnit && pending.length) {
+      firstUnit = { chunkIndex, cues: pending.slice(0, FIRST_REQUEST_CUES) };
+      pending = pending.slice(FIRST_REQUEST_CUES);
     }
-    translated.push(...chunkResult);
+    units.push(...requestUnits(chunkIndex, pending));
+  });
+
+  const positionByIndex = new Map(cleanCues.map((cue, position) => [cue.index, position]));
+  // A failed request stops its siblings; jobSignal still distinguishes a user stop.
+  const pool = new AbortController();
+  const poolSignal = AbortSignal.any([jobSignal, pool.signal]);
+  async function runUnit(unit: RequestUnit, first: boolean) {
+    poolSignal.throwIfAborted();
+    const playbackActive = hasPlaybackWindow(record.user_id, record.caption_source_id, record.target_lang);
+    // Playback preview supplies machine cues independently. A missing/expired
+    // preview session must not shorten the first AI request to five seconds.
+    const budgetMs = playbackActive || hasMachineFallback ? 60_000 : 120_000;
+    const batchStartedAt = Date.now();
+    console.info(`Subtitle job ${jobId}: AI chunk ${unit.chunkIndex + 1}/${chunks.length}, ${unit.cues.length} cues started (budget ${budgetMs}ms)`);
+    const firstPosition = positionByIndex.get(unit.cues[0].index)!;
+    const lastPosition = positionByIndex.get(unit.cues[unit.cues.length - 1].index)!;
+    const previousContext = cleanCues.slice(Math.max(0, firstPosition - CONTEXT_CUES), firstPosition);
+    const nextContext = cleanCues.slice(lastPosition + 1, lastPosition + 1 + CONTEXT_CUES);
+    const result = attachSourceText(await withAiDeadline(
+      first ? "首批 AI 字幕" : "AI 字幕批次", budgetMs, signal => translateChunk({
+        aiConfig: { ...aiConfig, signal: AbortSignal.any([poolSignal, signal]) },
+        videoContext: { title:record.title, channel:record.channel, description:record.description },
+        previousContext, rawCues:unit.cues, nextContext, targetLanguage:record.target_lang
+      })), cleanCues);
+    // Save a paid result even if a sibling request failed meanwhile; only a user stop discards it.
+    jobSignal.throwIfAborted();
+    console.info(`Subtitle job ${jobId}: ${unit.cues.length} AI cues completed in ${Date.now() - batchStartedAt}ms`);
+    const chunkResult = chunkResults[unit.chunkIndex];
+    chunkResult.push(...result);
+    // Concurrent requests finish out of order; partial readers expect cues in time order.
+    chunkResult.sort((a, b) => a.start - b.start || a.end - b.end);
+    for (const sourceIndex of coveredSourceIndexes(result)) completedSources.add(sourceIndex);
+    // The snapshot is taken now and statements run in order, so the last write is the most complete.
+    await query(
+      `insert into translation_job_chunks (job_id, chunk_index, cues_json) values ($1,$2,$3)
+       on conflict (job_id, chunk_index) do update set cues_json=excluded.cues_json, updated_at=now()`,
+      [jobId,unit.chunkIndex,JSON.stringify(chunkResult)]);
+    await query("update translation_jobs set progress=$1,updated_at=now() where id=$2 and status<>'cancelled'",
+      [25 + Math.round(completedSources.size / Math.max(1,cleanCues.length) * 55), jobId]);
   }
+
+  if (firstUnit) await runUnit(firstUnit, true);
+  let failure: unknown;
+  await Promise.all(Array.from({ length: Math.min(AI_REQUEST_CONCURRENCY, units.length) }, async () => {
+    while (units.length && !poolSignal.aborted) {
+      const position = playbackPosition(record.user_id, record.caption_source_id, record.target_lang);
+      const unit = units.splice(nextUnitIndex(units, position), 1)[0];
+      try {
+        await runUnit(unit, false);
+      } catch (error) {
+        if (failure === undefined) {
+          failure = error;
+          pool.abort(error);
+        }
+        return;
+      }
+    }
+  }));
+  if (failure !== undefined) throw failure;
+  jobSignal.throwIfAborted();
+  const translated = chunkResults.flat();
 
   await query("update translation_jobs set status = 'finalizing', progress = 95, updated_at = now() where id = $1 and status <> 'cancelled'", [jobId]);
   const finalized = finalizeTranslatedCues(translated, record.target_lang);

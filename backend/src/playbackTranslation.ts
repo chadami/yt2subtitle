@@ -24,6 +24,9 @@ cleanup.unref();
 export function hasPlaybackWindow(owner:string,captionId:string,target:string) {
   return [...sessions.values()].some(s=>s.owner===owner&&s.captionId===captionId&&s.target===target&&live(s));
 }
+export function playbackPosition(owner:string,captionId:string,target:string) {
+  return [...sessions.values()].find(s=>s.owner===owner&&s.captionId===captionId&&s.target===target&&live(s))?.position;
+}
 export function attachPlaybackJob(owner:string,captionId:string,target:string,jobId:string) {
   for(const s of sessions.values())if(s.owner===owner&&s.captionId===captionId&&s.target===target&&live(s))s.jobId=jobId;
 }

@@ -53,7 +53,7 @@ console.log(JSON.stringify({ok:true,done:true}));
       return new Response('{}',{status:500});
     };
     await assert.rejects(processSubtitleJob(current),/AI request failed: 500/);
-    assert.deepEqual(sizes,[3,8]);
+    assert.deepEqual(sizes,[3,12,5],'after the first result the remaining requests run concurrently');
     await markJobAttemptFailed(current,new Error('later request failed'),true);
     for(let i=0;i<500;i++) {
       const state=(await query<{machine_translation_state:string}>('select machine_translation_state from translation_jobs where id=$1',[current])).rows[0].machine_translation_state;
@@ -97,13 +97,13 @@ console.log(JSON.stringify({ok:true,done:true}));
       return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify({cues:input.rawCues.map((cue:{index:number;text:string})=>({source_indexes:[cue.index],source:cue.text,translation:'成功的 AI 译文'}))})}}]}));
     };
     await processSubtitleJob(successful);
-    assert.deepEqual(successSizes,[3,8,8,1]);
+    assert.deepEqual(successSizes,[3,12,5]);
     assert.equal((await query<{status:string}>('select status from translation_jobs where id=$1',[successful])).rows[0].status,'completed');
     assert.equal((await query('select * from translated_subtitles where job_id=$1',[successful])).rows.length,1);
     const resumedIndexes:number[]=[];
     globalThis.fetch=async(_url,init)=>{
       const input=JSON.parse(JSON.parse(String(init?.body)).messages[1].content);
-      assert.ok(input.rawCues.length<=8,'resumed requests remain bounded');
+      assert.ok(input.rawCues.length<=12,'resumed requests remain bounded');
       resumedIndexes.push(...input.rawCues.map((cue:{index:number})=>cue.index));
       return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify({cues:input.rawCues.map((cue:{index:number;text:string})=>({source_indexes:[cue.index],source:cue.text,translation:'继续的 AI 译文'}))})}}]}));
     };

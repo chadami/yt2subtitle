@@ -246,7 +246,9 @@ async function claudeChat(config: AiConfig, messages: ChatMessage[], temperature
       model: config.model || providerDefaults.claude.fallbackModel,
       max_tokens: 4096,
       temperature,
-      system,
+      // The system prompt is identical for every batch of a target language. Claude only caches
+      // on request; the OpenAI-compatible providers and Gemini cache such a stable prefix automatically.
+      system: [{ type: "text", text: system, cache_control: { type: "ephemeral" } }],
       messages: userMessages
     })
   }, config.signal);
