@@ -72,13 +72,25 @@ fs.appendFileSync(${JSON.stringify(log)},JSON.stringify(input.texts)+'\\n');
   const {processSubtitleJob}=await import('./jobRunner.js');
   const originalFetch=globalThis.fetch,originalTimer=globalThis.setTimeout;
   const budgets:number[]=[];
-  globalThis.setTimeout=((fn:(...args:unknown[])=>void,ms?:number,...args:unknown[])=>{if(ms===5000||ms===60000)budgets.push(ms);return originalTimer(fn,ms,...args);}) as typeof setTimeout;
+  globalThis.setTimeout=((fn:(...args:unknown[])=>void,ms?:number,...args:unknown[])=>{if(ms===5000||ms===60000)budgets.push(ms);return originalTimer(fn,ms===5000?5:ms,...args);}) as typeof setTimeout;
   globalThis.fetch=async(_url,init)=>{
     const input=JSON.parse(JSON.parse(String(init?.body)).messages[1].content);
     await delay(30);
     return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify({cues:input.rawCues.map((cue:{index:number;text:string})=>({source_indexes:[cue.index],source:cue.text,translation:'AI 完整译文'}))})}}]}));
   };
-  try {await processSubtitleJob(fresh);assert.equal(budgets[0],60000);assert.ok(!budgets.includes(5000));}
+  try {
+    await processSubtitleJob(fresh);assert.equal(budgets[0],60000);assert.ok(!budgets.includes(5000));
+    // Reproduce a missing/expired playback session: a slow first AI response
+    // must still finish while machine translation is configured as fallback.
+    closePlayback(owner,session);
+    assert.equal(hasPlaybackWindow(owner,caption,'zh-Hans'),false);
+    budgets.length=0;
+    const background=(await query<{id:string}>("insert into translation_jobs(user_id,video_id,source_lang,target_lang,caption_source_id,status) values($1,'playback-test','en','zh-Hans',$2,'queued') returning id",[owner,caption])).rows[0].id;
+    await processSubtitleJob(background);
+    assert.equal(budgets[0],60000);
+    assert.ok(!budgets.includes(5000),'background AI must not use the short first-result deadline');
+    assert.equal((await query<{status:string}>('select status from translation_jobs where id=$1',[background])).rows[0].status,'completed');
+  }
   finally {globalThis.fetch=originalFetch;globalThis.setTimeout=originalTimer;}
 
  }finally{

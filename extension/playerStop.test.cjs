@@ -11,7 +11,7 @@ test('working player action is an enabled stop button', () => {
   const panel = { querySelector: selector => selector.includes('generate') ? action : status };
   const context = vm.createContext({
     document: { getElementById: id => id === 'panel' ? panel : {setAttribute(){}} },
-    PLAYER_PANEL_ID:'panel',PLAYER_BUTTON_ID:'button',machinePreviewFeedback:null,getVideoId:()=> 'v'
+    PLAYER_PANEL_ID:'panel',PLAYER_BUTTON_ID:'button',machinePreviewFeedback:null,getVideoId:()=> 'v',panelStateRevision:0
   });
   vm.runInContext(extract('function setPanelState(', 'async function handlePanelClick('), context);
   vm.runInContext('setPanelState("working", "翻译中")', context);

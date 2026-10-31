@@ -11,12 +11,12 @@ async function refreshEngine(status, settings = {}) {
   const nodes = new Map();
   const messages = [];
   const panel = { querySelector(selector) {
-    if (!nodes.has(selector)) nodes.set(selector, {});
+    if (!nodes.has(selector)) nodes.set(selector, { dataset: {} });
     return nodes.get(selector);
   } };
   const context = vm.createContext({
     document: { getElementById: () => panel }, PLAYER_PANEL_ID: 'panel',
-    DEFAULT_SUBTITLE_STYLE: {}, panelVideoId: '',
+    DEFAULT_SUBTITLE_STYLE: {}, panelVideoId: '', panelStateRevision: 0, panelActionInProgress: false,
     chrome: {
       storage: { local: { get: async () => ({ settings, sessionToken: 'token' }) } },
       runtime: { sendMessage: async message => {

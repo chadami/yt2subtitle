@@ -8,20 +8,20 @@ struct SubtitleSettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 PageHeader(
-                    title: "字幕输出",
+                    title: "翻译语言",
                     subtitle: "改完保存即可，Chrome 插件下次打开视频时自动同步"
                 )
 
                 SectionCard(title: "翻译语言", subtitle: "字幕会翻译成这个语言") {
                     HStack(spacing: 12) {
-                        Picker("", selection: $model.targetLangDraft) {
+                        Picker("翻译语言", selection: $model.targetLangDraft) {
                             ForEach(model.targetLanguages, id: \.id) { language in
                                 Text(language.name).tag(language.id)
                             }
                         }
                         .labelsHidden()
                         .pickerStyle(.menu)
-                        .frame(width: 220)
+                        .frame(width: 220, alignment: .leading)
                         Spacer()
                     }
                 }
@@ -50,29 +50,11 @@ struct SubtitleSettingsView: View {
                     Spacer()
                 }
 
-                SectionCard(title: "说明", subtitle: nil) {
-                    VStack(alignment: .leading, spacing: 6) {
-                        bullet("原文显示、原文和译文字号、位置、透明度在 YouTube 播放器面板里调整。")
-                        bullet("自动翻译开关也在播放器面板里，属于单个视频的操作。")
-                        bullet("翻译语言会被插件读取并同步。")
-                    }
-                }
             }
             .padding(24)
         }
     }
 
-    private func bullet(_ text: String) -> some View {
-        HStack(alignment: .top, spacing: 7) {
-            Text("·")
-                .font(.system(size: 12, weight: .bold))
-                .foregroundStyle(.tertiary)
-            Text(text)
-                .font(.system(size: 11.5))
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-    }
 }
 
 struct HistoryView: View {

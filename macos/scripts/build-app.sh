@@ -8,6 +8,10 @@ APP="${APP_OUTPUT:-$ROOT/dist/VidLingo.app}"
 NODE_BIN="${NODE_BIN:-$(command -v node)}"
 NPM_BIN="${NPM_BIN:-$(command -v npm)}"
 VERSION="${VERSION:-1.0.0}"
+# Keep this aligned with Package.swift's macOS platform and Info.plist below.
+MIN_MACOS_VERSION="13.0"
+MACOS_SDK_PATH="$(xcrun --sdk macosx --show-sdk-path)"
+MACOS_SDK_VERSION="$(xcrun --sdk macosx --show-sdk-version)"
 
 # Keep reusable runtime and compiler caches, but discard this build's staging
 # directory on success, failure, or interruption.
@@ -55,7 +59,27 @@ cp "$NODE_BIN" "$WORK/runtime/node"
 chmod +x "$WORK/runtime/node"
 
 echo "==> 3/6 编译应用与本机翻译组件"
-(cd "$MACOS" && swift build -c release --disable-sandbox)
+# Swift's link-only driver can pass --sysroot to Clang without propagating the
+# SDK version, which stamps the deployment target as the SDK and opts AppKit
+# into legacy appearance. Set both versions explicitly at link time.
+(cd "$MACOS" && xcrun swift build -c release --disable-sandbox \
+  --sdk "$MACOS_SDK_PATH" \
+  -Xlinker -platform_version -Xlinker macos \
+  -Xlinker "$MIN_MACOS_VERSION" -Xlinker "$MACOS_SDK_VERSION")
+for binary in VidLingo vidlingo-translate; do
+  BUILD_VERSION="$(xcrun vtool -show-build "$MACOS/.build/release/$binary")"
+  if ! awk -v sdk="$MACOS_SDK_VERSION" -v minimum="$MIN_MACOS_VERSION" '
+    function normalized(v) { sub(/(\.0)+$/, "", v); return v }
+    $1 == "sdk" { sdkCount++; if (normalized($2) != normalized(sdk)) bad = 1 }
+    $1 == "minos" { minCount++; if (normalized($2) != normalized(minimum)) bad = 1 }
+    END { exit (bad || !sdkCount || sdkCount != minCount) }
+  ' <<< "$BUILD_VERSION"; then
+    echo "构建版本校验失败：${binary} 应为 SDK ${MACOS_SDK_VERSION}，最低 macOS ${MIN_MACOS_VERSION}" >&2
+    echo "$BUILD_VERSION" >&2
+    exit 1
+  fi
+  echo "    ${binary}：SDK ${MACOS_SDK_VERSION}，最低 macOS ${MIN_MACOS_VERSION}"
+done
 mkdir -p "$WORK/runtime/bin"
 cp "$MACOS/.build/release/vidlingo-translate" "$WORK/runtime/bin/vidlingo-translate"
 chmod +x "$WORK/runtime/bin/vidlingo-translate"
@@ -135,7 +159,7 @@ cat > "$STAGE_APP/Contents/Info.plist" <<PLIST
   <key>CFBundleVersion</key>
   <string>1</string>
   <key>LSMinimumSystemVersion</key>
-  <string>13.0</string>
+  <string>${MIN_MACOS_VERSION}</string>
   <key>LSApplicationCategoryType</key>
   <string>public.app-category.productivity</string>
   <key>NSHighResolutionCapable</key>

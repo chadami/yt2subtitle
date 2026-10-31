@@ -1,4 +1,4 @@
-import { closePlaybackForJob, hasPlaybackWindow, playbackProgressForJob, attachPlaybackJob } from "../playbackTranslation.js";
+import { activePlaybackJobIds, closePlaybackForJob, hasPlaybackWindow, playbackProgressForJob, attachPlaybackJob } from "../playbackTranslation.js";
 import { machineProgress } from "../jobProgress.js";
 import { abortJobOperations } from "../jobControl.js";
 import { removePendingJob } from "../localQueue.js";
@@ -212,17 +212,48 @@ async function requireJobAccess(jobId: string, authorization: string | undefined
   if (!access.rows[0]) throw new JobRequestError("Job not found", 404);
 }
 
+jobsRouter.post("/:jobId/retry", async (req, res, next) => {
+  try {
+    await requireJobAccess(req.params.jobId, req.headers.authorization);
+    const result = await query<{ caption_source_id: string; target_lang: string }>(
+      `update translation_jobs set status='queued',error=null,updated_at=now()
+       where id=$1 and status='failed' returning caption_source_id,target_lang`, [req.params.jobId]
+    );
+    if (!result.rows[0]) return res.status(409).json({ error: "此任务当前不可重试，请刷新任务状态。" });
+    const userId = await requireUserId(req.headers.authorization);
+    attachPlaybackJob(userId, result.rows[0].caption_source_id, result.rows[0].target_lang, req.params.jobId);
+    try {
+      await subtitleQueue.add("translate", { jobId: req.params.jobId }, { attempts: 2 });
+    } catch (error) {
+      await markRetryEnqueueFailed(req.params.jobId, error);
+      throw error;
+    }
+    res.json({ ok: true, jobId: req.params.jobId, status: "queued" });
+  } catch (error) { next(error); }
+});
+
+async function markRetryEnqueueFailed(jobId: string, error: unknown) {
+  await query("update translation_jobs set status='failed',error=$1,updated_at=now() where id=$2 and status='queued'",
+    [error instanceof Error ? error.message : String(error), jobId]);
+}
+
 jobsRouter.post("/:jobId/cancel", async (req, res, next) => {
   try {
     await requireJobAccess(req.params.jobId, req.headers.authorization);
+    // A failed job only counts as running while machine fallback or playback preview still works on it.
+    // Otherwise it keeps its 'failed' status and error so it can still be retried.
     const updated = await query(
       `update translation_jobs set status='cancelled', error=null,
        machine_translation_state='cancelled', machine_translation_error=null,
        machine_translation_code=null, machine_translation_retry_at=null, updated_at=now()
-       where id=$1 and (status in ('queued','cleaning','translating','compressing','finalizing','cancelled','failed')
-         or (status='failed' and machine_translation_state in ('running','waiting')))
-       returning id`, [req.params.jobId]);
-    if (!updated.rows.length) return res.status(409).json({error:'任务已结束，无需停止'});
+       where id=$1 and (status in ('queued','cleaning','translating','compressing','finalizing')
+         or (status='failed' and (machine_translation_state in ('running','waiting') or id=any($2::uuid[]))))
+       returning id`, [req.params.jobId, activePlaybackJobIds()]);
+    if (!updated.rows.length) {
+      // Stopping a job that already finished is a no-op, so a late click is not reported as an error.
+      const current = await query<{ status: string }>("select status from translation_jobs where id=$1", [req.params.jobId]);
+      return res.json({ ok: true, status: current.rows[0]?.status });
+    }
     removePendingJob(req.params.jobId);
     abortJobOperations(req.params.jobId);
     await closePlaybackForJob(req.params.jobId);

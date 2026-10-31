@@ -117,9 +117,18 @@ async function processSubtitleJobWithSignal(jobId: string, jobSignal: AbortSigna
       const firstBatch = !hasAIResult;
       // Keep the persisted batch layout stable for old jobs. Only the first
       // network request is small; store its result immediately in that batch.
-      const requestCues = firstBatch ? pending.slice(0, 3) : pending;
-      const playbackActive=hasPlaybackWindow(record.user_id,record.caption_source_id,record.target_lang);
-      const budgetMs = playbackActive ? 60_000 : (hasMachineFallback ? (firstBatch ? 5_000 : 60_000) : 120_000);
+      const requestCues: typeof pending = [];
+      let requestCharacters = 0;
+      for (const cue of pending) {
+        if (requestCues.length >= (firstBatch ? 3 : 8)
+          || (requestCues.length && requestCharacters + cue.text.length > 900)) break;
+        requestCues.push(cue);
+        requestCharacters += cue.text.length;
+      }
+      const playbackActive = hasPlaybackWindow(record.user_id, record.caption_source_id, record.target_lang);
+      // Playback preview supplies machine cues independently. A missing/expired
+      // preview session must not shorten the first AI request to five seconds.
+      const budgetMs = playbackActive || hasMachineFallback ? 60_000 : 120_000;
       const batchStartedAt = Date.now();
       console.info(`Subtitle job ${jobId}: AI batch ${index + 1}/${chunks.length}, ${requestCues.length} cues started (budget ${budgetMs}ms)`);
       const firstIndex = requestCues[0].index;

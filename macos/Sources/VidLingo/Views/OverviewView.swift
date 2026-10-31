@@ -8,7 +8,6 @@ struct OverviewView: View {
             VStack(alignment: .leading, spacing: 14) {
                 PageHeader(title: "概览", subtitle: "本机服务负责翻译，Chrome 插件直接连到这里")
 
-                statusCard
                 metricsCard
 
                 if !model.hasAPIKey {
@@ -32,101 +31,6 @@ struct OverviewView: View {
             .padding(.horizontal, 24)
             .padding(.top, 16)
             .padding(.bottom, 28)
-        }
-    }
-
-    // MARK: - Status
-
-    private var statusCard: some View {
-        Card(padding: 0) {
-            VStack(spacing: 0) {
-                HStack(alignment: .center, spacing: 14) {
-                    Circle()
-                        .fill(statusColor)
-                        .frame(width: 8, height: 8)
-
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(statusTitle)
-                            .font(.system(size: 14.5, weight: .semibold))
-                        Text(statusDetail)
-                            .font(.caption)
-                            .foregroundStyle(Theme.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-
-                    Spacer(minLength: 12)
-
-                    HStack(spacing: 8) {
-                        if model.server.isRunning {
-                            Button("重启") { model.restartServer() }
-                                .flatButton()
-                            Button("停止") { model.stopServer() }
-                                .flatButton()
-                        } else {
-                            Button("启动服务") { model.startServer() }
-                                .flatButton(true)
-                        }
-                    }
-                }
-                .padding(18)
-
-                Hairline()
-
-                HStack(spacing: 0) {
-                    miniStat(label: "队列", value: "\(model.status?.queue.running ?? 0) 运行 / \(model.status?.queue.pending ?? 0) 等待")
-                    Hairline(vertical: true).frame(height: 26)
-                    miniStat(label: "版本", value: model.status?.version ?? "—", mono: true)
-                    Hairline(vertical: true).frame(height: 26)
-                    miniStat(label: "数据", value: "本机")
-                }
-                .padding(.horizontal, 6)
-                .padding(.vertical, 12)
-            }
-        }
-    }
-
-    private func miniStat(label: String, value: String, mono: Bool = false) -> some View {
-        VStack(alignment: .leading, spacing: 3) {
-            Text(label)
-                .font(.system(size: 10.5))
-                .foregroundStyle(Theme.tertiary)
-            Text(value)
-                .font(.system(size: 11.5, weight: .medium, design: mono ? .monospaced : .default))
-                .foregroundStyle(Theme.ink)
-                .lineLimit(1)
-        }
-        .padding(.horizontal, 12)
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var statusTitle: String {
-        switch model.server.state {
-        case .running: return "本机引擎正在运行"
-        case .starting: return "正在启动本机引擎"
-        case .failed: return "本机引擎启动失败"
-        case .stopped: return "本机引擎已停止"
-        }
-    }
-
-    private var statusDetail: String {
-        switch model.server.state {
-        case .running:
-            return "已准备好接收插件任务，数据保存在本机"
-        case .starting:
-            return "正在准备翻译服务，请稍候"
-        case .failed:
-            return "请重启服务；若仍无法连接，可在高级设置中查看连接诊断"
-        case .stopped:
-            return "点击启动后即可在插件里生成字幕"
-        }
-    }
-
-    private var statusColor: Color {
-        switch model.server.state {
-        case .running: return Theme.green
-        case .starting: return .orange
-        case .failed: return .red
-        case .stopped: return Theme.tertiary
         }
     }
 

@@ -148,6 +148,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       error=>sendResponse({ok:false,error:error.message||String(error)}));
     return true;
   }
+  if (message?.type === "RETRY_SUBTITLE_JOB") {
+    retrySubtitleJob(message).then(sendResponse,
+      error => sendResponse({ ok: false, error: error.message || String(error) }));
+    return true;
+  }
   if (message?.type === "STOP_SUBTITLE_JOB") {
     stopSubtitleJob(message.jobId).then(
       (result) => sendResponse(result),
@@ -178,6 +183,19 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
   return false;
 });
+
+async function retrySubtitleJob(payload) {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  const response = await localFetch(normalizeApiBase(settings.apiBase), `/api/jobs/${encodeURIComponent(payload.jobId)}/retry`, { method: "POST" });
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || `Retry failed: ${response.status}`);
+  const { pendingJobs = [] } = await chrome.storage.local.get(["pendingJobs"]);
+  if (!pendingJobs.some(job => job.jobId === payload.jobId)) {
+    await chrome.storage.local.set({ pendingJobs: [...pendingJobs, { jobId: payload.jobId, videoId: payload.videoId, title: payload.title || "", createdAt: Date.now() }] });
+  }
+  ensureJobAlarm();
+  return { ok: true, ...data };
+}
 
 async function createSubtitleJob(payload) {
   const { settings = {} } = await chrome.storage.local.get(["settings"]);

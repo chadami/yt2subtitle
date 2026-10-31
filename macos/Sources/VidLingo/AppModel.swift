@@ -23,7 +23,7 @@ enum AppSection: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .overview: return "概览"
-        case .subtitles: return "字幕输出"
+        case .subtitles: return "翻译语言"
         case .ai: return "AI 模型"
         case .extensionBridge: return "Chrome 插件"
         case .history: return "历史记录"

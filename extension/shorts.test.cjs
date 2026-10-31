@@ -29,6 +29,7 @@ test('entering Shorts clears translation state and skips automatic work', () => 
     stopPanelJobPolling: () => calls.push('panel'),
     stopPartialSubtitlePolling: () => calls.push('partial'),
     stopPlaybackPreview: async () => calls.push('preview'),
+    cancelAutoTranslationRetry() {}, setPanelState() {},
     clearOverlay: () => calls.push('overlay'), ensurePlayerControl: () => calls.push('control'),
     syncPreferencesFromApp: () => assert.fail('must not sync on Shorts'),
     maybeAutoTranslateCurrentVideo: () => assert.fail('must not translate Shorts'), console
