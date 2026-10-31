@@ -29,6 +29,7 @@ function setup() {
     startPlaybackPreview: async () => {}, stopPlaybackPreview: async () => {},
     tryLoadSubtitle: async () => ({loaded: false}),
     loadSavedSubtitle: async () => ({loaded: false}),
+    CAPTIONS_NEEDED: 'CAPTIONS_NEEDED', clearCaptionGuide() {}, showCaptionGuide() {},
     isSameTranslationLanguage: () => false, waitForVideoElement: async () => ({}),
     startTranslationFromPlayer: async () => { starts++; }, syncPanelStyleControls() {}, engineDisplayName: () => '',
   });
@@ -61,6 +62,20 @@ test('a saved translation is shown instead of retrying when YouTube captions fai
   assert.equal(h.timers.size, 0, 'no caption retry is scheduled');
   assert.equal(h.starts(), 0, 'no new translation starts');
   assert.deepEqual(h.states.at(-1), { state: 'ready', message: '已加载现有 AI 字幕' });
+});
+
+test('missing CC waits for the user instead of timed retries', async () => {
+  const h = setup(); let resume;
+  h.ctx.showCaptionGuide = (videoId, next) => { assert.equal(videoId, 'v'); resume = next; };
+  h.ctx.prepareAiSubtitles = async () => {
+    if (!resume) throw Object.assign(new Error('请点击播放器的 CC 按钮'), { code: 'CAPTIONS_NEEDED' });
+    return { payload: { rawCues: [{start:0,end:1,text:'Hello'}], sourceLang: 'en', targetLang: 'zh-Hans' } };
+  };
+  await h.ctx.maybeAutoTranslateCurrentVideo();
+  assert.equal(h.timers.size, 0);
+  assert.equal(h.states.at(-1).state, 'waiting');
+  await resume(); await flush();
+  assert.equal(h.starts(), 1, 'translation continues after CC is turned on');
 });
 
 test('repeated caption failures stop after three retries and retain the error', async () => {
@@ -105,6 +120,20 @@ test('panel caption failure stays an error instead of becoming ready', async () 
   await h.ctx.refreshPlayerPanel();
   assert.equal(h.states.at(-1).state, 'error');
   assert.match(h.states.at(-1).message, /未返回可用字幕内容/);
+});
+
+test('opening the panel without CC shows the guide and refreshes after CC is on', async () => {
+  const h = setup(); let resume, attempts = 0;
+  h.ctx.showCaptionGuide = (_videoId, next) => { resume = next; };
+  h.ctx.prepareAiSubtitles = async () => {
+    if (++attempts === 1) throw Object.assign(new Error('请点击播放器的 CC 按钮'), { code: 'CAPTIONS_NEEDED' });
+    return { payload: { rawCues: [{start:0,end:1,text:'Hello'}], sourceLang: 'en', targetLang: 'zh-Hans' } };
+  };
+  await h.ctx.refreshPlayerPanel();
+  assert.equal(h.states.at(-1).state, 'waiting');
+  await resume();
+  assert.equal(attempts, 2);
+  assert.notEqual(h.states.at(-1).state, 'waiting');
 });
 
 test('a late panel refresh cannot overwrite a newly started automatic attempt', async () => {

@@ -68,7 +68,7 @@ test('concurrent caption requests share one warmup', async () => {
 
 test('caption fetch retries with refreshed proof once, not recursively forever', async () => {
   let warmed = 0, calls = 0;
-  const ctx = vm.createContext({captionRequestUrls: () => ['url'],
+  const ctx = vm.createContext({URL, captionRequestUrls: () => ['url'], hasCaptionProof: () => true,
     fetchCaptionResponse: async () => ({status:200,ok:true,text:async()=>{calls++;return warmed?'fresh':'';}}),
     parseTranscriptXml: () => [{text:'Source captions'}],
     warmUpCaptionSession: async () => {warmed++;return true;}

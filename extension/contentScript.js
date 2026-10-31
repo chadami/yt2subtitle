@@ -17,6 +17,8 @@ const SUBTITLE_PREPARATION_CACHE_MS = 30 * 1000;
 const PLAYER_BUTTON_ID = "yt-ai-subtitle-control-button";
 const PLAYER_PANEL_ID = "yt-ai-subtitle-control-panel";
 const PLAYER_PANEL_STYLE_ID = "yt-ai-subtitle-control-style";
+const CAPTION_GUIDE_ID = "yt-ai-caption-guide";
+const CAPTIONS_NEEDED = "CAPTIONS_NEEDED";
 let renderGeneration = 0;
 let partialSubtitlePollTimer = null;
 let partialSubtitleJobId = "";
@@ -31,6 +33,7 @@ let currentSubtitleStyle = { ...DEFAULT_SUBTITLE_STYLE };
 let subtitlePreparationCache = null;
 const recentCaptionRequestUrls = [];
 let captionSessionWarmup = null;
+let captionGuide = null;
 let panelJobPollTimer = null;
 let panelVideoId = "";
 let autoTranslationVideoId = "";
@@ -1153,10 +1156,53 @@ function observeCaptionRequests() {
         if (existing >= 0) recentCaptionRequestUrls.splice(existing, 1);
         recentCaptionRequestUrls.push(entry.name);
         if (recentCaptionRequestUrls.length > 16) recentCaptionRequestUrls.shift();
+        if (captionGuide && isCaptionProofUrl(entry.name, captionGuide.videoId)) resumeAfterCaptionProof();
       } catch { /* Ignore unrelated resources. */ }
     }
   });
   observer.observe({ type: "resource", buffered: true });
+}
+
+// Point at the CC button and continue the failed action once the player's own caption request arrives.
+function showCaptionGuide(videoId, resume) {
+  clearCaptionGuide();
+  if (getVideoId() !== videoId) return;
+  const player = document.querySelector(".html5-video-player");
+  const button = player?.querySelector(".ytp-subtitles-button");
+  captionGuide = { videoId, resume, button };
+  // The user may have turned CC on while the failed attempt was finishing.
+  if (hasCaptionProof(videoId)) {
+    resumeAfterCaptionProof();
+    return;
+  }
+  if (!player || !button) return;
+  ensurePlayerControlStyles();
+  button.classList.add("yt-ai-cc-highlight");
+  const bubble = document.createElement("div");
+  bubble.id = CAPTION_GUIDE_ID;
+  bubble.setAttribute("role", "status");
+  bubble.textContent = captionsButtonState() === "on"
+    ? "播放几秒加载字幕，VidLingo 会自动继续"
+    : "点击 CC 开启字幕，VidLingo 会自动继续";
+  const playerRect = player.getBoundingClientRect();
+  const buttonRect = button.getBoundingClientRect();
+  bubble.style.left = `${buttonRect.left - playerRect.left + buttonRect.width / 2}px`;
+  player.appendChild(bubble);
+}
+
+function clearCaptionGuide() {
+  captionGuide?.button?.classList.remove("yt-ai-cc-highlight");
+  document.getElementById(CAPTION_GUIDE_ID)?.remove();
+  captionGuide = null;
+}
+
+function resumeAfterCaptionProof() {
+  const { videoId, resume } = captionGuide;
+  clearCaptionGuide();
+  if (getVideoId() !== videoId) return;
+  // The cached preparation holds the empty caption result.
+  subtitlePreparationCache = null;
+  Promise.resolve().then(resume).catch(() => {});
 }
 
 async function warmUpCaptionSession(track) {
@@ -1221,6 +1267,33 @@ async function initializeCaptionSession(videoId) {
   }
 }
 
+function isCaptionProofUrl(name, videoId) {
+  try {
+    const url = new URL(name);
+    return url.origin === "https://www.youtube.com" && url.pathname === "/api/timedtext"
+      && url.searchParams.get("v") === videoId && url.searchParams.has("pot");
+  } catch { return false; }
+}
+
+function hasCaptionProof(videoId) {
+  const observed = [...recentCaptionRequestUrls, ...(performance.getEntriesByType("resource") || []).map((entry) => entry.name)];
+  return observed.some((name) => isCaptionProofUrl(name, videoId));
+}
+
+/** "on", "off", or "missing" when the player has no CC button (for example, while an ad plays). */
+function captionsButtonState() {
+  const button = document.querySelector(".html5-video-player .ytp-subtitles-button");
+  if (!button) return "missing";
+  return button.getAttribute("aria-pressed") === "true" ? "on" : "off";
+}
+
+function captionsNeededError(buttonState) {
+  const message = buttonState === "on"
+    ? "YouTube 还没有加载原生字幕。请播放几秒，字幕出现后 VidLingo 会自动继续。"
+    : "YouTube 需要先开启原生字幕：请点击播放器的 CC 按钮，开启后 VidLingo 会自动继续。";
+  return Object.assign(new Error(message), { code: CAPTIONS_NEEDED });
+}
+
 function captionRequestUrls(track) {
   const base = new URL(track.baseUrl);
   // lang identifies the source track; tlang changes its returned text to a translation.
@@ -1232,8 +1305,10 @@ function captionRequestUrls(track) {
     try {
       const url = new URL(name);
       if (url.origin !== "https://www.youtube.com" || url.pathname !== "/api/timedtext") continue;
-      if (url.searchParams.has("tlang") || url.searchParams.get("v") !== base.searchParams.get("v")) continue;
-      if (["lang", "kind", "name", "variant"].every((key) => url.searchParams.get(key) === base.searchParams.get(key))) {
+      if (url.searchParams.get("v") !== base.searchParams.get("v")) continue;
+      // A translated CC request (tlang) returns other text, but its proof still unlocks the source track.
+      if (!url.searchParams.has("tlang")
+        && ["lang", "kind", "name", "variant"].every((key) => url.searchParams.get(key) === base.searchParams.get(key))) {
         if (exact.length < 2) exact.push(url.toString());
       }
       // The player's proof-of-origin parameters are valid across caption tracks
@@ -1268,6 +1343,10 @@ async function fetchCaptionCues(track, allowSessionWarmup = true) {
     } catch { /* Try the next format/session URL on network or parse failure. */ }
   }
   if (allowSessionWarmup && await warmUpCaptionSession(track)) return fetchCaptionCues(track, false);
+  // Without a proof from the player's own CC request YouTube returns empty captions.
+  // An HTTP error (such as 429) is a different problem, so it keeps its status message.
+  const videoId = new URL(track.baseUrl).searchParams.get("v");
+  if ((!lastStatus || lastStatus === 200) && !hasCaptionProof(videoId)) throw captionsNeededError(captionsButtonState());
   const detail = lastStatus && lastStatus !== 200 ? `（HTTP ${lastStatus}）` : "";
   throw new Error(`已找到字幕轨道，但 YouTube 未返回可用字幕内容${detail}。请先在播放器中开启原生字幕，播放几秒后重试；仍失败时请刷新页面。`);
 }
@@ -1433,6 +1512,11 @@ function ensurePlayerControlStyles() {
     .yt-ai-slider-value { text-align: right; color: rgba(255,255,255,.9); font-variant-numeric: tabular-nums; }
     .yt-ai-reset-position { width:calc(100% - 24px); min-height:36px; margin:6px 12px 10px; border:1px solid rgba(255,255,255,.16); border-radius:8px; background:rgba(255,255,255,.06); color:#fff; cursor:pointer; font:500 13px/1 "YouTube Sans",Roboto,Arial,sans-serif; }
     .yt-ai-reset-position:hover { background:rgba(255,255,255,.12); }
+    .ytp-subtitles-button.yt-ai-cc-highlight { border-radius: 50%; box-shadow: 0 0 0 2px #3ea6ff; animation: yt-ai-cc-pulse 1.4s ease-in-out infinite; }
+    @keyframes yt-ai-cc-pulse { 50% { box-shadow: 0 0 0 6px rgba(62,166,255,.35); } }
+    #${CAPTION_GUIDE_ID} { position: absolute; bottom: 60px; z-index: 3001; transform: translateX(-50%); max-width: 280px; padding: 8px 12px; border-radius: 8px; background: rgba(28,28,28,.94); color: #fff; font: 500 13px/1.4 "YouTube Sans",Roboto,Arial,sans-serif; white-space: nowrap; pointer-events: none; }
+    #${CAPTION_GUIDE_ID}::after { content: ""; position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); border: 6px solid transparent; border-bottom: 0; border-top-color: rgba(28,28,28,.94); }
+    @media (prefers-reduced-motion: reduce) { .ytp-subtitles-button.yt-ai-cc-highlight { animation: none; } }
     @media (max-width: 640px) {
       #${PLAYER_BUTTON_ID} { width: 42px; }
       #${PLAYER_PANEL_ID} { right: 8px; bottom: 52px; width: min(340px, calc(100% - 16px)); }
@@ -1616,7 +1700,17 @@ async function refreshPlayerPanel() {
   try {
     preparation = await prepareAiSubtitles();
   } catch (error) {
-    if (canUpdateStatus()) setPanelState("error", error?.message || String(error));
+    if (!canUpdateStatus()) return;
+    if (error?.code === CAPTIONS_NEEDED) {
+      setPanelState("waiting", error.message);
+      // Leave "waiting" first: refreshing keeps any waiting state as it is.
+      showCaptionGuide(videoId, () => {
+        setPanelState("idle", "就绪");
+        return refreshPlayerPanel();
+      });
+      return;
+    }
+    setPanelState("error", error?.message || String(error));
     return;
   }
   if (!canUpdateStatus()) return;
@@ -1850,6 +1944,11 @@ async function startTranslationFromPlayer(forceRegenerate = false, automatic = f
     startPanelJobPolling(result.jobId, videoId);
   } catch (error) {
     const message = error?.message || String(error);
+    if (error?.code === CAPTIONS_NEEDED && getVideoId() === videoId) {
+      setPanelState("waiting", message);
+      showCaptionGuide(videoId, () => startTranslationFromPlayer(forceRegenerate));
+      return;
+    }
     const needsConnection = /session|401|连接|本机应用/i.test(message);
     if(playbackPreview&&!needsConnection)setPanelState("working","系统翻译已启动，AI 暂不可用");
     else setPanelState(needsConnection ? "connect" : "error", message);
@@ -1963,6 +2062,7 @@ function stopPanelJobPolling() {
 }
 
 function cancelAutoTranslationRetry() {
+  clearCaptionGuide();
   if (autoTranslationRetryTimer !== null) clearTimeout(autoTranslationRetryTimer);
   autoTranslationRetryTimer = null;
   autoTranslationRetryCount = 0;
@@ -2009,6 +2109,17 @@ async function maybeAutoTranslateCurrentVideo() {
     if (saved?.loaded) {
       cancelAutoTranslationRetry();
       setPanelState("ready", "已加载现有 AI 字幕");
+      return;
+    }
+    if (error?.code === CAPTIONS_NEEDED) {
+      // Timed retries cannot help until the user turns CC on; wait for the player's caption request instead.
+      cancelAutoTranslationRetry();
+      setPanelState("waiting", error.message);
+      showCaptionGuide(videoId, () => {
+        if (runId !== autoTranslationRun) return;
+        autoTranslationVideoId = "";
+        return maybeAutoTranslateCurrentVideo();
+      });
       return;
     }
     scheduleAutoTranslationRetry(error, videoId, runId);

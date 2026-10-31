@@ -4,7 +4,7 @@ const vm = require('node:vm');
 const fs = require('node:fs');
 const source = fs.readFileSync(`${__dirname}/contentScript.js`, 'utf8');
 const playerCode = source.slice(source.indexOf('async function fetchCaptionResponse('), source.indexOf('function selectCaptionTrack('));
-const cueCode = source.slice(source.indexOf('function captionRequestUrls('), source.indexOf('function parseTranscriptXml('));
+const cueCode = source.slice(source.indexOf('function isCaptionProofUrl('), source.indexOf('function parseTranscriptXml('));
 const helpers = source.slice(source.indexOf('function parseJson3Cues('), source.indexOf('function ensurePlayerControlStyles('));
 const videoId = 'test-video';
 const baseUrl = `https://www.youtube.com/api/timedtext?v=${videoId}&lang=en&kind=asr`;
@@ -12,7 +12,7 @@ const player = { videoDetails: { videoId }, playabilityStatus: { status: 'OK' },
 const response = (body, status = 200) => ({ ok: status >= 200 && status < 300, status, text: async () => typeof body === 'string' ? body : JSON.stringify(body), json: async () => body });
 const html = value => `var ytInitialPlayerResponse = ${JSON.stringify(value)}; "INNERTUBE_API_KEY":"test-key"`;
 function context(fetch, entries = []) {
- const ctx = vm.createContext({ fetch, URL, AbortSignal, recentCaptionRequestUrls: [], performance: { getEntriesByType: () => entries }, parseTranscriptXml: () => [], warmUpCaptionSession: async () => false });
+ const ctx = vm.createContext({ fetch, URL, AbortSignal, recentCaptionRequestUrls: [], performance: { getEntriesByType: () => entries }, document: { querySelector: () => null }, CAPTIONS_NEEDED: 'CAPTIONS_NEEDED', parseTranscriptXml: () => [], warmUpCaptionSession: async () => false });
  vm.runInContext(playerCode + cueCode + helpers, ctx);
  return ctx;
 }
@@ -58,8 +58,15 @@ test('native session URL is reused only for the exact video, language and varian
  assert.equal((await ctx.fetchCaptionCues({ baseUrl }))[0].text, 'Native');
 });
 test('empty responses give a recovery message instead of a JSON parse error', async () => {
- const ctx = context(async () => response(''));
+ const ctx = context(async () => response(''), [{ name: baseUrl + '&pot=proof' }]);
  await assert.rejects(ctx.fetchCaptionCues({ baseUrl }), /已找到字幕轨道.*开启原生字幕/);
+});
+test('empty captions without a player caption request ask the user to turn on CC', async () => {
+ for (const [pressed, pattern] of [['false', /点击播放器的 CC 按钮/], ['true', /请播放几秒/]]) {
+  const ctx = context(async () => response(''));
+  ctx.document = { querySelector: () => ({ getAttribute: () => pressed }) };
+  await assert.rejects(ctx.fetchCaptionCues({ baseUrl }), error => error.code === 'CAPTIONS_NEEDED' && pattern.test(error.message));
+ }
 });
 test('HTTP failures retain diagnostic status', async () => {
  const ctx = context(async () => response('', 429));
@@ -98,14 +105,20 @@ test('automatic source captions reuse the current video player session from an a
  assert.equal((await ctx.fetchCaptionCues({ baseUrl }))[0].text,'Automatic source');
 });
 
-test('session parameters from another video or an auto-translated request are not reused', () => {
+test('session parameters from another video or site are not reused', () => {
  const native = baseUrl + '&pot=proof';
  const ctx = context(async()=>response(''), [
   { name: native.replace(videoId, 'other-video') },
-  { name: native + '&tlang=zh' },
   { name: native.replace('https://www.youtube.com','https://example.com') }
  ]);
  assert.ok(ctx.captionRequestUrls({baseUrl}).every(url=>!new URL(url).searchParams.has('pot')));
+});
+test('an auto-translated CC request lends its proof to the source track without its translation', () => {
+ const ctx = context(async()=>response(''), [{ name: baseUrl + '&pot=proof&tlang=zh' }]);
+ const urls = ctx.captionRequestUrls({baseUrl}).map(url => new URL(url));
+ assert.ok(urls.some(url => url.searchParams.get('pot') === 'proof'));
+ assert.ok(urls.every(url => !url.searchParams.has('tlang')));
+ assert.equal(ctx.hasCaptionProof(videoId), true);
 });
 
 test('observed caption sessions survive eviction from the resource timing buffer', async () => {
