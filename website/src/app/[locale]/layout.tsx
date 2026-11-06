@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { JsonLd } from "@/components/json-ld";
 import { htmlLanguages, isLocale } from "@/lib/i18n";
 import { siteName, siteUrl } from "@/lib/site";
-import "../globals.css";
+import "../site.css";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "zh" }, { locale: "ja" }];
@@ -16,6 +16,10 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 
   return (
     <html lang={htmlLanguages[locale]}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&display=swap" />
+      </head>
       <body>
         <JsonLd
           data={[

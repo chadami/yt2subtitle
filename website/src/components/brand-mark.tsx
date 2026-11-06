@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export function BrandMark({ compact = false }: { compact?: boolean }) {
+export function BrandMark() {
   return (
-    <span className="brand" aria-label="VidLingo">
-      <Image className="brand-mark" src="/vidlingo-icon.png" width={128} height={128} alt="" aria-hidden="true" priority />
-      {!compact && <span className="brand-name">VidLingo</span>}
-    </span>
+    <Link href="/" className="brand">
+      <Image src="/vidlingo-icon.png" width={26} height={26} alt="" priority />
+      VidLingo
+    </Link>
   );
 }

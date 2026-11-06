@@ -1,12 +1,12 @@
 /* One narrow reading column, like a personal note. The only object on the page is a subtitle comparison. */
 :root {
-  --bg: #fdfdfb;
+  --bg: #ffffff;
   --ink: #21201c;
   --body: #5f5f59;
   --faint: #93938c;
   --line: #e9e9e4;
   --btn-bg: #21201c;
-  --btn-ink: #fdfdfb;
+  --btn-ink: #ffffff;
   --frame: #1d1d1b;
   --frame-line: #33332f;
   --cue: #f6f6f2;
@@ -15,21 +15,6 @@
   --sans: "Figtree", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161615;
-    --ink: #eeeeea;
-    --body: #a9a9a2;
-    --faint: #7d7d76;
-    --line: #2c2c29;
-    --btn-bg: #eeeeea;
-    --btn-ink: #161615;
-    --frame: #20201e;
-    --frame-line: #383834;
-    color-scheme: dark;
-  }
 }
 
 *,
@@ -69,12 +54,32 @@ body {
   color: var(--ink);
   font-weight: 600;
   font-size: 15px;
+  text-decoration: none;
 }
 
-.brand svg {
-  width: 24px;
-  height: 24px;
+.brand img {
   display: block;
+}
+
+.languages {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+}
+
+.languages a {
+  color: var(--faint);
+  text-decoration: none;
+}
+
+.languages a:hover,
+.languages a[aria-current="page"] {
+  color: var(--ink);
+}
+
+.updated {
+  font-size: 13px;
+  color: var(--faint);
 }
 
 .btn {

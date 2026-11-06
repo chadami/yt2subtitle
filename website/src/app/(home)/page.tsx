@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { BrandMark } from "@/components/brand-mark";
+import { SiteFooter } from "@/components/site-footer";
 import { chromeWebStoreUrl, getDownloadUrl, siteName, siteUrl } from "@/lib/site";
 
 const title = "VidLingo：点开英文视频，马上看到像样的中文字幕";
@@ -29,14 +30,7 @@ export default function HomePage() {
   return (
     <div className="page">
       <header>
-        <div className="brand">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect width="24" height="24" rx="6" fill="var(--ink)" />
-            <rect x="5" y="12" width="14" height="2.4" rx="1.2" fill="var(--bg)" />
-            <rect x="8" y="16" width="8" height="2.4" rx="1.2" fill="var(--bg)" opacity=".55" />
-          </svg>
-          VidLingo
-        </div>
+        <BrandMark />
         <a className="btn" href={downloadUrl}>下载 Mac 版</a>
       </header>
 
@@ -101,13 +95,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer>
-        <span>VidLingo</span>
-        <nav aria-label="法律信息">
-          <Link href="/zh/privacy">隐私政策</Link>
-          <Link href="/zh/terms">服务条款</Link>
-        </nav>
-      </footer>
+      <SiteFooter locale="zh" />
     </div>
   );
 }

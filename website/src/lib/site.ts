@@ -51,7 +51,7 @@ export function pageMetadata(
       url: canonical,
       title,
       description,
-      images: [{ url: "/og-card.png", width: 1200, height: 630, alt: "VidLingo subtitle workspace" }],
+      images: [{ url: "/og-card.png", width: 1200, height: 630, alt: "VidLingo" }],
     },
     twitter: { card: "summary_large_image", title, description, images: ["/og-card.png"] },
   };

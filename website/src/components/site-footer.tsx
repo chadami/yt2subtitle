@@ -1,20 +1,16 @@
 import Link from "next/link";
-import type { Locale, SiteCopy } from "@/lib/i18n";
-import { BrandMark } from "./brand-mark";
+import { copy, type Locale } from "@/lib/i18n";
 
-export function SiteFooter({ locale, copy }: { locale: Locale; copy: SiteCopy }) {
+export function SiteFooter({ locale }: { locale: Locale }) {
+  const { footer } = copy[locale];
+
   return (
-    <footer className="site-footer">
-      <div className="footer-main">
-        <div><BrandMark /><p>{copy.footer.product}</p></div>
-        <div className="footer-links">
-          <div>
-            <Link href={`/${locale}/privacy`}>{copy.footer.privacy}</Link>
-            <Link href={`/${locale}/terms`}>{copy.footer.terms}</Link>
-          </div>
-        </div>
-      </div>
-      <div className="footer-bottom"><span>© 2026 VidLingo</span><span>{copy.footer.beta}</span></div>
+    <footer>
+      <span>VidLingo</span>
+      <nav aria-label="Legal">
+        <Link href={`/${locale}/privacy`}>{footer.privacy}</Link>
+        <Link href={`/${locale}/terms`}>{footer.terms}</Link>
+      </nav>
     </footer>
   );
 }
