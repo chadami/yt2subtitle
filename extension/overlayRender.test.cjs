@@ -27,12 +27,14 @@ function setup() {
 
 test('an unchanged cue is not rebuilt on every animation frame', () => {
   const { context, overlay, counts } = setup();
-  for (let frame = 0; frame < 60; frame++) context.renderOverlayCue(overlay, 'Hello', '你好', true);
+  const ai = { src: 'openai.svg', label: 'AI 翻译' };
+  const machine = { src: 'finder.svg', label: '系统翻译' };
+  for (let frame = 0; frame < 60; frame++) context.renderOverlayCue(overlay, 'Hello', '你好', ai);
   assert.equal(counts.rebuilds, 1);
   assert.equal(counts.constrains, 1);
-  context.renderOverlayCue(overlay, 'Next', '下一句', true);
+  context.renderOverlayCue(overlay, 'Next', '下一句', ai);
   assert.equal(counts.rebuilds, 2, 'a new cue must render');
-  context.renderOverlayCue(overlay, 'Next', '下一句', false);
+  context.renderOverlayCue(overlay, 'Next', '下一句', machine);
   assert.equal(counts.rebuilds, 3, 'switching from AI to machine text must update the indicator');
 });
 

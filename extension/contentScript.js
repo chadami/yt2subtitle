@@ -19,6 +19,8 @@ const PLAYER_PANEL_ID = "yt-ai-subtitle-control-panel";
 const PLAYER_PANEL_STYLE_ID = "yt-ai-subtitle-control-style";
 const CAPTION_GUIDE_ID = "yt-ai-caption-guide";
 const CAPTIONS_NEEDED = "CAPTIONS_NEEDED";
+// Custom OpenAI-compatible endpoints report provider "openai", so they get the OpenAI mark too.
+const TRANSLATION_SOURCE_ICONS = { macos: "finder", google: "google", openai: "openai", deepseek: "deepseek", gemini: "gemini", claude: "claude", qwen: "qwen", mimo: "mimo" };
 let renderGeneration = 0;
 let partialSubtitlePollTimer = null;
 let partialSubtitleJobId = "";
@@ -46,6 +48,7 @@ let autoTranslationRetryCount = 0;
 let panelStateRevision = 0;
 let machinePreviewVideoId = "";
 let machinePreviewCues = [];
+let translationSourceProviders = { ai: "", machine: "" };
 let machinePreviewFeedback = null;
 let subtitleDragState = null;
 let overlayHoverTrackingReady = false;
@@ -116,8 +119,8 @@ function ensureOverlay() {
   const aiIndicator = document.createElement("img");
   aiIndicator.id = OVERLAY_AI_INDICATOR_ID;
   aiIndicator.src = chrome.runtime.getURL("icons/ai-sparkle.png");
-  aiIndicator.alt = "AI 生成";
-  aiIndicator.title = "AI 生成字幕";
+  aiIndicator.alt = "AI 翻译";
+  aiIndicator.title = "AI 翻译";
   aiIndicator.hidden = true;
   aiIndicator.style.cssText = [
     "position:absolute",
@@ -381,7 +384,30 @@ function sourceTextForTranslatedCue(cue, sourceCues) {
   return sourceCue?.text || "";
 }
 
-function renderOverlayCue(overlay, sourceText, translationText, isAiGenerated = false) {
+function translationSourceIndicator(cueKind) {
+  if (cueKind !== "ai" && cueKind !== "machine") return null;
+  const provider = translationSourceProviders[cueKind];
+  const name = TRANSLATION_SOURCE_ICONS[provider] || (cueKind === "machine" ? "finder" : "");
+  const label = cueKind === "machine" ? (provider === "google" ? "Google 翻译" : "系统翻译") : "AI 翻译";
+  return {
+    src: chrome.runtime.getURL(name ? `icons/translation-sources/${name}.svg` : "icons/ai-sparkle.png"),
+    label
+  };
+}
+
+function applyTranslationSourceStatus(status) {
+  if (!status?.ok) return;
+  translationSourceProviders = {
+    ai: String(status.ai?.provider || "").toLowerCase(),
+    machine: String(status.machineTranslationProvider || "").toLowerCase()
+  };
+}
+
+function refreshTranslationSourceProviders() {
+  chrome.runtime.sendMessage({ type: "GET_LOCAL_STATUS" }).then(applyTranslationSourceStatus, () => {});
+}
+
+function renderOverlayCue(overlay, sourceText, translationText, indicator = null) {
   const normalizedSource = normalizeText(sourceText || "");
   const normalizedTranslation = normalizeText(translationText || "");
   const shouldShowSource = currentSubtitleStyle.showSourceText !== false;
@@ -389,7 +415,7 @@ function renderOverlayCue(overlay, sourceText, translationText, isAiGenerated = 
   // The playback loop calls this every frame; rebuild only when the visible cue changes.
   const renderKey = hidden
     ? "hidden"
-    : JSON.stringify([shouldShowSource ? normalizedSource : "", normalizedTranslation, isAiGenerated]);
+    : JSON.stringify([shouldShowSource ? normalizedSource : "", normalizedTranslation, indicator?.src || ""]);
   if (overlay.dataset.renderKey === renderKey && overlay.style.display === (hidden ? "none" : "block")) {
     if (!hidden) keepSubtitleOverlayConstrained(overlay);
     return;
@@ -418,8 +444,13 @@ function renderOverlayCue(overlay, sourceText, translationText, isAiGenerated = 
   const content = overlay.querySelector(`#${OVERLAY_CONTENT_ID}`);
   const aiIndicator = overlay.querySelector(`#${OVERLAY_AI_INDICATOR_ID}`);
   if (!content || !aiIndicator) return;
-  aiIndicator.hidden = !isAiGenerated;
-  overlay.style.paddingRight = isAiGenerated ? "calc(16px + .78em)" : "16px";
+  aiIndicator.hidden = !indicator;
+  if (indicator) {
+    if (aiIndicator.src !== indicator.src) aiIndicator.src = indicator.src;
+    aiIndicator.alt = indicator.label;
+    aiIndicator.title = indicator.label;
+  }
+  overlay.style.paddingRight = indicator ? "calc(16px + .78em)" : "16px";
 
   if (!shouldShowSource || !normalizedSource) {
     content.replaceChildren(translationLine);
@@ -530,6 +561,7 @@ async function renderSubtitles(cues, videoId, options = {}) {
     return { loaded: false, reason: "video-not-ready", cueCount: cues.length };
   }
   const overlay = ensureOverlay();
+  refreshTranslationSourceProviders();
   await applyStoredSubtitleStyle();
   if (getVideoId() !== videoId || generation !== renderGeneration) return { loaded: false, reason: "render-superseded" };
   if (options.replaceCurrentCue === true) activeRenderedCue = null;
@@ -560,11 +592,11 @@ async function renderSubtitles(cues, videoId, options = {}) {
         kind: cueKind,
         cue
       };
-      renderOverlayCue(overlay, sourceTextForTranslatedCue(cue, sourceCues), cue.text, cueKind === "ai");
+      renderOverlayCue(overlay, sourceTextForTranslatedCue(cue, sourceCues), cue.text, translationSourceIndicator(cueKind));
     } else {
       activeRenderedCue = null;
       const sourceCue = pendingText ? findCurrentCue(sourceCues, current) : null;
-      renderOverlayCue(overlay, sourceCue?.text || "", sourceCue ? pendingText : "", false);
+      renderOverlayCue(overlay, sourceCue?.text || "", sourceCue ? pendingText : "", null);
     }
     requestAnimationFrame(tick);
   }

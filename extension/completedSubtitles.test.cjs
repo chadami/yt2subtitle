@@ -31,7 +31,7 @@ test('a delayed pending render cannot replace the completed renderer',async()=>{
  const delay=new Promise(resolve=>{release=resolve;});let calls=0;const shown=[];
  const ctx=vm.createContext({getVideoId:()=> 'v',renderGeneration:0,activeRenderedCue:null,
   waitForVideoElement:async()=>{if(++calls===1)await delay;return {currentTime:1};},
-  ensureOverlay:()=>({}),applyStoredSubtitleStyle:async()=>{},playbackPreview:null,
+  ensureOverlay:()=>({}),refreshTranslationSourceProviders(){},translationSourceIndicator:()=>null,applyStoredSubtitleStyle:async()=>{},playbackPreview:null,
   normalizeSourceCues:()=>[],mergeSubtitleCues:(...lists)=>lists.flat(),findCurrentCue:(cues)=>cues[0],
   sourceTextForTranslatedCue:()=>'',renderOverlayCue:(_overlay,_source,text)=>shown.push(text),requestAnimationFrame(){},clearOverlay(){}});
  vm.runInContext(extract('async function renderSubtitles(', 'async function tryLoadSubtitle('),ctx);

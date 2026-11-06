@@ -35,7 +35,8 @@
         "icons/icon-24.png",
         "icons/icon-32.png",
         "icons/icon-48.png",
-        "icons/ai-sparkle.png"
+        "icons/ai-sparkle.png",
+        "icons/translation-sources/*.svg"
       ],
       "matches": [
         "https://www.youtube.com/*"
