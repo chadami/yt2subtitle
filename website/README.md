@@ -1,6 +1,6 @@
 # VidLingo website
 
-The multilingual public website for VidLingo.
+The one-page public website for VidLingo. The privacy and terms pages stay available in English, Chinese, and Japanese.
 
 ## Local development
 
@@ -10,14 +10,14 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`. The root route selects `/en`, `/zh`, or `/ja` from the browser language.
+Open `http://localhost:3000`. Old `/en`, `/zh`, `/ja`, and article URLs redirect to the home page.
 
 ## Production
 
 Create a Vercel project with this directory as its Root Directory and configure:
 
 ```text
-NEXT_PUBLIC_CHROME_WEB_STORE_URL=https://chromewebstore.google.com/detail/...
+NEXT_PUBLIC_MAC_DOWNLOAD_URL=https://github.com/chadami/yt2subtitle/releases/download/...
 ```
 
 The value is validated during production builds. Bind `vidlingo.online` as the primary domain and redirect `www.vidlingo.online` to it in Vercel Domains.

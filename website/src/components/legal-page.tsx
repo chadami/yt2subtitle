@@ -13,11 +13,11 @@ export function LegalPage({ locale, copy, type }: { locale: Locale; copy: SiteCo
   return (
     <main className="legal-shell">
       <header className="legal-header">
-        <Link href={`/${locale}`}><BrandMark /></Link>
+        <Link href="/"><BrandMark /></Link>
         <LanguageSwitcher locale={locale} suffix={`/${type}`} />
       </header>
       <article className="legal-article">
-        <Link href={`/${locale}`} className="back-link">← {copy.legal.back}</Link>
+        <Link href="/" className="back-link">← {copy.legal.back}</Link>
         <p className="eyebrow">VIDLINGO · PUBLIC BETA</p>
         <h1>{title}</h1>
         <p className="legal-intro">{intro}</p>

@@ -3,10 +3,11 @@ import { htmlLanguages, locales, type Locale } from "./i18n";
 
 export const siteUrl = "https://www.vidlingo.online";
 export const siteName = "VidLingo";
-// Mac 版安装包地址。未配置时下载按钮跳到首页的安装步骤，避免出现失效链接。
-export function getDownloadUrl(locale: Locale) {
+export const chromeWebStoreUrl = "https://chromewebstore.google.com/detail/vidlingo/aknhnkdkeiojehikedcpkpingbfkfldk";
+// Mac 版安装包地址。未配置时下载按钮跳到首页底部的试用段落，避免出现失效链接。
+export function getDownloadUrl() {
   const value = process.env.NEXT_PUBLIC_MAC_DOWNLOAD_URL;
-  if (!value) return `/${locale}#how`;
+  if (!value) return "#try";
 
   const url = new URL(value);
   if (url.protocol !== "https:") {
