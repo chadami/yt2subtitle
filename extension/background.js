@@ -94,8 +94,18 @@ async function syncLocalPreferences() {
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name !== "check-subtitle-jobs") return;
+  await sendHeartbeat();
   await checkSubtitleJobs();
 });
+
+// Lets the Mac app show whether the extension is running right now. It fails
+// whenever the app is closed, which is normal, so errors are ignored.
+async function sendHeartbeat() {
+  const { settings = {} } = await chrome.storage.local.get(["settings"]);
+  try {
+    await localFetch(normalizeApiBase(settings.apiBase), "/api/local/heartbeat", { method: "POST" });
+  } catch {}
+}
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.type === "OPEN_OPTIONS") {
@@ -408,17 +418,23 @@ async function safeFetch(url, options) {
 
 chrome.runtime.onInstalled.addListener(() => {
   ensureJobAlarm();
-  ensureSessionToken(undefined, true).catch(() => {});
+  ensureSessionToken(undefined, true).then(sendHeartbeat).catch(() => {});
 });
 
 chrome.runtime.onStartup.addListener(() => {
   ensureJobAlarm();
-  ensureSessionToken(undefined, true).catch(() => {});
+  ensureSessionToken(undefined, true).then(sendHeartbeat).catch(() => {});
 });
 
 function ensureJobAlarm() {
   chrome.alarms.create("check-subtitle-jobs", { periodInMinutes: 1 });
 }
+
+// Chrome does not guarantee alarms persist, and heartbeats stop without one. Only
+// create it when missing: recreating restarts the period, and this runs on every wake.
+chrome.alarms.get("check-subtitle-jobs").then((alarm) => {
+  if (!alarm) ensureJobAlarm();
+});
 
 function normalizeApiBase(value) {
   return isLocalApiBase(value) ? String(value).replace(/\/$/, "") : DEFAULT_API_BASE;

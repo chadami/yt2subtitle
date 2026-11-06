@@ -1,6 +1,7 @@
 import type { RequestHandler } from "express";
 import { env } from "./env.js";
 import { isLocalToken } from "./auth.js";
+import { recordExtensionContact } from "./extensionPresence.js";
 
 export function isExtensionOrigin(origin: string) {
   return /^chrome-extension:\/\/[a-p]{32}$/.test(origin)
@@ -20,12 +21,16 @@ export const restrictLocalAccess: RequestHandler = (req, res, next) => {
     res.status(403).json({ error: "Browser origin is not allowed" });
     return;
   }
+  // Only the extension sends a browser Origin here; the Mac app's requests have none.
+  if (origin) recordExtensionContact();
   if (req.method === "OPTIONS" || req.path === "/health") return next();
   if (req.path === "/api/local/session" && req.method === "GET") {
     if (req.get("X-VidLingo-Client") !== "extension") {
       res.status(403).json({ error: "Connect using the VidLingo extension" });
       return;
     }
+    // Every extension version calls this on install, update and browser startup.
+    recordExtensionContact();
     res.setHeader("Cache-Control", "no-store");
     return next();
   }

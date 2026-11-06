@@ -42,7 +42,7 @@ cd backend && PORT=3000 DATA_DIR=/tmp/vidlingo node dist/start-local.js
 
 1. 打开 `dist/VidLingo.app`（建议拖进「应用程序」）。
 2. 在「AI 模型」里先选模式：**预设服务商**（DeepSeek / Gemini / OpenAI / Claude / 通义千问 / 小米 MiMo，走官方地址）或 **自定义地址**（代理、自建网关、第三方兼容接口，需填 Base URL 和接口协议）。然后填 API Key 和模型名称，点「保存并应用」，服务会自动重启并加载新配置。
-3. 在「Chrome 插件」页点「打开内置插件目录」，按提示在 Chrome 里加载这个目录。
+3. 从 [Chrome 应用商店](https://chromewebstore.google.com/detail/vidlingo/aknhnkdkeiojehikedcpkpingbfkfldk)安装插件；本机服务从未收到插件请求时，App 会在「概览」页提醒。打不开商店时，可以在「Chrome 插件」页打开内置插件目录，手动加载。
 4. 打开插件设置页，点一次「连接本机应用」，显示「已连接」即可，不需要登录。
 5. 打开 YouTube 视频，点播放器里的 VidLingo 按钮生成字幕。
 

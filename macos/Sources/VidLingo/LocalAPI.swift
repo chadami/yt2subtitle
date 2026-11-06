@@ -20,6 +20,13 @@ struct JobCounts: Decodable {
     let completed: Int
 }
 
+enum ExtensionConnection: String, Decodable {
+    case never
+    case seen
+    case online
+    case offline
+}
+
 struct LocalStatus: Decodable {
     let ok: Bool
     let mode: String
@@ -28,6 +35,8 @@ struct LocalStatus: Decodable {
     let dataDir: String
     let ai: AISummary
     let machineTranslation: Bool
+    let extensionLastSeenAt: String?
+    let extensionConnection: ExtensionConnection?
     let queue: QueueSummary
     let jobs: JobCounts
 }

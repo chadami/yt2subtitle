@@ -440,6 +440,30 @@ final class AppModel: ObservableObject {
         status?.version ?? Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "—"
     }
 
+    /// Nil until the service has answered, so a stopped service never triggers the reminder.
+    var extensionConnection: ExtensionConnection? {
+        status?.extensionConnection
+    }
+
+    var extensionLastSeenDescription: String? {
+        guard let value = status?.extensionLastSeenAt else { return nil }
+        let parser = ISO8601DateFormatter()
+        parser.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        guard let date = parser.date(from: value) else { return nil }
+        let formatter = RelativeDateTimeFormatter()
+        formatter.locale = Locale(identifier: "zh-Hans")
+        return formatter.localizedString(for: date, relativeTo: Date())
+    }
+
+    func openChromeWebStore() {
+        let url = URL(string: "https://chromewebstore.google.com/detail/vidlingo/aknhnkdkeiojehikedcpkpingbfkfldk")!
+        if let chrome = NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.google.Chrome") {
+            NSWorkspace.shared.open([url], withApplicationAt: chrome, configuration: NSWorkspace.OpenConfiguration())
+        } else {
+            NSWorkspace.shared.open(url)
+        }
+    }
+
     func openChromeExtensions() {
         let chrome = URL(fileURLWithPath: "/Applications/Google Chrome.app")
         guard FileManager.default.fileExists(atPath: chrome.path) else {

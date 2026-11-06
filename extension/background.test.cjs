@@ -4,9 +4,10 @@ const vm = require('node:vm');
 const fs = require('node:fs');
 const { webcrypto } = require('node:crypto');
 
-function harness(initial = {}, responder) {
+function harness(initial = {}, responder, existingAlarm = {}) {
   const storage = structuredClone(initial);
   const calls = [];
+  const createdAlarms = [];
   const listeners = {};
   const event = (name) => ({ addListener: (fn) => { listeners[name] = fn; } });
   const context = vm.createContext({
@@ -20,16 +21,45 @@ function harness(initial = {}, responder) {
         get: async (keys) => Object.fromEntries(keys.filter(k => k in storage).map(k => [k, structuredClone(storage[k])])),
         set: async (value) => Object.assign(storage, structuredClone(value))
       } },
-      alarms: { onAlarm: event('alarm'), create() {} },
+      alarms: {
+        onAlarm: event('alarm'),
+        create(name) { createdAlarms.push(name); },
+        get: async () => existingAlarm
+      },
       runtime: { onMessage: event('message'), onInstalled: event('installed'), onStartup: event('startup') }
     }
   });
   vm.runInContext(fs.readFileSync(`${__dirname}/background.js`, 'utf8'), context);
-  return { storage, calls, context, run: (code) => vm.runInContext(code, context),
+  return { storage, calls, createdAlarms, context, run: (code) => vm.runInContext(code, context),
+    alarm: (name) => listeners.alarm({ name }),
     message: (message) => new Promise(resolve => listeners.message(message, {}, resolve)) };
 }
 const reply = (status, body = {}) => ({ status, ok: status >= 200 && status < 300, json: async () => body });
 const saved = { settings: { apiBase: 'http://127.0.0.1:3000', targetLang: 'ja' }, sessionToken: 'old', localMode: true };
+
+test('each alarm reports a heartbeat with the local token', async () => {
+  const h = harness(saved, () => reply(200));
+  await h.alarm('check-subtitle-jobs');
+  assert.equal(h.calls.length, 1);
+  assert.equal(new URL(h.calls[0].url).pathname, '/api/local/heartbeat');
+  assert.equal(h.calls[0].method, 'POST');
+  assert.equal(h.calls[0].headers.Authorization, 'Bearer old');
+});
+
+test('a closed Mac app does not stop subtitle job checks', async () => {
+  const h = harness({ ...saved, pendingJobs: [{ jobId: 'a' }] }, () => { throw new Error('connection refused'); });
+  await h.alarm('check-subtitle-jobs');
+  assert.deepEqual(h.calls.map(c => new URL(c.url).pathname), ['/api/local/heartbeat', '/api/jobs/a']);
+  assert.deepEqual(h.storage.pendingJobs, [{ jobId: 'a' }]);
+});
+
+test('a missing alarm is recreated on wake, and an existing one is left alone', async () => {
+  const missing = harness(saved, () => reply(200), null);
+  const existing = harness(saved, () => reply(200));
+  await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(missing.createdAlarms, ['check-subtitle-jobs']);
+  assert.deepEqual(existing.createdAlarms, []);
+});
 
 test('expired local token refreshes once and replays the original POST', async () => {
   const h = harness(saved, (url, options) => url.endsWith('/session')

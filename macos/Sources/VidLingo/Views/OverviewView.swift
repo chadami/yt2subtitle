@@ -26,11 +26,34 @@ struct OverviewView: View {
                     }
                 }
 
+                extensionReminder
+
                 recentCard
             }
             .padding(.horizontal, 24)
             .padding(.top, 16)
             .padding(.bottom, 28)
+        }
+    }
+
+    // MARK: - Extension reminder
+
+    @ViewBuilder
+    private var extensionReminder: some View {
+        if model.extensionConnection == .never {
+            Card(padding: 14) {
+                HStack(spacing: 10) {
+                    Circle().fill(Theme.purple).frame(width: 6, height: 6)
+                    Text("还没有检测到 VidLingo 插件连接，需要先安装才能在 YouTube 生成字幕。")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Theme.secondary)
+                    Spacer()
+                    Button("去安装") {
+                        model.openChromeWebStore()
+                    }
+                    .flatButton()
+                }
+            }
         }
     }
 
@@ -70,9 +93,9 @@ struct OverviewView: View {
                     Hairline(vertical: true)
                     MetricCell(
                         label: "Chrome 插件",
-                        value: model.server.isRunning ? "可连接" : "服务未运行",
-                        detail: "在 Chrome 插件中查看当前连接状态",
-                        valueColor: model.server.isRunning ? Theme.green : Theme.tertiary
+                        value: extensionMetricValue,
+                        detail: extensionMetricDetail,
+                        valueColor: ["已连接", "可连接"].contains(extensionMetricValue) ? Theme.green : Theme.tertiary
                     )
                     .frame(minHeight: 96, alignment: .topLeading)
                 }
@@ -114,6 +137,26 @@ struct OverviewView: View {
             }
         }
         .padding(16)
+    }
+
+    private var extensionMetricValue: String {
+        switch model.extensionConnection {
+        case .never: return "未检测到"
+        case .online: return "已连接"
+        case .offline: return "未连接"
+        case .seen, nil: return model.server.isRunning ? "可连接" : "服务未运行"
+        }
+    }
+
+    private var extensionMetricDetail: String {
+        switch model.extensionConnection {
+        case .never: return "从 Chrome 应用商店安装"
+        case .online: return "插件正在运行"
+        case .offline: return "Chrome 未打开，或插件已停用"
+        case .seen, nil:
+            if let lastSeen = model.extensionLastSeenDescription { return "上次连接：\(lastSeen)" }
+            return "在 Chrome 插件中查看当前连接状态"
+        }
     }
 
     private var queueDetail: String {

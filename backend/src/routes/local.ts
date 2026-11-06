@@ -5,8 +5,14 @@ import { env } from "../env.js";
 import { getLocalUserId } from "../auth.js";
 import { machineTranslationConfigured, machineTranslationProvider } from "../machineTranslation.js";
 import { query } from "../db.js";
+import { extensionConnection, extensionLastSeenAt, recordExtensionHeartbeat } from "../extensionPresence.js";
 
 export const localRouter = Router();
+
+localRouter.post("/heartbeat", (_req, res) => {
+  recordExtensionHeartbeat();
+  res.json({ ok: true });
+});
 
 const TARGET_LANGUAGES = ["zh-Hans", "zh-Hant", "en", "ja", "ko", "es", "fr", "de", "ru", "pt", "it", "ar"] as const;
 
@@ -121,6 +127,8 @@ localRouter.get("/status", async (_req, res, next) => {
       },
       machineTranslation: machineTranslationConfigured(),
       machineTranslationProvider: machineTranslationProvider(),
+      extensionLastSeenAt: extensionLastSeenAt(),
+      extensionConnection: extensionConnection(),
       queue,
       jobs: {
         active: Number(active.rows[0]?.count || 0),
